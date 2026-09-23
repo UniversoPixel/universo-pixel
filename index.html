@@ -6,10 +6,10 @@
   <title>Universo Pixel - Portal & Rádio</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Orbitron (Futurista), Pacifico (Cursiva) e Plus Jakarta Sans -->
+  <!-- Google Fonts: Orbitron (Futurista), Caveat (Cursiva Legível) e Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Pacifico&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Orbitron:wght@900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   
   <style>
     body {
@@ -20,15 +20,19 @@
         radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.25) 0px, transparent 50%);
     }
 
-    /* Estilo do Logo Futurista + Cursivo */
+    /* UNIVERSO: Futurista, Caixa Alta Reto (Sem Itálico) */
     .logo-futuristic {
       font-family: 'Orbitron', sans-serif;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.01em;
     }
 
+    /* Pixel: Cursiva Fluida com Gradient */
     .logo-cursive {
-      font-family: 'Pacifico', cursive;
-      text-shadow: 2px 3px 0px rgba(15, 23, 42, 0.15);
+      font-family: 'Caveat', cursive;
+      background: linear-gradient(180deg, #FDE047 0%, #F59E0B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0px 2px 3px rgba(15, 23, 42, 0.25));
     }
   </style>
 </head>
@@ -51,24 +55,24 @@
     </div>
   </div>
 
-  <!-- Header Principal com o Novo Logo (Estilo HabboNight) -->
+  <!-- Header Principal -->
   <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-sky-200/80 shadow-sm">
     <div class="max-w-6xl mx-auto px-4 h-24 flex items-center justify-between">
       
-      <!-- LOGO ESTILO HABBONIGHT (FUTURISTA + CURSIVO) -->
+      <!-- LOGO: UNIVERSO (Reto) + Pixel (Cursivo com Degradê) -->
       <a href="#" class="flex items-center space-x-3 group py-2">
         <div class="w-12 h-12 bg-gradient-to-br from-sky-400 to-sky-600 text-white rounded-2xl flex items-center justify-center font-black text-xl shadow-md shadow-sky-500/30 group-hover:scale-105 transition-transform border border-sky-300/40">
           UP
         </div>
         
-        <!-- Bloco de Texto Tipográfico -->
+        <!-- Bloco Tipográfico -->
         <div class="relative pt-1">
-          <!-- Palavra Futurista / Caixa Alta -->
-          <span class="logo-futuristic text-2xl md:text-3xl font-black text-sky-950 italic tracking-wider block leading-none">
+          <!-- UNIVERSO em Caixa Alta Normal -->
+          <span class="logo-futuristic text-2xl md:text-3xl font-black text-sky-950 block leading-none">
             UNIVERSO
           </span>
-          <!-- Palavra Cursiva Sobreposta em Amarelo Ouro -->
-          <span class="logo-cursive text-2xl md:text-3xl text-[#F6C700] absolute -bottom-3 right-0 transform rotate-[-6deg] block drop-shadow-sm select-none">
+          <!-- Pixel Cursivo com Degradê Suave -->
+          <span class="logo-cursive text-3xl md:text-4xl absolute -bottom-4 right-0 transform rotate-[-5deg] block select-none font-bold">
             Pixel
           </span>
         </div>
@@ -167,7 +171,7 @@
     <!-- Sidebar / Rádio & Widgets (1/3) -->
     <aside class="space-y-6">
       
-      <!-- Player Rádio em Azul Céu Vibrante -->
+      <!-- Player Rádio -->
       <div class="bg-gradient-to-br from-sky-500 to-sky-600 text-white rounded-3xl p-6 shadow-xl shadow-sky-500/20 relative overflow-hidden">
         
         <!-- Header Rádio -->
