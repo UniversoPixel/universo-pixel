@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Universo Pixel</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #f4f6f9;
+    }
+  </style>
+</head>
+<body class="font-sans text-slate-800 antialiased">
+
+  <!-- Topo / Header -->
+  <header class="bg-[#F6C700] border-b border-yellow-500 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <h1 class="text-xl md:text-2xl font-black text-slate-900 tracking-wider uppercase">
+        Universo Pixel
+      </h1>
+      <span class="text-xs bg-slate-900 text-yellow-400 font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+        Ao Vivo
+      </span>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal (2 Colunas) -->
+  <main class="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+    
+    <!-- Coluna de Notícias (2/3 da tela) -->
+    <section class="md:col-span-2 space-y-6">
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+        <span class="text-xs font-bold text-yellow-600 uppercase tracking-wider">Destaque</span>
+        <h2 class="text-2xl font-bold text-slate-900 mt-1 mb-3">Bem-vindo ao Universo Pixel!</h2>
+        <p class="text-slate-600 leading-relaxed">
+          Nosso portal já está no ar via Vercel + GitHub. Aqui você vai acompanhar as principais novidades e eventos da nossa comunidade.
+        </p>
+      </div>
+    </section>
+
+    <!-- Coluna Lateral / Sidebar (1/3 da tela) -->
+    <aside class="space-y-6">
+      <div class="bg-slate-900 text-white p-6 rounded-xl shadow-sm border border-slate-800">
+        <h3 class="text-lg font-bold text-yellow-400 mb-2">Rádio Universo Pixel</h3>
+        <p class="text-sm text-slate-300 mb-4">Sintonize na nossa programação ao vivo.</p>
+        
+        <!-- Player Placeholder -->
+        <div class="bg-slate-800 p-4 rounded-lg flex items-center justify-between border border-slate-700">
+          <span class="text-xs text-slate-400">Player em breve...</span>
+          <button class="bg-yellow-400 text-slate-900 font-bold px-4 py-1.5 rounded text-sm hover:bg-yellow-300 transition-colors">
+            Ouvir
+          </button>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+</body>
+</html>
