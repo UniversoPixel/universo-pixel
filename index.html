@@ -6,116 +6,144 @@
   <title>Universo Pixel - Portal & Rádio</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Inter -->
+  <!-- Google Fonts: Inter & Press Start 2P para detalhes retro -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+  
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #0B0F17;
+      background-color: #0c1017;
+      background-image: 
+        radial-gradient(at 50% 0%, rgba(246, 199, 0, 0.08) 0px, transparent 75%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 20px 20px, 20px 20px;
+    }
+    .pixel-font {
+      font-family: 'Press Start 2P', cursive;
     }
   </style>
 </head>
-<body class="text-slate-100 antialiased min-h-screen flex flex-col">
+<body class="text-slate-200 antialiased min-h-screen flex flex-col">
 
-  <!-- Cabeçalho Principal (Amarelo Brand + Navy) -->
-  <header class="bg-[#F6C700] border-b-4 border-yellow-500 text-slate-900 sticky top-0 z-50 shadow-md">
+  <!-- Topbar Superior Notificações / Status -->
+  <div class="bg-slate-950/80 border-b border-slate-800 text-xs py-1.5 px-4 backdrop-blur">
+    <div class="max-w-6xl mx-auto flex justify-between items-center text-slate-400">
+      <div class="flex items-center space-x-3">
+        <span class="bg-[#F6C700] text-slate-950 text-[10px] font-black px-1.5 py-0.5 rounded uppercase">Aviso</span>
+        <span class="truncate">Seja bem-vindo ao novo Universo Pixel! Sintonize nossa rádio.</span>
+      </div>
+      <div class="hidden sm:flex items-center space-x-4">
+        <a href="#" class="hover:text-yellow-400 transition-colors">Discord</a>
+        <span>•</span>
+        <a href="#" class="hover:text-yellow-400 transition-colors">Regras</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Principal com Banner & Logo Gamer -->
+  <header class="bg-slate-900/90 border-b border-yellow-500/30 backdrop-blur sticky top-0 z-50 shadow-2xl">
     <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between">
       
-      <!-- Logo / Marca -->
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 bg-slate-900 text-[#F6C700] rounded-xl flex items-center justify-center font-black text-xl shadow">
+      <!-- Brand Logo Gamer/Retro -->
+      <a href="#" class="flex items-center space-x-3 group">
+        <div class="w-12 h-12 bg-gradient-to-br from-[#F6C700] to-yellow-600 rounded-xl flex items-center justify-center font-black text-slate-950 text-xl shadow-lg shadow-yellow-500/10 border border-yellow-300/50 group-hover:scale-105 transition-transform">
           UP
         </div>
         <div>
-          <h1 class="text-xl md:text-2xl font-black tracking-tight leading-none uppercase">
-            Universo Pixel
+          <h1 class="text-2xl font-black text-white tracking-wider leading-none flex items-center gap-1">
+            UNIVERSO<span class="text-[#F6C700]">PIXEL</span>
           </h1>
-          <span class="text-xs font-semibold tracking-wider text-slate-800 opacity-80">
-            Fã-site Não Oficial
-          </span>
+          <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">Portal & Comunidade Gamer</p>
         </div>
-      </div>
+      </a>
 
-      <!-- Menu de Navegação -->
-      <nav class="hidden md:flex items-center space-x-1 font-bold text-sm">
-        <a href="#" class="px-4 py-2 rounded-lg bg-slate-900/10 hover:bg-slate-900/20 text-slate-950 transition-colors">Início</a>
-        <a href="#" class="px-4 py-2 rounded-lg hover:bg-slate-900/10 text-slate-900 transition-colors">Notícias</a>
-        <a href="#" class="px-4 py-2 rounded-lg hover:bg-slate-900/10 text-slate-900 transition-colors">Eventos</a>
-        <a href="#" class="px-4 py-2 rounded-lg hover:bg-slate-900/10 text-slate-900 transition-colors">Equipe</a>
+      <!-- Menu Principal Estilo Habblindados -->
+      <nav class="hidden lg:flex items-center bg-slate-950/60 p-1.5 rounded-xl border border-slate-800/80">
+        <a href="#" class="px-4 py-2 rounded-lg bg-[#F6C700] text-slate-950 font-black text-xs uppercase tracking-wider shadow">Início</a>
+        <a href="#" class="px-4 py-2 rounded-lg text-slate-300 hover:text-yellow-400 font-bold text-xs uppercase tracking-wider transition-colors">Notícias</a>
+        <a href="#" class="px-4 py-2 rounded-lg text-slate-300 hover:text-yellow-400 font-bold text-xs uppercase tracking-wider transition-colors">Eventos</a>
+        <a href="#" class="px-4 py-2 rounded-lg text-slate-300 hover:text-yellow-400 font-bold text-xs uppercase tracking-wider transition-colors">Equipe</a>
+        <a href="#" class="px-4 py-2 rounded-lg text-slate-300 hover:text-yellow-400 font-bold text-xs uppercase tracking-wider transition-colors">Fórum</a>
       </nav>
 
-      <!-- Status / Indicador Ao Vivo -->
-      <div class="flex items-center space-x-2 bg-slate-900 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow">
-        <span class="w-2.5 h-2.5 bg-emerald-400 rounded-full animate-pulse"></span>
-        <span class="text-yellow-400 uppercase tracking-wider">Rádio no Ar</span>
-      </div>
+      <!-- Painel de Login Rápidio / Perfil -->
+      <button class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-yellow-400 font-bold text-xs px-4 py-2.5 rounded-xl transition-colors flex items-center gap-2">
+        <span>🔑 Entrar</span>
+      </button>
 
     </div>
   </header>
 
-  <!-- Layout Principal em 2 Colunas -->
-  <main class="max-w-6xl mx-auto px-4 py-8 flex-1 grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+  <!-- Corpo Principal -->
+  <main class="max-w-6xl mx-auto px-4 py-8 flex-1 grid grid-cols-1 lg:grid-cols-3 gap-8 w-full">
     
-    <!-- Coluna Principal / Notícias (2/3) -->
-    <section class="md:col-span-2 space-y-6">
+    <!-- Esquerda: Notícias e Destaques (2 Colunas no Desktop) -->
+    <section class="lg:col-span-2 space-y-6">
       
-      <div class="flex items-center justify-between">
-        <h2 class="text-xl font-bold text-white tracking-wide border-l-4 border-[#F6C700] pl-3">
-          Últimas Atualizações
-        </h2>
-        <a href="#" class="text-xs font-bold text-yellow-400 hover:underline">Ver todas →</a>
+      <!-- Cabeçalho de Seção Estilo Habblindados -->
+      <div class="bg-gradient-to-r from-slate-900 to-slate-950 p-3.5 rounded-xl border border-slate-800 flex items-center justify-between shadow-md">
+        <div class="flex items-center space-x-3">
+          <div class="w-3 h-3 bg-[#F6C700] rounded-sm rotate-45"></div>
+          <h2 class="font-black text-white text-sm uppercase tracking-wider">Últimas do Hotel & Comunidade</h2>
+        </div>
+        <span class="text-[11px] text-yellow-400 font-semibold cursor-pointer hover:underline">Ver arquivo →</span>
       </div>
 
-      <!-- Card de Notícia em Destaque -->
-      <article class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-lg hover:border-slate-700 transition-all group">
-        <div class="h-48 bg-slate-800 relative overflow-hidden flex items-center justify-center text-slate-600">
-          <span class="text-sm font-semibold">Imagem da Notícia (Banner)</span>
-          <span class="absolute top-4 left-4 bg-[#F6C700] text-slate-950 font-bold text-xs px-3 py-1 rounded-md uppercase tracking-wider">
-            Destaque
+      <!-- Banner de Destaque Principal -->
+      <div class="bg-slate-900 border border-slate-800/80 rounded-2xl overflow-hidden shadow-xl hover:border-yellow-500/40 transition-all group">
+        <div class="h-56 bg-slate-800/80 relative flex items-center justify-center border-b border-slate-800">
+          <!-- Placeholder da imagem da notícia -->
+          <div class="text-center">
+            <span class="text-xs text-slate-500 block mb-1">IMAGE BANNER (800x300)</span>
+            <span class="pixel-font text-[10px] text-yellow-500/60">UNIVERSO PIXEL 2026</span>
+          </div>
+          <span class="absolute top-4 left-4 bg-[#F6C700] text-slate-950 font-black text-[10px] px-3 py-1 rounded-md uppercase tracking-widest shadow">
+            Destaque da Semana
           </span>
         </div>
+
         <div class="p-6">
-          <div class="flex items-center text-xs text-slate-400 space-x-3 mb-2">
-            <span>Por <strong class="text-slate-200">Redação UP</strong></span>
+          <div class="flex items-center text-xs text-slate-400 space-x-3 mb-3">
+            <span class="bg-slate-800 text-yellow-400 font-bold px-2 py-0.5 rounded text-[10px] uppercase">Oficial</span>
+            <span>Por <strong class="text-white">Redação UP</strong></span>
             <span>•</span>
-            <span>23 de Setembro, 2026</span>
+            <span>Hoje às 18:00</span>
           </div>
-          <h3 class="text-2xl font-bold text-white group-hover:text-yellow-400 transition-colors mb-2">
-            Lançamento Oficial da Plataforma Universo Pixel
+          <h3 class="text-2xl font-black text-white group-hover:text-[#F6C700] transition-colors mb-3 leading-tight">
+            Nova Era: O Universo Pixel lança seu novo portal interativo!
           </h3>
           <p class="text-slate-400 text-sm leading-relaxed mb-4">
-            Apresentamos a nova estrutura do portal com design moderno, navegação fluida e integração total com a nossa rádio ao vivo.
+            Com uma interface moderna, sistema de rádio em tempo real e foco na comunidade, o portal chega para trazer as melhores novidades, eventos e coberturas exclusivas.
           </p>
-          <a href="#" class="inline-flex items-center text-xs font-bold text-[#F6C700] hover:text-yellow-300">
-            Ler notícia completa →
+          <a href="#" class="inline-flex items-center justify-center bg-slate-800 hover:bg-[#F6C700] hover:text-slate-950 text-slate-200 font-bold text-xs px-4 py-2.5 rounded-lg border border-slate-700 transition-all">
+            Continuar lendo
           </a>
         </div>
-      </article>
+      </div>
 
-      <!-- Grid de Notícias Secundárias -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <!-- Grid Notícias Menores (2 Colunas) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         
-        <!-- Card Secundário 1 -->
-        <article class="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition-all">
-          <span class="text-[10px] font-bold text-yellow-400 uppercase tracking-widest">Evento</span>
-          <h4 class="font-bold text-white text-base mt-1 mb-2 hover:text-yellow-400 cursor-pointer">
-            Cobertura da Campanha de Verão
+        <article class="bg-slate-900/90 border border-slate-800/80 rounded-xl p-4 hover:border-slate-700 transition-all">
+          <span class="text-[10px] font-black text-[#F6C700] uppercase tracking-wider block mb-1">Campanhas</span>
+          <h4 class="font-bold text-white text-sm mb-2 hover:text-yellow-400 cursor-pointer line-clamp-1">
+            Guia de Atividades & Emblemas
           </h4>
-          <p class="text-xs text-slate-400 line-clamp-2">
-            Confira todos os emblemas e atividades liberadas durante esta semana.
+          <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+            Acompanhe o tutorial passo a passo para garantir todas as recompensas da semana.
           </p>
         </article>
 
-        <!-- Card Secundário 2 -->
-        <article class="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition-all">
-          <span class="text-[10px] font-bold text-yellow-400 uppercase tracking-widest">Comunidade</span>
-          <h4 class="font-bold text-white text-base mt-1 mb-2 hover:text-yellow-400 cursor-pointer">
-            Recrutamento de Locutores Abertos
+        <article class="bg-slate-900/90 border border-slate-800/80 rounded-xl p-4 hover:border-slate-700 transition-all">
+          <span class="text-[10px] font-black text-[#F6C700] uppercase tracking-wider block mb-1">Rádio</span>
+          <h4 class="font-bold text-white text-sm mb-2 hover:text-yellow-400 cursor-pointer line-clamp-1">
+            Teste para Locutores Abertos
           </h4>
-          <p class="text-xs text-slate-400 line-clamp-2">
-            Quer fazer parte da equipe da Rádio UP? Inscreva-se para o teste de locução.
+          <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+            Monte seus horários e venha fazer parte da equipe de transmissão oficial.
           </p>
         </article>
 
@@ -123,56 +151,72 @@
 
     </section>
 
-    <!-- Sidebar / Rádio & Interatividade (1/3) -->
+    <!-- Direita: Sidebar / Player de Rádio & Widgets (Estilo Habblindados) -->
     <aside class="space-y-6">
       
-      <!-- Bloco Player de Rádio -->
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-lg relative overflow-hidden">
-        <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-[#F6C700]/10 rounded-full blur-2xl pointer-events-none"></div>
-
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="font-bold text-white text-lg">Rádio Universo Pixel</h3>
-          <span class="text-[10px] bg-emerald-500/20 text-emerald-400 font-bold px-2 py-0.5 rounded border border-emerald-500/30">
-            ONLINE
+      <!-- Player de Rádio Integrado -->
+      <div class="bg-slate-900 border border-slate-800/80 rounded-2xl p-5 shadow-2xl relative overflow-hidden">
+        
+        <!-- Header da Rádio -->
+        <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-800">
+          <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-ping"></span>
+            <h3 class="font-black text-white text-sm uppercase tracking-wider">Rádio Ao Vivo</h3>
+          </div>
+          <span class="pixel-font text-[9px] bg-slate-800 text-yellow-400 px-2 py-1 rounded border border-slate-700">
+            AUTO-DJ
           </span>
         </div>
 
-        <!-- Info Locutor / Música -->
-        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800/80 mb-4 flex items-center space-x-3">
-          <div class="w-12 h-12 bg-slate-800 rounded-lg flex-shrink-0 flex items-center justify-center text-yellow-400 font-black text-xl border border-slate-700">
-            DJ
+        <!-- Box do Locutor / Programa -->
+        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 mb-4 flex items-center space-x-3">
+          <div class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center border border-slate-700 text-yellow-400 font-black text-xs flex-shrink-0">
+            📻
           </div>
           <div class="overflow-hidden">
-            <p class="text-xs text-slate-400 font-medium">Programa Ao Vivo</p>
-            <p class="text-sm font-bold text-white truncate">AutoDJ - Seleção de Sucessos</p>
-            <p class="text-[11px] text-yellow-400/90 truncate">Ouvintes: 42</p>
+            <p class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">No Ar Agora</p>
+            <p class="text-xs font-bold text-white truncate">As Mais Tocadas da Semana</p>
+            <p class="text-[11px] text-yellow-400/90 font-semibold mt-0.5">Ouvintes: <span class="text-white">128</span></p>
           </div>
         </div>
 
-        <!-- Controles do Player -->
-        <div class="flex items-center space-x-3">
-          <button class="flex-1 bg-[#F6C700] hover:bg-yellow-400 text-slate-950 font-bold py-2.5 px-4 rounded-xl flex items-center justify-center space-x-2 transition-all shadow-md">
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            <span>Ouvir Rádio</span>
+        <!-- Botão Play Grande -->
+        <button class="w-full bg-gradient-to-r from-[#F6C700] to-yellow-500 hover:from-yellow-400 hover:to-yellow-500 text-slate-950 font-black py-3 px-4 rounded-xl flex items-center justify-center space-x-2 transition-all shadow-lg shadow-yellow-500/10 uppercase tracking-wider text-xs">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <span>Sintonizar Rádio</span>
+        </button>
+
+        <div class="grid grid-cols-2 gap-2 mt-3">
+          <button class="bg-slate-950 hover:bg-slate-800 text-slate-300 text-[11px] font-bold py-2 rounded-lg border border-slate-800 transition-colors text-center">
+            💬 Pedidos
           </button>
-          <button class="p-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl border border-slate-700 transition-colors" title="Pedidos">
-            💬
+          <button class="bg-slate-950 hover:bg-slate-800 text-slate-300 text-[11px] font-bold py-2 rounded-lg border border-slate-800 transition-colors text-center">
+            📅 Grade
           </button>
         </div>
+
       </div>
 
-      <!-- Bloco de Links Rápidos / Redes -->
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-lg">
-        <h4 class="font-bold text-white text-sm mb-3">Redes da Comunidade</h4>
-        <div class="space-y-2">
-          <a href="#" class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950 hover:bg-slate-800/60 border border-slate-800 transition-colors text-xs text-slate-300">
-            <span>Servidor no Discord</span>
-            <span class="text-yellow-400">Entrar →</span>
-          </a>
-          <a href="#" class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950 hover:bg-slate-800/60 border border-slate-800 transition-colors text-xs text-slate-300">
-            <span>Grupo de Notícias</span>
-            <span class="text-yellow-400">Acessar →</span>
-          </a>
+      <!-- Widget: Top Ouvintes / Destaques -->
+      <div class="bg-slate-900 border border-slate-800/80 rounded-2xl p-5 shadow-xl">
+        <h4 class="font-black text-white text-xs uppercase tracking-wider mb-4 pb-2 border-b border-slate-800 flex items-center gap-2">
+          <span>🏆</span> Top Membros da Semana
+        </h4>
+        <div class="space-y-3">
+          <div class="flex items-center justify-between bg-slate-950/60 p-2.5 rounded-lg border border-slate-800/50">
+            <div class="flex items-center space-x-2.5">
+              <span class="text-xs font-black text-yellow-400 w-4">1º</span>
+              <span class="text-xs font-bold text-slate-200">PixelMaster</span>
+            </div>
+            <span class="text-[10px] bg-yellow-500/10 text-yellow-400 font-bold px-2 py-0.5 rounded">1.420 pts</span>
+          </div>
+          <div class="flex items-center justify-between bg-slate-950/60 p-2.5 rounded-lg border border-slate-800/50">
+            <div class="flex items-center space-x-2.5">
+              <span class="text-xs font-black text-slate-400 w-4">2º</span>
+              <span class="text-xs font-bold text-slate-200">HabboFan</span>
+            </div>
+            <span class="text-[10px] bg-slate-800 text-slate-400 font-bold px-2 py-0.5 rounded">980 pts</span>
+          </div>
         </div>
       </div>
 
@@ -180,11 +224,20 @@
 
   </main>
 
-  <!-- Rodapé -->
-  <footer class="bg-slate-950 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+  <!-- Rodapé Estilo Gamer -->
+  <footer class="bg-slate-950 border-t border-slate-800/80 py-8 text-slate-500 text-xs mt-auto">
     <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p>© 2026 Universo Pixel. Todos os direitos reservados.</p>
-      <p class="text-slate-600">Este é um fã-site independente e não possui vínculo direto com empresas terceiras.</p>
+      <div class="flex items-center space-x-3">
+        <div class="w-8 h-8 bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-black text-xs">
+          UP
+        </div>
+        <p>© 2026 <strong>Universo Pixel</strong>. Fã-site independente.</p>
+      </div>
+      <div class="flex space-x-6 text-slate-400 font-semibold">
+        <a href="#" class="hover:text-yellow-400 transition-colors">Termos</a>
+        <a href="#" class="hover:text-yellow-400 transition-colors">Privacidade</a>
+        <a href="#" class="hover:text-yellow-400 transition-colors">Contato</a>
+      </div>
     </div>
   </footer>
 
