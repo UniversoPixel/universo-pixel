@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Universo Pixel - Portal & Rádio</title>
+  <title>Pixelizados - Portal & Rádio</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Space Grotesk, Bungee & Plus Jakarta Sans -->
+  <!-- Google Fonts: Press Start 2P (Retro 8-bit 3D) & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Press+Start+2P&display=swap" rel="stylesheet">
   
   <style>
     body {
@@ -20,14 +20,21 @@
         radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.2) 0px, transparent 50%);
     }
 
-    /* Estilização do Novo Logo Autêntico */
-    .brand-universo {
-      font-family: 'Space Grotesk', sans-serif;
-      letter-spacing: 0.08em;
+    /* Logo Retro 3D Sombreado */
+    .brand-pixelizados {
+      font-family: 'Press Start 2P', cursive;
+      color: #0284C7; /* Azul Céu Elétrico */
+      text-shadow: 
+        1px 1px 0px #0369A1,
+        2px 2px 0px #0369A1,
+        3px 3px 0px #075985,
+        4px 4px 0px #0C4A6E,
+        5px 5px 0px rgba(15, 23, 42, 0.3);
+      letter-spacing: -0.05em;
     }
 
-    .brand-pixel {
-      font-family: 'Bungee', cursive;
+    .brand-pixelizados-tag {
+      font-family: 'Press Start 2P', cursive;
     }
   </style>
 </head>
@@ -40,7 +47,7 @@
         <span class="bg-[#F6C700] text-slate-950 text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-sm">
           Aviso
         </span>
-        <span class="truncate font-medium text-sky-50">Bem-vindo ao novo Universo Pixel! Sintonize a rádio ao vivo.</span>
+        <span class="truncate font-medium text-sky-50">Bem-vindo ao Pixelizados! Sintonize a rádio ao vivo.</span>
       </div>
       <div class="hidden sm:flex items-center space-x-4 font-semibold text-sky-100 text-[11px]">
         <a href="#" class="hover:text-yellow-300 transition-colors">Discord</a>
@@ -50,24 +57,24 @@
     </div>
   </div>
 
-  <!-- Header Principal com Novo Logo Autêntico -->
+  <!-- Header Principal com Logo Pixelizados Retro 3D -->
   <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-sky-200/80 shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 h-22 flex items-center justify-between">
+    <div class="max-w-6xl mx-auto px-4 h-24 flex items-center justify-between">
       
-      <!-- NOVO LOGO: "UNIVERSO" Limpo + "PIXEL" em Badge Destaque 3D -->
+      <!-- NOVO LOGO: PIXELIZADOS (3D Retro Arcade) -->
       <a href="#" class="flex items-center space-x-3 group py-2">
-        <!-- Ícone UP Integrado -->
-        <div class="w-11 h-11 bg-sky-500 text-white rounded-2xl flex items-center justify-center font-black text-lg shadow-md shadow-sky-500/25 group-hover:scale-105 transition-transform border border-sky-400/30">
-          UP
+        <!-- Ícone PX -->
+        <div class="w-12 h-12 bg-gradient-to-br from-[#F6C700] to-amber-500 text-slate-950 rounded-2xl flex items-center justify-center font-black text-lg shadow-md shadow-yellow-500/20 group-hover:scale-105 transition-transform border border-yellow-300/60">
+          <span class="brand-pixelizados-tag text-xs text-slate-950">PX</span>
         </div>
         
-        <!-- Marca Tipográfica -->
-        <div class="flex items-center space-x-2">
-          <span class="brand-universo text-xl md:text-2xl font-black text-slate-900 tracking-wider">
-            UNIVERSO
+        <!-- Marca Tipográfica Retrô -->
+        <div class="flex flex-col">
+          <span class="brand-pixelizados text-xl md:text-2xl transform -rotate-1 group-hover:rotate-0 transition-transform">
+            PIXELIZADOS
           </span>
-          <span class="brand-pixel text-xs md:text-sm bg-[#F6C700] text-slate-950 px-2.5 py-1 rounded-xl shadow-[0_3px_0_0_#D97706] tracking-wide transform -rotate-2 group-hover:rotate-0 transition-transform">
-            PIXEL
+          <span class="text-[9px] font-extrabold text-sky-600 uppercase tracking-widest mt-1">
+            FÃ-SITE & COMUNIDADE
           </span>
         </div>
       </a>
@@ -109,7 +116,7 @@
         <div class="h-64 bg-gradient-to-br from-sky-400 to-sky-500 relative flex items-center justify-center p-6">
           <div class="text-center text-white">
             <span class="text-xs font-bold tracking-widest uppercase opacity-80 block mb-1">Banner da Notícia (800x300)</span>
-            <span class="brand-universo text-2xl font-black tracking-wider opacity-30">UNIVERSO PIXEL</span>
+            <span class="brand-pixelizados text-xl text-white opacity-40">PIXELIZADOS</span>
           </div>
           <span class="absolute top-4 left-4 bg-[#F6C700] text-slate-950 font-black text-[11px] px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
             Destaque
@@ -119,15 +126,15 @@
         <div class="p-7">
           <div class="flex items-center text-xs text-slate-400 space-x-3 mb-3 font-semibold">
             <span class="bg-sky-100 text-sky-700 font-extrabold px-2.5 py-1 rounded-full text-[10px] uppercase">Oficial</span>
-            <span>Por <strong class="text-slate-800">Redação UP</strong></span>
+            <span>Por <strong class="text-slate-800">Equipe Pixelizados</strong></span>
             <span>•</span>
             <span>Hoje às 18:00</span>
           </div>
           <h3 class="text-2xl font-black text-slate-900 group-hover:text-sky-600 transition-colors mb-3 leading-snug">
-            Nova Era: O Universo Pixel abre suas portas com design leve e moderno!
+            Bem-vindos ao Pixelizados: A sua nova casa pixelada!
           </h3>
           <p class="text-slate-600 text-sm leading-relaxed mb-6 font-medium">
-            Trazendo a essência alegre e vibrante do Habbo com navegabilidade intuitiva. Acompanhe nossa programação de rádio ao vivo, novidades, guias de emblemas e eventos.
+            Trazendo a essência do universo pixel com visual fluido, moderno e intuitivo. Acompanhe a nossa programação de rádio ao vivo, novidades do hotel, guias de emblemas e fórum.
           </p>
           <a href="#" class="inline-flex items-center justify-center bg-[#F6C700] hover:bg-yellow-400 text-slate-950 font-extrabold text-xs px-6 py-3 rounded-2xl transition-all shadow-md shadow-yellow-500/20 uppercase tracking-wider">
             Ler notícia completa
@@ -186,7 +193,7 @@
           </div>
           <div class="overflow-hidden">
             <p class="text-[10px] text-sky-100 font-bold uppercase tracking-wider">No Ar Agora</p>
-            <p class="text-sm font-extrabold text-white truncate">Seleção de Éxitos Pixelados</p>
+            <p class="text-sm font-extrabold text-white truncate">Seleção Pixelados</p>
             <p class="text-[11px] text-yellow-300 font-bold mt-0.5">Ouvintes: <span class="text-white">128</span></p>
           </div>
         </div>
@@ -239,10 +246,10 @@
   <footer class="bg-white border-t border-sky-200/80 py-8 text-slate-500 text-xs mt-auto">
     <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
       <div class="flex items-center space-x-3">
-        <div class="w-8 h-8 bg-[#F6C700] text-slate-950 rounded-xl flex items-center justify-center font-black text-xs shadow-sm">
-          UP
+        <div class="w-8 h-8 bg-[#F6C700] text-slate-950 rounded-xl flex items-center justify-center font-extrabold text-[10px] shadow-sm font-mono">
+          PX
         </div>
-        <p>© 2026 <strong>Universo Pixel</strong>. Fã-site independente.</p>
+        <p>© 2026 <strong>Pixelizados</strong>. Fã-site independente.</p>
       </div>
       <div class="flex space-x-6 text-slate-600 font-bold">
         <a href="#" class="hover:text-sky-600 transition-colors">Termos</a>
