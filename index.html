@@ -276,6 +276,79 @@
       window.location.href = 'portal.html';
     }
   </script>
+<!-- SDK do Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<script>
+  // Conexão com o teu projeto Supabase
+  const SUPABASE_URL = 'https://znvytrvdwejjlivzsjzy.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_J60PUy390KR4sRTGe9tjNg_wllyvUAj';
+  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  // 1. Função para registar o utilizador e guardar como PENDENTE
+  async function processarCadastro(habboNick, discordTag) {
+    // Gerar PIN automático no formato PX-XXXX
+    const pinGerado = 'PX-' + Math.floor(1000 + Math.random() * 9000);
+
+    // Inserir na tabela 'usuarios'
+    const { data, error } = await supabaseClient
+      .from('usuarios')
+      .insert([
+        { 
+          habbo_nick: habboNick, 
+          discord_tag: discordTag, 
+          pin: pinGerado, 
+          status: 'PENDENTE' 
+        }
+      ])
+      .select();
+
+    if (error) {
+      console.error('Erro ao salvar no Supabase:', error);
+      alert('Ocorreu um erro ao gerar o teu PIN. Tenta novamente.');
+      return;
+    }
+
+    // Exibir o PIN no ecrã/modal para o utilizador
+    document.getElementById('display-pin').innerText = pinGerado;
+    
+    // Atualizar a mensagem do modal para avisar que está a aguardar
+    document.getElementById('status-msg').innerText = 'Aguardando aprovação no Discord...';
+
+    // Guardar temporariamente no navegador
+    localStorage.setItem('temp_pin', pinGerado);
+
+    // Começar a escutar alterações em tempo real para este PIN
+    escutarAprovacaoRealtime(pinGerado);
+  }
+
+  // 2. Escuta em Tempo Real (Realtime Listener)
+  function escutarAprovacaoRealtime(pin) {
+    supabaseClient
+      .channel('validacao-pixelizados')
+      .on(
+        'postgres_changes',
+        {
+          event: 'UPDATE',
+          schema: 'public',
+          table: 'usuarios',
+          filter: `pin=eq.${pin}`
+        },
+        (payload) => {
+          // Quando o status mudar para APROVADO no banco de dados
+          if (payload.new.status === 'APROVADO') {
+            // Regista a sessão do utilizador
+            localStorage.setItem('pixelizados_user', JSON.stringify(payload.new));
+            localStorage.removeItem('temp_pin');
+
+            // Feedback visual e redirecionamento automático
+            alert('🎉 A tua conta foi verificada com sucesso!');
+            window.location.href = 'portal.html';
+          }
+        }
+      )
+      .subscribe();
+  }
+</script>
 </body>
 </html>
