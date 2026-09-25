@@ -175,6 +175,65 @@
     </footer>
 
   </div>
+<!-- MODAL DE CADASTRO DISCORD -->
+<div id="modal-cadastro" class="modal-overlay hidden">
+  <div class="modal-card">
+    <button class="modal-close" onclick="fecharModal()">&times;</button>
+    
+    <!-- ETAPA 1: PREENCHIMENTO DOS DADOS -->
+    <div id="etapa-1">
+      <div class="modal-header">
+        <span class="badge-beta">Beta Pixelizados</span>
+        <h2>Criar Conta no Portal</h2>
+        <p>Vincule seu perfil do Discord para continuar.</p>
+      </div>
 
+      <form id="form-cadastro" onsubmit="gerarPin(event)">
+        <div class="input-group">
+          <label for="discord-tag">Seu Username do Discord</label>
+          <input type="text" id="discord-tag" placeholder="Ex: usuario_discord" required />
+        </div>
+
+        <div class="input-group">
+          <label for="portal-user">Nome de Usuário no Portal</label>
+          <input type="text" id="portal-user" placeholder="Ex: Pixel_Master" required />
+        </div>
+
+        <div class="input-group">
+          <label for="portal-pass">Criar Senha</label>
+          <input type="password" id="portal-pass" placeholder="••••••••" required />
+        </div>
+
+        <button type="submit" class="btn-primary-modal">Gerar PIN de Verificação 🚀</button>
+      </form>
+    </div>
+
+    <!-- ETAPA 2: PIN E INSTRUÇÕES -->
+    <div id="etapa-2" class="hidden">
+      <div class="modal-header">
+        <h2>Quase lá! Validação do Discord</h2>
+        <p>Envie o código abaixo no nosso servidor para ativar sua conta.</p>
+      </div>
+
+      <div class="pin-box">
+        <span class="pin-label">Seu PIN de Verificação:</span>
+        <span id="pin-display" class="pin-code">PX-0000</span>
+      </div>
+
+      <div class="instrucoes-box">
+        <p>1. Copie o PIN acima.</p>
+        <p>2. Entre no canal <strong>#validar-conta</strong> no Discord.</p>
+        <p>3. Envie o código no chat.</p>
+      </div>
+
+      <div class="modal-actions">
+        <a href="https://discord.gg/pixelizados" target="_blank" class="btn-discord">
+          Ir para o Discord
+        </a>
+        <button class="btn-secondary-modal" onclick="concluirCadastro()">Já enviei! Acessar Portal</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
