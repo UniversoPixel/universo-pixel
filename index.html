@@ -315,26 +315,26 @@
 
     // Escuta em tempo real no banco do Supabase
     function escutarAprovacaoRealtime(pin) {
-      supabaseClient
-        .channel('validacao-pixelizados')
-        .on(
-          'postgres_changes',
-          {
-            event: 'UPDATE',
-            schema: 'public',
-            table: 'usuarios',
-            filter: `pin=eq.${pin}`
-          },
-          (payload) => {
-            if (payload.new.status === 'APROVADO') {
-              localStorage.setItem('pixelizados_user', JSON.stringify(payload.new));
-              alert('🎉 A tua conta foi verificada com sucesso!');
-              window.location.href = 'portal.html';
-            }
-          }
-        )
-        .subscribe();
-    }
+  supabaseClient
+    .channel('validacao-pixelizados')
+    .on(
+      'postgres_changes',
+      {
+        event: 'UPDATE',
+        schema: 'public',
+        table: 'usuarios'
+      },
+      (payload) => {
+        // Verifica se o UPDATE pertence ao PIN deste utilizador
+        if (payload.new && payload.new.pin === pin && payload.new.status === 'APROVADO') {
+          localStorage.setItem('pixelizados_user', JSON.stringify(payload.new));
+          alert('🎉 A tua conta foi verificada com sucesso!');
+          window.location.href = 'portal.html';
+        }
+      }
+    )
+    .subscribe();
+}
   </script>
 </body>
 </html>
