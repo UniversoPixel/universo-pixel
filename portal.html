@@ -249,8 +249,18 @@
         </div>
       </div>
 
-      <!-- DIREITA: PERFIL & SALDO -->
-      <div class="flex items-center gap-2 w-full md:w-auto justify-end">
+      <!-- DIREITA: LOGO, PERFIL & SALDO -->
+      <div class="flex items-center gap-3 w-full md:w-auto justify-end flex-wrap sm:flex-nowrap">
+        
+        <!-- LOGO NO TOPO DIREITO -->
+        <a href="#" class="flex-shrink-0 transition transform hover:scale-105 active:scale-95 my-1 sm:my-0">
+          <img 
+            src="logo.png" 
+            alt="Pixelizados Logo" 
+            class="h-9 sm:h-10 w-auto object-contain drop-shadow-sm"
+          >
+        </a>
+
         <div class="glass-capsule glass-capsule-hover rounded-full p-1.5 flex items-center gap-3">
           
           <div class="flex items-center gap-2 bg-gradient-to-r from-amber-50 to-yellow-100/80 px-3 py-1 rounded-full border border-amber-200/80 shadow-inner">
@@ -488,7 +498,6 @@
                   </span>
                 </div>
 
-                <!-- SUBTÍTULO EM CARD (MANROPE) -->
                 <h3 class="font-subtitle font-extrabold text-slate-900 text-sm group-hover:text-amber-600 transition leading-snug">
                   Passaporte VIP Semestral + 500 PX
                 </h3>
@@ -668,7 +677,7 @@
           </div>
         </section>
 
-        <!-- 4. RANKING DE OUVINTES (ABAIXO DE PARCEIROS) -->
+        <!-- 4. RANKING DE OUVINTES -->
         <section class="pixel-card pixel-card-hover p-5">
           <div class="card-header-title pb-3 mb-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
@@ -683,7 +692,6 @@
           </div>
 
           <div class="space-y-2.5">
-            <!-- Ouvinte #1 -->
             <div class="p-2.5 rounded-xl bg-gradient-to-r from-rose-50/90 to-amber-50/50 border border-rose-200/80 flex items-center justify-between">
               <div class="flex items-center gap-2.5 min-w-0">
                 <div class="relative">
@@ -702,7 +710,6 @@
               </span>
             </div>
 
-            <!-- Ouvinte #2 -->
             <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between hover:bg-white transition">
               <div class="flex items-center gap-2.5 min-w-0">
                 <span class="font-title font-extrabold text-slate-400 text-xs w-4 text-center">2</span>
@@ -715,7 +722,6 @@
               <span class="font-subtitle text-[10px] font-bold text-slate-500">32h</span>
             </div>
 
-            <!-- Ouvinte #3 -->
             <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between hover:bg-white transition">
               <div class="flex items-center gap-2.5 min-w-0">
                 <span class="font-title font-extrabold text-slate-400 text-xs w-4 text-center">3</span>
