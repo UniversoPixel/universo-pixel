@@ -71,16 +71,22 @@
           </div>
         </div>
 
-        <!-- User Info + Avatar baseado no Discord Tag -->
+        <!-- User Info + Avatar Editável -->
         <div class="flex items-center gap-3 bg-slate-900/90 p-1.5 pr-3 rounded-2xl border border-slate-800">
-          <div class="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center overflow-hidden border border-slate-700">
+          
+          <!-- Avatar Clicável com Botão de Edição -->
+          <div onclick="abrirModalAvatar()" title="Alterar foto de perfil" class="relative group cursor-pointer w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center overflow-hidden border border-slate-700 hover:border-amber-400 transition">
             <img 
               id="user-avatar" 
               src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Pixelizado" 
               alt="Avatar do Usuário"
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover group-hover:opacity-40 transition"
             >
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/50 text-amber-400 text-xs">
+              <i class="fa-solid fa-camera"></i>
+            </div>
           </div>
+
           <div class="text-left">
             <p id="user-nick" class="font-bold text-xs text-white leading-tight">Pixelizado</p>
             <span class="text-[10px] font-semibold text-emerald-400 flex items-center gap-1">
@@ -99,28 +105,78 @@
     </div>
   </header>
 
+  <!-- MODAL DE ALTERAÇÃO DA FOTO DE PERFIL -->
+  <div id="modal-avatar" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm hidden p-4">
+    <div class="bg-slate-900 border-2 border-slate-700 rounded-2xl max-w-sm w-full p-6 shadow-2xl relative text-left">
+      <button onclick="fecharModalAvatar()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <h3 class="font-bold text-lg text-white mb-1">Editar Foto de Perfil</h3>
+      <p class="text-xs text-slate-400 mb-4">Cole a URL da sua imagem (PNG, JPG ou GIF) abaixo:</p>
+
+      <input 
+        type="url" 
+        id="input-avatar-url" 
+        placeholder="https://exemplo.com/sua-foto.png"
+        class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 mb-4"
+      >
+
+      <div class="flex gap-2">
+        <button onclick="fecharModalAvatar()" class="w-1/2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-2 rounded-xl text-xs transition">
+          Cancelar
+        </button>
+        <button onclick="salvarNovoAvatar()" class="w-1/2 bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold py-2 rounded-xl text-xs transition">
+          Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- ÁREA PRINCIPAL -->
   <main class="max-w-7xl mx-auto px-6 py-10">
-    <!-- Conteúdo principal do portal -->
+    <!-- Próximas seções aqui -->
   </main>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const userData = JSON.parse(localStorage.getItem('pixelizados_user'));
+      const userData = JSON.parse(localStorage.getItem('pixelizados_user')) || {};
 
-      if (userData) {
-        // Pega a Tag/Nickname do Discord cadastrada
-        const discordTag = userData.discord_tag || 'Pixelizado';
-        
-        document.getElementById('user-nick').innerText = discordTag;
-        
-        // Gera o avatar Pixel Art exclusivo usando a tag do Discord como semente
+      // Pega a Tag do Discord
+      const discordTag = userData.discord_tag || 'Pixelizado';
+      document.getElementById('user-nick').innerText = discordTag;
+
+      // Se o utilizador tiver uma foto salva no localStorage usa ela, senão gera o avatar Pixel Art
+      const avatarSalvo = localStorage.getItem('custom_user_avatar');
+      if (avatarSalvo) {
+        document.getElementById('user-avatar').src = avatarSalvo;
+      } else {
         document.getElementById('user-avatar').src = `https://api.dicebear.com/7.x/pixel-art/svg?seed=${encodeURIComponent(discordTag)}`;
       }
     });
 
+    function abrirModalAvatar() {
+      document.getElementById('modal-avatar').classList.remove('hidden');
+    }
+
+    function fecharModalAvatar() {
+      document.getElementById('modal-avatar').classList.add('hidden');
+    }
+
+    function salvarNovoAvatar() {
+      const url = document.getElementById('input-avatar-url').value.trim();
+      if (url) {
+        localStorage.setItem('custom_user_avatar', url);
+        document.getElementById('user-avatar').src = url;
+        fecharModalAvatar();
+      } else {
+        alert('Por favor, insere uma URL válida para a imagem.');
+      }
+    }
+
     function fazerLogout() {
       localStorage.removeItem('pixelizados_user');
+      localStorage.removeItem('custom_user_avatar');
       window.location.href = 'index.html';
     }
   </script>
