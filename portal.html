@@ -69,9 +69,9 @@
       100% { transform: scale(0.95); opacity: 0.8; }
     }
 
-    /* FAIXA DE NAVEGAÇÃO MINIMALISTA (ESTILO REFERÊNCIA) */
+    /* FAIXA DE NAVEGAÇÃO MINIMALISTA */
     .classic-nav-bar {
-      background: rgba(255, 255, 255, 0.90);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       border-bottom: 1px solid rgba(0, 0, 0, 0.08);
@@ -103,7 +103,6 @@
       transition: color 0.2s ease, transform 0.2s ease;
     }
 
-    /* Hover limpo e sutil */
     .nav-item:hover {
       background-color: rgba(241, 245, 249, 0.8);
       color: #0284c7;
@@ -114,7 +113,6 @@
       transform: translateY(-1px);
     }
 
-    /* Item Ativo */
     .nav-item.active {
       color: #0284c7;
       background-color: #ffffff;
@@ -131,6 +129,32 @@
       left: 0;
       right: 0;
       height: 3px;
+      background-color: #0284c7;
+    }
+
+    /* CARDS MINIMALISTAS EM VIDRO BRANCO */
+    .pixel-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    .card-header-title {
+      border-bottom: 2px solid #f1f5f9;
+      position: relative;
+    }
+
+    .card-header-title::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 60px;
+      height: 2px;
       background-color: #0284c7;
     }
   </style>
@@ -237,48 +261,235 @@
     </div>
   </header>
 
-  <!-- BARRA DE NAVEGAÇÃO MINIMALISTA ESTILO FÃ-SITE -->
+  <!-- BARRA DE NAVEGAÇÃO MINIMALISTA -->
   <nav class="classic-nav-bar w-full relative z-10">
     <div class="max-w-7xl mx-auto flex items-center overflow-x-auto no-scrollbar">
-      
-      <!-- Home (Ativo) -->
       <a href="#" class="nav-item active whitespace-nowrap">
         <i class="fa-solid fa-house"></i>
         <span>Home</span>
       </a>
-
-      <!-- Comunidade -->
       <a href="#" class="nav-item whitespace-nowrap">
         <i class="fa-solid fa-users"></i>
         <span>Comunidade</span>
       </a>
-
-      <!-- Equipe -->
       <a href="#" class="nav-item whitespace-nowrap">
         <i class="fa-solid fa-user-shield"></i>
         <span>Equipe</span>
       </a>
-
-      <!-- Ranking -->
       <a href="#" class="nav-item whitespace-nowrap">
         <i class="fa-solid fa-trophy"></i>
         <span>Ranking</span>
       </a>
-
-      <!-- Notícias -->
       <a href="#" class="nav-item whitespace-nowrap">
         <i class="fa-solid fa-newspaper"></i>
         <span>Notícias</span>
       </a>
-
-      <!-- Discord -->
       <a href="#" target="_blank" class="nav-item whitespace-nowrap">
         <i class="fa-brands fa-discord"></i>
         <span>Discord</span>
       </a>
-
     </div>
   </nav>
+
+  <!-- CONTEÚDO PRINCIPAL (ESTRUTURA DA SUA IMAGEM) -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      
+      <!-- COLUNA ESQUERDA (TIMELINE & ATUALIZAÇÕES - 2 COLUNAS DE LARGURA) -->
+      <div class="lg:col-span-2 space-y-8">
+        
+        <!-- CARD: TIMELINE DE NOTÍCIAS (MANCHETE JORNALÍSTICA) -->
+        <section class="pixel-card p-6">
+          <div class="card-header-title pb-3 mb-6 flex justify-between items-center">
+            <h2 class="font-extrabold text-lg text-slate-800 uppercase tracking-wide flex items-center gap-2">
+              <i class="fa-solid fa-newspaper text-sky-500"></i>
+              Timeline de Notícias
+            </h2>
+            <span class="text-xs font-semibold text-slate-400 bg-slate-100 px-3 py-1 rounded-full">Destaques da Semana</span>
+          </div>
+
+          <!-- NOTÍCIA EM DESTAQUE -->
+          <article class="space-y-4">
+            <!-- Título Estilo Jornal (Centralizado) -->
+            <div class="text-center py-2 px-4 border-b border-dashed border-slate-200">
+              <span class="text-[10px] font-bold text-sky-600 bg-sky-50 uppercase tracking-widest px-2.5 py-1 rounded-md border border-sky-200/60 inline-block mb-2">
+                Edição Oficial
+              </span>
+              <h1 class="text-2xl sm:text-3xl font-black text-slate-900 leading-tight tracking-tight hover:text-sky-600 transition cursor-pointer">
+                A Era dos Fã-Sites Oficiais: O Futuro da Comunidade Pixelizada
+              </h1>
+              <p class="text-xs font-medium text-slate-400 mt-2 flex items-center justify-center gap-3">
+                <span><i class="fa-regular fa-clock mr-1"></i> Publicado há 2 horas</span>
+                <span>•</span>
+                <span>Por <strong class="text-slate-700">Redação Pixel</strong></span>
+              </p>
+            </div>
+
+            <!-- Imagem de Capa -->
+            <div class="relative rounded-xl overflow-hidden group shadow-md my-4">
+              <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1000&q=80" alt="Capa Notícia" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            </div>
+
+            <!-- Descrição/Resumo da Notícia -->
+            <p class="text-slate-600 text-sm leading-relaxed font-normal">
+              Confira as novidades exclusivas, eventos programados e melhorias do nosso portal para esta temporada. Junte-se aos membros da comunidade, ganhe moedas virtuais e ajude a construir o melhor espaço de interação pixel do hotel!
+            </p>
+
+            <!-- Barra de Interações (Likes, Comentários, Partilha) -->
+            <div class="flex items-center justify-between pt-4 border-t border-slate-100 text-xs font-semibold">
+              <div class="flex items-center gap-3">
+                <button onclick="toggleLike(this)" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 transition">
+                  <i class="fa-regular fa-heart text-sm"></i>
+                  <span class="like-count">124</span>
+                </button>
+                <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 text-sky-600 hover:bg-sky-100 transition">
+                  <i class="fa-regular fa-comment text-sm"></i>
+                  <span>18 Comentários</span>
+                </button>
+              </div>
+
+              <button onclick="compartilharNoticia()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition" title="Compartilhar">
+                <i class="fa-solid fa-share-nodes text-sm"></i>
+                <span class="hidden sm:inline">Compartilhar</span>
+              </button>
+            </div>
+          </article>
+        </section>
+
+        <!-- CARD: ATUALIZAÇÕES / EVENTOS & SORTEIOS -->
+        <section class="pixel-card p-6">
+          <div class="card-header-title pb-3 mb-6 flex justify-between items-center">
+            <h2 class="font-extrabold text-lg text-slate-800 uppercase tracking-wide flex items-center gap-2">
+              <i class="fa-solid fa-calendar-check text-emerald-500"></i>
+              Atualizações & Eventos
+            </h2>
+            <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
+              Ao Vivo
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Evento 1 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/60 hover:border-sky-200 transition group">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-xs">
+                  <i class="fa-solid fa-gift"></i>
+                </span>
+                <div>
+                  <h3 class="font-bold text-slate-800 text-xs group-hover:text-sky-600 transition">Sorteio de VIP semestral</h3>
+                  <p class="text-[10px] text-slate-400">Encerra em 2 dias</p>
+                </div>
+              </div>
+              <p class="text-xs text-slate-500 line-clamp-2">Participe comentando na timeline e ganhe moedas extra no portal!</p>
+            </div>
+
+            <!-- Evento 2 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/60 hover:border-sky-200 transition group">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold text-xs">
+                  <i class="fa-solid fa-gamepad"></i>
+                </span>
+                <div>
+                  <h3 class="font-bold text-slate-800 text-xs group-hover:text-sky-600 transition">Torneio de Jogos na Rádio</h3>
+                  <p class="text-[10px] text-slate-400">Hoje às 20:00</p>
+                </div>
+              </div>
+              <p class="text-xs text-slate-500 line-clamp-2">Sintonize no AutoDJ e responda ao quiz do locutor para vencer.</p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- COLUNA DIREITA (GUIAS RÁPIDAS - BARRA LATERAL) -->
+      <aside class="space-y-6">
+        
+        <!-- 1. BARRA DE PESQUISA -->
+        <div class="pixel-card p-4">
+          <form onsubmit="event.preventDefault();" class="relative">
+            <input 
+              type="text" 
+              placeholder="Pesquisar notícias, membros..." 
+              class="w-full bg-slate-100 border border-slate-200 rounded-xl py-2.5 pl-3.5 pr-10 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white transition"
+            >
+            <button type="submit" class="absolute right-3 top-2.5 text-slate-400 hover:text-sky-500 text-xs">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+        </div>
+
+        <!-- 2. RANKING / USUÁRIO DESTAQUE -->
+        <section class="pixel-card p-5">
+          <div class="card-header-title pb-3 mb-4 flex justify-between items-center">
+            <h3 class="font-extrabold text-sm text-slate-800 uppercase tracking-wide flex items-center gap-2">
+              <i class="fa-solid fa-crown text-amber-500"></i>
+              Usuários Destaque
+            </h3>
+            <span class="text-[10px] font-bold text-slate-400">Top Mês</span>
+          </div>
+
+          <!-- TOP 1 (DESTAQUE PRINCIPAL) -->
+          <div class="p-3 bg-gradient-to-r from-amber-50 to-orange-50/50 border border-amber-200/60 rounded-xl mb-4 flex items-center gap-3">
+            <div class="relative">
+              <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=KingPixel" alt="Top 1" class="w-10 h-10 rounded-full bg-slate-900 border-2 border-amber-400">
+              <span class="absolute -top-1 -left-1 bg-amber-400 text-amber-950 font-black text-[9px] w-4 h-4 rounded-full flex items-center justify-center border border-white">
+                1
+              </span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-bold text-xs text-slate-900 truncate">KingPixel</p>
+              <p class="text-[10px] font-medium text-amber-700">1.420 PX • Líder de Atividade</p>
+            </div>
+          </div>
+
+          <!-- LISTA SECUNDÁRIA DO RANKING -->
+          <div class="space-y-2.5 text-xs">
+            <div class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition">
+              <div class="flex items-center gap-2.5">
+                <span class="font-bold text-slate-400 text-xs w-4">2</span>
+                <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=StarGirl" class="w-6 h-6 rounded-full bg-slate-800" alt="Top 2">
+                <span class="font-semibold text-slate-700 truncate">StarGirl</span>
+              </div>
+              <span class="font-bold text-sky-600 text-[11px]">980 PX</span>
+            </div>
+
+            <div class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition">
+              <div class="flex items-center gap-2.5">
+                <span class="font-bold text-slate-400 text-xs w-4">3</span>
+                <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=NeoUser" class="w-6 h-6 rounded-full bg-slate-800" alt="Top 3">
+                <span class="font-semibold text-slate-700 truncate">NeoUser</span>
+              </div>
+              <span class="font-bold text-sky-600 text-[11px]">850 PX</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. CARD DE PARCEIROS -->
+        <section class="pixel-card p-5">
+          <div class="card-header-title pb-3 mb-4 flex justify-between items-center">
+            <h3 class="font-extrabold text-sm text-slate-800 uppercase tracking-wide flex items-center gap-2">
+              <i class="fa-solid fa-handshake text-sky-500"></i>
+              Parceiros
+            </h3>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 text-center text-xs font-semibold text-slate-600">
+            <a href="#" class="p-3 bg-slate-50 hover:bg-sky-50 hover:text-sky-600 border border-slate-100 rounded-xl transition flex flex-col items-center gap-1.5">
+              <i class="fa-solid fa-hotel text-sky-500 text-base"></i>
+              <span>Habbo Hotel</span>
+            </a>
+            <a href="#" class="p-3 bg-slate-50 hover:bg-sky-50 hover:text-sky-600 border border-slate-100 rounded-xl transition flex flex-col items-center gap-1.5">
+              <i class="fa-solid fa-radio text-indigo-500 text-base"></i>
+              <span>Rádio Pixel</span>
+            </a>
+          </div>
+        </section>
+
+      </aside>
+
+    </div>
+  </main>
 
   <!-- MODAL DE ALTERAÇÃO DA FOTO DE PERFIL -->
   <div id="modal-avatar" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden p-4">
@@ -307,10 +518,6 @@
       </div>
     </div>
   </div>
-
-  <main class="max-w-7xl mx-auto px-6 py-10">
-    <!-- Conteúdo principal do portal -->
-  </main>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -350,6 +557,27 @@
       localStorage.removeItem('pixelizados_user');
       localStorage.removeItem('custom_user_avatar');
       window.location.href = 'index.html';
+    }
+
+    function toggleLike(btn) {
+      const icon = btn.querySelector('i');
+      const count = btn.querySelector('.like-count');
+      let current = parseInt(count.innerText);
+
+      if (icon.classList.contains('fa-regular')) {
+        icon.classList.remove('fa-regular');
+        icon.classList.add('fa-solid');
+        count.innerText = current + 1;
+      } else {
+        icon.classList.remove('fa-solid');
+        icon.classList.add('fa-regular');
+        count.innerText = current - 1;
+      }
+    }
+
+    function compartilharNoticia() {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Link da notícia copiado para a área de transferência!');
     }
   </script>
 </body>
