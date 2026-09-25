@@ -13,15 +13,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    /* SISTEMA DE TIPOGRAFIA E AJUSTES DE ESPAÇAMENTO GLOBAL */
     body {
       font-family: 'Inter', sans-serif;
       background: linear-gradient(180deg, #2bb7f6 0%, #179be3 100%);
       background-attachment: fixed;
       color: #334155;
       /* Espaçamento superior para a header fixa e inferior para a barra do AutoDJ */
-      padding-top: 76px;
-      padding-bottom: 90px;
+      padding-top: 86px;
+      padding-bottom: 96px;
     }
 
     .font-title {
@@ -43,9 +42,9 @@
       left: 0;
       width: 100%;
       z-index: 9998;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(0, 0, 0, 0.08);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     }
@@ -226,19 +225,19 @@
 <body class="min-h-screen flex flex-col justify-between font-body">
 
   <div>
-    <!-- 1. HEADER FIXA NO TOPO (LOGO MAIOR À ESQUERDA + PERFIL/PONTOS/SAIR À DIREITA) -->
-    <header class="top-header-bar px-4 sm:px-8 py-3">
+    <!-- 1. HEADER FIXA NO TOPO COM LOGO AMPLIADA -->
+    <header class="top-header-bar px-4 sm:px-8 py-3.5">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
         
-        <!-- LADO ESQUERDO: LOGO EXISTENTE (Aumentada com segurança) -->
+        <!-- LADO ESQUERDO: LOGO AUMENTADA EFETIVAMENTE COM h-14 sm:h-16 -->
         <div class="flex items-center">
-          <a href="#" class="flex items-center">
-            <img src="pixelizados.png.png" alt="Logo Pixelizados" class="h-12 sm:h-14 w-auto object-contain">
+          <a href="#" class="flex items-center group py-0.5">
+            <img src="pixelizados.png.png" alt="Logo Pixelizados" class="h-14 sm:h-16 w-auto object-contain drop-shadow-sm group-hover:scale-105 transition-transform duration-200">
           </a>
         </div>
 
         <!-- LADO DIREITO: PERFIL DO USUÁRIO, PONTOS E BOTÃO SAIR -->
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2.5">
           <div class="glass-capsule glass-capsule-hover rounded-full p-1.5 flex items-center gap-3">
             
             <div class="flex items-center gap-2 bg-gradient-to-r from-amber-50 to-yellow-100/80 px-3 py-1 rounded-full border border-amber-200/80 shadow-inner">
@@ -296,7 +295,7 @@
     </header>
 
     <!-- BARRA DE NAVEGAÇÃO SECUNDÁRIA -->
-    <nav class="classic-nav-bar w-full relative z-10 mt-[1px]">
+    <nav class="classic-nav-bar w-full relative z-10">
       <div class="max-w-7xl mx-auto flex items-center overflow-x-auto no-scrollbar">
         <a href="#" class="nav-item active whitespace-nowrap">
           <i class="fa-solid fa-house"></i>
@@ -366,7 +365,7 @@
                   </span>
                 </div>
                 
-                <!-- TÍTULO PRINCIPAL (PLUS JAKARTA SANS) -->
+                <!-- TÍTULO PRINCIPAL -->
                 <h1 class="font-title text-2xl sm:text-3xl font-black text-slate-900 leading-snug tracking-tight hover:text-sky-600 transition cursor-pointer">
                   A Era dos Fã-Sites Oficiais: O Futuro da Comunidade Pixelizada
                 </h1>
@@ -714,6 +713,54 @@
 
     </div>
   </footer>
+
+  <script>
+    function toggleLike(btn) {
+      const icon = btn.querySelector('i');
+      const countSpan = btn.querySelector('.like-count');
+      let count = parseInt(countSpan.textContent);
+      
+      if (icon.classList.contains('fa-regular')) {
+        icon.classList.remove('fa-regular');
+        icon.classList.add('fa-solid');
+        icon.style.color = '#e11d48';
+        countSpan.textContent = count + 1;
+        
+        // Adicionar moeda de bônus interativa
+        const currentPixels = document.getElementById('user-pixels');
+        let pixels = parseInt(currentPixels.textContent) + 10;
+        currentPixels.textContent = pixels;
+      } else {
+        icon.classList.remove('fa-solid');
+        icon.classList.add('fa-regular');
+        icon.style.color = '';
+        countSpan.textContent = count - 1;
+      }
+    }
+
+    function compartilharNoticia() {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(window.location.href);
+        alert('Link da notícia copiado para a área de transferência!');
+      } else {
+        alert('Link copiado!');
+      }
+    }
+
+    function fazerLogout() {
+      if (confirm('Deseja realmente sair do portal?')) {
+        alert('Sessão encerrada com sucesso.');
+      }
+    }
+
+    function abrirModalAvatar() {
+      const novoSeed = prompt('Digite um nome para gerar seu novo avatar Pixel:', 'Pixelizado' + Math.floor(Math.random() * 1000));
+      if (novoSeed) {
+        document.getElementById('user-avatar').src = `https://api.dicebear.com/7.x/pixel-art/svg?seed=${encodeURIComponent(novoSeed)}`;
+        document.getElementById('user-nick').textContent = novoSeed;
+      }
+    }
+  </script>
 
 </body>
 </html>
