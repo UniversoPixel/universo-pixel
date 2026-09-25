@@ -20,11 +20,17 @@
       font-family: 'Playfair Display', serif;
     }
 
-    /* HEADER AMARELO HABBO */
+    /* BARRAS AMARELAS HABBO (TOPO E RODAPÉ) */
     .bg-habbo-yellow {
       background: linear-gradient(180deg, #ffcb05 0%, #ffb400 100%);
       border-bottom: 2px solid #cc8e00;
       box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.12);
+    }
+
+    .bg-habbo-yellow-footer {
+      background: linear-gradient(180deg, #ffb400 0%, #e6a100 100%);
+      border-top: 2px solid #cc8e00;
+      box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.25);
     }
 
     /* WIDGETS GLASS/CRISTAL */
@@ -135,7 +141,7 @@
       background-color: #0284c7;
     }
 
-    /* CARDS REFINADOS COM GLOW E BORDAS SUAVES */
+    /* CARDS REFINADOS */
     .pixel-card {
       background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(16px);
@@ -167,7 +173,7 @@
       border-radius: 2px;
     }
 
-    /* EFITO SMOOTH HOVER NAS IMAGENS */
+    /* ZOOM IMAGENS */
     .img-zoom-container {
       overflow: hidden;
       border-radius: 14px;
@@ -179,14 +185,13 @@
       transform: scale(1.04);
     }
 
-    /* INPUT REPOSITIONED GLOW */
     .search-input-glow:focus-within {
       box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2);
       border-color: #0284c7;
     }
   </style>
 </head>
-<body class="min-h-screen">
+<body class="min-h-screen flex flex-col justify-between">
 
   <!-- HEADER AMARELO -->
   <header class="bg-habbo-yellow px-4 sm:px-8 py-3 relative z-20">
@@ -311,6 +316,10 @@
         <i class="fa-solid fa-newspaper"></i>
         <span>Notícias</span>
       </a>
+      <a href="#vagas-form" class="nav-item whitespace-nowrap">
+        <i class="fa-solid fa-user-plus"></i>
+        <span>Trabalhe Conosco</span>
+      </a>
       <a href="#" target="_blank" class="nav-item whitespace-nowrap">
         <i class="fa-brands fa-discord"></i>
         <span>Discord</span>
@@ -319,16 +328,16 @@
   </nav>
 
   <!-- LAYOUT PRINCIPAL -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-8">
+    
+    <!-- GRID PRINCIPAL DE 2 COLUNAS -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
       
       <!-- COLUNA ESQUERDA (TIMELINE & ATUALIZAÇÕES) -->
       <div class="lg:col-span-2 space-y-8">
         
-        <!-- CARD: TIMELINE DE NOTÍCIAS REFINADO -->
+        <!-- CARD: TIMELINE DE NOTÍCIAS -->
         <section class="pixel-card pixel-card-hover p-6 sm:p-7">
-          
-          <!-- Header da Seção -->
           <div class="card-header-title pb-3 mb-6 flex justify-between items-center">
             <div class="flex items-center gap-2.5">
               <div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-600 flex items-center justify-center font-bold text-sm">
@@ -347,10 +356,7 @@
             </span>
           </div>
 
-          <!-- NOTÍCIA PRINCIPAL -->
           <article class="space-y-5">
-            
-            <!-- Título Jornalístico Centralizado com Tipografia Editorial -->
             <div class="text-center max-w-2xl mx-auto px-2 pt-1 pb-3 border-b border-dashed border-slate-200/80">
               <div class="inline-flex items-center gap-2 mb-2">
                 <span class="text-[10px] font-black text-[#0077cc] bg-sky-100/70 uppercase tracking-widest px-2.5 py-0.5 rounded-full border border-sky-200">
@@ -362,7 +368,6 @@
                 A Era dos Fã-Sites Oficiais: O Futuro da Comunidade Pixelizada
               </h1>
               
-              <!-- Metadados com Avatar do Autor -->
               <div class="flex items-center justify-center gap-3 mt-3 text-xs font-medium text-slate-500 flex-wrap">
                 <div class="flex items-center gap-1.5">
                   <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=AdminPixel" class="w-5 h-5 rounded-full bg-slate-800 border border-sky-300" alt="Autor">
@@ -379,7 +384,6 @@
               </div>
             </div>
 
-            <!-- Imagem de Capa com Zoom e Insígnia Flutuante -->
             <div class="relative img-zoom-container group shadow-md my-4">
               <img 
                 src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1100&q=80" 
@@ -388,7 +392,6 @@
               >
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent"></div>
               
-              <!-- Badge sobreposto na imagem -->
               <div class="absolute bottom-3 left-3 right-3 flex justify-between items-end">
                 <span class="bg-white/90 backdrop-blur-md text-slate-800 font-bold text-[11px] px-3 py-1 rounded-lg shadow-sm border border-white flex items-center gap-1.5">
                   <i class="fa-solid fa-camera text-sky-500"></i> Evento Especial de Lançamento
@@ -401,12 +404,10 @@
               </div>
             </div>
 
-            <!-- Descrição Breve -->
             <p class="text-slate-600 text-sm leading-relaxed font-normal px-1">
               Confira as novidades exclusivas, eventos programados e melhorias da nossa plataforma para esta temporada. Junte-se aos membros da comunidade, acumule pixels virtuais no seu perfil e ajude a construir o melhor espaço de interação do hotel!
             </p>
 
-            <!-- Barra de Interações (Cápsulas Estilizadas) -->
             <div class="flex items-center justify-between pt-4 border-t border-slate-100/80 text-xs">
               <div class="flex items-center gap-2">
                 <button 
@@ -434,13 +435,11 @@
                 <span class="hidden sm:inline">Compartilhar</span>
               </button>
             </div>
-
           </article>
         </section>
 
-        <!-- CARD: ATUALIZAÇÕES, EVENTOS & SORTEIOS -->
+        <!-- CARD: ATUALIZAÇÕES & EVENTOS -->
         <section class="pixel-card pixel-card-hover p-6 sm:p-7">
-          
           <div class="card-header-title pb-3 mb-6 flex justify-between items-center">
             <div class="flex items-center gap-2.5">
               <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-sm">
@@ -460,10 +459,7 @@
             </a>
           </div>
 
-          <!-- GRID DE EVENTOS REFINADOS -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            
-            <!-- Evento 1: Sorteio VIP -->
             <div class="p-4 rounded-2xl border border-slate-200/70 bg-gradient-to-b from-slate-50/80 to-white hover:border-amber-300 hover:shadow-md transition group relative overflow-hidden flex flex-col justify-between">
               <div class="absolute top-0 right-0 w-16 h-16 bg-amber-400/10 rounded-bl-full pointer-events-none"></div>
               
@@ -472,7 +468,7 @@
                   <span class="bg-amber-100 text-amber-800 text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full border border-amber-200 flex items-center gap-1">
                     <i class="fa-solid fa-gift text-amber-600"></i> Sorteio
                   </span>
-                  <span class="text-[10px] font-bold text-slate-400 bg-white px-2 py-0.5 rounded-md border border-slate-100 shadow-2xs">
+                  <span class="text-[10px] font-bold text-slate-400 bg-white px-2 py-0.5 rounded-md border border-slate-100">
                     <i class="fa-regular fa-clock mr-1 text-amber-500"></i> Faltam 2d
                   </span>
                 </div>
@@ -485,7 +481,6 @@
                 </p>
               </div>
 
-              <!-- Indicador de Participantes / Progresso -->
               <div class="mt-4 pt-3 border-t border-slate-100">
                 <div class="flex justify-between items-center text-[10px] font-semibold text-slate-500 mb-1.5">
                   <span>92 Participantes</span>
@@ -497,7 +492,6 @@
               </div>
             </div>
 
-            <!-- Evento 2: Torneio Ao Vivo -->
             <div class="p-4 rounded-2xl border border-slate-200/70 bg-gradient-to-b from-slate-50/80 to-white hover:border-sky-300 hover:shadow-md transition group relative overflow-hidden flex flex-col justify-between">
               <div class="absolute top-0 right-0 w-16 h-16 bg-sky-400/10 rounded-bl-full pointer-events-none"></div>
 
@@ -506,7 +500,7 @@
                   <span class="bg-rose-100 text-rose-700 text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full border border-rose-200 flex items-center gap-1">
                     <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span> AO VIVO
                   </span>
-                  <span class="text-[10px] font-bold text-slate-400 bg-white px-2 py-0.5 rounded-md border border-slate-100 shadow-2xs">
+                  <span class="text-[10px] font-bold text-slate-400 bg-white px-2 py-0.5 rounded-md border border-slate-100">
                     20:00 Horas
                   </span>
                 </div>
@@ -519,7 +513,6 @@
                 </p>
               </div>
 
-              <!-- Host / Locutor -->
               <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
                 <div class="flex items-center gap-2">
                   <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=DJRadio" class="w-5 h-5 rounded-full bg-slate-900" alt="Locutor">
@@ -528,16 +521,15 @@
                 <span class="text-[10px] font-extrabold text-sky-600 hover:underline cursor-pointer">Ouvir Rádio &rarr;</span>
               </div>
             </div>
-
           </div>
         </section>
 
       </div>
 
-      <!-- COLUNA DIREIRA (GUIAS RÁPIDAS - BARRA LATERAL) -->
+      <!-- COLUNA DIREITA (BARRA LATERAL / GUIAS RÁPIDAS) -->
       <aside class="space-y-6">
         
-        <!-- 1. BARRA DE PESQUISA MODERNA -->
+        <!-- 1. PESQUISA -->
         <div class="pixel-card p-3.5">
           <form onsubmit="event.preventDefault();" class="relative search-input-glow rounded-xl transition">
             <input 
@@ -554,7 +546,7 @@
           </form>
         </div>
 
-        <!-- 2. RANKING DE MEMBROS (USUÁRIOS DESTAQUE) -->
+        <!-- 2. RANKING DE MEMBROS -->
         <section class="pixel-card pixel-card-hover p-5">
           <div class="card-header-title pb-3 mb-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
@@ -568,7 +560,6 @@
             </span>
           </div>
 
-          <!-- TOP 1 (REINANTE - CARD PREMIUM) -->
           <div class="p-3.5 bg-gradient-to-r from-amber-100/80 via-amber-50 to-orange-50/60 border border-amber-300/80 rounded-2xl mb-3 relative shadow-xs">
             <div class="flex items-center gap-3">
               <div class="relative flex-shrink-0">
@@ -577,7 +568,7 @@
                   alt="Top 1" 
                   class="w-12 h-12 rounded-full bg-slate-900 border-2 border-amber-400 p-0.5 shadow-sm"
                 >
-                <div class="absolute -top-1.5 -left-1.5 bg-amber-400 text-amber-950 font-black text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow-xs">
+                <div class="absolute -top-1.5 -left-1.5 bg-amber-400 text-amber-950 font-black text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">
                   <i class="fa-solid fa-crown text-[9px]"></i>
                 </div>
               </div>
@@ -593,23 +584,17 @@
               </div>
             </div>
 
-            <!-- Mini Progress Bar do Top 1 -->
             <div class="mt-2.5 pt-2 border-t border-amber-200/60 flex items-center justify-between text-[9px] font-bold text-amber-800">
               <span>Líder de Atividade</span>
               <span class="text-amber-600">98% XP</span>
             </div>
           </div>
 
-          <!-- POSIÇÕES 2º E 3º LUGAR -->
           <div class="space-y-2">
-            
-            <!-- Top 2 -->
             <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50/80 border border-slate-100 hover:bg-white hover:border-slate-200 transition">
               <div class="flex items-center gap-2.5 min-w-0">
                 <span class="font-black text-slate-400 text-xs w-4 text-center">2</span>
-                <div class="relative">
-                  <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=StarGirl" class="w-8 h-8 rounded-full bg-slate-800 border border-slate-300" alt="Top 2">
-                </div>
+                <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=StarGirl" class="w-8 h-8 rounded-full bg-slate-800 border border-slate-300" alt="Top 2">
                 <div class="truncate">
                   <p class="font-bold text-xs text-slate-800 truncate">StarGirl</p>
                   <p class="text-[9px] text-slate-400">Ativa há 1h</p>
@@ -618,13 +603,10 @@
               <span class="font-black text-sky-600 text-xs bg-sky-50 border border-sky-100 px-2 py-0.5 rounded-lg">980 PX</span>
             </div>
 
-            <!-- Top 3 -->
             <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50/80 border border-slate-100 hover:bg-white hover:border-slate-200 transition">
               <div class="flex items-center gap-2.5 min-w-0">
                 <span class="font-black text-amber-700/60 text-xs w-4 text-center">3</span>
-                <div class="relative">
-                  <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=NeoUser" class="w-8 h-8 rounded-full bg-slate-800 border border-slate-300" alt="Top 3">
-                </div>
+                <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=NeoUser" class="w-8 h-8 rounded-full bg-slate-800 border border-slate-300" alt="Top 3">
                 <div class="truncate">
                   <p class="font-bold text-xs text-slate-800 truncate">NeoUser</p>
                   <p class="text-[9px] text-slate-400">Ativo há 3h</p>
@@ -632,11 +614,10 @@
               </div>
               <span class="font-black text-sky-600 text-xs bg-sky-50 border border-sky-100 px-2 py-0.5 rounded-lg">850 PX</span>
             </div>
-
           </div>
         </section>
 
-        <!-- 3. CARD DE PARCEIROS OFICIAIS -->
+        <!-- 3. PARCEIROS OFICIAIS -->
         <section class="pixel-card pixel-card-hover p-5">
           <div class="card-header-title pb-3 mb-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
@@ -649,19 +630,16 @@
           </div>
 
           <div class="grid grid-cols-2 gap-2.5">
-            
-            <!-- Parceiro 1 -->
             <a href="#" class="p-3 bg-gradient-to-b from-slate-50 to-slate-100/80 hover:from-sky-50 hover:to-blue-50/80 border border-slate-200/80 hover:border-sky-300 rounded-xl transition-all group flex flex-col items-center text-center">
               <div class="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-sky-500 text-sm shadow-2xs group-hover:scale-110 transition-transform mb-1.5">
                 <i class="fa-solid fa-hotel"></i>
               </div>
               <span class="font-bold text-xs text-slate-800 group-hover:text-sky-600 transition">Habbo Hotel</span>
               <span class="text-[9px] text-emerald-600 font-semibold mt-0.5 flex items-center gap-1">
-                <span class="w-1 h-1 rounded-full bg-emerald-500"></span> Servidor Online
+                <span class="w-1 h-1 rounded-full bg-emerald-500"></span> Online
               </span>
             </a>
 
-            <!-- Parceiro 2 -->
             <a href="#" class="p-3 bg-gradient-to-b from-slate-50 to-slate-100/80 hover:from-indigo-50 hover:to-purple-50/80 border border-slate-200/80 hover:border-indigo-300 rounded-xl transition-all group flex flex-col items-center text-center">
               <div class="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-indigo-500 text-sm shadow-2xs group-hover:scale-110 transition-transform mb-1.5">
                 <i class="fa-solid fa-radio"></i>
@@ -671,14 +649,266 @@
                 <span class="w-1 h-1 rounded-full bg-indigo-500"></span> No Ar
               </span>
             </a>
-
           </div>
+        </section>
+
+        <!-- 4. NOVO: RANKING DE OUVINTES (ABAIXO DE PARCEIROS) -->
+        <section class="pixel-card pixel-card-hover p-5">
+          <div class="card-header-title pb-3 mb-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-headphones text-rose-500 text-sm"></i>
+              <h3 class="font-extrabold text-xs text-slate-800 uppercase tracking-wider">
+                Top Ouvintes Rádio
+              </h3>
+            </div>
+            <span class="text-[9px] font-black text-rose-600 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded uppercase flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span> Sintonizados
+            </span>
+          </div>
+
+          <div class="space-y-2.5">
+            <!-- Ouvinte #1 -->
+            <div class="p-2.5 rounded-xl bg-gradient-to-r from-rose-50/90 to-amber-50/50 border border-rose-200/80 flex items-center justify-between">
+              <div class="flex items-center gap-2.5 min-w-0">
+                <div class="relative">
+                  <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=RadioFan1" class="w-8 h-8 rounded-full bg-slate-900 border-2 border-rose-400" alt="Ouvinte 1">
+                  <span class="absolute -bottom-1 -right-1 bg-rose-500 text-white font-black text-[8px] w-3.5 h-3.5 rounded-full flex items-center justify-center border border-white">1</span>
+                </div>
+                <div class="truncate">
+                  <p class="font-bold text-xs text-slate-900 truncate">VibeMaster</p>
+                  <p class="text-[9px] font-semibold text-rose-600 flex items-center gap-1">
+                    <i class="fa-solid fa-clock text-[8px]"></i> 48h Sintonizado
+                  </p>
+                </div>
+              </div>
+              <span class="text-[10px] font-black bg-white border border-rose-200 px-2 py-1 rounded-lg text-slate-700 shadow-2xs">
+                +150 PX
+              </span>
+            </div>
+
+            <!-- Ouvinte #2 -->
+            <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between hover:bg-white transition">
+              <div class="flex items-center gap-2.5 min-w-0">
+                <span class="font-bold text-slate-400 text-xs w-4 text-center">2</span>
+                <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=BeatLover" class="w-7 h-7 rounded-full bg-slate-800" alt="Ouvinte 2">
+                <div class="truncate">
+                  <p class="font-semibold text-xs text-slate-800 truncate">BeatLover</p>
+                  <p class="text-[9px] text-slate-400">32h ouvindo</p>
+                </div>
+              </div>
+              <span class="text-[10px] font-bold text-slate-500">32h</span>
+            </div>
+
+            <!-- Ouvinte #3 -->
+            <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between hover:bg-white transition">
+              <div class="flex items-center gap-2.5 min-w-0">
+                <span class="font-bold text-slate-400 text-xs w-4 text-center">3</span>
+                <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=DjLover" class="w-7 h-7 rounded-full bg-slate-800" alt="Ouvinte 3">
+                <div class="truncate">
+                  <p class="font-semibold text-xs text-slate-800 truncate">CarolPixel</p>
+                  <p class="text-[9px] text-slate-400">27h ouvindo</p>
+                </div>
+              </div>
+              <span class="text-[10px] font-bold text-slate-500">27h</span>
+            </div>
+          </div>
+
+          <button class="w-full mt-3 py-2 bg-rose-50 hover:bg-rose-100 text-rose-600 font-bold text-xs rounded-xl border border-rose-200/80 transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-play text-[10px]"></i> Sintonizar para Pontuar
+          </button>
         </section>
 
       </aside>
 
     </div>
+
+    <!-- SEÇÃO: FORMULÁRIO DE RECRUTAMENTO / TRABALHE CONOSCO -->
+    <section id="vagas-form" class="pixel-card pixel-card-hover p-6 sm:p-8">
+      <div class="card-header-title pb-3 mb-6 flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-cyan-400 text-white flex items-center justify-center font-black text-lg shadow-md">
+            <i class="fa-solid fa-id-card"></i>
+          </div>
+          <div>
+            <h2 class="font-extrabold text-lg text-slate-800 uppercase tracking-wider leading-tight">
+              Faça Parte da Equipe
+            </h2>
+            <p class="text-xs text-slate-500 font-medium">Inscreva-se para integrar a equipe oficial do nosso fã-site</p>
+          </div>
+        </div>
+        
+        <div class="flex gap-1.5 flex-wrap">
+          <span class="bg-sky-50 text-sky-700 text-[10px] font-extrabold px-2.5 py-1 rounded-lg border border-sky-200">DJ</span>
+          <span class="bg-emerald-50 text-emerald-700 text-[10px] font-extrabold px-2.5 py-1 rounded-lg border border-emerald-200">Redator</span>
+          <span class="bg-purple-50 text-purple-700 text-[10px] font-extrabold px-2.5 py-1 rounded-lg border border-purple-200">Moderador</span>
+          <span class="bg-amber-50 text-amber-700 text-[10px] font-extrabold px-2.5 py-1 rounded-lg border border-amber-200">Dev</span>
+          <span class="bg-rose-50 text-rose-700 text-[10px] font-extrabold px-2.5 py-1 rounded-lg border border-rose-200">Promotor</span>
+        </div>
+      </div>
+
+      <form id="form-candidatura" onsubmit="enviarCandidatura(event)" class="space-y-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <!-- CAMPO: NOME -->
+          <div class="space-y-1.5">
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+              Nome Completo / Habbo <span class="text-rose-500">*</span>
+            </label>
+            <div class="relative">
+              <span class="absolute left-3 top-2.5 text-slate-400 text-xs"><i class="fa-solid fa-user"></i></span>
+              <input 
+                type="text" 
+                id="cand-nome" 
+                required 
+                placeholder="Ex: Gabriel / KingPixel"
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 pl-9 pr-3 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white transition"
+              >
+            </div>
+          </div>
+
+          <!-- CAMPO: IDADE -->
+          <div class="space-y-1.5">
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+              Sua Idade <span class="text-rose-500">*</span>
+            </label>
+            <div class="relative">
+              <span class="absolute left-3 top-2.5 text-slate-400 text-xs"><i class="fa-solid fa-cake-candles"></i></span>
+              <input 
+                type="number" 
+                id="cand-idade" 
+                min="12" 
+                max="99" 
+                required 
+                placeholder="Ex: 18 anos"
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 pl-9 pr-3 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white transition"
+              >
+            </div>
+          </div>
+
+          <!-- CAMPO: DISCORD -->
+          <div class="space-y-1.5">
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+              Discord (Tag/User) <span class="text-rose-500">*</span>
+            </label>
+            <div class="relative">
+              <span class="absolute left-3 top-2.5 text-slate-400 text-xs"><i class="fa-brands fa-discord"></i></span>
+              <input 
+                type="text" 
+                id="cand-discord" 
+                required 
+                placeholder="Ex: usuario#0000 ou @usuario"
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 pl-9 pr-3 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white transition"
+              >
+            </div>
+          </div>
+
+          <!-- CAMPO: CARGO DE INTERESSE -->
+          <div class="space-y-1.5">
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+              Vaga Desejada <span class="text-rose-500">*</span>
+            </label>
+            <div class="relative">
+              <span class="absolute left-3 top-2.5 text-slate-400 text-xs"><i class="fa-solid fa-briefcase"></i></span>
+              <select 
+                id="cand-vaga" 
+                required
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 pl-9 pr-3 text-xs text-slate-800 focus:outline-none focus:border-sky-500 focus:bg-white transition appearance-none cursor-pointer"
+              >
+                <option value="" disabled selected>Selecione um cargo...</option>
+                <option value="DJ">🎧 Locutor / DJ da Rádio</option>
+                <option value="Redator">📰 Redator de Notícias</option>
+                <option value="Moderador">🛡️ Moderador da Comunidade</option>
+                <option value="Desenvolvedor">💻 Desenvolvedor (Dev)</option>
+                <option value="Promotor">🎉 Promotor de Eventos</option>
+              </select>
+              <span class="absolute right-3 top-2.5 text-slate-400 text-xs pointer-events-none"><i class="fa-solid fa-chevron-down"></i></span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CAMPO: OBSERVAÇÕES E EXPERIÊNCIA -->
+        <div class="space-y-1.5">
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+            Motivo da Candidatura & Experiências Anteriores <span class="text-rose-500">*</span>
+          </label>
+          <textarea 
+            id="cand-obs" 
+            rows="4" 
+            required
+            placeholder="Conte-nos por que você deseja entrar para o fã-site, quais programas/ferramentas domina (SAM Broadcaster, Photoshop, VS Code, etc.) e sua disponibilidade de horário..."
+            class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white transition resize-y"
+          ></textarea>
+        </div>
+
+        <!-- BOTAO ENVIAR -->
+        <div class="flex items-center justify-between pt-2">
+          <p class="text-[11px] text-slate-400">
+            <i class="fa-solid fa-lock text-slate-300 mr-1"></i> Seus dados serão avaliados com sigilo pela equipe.
+          </p>
+
+          <button 
+            type="submit" 
+            class="px-6 py-3 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-extrabold text-xs rounded-xl shadow-md hover:shadow-lg transition transform active:scale-95 flex items-center gap-2"
+          >
+            <i class="fa-solid fa-paper-plane"></i>
+            <span>Enviar Candidatura</span>
+          </button>
+        </div>
+      </form>
+    </section>
+
   </main>
+
+  <!-- RODAPÉ DA PÁGINA (ESTILO HABBO COM BORDA AMARELA) -->
+  <footer class="bg-habbo-yellow-footer mt-12 py-6 px-4 sm:px-8 text-amber-950 relative z-20">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      
+      <!-- LADO ESQUERDO: DADOS DO FÃ-SITE -->
+      <div class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
+        <div class="w-10 h-10 rounded-xl bg-amber-950/10 border border-amber-900/20 flex items-center justify-center font-black text-amber-950 text-lg shadow-inner">
+          <i class="fa-solid fa-cube"></i>
+        </div>
+        <div>
+          <p class="font-black text-sm text-amber-950 uppercase tracking-wide">
+            Universo Pixel Fã-Site
+          </p>
+          <p class="text-xs font-semibold text-amber-900/80">
+            Lançado em <strong class="text-amber-950">2026</strong> • Fundador: <strong class="text-amber-950">Diesly</strong>
+          </p>
+        </div>
+      </div>
+
+      <!-- CENTRO: AVISO DE ISENÇÃO -->
+      <p class="text-[11px] text-amber-950/70 text-center max-w-md font-medium">
+        Este é um fã-site não oficial dedicado à comunidade. Não possuímos vínculo direto ou filiação com a Sulake Corporation Oy.
+      </p>
+
+      <!-- LADO DIREITO: REDES SOCIAIS EM TONS DE CINZA / BRANCO -->
+      <div class="flex items-center gap-3">
+        <!-- DISCORD -->
+        <a 
+          href="#" 
+          target="_blank" 
+          title="Discord Oficial" 
+          class="w-9 h-9 rounded-xl bg-white/90 hover:bg-white text-slate-600 hover:text-slate-900 flex items-center justify-center transition shadow-xs border border-amber-900/10 hover:scale-105"
+        >
+          <i class="fa-brands fa-discord text-base"></i>
+        </a>
+
+        <!-- TWITTER / X -->
+        <a 
+          href="#" 
+          target="_blank" 
+          title="Twitter / X Oficial" 
+          class="w-9 h-9 rounded-xl bg-white/90 hover:bg-white text-slate-600 hover:text-slate-900 flex items-center justify-center transition shadow-xs border border-amber-900/10 hover:scale-105"
+        >
+          <i class="fa-brands fa-x-twitter text-base"></i>
+        </a>
+      </div>
+
+    </div>
+  </footer>
 
   <!-- MODAL DE AVATAR -->
   <div id="modal-avatar" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden p-4">
@@ -769,6 +999,35 @@
     function compartilharNoticia() {
       navigator.clipboard.writeText(window.location.href);
       alert('Link da notícia copiado para a área de transferência!');
+    }
+
+    /* ENVIO DE CANDIDATURA (DISCORD WEBHOOK OU EMAIL) */
+    function enviarCandidatura(event) {
+      event.preventDefault();
+
+      const nome = document.getElementById('cand-nome').value;
+      const idade = document.getElementById('cand-idade').value;
+      const discord = document.getElementById('cand-discord').value;
+      const vaga = document.getElementById('cand-vaga').value;
+      const obs = document.getElementById('cand-obs').value;
+
+      // Exemplo de integração por e-mail via mailto ou Webhook
+      const emailDestino = "recrutamento@universopixel.com"; // Substituir pelo seu e-mail
+      const assunto = encodeURIComponent(`[CANDIDATURA ${vaga.toUpperCase()}] - ${nome}`);
+      const corpo = encodeURIComponent(
+        `Nova candidatura recebida pelo Portal Universo Pixel:\n\n` +
+        `• Nome/Habbo: ${nome}\n` +
+        `• Idade: ${idade} anos\n` +
+        `• Discord: ${discord}\n` +
+        `• Cargo Pretendido: ${vaga}\n\n` +
+        `• Experiência e Motivação:\n${obs}`
+      );
+
+      // Abre o cliente de e-mail padrão configurado com todos os dados preenchidos
+      window.location.href = `mailto:${emailDestino}?subject=${assunto}&body=${corpo}`;
+
+      alert(`Obrigado ${nome}! Sua candidatura para a vaga de ${vaga} foi gerada com sucesso. Se o seu e-mail não abrir automaticamente, você poderá enviar via Discord!`);
+      document.getElementById('form-candidatura').reset();
     }
   </script>
 </body>
