@@ -35,14 +35,14 @@
       font-family: 'Inter', sans-serif;
     }
 
-    /* HEADER FIXA NO TOPO */
+    /* HEADER FIXA NO TOPO - Mantém padding compacto, permitindo que a logo transborde elegantemente */
     .top-header-bar {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       z-index: 9998;
-      background: rgba(255, 255, 255, 0.94);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(0, 0, 0, 0.08);
@@ -225,14 +225,14 @@
 <body class="min-h-screen flex flex-col justify-between font-body">
 
   <div>
-    <!-- 1. HEADER FIXA NO TOPO COM LOGO AMPLIADA -->
-    <header class="top-header-bar px-4 sm:px-8 py-3.5">
+    <!-- 1. HEADER FIXA NO TOPO -->
+    <header class="top-header-bar px-4 sm:px-8 py-2.5">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
         
-        <!-- LADO ESQUERDO: LOGO AUMENTADA EFETIVAMENTE COM h-14 sm:h-16 -->
+        <!-- LADO ESQUERDO: LOGO COM ALTURA EXTRA EM DESTAQUE (h-20 sm:h-24 md:h-28) -->
         <div class="flex items-center">
           <a href="#" class="flex items-center group py-0.5">
-            <img src="pixelizados.png.png" alt="Logo Pixelizados" class="h-14 sm:h-16 w-auto object-contain drop-shadow-sm group-hover:scale-105 transition-transform duration-200">
+            <img src="pixelizados.png.png" alt="Logo Pixelizados" class="h-20 sm:h-24 md:h-28 w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-200">
           </a>
         </div>
 
