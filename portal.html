@@ -23,11 +23,6 @@
         linear-gradient(to bottom, #fdd835, #f57f17);
       background-size: 4px 4px, 100% 100%;
     }
-
-    /* Pixel art border / sombra vintage */
-    .retro-box-shadow {
-      box-shadow: 0 4px 0px rgba(0, 0, 0, 0.3);
-    }
   </style>
 </head>
 <body class="min-h-screen bg-[#0d131f]">
@@ -42,7 +37,7 @@
         <div class="relative">
           <img 
             id="dj-avatar" 
-            src="https://www.habbo.com.br/habbo-imaging/avatarimage?user=Habbo&action=std&direction=2&head_direction=2&gesture=sml&size=m" 
+            src="https://api.dicebear.com/7.x/pixel-art/svg?seed=AutoDJ&backgroundColor=b6e3f4" 
             alt="DJ Avatar" 
             class="w-12 h-12 rounded-xl bg-amber-200/80 border-2 border-slate-900/40 object-cover"
           >
@@ -64,26 +59,26 @@
         </div>
       </div>
 
-      <!-- CANTO DIREITO: PERFIL DO USER + PIXELS -->
+      <!-- CANTO DIREITO: PERFIL DO USER (DISCORD NICK) + PIXELS -->
       <div class="flex items-center gap-4 w-full md:w-auto justify-end">
         
         <!-- Saldo de Pixels -->
         <div class="flex items-center gap-2 bg-slate-900/90 text-amber-400 px-3 py-1.5 rounded-xl border border-amber-400/30 shadow-inner">
-          <i class="fa-solid fa-[#px] text-amber-400 text-sm">px</i>
+          <i class="fa-solid fa-coins text-amber-400 text-sm"></i>
           <div class="text-right leading-none">
             <span id="user-pixels" class="font-extrabold text-sm text-white">0</span>
             <span class="block text-[9px] text-amber-300/80 font-bold tracking-wider">PIXELS</span>
           </div>
         </div>
 
-        <!-- User Info + Avatar Habbo -->
+        <!-- User Info + Avatar baseado no Discord Tag -->
         <div class="flex items-center gap-3 bg-slate-900/90 p-1.5 pr-3 rounded-2xl border border-slate-800">
           <div class="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center overflow-hidden border border-slate-700">
             <img 
               id="user-avatar" 
-              src="https://www.habbo.com.br/habbo-imaging/avatarimage?user=Habbo&action=std&direction=3&head_direction=3&gesture=sml&size=m" 
+              src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Pixelizado" 
               alt="Avatar do Usuário"
-              class="w-full h-full object-cover scale-125 translate-y-1"
+              class="w-full h-full object-cover"
             >
           </div>
           <div class="text-left">
@@ -104,21 +99,23 @@
     </div>
   </header>
 
-  <!-- O RESTANTE DO CONTEÚDO DO PORTAL SERÁ ADICIONADO AQUI NAS PRÓXIMAS ETAPAS -->
+  <!-- ÁREA PRINCIPAL -->
   <main class="max-w-7xl mx-auto px-6 py-10">
-    <!-- Conteúdo principal -->
+    <!-- Conteúdo principal do portal -->
   </main>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const userData = JSON.parse(localStorage.getItem('pixelizados_user'));
 
-      if (userData && userData.habbo_nick) {
-        const nick = userData.habbo_nick;
-        document.getElementById('user-nick').innerText = nick;
+      if (userData) {
+        // Pega a Tag/Nickname do Discord cadastrada
+        const discordTag = userData.discord_tag || 'Pixelizado';
         
-        // Carrega o avatar dinâmico do Habbo com base no nick do utilizador
-        document.getElementById('user-avatar').src = `https://www.habbo.com.br/habbo-imaging/avatarimage?user=${nick}&action=std&direction=3&head_direction=3&gesture=sml&size=m`;
+        document.getElementById('user-nick').innerText = discordTag;
+        
+        // Gera o avatar Pixel Art exclusivo usando a tag do Discord como semente
+        document.getElementById('user-avatar').src = `https://api.dicebear.com/7.x/pixel-art/svg?seed=${encodeURIComponent(discordTag)}`;
       }
     });
 
