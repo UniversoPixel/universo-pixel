@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pixelizados - Entrar na Comunidade</title>
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -23,15 +25,15 @@
 
     /* Animação de Nuvens Flutuantes */
     @keyframes floatCloud {
-      0% { transform: translateX(-10%); }
-      50% { transform: translateX(10%); }
-      100% { transform: translateX(-10%); }
+      0% { transform: translateX(-5%); }
+      50% { transform: translateX(5%); }
+      100% { transform: translateX(-5%); }
     }
 
     @keyframes floatCloudReverse {
-      0% { transform: translateX(10%); }
-      50% { transform: translateX(-10%); }
-      100% { transform: translateX(10%); }
+      0% { transform: translateX(5%); }
+      50% { transform: translateX(-5%); }
+      100% { transform: translateX(5%); }
     }
 
     .cloud-slow {
@@ -43,30 +45,36 @@
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-between relative selection:bg-yellow-300 selection:text-slate-900 overflow-hidden">
+<body class="min-h-screen w-full flex flex-col items-center justify-between relative selection:bg-yellow-300 selection:text-slate-900 overflow-x-hidden m-0 p-0">
 
-  <div class="absolute top-0 left-0 right-0 pointer-events-none z-0 opacity-80 flex justify-between px-10 pt-4 cloud-slow">
-    <div class="text-white/40 text-6xl select-none">☁️</div>
-    <div class="text-white/30 text-8xl select-none -mt-4">☁️</div>
-    <div class="text-white/50 text-7xl select-none">☁️</div>
+  <!-- NUVENS FLUTUANTES (TOPO) -->
+  <div class="absolute top-0 left-0 right-0 w-full pointer-events-none z-0 opacity-80 flex justify-between px-6 pt-4 cloud-slow overflow-hidden">
+    <div class="text-white/40 text-5xl sm:text-6xl select-none">☁️</div>
+    <div class="text-white/30 text-6xl sm:text-8xl select-none -mt-4">☁️</div>
+    <div class="text-white/50 text-5xl sm:text-7xl select-none">☁️</div>
   </div>
 
+  <!-- Cabeçalho -->
   <header class="w-full max-w-6xl mx-auto p-6 flex justify-between items-center z-10">
     <div class="flex items-center space-x-2">
       <span class="bg-[#F6C700] text-slate-950 font-black text-[10px] px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
         Área de Membros
       </span>
     </div>
+    <!-- Link Direto para o Portal -->
     <a href="portal.html" class="text-xs font-extrabold text-white bg-white/20 hover:bg-white/30 backdrop-blur-md px-4 py-2 rounded-xl transition-all">
       Ir para o Portal →
     </a>
   </header>
 
-  <main class="w-full max-w-md px-4 z-10 my-auto">
-    <div class="bg-white/95 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/60 text-center relative overflow-hidden">
+  <!-- CARD CENTRALIZADO DE LOGIN -->
+  <main class="w-full max-w-md px-4 z-10 my-auto flex justify-center items-center">
+    <div class="w-full bg-white/95 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/60 text-center relative overflow-hidden">
       
+      <!-- Detalhe Amarelo Habbo Topo -->
       <div class="h-2 bg-[#F6C700] absolute top-0 left-0 right-0"></div>
 
+      <!-- Ícone Cubo em Pixel Art (Com borda fina, sombra leve e zoom no hover) -->
       <div class="my-4 flex justify-center items-center">
         <div class="p-2 bg-white/30 backdrop-blur-md rounded-2xl border border-white/50 shadow-md shadow-sky-900/10 hover:shadow-lg hover:shadow-sky-500/20 transition-all duration-300 group cursor-pointer">
           <img 
@@ -81,6 +89,7 @@
         Acesse sua conta para entrar na rádio e fórum
       </p>
 
+      <!-- Formulario encaminha temporariamente para portal.html ao Entrar -->
       <form action="portal.html" method="GET" class="space-y-4 text-left">
         <div>
           <label class="block text-slate-700 text-xs font-extrabold uppercase tracking-wider mb-1.5 ml-1">
@@ -109,6 +118,7 @@
           />
         </div>
 
+        <!-- Botão Entrar -->
         <button 
           type="submit" 
           class="w-full bg-sky-500 hover:bg-sky-600 text-white font-black py-3.5 rounded-2xl shadow-lg shadow-sky-500/30 hover:shadow-xl transition-all uppercase tracking-wider text-xs flex items-center justify-center gap-2 mt-2"
@@ -118,11 +128,13 @@
         </button>
       </form>
 
+      <!-- Divisória -->
       <div class="relative my-6 flex items-center justify-center">
         <div class="border-t border-slate-200 w-full"></div>
         <span class="bg-white px-3 text-[10px] font-black text-slate-400 uppercase tracking-widest absolute">OU</span>
       </div>
 
+      <!-- Chamada Discord -->
       <div class="space-y-2">
         <p class="text-xs font-extrabold text-slate-700">Ainda não possui uma conta?</p>
         <a 
@@ -140,12 +152,14 @@
     </div>
   </main>
 
-  <div class="w-full pointer-events-none z-0 opacity-90 flex justify-around pb-2 cloud-fast">
-    <div class="text-white/60 text-8xl select-none -mb-6">☁️</div>
-    <div class="text-white/40 text-9xl select-none -mb-10 hidden sm:block">☁️</div>
-    <div class="text-white/70 text-7xl select-none -mb-4">☁️</div>
+  <!-- NUVENS FLUTUANTES (RODAPÉ) -->
+  <div class="w-full pointer-events-none z-0 opacity-90 flex justify-around pb-2 cloud-fast overflow-hidden">
+    <div class="text-white/60 text-6xl sm:text-8xl select-none -mb-6">☁️</div>
+    <div class="text-white/40 text-7xl sm:text-9xl select-none -mb-10 hidden sm:block">☁️</div>
+    <div class="text-white/70 text-5xl sm:text-7xl select-none -mb-4">☁️</div>
   </div>
 
+  <!-- Rodapé -->
   <footer class="w-full py-4 text-center text-white/80 text-[11px] font-bold z-10 backdrop-blur-sm bg-sky-950/10">
     <p>© 2026 Pixelizados. Todos os direitos reservados aos criadores de pixels.</p>
   </footer>
