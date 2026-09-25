@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal do Pixelizado | Universo Pixel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0b132b;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- NAVBAR -->
+  <header class="bg-[#1c2541] border-b border-slate-700/50 px-6 py-4 flex justify-between items-center shadow-md">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-amber-400 rounded-xl flex items-center justify-center font-extrabold text-xl text-slate-900 shadow-lg">
+        UP
+      </div>
+      <span class="font-extrabold text-xl tracking-wide text-white">
+        Universo<span class="text-amber-400">Pixel</span>
+      </span>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <div class="text-right hidden sm:block">
+        <p id="user-nick" class="font-semibold text-sm text-slate-200">Pixelizado</p>
+        <span class="text-xs text-emerald-400 font-medium">● Conta Verificada</span>
+      </div>
+      <button onclick="fazerLogout()" title="Sair" class="bg-slate-800 hover:bg-rose-600/20 hover:text-rose-400 text-slate-300 p-2.5 rounded-xl border border-slate-700 transition">
+        <i class="fa-solid fa-right-from-bracket"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL DO DASHBOARD -->
+  <main class="max-w-5xl mx-auto px-6 py-10 w-full flex-grow">
+    
+    <!-- BANNER DE BOAS-VINDAS -->
+    <div class="bg-gradient-to-r from-[#1c2541] to-[#3a506b] border-t-4 border-amber-400 rounded-2xl p-6 sm:p-8 mb-8 shadow-2xl relative overflow-hidden">
+      <div class="relative z-10">
+        <span class="bg-amber-400/20 text-amber-300 text-xs font-bold px-3 py-1 rounded-full border border-amber-400/30 tracking-wider">
+          ÁREA EXCLUSIVA
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-extrabold mt-3 text-white">
+          Bem-vindo ao Portal, <span id="welcome-nick" class="text-amber-400">Pixelizado</span>! 🎉
+        </h1>
+        <p class="text-slate-300 mt-2 max-w-2xl text-sm sm:text-base">
+          A tua conta foi verificada com sucesso. A partir de agora tens acesso a todas as novidades e vantagens da nossa comunidade.
+        </p>
+      </div>
+    </div>
+
+    <!-- CARDS DE INFORMAÇÃO E ATALHOS -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- CARD 1: PERFIL DO USUÁRIO -->
+      <div class="bg-[#1c2541] border border-slate-700/60 rounded-2xl p-6 shadow-xl">
+        <div class="w-12 h-12 bg-indigo-500/20 text-indigo-400 rounded-xl flex items-center justify-center text-xl mb-4">
+          <i class="fa-solid fa-id-card"></i>
+        </div>
+        <h3 class="font-bold text-lg text-white">Os Seus Dados</h3>
+        <p class="text-slate-400 text-xs mb-4">Informações associadas à sua conta</p>
+        
+        <div class="space-y-3 text-sm">
+          <div class="flex justify-between py-2 border-b border-slate-700/50">
+            <span class="text-slate-400">Habbo Nick:</span>
+            <span id="card-habbo" class="font-semibold text-slate-200">-</span>
+          </div>
+          <div class="flex justify-between py-2 border-b border-slate-700/50">
+            <span class="text-slate-400">Discord:</span>
+            <span id="card-discord" class="font-semibold text-slate-200">-</span>
+          </div>
+          <div class="flex justify-between py-2">
+            <span class="text-slate-400">Status:</span>
+            <span class="text-emerald-400 font-bold">APROVADO</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2: COMUNIDADE DISCORD -->
+      <div class="bg-[#1c2541] border border-slate-700/60 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 bg-indigo-600/20 text-indigo-400 rounded-xl flex items-center justify-center text-xl mb-4">
+            <i class="fa-brands fa-discord"></i>
+          </div>
+          <h3 class="font-bold text-lg text-white">Servidor no Discord</h3>
+          <p class="text-slate-400 text-xs mb-3">Comunidade oficial</p>
+          <p class="text-slate-300 text-sm mb-6">Acede ao nosso servidor para participar em chats, novidades e eventos ao vivo.</p>
+        </div>
+        <a href="https://discord.gg" target="_blank" class="block text-center bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-4 rounded-xl transition shadow-lg">
+          Aceder ao Discord
+        </a>
+      </div>
+
+      <!-- CARD 3: PRÓXIMOS EVENTOS -->
+      <div class="bg-[#1c2541] border border-slate-700/60 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 bg-amber-400/20 text-amber-400 rounded-xl flex items-center justify-center text-xl mb-4">
+            <i class="fa-solid fa-trophy"></i>
+          </div>
+          <h3 class="font-bold text-lg text-white">Atividades & Eventos</h3>
+          <p class="text-slate-400 text-xs mb-3">Painel de novidades</p>
+          <p class="text-slate-300 text-sm mb-6">Em breve teremos novas atividades e premiações exclusivas para os membros validados.</p>
+        </div>
+        <button disabled class="w-full bg-slate-800 text-slate-500 font-bold py-3 px-4 rounded-xl cursor-not-allowed">
+          Em breve...
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#0b132b] border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+    <p>© 2026 Universo Pixel. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- LÓGICA DE RECUPERAÇÃO DE DADOS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const userData = JSON.parse(localStorage.getItem('pixelizados_user'));
+
+      if (userData) {
+        const nick = userData.habbo_nick || 'Pixelizado';
+        const discord = userData.discord_tag || '-';
+
+        document.getElementById('user-nick').innerText = nick;
+        document.getElementById('welcome-nick').innerText = nick;
+        document.getElementById('card-habbo').innerText = nick;
+        document.getElementById('card-discord').innerText = discord;
+      }
+    });
+
+    function fazerLogout() {
+      localStorage.removeItem('pixelizados_user');
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>
