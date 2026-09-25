@@ -15,98 +15,93 @@
       color: #ffffff;
     }
 
-    /* AMARELO HABBO CLÁSSICO DA IMAGEM */
+    /* AMARELO HABBO CLÁSSICO */
     .bg-habbo-yellow {
       background: linear-gradient(to bottom, #ffcb05 0%, #ffb400 100%);
       border-bottom: 2px solid #cc8e00;
       box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
     }
 
-    /* Divisor vertical laranja estilo Habbo */
-    .habbo-divider {
-      border-right: 1px solid #d99b00;
-      border-left: 1px solid #ffe169;
+    /* WIDGETS BRANCOS E ELEGANTES */
+    .widget-white-card {
+      background-color: rgba(255, 255, 255, 0.92);
+      border: 1.5px solid #38b6ff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(4px);
     }
 
-    /* Caixas / Widgets Azuis integrados ao Header */
-    .widget-sky-card {
-      background-color: rgba(13, 27, 42, 0.85);
-      border: 1px solid rgba(56, 182, 255, 0.5);
-      backdrop-filter: blur(6px);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-    }
-
-    .widget-sky-card:hover {
-      border-color: rgba(56, 182, 255, 0.8);
-      background-color: rgba(13, 27, 42, 0.92);
+    .widget-white-card:hover {
+      background-color: #ffffff;
+      border-color: #0099ff;
+      box-shadow: 0 4px 10px rgba(56, 182, 255, 0.25);
     }
   </style>
 </head>
 <body class="min-h-screen bg-[#0d131f]">
 
-  <!-- HEADER NO ESTILO AMARELO HABBO IDÊNTICO À IMAGEM -->
+  <!-- HEADER AMARELO HABBO -->
   <header class="bg-habbo-yellow px-4 sm:px-8 py-2.5 relative z-20">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3">
       
       <!-- CANTO ESQUERDO: AUTODJ / RÁDIO -->
-      <div class="flex items-center gap-3 widget-sky-card px-3.5 py-1.5 rounded-xl w-full md:w-auto transition">
+      <div class="flex items-center gap-3 widget-white-card px-3.5 py-1.5 rounded-xl w-full md:w-auto transition">
         <!-- Foto/Avatar do DJ -->
         <div class="relative">
           <img 
             id="dj-avatar" 
             src="https://api.dicebear.com/7.x/pixel-art/svg?seed=AutoDJ&backgroundColor=38b6ff" 
             alt="DJ Avatar" 
-            class="w-9 h-9 rounded-lg bg-sky-950 border border-sky-400/50 object-cover"
+            class="w-9 h-9 rounded-lg bg-sky-100 border border-[#38b6ff] object-cover"
           >
-          <span class="absolute -bottom-1 -right-1 bg-rose-500 text-white text-[8px] font-black px-1.5 py-0.5 rounded-full border border-slate-900 animate-pulse">
+          <span class="absolute -bottom-1 -right-1 bg-rose-500 text-white text-[8px] font-black px-1.5 py-0.5 rounded-full border border-white animate-pulse">
             LIVE
           </span>
         </div>
 
         <!-- Info do DJ & Tracklist -->
         <div class="flex flex-col justify-center text-xs">
-          <div class="flex items-center gap-1.5 font-bold uppercase tracking-wider text-[10px] text-sky-300">
-            <i class="fa-solid fa-radio text-rose-400 text-[11px]"></i>
-            <span>DJ: <span id="dj-name" class="text-white font-extrabold">AutoDJ Pixel</span></span>
+          <div class="flex items-center gap-1.5 font-bold uppercase tracking-wider text-[10px] text-[#0088cc]">
+            <i class="fa-solid fa-radio text-[#38b6ff] text-[11px]"></i>
+            <span>DJ: <span id="dj-name" class="text-slate-900 font-extrabold">AutoDJ Pixel</span></span>
           </div>
-          <div class="flex items-center gap-1 mt-0.5 text-slate-300 font-normal text-[11px]">
-            <i class="fa-solid fa-music text-[9px] text-sky-400"></i>
-            <span id="track-name" class="truncate max-w-[180px] sm:max-w-[240px]">Universo Pixel - Tocando as melhores!</span>
+          <div class="flex items-center gap-1 mt-0.5 text-slate-700 font-medium text-[11px]">
+            <i class="fa-solid fa-music text-[9px] text-[#38b6ff]"></i>
+            <span id="track-name" class="truncate max-w-[180px] sm:max-w-[240px] text-slate-800">Universo Pixel - Tocando as melhores!</span>
           </div>
         </div>
       </div>
 
-      <!-- CANTO DIREITO: PERFIL MINIMALISTA EM AZUL HABBO -->
+      <!-- CANTO DIREITO: PERFIL MINIMALISTA EM BRANCO E AZUL CÉU -->
       <div class="flex items-center gap-2.5 w-full md:w-auto justify-end">
         
-        <!-- Saldo de Pixels Minimalista -->
-        <div class="flex items-center gap-1.5 widget-sky-card px-3 py-1.5 rounded-xl transition">
-          <i class="fa-solid fa-coins text-amber-400 text-xs"></i>
-          <span id="user-pixels" class="font-extrabold text-xs text-white">0</span>
-          <span class="text-[9px] font-bold text-sky-300/80 tracking-wider">PX</span>
+        <!-- Saldo de Pixels -->
+        <div class="flex items-center gap-1.5 widget-white-card px-3 py-1.5 rounded-xl transition">
+          <i class="fa-solid fa-coins text-[#38b6ff] text-xs"></i>
+          <span id="user-pixels" class="font-extrabold text-xs text-slate-900">0</span>
+          <span class="text-[9px] font-bold text-[#0088cc] tracking-wider">PX</span>
         </div>
 
         <!-- Perfil do Usuário Compacto -->
-        <div class="flex items-center gap-2.5 widget-sky-card p-1 pr-3 rounded-xl transition">
+        <div class="flex items-center gap-2.5 widget-white-card p-1 pr-3 rounded-xl transition">
           <!-- Avatar Editável -->
-          <div onclick="abrirModalAvatar()" title="Alterar foto de perfil" class="relative group cursor-pointer w-7 h-7 rounded-lg bg-sky-950 flex items-center justify-center overflow-hidden border border-sky-400/50">
+          <div onclick="abrirModalAvatar()" title="Alterar foto de perfil" class="relative group cursor-pointer w-7 h-7 rounded-lg bg-sky-50 flex items-center justify-center overflow-hidden border border-[#38b6ff]">
             <img 
               id="user-avatar" 
               src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Pixelizado" 
               alt="Avatar do Usuário"
-              class="w-full h-full object-cover group-hover:opacity-40 transition"
+              class="w-full h-full object-cover group-hover:opacity-30 transition"
             >
-            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition text-sky-300 text-[10px]">
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition text-[#0088cc] text-[10px]">
               <i class="fa-solid fa-camera"></i>
             </div>
           </div>
 
-          <p id="user-nick" class="font-semibold text-xs text-white truncate max-w-[120px]">Pixelizado</p>
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400" title="Online"></span>
+          <p id="user-nick" class="font-bold text-xs text-slate-900 truncate max-w-[120px]">Pixelizado</p>
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500" title="Online"></span>
         </div>
 
-        <!-- Botão Sair Minimalista -->
-        <button onclick="fazerLogout()" title="Sair" class="widget-sky-card hover:bg-rose-600 hover:border-rose-500 text-slate-300 hover:text-white p-2 rounded-xl transition">
+        <!-- Botão Sair -->
+        <button onclick="fazerLogout()" title="Sair" class="widget-white-card hover:bg-rose-500 hover:border-rose-600 text-slate-700 hover:text-white p-2 rounded-xl transition">
           <i class="fa-solid fa-right-from-bracket text-xs"></i>
         </button>
 
@@ -129,14 +124,14 @@
         type="url" 
         id="input-avatar-url" 
         placeholder="https://exemplo.com/sua-foto.png"
-        class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-400 mb-4"
+        class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#38b6ff] mb-4"
       >
 
       <div class="flex gap-2">
         <button onclick="fecharModalAvatar()" class="w-1/2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium py-2 rounded-xl text-xs transition">
           Cancelar
         </button>
-        <button onclick="salvarNovoAvatar()" class="w-1/2 bg-sky-400 hover:bg-sky-300 text-slate-900 font-bold py-2 rounded-xl text-xs transition">
+        <button onclick="salvarNovoAvatar()" class="w-1/2 bg-[#38b6ff] hover:bg-sky-400 text-white font-bold py-2 rounded-xl text-xs transition">
           Salvar
         </button>
       </div>
@@ -144,7 +139,7 @@
   </div>
 
   <main class="max-w-7xl mx-auto px-6 py-10">
-    <!-- Próximas seções do portal aqui -->
+    <!-- Conteúdo do portal -->
   </main>
 
   <script>
