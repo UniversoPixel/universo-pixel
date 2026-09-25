@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pixelizados - Fã-site Oficial</title>
+  <title>Pixelizados - Home</title>
 
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -11,7 +11,7 @@
   <!-- Favicon para a aba do navegador -->
   <link rel="icon" type="image/png" href="icon.png.PNG" />
 
-  <!-- Estilos Personalizados para Pixel Art e Fontes -->
+  <!-- Estilos Personalizados -->
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap');
 
@@ -23,72 +23,30 @@
       font-family: 'Inter', sans-serif;
     }
 
-    /* Garante a renderização nítida de imagens Pixel Art */
+    /* Renderização nítida de imagens Pixel Art */
     .pixel-art {
       image-rendering: pixelated;
       image-rendering: crisp-edges;
     }
-
-    /* Fundo em degradê temático */
-    body {
-      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #1e3a8a 100%);
-    }
   </style>
 </head>
-<body class="min-h-screen w-full flex items-center justify-center font-sans antialiased text-slate-800 p-4">
+<body class="min-h-screen w-full flex items-center justify-center font-sans antialiased p-4">
 
-  <!-- Container Principal Centralizado -->
-  <main class="w-full max-w-md mx-auto flex flex-col items-center justify-center">
+  <!-- Main Container Totalmente Alinhado e Centralizado -->
+  <main class="w-full max-w-md mx-auto flex flex-col items-center justify-center text-center">
 
-    <!-- Card Principal Glassmorphism -->
-    <div class="w-full bg-white/95 backdrop-blur-md rounded-3xl p-6 md:p-8 shadow-2xl border border-white/50 flex flex-col items-center text-center">
+    <!-- Card da Home -->
+    <div class="w-full flex flex-col items-center justify-center">
 
-      <!-- Ícone Pixel Art com Borda Fina, Sombra Suave e Efeito Hover -->
+      <!-- Ícone Pixel Art (Borda Fina, Sombra Suave e Efeito Hover) -->
       <div class="w-full flex justify-center items-center my-4">
-        <div class="p-2 bg-white/40 backdrop-blur-sm rounded-2xl border border-white/60 shadow-md shadow-sky-900/10 hover:shadow-lg hover:shadow-sky-500/20 transition-all duration-300 group cursor-pointer">
+        <div class="p-2 bg-white/20 backdrop-blur-md rounded-2xl border border-white/40 shadow-md shadow-sky-900/10 hover:shadow-lg hover:shadow-sky-500/20 transition-all duration-300 group cursor-pointer">
           <img 
             src="icon.png.PNG" 
             alt="Pixelizados Icon" 
-            class="h-20 w-auto object-contain pixel-art rounded-xl group-hover:scale-105 transition-transform duration-300 ease-out block mx-auto"
+            class="h-16 md:h-20 w-auto object-contain pixel-art rounded-xl group-hover:scale-105 transition-transform duration-300 ease-out block mx-auto"
           />
         </div>
-      </div>
-
-      <!-- Título do Fã-site -->
-      <h1 class="font-pixel text-lg md:text-xl text-blue-600 mb-2 tracking-wide uppercase drop-shadow-sm">
-        Pixelizados
-      </h1>
-      
-      <p class="text-sm text-slate-500 mb-6 font-medium">
-        O seu fã-site no universo pixelado.
-      </p>
-
-      <!-- Formulário / Área de Entrada -->
-      <form class="w-full flex flex-col gap-4" onsubmit="event.preventDefault();">
-        <div class="text-left w-full">
-          <label class="block text-xs font-bold text-slate-600 mb-1 uppercase tracking-wider">
-            Nickname no Habbo
-          </label>
-          <input 
-            type="text" 
-            placeholder="Ex: PlayerPixel" 
-            class="w-full px-4 py-3 rounded-xl bg-slate-100 border border-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-sm font-medium"
-          />
-        </div>
-
-        <button 
-          type="submit" 
-          class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold text-sm shadow-lg shadow-blue-500/30 hover:from-blue-600 hover:to-blue-700 active:scale-[0.98] transition-all duration-200 mt-2"
-        >
-          Entrar no Portal
-        </button>
-      </form>
-
-      <!-- Rodapé do Card -->
-      <div class="mt-6 pt-4 border-t border-slate-100 w-full text-center">
-        <p class="text-xs text-slate-400 font-medium">
-          &copy; Pixelizados. Todos os direitos reservados.
-        </p>
       </div>
 
     </div>
