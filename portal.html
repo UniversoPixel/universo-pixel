@@ -15,7 +15,7 @@
       color: #ffffff;
     }
 
-    /* BASE AMARELO HABBO DA IMAGEM */
+    /* BASE AMARELO HABBO */
     .bg-habbo-yellow {
       background: linear-gradient(180deg, #ffcb05 0%, #ffb400 100%);
       border-bottom: 2px solid #cc8e00;
@@ -46,7 +46,26 @@
       border-color: #ffffff;
     }
 
-    /* Brilho pulsante do Live */
+    /* DISCO DE DJ PIXELIZADO EM ROTAÇÃO CONTINUA (GIF EFFECT) */
+    @keyframes spin-record {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .pixel-vinyl-spin {
+      animation: spin-record 3s linear infinite;
+    }
+
+    /* MOEDA PIXELIZADA DOURADA HABBO */
+    .habbo-coin {
+      width: 22 h;
+      height: 22px;
+      background: radial-gradient(circle, #ffe066 30%, #f59e0b 80%, #b45309 100%);
+      border: 1.5px solid #78350f;
+      box-shadow: inset 1px 1px 0px #fff, inset -1px -1px 0px #92400e, 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    /* Brilho pulsante LIVE */
     @keyframes pulse-ring {
       0% { transform: scale(0.95); opacity: 0.8; }
       50% { transform: scale(1.15); opacity: 0.4; }
@@ -59,13 +78,10 @@
 </head>
 <body class="min-h-screen bg-[#0d131f]">
 
-  <!-- HEADER REAJUSTADO -->
   <header class="bg-habbo-yellow px-4 sm:px-8 py-3 relative z-20">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3">
       
-      <!-- ESQUERDA: AUTODJ / RÁDIO EM CÁPSULA FLUTUANTE -->
       <div class="glass-capsule glass-capsule-hover rounded-full p-1.5 pr-5 flex items-center gap-3.5 w-full md:w-auto">
-        <!-- Avatar do DJ com Moldura Neon Azul -->
         <div class="relative flex-shrink-0">
           <div class="w-10 h-10 rounded-full p-0.5 bg-gradient-to-tr from-[#38b6ff] to-cyan-300 shadow-md">
             <img 
@@ -81,18 +97,20 @@
           </span>
         </div>
 
-        <!-- Info do DJ & Música em Execução -->
         <div class="flex flex-col justify-center leading-tight">
           <div class="flex items-center gap-2">
-            <span class="bg-[#38b6ff]/15 text-[#0077cc] text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full border border-[#38b6ff]/30">
-              <i class="fa-solid fa-radio mr-1 text-[#38b6ff]"></i> NO AR
+            <span class="bg-[#38b6ff]/15 text-[#0077cc] text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full border border-[#38b6ff]/30 flex items-center gap-1.5">
+              <span class="w-3.5 h-3.5 rounded-full bg-slate-900 border border-sky-400 flex items-center justify-center pixel-vinyl-spin">
+                <span class="w-1 h-1 rounded-full bg-amber-400"></span>
+              </span>
+              <span>NO AR</span>
             </span>
             <p class="text-xs font-black text-slate-900 tracking-tight">
               <span id="dj-name">AutoDJ Pixel</span>
             </p>
           </div>
           <div class="flex items-center gap-1.5 mt-1 text-[11px] font-medium text-slate-600">
-            <i class="fa-solid fa-compact-disc text-[#38b6ff] animate-spin text-[11px]" style="animation-duration: 4s;"></i>
+            <i class="fa-solid fa-record-vinyl text-[#38b6ff] pixel-vinyl-spin text-[12px]"></i>
             <span id="track-name" class="truncate max-w-[200px] sm:max-w-[260px] font-semibold text-slate-800">
               Universo Pixel - Tocando as melhores!
             </span>
@@ -100,29 +118,23 @@
         </div>
       </div>
 
-      <!-- DIREITA: PAINEL DE CONTROLE INTEGRADO (PIXELS + USUÁRIO + SAIR) -->
       <div class="flex items-center gap-2 w-full md:w-auto justify-end">
         
-        <!-- CÁPSULA UNIFICADA: SALDO + PERFIL -->
         <div class="glass-capsule glass-capsule-hover rounded-full p-1.5 flex items-center gap-3">
           
-          <!-- Saldo PX (Com badge azul brilhante) -->
-          <div class="flex items-center gap-2 bg-gradient-to-r from-sky-50 to-blue-50/80 px-3 py-1 rounded-full border border-sky-100">
-            <div class="w-6 h-6 rounded-full bg-[#38b6ff] flex items-center justify-center text-white text-[10px] shadow-sm">
-              <i class="fa-solid fa-coins"></i>
+          <div class="flex items-center gap-2 bg-gradient-to-r from-amber-50 to-yellow-100/80 px-3 py-1 rounded-full border border-amber-200/80 shadow-inner">
+            <div class="habbo-coin rounded-full flex items-center justify-center font-black text-[9px] text-amber-950 select-none">
+              $
             </div>
             <div class="flex items-baseline gap-1">
-              <span id="user-pixels" class="font-black text-xs text-slate-900">0</span>
-              <span class="text-[9px] font-extrabold text-[#0077cc]">PX</span>
+              <span id="user-pixels" class="font-black text-xs text-amber-950">0</span>
+              <span class="text-[9px] font-black text-amber-700 tracking-wider">PX</span>
             </div>
           </div>
 
-          <!-- Divisor Vertical Fino -->
           <div class="h-5 w-[1px] bg-slate-200"></div>
 
-          <!-- Perfil do Usuário -->
           <div class="flex items-center gap-2 pr-2">
-            <!-- Avatar Interativo -->
             <div 
               onclick="abrirModalAvatar()" 
               title="Alterar foto de perfil" 
@@ -152,7 +164,6 @@
 
         </div>
 
-        <!-- BOTÃO SAIR (CÁPSULA CIRCULAR INDIVIDUAL) -->
         <button 
           onclick="fazerLogout()" 
           title="Sair do Portal" 
@@ -166,7 +177,6 @@
     </div>
   </header>
 
-  <!-- MODAL DE ALTERAÇÃO DA FOTO DE PERFIL -->
   <div id="modal-avatar" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden p-4">
     <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-sm w-full p-5 shadow-2xl relative text-left">
       <button onclick="fecharModalAvatar()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-base">
@@ -195,8 +205,7 @@
   </div>
 
   <main class="max-w-7xl mx-auto px-6 py-10">
-    <!-- Conteúdo do portal -->
-  </main>
+    </main>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
