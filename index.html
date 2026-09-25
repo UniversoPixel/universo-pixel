@@ -3,384 +3,277 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pixelizados - Portal & Servidor</title>
+  <title>Pixelizados - Entrar na Comunidade</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- ESTILOS CSS -->
   <style>
-    /* Configurações Globais / Reset Básico */
-    * {
-      box-sizing: border-box;
+    html, body {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
     }
 
     body {
-      background-color: #0b0c10;
-      color: #ffffff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(180deg, #0284C7 0%, #38BDF8 50%, #BAE6FD 100%);
     }
 
-    /* Exemplo de Layout Hero / Principal */
-    .container {
-      text-align: center;
-      max-width: 600px;
-      margin: auto;
+    .pixel-art {
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
     }
 
-    .logo {
-      max-width: 180px;
-      margin-bottom: 24px;
+    /* Animação de Nuvens Flutuantes */
+    @keyframes floatCloud {
+      0% { transform: translateX(-20px); }
+      50% { transform: translateX(20px); }
+      100% { transform: translateX(-20px); }
     }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 12px;
-      color: #fff;
+    @keyframes floatCloudReverse {
+      0% { transform: translateX(20px); }
+      50% { transform: translateX(-20px); }
+      100% { transform: translateX(20px); }
     }
 
-    p.subtitle {
-      font-size: 1.1rem;
-      color: #aaa;
-      margin-bottom: 30px;
+    .cloud-slow {
+      animation: floatCloud 25s ease-in-out infinite;
     }
 
-    .btn-main {
-      background: #5865F2;
-      color: #fff;
-      border: none;
-      padding: 14px 28px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 14px rgba(88, 101, 242, 0.4);
-    }
-
-    .btn-main:hover {
-      background: #4752C4;
-      transform: translateY(-2px);
-    }
-
-    /* --- ESTILOS DO MODAL --- */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(8px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      opacity: 1;
-      transition: opacity 0.3s ease;
-    }
-
-    .modal-overlay.hidden {
-      display: none !important;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .modal-card {
-      background: #14141e;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-      width: 90%;
-      max-width: 420px;
-      padding: 28px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-      position: relative;
-      color: #fff;
-      text-align: left;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      background: none;
-      border: none;
-      color: #888;
-      font-size: 24px;
-      cursor: pointer;
-      line-height: 1;
-    }
-
-    .modal-close:hover {
-      color: #fff;
-    }
-
-    .modal-header h2 {
-      font-size: 1.4rem;
-      margin-top: 8px;
-      margin-bottom: 4px;
-    }
-
-    .modal-header p {
-      color: #aaa;
-      font-size: 0.88rem;
-      margin-bottom: 20px;
-    }
-
-    .badge-beta {
-      background: #ffcc00;
-      color: #000;
-      font-size: 0.7rem;
-      font-weight: bold;
-      padding: 3px 8px;
-      border-radius: 12px;
-      text-transform: uppercase;
-    }
-
-    .input-group {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 14px;
-    }
-
-    .input-group label {
-      font-size: 0.8rem;
-      color: #ccc;
-      margin-bottom: 6px;
-    }
-
-    .input-group input {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      padding: 10px 14px;
-      border-radius: 8px;
-      color: #fff;
-      outline: none;
-      font-size: 0.95rem;
-    }
-
-    .input-group input:focus {
-      border-color: #5865F2;
-    }
-
-    .btn-primary-modal {
-      width: 100%;
-      padding: 12px;
-      background: #5865F2;
-      border: none;
-      border-radius: 8px;
-      color: #fff;
-      font-weight: bold;
-      font-size: 1rem;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: background 0.2s;
-    }
-
-    .btn-primary-modal:hover {
-      background: #4752C4;
-    }
-
-    .btn-discord {
-      display: block;
-      text-align: center;
-      text-decoration: none;
-      padding: 12px;
-      background: #5865F2;
-      color: #fff;
-      font-weight: bold;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      transition: background 0.2s;
-    }
-
-    .btn-discord:hover {
-      background: #4752C4;
-    }
-
-    .btn-secondary-modal {
-      width: 100%;
-      padding: 10px;
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 8px;
-      color: #ccc;
-      cursor: pointer;
-      font-size: 0.9rem;
-    }
-
-    .btn-secondary-modal:hover {
-      background: rgba(255, 255, 255, 0.05);
-      color: #fff;
-    }
-
-    .pin-box {
-      background: rgba(88, 101, 242, 0.15);
-      border: 1px dashed #5865F2;
-      border-radius: 10px;
-      padding: 16px;
-      text-align: center;
-      margin-bottom: 16px;
-    }
-
-    .pin-label {
-      display: block;
-      font-size: 0.75rem;
-      color: #aaa;
-    }
-
-    .pin-code {
-      font-size: 2rem;
-      font-weight: bold;
-      letter-spacing: 4px;
-      color: #ffcc00;
-    }
-
-    .instrucoes-box {
-      font-size: 0.85rem;
-      color: #ccc;
-      margin-bottom: 20px;
-    }
-
-    .instrucoes-box p {
-      margin: 4px 0;
-    }
-
-    .hidden {
-      display: none !important;
+    .cloud-fast {
+      animation: floatCloudReverse 18s ease-in-out infinite;
     }
   </style>
 </head>
-<body>
+<body class="selection:bg-yellow-300 selection:text-slate-900">
 
-  <!-- CONTEÚDO PRINCIPAL DA PÁGINA -->
-  <div class="container">
-    <img src="logo.png" alt="Pixelizados Logo" class="logo" onerror="this.style.display='none'">
-    <h1>Bem-vindo ao Pixelizados</h1>
-    <p class="subtitle">Faça a sua conta e vincule com o nosso Discord para acessar o portal exclusivo.</p>
-    
-    <!-- Botão que aciona o modal -->
-    <button class="btn-main" onclick="abrirModalCadastro()">
-      👾 Se torne um Pixelizado
-    </button>
-  </div>
+  <!-- WRAPPER PRINCIPAL PARA GARANTIR CENTRALIZAÇÃO ABSOLUTA -->
+  <div class="min-h-screen w-full relative overflow-hidden flex flex-col justify-between items-center">
 
+    <!-- NUVENS FLUTUANTES (TOPO) -->
+    <div class="absolute top-0 left-0 right-0 w-full pointer-events-none z-0 opacity-80 flex justify-between px-6 pt-4 cloud-slow overflow-hidden">
+      <div class="text-white/40 text-5xl sm:text-6xl select-none">☁️</div>
+      <div class="text-white/30 text-6xl sm:text-8xl select-none -mt-4">☁️</div>
+      <div class="text-white/50 text-5xl sm:text-7xl select-none">☁️</div>
+    </div>
 
-  <!-- MODAL DE CADASTRO DISCORD -->
-  <div id="modal-cadastro" class="modal-overlay hidden">
-    <div class="modal-card">
-      <button class="modal-close" onclick="fecharModal()">&times;</button>
-      
-      <!-- ETAPA 1: PREENCHIMENTO DOS DADOS -->
-      <div id="etapa-1">
-        <div class="modal-header">
-          <span class="badge-beta">Beta Pixelizados</span>
-          <h2>Criar Conta no Portal</h2>
-          <p>Vincule seu perfil do Discord para continuar.</p>
+    <!-- Cabeçalho -->
+    <header class="w-full max-w-6xl mx-auto p-6 flex justify-between items-center z-10">
+      <div class="flex items-center space-x-2">
+        <span class="bg-[#F6C700] text-slate-950 font-black text-[10px] px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
+          Área de Membros
+        </span>
+      </div>
+      <!-- Link Direto para o Portal -->
+      <a href="portal.html" class="text-xs font-extrabold text-white bg-white/20 hover:bg-white/30 backdrop-blur-md px-4 py-2 rounded-xl transition-all">
+        Ir para o Portal →
+      </a>
+    </header>
+
+    <!-- CARD CENTRALIZADO DE LOGIN -->
+    <main class="w-full max-w-md px-4 z-10 my-auto flex justify-center items-center">
+      <div class="w-full bg-white/95 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/60 text-center relative overflow-hidden">
+        
+        <!-- Detalhe Amarelo Habbo Topo -->
+        <div class="h-2 bg-[#F6C700] absolute top-0 left-0 right-0"></div>
+
+        <!-- Ícone Cubo em Pixel Art -->
+        <div class="my-4 flex justify-center items-center">
+          <div class="p-2 bg-white/30 backdrop-blur-md rounded-2xl border border-white/50 shadow-md shadow-sky-900/10 hover:shadow-lg hover:shadow-sky-500/20 transition-all duration-300 group cursor-pointer">
+            <img 
+              src="icon.png.PNG" 
+              alt="Pixelizados Icon" 
+              class="h-16 md:h-20 w-auto object-contain pixel-art rounded-xl group-hover:scale-105 transition-transform duration-300 ease-out block mx-auto"
+            />
+          </div>
         </div>
 
-        <form id="form-cadastro" onsubmit="gerarPin(event)">
-          <div class="input-group">
-            <label for="discord-tag">Seu Username do Discord</label>
-            <input type="text" id="discord-tag" placeholder="Ex: usuario_discord" required />
+        <p class="text-slate-500 text-xs font-bold mb-6">
+          Acesse sua conta para entrar na rádio e fórum
+        </p>
+
+        <!-- Formulario -->
+        <form action="portal.html" method="GET" class="space-y-4 text-left">
+          <div>
+            <label class="block text-slate-700 text-xs font-extrabold uppercase tracking-wider mb-1.5 ml-1">
+              Usuário
+            </label>
+            <input 
+              type="text" 
+              placeholder="Ex: FrankPixel" 
+              required
+              class="w-full px-4 py-3 rounded-2xl bg-sky-50/50 border border-sky-200 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition-all"
+            />
           </div>
 
-          <div class="input-group">
-            <label for="portal-user">Nome de Usuário no Portal</label>
-            <input type="text" id="portal-user" placeholder="Ex: Pixel_Master" required />
+          <div>
+            <div class="flex justify-between items-center mb-1.5 ml-1">
+              <label class="text-slate-700 text-xs font-extrabold uppercase tracking-wider">
+                Senha
+              </label>
+              <a href="#" class="text-[11px] font-bold text-sky-600 hover:underline">Esqueceu?</a>
+            </div>
+            <input 
+              type="password" 
+              placeholder="••••••••" 
+              required
+              class="w-full px-4 py-3 rounded-2xl bg-sky-50/50 border border-sky-200 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition-all"
+            />
           </div>
 
-          <div class="input-group">
-            <label for="portal-pass">Criar Senha</label>
-            <input type="password" id="portal-pass" placeholder="••••••••" required />
+          <!-- Botão Acessar Portal -->
+          <button 
+            type="submit" 
+            class="w-full bg-sky-500 hover:bg-sky-600 text-white font-black py-3.5 rounded-2xl shadow-lg shadow-sky-500/30 hover:shadow-xl transition-all uppercase tracking-wider text-xs flex items-center justify-center gap-2 mt-2"
+          >
+            <span>Acessar portal</span>
+            <span>⚡</span>
+          </button>
+        </form>
+
+        <!-- Divisória -->
+        <div class="relative my-6 flex items-center justify-center">
+          <div class="border-t border-slate-200 w-full"></div>
+          <span class="bg-white px-3 text-[10px] font-black text-slate-400 uppercase tracking-widest absolute">OU</span>
+        </div>
+
+        <!-- Chamada Discord -->
+        <div class="space-y-2">
+          <p class="text-xs font-extrabold text-slate-700">Ainda não possui uma conta?</p>
+          <button 
+            type="button"
+            onclick="abrirModalCadastro()"
+            class="w-full bg-[#F6C700] hover:bg-yellow-400 text-slate-950 font-extrabold py-3 px-4 rounded-2xl flex items-center justify-center space-x-2 transition-all shadow-md shadow-yellow-500/20 text-xs uppercase tracking-wider cursor-pointer"
+          >
+            <span>👾 Se torne um Pixelizado</span>
+          </button>
+          <span class="text-[10px] text-slate-400 font-medium block pt-1">
+            O cadastro e verificação de membros é realizado via Discord oficial.
+          </span>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- NUVENS FLUTUANTES (RODAPÉ) -->
+    <div class="w-full pointer-events-none z-0 opacity-90 flex justify-around pb-2 cloud-fast overflow-hidden">
+      <div class="text-white/60 text-6xl sm:text-8xl select-none -mb-6">☁️</div>
+      <div class="text-white/40 text-7xl sm:text-9xl select-none -mb-10 hidden sm:block">☁️</div>
+      <div class="text-white/70 text-5xl sm:text-7xl select-none -mb-4">☁️</div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="w-full py-4 text-center text-white/80 text-[11px] font-bold z-10 backdrop-blur-sm bg-sky-950/10">
+      <p>© 2026 Pixelizados. Todos os direitos reservados aos criadores de pixels.</p>
+    </footer>
+
+  </div>
+
+  <!-- MODAL DE CADASTRO DISCORD (ESTILIZADO COM TAILWIND) -->
+  <div id="modal-cadastro" class="fixed inset-0 bg-slate-950/70 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white/95 backdrop-blur-xl rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/60 w-full max-w-md relative overflow-hidden text-left">
+      
+      <!-- Detalhe Amarelo Habbo Topo -->
+      <div class="h-2 bg-[#F6C700] absolute top-0 left-0 right-0"></div>
+
+      <!-- Botão Fechar -->
+      <button type="button" onclick="fecharModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-2xl font-bold leading-none">&times;</button>
+
+      <!-- ETAPA 1: PREENCHIMENTO DOS DADOS -->
+      <div id="etapa-1">
+        <div class="mb-5">
+          <span class="bg-[#F6C700] text-slate-950 font-black text-[10px] px-3 py-1 rounded-full uppercase tracking-wider inline-block mb-2">
+            Beta Pixelizados
+          </span>
+          <h2 class="text-xl font-black text-slate-900">Criar Conta no Portal</h2>
+          <p class="text-slate-500 text-xs font-semibold mt-1">Vincule seu perfil do Discord para continuar.</p>
+        </div>
+
+        <form id="form-cadastro" onsubmit="gerarPin(event)" class="space-y-3.5">
+          <div>
+            <label for="discord-tag" class="block text-slate-700 text-xs font-extrabold uppercase tracking-wider mb-1 ml-1">Seu Username do Discord</label>
+            <input type="text" id="discord-tag" placeholder="Ex: usuario_discord" required class="w-full px-4 py-2.5 rounded-2xl bg-sky-50/50 border border-sky-200 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition-all" />
           </div>
 
-          <button type="submit" class="btn-primary-modal">Gerar PIN de Verificação 🚀</button>
+          <div>
+            <label for="portal-user" class="block text-slate-700 text-xs font-extrabold uppercase tracking-wider mb-1 ml-1">Nome de Usuário no Portal</label>
+            <input type="text" id="portal-user" placeholder="Ex: Pixel_Master" required class="w-full px-4 py-2.5 rounded-2xl bg-sky-50/50 border border-sky-200 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition-all" />
+          </div>
+
+          <div>
+            <label for="portal-pass" class="block text-slate-700 text-xs font-extrabold uppercase tracking-wider mb-1 ml-1">Criar Senha</label>
+            <input type="password" id="portal-pass" placeholder="••••••••" required class="w-full px-4 py-2.5 rounded-2xl bg-sky-50/50 border border-sky-200 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition-all" />
+          </div>
+
+          <button type="submit" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-black py-3 rounded-2xl shadow-lg shadow-sky-500/30 transition-all uppercase tracking-wider text-xs mt-2">
+            Gerar PIN de Verificação 🚀
+          </button>
         </form>
       </div>
 
       <!-- ETAPA 2: PIN E INSTRUÇÕES -->
       <div id="etapa-2" class="hidden">
-        <div class="modal-header">
-          <h2>Quase lá! Validação do Discord</h2>
-          <p>Envie o código abaixo no nosso servidor para ativar sua conta.</p>
+        <div class="mb-4">
+          <h2 class="text-xl font-black text-slate-900">Quase lá! Validação</h2>
+          <p class="text-slate-500 text-xs font-semibold mt-1">Envie o código abaixo no nosso servidor do Discord para ativar sua conta.</p>
         </div>
 
-        <div class="pin-box">
-          <span class="pin-label">Seu PIN de Verificação:</span>
-          <span id="pin-display" class="pin-code">PX-0000</span>
+        <div class="bg-sky-50 border-2 border-dashed border-sky-400 rounded-2xl p-4 text-center my-4">
+          <span class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">Seu PIN de Verificação</span>
+          <span id="pin-display" class="text-3xl font-black text-sky-600 tracking-widest block mt-1">PX-0000</span>
         </div>
 
-        <div class="instrucoes-box">
+        <div class="bg-slate-100/80 rounded-2xl p-3.5 text-xs text-slate-600 space-y-1 mb-5 font-semibold">
           <p>1. Copie o PIN acima.</p>
-          <p>2. Entre no canal <strong>#validar-conta</strong> no Discord.</p>
+          <p>2. Entre no canal <strong class="text-slate-900">#validar-conta</strong> no Discord.</p>
           <p>3. Envie o código no chat.</p>
         </div>
 
-        <div class="modal-actions">
-          <a href="https://discord.gg/pixelizados" target="_blank" class="btn-discord">
+        <div class="space-y-2">
+          <a href="https://discord.gg/pixelizados" target="_blank" class="w-full bg-[#5865F2] hover:bg-indigo-600 text-white font-extrabold py-3 rounded-2xl flex items-center justify-center space-x-2 transition-all shadow-md text-xs uppercase tracking-wider text-center block">
             Ir para o Discord
           </a>
-          <button class="btn-secondary-modal" onclick="concluirCadastro()">Já enviei! Acessar Portal</button>
+          <button type="button" onclick="concluirCadastro()" class="w-full bg-slate-200 hover:bg-slate-300 text-slate-700 font-extrabold py-2.5 rounded-2xl text-xs uppercase tracking-wider transition-all">
+            Já enviei! Acessar Portal
+          </button>
         </div>
       </div>
+
     </div>
   </div>
 
-
-  <!-- LÓGICA JAVASCRIPT -->
+  <!-- SCRIPT PARA CONTROLE DO MODAL -->
   <script>
-    // Função para abrir o modal
     function abrirModalCadastro() {
-      const modal = document.getElementById('modal-cadastro');
-      if (modal) {
-        modal.classList.remove('hidden');
-      }
+      document.getElementById('modal-cadastro').classList.remove('hidden');
     }
 
-    // Função para fechar o modal e resetar para a primeira etapa
     function fecharModal() {
-      const modal = document.getElementById('modal-cadastro');
-      if (modal) {
-        modal.classList.add('hidden');
-        // Reseta as etapas para quando abrir novamente
-        setTimeout(() => {
-          document.getElementById('etapa-1').classList.remove('hidden');
-          document.getElementById('etapa-2').classList.add('hidden');
-        }, 300);
-      }
+      document.getElementById('modal-cadastro').classList.add('hidden');
+      setTimeout(() => {
+        document.getElementById('etapa-1').classList.remove('hidden');
+        document.getElementById('etapa-2').classList.add('hidden');
+      }, 300);
     }
 
-    // Função acionada ao enviar o formulário da Etapa 1
     function gerarPin(e) {
       e.preventDefault();
-
-      const discordTag = document.getElementById('discord-tag').value;
-      const portalUser = document.getElementById('portal-user').value;
-
-      // Gera um PIN aleatório de 4 dígitos (Ex: PX-8419)
       const pinAleatorio = 'PX-' + Math.floor(1000 + Math.random() * 9000);
-
-      // Exibe o PIN gerado no elemento correto
-      const pinDisplay = document.getElementById('pin-display');
-      if (pinDisplay) {
-        pinDisplay.innerText = pinAleatorio;
-      }
-
-      // Transiciona da Etapa 1 para a Etapa 2
+      document.getElementById('pin-display').innerText = pinAleatorio;
       document.getElementById('etapa-1').classList.add('hidden');
       document.getElementById('etapa-2').classList.remove('hidden');
     }
 
-    // Função para concluir o fluxo
     function concluirCadastro() {
-      alert('Cadastro enviado para validação! Verifique o Discord.');
-      fecharModal();
+      alert('Cadastro enviado para validação!');
+      window.location.href = 'portal.html';
     }
   </script>
 
