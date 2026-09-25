@@ -3,138 +3,122 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal do Pixelizado | Universo Pixel</title>
+  <title>Portal | Universo Pixel</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
+    
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #0b132b;
+      background-color: #0d131f;
       color: #ffffff;
+    }
+
+    /* Textura Granulada Retrô para o Header Amarelo */
+    .bg-header-yellow {
+      background-color: #fbc02d;
+      background-image: 
+        radial-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 0),
+        linear-gradient(to bottom, #fdd835, #f57f17);
+      background-size: 4px 4px, 100% 100%;
+    }
+
+    /* Pixel art border / sombra vintage */
+    .retro-box-shadow {
+      box-shadow: 0 4px 0px rgba(0, 0, 0, 0.3);
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body class="min-h-screen bg-[#0d131f]">
 
-  <!-- NAVBAR -->
-  <header class="bg-[#1c2541] border-b border-slate-700/50 px-6 py-4 flex justify-between items-center shadow-md">
-    <div class="flex items-center gap-3">
-      <div class="w-10 h-10 bg-amber-400 rounded-xl flex items-center justify-center font-extrabold text-xl text-slate-900 shadow-lg">
-        UP
-      </div>
-      <span class="font-extrabold text-xl tracking-wide text-white">
-        Universo<span class="text-amber-400">Pixel</span>
-      </span>
-    </div>
+  <!-- HEADER RETRÔ AMARELO GRANULADO -->
+  <header class="bg-header-yellow border-b-4 border-black/20 text-slate-900 px-4 sm:px-8 py-3 shadow-lg relative z-20">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      
+      <!-- CANTO ESQUERDO: AUTODJ / RÁDIO -->
+      <div class="flex items-center gap-3 bg-black/10 backdrop-blur-sm p-2 rounded-2xl border border-black/10 w-full md:w-auto">
+        <!-- Foto/Avatar do DJ -->
+        <div class="relative">
+          <img 
+            id="dj-avatar" 
+            src="https://www.habbo.com.br/habbo-imaging/avatarimage?user=Habbo&action=std&direction=2&head_direction=2&gesture=sml&size=m" 
+            alt="DJ Avatar" 
+            class="w-12 h-12 rounded-xl bg-amber-200/80 border-2 border-slate-900/40 object-cover"
+          >
+          <span class="absolute -bottom-1 -right-1 bg-rose-500 text-white text-[9px] font-black px-1.5 py-0.5 rounded-full border border-slate-900 animate-pulse">
+            LIVE
+          </span>
+        </div>
 
-    <div class="flex items-center gap-4">
-      <div class="text-right hidden sm:block">
-        <p id="user-nick" class="font-semibold text-sm text-slate-200">Pixelizado</p>
-        <span class="text-xs text-emerald-400 font-medium">● Conta Verificada</span>
+        <!-- Info do DJ & Tracklist -->
+        <div class="flex flex-col justify-center text-xs">
+          <div class="flex items-center gap-1.5 font-extrabold text-slate-900 uppercase tracking-wide">
+            <i class="fa-solid fa-radio text-rose-700"></i>
+            <span>DJ: <span id="dj-name" class="text-black">AutoDJ Pixel</span></span>
+          </div>
+          <div class="flex items-center gap-1 mt-0.5 text-slate-800 font-medium">
+            <i class="fa-solid fa-music text-[10px] text-slate-700"></i>
+            <span id="track-name" class="truncate max-w-[180px] sm:max-w-[240px]">Universo Pixel - Tocando as melhores!</span>
+          </div>
+        </div>
       </div>
-      <button onclick="fazerLogout()" title="Sair" class="bg-slate-800 hover:bg-rose-600/20 hover:text-rose-400 text-slate-300 p-2.5 rounded-xl border border-slate-700 transition">
-        <i class="fa-solid fa-right-from-bracket"></i>
-      </button>
+
+      <!-- CANTO DIREITO: PERFIL DO USER + PIXELS -->
+      <div class="flex items-center gap-4 w-full md:w-auto justify-end">
+        
+        <!-- Saldo de Pixels -->
+        <div class="flex items-center gap-2 bg-slate-900/90 text-amber-400 px-3 py-1.5 rounded-xl border border-amber-400/30 shadow-inner">
+          <i class="fa-solid fa-[#px] text-amber-400 text-sm">px</i>
+          <div class="text-right leading-none">
+            <span id="user-pixels" class="font-extrabold text-sm text-white">0</span>
+            <span class="block text-[9px] text-amber-300/80 font-bold tracking-wider">PIXELS</span>
+          </div>
+        </div>
+
+        <!-- User Info + Avatar Habbo -->
+        <div class="flex items-center gap-3 bg-slate-900/90 p-1.5 pr-3 rounded-2xl border border-slate-800">
+          <div class="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center overflow-hidden border border-slate-700">
+            <img 
+              id="user-avatar" 
+              src="https://www.habbo.com.br/habbo-imaging/avatarimage?user=Habbo&action=std&direction=3&head_direction=3&gesture=sml&size=m" 
+              alt="Avatar do Usuário"
+              class="w-full h-full object-cover scale-125 translate-y-1"
+            >
+          </div>
+          <div class="text-left">
+            <p id="user-nick" class="font-bold text-xs text-white leading-tight">Pixelizado</p>
+            <span class="text-[10px] font-semibold text-emerald-400 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> On-line
+            </span>
+          </div>
+        </div>
+
+        <!-- Botão de Sair -->
+        <button onclick="fazerLogout()" title="Sair" class="bg-slate-900/80 hover:bg-rose-600 text-white p-2.5 rounded-xl border border-slate-800 transition">
+          <i class="fa-solid fa-right-from-bracket text-xs"></i>
+        </button>
+
+      </div>
+
     </div>
   </header>
 
-  <!-- CONTEÚDO PRINCIPAL DO DASHBOARD -->
-  <main class="max-w-5xl mx-auto px-6 py-10 w-full flex-grow">
-    
-    <!-- BANNER DE BOAS-VINDAS -->
-    <div class="bg-gradient-to-r from-[#1c2541] to-[#3a506b] border-t-4 border-amber-400 rounded-2xl p-6 sm:p-8 mb-8 shadow-2xl relative overflow-hidden">
-      <div class="relative z-10">
-        <span class="bg-amber-400/20 text-amber-300 text-xs font-bold px-3 py-1 rounded-full border border-amber-400/30 tracking-wider">
-          ÁREA EXCLUSIVA
-        </span>
-        <h1 class="text-3xl sm:text-4xl font-extrabold mt-3 text-white">
-          Bem-vindo ao Portal, <span id="welcome-nick" class="text-amber-400">Pixelizado</span>! 🎉
-        </h1>
-        <p class="text-slate-300 mt-2 max-w-2xl text-sm sm:text-base">
-          A tua conta foi verificada com sucesso. A partir de agora tens acesso a todas as novidades e vantagens da nossa comunidade.
-        </p>
-      </div>
-    </div>
-
-    <!-- CARDS DE INFORMAÇÃO E ATALHOS -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      
-      <!-- CARD 1: PERFIL DO USUÁRIO -->
-      <div class="bg-[#1c2541] border border-slate-700/60 rounded-2xl p-6 shadow-xl">
-        <div class="w-12 h-12 bg-indigo-500/20 text-indigo-400 rounded-xl flex items-center justify-center text-xl mb-4">
-          <i class="fa-solid fa-id-card"></i>
-        </div>
-        <h3 class="font-bold text-lg text-white">Os Seus Dados</h3>
-        <p class="text-slate-400 text-xs mb-4">Informações associadas à sua conta</p>
-        
-        <div class="space-y-3 text-sm">
-          <div class="flex justify-between py-2 border-b border-slate-700/50">
-            <span class="text-slate-400">Habbo Nick:</span>
-            <span id="card-habbo" class="font-semibold text-slate-200">-</span>
-          </div>
-          <div class="flex justify-between py-2 border-b border-slate-700/50">
-            <span class="text-slate-400">Discord:</span>
-            <span id="card-discord" class="font-semibold text-slate-200">-</span>
-          </div>
-          <div class="flex justify-between py-2">
-            <span class="text-slate-400">Status:</span>
-            <span class="text-emerald-400 font-bold">APROVADO</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 2: COMUNIDADE DISCORD -->
-      <div class="bg-[#1c2541] border border-slate-700/60 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
-        <div>
-          <div class="w-12 h-12 bg-indigo-600/20 text-indigo-400 rounded-xl flex items-center justify-center text-xl mb-4">
-            <i class="fa-brands fa-discord"></i>
-          </div>
-          <h3 class="font-bold text-lg text-white">Servidor no Discord</h3>
-          <p class="text-slate-400 text-xs mb-3">Comunidade oficial</p>
-          <p class="text-slate-300 text-sm mb-6">Acede ao nosso servidor para participar em chats, novidades e eventos ao vivo.</p>
-        </div>
-        <a href="https://discord.gg" target="_blank" class="block text-center bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-4 rounded-xl transition shadow-lg">
-          Aceder ao Discord
-        </a>
-      </div>
-
-      <!-- CARD 3: PRÓXIMOS EVENTOS -->
-      <div class="bg-[#1c2541] border border-slate-700/60 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
-        <div>
-          <div class="w-12 h-12 bg-amber-400/20 text-amber-400 rounded-xl flex items-center justify-center text-xl mb-4">
-            <i class="fa-solid fa-trophy"></i>
-          </div>
-          <h3 class="font-bold text-lg text-white">Atividades & Eventos</h3>
-          <p class="text-slate-400 text-xs mb-3">Painel de novidades</p>
-          <p class="text-slate-300 text-sm mb-6">Em breve teremos novas atividades e premiações exclusivas para os membros validados.</p>
-        </div>
-        <button disabled class="w-full bg-slate-800 text-slate-500 font-bold py-3 px-4 rounded-xl cursor-not-allowed">
-          Em breve...
-        </button>
-      </div>
-
-    </div>
+  <!-- O RESTANTE DO CONTEÚDO DO PORTAL SERÁ ADICIONADO AQUI NAS PRÓXIMAS ETAPAS -->
+  <main class="max-w-7xl mx-auto px-6 py-10">
+    <!-- Conteúdo principal -->
   </main>
 
-  <!-- FOOTER -->
-  <footer class="bg-[#0b132b] border-t border-slate-800 py-6 text-center text-xs text-slate-500">
-    <p>© 2026 Universo Pixel. Todos os direitos reservados.</p>
-  </footer>
-
-  <!-- LÓGICA DE RECUPERAÇÃO DE DADOS -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const userData = JSON.parse(localStorage.getItem('pixelizados_user'));
 
-      if (userData) {
-        const nick = userData.habbo_nick || 'Pixelizado';
-        const discord = userData.discord_tag || '-';
-
+      if (userData && userData.habbo_nick) {
+        const nick = userData.habbo_nick;
         document.getElementById('user-nick').innerText = nick;
-        document.getElementById('welcome-nick').innerText = nick;
-        document.getElementById('card-habbo').innerText = nick;
-        document.getElementById('card-discord').innerText = discord;
+        
+        // Carrega o avatar dinâmico do Habbo com base no nick do utilizador
+        document.getElementById('user-avatar').src = `https://www.habbo.com.br/habbo-imaging/avatarimage?user=${nick}&action=std&direction=3&head_direction=3&gesture=sml&size=m`;
       }
     });
 
