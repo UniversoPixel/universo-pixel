@@ -13,13 +13,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    /* SISTEMA DE TIPOGRAFIA */
+    /* SISTEMA DE TIPOGRAFIA E AJUSTES DE ESPAÇAMENTO GLOBAL */
     body {
       font-family: 'Inter', sans-serif;
       background: linear-gradient(180deg, #2bb7f6 0%, #179be3 100%);
       background-attachment: fixed;
       color: #334155;
-      /* Espaçamento inferior para evitar que o conteúdo seja coberto pela barra fixa do rodapé */
+      /* Espaçamento superior para a header fixa e inferior para a barra do AutoDJ */
+      padding-top: 76px;
       padding-bottom: 90px;
     }
 
@@ -35,7 +36,21 @@
       font-family: 'Inter', sans-serif;
     }
 
-    /* BARRA AMARELA HABBO FIXA NO RODAPÉ */
+    /* HEADER FIXA NO TOPO */
+    .top-header-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 9998;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    /* BARRA AMARELA HABBO FIXA NO RODAPÉ (AUTODJ) */
     .bg-habbo-yellow-footer-bar {
       position: fixed;
       bottom: 0;
@@ -94,7 +109,7 @@
       100% { transform: scale(0.95); opacity: 0.8; }
     }
 
-    /* BARRA DE NAVEGAÇÃO */
+    /* BARRA DE NAVEGAÇÃO SECUNDÁRIA */
     .classic-nav-bar {
       background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(8px);
@@ -211,8 +226,77 @@
 <body class="min-h-screen flex flex-col justify-between font-body">
 
   <div>
-    <!-- BARRA DE NAVEGAÇÃO -->
-    <nav class="classic-nav-bar w-full relative z-10">
+    <!-- 1. HEADER FIXA NO TOPO (LOGO À ESQUERDA + PERFIL/PONTOS/SAIR À DIREITA) -->
+    <header class="top-header-bar px-4 sm:px-8 py-3">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        
+        <!-- LADO ESQUERDO: LOGO EXISTENTE (pixelizados.png.png) -->
+        <div class="flex items-center">
+          <a href="#" class="flex items-center">
+            <img src="pixelizados.png.png" alt="Logo Pixelizados" class="h-10 sm:h-12 w-auto object-contain">
+          </a>
+        </div>
+
+        <!-- LADO DIREITO: PERFIL DO USUÁRIO, PONTOS E BOTÃO SAIR -->
+        <div class="flex items-center gap-2">
+          <div class="glass-capsule glass-capsule-hover rounded-full p-1.5 flex items-center gap-3">
+            
+            <div class="flex items-center gap-2 bg-gradient-to-r from-amber-50 to-yellow-100/80 px-3 py-1 rounded-full border border-amber-200/80 shadow-inner">
+              <div class="habbo-coin rounded-full flex-shrink-0 flex items-center justify-center font-black text-[9px] text-amber-950 select-none">
+                $
+              </div>
+              <div class="flex items-center gap-1 leading-none font-subtitle">
+                <span id="user-pixels" class="font-extrabold text-xs text-amber-950">0</span>
+                <span class="text-[9px] font-extrabold text-amber-700 tracking-wider">PX</span>
+              </div>
+            </div>
+
+            <div class="h-5 w-[1px] bg-slate-200"></div>
+
+            <div class="flex items-center gap-2 pr-2">
+              <div 
+                onclick="abrirModalAvatar()" 
+                title="Alterar foto de perfil" 
+                class="relative group cursor-pointer w-8 h-8 rounded-full p-0.5 bg-gradient-to-tr from-[#38b6ff] to-sky-200 shadow-sm transition hover:scale-105"
+              >
+                <img 
+                  id="user-avatar" 
+                  src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Pixelizado" 
+                  alt="Avatar do Usuário"
+                  class="w-full h-full rounded-full object-cover bg-slate-800"
+                >
+                <div class="absolute inset-0 rounded-full bg-[#0077cc]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition text-white text-[10px]">
+                  <i class="fa-solid fa-camera"></i>
+                </div>
+              </div>
+
+              <div class="flex flex-col">
+                <p id="user-nick" class="font-bold text-xs text-slate-900 truncate max-w-[110px] font-subtitle">
+                  Pixelizado
+                </p>
+                <div class="flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider font-subtitle">Online</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <button 
+            onclick="fazerLogout()" 
+            title="Sair do Portal" 
+            class="glass-capsule glass-capsule-hover w-11 h-11 rounded-full flex items-center justify-center text-slate-600 hover:text-rose-600 hover:border-rose-300 transition group"
+          >
+            <i class="fa-solid fa-power-off text-sm group-hover:scale-110 transition-transform"></i>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- BARRA DE NAVEGAÇÃO SECUNDÁRIA -->
+    <nav class="classic-nav-bar w-full relative z-10 mt-[1px]">
       <div class="max-w-7xl mx-auto flex items-center overflow-x-auto no-scrollbar">
         <a href="#" class="nav-item active whitespace-nowrap">
           <i class="fa-solid fa-house"></i>
@@ -245,7 +329,7 @@
       </div>
     </nav>
 
-    <!-- LAYOUT PRINCIPAL -->
+    <!-- CENTRO: CONTEÚDO NORMAL DO SITE -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-8">
       
       <!-- GRID PRINCIPAL DE 2 COLUNAS -->
@@ -392,7 +476,6 @@
                     </span>
                   </div>
 
-                  <!-- SUBTÍTULO EM CARD (MANROPE) -->
                   <h3 class="font-subtitle font-extrabold text-slate-900 text-sm group-hover:text-amber-600 transition leading-snug">
                     Passaporte VIP Semestral + 500 PX
                   </h3>
@@ -579,7 +662,7 @@
     </main>
   </div>
 
-  <!-- HEADER / PLAYER DE AUTODJ FIXO NO RODAPÉ -->
+  <!-- 2. BARRA INDEPENDENTE DO AUTODJ FIXA NO RODAPÉ -->
   <footer class="bg-habbo-yellow-footer-bar px-4 sm:px-8 py-2.5">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3">
       
@@ -621,59 +704,12 @@
         </div>
       </div>
 
-      <!-- DIREITA: PERFIL & SALDO -->
+      <!-- DIREITA: MENSAGEM / STATUS DO PLAYER -->
       <div class="flex items-center gap-2 w-full md:w-auto justify-end">
-        <div class="glass-capsule glass-capsule-hover rounded-full p-1.5 flex items-center gap-3">
-          
-          <div class="flex items-center gap-2 bg-gradient-to-r from-amber-50 to-yellow-100/80 px-3 py-1 rounded-full border border-amber-200/80 shadow-inner">
-            <div class="habbo-coin rounded-full flex-shrink-0 flex items-center justify-center font-black text-[9px] text-amber-950 select-none">
-              $
-            </div>
-            <div class="flex items-center gap-1 leading-none font-subtitle">
-              <span id="user-pixels" class="font-extrabold text-xs text-amber-950">0</span>
-              <span class="text-[9px] font-extrabold text-amber-700 tracking-wider">PX</span>
-            </div>
-          </div>
-
-          <div class="h-5 w-[1px] bg-slate-200"></div>
-
-          <div class="flex items-center gap-2 pr-2">
-            <div 
-              onclick="abrirModalAvatar()" 
-              title="Alterar foto de perfil" 
-              class="relative group cursor-pointer w-8 h-8 rounded-full p-0.5 bg-gradient-to-tr from-[#38b6ff] to-sky-200 shadow-sm transition hover:scale-105"
-            >
-              <img 
-                id="user-avatar" 
-                src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Pixelizado" 
-                alt="Avatar do Usuário"
-                class="w-full h-full rounded-full object-cover bg-slate-800"
-              >
-              <div class="absolute inset-0 rounded-full bg-[#0077cc]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition text-white text-[10px]">
-                <i class="fa-solid fa-camera"></i>
-              </div>
-            </div>
-
-            <div class="flex flex-col">
-              <p id="user-nick" class="font-bold text-xs text-slate-900 truncate max-w-[110px] font-subtitle">
-                Pixelizado
-              </p>
-              <div class="flex items-center gap-1">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider font-subtitle">Online</span>
-              </div>
-            </div>
-          </div>
-
+        <div class="glass-capsule glass-capsule-hover rounded-full px-4 py-2 flex items-center gap-2 text-xs font-subtitle font-bold text-slate-700">
+          <i class="fa-solid fa-volume-high text-amber-600"></i>
+          <span>Transmissão Automatizada 24h</span>
         </div>
-
-        <button 
-          onclick="fazerLogout()" 
-          title="Sair do Portal" 
-          class="glass-capsule glass-capsule-hover w-11 h-11 rounded-full flex items-center justify-center text-slate-600 hover:text-rose-600 hover:border-rose-300 transition group"
-        >
-          <i class="fa-solid fa-power-off text-sm group-hover:scale-110 transition-transform"></i>
-        </button>
       </div>
 
     </div>
