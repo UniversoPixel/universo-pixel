@@ -15,94 +15,150 @@
       color: #ffffff;
     }
 
-    /* AMARELO HABBO CLÁSSICO */
+    /* BASE AMARELO HABBO DA IMAGEM */
     .bg-habbo-yellow {
-      background: linear-gradient(to bottom, #ffcb05 0%, #ffb400 100%);
+      background: linear-gradient(180deg, #ffcb05 0%, #ffb400 100%);
       border-bottom: 2px solid #cc8e00;
-      box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
+      box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.12);
     }
 
-    /* WIDGETS BRANCOS E ELEGANTES */
-    .widget-white-card {
-      background-color: rgba(255, 255, 255, 0.92);
-      border: 1.5px solid #38b6ff;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-      backdrop-filter: blur(4px);
+    /* WIDGET MODERNO: CRISTAL / GLASS FLUTUANTE */
+    .glass-capsule {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1.5px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 
+        0 4px 14px -2px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(56, 182, 255, 0.25);
     }
 
-    .widget-white-card:hover {
-      background-color: #ffffff;
-      border-color: #0099ff;
-      box-shadow: 0 4px 10px rgba(56, 182, 255, 0.25);
+    .glass-capsule-hover {
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass-capsule-hover:hover {
+      background: rgba(255, 255, 255, 0.98);
+      transform: translateY(-2px);
+      box-shadow: 
+        0 8px 20px -4px rgba(0, 0, 0, 0.12),
+        0 0 12px 2px rgba(56, 182, 255, 0.4);
+      border-color: #ffffff;
+    }
+
+    /* Brilho pulsante do Live */
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.15); opacity: 0.4; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+    .pulse-ring {
+      animation: pulse-ring 2s infinite ease-in-out;
     }
   </style>
 </head>
 <body class="min-h-screen bg-[#0d131f]">
 
-  <!-- HEADER AMARELO HABBO -->
-  <header class="bg-habbo-yellow px-4 sm:px-8 py-2.5 relative z-20">
+  <!-- HEADER REAJUSTADO -->
+  <header class="bg-habbo-yellow px-4 sm:px-8 py-3 relative z-20">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3">
       
-      <!-- CANTO ESQUERDO: AUTODJ / RÁDIO -->
-      <div class="flex items-center gap-3 widget-white-card px-3.5 py-1.5 rounded-xl w-full md:w-auto transition">
-        <!-- Foto/Avatar do DJ -->
-        <div class="relative">
-          <img 
-            id="dj-avatar" 
-            src="https://api.dicebear.com/7.x/pixel-art/svg?seed=AutoDJ&backgroundColor=38b6ff" 
-            alt="DJ Avatar" 
-            class="w-9 h-9 rounded-lg bg-sky-100 border border-[#38b6ff] object-cover"
-          >
-          <span class="absolute -bottom-1 -right-1 bg-rose-500 text-white text-[8px] font-black px-1.5 py-0.5 rounded-full border border-white animate-pulse">
-            LIVE
+      <!-- ESQUERDA: AUTODJ / RÁDIO EM CÁPSULA FLUTUANTE -->
+      <div class="glass-capsule glass-capsule-hover rounded-full p-1.5 pr-5 flex items-center gap-3.5 w-full md:w-auto">
+        <!-- Avatar do DJ com Moldura Neon Azul -->
+        <div class="relative flex-shrink-0">
+          <div class="w-10 h-10 rounded-full p-0.5 bg-gradient-to-tr from-[#38b6ff] to-cyan-300 shadow-md">
+            <img 
+              id="dj-avatar" 
+              src="https://api.dicebear.com/7.x/pixel-art/svg?seed=AutoDJ&backgroundColor=38b6ff" 
+              alt="DJ Avatar" 
+              class="w-full h-full rounded-full object-cover bg-slate-900"
+            >
+          </div>
+          <span class="absolute -bottom-0.5 -right-0.5 flex h-3.5 w-3.5">
+            <span class="pulse-ring absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-rose-500 border-2 border-white"></span>
           </span>
         </div>
 
-        <!-- Info do DJ & Tracklist -->
-        <div class="flex flex-col justify-center text-xs">
-          <div class="flex items-center gap-1.5 font-bold uppercase tracking-wider text-[10px] text-[#0088cc]">
-            <i class="fa-solid fa-radio text-[#38b6ff] text-[11px]"></i>
-            <span>DJ: <span id="dj-name" class="text-slate-900 font-extrabold">AutoDJ Pixel</span></span>
+        <!-- Info do DJ & Música em Execução -->
+        <div class="flex flex-col justify-center leading-tight">
+          <div class="flex items-center gap-2">
+            <span class="bg-[#38b6ff]/15 text-[#0077cc] text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full border border-[#38b6ff]/30">
+              <i class="fa-solid fa-radio mr-1 text-[#38b6ff]"></i> NO AR
+            </span>
+            <p class="text-xs font-black text-slate-900 tracking-tight">
+              <span id="dj-name">AutoDJ Pixel</span>
+            </p>
           </div>
-          <div class="flex items-center gap-1 mt-0.5 text-slate-700 font-medium text-[11px]">
-            <i class="fa-solid fa-music text-[9px] text-[#38b6ff]"></i>
-            <span id="track-name" class="truncate max-w-[180px] sm:max-w-[240px] text-slate-800">Universo Pixel - Tocando as melhores!</span>
+          <div class="flex items-center gap-1.5 mt-1 text-[11px] font-medium text-slate-600">
+            <i class="fa-solid fa-compact-disc text-[#38b6ff] animate-spin text-[11px]" style="animation-duration: 4s;"></i>
+            <span id="track-name" class="truncate max-w-[200px] sm:max-w-[260px] font-semibold text-slate-800">
+              Universo Pixel - Tocando as melhores!
+            </span>
           </div>
         </div>
       </div>
 
-      <!-- CANTO DIREITO: PERFIL MINIMALISTA EM BRANCO E AZUL CÉU -->
-      <div class="flex items-center gap-2.5 w-full md:w-auto justify-end">
+      <!-- DIREITA: PAINEL DE CONTROLE INTEGRADO (PIXELS + USUÁRIO + SAIR) -->
+      <div class="flex items-center gap-2 w-full md:w-auto justify-end">
         
-        <!-- Saldo de Pixels -->
-        <div class="flex items-center gap-1.5 widget-white-card px-3 py-1.5 rounded-xl transition">
-          <i class="fa-solid fa-coins text-[#38b6ff] text-xs"></i>
-          <span id="user-pixels" class="font-extrabold text-xs text-slate-900">0</span>
-          <span class="text-[9px] font-bold text-[#0088cc] tracking-wider">PX</span>
-        </div>
-
-        <!-- Perfil do Usuário Compacto -->
-        <div class="flex items-center gap-2.5 widget-white-card p-1 pr-3 rounded-xl transition">
-          <!-- Avatar Editável -->
-          <div onclick="abrirModalAvatar()" title="Alterar foto de perfil" class="relative group cursor-pointer w-7 h-7 rounded-lg bg-sky-50 flex items-center justify-center overflow-hidden border border-[#38b6ff]">
-            <img 
-              id="user-avatar" 
-              src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Pixelizado" 
-              alt="Avatar do Usuário"
-              class="w-full h-full object-cover group-hover:opacity-30 transition"
-            >
-            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition text-[#0088cc] text-[10px]">
-              <i class="fa-solid fa-camera"></i>
+        <!-- CÁPSULA UNIFICADA: SALDO + PERFIL -->
+        <div class="glass-capsule glass-capsule-hover rounded-full p-1.5 flex items-center gap-3">
+          
+          <!-- Saldo PX (Com badge azul brilhante) -->
+          <div class="flex items-center gap-2 bg-gradient-to-r from-sky-50 to-blue-50/80 px-3 py-1 rounded-full border border-sky-100">
+            <div class="w-6 h-6 rounded-full bg-[#38b6ff] flex items-center justify-center text-white text-[10px] shadow-sm">
+              <i class="fa-solid fa-coins"></i>
+            </div>
+            <div class="flex items-baseline gap-1">
+              <span id="user-pixels" class="font-black text-xs text-slate-900">0</span>
+              <span class="text-[9px] font-extrabold text-[#0077cc]">PX</span>
             </div>
           </div>
 
-          <p id="user-nick" class="font-bold text-xs text-slate-900 truncate max-w-[120px]">Pixelizado</p>
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500" title="Online"></span>
+          <!-- Divisor Vertical Fino -->
+          <div class="h-5 w-[1px] bg-slate-200"></div>
+
+          <!-- Perfil do Usuário -->
+          <div class="flex items-center gap-2 pr-2">
+            <!-- Avatar Interativo -->
+            <div 
+              onclick="abrirModalAvatar()" 
+              title="Alterar foto de perfil" 
+              class="relative group cursor-pointer w-8 h-8 rounded-full p-0.5 bg-gradient-to-tr from-[#38b6ff] to-sky-200 shadow-sm transition hover:scale-105"
+            >
+              <img 
+                id="user-avatar" 
+                src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Pixelizado" 
+                alt="Avatar do Usuário"
+                class="w-full h-full rounded-full object-cover bg-slate-800"
+              >
+              <div class="absolute inset-0 rounded-full bg-[#0077cc]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition text-white text-[10px]">
+                <i class="fa-solid fa-camera"></i>
+              </div>
+            </div>
+
+            <div class="flex flex-col">
+              <p id="user-nick" class="font-black text-xs text-slate-900 truncate max-w-[110px]">
+                Pixelizado
+              </p>
+              <div class="flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Online</span>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Botão Sair -->
-        <button onclick="fazerLogout()" title="Sair" class="widget-white-card hover:bg-rose-500 hover:border-rose-600 text-slate-700 hover:text-white p-2 rounded-xl transition">
-          <i class="fa-solid fa-right-from-bracket text-xs"></i>
+        <!-- BOTÃO SAIR (CÁPSULA CIRCULAR INDIVIDUAL) -->
+        <button 
+          onclick="fazerLogout()" 
+          title="Sair do Portal" 
+          class="glass-capsule glass-capsule-hover w-11 h-11 rounded-full flex items-center justify-center text-slate-600 hover:text-rose-600 hover:border-rose-300 transition group"
+        >
+          <i class="fa-solid fa-power-off text-sm group-hover:scale-110 transition-transform"></i>
         </button>
 
       </div>
