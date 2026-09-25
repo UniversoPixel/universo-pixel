@@ -7,7 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   
-  <!-- FONTES: Plus Jakarta Sans, Manrope, Inter -->
+  <!-- FONTES -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
@@ -18,33 +18,24 @@
       background: linear-gradient(180deg, #2bb7f6 0%, #179be3 100%);
       background-attachment: fixed;
       color: #334155;
-      /* Espaçamento superior para a header fixa e inferior para a barra do AutoDJ */
-      padding-top: 86px;
-      padding-bottom: 96px;
+      padding-top: 84px;
+      padding-bottom: 90px;
     }
 
-    .font-title {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
+    .font-title { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-subtitle { font-family: 'Manrope', sans-serif; }
+    .font-body { font-family: 'Inter', sans-serif; }
 
-    .font-subtitle {
-      font-family: 'Manrope', sans-serif;
-    }
-
-    .font-body {
-      font-family: 'Inter', sans-serif;
-    }
-
-    /* HEADER FIXA NO TOPO - Mantém padding compacto, permitindo que a logo transborde elegantemente */
+    /* HEADER FIXA NO TOPO (Mantém altura compacta mas permite logo gigante transbordar charmosamente) */
     .top-header-bar {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       z-index: 9998;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(0, 0, 0, 0.08);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     }
@@ -63,7 +54,6 @@
       box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15), inset 0 2px 0 rgba(255, 255, 255, 0.25);
     }
 
-    /* WIDGETS GLASS/CRISTAL */
     .glass-capsule {
       background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(12px);
@@ -81,16 +71,12 @@
       transform: translateY(-2px);
     }
 
-    /* DISCO DJ */
     @keyframes spin-record {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
-    .pixel-vinyl-spin {
-      animation: spin-record 3s linear infinite;
-    }
+    .pixel-vinyl-spin { animation: spin-record 3s linear infinite; }
 
-    /* MOEDA HABBO */
     .habbo-coin {
       width: 22px;
       height: 22px;
@@ -108,7 +94,7 @@
       100% { transform: scale(0.95); opacity: 0.8; }
     }
 
-    /* BARRA DE NAVEGAÇÃO SECUNDÁRIA */
+    /* BARRA DE NAVEGAÇÃO SECUNDÁRIA (ATALHOS) */
     .classic-nav-bar {
       background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(8px);
@@ -133,9 +119,7 @@
       position: relative;
     }
 
-    .nav-item:first-child {
-      border-left: 1px solid rgba(0, 0, 0, 0.06);
-    }
+    .nav-item:first-child { border-left: 1px solid rgba(0, 0, 0, 0.06); }
 
     .nav-item i {
       font-size: 14px;
@@ -158,9 +142,7 @@
       background-color: #ffffff;
     }
 
-    .nav-item.active i {
-      color: #0284c7;
-    }
+    .nav-item.active i { color: #0284c7; }
 
     .nav-item.active::after {
       content: '';
@@ -172,7 +154,6 @@
       background-color: #0284c7;
     }
 
-    /* CARDS REFINADOS */
     .pixel-card {
       background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(16px);
@@ -204,7 +185,6 @@
       border-radius: 2px;
     }
 
-    /* ZOOM IMAGENS */
     .img-zoom-container {
       overflow: hidden;
       border-radius: 14px;
@@ -225,19 +205,19 @@
 <body class="min-h-screen flex flex-col justify-between font-body">
 
   <div>
-    <!-- 1. HEADER FIXA NO TOPO -->
-    <header class="top-header-bar px-4 sm:px-8 py-2.5">
+    <!-- 1. HEADER FIXA NO TOPO (LOGO SUPER DESTACADA, ALTURA DA HEADER INALTERADA) -->
+    <header class="top-header-bar px-4 sm:px-8 py-2">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
         
-        <!-- LADO ESQUERDO: LOGO COM ALTURA EXTRA EM DESTAQUE (h-20 sm:h-24 md:h-28) -->
-        <div class="flex items-center">
-          <a href="#" class="flex items-center group py-0.5">
-            <img src="pixelizados.png.png" alt="Logo Pixelizados" class="h-20 sm:h-24 md:h-28 w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-200">
+        <!-- LADO ESQUERDO: LOGO BEM VISÍVEL E GRANDE -->
+        <div class="flex items-center relative py-1">
+          <a href="#" class="flex items-center group">
+            <img src="pixelizados.png.png" alt="Logo Pixelizados" class="h-20 sm:h-24 md:h-28 w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300">
           </a>
         </div>
 
         <!-- LADO DIREITO: PERFIL DO USUÁRIO, PONTOS E BOTÃO SAIR -->
-        <div class="flex items-center gap-2.5">
+        <div class="flex items-center gap-2">
           <div class="glass-capsule glass-capsule-hover rounded-full p-1.5 flex items-center gap-3">
             
             <div class="flex items-center gap-2 bg-gradient-to-r from-amber-50 to-yellow-100/80 px-3 py-1 rounded-full border border-amber-200/80 shadow-inner">
@@ -294,8 +274,8 @@
       </div>
     </header>
 
-    <!-- BARRA DE NAVEGAÇÃO SECUNDÁRIA -->
-    <nav class="classic-nav-bar w-full relative z-10">
+    <!-- BARRA DE NAVEGAÇÃO SECUNDÁRIA (ATALHOS RESTAURADOS) -->
+    <nav class="classic-nav-bar w-full relative z-10 mt-[1px]">
       <div class="max-w-7xl mx-auto flex items-center overflow-x-auto no-scrollbar">
         <a href="#" class="nav-item active whitespace-nowrap">
           <i class="fa-solid fa-house"></i>
@@ -331,13 +311,11 @@
     <!-- CENTRO: CONTEÚDO NORMAL DO SITE -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-8">
       
-      <!-- GRID PRINCIPAL DE 2 COLUNAS -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
-        <!-- COLUNA ESQUERDA (TIMELINE & ATUALIZAÇÕES) -->
+        <!-- COLUNA ESQUERDA -->
         <div class="lg:col-span-2 space-y-8">
           
-          <!-- CARD: TIMELINE DE NOTÍCIAS -->
           <section class="pixel-card pixel-card-hover p-6 sm:p-7">
             <div class="card-header-title pb-3 mb-6 flex justify-between items-center">
               <div class="flex items-center gap-2.5">
@@ -365,7 +343,6 @@
                   </span>
                 </div>
                 
-                <!-- TÍTULO PRINCIPAL -->
                 <h1 class="font-title text-2xl sm:text-3xl font-black text-slate-900 leading-snug tracking-tight hover:text-sky-600 transition cursor-pointer">
                   A Era dos Fã-Sites Oficiais: O Futuro da Comunidade Pixelizada
                 </h1>
@@ -379,10 +356,6 @@
                   <span class="flex items-center gap-1 text-slate-400">
                     <i class="fa-regular fa-clock text-[11px]"></i> Há 2 horas
                   </span>
-                  <span class="text-slate-300">•</span>
-                  <span class="flex items-center gap-1 text-slate-400">
-                    <i class="fa-regular fa-bookmark text-[11px]"></i> 3 min de leitura
-                  </span>
                 </div>
               </div>
 
@@ -392,163 +365,18 @@
                   alt="Capa Notícia" 
                   class="w-full h-64 sm:h-72 object-cover"
                 >
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent"></div>
-                
-                <div class="absolute bottom-3 left-3 right-3 flex justify-between items-end">
-                  <span class="bg-white/90 backdrop-blur-md text-slate-800 font-bold text-[11px] px-3 py-1 rounded-lg shadow-sm border border-white flex items-center gap-1.5 font-subtitle">
-                    <i class="fa-solid fa-camera text-sky-500"></i> Evento Especial de Lançamento
-                  </span>
-                  <div class="flex gap-1.5">
-                    <span class="bg-black/60 backdrop-blur-md text-white font-semibold text-[11px] px-2.5 py-1 rounded-lg border border-white/20 font-body">
-                      <i class="fa-regular fa-eye mr-1"></i> 1.2k
-                    </span>
-                  </div>
-                </div>
               </div>
 
               <p class="text-slate-600 text-sm leading-relaxed font-normal px-1 font-body">
-                Confira as novidades exclusivas, eventos programados e melhorias da nossa plataforma para esta temporada. Junte-se aos membros da comunidade, acumule pixels virtuais no seu perfil e ajude a construir o melhor espaço de interação do hotel!
+                Confira as novidades exclusivas, eventos programados e melhorias da nossa plataforma para esta temporada. Junte-se aos membros da comunidade!
               </p>
-
-              <div class="flex items-center justify-between pt-4 border-t border-slate-100/80 text-xs font-body">
-                <div class="flex items-center gap-2">
-                  <button 
-                    onclick="toggleLike(this)" 
-                    class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200/80 text-slate-600 hover:text-rose-600 hover:bg-rose-50 hover:border-rose-200 transition font-semibold group"
-                  >
-                    <i class="fa-regular fa-heart text-sm group-hover:scale-110 transition-transform"></i>
-                    <span class="like-count">124</span>
-                    <span class="hidden sm:inline text-slate-400 font-normal">Gostei</span>
-                  </button>
-
-                  <button class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200/80 text-slate-600 hover:text-sky-600 hover:bg-sky-50 hover:border-sky-200 transition font-semibold group">
-                    <i class="fa-regular fa-comment text-sm group-hover:scale-110 transition-transform"></i>
-                    <span>18</span>
-                    <span class="hidden sm:inline text-slate-400 font-normal">Comentários</span>
-                  </button>
-                </div>
-
-                <button 
-                  onclick="compartilharNoticia()" 
-                  class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition group font-subtitle" 
-                  title="Compartilhar Artigo"
-                >
-                  <i class="fa-solid fa-share-nodes text-xs group-hover:rotate-12 transition-transform"></i>
-                  <span class="hidden sm:inline">Compartilhar</span>
-                </button>
-              </div>
             </article>
-          </section>
-
-          <!-- CARD: ATUALIZAÇÕES & EVENTOS -->
-          <section class="pixel-card pixel-card-hover p-6 sm:p-7">
-            <div class="card-header-title pb-3 mb-6 flex justify-between items-center">
-              <div class="flex items-center gap-2.5">
-                <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-sm">
-                  <i class="fa-solid fa-calendar-check"></i>
-                </div>
-                <div>
-                  <h2 class="font-title font-extrabold text-base text-slate-800 uppercase tracking-wide leading-tight">
-                    Atualizações & Eventos
-                  </h2>
-                  <p class="font-subtitle text-[11px] text-slate-400 font-semibold">Sorteios ativos e agenda da rádio</p>
-                </div>
-              </div>
-              
-              <a href="#" class="font-subtitle text-xs font-bold text-sky-600 hover:text-sky-700 flex items-center gap-1 group">
-                <span>Ver todos</span>
-                <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
-              </a>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="p-4 rounded-2xl border border-slate-200/70 bg-gradient-to-b from-slate-50/80 to-white hover:border-amber-300 hover:shadow-md transition group relative overflow-hidden flex flex-col justify-between">
-                <div class="absolute top-0 right-0 w-16 h-16 bg-amber-400/10 rounded-bl-full pointer-events-none"></div>
-                
-                <div>
-                  <div class="flex items-center justify-between gap-2 mb-3">
-                    <span class="font-subtitle bg-amber-100 text-amber-800 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full border border-amber-200 flex items-center gap-1">
-                      <i class="fa-solid fa-gift text-amber-600"></i> Sorteio
-                    </span>
-                    <span class="font-subtitle text-[10px] font-bold text-slate-400 bg-white px-2 py-0.5 rounded-md border border-slate-100">
-                      <i class="fa-regular fa-clock mr-1 text-amber-500"></i> Faltam 2d
-                    </span>
-                  </div>
-
-                  <h3 class="font-subtitle font-extrabold text-slate-900 text-sm group-hover:text-amber-600 transition leading-snug">
-                    Passaporte VIP Semestral + 500 PX
-                  </h3>
-                  <p class="text-xs text-slate-500 mt-1 line-clamp-2 font-body">
-                    Comente na timeline oficial e participe automaticamente do sorteio da comunidade.
-                  </p>
-                </div>
-
-                <div class="mt-4 pt-3 border-t border-slate-100">
-                  <div class="flex justify-between items-center text-[10px] font-bold text-slate-500 mb-1.5 font-subtitle">
-                    <span>92 Participantes</span>
-                    <span class="text-amber-600 font-extrabold">Meta 100%</span>
-                  </div>
-                  <div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
-                    <div class="bg-gradient-to-r from-amber-400 to-yellow-500 h-1.5 rounded-full" style="width: 85%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="p-4 rounded-2xl border border-slate-200/70 bg-gradient-to-b from-slate-50/80 to-white hover:border-sky-300 hover:shadow-md transition group relative overflow-hidden flex flex-col justify-between">
-                <div class="absolute top-0 right-0 w-16 h-16 bg-sky-400/10 rounded-bl-full pointer-events-none"></div>
-
-                <div>
-                  <div class="flex items-center justify-between gap-2 mb-3">
-                    <span class="font-subtitle bg-rose-100 text-rose-700 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full border border-rose-200 flex items-center gap-1">
-                      <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span> AO VIVO
-                    </span>
-                    <span class="font-subtitle text-[10px] font-bold text-slate-400 bg-white px-2 py-0.5 rounded-md border border-slate-100">
-                      20:00 Horas
-                    </span>
-                  </div>
-
-                  <h3 class="font-subtitle font-extrabold text-slate-900 text-sm group-hover:text-sky-600 transition leading-snug">
-                    Torneio de Quiz na Rádio Pixel
-                  </h3>
-                  <p class="text-xs text-slate-500 mt-1 line-clamp-2 font-body">
-                    Sintonize com o locutor da noite e responda às perguntas no chat para faturar moedas.
-                  </p>
-                </div>
-
-                <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-                  <div class="flex items-center gap-2">
-                    <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=DJRadio" class="w-5 h-5 rounded-full bg-slate-900" alt="Locutor">
-                    <span class="text-[11px] font-bold text-slate-700 font-subtitle">DJ Pixel</span>
-                  </div>
-                  <span class="font-subtitle text-[10px] font-extrabold text-sky-600 hover:underline cursor-pointer">Ouvir Rádio &rarr;</span>
-                </div>
-              </div>
-            </div>
           </section>
 
         </div>
 
-        <!-- COLUNA DIREITA (BARRA LATERAL / GUIAS RÁPIDAS) -->
+        <!-- COLUNA DIREITA -->
         <aside class="space-y-6">
-          
-          <!-- 1. PESQUISA -->
-          <div class="pixel-card p-3.5">
-            <form onsubmit="event.preventDefault();" class="relative search-input-glow rounded-xl transition">
-              <input 
-                type="text" 
-                placeholder="Pesquisar notícias, tópicos, membros..." 
-                class="w-full bg-slate-100/90 border border-slate-200 rounded-xl py-2.5 pl-3.5 pr-12 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white transition font-body"
-              >
-              <div class="absolute right-2.5 top-2 flex items-center gap-1">
-                <span class="text-[9px] font-black text-slate-400 bg-white px-1.5 py-0.5 rounded border border-slate-200 hidden sm:inline font-subtitle">Ctrl K</span>
-                <button type="submit" class="w-7 h-7 bg-sky-500 hover:bg-sky-600 text-white rounded-lg flex items-center justify-center transition text-xs shadow-sm">
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-              </div>
-            </form>
-          </div>
-
-          <!-- 2. RANKING DE MEMBROS -->
           <section class="pixel-card pixel-card-hover p-5">
             <div class="card-header-title pb-3 mb-4 flex justify-between items-center">
               <div class="flex items-center gap-2">
@@ -557,103 +385,22 @@
                   Usuários Destaque
                 </h3>
               </div>
-              <span class="font-subtitle text-[9px] font-extrabold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded uppercase">
-                Top Mês
-              </span>
-            </div>
-
-            <div class="p-3.5 bg-gradient-to-r from-amber-100/80 via-amber-50 to-orange-50/60 border border-amber-300/80 rounded-2xl mb-3 relative shadow-xs">
-              <div class="flex items-center gap-3">
-                <div class="relative flex-shrink-0">
-                  <img 
-                    src="https://api.dicebear.com/7.x/pixel-art/svg?seed=KingPixel" 
-                    alt="Top 1" 
-                    class="w-12 h-12 rounded-full bg-slate-900 border-2 border-amber-400 p-0.5 shadow-sm"
-                  >
-                  <div class="absolute -top-1.5 -left-1.5 bg-amber-400 text-amber-950 font-black text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">
-                    <i class="fa-solid fa-crown text-[9px]"></i>
-                  </div>
-                </div>
-
-                <div class="flex-1 min-w-0">
-                  <div class="flex items-center gap-1.5">
-                    <p class="font-title font-extrabold text-xs text-slate-900 truncate">KingPixel</p>
-                    <span class="font-subtitle text-[9px] bg-amber-200/80 text-amber-900 font-bold px-1.5 py-0.2 rounded">Nível 42</span>
-                  </div>
-                  <p class="font-subtitle text-[11px] font-extrabold text-amber-800 mt-0.5 flex items-center gap-1">
-                    <span class="habbo-coin scale-75 inline-block -ml-1"></span> 1.420 PX
-                  </p>
-                </div>
-              </div>
-
-              <div class="mt-2.5 pt-2 border-t border-amber-200/60 flex items-center justify-between text-[9px] font-bold text-amber-800 font-subtitle">
-                <span>Líder de Atividade</span>
-                <span class="text-amber-600">98% XP</span>
-              </div>
             </div>
 
             <div class="space-y-2">
-              <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50/80 border border-slate-100 hover:bg-white hover:border-slate-200 transition">
+              <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50/80 border border-slate-100">
                 <div class="flex items-center gap-2.5 min-w-0">
-                  <span class="font-title font-extrabold text-slate-400 text-xs w-4 text-center">2</span>
-                  <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=StarGirl" class="w-8 h-8 rounded-full bg-slate-800 border border-slate-300" alt="Top 2">
+                  <span class="font-title font-extrabold text-slate-400 text-xs w-4 text-center">1</span>
+                  <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=KingPixel" class="w-8 h-8 rounded-full bg-slate-800 border border-slate-300" alt="Top 1">
                   <div class="truncate">
-                    <p class="font-subtitle font-bold text-xs text-slate-800 truncate">StarGirl</p>
-                    <p class="text-[9px] text-slate-400 font-body">Ativa há 1h</p>
+                    <p class="font-subtitle font-bold text-xs text-slate-800 truncate">KingPixel</p>
+                    <p class="text-[9px] text-slate-400 font-body">Ativo agora</p>
                   </div>
                 </div>
-                <span class="font-subtitle font-extrabold text-sky-600 text-xs bg-sky-50 border border-sky-100 px-2 py-0.5 rounded-lg">980 PX</span>
-              </div>
-
-              <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50/80 border border-slate-100 hover:bg-white hover:border-slate-200 transition">
-                <div class="flex items-center gap-2.5 min-w-0">
-                  <span class="font-title font-extrabold text-amber-700/60 text-xs w-4 text-center">3</span>
-                  <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=NeoUser" class="w-8 h-8 rounded-full bg-slate-800 border border-slate-300" alt="Top 3">
-                  <div class="truncate">
-                    <p class="font-subtitle font-bold text-xs text-slate-800 truncate">NeoUser</p>
-                    <p class="text-[9px] text-slate-400 font-body">Ativo há 3h</p>
-                  </div>
-                </div>
-                <span class="font-subtitle font-extrabold text-sky-600 text-xs bg-sky-50 border border-sky-100 px-2 py-0.5 rounded-lg">850 PX</span>
+                <span class="font-subtitle font-extrabold text-sky-600 text-xs bg-sky-50 border border-sky-100 px-2 py-0.5 rounded-lg">1.420 PX</span>
               </div>
             </div>
           </section>
-
-          <!-- 3. PARCEIROS OFICIAIS -->
-          <section class="pixel-card pixel-card-hover p-5">
-            <div class="card-header-title pb-3 mb-4 flex justify-between items-center">
-              <div class="flex items-center gap-2">
-                <i class="fa-solid fa-handshake text-sky-500 text-sm"></i>
-                <h3 class="font-title font-extrabold text-xs text-slate-800 uppercase tracking-wide">
-                  Parceiros Oficiais
-                </h3>
-              </div>
-              <span class="font-subtitle text-[10px] text-slate-400 font-semibold">Alianças</span>
-            </div>
-
-            <div class="grid grid-cols-2 gap-2.5">
-              <a href="#" class="p-3 bg-gradient-to-b from-slate-50 to-slate-100/80 hover:from-sky-50 hover:to-blue-50/80 border border-slate-200/80 hover:border-sky-300 rounded-xl transition-all group flex flex-col items-center text-center">
-                <div class="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-sky-500 text-sm shadow-2xs group-hover:scale-110 transition-transform mb-1.5">
-                  <i class="fa-solid fa-hotel"></i>
-                </div>
-                <span class="font-subtitle font-bold text-xs text-slate-800 group-hover:text-sky-600 transition">Habbo Hotel</span>
-                <span class="font-subtitle text-[9px] text-emerald-600 font-semibold mt-0.5 flex items-center gap-1">
-                  <span class="w-1 h-1 rounded-full bg-emerald-500"></span> Online
-                </span>
-              </a>
-
-              <a href="#" class="p-3 bg-gradient-to-b from-slate-50 to-slate-100/80 hover:from-indigo-50 hover:to-purple-50/80 border border-slate-200/80 hover:border-indigo-300 rounded-xl transition-all group flex flex-col items-center text-center">
-                <div class="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-indigo-500 text-sm shadow-2xs group-hover:scale-110 transition-transform mb-1.5">
-                  <i class="fa-solid fa-radio"></i>
-                </div>
-                <span class="font-subtitle font-bold text-xs text-slate-800 group-hover:text-indigo-600 transition">Rádio Pixel</span>
-                <span class="font-subtitle text-[9px] text-indigo-600 font-semibold mt-0.5 flex items-center gap-1">
-                  <span class="w-1 h-1 rounded-full bg-indigo-500"></span> No Ar
-                </span>
-              </a>
-            </div>
-          </section>
-
         </aside>
 
       </div>
@@ -665,7 +412,6 @@
   <footer class="bg-habbo-yellow-footer-bar px-4 sm:px-8 py-2.5">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3">
       
-      <!-- ESQUERDA: AUTODJ -->
       <div class="glass-capsule glass-capsule-hover rounded-full p-1.5 pr-5 flex items-center gap-3.5 w-full md:w-auto">
         <div class="relative flex-shrink-0">
           <div class="w-10 h-10 rounded-full p-0.5 bg-gradient-to-tr from-[#38b6ff] to-cyan-300 shadow-md">
@@ -703,7 +449,6 @@
         </div>
       </div>
 
-      <!-- DIREITA: MENSAGEM / STATUS DO PLAYER -->
       <div class="flex items-center gap-2 w-full md:w-auto justify-end">
         <div class="glass-capsule glass-capsule-hover rounded-full px-4 py-2 flex items-center gap-2 text-xs font-subtitle font-bold text-slate-700">
           <i class="fa-solid fa-volume-high text-amber-600"></i>
@@ -713,54 +458,6 @@
 
     </div>
   </footer>
-
-  <script>
-    function toggleLike(btn) {
-      const icon = btn.querySelector('i');
-      const countSpan = btn.querySelector('.like-count');
-      let count = parseInt(countSpan.textContent);
-      
-      if (icon.classList.contains('fa-regular')) {
-        icon.classList.remove('fa-regular');
-        icon.classList.add('fa-solid');
-        icon.style.color = '#e11d48';
-        countSpan.textContent = count + 1;
-        
-        // Adicionar moeda de bônus interativa
-        const currentPixels = document.getElementById('user-pixels');
-        let pixels = parseInt(currentPixels.textContent) + 10;
-        currentPixels.textContent = pixels;
-      } else {
-        icon.classList.remove('fa-solid');
-        icon.classList.add('fa-regular');
-        icon.style.color = '';
-        countSpan.textContent = count - 1;
-      }
-    }
-
-    function compartilharNoticia() {
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(window.location.href);
-        alert('Link da notícia copiado para a área de transferência!');
-      } else {
-        alert('Link copiado!');
-      }
-    }
-
-    function fazerLogout() {
-      if (confirm('Deseja realmente sair do portal?')) {
-        alert('Sessão encerrada com sucesso.');
-      }
-    }
-
-    function abrirModalAvatar() {
-      const novoSeed = prompt('Digite um nome para gerar seu novo avatar Pixel:', 'Pixelizado' + Math.floor(Math.random() * 1000));
-      if (novoSeed) {
-        document.getElementById('user-avatar').src = `https://api.dicebear.com/7.x/pixel-art/svg?seed=${encodeURIComponent(novoSeed)}`;
-        document.getElementById('user-nick').textContent = novoSeed;
-      }
-    }
-  </script>
 
 </body>
 </html>
