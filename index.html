@@ -99,7 +99,7 @@
           Acesse sua conta para entrar na rádio e fórum
         </p>
 
-        <!-- Formulario -->
+        <!-- Formulario Login -->
         <form action="portal.html" method="GET" class="space-y-4 text-left">
           <div>
             <label class="block text-slate-700 text-xs font-extrabold uppercase tracking-wider mb-1.5 ml-1">
@@ -176,7 +176,7 @@
 
   </div>
 
-  <!-- MODAL DE CADASTRO DISCORD (ESTILIZADO COM TAILWIND) -->
+  <!-- MODAL DE CADASTRO DISCORD -->
   <div id="modal-cadastro" class="fixed inset-0 bg-slate-950/70 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
     <div class="bg-white/95 backdrop-blur-xl rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/60 w-full max-w-md relative overflow-hidden text-left">
       
@@ -196,7 +196,7 @@
           <p class="text-slate-500 text-xs font-semibold mt-1">Vincule seu perfil do Discord para continuar.</p>
         </div>
 
-        <form id="form-cadastro" onsubmit="gerarPin(event)" class="space-y-3.5">
+        <form id="form-cadastro" onsubmit="enviarCadastroSupabase(event)" class="space-y-3.5">
           <div>
             <label for="discord-tag" class="block text-slate-700 text-xs font-extrabold uppercase tracking-wider mb-1 ml-1">Seu Username do Discord</label>
             <input type="text" id="discord-tag" placeholder="Ex: usuario_discord" required class="w-full px-4 py-2.5 rounded-2xl bg-sky-50/50 border border-sky-200 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition-all" />
@@ -212,7 +212,7 @@
             <input type="password" id="portal-pass" placeholder="••••••••" required class="w-full px-4 py-2.5 rounded-2xl bg-sky-50/50 border border-sky-200 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition-all" />
           </div>
 
-          <button type="submit" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-black py-3 rounded-2xl shadow-lg shadow-sky-500/30 transition-all uppercase tracking-wider text-xs mt-2">
+          <button id="btn-submit" type="submit" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-black py-3 rounded-2xl shadow-lg shadow-sky-500/30 transition-all uppercase tracking-wider text-xs mt-2">
             Gerar PIN de Verificação 🚀
           </button>
         </form>
@@ -222,7 +222,7 @@
       <div id="etapa-2" class="hidden">
         <div class="mb-4">
           <h2 class="text-xl font-black text-slate-900">Quase lá! Validação</h2>
-          <p class="text-slate-500 text-xs font-semibold mt-1">Envie o código abaixo no nosso servidor do Discord para ativar sua conta.</p>
+          <p id="status-msg" class="text-slate-500 text-xs font-semibold mt-1">Envie o código abaixo no nosso servidor do Discord para ativar sua conta.</p>
         </div>
 
         <div class="bg-sky-50 border-2 border-dashed border-sky-400 rounded-2xl p-4 text-center my-4">
@@ -240,17 +240,25 @@
           <a href="https://discord.gg/pixelizados" target="_blank" class="w-full bg-[#5865F2] hover:bg-indigo-600 text-white font-extrabold py-3 rounded-2xl flex items-center justify-center space-x-2 transition-all shadow-md text-xs uppercase tracking-wider text-center block">
             Ir para o Discord
           </a>
-          <button type="button" onclick="concluirCadastro()" class="w-full bg-slate-200 hover:bg-slate-300 text-slate-700 font-extrabold py-2.5 rounded-2xl text-xs uppercase tracking-wider transition-all">
-            Já enviei! Acessar Portal
-          </button>
+          <p class="text-[11px] text-center font-bold text-amber-600 animate-pulse pt-1">
+            ⏳ Aguardando aprovação automática...
+          </p>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- SCRIPT PARA CONTROLE DO MODAL -->
+  <!-- SDK DO SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- LÓGICA DO MODAL E INTEGRAÇÃO REALTIME -->
   <script>
+    // Inicialização da conexão com Supabase
+    const SUPABASE_URL = 'https://znvytrvdwejjlivzsjzy.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_J60PUy390KR4sRTGe9tjNg_wllyvUAj';
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
     function abrirModalCadastro() {
       document.getElementById('modal-cadastro').classList.remove('hidden');
     }
@@ -263,92 +271,70 @@
       }, 300);
     }
 
-    function gerarPin(e) {
+    // Processa o envio e salva no Supabase
+    async function enviarCadastroSupabase(e) {
       e.preventDefault();
-      const pinAleatorio = 'PX-' + Math.floor(1000 + Math.random() * 9000);
-      document.getElementById('pin-display').innerText = pinAleatorio;
+
+      const btn = document.getElementById('btn-submit');
+      btn.innerText = "Gerando PIN...";
+      btn.disabled = true;
+
+      const discordTag = document.getElementById('discord-tag').value;
+      const habboNick = document.getElementById('portal-user').value;
+      const pinGerado = 'PX-' + Math.floor(1000 + Math.random() * 9000);
+
+      // Inserir registro com status PENDENTE
+      const { data, error } = await supabaseClient
+        .from('usuarios')
+        .insert([
+          { 
+            habbo_nick: habboNick, 
+            discord_tag: discordTag, 
+            pin: pinGerado, 
+            status: 'PENDENTE' 
+          }
+        ]);
+
+      btn.innerText = "Gerar PIN de Verificação 🚀";
+      btn.disabled = false;
+
+      if (error) {
+        console.error('Erro no Supabase:', error);
+        alert('Ocorreu um erro ao gerar o teu PIN. Tenta novamente.');
+        return;
+      }
+
+      // Exibir o PIN gerado no modal
+      document.getElementById('pin-display').innerText = pinGerado;
       document.getElementById('etapa-1').classList.add('hidden');
       document.getElementById('etapa-2').classList.remove('hidden');
+
+      // Ativar escuta em tempo real para redirecionamento automático
+      escutarAprovacaoRealtime(pinGerado);
     }
 
-    function concluirCadastro() {
-      alert('Cadastro enviado para validação!');
-      window.location.href = 'portal.html';
+    // Escuta em tempo real no banco do Supabase
+    function escutarAprovacaoRealtime(pin) {
+      supabaseClient
+        .channel('validacao-pixelizados')
+        .on(
+          'postgres_changes',
+          {
+            event: 'UPDATE',
+            schema: 'public',
+            table: 'usuarios',
+            filter: `pin=eq.${pin}`
+          },
+          (payload) => {
+            if (payload.new.status === 'APROVADO') {
+              localStorage.setItem('pixelizados_user', JSON.stringify(payload.new));
+              alert('🎉 A tua conta foi verificada com sucesso!');
+              window.location.href = 'portal.html';
+            }
+          }
+        )
+        .subscribe();
     }
   </script>
-<!-- SDK do Supabase -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
-  // Conexão com o teu projeto Supabase
-  const SUPABASE_URL = 'https://znvytrvdwejjlivzsjzy.supabase.co';
-  const SUPABASE_KEY = 'sb_publishable_J60PUy390KR4sRTGe9tjNg_wllyvUAj';
-  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-  // 1. Função para registar o utilizador e guardar como PENDENTE
-  async function processarCadastro(habboNick, discordTag) {
-    // Gerar PIN automático no formato PX-XXXX
-    const pinGerado = 'PX-' + Math.floor(1000 + Math.random() * 9000);
-
-    // Inserir na tabela 'usuarios'
-    const { data, error } = await supabaseClient
-      .from('usuarios')
-      .insert([
-        { 
-          habbo_nick: habboNick, 
-          discord_tag: discordTag, 
-          pin: pinGerado, 
-          status: 'PENDENTE' 
-        }
-      ])
-      .select();
-
-    if (error) {
-      console.error('Erro ao salvar no Supabase:', error);
-      alert('Ocorreu um erro ao gerar o teu PIN. Tenta novamente.');
-      return;
-    }
-
-    // Exibir o PIN no ecrã/modal para o utilizador
-    document.getElementById('display-pin').innerText = pinGerado;
-    
-    // Atualizar a mensagem do modal para avisar que está a aguardar
-    document.getElementById('status-msg').innerText = 'Aguardando aprovação no Discord...';
-
-    // Guardar temporariamente no navegador
-    localStorage.setItem('temp_pin', pinGerado);
-
-    // Começar a escutar alterações em tempo real para este PIN
-    escutarAprovacaoRealtime(pinGerado);
-  }
-
-  // 2. Escuta em Tempo Real (Realtime Listener)
-  function escutarAprovacaoRealtime(pin) {
-    supabaseClient
-      .channel('validacao-pixelizados')
-      .on(
-        'postgres_changes',
-        {
-          event: 'UPDATE',
-          schema: 'public',
-          table: 'usuarios',
-          filter: `pin=eq.${pin}`
-        },
-        (payload) => {
-          // Quando o status mudar para APROVADO no banco de dados
-          if (payload.new.status === 'APROVADO') {
-            // Regista a sessão do utilizador
-            localStorage.setItem('pixelizados_user', JSON.stringify(payload.new));
-            localStorage.removeItem('temp_pin');
-
-            // Feedback visual e redirecionamento automático
-            alert('🎉 A tua conta foi verificada com sucesso!');
-            window.location.href = 'portal.html';
-          }
-        }
-      )
-      .subscribe();
-  }
-</script>
 </body>
 </html>
