@@ -1,169 +1,99 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pixelizados - Entrar na Comunidade</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Plus Jakarta Sans -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixelizados - Fã-site Oficial</title>
 
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Favicon para a aba do navegador -->
+  <link rel="icon" type="image/png" href="icon.png.PNG" />
+
+  <!-- Estilos Personalizados para Pixel Art e Fontes -->
   <style>
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      /* Fundo degradê estilo Habbo Hotel */
-      background: linear-gradient(180deg, #0284C7 0%, #38BDF8 50%, #BAE6FD 100%);
-      overflow-x: hidden;
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap');
+
+    .font-pixel {
+      font-family: 'Press Start 2P', cursive;
     }
 
+    .font-sans {
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Garante a renderização nítida de imagens Pixel Art */
     .pixel-art {
       image-rendering: pixelated;
       image-rendering: crisp-edges;
     }
 
-    /* Animação de Nuvens Flutuantes */
-    @keyframes floatCloud {
-      0% { transform: translateX(-10%); }
-      50% { transform: translateX(10%); }
-      100% { transform: translateX(-10%); }
-    }
-
-    @keyframes floatCloudReverse {
-      0% { transform: translateX(10%); }
-      50% { transform: translateX(-10%); }
-      100% { transform: translateX(10%); }
-    }
-
-    .cloud-slow {
-      animation: floatCloud 25s ease-in-out infinite;
-    }
-
-    .cloud-fast {
-      animation: floatCloudReverse 18s ease-in-out infinite;
+    /* Fundo em degradê temático */
+    body {
+      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #1e3a8a 100%);
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-between relative selection:bg-yellow-300 selection:text-slate-900 overflow-hidden">
+<body class="min-h-screen w-full flex items-center justify-center font-sans antialiased text-slate-800 p-4">
 
-  <!-- NUVENS FLUTUANTES (TOPO) -->
-  <div class="absolute top-0 left-0 right-0 pointer-events-none z-0 opacity-80 flex justify-between px-10 pt-4 cloud-slow">
-    <div class="text-white/40 text-6xl select-none">☁️</div>
-    <div class="text-white/30 text-8xl select-none -mt-4">☁️</div>
-    <div class="text-white/50 text-7xl select-none">☁️</div>
-  </div>
+  <!-- Container Principal Centralizado -->
+  <main class="w-full max-w-md mx-auto flex flex-col items-center justify-center">
 
-  <!-- Cabeçalho Simples -->
-  <header class="w-full max-w-6xl mx-auto p-6 flex justify-between items-center z-10">
-    <div class="flex items-center space-x-2">
-      <span class="bg-[#F6C700] text-slate-950 font-black text-[10px] px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
-        Área de Membros
-      </span>
-    </div>
-    <a href="#" class="text-xs font-extrabold text-white bg-white/20 hover:bg-white/30 backdrop-blur-md px-4 py-2 rounded-xl transition-all">
-      Ir para o Portal →
-    </a>
-  </header>
+    <!-- Card Principal Glassmorphism -->
+    <div class="w-full bg-white/95 backdrop-blur-md rounded-3xl p-6 md:p-8 shadow-2xl border border-white/50 flex flex-col items-center text-center">
 
-  <!-- CARD CENTRALIZADO DE LOGIN -->
-  <main class="w-full max-w-md px-4 z-10 my-auto">
-    <div class="bg-white/95 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/60 text-center relative overflow-hidden">
-      
-      <!-- Detalhe Amarelo Habbo Topo -->
-      <div class="h-2 bg-[#F6C700] absolute top-0 left-0 right-0"></div>
-
-      <!-- Logo em Imagem -->
-      <div class="my-4 flex justify-center">
-        <!-- Contentor do Ícone com Bordas e Sombra Suave -->
-<div class="my-6 flex justify-center">
-  <div class="p-2.5 bg-white/40 backdrop-blur-md rounded-3xl border-2 border-white/80 shadow-lg shadow-sky-900/10 hover:shadow-xl hover:shadow-sky-500/20 transition-all duration-300 ease-out group cursor-pointer">
-    <img 
-      src="icon.png.PNG" 
-      alt="Pixelizados Icon" 
-      class="h-16 md:h-20 w-auto object-contain pixel-art rounded-2xl group-hover:scale-110 transition-transform duration-300 ease-out"
-    />
-  </div>
-</div>
+      <!-- Ícone Pixel Art com Borda Fina, Sombra Suave e Efeito Hover -->
+      <div class="w-full flex justify-center items-center my-4">
+        <div class="p-2 bg-white/40 backdrop-blur-sm rounded-2xl border border-white/60 shadow-md shadow-sky-900/10 hover:shadow-lg hover:shadow-sky-500/20 transition-all duration-300 group cursor-pointer">
+          <img 
+            src="icon.png.PNG" 
+            alt="Pixelizados Icon" 
+            class="h-20 w-auto object-contain pixel-art rounded-xl group-hover:scale-105 transition-transform duration-300 ease-out block mx-auto"
+          />
+        </div>
       </div>
 
-      <p class="text-slate-500 text-xs font-bold mb-6">
-        Acesse sua conta para entrar na rádio e fórum
+      <!-- Título do Fã-site -->
+      <h1 class="font-pixel text-lg md:text-xl text-blue-600 mb-2 tracking-wide uppercase drop-shadow-sm">
+        Pixelizados
+      </h1>
+      
+      <p class="text-sm text-slate-500 mb-6 font-medium">
+        O seu fã-site no universo pixelado.
       </p>
 
-      <!-- Formulário de Acesso -->
-      <form onsubmit="event.preventDefault();" class="space-y-4 text-left">
-        <div>
-          <label class="block text-slate-700 text-xs font-extrabold uppercase tracking-wider mb-1.5 ml-1">
-            Usuário / Habbo
+      <!-- Formulário / Área de Entrada -->
+      <form class="w-full flex flex-col gap-4" onsubmit="event.preventDefault();">
+        <div class="text-left w-full">
+          <label class="block text-xs font-bold text-slate-600 mb-1 uppercase tracking-wider">
+            Nickname no Habbo
           </label>
           <input 
             type="text" 
-            placeholder="Ex: FrankPixel" 
-            class="w-full px-4 py-3 rounded-2xl bg-sky-50/50 border border-sky-200 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition-all"
+            placeholder="Ex: PlayerPixel" 
+            class="w-full px-4 py-3 rounded-xl bg-slate-100 border border-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-sm font-medium"
           />
         </div>
 
-        <div>
-          <div class="flex justify-between items-center mb-1.5 ml-1">
-            <label class="text-slate-700 text-xs font-extrabold uppercase tracking-wider">
-              Senha
-            </label>
-            <a href="#" class="text-[11px] font-bold text-sky-600 hover:underline">Esqueceu?</a>
-          </div>
-          <input 
-            type="password" 
-            placeholder="••••••••" 
-            class="w-full px-4 py-3 rounded-2xl bg-sky-50/50 border border-sky-200 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition-all"
-          />
-        </div>
-
-        <!-- Botão Entrar -->
         <button 
           type="submit" 
-          class="w-full bg-sky-500 hover:bg-sky-600 text-white font-black py-3.5 rounded-2xl shadow-lg shadow-sky-500/30 hover:shadow-xl transition-all uppercase tracking-wider text-xs flex items-center justify-center gap-2 mt-2"
+          class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold text-sm shadow-lg shadow-blue-500/30 hover:from-blue-600 hover:to-blue-700 active:scale-[0.98] transition-all duration-200 mt-2"
         >
-          <span>Entrar no Hotel</span>
-          <span>⚡</span>
+          Entrar no Portal
         </button>
       </form>
 
-      <!-- Divisória -->
-      <div class="relative my-6 flex items-center justify-center">
-        <div class="border-t border-slate-200 w-full"></div>
-        <span class="bg-white px-3 text-[10px] font-black text-slate-400 uppercase tracking-widest absolute">OU</span>
-      </div>
-
-      <!-- Chamada para Registro pelo Discord -->
-      <div class="space-y-2">
-        <p class="text-xs font-extrabold text-slate-700">Ainda não possui uma conta?</p>
-        <a 
-          href="https://discord.gg" 
-          target="_blank" 
-          class="w-full bg-[#F6C700] hover:bg-yellow-400 text-slate-950 font-extrabold py-3 px-4 rounded-2xl flex items-center justify-center space-x-2 transition-all shadow-md shadow-yellow-500/20 text-xs uppercase tracking-wider block"
-        >
-          <span>👾 Se torne um Pixelizado</span>
-        </a>
-        <span class="text-[10px] text-slate-400 font-medium block pt-1">
-          O cadastro e verificação de membros é realizado via Discord oficial.
-        </span>
+      <!-- Rodapé do Card -->
+      <div class="mt-6 pt-4 border-t border-slate-100 w-full text-center">
+        <p class="text-xs text-slate-400 font-medium">
+          &copy; Pixelizados. Todos os direitos reservados.
+        </p>
       </div>
 
     </div>
+
   </main>
-
-  <!-- NUVENS FLUTUANTES (RODAPÉ) -->
-  <div class="w-full pointer-events-none z-0 opacity-90 flex justify-around pb-2 cloud-fast">
-    <div class="text-white/60 text-8xl select-none -mb-6">☁️</div>
-    <div class="text-white/40 text-9xl select-none -mb-10 hidden sm:block">☁️</div>
-    <div class="text-white/70 text-7xl select-none -mb-4">☁️</div>
-  </div>
-
-  <!-- Rodapé Simples -->
-  <footer class="w-full py-4 text-center text-white/80 text-[11px] font-bold z-10 backdrop-blur-sm bg-sky-950/10">
-    <p>© 2026 Pixelizados. Todos os direitos reservados aos criadores de pixels.</p>
-  </footer>
 
 </body>
 </html>
