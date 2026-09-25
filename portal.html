@@ -6,18 +6,31 @@
   <title>Portal | Universo Pixel</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <!-- FONTES: Plus Jakarta Sans, Manrope, Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Poppins:wght@400;500;600;700;800;900&display=swap');
-    
+    /* SISTEMA DE TIPOGRAFIA */
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
       background: linear-gradient(180deg, #2bb7f6 0%, #179be3 100%);
       background-attachment: fixed;
       color: #334155;
     }
 
-    .font-serif-title {
-      font-family: 'Playfair Display', serif;
+    .font-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .font-subtitle {
+      font-family: 'Manrope', sans-serif;
+    }
+
+    .font-body {
+      font-family: 'Inter', sans-serif;
     }
 
     /* BARRAS AMARELAS HABBO (TOPO E RODAPÉ) */
@@ -94,8 +107,9 @@
       gap: 8px;
       padding: 0 24px;
       height: 48px;
+      font-family: 'Manrope', sans-serif;
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 700;
       color: #475569;
       border-right: 1px solid rgba(0, 0, 0, 0.06);
       transition: all 0.2s ease;
@@ -191,7 +205,7 @@
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body class="min-h-screen flex flex-col justify-between font-body">
 
   <!-- HEADER AMARELO -->
   <header class="bg-habbo-yellow px-4 sm:px-8 py-3 relative z-20">
@@ -216,17 +230,17 @@
 
         <div class="flex flex-col justify-center leading-tight">
           <div class="flex items-center gap-2">
-            <span class="bg-[#38b6ff]/15 text-[#0077cc] text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full border border-[#38b6ff]/30 flex items-center gap-1.5">
+            <span class="bg-[#38b6ff]/15 text-[#0077cc] text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full border border-[#38b6ff]/30 flex items-center gap-1.5 font-subtitle">
               <span class="w-3.5 h-3.5 rounded-full bg-slate-900 border border-sky-400 flex items-center justify-center pixel-vinyl-spin">
                 <span class="w-1 h-1 rounded-full bg-amber-400"></span>
               </span>
               <span>NO AR</span>
             </span>
-            <p class="text-xs font-black text-slate-900 tracking-tight">
+            <p class="text-xs font-black text-slate-900 tracking-tight font-subtitle">
               <span id="dj-name">AutoDJ Pixel</span>
             </p>
           </div>
-          <div class="flex items-center gap-1.5 mt-1 text-[11px] font-medium text-slate-600">
+          <div class="flex items-center gap-1.5 mt-1 text-[11px] font-medium text-slate-600 font-body">
             <i class="fa-solid fa-record-vinyl text-[#38b6ff] pixel-vinyl-spin text-[12px]"></i>
             <span id="track-name" class="truncate max-w-[200px] sm:max-w-[260px] font-semibold text-slate-800">
               Universo Pixel - Tocando as melhores!
@@ -243,9 +257,9 @@
             <div class="habbo-coin rounded-full flex-shrink-0 flex items-center justify-center font-black text-[9px] text-amber-950 select-none">
               $
             </div>
-            <div class="flex items-center gap-1 leading-none">
-              <span id="user-pixels" class="font-black text-xs text-amber-950">0</span>
-              <span class="text-[9px] font-black text-amber-700 tracking-wider">PX</span>
+            <div class="flex items-center gap-1 leading-none font-subtitle">
+              <span id="user-pixels" class="font-extrabold text-xs text-amber-950">0</span>
+              <span class="text-[9px] font-extrabold text-amber-700 tracking-wider">PX</span>
             </div>
           </div>
 
@@ -269,12 +283,12 @@
             </div>
 
             <div class="flex flex-col">
-              <p id="user-nick" class="font-black text-xs text-slate-900 truncate max-w-[110px]">
+              <p id="user-nick" class="font-bold text-xs text-slate-900 truncate max-w-[110px] font-subtitle">
                 Pixelizado
               </p>
               <div class="flex items-center gap-1">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Online</span>
+                <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider font-subtitle">Online</span>
               </div>
             </div>
           </div>
@@ -344,13 +358,13 @@
                 <i class="fa-solid fa-newspaper"></i>
               </div>
               <div>
-                <h2 class="font-extrabold text-base text-slate-800 uppercase tracking-wider leading-tight">
+                <h2 class="font-title font-extrabold text-base text-slate-800 uppercase tracking-wide leading-tight">
                   Timeline de Notícias
                 </h2>
-                <p class="text-[11px] text-slate-400 font-medium">Manchetes e artigos em destaque</p>
+                <p class="font-subtitle text-[11px] text-slate-400 font-semibold">Manchetes e artigos em destaque</p>
               </div>
             </div>
-            <span class="text-[10px] font-extrabold text-sky-700 bg-sky-50 border border-sky-200/80 px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1.5">
+            <span class="font-subtitle text-[10px] font-extrabold text-sky-700 bg-sky-50 border border-sky-200/80 px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1.5">
               <span class="w-1.5 h-1.5 rounded-full bg-sky-500 animate-ping"></span>
               Edição #04
             </span>
@@ -359,19 +373,20 @@
           <article class="space-y-5">
             <div class="text-center max-w-2xl mx-auto px-2 pt-1 pb-3 border-b border-dashed border-slate-200/80">
               <div class="inline-flex items-center gap-2 mb-2">
-                <span class="text-[10px] font-black text-[#0077cc] bg-sky-100/70 uppercase tracking-widest px-2.5 py-0.5 rounded-full border border-sky-200">
+                <span class="font-subtitle text-[10px] font-extrabold text-[#0077cc] bg-sky-100/70 uppercase tracking-widest px-2.5 py-0.5 rounded-full border border-sky-200">
                   <i class="fa-solid fa-star text-[8px] mr-1"></i> Fã-Site Oficial
                 </span>
               </div>
               
-              <h1 class="font-serif-title text-2xl sm:text-3xl font-black text-slate-900 leading-snug tracking-tight hover:text-sky-600 transition cursor-pointer">
+              <!-- TÍTULO PRINCIPAL (PLUS JAKARTA SANS) -->
+              <h1 class="font-title text-2xl sm:text-3xl font-black text-slate-900 leading-snug tracking-tight hover:text-sky-600 transition cursor-pointer">
                 A Era dos Fã-Sites Oficiais: O Futuro da Comunidade Pixelizada
               </h1>
               
-              <div class="flex items-center justify-center gap-3 mt-3 text-xs font-medium text-slate-500 flex-wrap">
+              <div class="flex items-center justify-center gap-3 mt-3 text-xs font-medium text-slate-500 flex-wrap font-body">
                 <div class="flex items-center gap-1.5">
                   <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=AdminPixel" class="w-5 h-5 rounded-full bg-slate-800 border border-sky-300" alt="Autor">
-                  <span class="font-bold text-slate-700">Redação Pixel</span>
+                  <span class="font-semibold text-slate-700">Redação Pixel</span>
                 </div>
                 <span class="text-slate-300">•</span>
                 <span class="flex items-center gap-1 text-slate-400">
@@ -393,22 +408,22 @@
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent"></div>
               
               <div class="absolute bottom-3 left-3 right-3 flex justify-between items-end">
-                <span class="bg-white/90 backdrop-blur-md text-slate-800 font-bold text-[11px] px-3 py-1 rounded-lg shadow-sm border border-white flex items-center gap-1.5">
+                <span class="bg-white/90 backdrop-blur-md text-slate-800 font-bold text-[11px] px-3 py-1 rounded-lg shadow-sm border border-white flex items-center gap-1.5 font-subtitle">
                   <i class="fa-solid fa-camera text-sky-500"></i> Evento Especial de Lançamento
                 </span>
                 <div class="flex gap-1.5">
-                  <span class="bg-black/60 backdrop-blur-md text-white font-semibold text-[11px] px-2.5 py-1 rounded-lg border border-white/20">
+                  <span class="bg-black/60 backdrop-blur-md text-white font-semibold text-[11px] px-2.5 py-1 rounded-lg border border-white/20 font-body">
                     <i class="fa-regular fa-eye mr-1"></i> 1.2k
                   </span>
                 </div>
               </div>
             </div>
 
-            <p class="text-slate-600 text-sm leading-relaxed font-normal px-1">
+            <p class="text-slate-600 text-sm leading-relaxed font-normal px-1 font-body">
               Confira as novidades exclusivas, eventos programados e melhorias da nossa plataforma para esta temporada. Junte-se aos membros da comunidade, acumule pixels virtuais no seu perfil e ajude a construir o melhor espaço de interação do hotel!
             </p>
 
-            <div class="flex items-center justify-between pt-4 border-t border-slate-100/80 text-xs">
+            <div class="flex items-center justify-between pt-4 border-t border-slate-100/80 text-xs font-body">
               <div class="flex items-center gap-2">
                 <button 
                   onclick="toggleLike(this)" 
@@ -428,7 +443,7 @@
 
               <button 
                 onclick="compartilharNoticia()" 
-                class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition group" 
+                class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition group font-subtitle" 
                 title="Compartilhar Artigo"
               >
                 <i class="fa-solid fa-share-nodes text-xs group-hover:rotate-12 transition-transform"></i>
@@ -446,14 +461,14 @@
                 <i class="fa-solid fa-calendar-check"></i>
               </div>
               <div>
-                <h2 class="font-extrabold text-base text-slate-800 uppercase tracking-wider leading-tight">
+                <h2 class="font-title font-extrabold text-base text-slate-800 uppercase tracking-wide leading-tight">
                   Atualizações & Eventos
                 </h2>
-                <p class="text-[11px] text-slate-400 font-medium">Sorteios ativos e agenda da rádio</p>
+                <p class="font-subtitle text-[11px] text-slate-400 font-semibold">Sorteios ativos e agenda da rádio</p>
               </div>
             </div>
             
-            <a href="#" class="text-xs font-bold text-sky-600 hover:text-sky-700 flex items-center gap-1 group">
+            <a href="#" class="font-subtitle text-xs font-bold text-sky-600 hover:text-sky-700 flex items-center gap-1 group">
               <span>Ver todos</span>
               <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
             </a>
@@ -465,26 +480,27 @@
               
               <div>
                 <div class="flex items-center justify-between gap-2 mb-3">
-                  <span class="bg-amber-100 text-amber-800 text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full border border-amber-200 flex items-center gap-1">
+                  <span class="font-subtitle bg-amber-100 text-amber-800 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full border border-amber-200 flex items-center gap-1">
                     <i class="fa-solid fa-gift text-amber-600"></i> Sorteio
                   </span>
-                  <span class="text-[10px] font-bold text-slate-400 bg-white px-2 py-0.5 rounded-md border border-slate-100">
+                  <span class="font-subtitle text-[10px] font-bold text-slate-400 bg-white px-2 py-0.5 rounded-md border border-slate-100">
                     <i class="fa-regular fa-clock mr-1 text-amber-500"></i> Faltam 2d
                   </span>
                 </div>
 
-                <h3 class="font-bold text-slate-900 text-sm group-hover:text-amber-600 transition leading-snug">
+                <!-- SUBTÍTULO EM CARD (MANROPE) -->
+                <h3 class="font-subtitle font-extrabold text-slate-900 text-sm group-hover:text-amber-600 transition leading-snug">
                   Passaporte VIP Semestral + 500 PX
                 </h3>
-                <p class="text-xs text-slate-500 mt-1 line-clamp-2">
+                <p class="text-xs text-slate-500 mt-1 line-clamp-2 font-body">
                   Comente na timeline oficial e participe automaticamente do sorteio da comunidade.
                 </p>
               </div>
 
               <div class="mt-4 pt-3 border-t border-slate-100">
-                <div class="flex justify-between items-center text-[10px] font-semibold text-slate-500 mb-1.5">
+                <div class="flex justify-between items-center text-[10px] font-bold text-slate-500 mb-1.5 font-subtitle">
                   <span>92 Participantes</span>
-                  <span class="text-amber-600 font-bold">Meta 100%</span>
+                  <span class="text-amber-600 font-extrabold">Meta 100%</span>
                 </div>
                 <div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
                   <div class="bg-gradient-to-r from-amber-400 to-yellow-500 h-1.5 rounded-full" style="width: 85%"></div>
@@ -497,18 +513,18 @@
 
               <div>
                 <div class="flex items-center justify-between gap-2 mb-3">
-                  <span class="bg-rose-100 text-rose-700 text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full border border-rose-200 flex items-center gap-1">
+                  <span class="font-subtitle bg-rose-100 text-rose-700 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full border border-rose-200 flex items-center gap-1">
                     <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span> AO VIVO
                   </span>
-                  <span class="text-[10px] font-bold text-slate-400 bg-white px-2 py-0.5 rounded-md border border-slate-100">
+                  <span class="font-subtitle text-[10px] font-bold text-slate-400 bg-white px-2 py-0.5 rounded-md border border-slate-100">
                     20:00 Horas
                   </span>
                 </div>
 
-                <h3 class="font-bold text-slate-900 text-sm group-hover:text-sky-600 transition leading-snug">
+                <h3 class="font-subtitle font-extrabold text-slate-900 text-sm group-hover:text-sky-600 transition leading-snug">
                   Torneio de Quiz na Rádio Pixel
                 </h3>
-                <p class="text-xs text-slate-500 mt-1 line-clamp-2">
+                <p class="text-xs text-slate-500 mt-1 line-clamp-2 font-body">
                   Sintonize com o locutor da noite e responda às perguntas no chat para faturar moedas.
                 </p>
               </div>
@@ -516,9 +532,9 @@
               <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
                 <div class="flex items-center gap-2">
                   <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=DJRadio" class="w-5 h-5 rounded-full bg-slate-900" alt="Locutor">
-                  <span class="text-[11px] font-bold text-slate-700">DJ Pixel</span>
+                  <span class="text-[11px] font-bold text-slate-700 font-subtitle">DJ Pixel</span>
                 </div>
-                <span class="text-[10px] font-extrabold text-sky-600 hover:underline cursor-pointer">Ouvir Rádio &rarr;</span>
+                <span class="font-subtitle text-[10px] font-extrabold text-sky-600 hover:underline cursor-pointer">Ouvir Rádio &rarr;</span>
               </div>
             </div>
           </div>
@@ -535,10 +551,10 @@
             <input 
               type="text" 
               placeholder="Pesquisar notícias, tópicos, membros..." 
-              class="w-full bg-slate-100/90 border border-slate-200 rounded-xl py-2.5 pl-3.5 pr-12 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white transition"
+              class="w-full bg-slate-100/90 border border-slate-200 rounded-xl py-2.5 pl-3.5 pr-12 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white transition font-body"
             >
             <div class="absolute right-2.5 top-2 flex items-center gap-1">
-              <span class="text-[9px] font-black text-slate-400 bg-white px-1.5 py-0.5 rounded border border-slate-200 hidden sm:inline">Ctrl K</span>
+              <span class="text-[9px] font-black text-slate-400 bg-white px-1.5 py-0.5 rounded border border-slate-200 hidden sm:inline font-subtitle">Ctrl K</span>
               <button type="submit" class="w-7 h-7 bg-sky-500 hover:bg-sky-600 text-white rounded-lg flex items-center justify-center transition text-xs shadow-sm">
                 <i class="fa-solid fa-magnifying-glass"></i>
               </button>
@@ -551,11 +567,11 @@
           <div class="card-header-title pb-3 mb-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
               <i class="fa-solid fa-trophy text-amber-500 text-sm"></i>
-              <h3 class="font-extrabold text-xs text-slate-800 uppercase tracking-wider">
+              <h3 class="font-title font-extrabold text-xs text-slate-800 uppercase tracking-wide">
                 Usuários Destaque
               </h3>
             </div>
-            <span class="text-[9px] font-black text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded uppercase">
+            <span class="font-subtitle text-[9px] font-extrabold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded uppercase">
               Top Mês
             </span>
           </div>
@@ -575,16 +591,16 @@
 
               <div class="flex-1 min-w-0">
                 <div class="flex items-center gap-1.5">
-                  <p class="font-black text-xs text-slate-900 truncate">KingPixel</p>
-                  <span class="text-[9px] bg-amber-200/80 text-amber-900 font-bold px-1.5 py-0.2 rounded">Nível 42</span>
+                  <p class="font-title font-extrabold text-xs text-slate-900 truncate">KingPixel</p>
+                  <span class="font-subtitle text-[9px] bg-amber-200/80 text-amber-900 font-bold px-1.5 py-0.2 rounded">Nível 42</span>
                 </div>
-                <p class="text-[11px] font-bold text-amber-800 mt-0.5 flex items-center gap-1">
+                <p class="font-subtitle text-[11px] font-extrabold text-amber-800 mt-0.5 flex items-center gap-1">
                   <span class="habbo-coin scale-75 inline-block -ml-1"></span> 1.420 PX
                 </p>
               </div>
             </div>
 
-            <div class="mt-2.5 pt-2 border-t border-amber-200/60 flex items-center justify-between text-[9px] font-bold text-amber-800">
+            <div class="mt-2.5 pt-2 border-t border-amber-200/60 flex items-center justify-between text-[9px] font-bold text-amber-800 font-subtitle">
               <span>Líder de Atividade</span>
               <span class="text-amber-600">98% XP</span>
             </div>
@@ -593,26 +609,26 @@
           <div class="space-y-2">
             <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50/80 border border-slate-100 hover:bg-white hover:border-slate-200 transition">
               <div class="flex items-center gap-2.5 min-w-0">
-                <span class="font-black text-slate-400 text-xs w-4 text-center">2</span>
+                <span class="font-title font-extrabold text-slate-400 text-xs w-4 text-center">2</span>
                 <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=StarGirl" class="w-8 h-8 rounded-full bg-slate-800 border border-slate-300" alt="Top 2">
                 <div class="truncate">
-                  <p class="font-bold text-xs text-slate-800 truncate">StarGirl</p>
-                  <p class="text-[9px] text-slate-400">Ativa há 1h</p>
+                  <p class="font-subtitle font-bold text-xs text-slate-800 truncate">StarGirl</p>
+                  <p class="text-[9px] text-slate-400 font-body">Ativa há 1h</p>
                 </div>
               </div>
-              <span class="font-black text-sky-600 text-xs bg-sky-50 border border-sky-100 px-2 py-0.5 rounded-lg">980 PX</span>
+              <span class="font-subtitle font-extrabold text-sky-600 text-xs bg-sky-50 border border-sky-100 px-2 py-0.5 rounded-lg">980 PX</span>
             </div>
 
             <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50/80 border border-slate-100 hover:bg-white hover:border-slate-200 transition">
               <div class="flex items-center gap-2.5 min-w-0">
-                <span class="font-black text-amber-700/60 text-xs w-4 text-center">3</span>
+                <span class="font-title font-extrabold text-amber-700/60 text-xs w-4 text-center">3</span>
                 <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=NeoUser" class="w-8 h-8 rounded-full bg-slate-800 border border-slate-300" alt="Top 3">
                 <div class="truncate">
-                  <p class="font-bold text-xs text-slate-800 truncate">NeoUser</p>
-                  <p class="text-[9px] text-slate-400">Ativo há 3h</p>
+                  <p class="font-subtitle font-bold text-xs text-slate-800 truncate">NeoUser</p>
+                  <p class="text-[9px] text-slate-400 font-body">Ativo há 3h</p>
                 </div>
               </div>
-              <span class="font-black text-sky-600 text-xs bg-sky-50 border border-sky-100 px-2 py-0.5 rounded-lg">850 PX</span>
+              <span class="font-subtitle font-extrabold text-sky-600 text-xs bg-sky-50 border border-sky-100 px-2 py-0.5 rounded-lg">850 PX</span>
             </div>
           </div>
         </section>
@@ -622,11 +638,11 @@
           <div class="card-header-title pb-3 mb-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
               <i class="fa-solid fa-handshake text-sky-500 text-sm"></i>
-              <h3 class="font-extrabold text-xs text-slate-800 uppercase tracking-wider">
+              <h3 class="font-title font-extrabold text-xs text-slate-800 uppercase tracking-wide">
                 Parceiros Oficiais
               </h3>
             </div>
-            <span class="text-[10px] text-slate-400 font-semibold">Alianças</span>
+            <span class="font-subtitle text-[10px] text-slate-400 font-semibold">Alianças</span>
           </div>
 
           <div class="grid grid-cols-2 gap-2.5">
@@ -634,8 +650,8 @@
               <div class="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-sky-500 text-sm shadow-2xs group-hover:scale-110 transition-transform mb-1.5">
                 <i class="fa-solid fa-hotel"></i>
               </div>
-              <span class="font-bold text-xs text-slate-800 group-hover:text-sky-600 transition">Habbo Hotel</span>
-              <span class="text-[9px] text-emerald-600 font-semibold mt-0.5 flex items-center gap-1">
+              <span class="font-subtitle font-bold text-xs text-slate-800 group-hover:text-sky-600 transition">Habbo Hotel</span>
+              <span class="font-subtitle text-[9px] text-emerald-600 font-semibold mt-0.5 flex items-center gap-1">
                 <span class="w-1 h-1 rounded-full bg-emerald-500"></span> Online
               </span>
             </a>
@@ -644,24 +660,24 @@
               <div class="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-indigo-500 text-sm shadow-2xs group-hover:scale-110 transition-transform mb-1.5">
                 <i class="fa-solid fa-radio"></i>
               </div>
-              <span class="font-bold text-xs text-slate-800 group-hover:text-indigo-600 transition">Rádio Pixel</span>
-              <span class="text-[9px] text-indigo-600 font-semibold mt-0.5 flex items-center gap-1">
+              <span class="font-subtitle font-bold text-xs text-slate-800 group-hover:text-indigo-600 transition">Rádio Pixel</span>
+              <span class="font-subtitle text-[9px] text-indigo-600 font-semibold mt-0.5 flex items-center gap-1">
                 <span class="w-1 h-1 rounded-full bg-indigo-500"></span> No Ar
               </span>
             </a>
           </div>
         </section>
 
-        <!-- 4. NOVO: RANKING DE OUVINTES (ABAIXO DE PARCEIROS) -->
+        <!-- 4. RANKING DE OUVINTES (ABAIXO DE PARCEIROS) -->
         <section class="pixel-card pixel-card-hover p-5">
           <div class="card-header-title pb-3 mb-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
               <i class="fa-solid fa-headphones text-rose-500 text-sm"></i>
-              <h3 class="font-extrabold text-xs text-slate-800 uppercase tracking-wider">
+              <h3 class="font-title font-extrabold text-xs text-slate-800 uppercase tracking-wide">
                 Top Ouvintes Rádio
               </h3>
             </div>
-            <span class="text-[9px] font-black text-rose-600 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded uppercase flex items-center gap-1">
+            <span class="font-subtitle text-[9px] font-extrabold text-rose-600 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded uppercase flex items-center gap-1">
               <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span> Sintonizados
             </span>
           </div>
@@ -672,16 +688,16 @@
               <div class="flex items-center gap-2.5 min-w-0">
                 <div class="relative">
                   <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=RadioFan1" class="w-8 h-8 rounded-full bg-slate-900 border-2 border-rose-400" alt="Ouvinte 1">
-                  <span class="absolute -bottom-1 -right-1 bg-rose-500 text-white font-black text-[8px] w-3.5 h-3.5 rounded-full flex items-center justify-center border border-white">1</span>
+                  <span class="absolute -bottom-1 -right-1 bg-rose-500 text-white font-black text-[8px] w-3.5 h-3.5 rounded-full flex items-center justify-center border border-white font-subtitle">1</span>
                 </div>
                 <div class="truncate">
-                  <p class="font-bold text-xs text-slate-900 truncate">VibeMaster</p>
-                  <p class="text-[9px] font-semibold text-rose-600 flex items-center gap-1">
+                  <p class="font-subtitle font-bold text-xs text-slate-900 truncate">VibeMaster</p>
+                  <p class="text-[9px] font-semibold text-rose-600 flex items-center gap-1 font-body">
                     <i class="fa-solid fa-clock text-[8px]"></i> 48h Sintonizado
                   </p>
                 </div>
               </div>
-              <span class="text-[10px] font-black bg-white border border-rose-200 px-2 py-1 rounded-lg text-slate-700 shadow-2xs">
+              <span class="font-subtitle text-[10px] font-extrabold bg-white border border-rose-200 px-2 py-1 rounded-lg text-slate-700 shadow-2xs">
                 +150 PX
               </span>
             </div>
@@ -689,31 +705,31 @@
             <!-- Ouvinte #2 -->
             <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between hover:bg-white transition">
               <div class="flex items-center gap-2.5 min-w-0">
-                <span class="font-bold text-slate-400 text-xs w-4 text-center">2</span>
+                <span class="font-title font-extrabold text-slate-400 text-xs w-4 text-center">2</span>
                 <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=BeatLover" class="w-7 h-7 rounded-full bg-slate-800" alt="Ouvinte 2">
                 <div class="truncate">
-                  <p class="font-semibold text-xs text-slate-800 truncate">BeatLover</p>
-                  <p class="text-[9px] text-slate-400">32h ouvindo</p>
+                  <p class="font-subtitle font-semibold text-xs text-slate-800 truncate">BeatLover</p>
+                  <p class="text-[9px] text-slate-400 font-body">32h ouvindo</p>
                 </div>
               </div>
-              <span class="text-[10px] font-bold text-slate-500">32h</span>
+              <span class="font-subtitle text-[10px] font-bold text-slate-500">32h</span>
             </div>
 
             <!-- Ouvinte #3 -->
             <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between hover:bg-white transition">
               <div class="flex items-center gap-2.5 min-w-0">
-                <span class="font-bold text-slate-400 text-xs w-4 text-center">3</span>
+                <span class="font-title font-extrabold text-slate-400 text-xs w-4 text-center">3</span>
                 <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=DjLover" class="w-7 h-7 rounded-full bg-slate-800" alt="Ouvinte 3">
                 <div class="truncate">
-                  <p class="font-semibold text-xs text-slate-800 truncate">CarolPixel</p>
-                  <p class="text-[9px] text-slate-400">27h ouvindo</p>
+                  <p class="font-subtitle font-semibold text-xs text-slate-800 truncate">CarolPixel</p>
+                  <p class="text-[9px] text-slate-400 font-body">27h ouvindo</p>
                 </div>
               </div>
-              <span class="text-[10px] font-bold text-slate-500">27h</span>
+              <span class="font-subtitle text-[10px] font-bold text-slate-500">27h</span>
             </div>
           </div>
 
-          <button class="w-full mt-3 py-2 bg-rose-50 hover:bg-rose-100 text-rose-600 font-bold text-xs rounded-xl border border-rose-200/80 transition flex items-center justify-center gap-2">
+          <button class="w-full mt-3 py-2 bg-rose-50 hover:bg-rose-100 text-rose-600 font-subtitle font-bold text-xs rounded-xl border border-rose-200/80 transition flex items-center justify-center gap-2">
             <i class="fa-solid fa-play text-[10px]"></i> Sintonizar para Pontuar
           </button>
         </section>
@@ -730,14 +746,14 @@
             <i class="fa-solid fa-id-card"></i>
           </div>
           <div>
-            <h2 class="font-extrabold text-lg text-slate-800 uppercase tracking-wider leading-tight">
+            <h2 class="font-title font-extrabold text-lg text-slate-800 uppercase tracking-wide leading-tight">
               Faça Parte da Equipe
             </h2>
-            <p class="text-xs text-slate-500 font-medium">Inscreva-se para integrar a equipe oficial do nosso fã-site</p>
+            <p class="font-subtitle text-xs text-slate-500 font-semibold">Inscreva-se para integrar a equipe oficial do nosso fã-site</p>
           </div>
         </div>
         
-        <div class="flex gap-1.5 flex-wrap">
+        <div class="flex gap-1.5 flex-wrap font-subtitle">
           <span class="bg-sky-50 text-sky-700 text-[10px] font-extrabold px-2.5 py-1 rounded-lg border border-sky-200">DJ</span>
           <span class="bg-emerald-50 text-emerald-700 text-[10px] font-extrabold px-2.5 py-1 rounded-lg border border-emerald-200">Redator</span>
           <span class="bg-purple-50 text-purple-700 text-[10px] font-extrabold px-2.5 py-1 rounded-lg border border-purple-200">Moderador</span>
@@ -751,7 +767,7 @@
           
           <!-- CAMPO: NOME -->
           <div class="space-y-1.5">
-            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider font-subtitle">
               Nome Completo / Habbo <span class="text-rose-500">*</span>
             </label>
             <div class="relative">
@@ -761,14 +777,14 @@
                 id="cand-nome" 
                 required 
                 placeholder="Ex: Gabriel / KingPixel"
-                class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 pl-9 pr-3 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white transition"
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 pl-9 pr-3 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white transition font-body"
               >
             </div>
           </div>
 
           <!-- CAMPO: IDADE -->
           <div class="space-y-1.5">
-            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider font-subtitle">
               Sua Idade <span class="text-rose-500">*</span>
             </label>
             <div class="relative">
@@ -780,14 +796,14 @@
                 max="99" 
                 required 
                 placeholder="Ex: 18 anos"
-                class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 pl-9 pr-3 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white transition"
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 pl-9 pr-3 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white transition font-body"
               >
             </div>
           </div>
 
           <!-- CAMPO: DISCORD -->
           <div class="space-y-1.5">
-            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider font-subtitle">
               Discord (Tag/User) <span class="text-rose-500">*</span>
             </label>
             <div class="relative">
@@ -797,14 +813,14 @@
                 id="cand-discord" 
                 required 
                 placeholder="Ex: usuario#0000 ou @usuario"
-                class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 pl-9 pr-3 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white transition"
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 pl-9 pr-3 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white transition font-body"
               >
             </div>
           </div>
 
           <!-- CAMPO: CARGO DE INTERESSE -->
           <div class="space-y-1.5">
-            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider font-subtitle">
               Vaga Desejada <span class="text-rose-500">*</span>
             </label>
             <div class="relative">
@@ -812,7 +828,7 @@
               <select 
                 id="cand-vaga" 
                 required
-                class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 pl-9 pr-3 text-xs text-slate-800 focus:outline-none focus:border-sky-500 focus:bg-white transition appearance-none cursor-pointer"
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 pl-9 pr-3 text-xs text-slate-800 focus:outline-none focus:border-sky-500 focus:bg-white transition appearance-none cursor-pointer font-body"
               >
                 <option value="" disabled selected>Selecione um cargo...</option>
                 <option value="DJ">🎧 Locutor / DJ da Rádio</option>
@@ -829,7 +845,7 @@
 
         <!-- CAMPO: OBSERVAÇÕES E EXPERIÊNCIA -->
         <div class="space-y-1.5">
-          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider font-subtitle">
             Motivo da Candidatura & Experiências Anteriores <span class="text-rose-500">*</span>
           </label>
           <textarea 
@@ -837,19 +853,19 @@
             rows="4" 
             required
             placeholder="Conte-nos por que você deseja entrar para o fã-site, quais programas/ferramentas domina (SAM Broadcaster, Photoshop, VS Code, etc.) e sua disponibilidade de horário..."
-            class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white transition resize-y"
+            class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white transition resize-y font-body"
           ></textarea>
         </div>
 
         <!-- BOTAO ENVIAR -->
         <div class="flex items-center justify-between pt-2">
-          <p class="text-[11px] text-slate-400">
+          <p class="text-[11px] text-slate-400 font-body">
             <i class="fa-solid fa-lock text-slate-300 mr-1"></i> Seus dados serão avaliados com sigilo pela equipe.
           </p>
 
           <button 
             type="submit" 
-            class="px-6 py-3 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-extrabold text-xs rounded-xl shadow-md hover:shadow-lg transition transform active:scale-95 flex items-center gap-2"
+            class="px-6 py-3 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-subtitle font-extrabold text-xs rounded-xl shadow-md hover:shadow-lg transition transform active:scale-95 flex items-center gap-2"
           >
             <i class="fa-solid fa-paper-plane"></i>
             <span>Enviar Candidatura</span>
@@ -870,17 +886,17 @@
           <i class="fa-solid fa-cube"></i>
         </div>
         <div>
-          <p class="font-black text-sm text-amber-950 uppercase tracking-wide">
+          <p class="font-title font-extrabold text-sm text-amber-950 uppercase tracking-wide">
             Universo Pixel Fã-Site
           </p>
-          <p class="text-xs font-semibold text-amber-900/80">
+          <p class="text-xs font-semibold text-amber-900/80 font-subtitle">
             Lançado em <strong class="text-amber-950">2026</strong> • Fundador: <strong class="text-amber-950">Diesly</strong>
           </p>
         </div>
       </div>
 
       <!-- CENTRO: AVISO DE ISENÇÃO -->
-      <p class="text-[11px] text-amber-950/70 text-center max-w-md font-medium">
+      <p class="text-[11px] text-amber-950/70 text-center max-w-md font-medium font-body">
         Este é um fã-site não oficial dedicado à comunidade. Não possuímos vínculo direto ou filiação com a Sulake Corporation Oy.
       </p>
 
@@ -911,27 +927,27 @@
   </footer>
 
   <!-- MODAL DE AVATAR -->
-  <div id="modal-avatar" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden p-4">
+  <div id="modal-avatar" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden p-4 font-body">
     <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-sm w-full p-5 shadow-2xl relative text-left text-white">
       <button onclick="fecharModalAvatar()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-base">
         <i class="fa-solid fa-xmark"></i>
       </button>
 
-      <h3 class="font-bold text-base text-white mb-1">Editar Foto de Perfil</h3>
-      <p class="text-xs text-slate-400 mb-3">Cole a URL da sua imagem (PNG, JPG ou GIF) abaixo:</p>
+      <h3 class="font-title font-bold text-base text-white mb-1">Editar Foto de Perfil</h3>
+      <p class="text-xs text-slate-400 mb-3 font-body">Cole a URL da sua imagem (PNG, JPG ou GIF) abaixo:</p>
 
       <input 
         type="url" 
         id="input-avatar-url" 
         placeholder="https://exemplo.com/sua-foto.png"
-        class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#38b6ff] mb-4"
+        class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#38b6ff] mb-4 font-body"
       >
 
       <div class="flex gap-2">
-        <button onclick="fecharModalAvatar()" class="w-1/2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium py-2 rounded-xl text-xs transition">
+        <button onclick="fecharModalAvatar()" class="w-1/2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-subtitle font-semibold py-2 rounded-xl text-xs transition">
           Cancelar
         </button>
-        <button onclick="salvarNovoAvatar()" class="w-1/2 bg-[#38b6ff] hover:bg-sky-400 text-white font-bold py-2 rounded-xl text-xs transition">
+        <button onclick="salvarNovoAvatar()" class="w-1/2 bg-[#38b6ff] hover:bg-sky-400 text-white font-subtitle font-bold py-2 rounded-xl text-xs transition">
           Salvar
         </button>
       </div>
@@ -1011,8 +1027,7 @@
       const vaga = document.getElementById('cand-vaga').value;
       const obs = document.getElementById('cand-obs').value;
 
-      // Exemplo de integração por e-mail via mailto ou Webhook
-      const emailDestino = "recrutamento@universopixel.com"; // Substituir pelo seu e-mail
+      const emailDestino = "recrutamento@universopixel.com";
       const assunto = encodeURIComponent(`[CANDIDATURA ${vaga.toUpperCase()}] - ${nome}`);
       const corpo = encodeURIComponent(
         `Nova candidatura recebida pelo Portal Universo Pixel:\n\n` +
@@ -1023,10 +1038,9 @@
         `• Experiência e Motivação:\n${obs}`
       );
 
-      // Abre o cliente de e-mail padrão configurado com todos os dados preenchidos
       window.location.href = `mailto:${emailDestino}?subject=${assunto}&body=${corpo}`;
 
-      alert(`Obrigado ${nome}! Sua candidatura para a vaga de ${vaga} foi gerada com sucesso. Se o seu e-mail não abrir automaticamente, você poderá enviar via Discord!`);
+      alert(`Obrigado ${nome}! Sua candidatura para a vaga de ${vaga} foi gerada com sucesso.`);
       document.getElementById('form-candidatura').reset();
     }
   </script>
