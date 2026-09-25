@@ -12,7 +12,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Manrope:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 
   <style>
     .font-title { font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -29,6 +31,7 @@
     .glass-capsule {
       background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border: 1px solid rgba(255, 255, 255, 0.5);
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     }
@@ -41,7 +44,7 @@
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between font-body bg-[#2bb7f6]">
+<body class="min-h-screen flex flex-col justify-between font-body bg-[#2bb7f6] selection:bg-sky-500 selection:text-white">
 
   <!-- HEADER AMARELO -->
   <header class="bg-habbo-yellow px-4 sm:px-8 py-3 relative z-20 shadow-md">
@@ -58,7 +61,7 @@
               class="w-full h-full rounded-full object-cover bg-slate-900"
             >
           </div>
-          <span class="absolute -bottom-0.5 -right-0.5 flex h-3.5 w-3.5">
+          <span class="absolute -bottom-0.5 -right-0.5 flex h-3.5 w-3.5 pointer-events-none">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-rose-500 border-2 border-white"></span>
           </span>
@@ -157,7 +160,7 @@
   </nav>
 
   <!-- CONTEÚDO PRINCIPAL -->
-  <main class="max-w-7xl mx-auto w-full p-4 grid grid-cols-1 lg:grid-cols-3 gap-6 my-4">
+  <main class="max-w-7xl mx-auto w-full p-4 grid grid-cols-1 lg:grid-cols-3 gap-6 my-4 flex-grow">
     <!-- TIMELINE DE NOTÍCIAS -->
     <section class="lg:col-span-2 bg-white rounded-2xl p-6 shadow-sm">
       <h2 class="font-title text-lg font-bold text-slate-800 mb-2">Timeline de Notícias</h2>
