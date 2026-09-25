@@ -56,9 +56,9 @@
       animation: spin-record 3s linear infinite;
     }
 
-    /* MOEDA PIXELIZADA DOURADA HABBO */
+    /* MOEDA PIXELIZADA DOURADA HABBO (CORRIGIDA) */
     .habbo-coin {
-      width: 22 h;
+      width: 22px;
       height: 22px;
       background: radial-gradient(circle, #ffe066 30%, #f59e0b 80%, #b45309 100%);
       border: 1.5px solid #78350f;
@@ -78,10 +78,13 @@
 </head>
 <body class="min-h-screen bg-[#0d131f]">
 
+  <!-- HEADER -->
   <header class="bg-habbo-yellow px-4 sm:px-8 py-3 relative z-20">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3">
       
+      <!-- ESQUERDA: AUTODJ COM DISCO DE DJ EM ROTAÇÃO ANIMADA -->
       <div class="glass-capsule glass-capsule-hover rounded-full p-1.5 pr-5 flex items-center gap-3.5 w-full md:w-auto">
+        <!-- Avatar do DJ com Moldura Neon e Badge LIVE -->
         <div class="relative flex-shrink-0">
           <div class="w-10 h-10 rounded-full p-0.5 bg-gradient-to-tr from-[#38b6ff] to-cyan-300 shadow-md">
             <img 
@@ -97,8 +100,10 @@
           </span>
         </div>
 
+        <!-- Info do DJ & Disco em Movimento -->
         <div class="flex flex-col justify-center leading-tight">
           <div class="flex items-center gap-2">
+            <!-- Badge com Ícone de Disco Giratório -->
             <span class="bg-[#38b6ff]/15 text-[#0077cc] text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full border border-[#38b6ff]/30 flex items-center gap-1.5">
               <span class="w-3.5 h-3.5 rounded-full bg-slate-900 border border-sky-400 flex items-center justify-center pixel-vinyl-spin">
                 <span class="w-1 h-1 rounded-full bg-amber-400"></span>
@@ -118,23 +123,30 @@
         </div>
       </div>
 
+      <!-- DIREITA: PERFIL + MOEDA DOURADA PIXELIZADA HABBO -->
       <div class="flex items-center gap-2 w-full md:w-auto justify-end">
         
+        <!-- CÁPSULA UNIFICADA -->
         <div class="glass-capsule glass-capsule-hover rounded-full p-1.5 flex items-center gap-3">
           
+          <!-- Saldo PX com Moeda Dourada Habbo -->
           <div class="flex items-center gap-2 bg-gradient-to-r from-amber-50 to-yellow-100/80 px-3 py-1 rounded-full border border-amber-200/80 shadow-inner">
-            <div class="habbo-coin rounded-full flex items-center justify-center font-black text-[9px] text-amber-950 select-none">
+            <!-- Ícone de Moeda Dourada Estilo Habbo Hotel -->
+            <div class="habbo-coin rounded-full flex-shrink-0 flex items-center justify-center font-black text-[9px] text-amber-950 select-none">
               $
             </div>
-            <div class="flex items-baseline gap-1">
+            <div class="flex items-center gap-1 leading-none">
               <span id="user-pixels" class="font-black text-xs text-amber-950">0</span>
               <span class="text-[9px] font-black text-amber-700 tracking-wider">PX</span>
             </div>
           </div>
 
+          <!-- Divisor Vertical -->
           <div class="h-5 w-[1px] bg-slate-200"></div>
 
+          <!-- Perfil do Usuário -->
           <div class="flex items-center gap-2 pr-2">
+            <!-- Avatar Interativo -->
             <div 
               onclick="abrirModalAvatar()" 
               title="Alterar foto de perfil" 
@@ -164,6 +176,7 @@
 
         </div>
 
+        <!-- BOTÃO SAIR -->
         <button 
           onclick="fazerLogout()" 
           title="Sair do Portal" 
@@ -177,6 +190,7 @@
     </div>
   </header>
 
+  <!-- MODAL DE ALTERAÇÃO DA FOTO DE PERFIL -->
   <div id="modal-avatar" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden p-4">
     <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-sm w-full p-5 shadow-2xl relative text-left">
       <button onclick="fecharModalAvatar()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-base">
@@ -205,7 +219,8 @@
   </div>
 
   <main class="max-w-7xl mx-auto px-6 py-10">
-    </main>
+    <!-- Conteúdo principal do portal -->
+  </main>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
