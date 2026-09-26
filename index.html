@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -8,42 +10,41 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Pixelizados — Entre na Comunidade</title>
+  <title>Pixelizados - Entrar na Comunidade</title>
 
-  <!-- Tailwind -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Fonte -->
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet"
   >
 
   <style>
 
-    * {
-      box-sizing: border-box;
-    }
+    /* =====================================================
+       BASE
+    ===================================================== */
 
     html,
     body {
+
       margin: 0;
       padding: 0;
+
+      width: 100%;
       min-height: 100%;
+
+      overflow-x: hidden;
     }
 
+
     body {
+
       font-family:
         'Plus Jakarta Sans',
         sans-serif;
@@ -51,24 +52,32 @@
       background:
         linear-gradient(
           180deg,
-          #dff4ff 0%,
-          #edf9ff 45%,
-          #eaf6fc 100%
+          #1599dc 0%,
+          #48bdf0 48%,
+          #aee7fa 100%
         );
 
       color: #243447;
-
-      min-height: 100vh;
-
-      overflow-x: hidden;
     }
 
-    /* =========================================
-       FUNDO PIXEL
-    ========================================= */
 
-    body::before {
-      content: "";
+    * {
+      box-sizing: border-box;
+    }
+
+
+    .pixel-art {
+
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
+
+
+    /* =====================================================
+       CÉU / PIXEL GRID
+    ===================================================== */
+
+    .sky-grid {
 
       position: fixed;
 
@@ -76,208 +85,217 @@
 
       pointer-events: none;
 
-      opacity: 0.28;
+      opacity: 0.14;
 
       background-image:
+
         linear-gradient(
-          rgba(39,136,202,0.08) 1px,
+          rgba(255,255,255,0.35) 1px,
           transparent 1px
         ),
+
         linear-gradient(
           90deg,
-          rgba(39,136,202,0.08) 1px,
+          rgba(255,255,255,0.35) 1px,
           transparent 1px
         );
 
-      background-size: 24px 24px;
+      background-size: 32px 32px;
 
       z-index: 0;
     }
 
-    /* =========================================
-       TOPO
-       Espaço propositalmente limpo
-    ========================================= */
 
-    .top-bar {
-      position: relative;
+    /* =====================================================
+       NUVENS
+    ===================================================== */
 
-      width: 100%;
+    .cloud {
 
-      height: 86px;
-
-      background: #ffffff;
-
-      border-bottom:
-        3px solid #55b9f5;
-
-      z-index: 5;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-    }
-
-    /*
-      Espaço reservado para o futuro AutoDJ.
-      Por enquanto permanece completamente vazio.
-    */
-
-    /* =========================================
-       ELEMENTOS DECORATIVOS DO FUNDO
-    ========================================= */
-
-    .pixel-decoration {
-      position: fixed;
+      position: absolute;
 
       pointer-events: none;
 
-      z-index: 1;
+      user-select: none;
 
-      opacity: 0.7;
+      font-size: 55px;
+
+      opacity: 0.72;
+
+      filter:
+        drop-shadow(
+          3px 4px 0
+          rgba(60, 145, 190, 0.12)
+        );
     }
 
-    .pixel-decoration.one {
+
+    .cloud-1 {
+
+      top: 45px;
+      left: 4%;
+
+      animation:
+        floatCloud 22s ease-in-out infinite;
+    }
+
+
+    .cloud-2 {
+
+      top: 105px;
+      right: 6%;
+
+      font-size: 72px;
+
+      opacity: 0.5;
+
+      animation:
+        floatCloudReverse 27s ease-in-out infinite;
+    }
+
+
+    .cloud-3 {
+
+      top: 45%;
+      left: -25px;
+
+      font-size: 80px;
+
+      opacity: 0.32;
+
+      animation:
+        floatCloud 30s ease-in-out infinite;
+    }
+
+
+    .cloud-4 {
+
+      bottom: 15%;
+      right: -20px;
+
+      font-size: 70px;
+
+      opacity: 0.35;
+
+      animation:
+        floatCloudReverse 25s ease-in-out infinite;
+    }
+
+
+    @keyframes floatCloud {
+
+      0% {
+        transform: translateX(-15px);
+      }
+
+      50% {
+        transform: translateX(20px);
+      }
+
+      100% {
+        transform: translateX(-15px);
+      }
+
+    }
+
+
+    @keyframes floatCloudReverse {
+
+      0% {
+        transform: translateX(20px);
+      }
+
+      50% {
+        transform: translateX(-20px);
+      }
+
+      100% {
+        transform: translateX(20px);
+      }
+
+    }
+
+
+    /* =====================================================
+       PIXELS DECORATIVOS
+    ===================================================== */
+
+    .pixel-square {
+
+      position: absolute;
+
+      width: 14px;
+      height: 14px;
+
+      background: #f6c700;
+
+      box-shadow:
+        4px 4px 0 rgba(23,108,168,0.22);
+
+      pointer-events: none;
+    }
+
+
+    .pixel-square.blue {
+
+      background: #168fd0;
+
+      box-shadow:
+        4px 4px 0 rgba(255,255,255,0.3);
+    }
+
+
+    .pixel-1 {
+
+      top: 25%;
+      left: 11%;
+
+      transform: rotate(12deg);
+    }
+
+
+    .pixel-2 {
+
+      top: 34%;
+      right: 13%;
+
+      transform: rotate(-8deg);
+    }
+
+
+    .pixel-3 {
+
+      bottom: 26%;
+      left: 15%;
+
+      width: 10px;
+      height: 10px;
+
+      transform: rotate(15deg);
+    }
+
+
+    .pixel-4 {
+
+      bottom: 31%;
+      right: 17%;
+
       width: 18px;
       height: 18px;
 
-      background: #ffd447;
-
-      left: 7%;
-      top: 18%;
+      transform: rotate(-10deg);
     }
 
-    .pixel-decoration.two {
-      width: 12px;
-      height: 12px;
 
-      background: #55b9f5;
-
-      right: 9%;
-      top: 27%;
-    }
-
-    .pixel-decoration.three {
-      width: 15px;
-      height: 15px;
-
-      background: #55b9f5;
-
-      left: 11%;
-      bottom: 22%;
-    }
-
-    .pixel-decoration.four {
-      width: 20px;
-      height: 20px;
-
-      background: #ffd447;
-
-      right: 6%;
-      bottom: 18%;
-    }
-
-    /* =========================================
-       NUVENS
-    ========================================= */
-
-    .cloud {
-      position: fixed;
-
-      background: #ffffff;
-
-      opacity: 0.6;
-
-      pointer-events: none;
-
-      z-index: 0;
-    }
-
-    .cloud.one {
-      width: 100px;
-      height: 26px;
-
-      top: 18%;
-      left: -20px;
-    }
-
-    .cloud.one::before {
-      content: "";
-
-      position: absolute;
-
-      width: 40px;
-      height: 40px;
-
-      background: #ffffff;
-
-      left: 22px;
-      top: -18px;
-    }
-
-    .cloud.one::after {
-      content: "";
-
-      position: absolute;
-
-      width: 50px;
-      height: 50px;
-
-      background: #ffffff;
-
-      left: 52px;
-      top: -28px;
-    }
-
-    .cloud.two {
-      width: 120px;
-      height: 28px;
-
-      top: 36%;
-      right: -30px;
-    }
-
-    .cloud.two::before {
-      content: "";
-
-      position: absolute;
-
-      width: 44px;
-      height: 44px;
-
-      background: #ffffff;
-
-      left: 25px;
-      top: -18px;
-    }
-
-    .cloud.two::after {
-      content: "";
-
-      position: absolute;
-
-      width: 55px;
-      height: 55px;
-
-      background: #ffffff;
-
-      left: 57px;
-      top: -28px;
-    }
-
-    /* =========================================
-       CONTAINER
-    ========================================= */
+    /* =====================================================
+       CONTEÚDO PRINCIPAL
+    ===================================================== */
 
     .page-wrapper {
+
       position: relative;
 
-      z-index: 3;
-
-      min-height:
-        calc(100vh - 86px);
+      min-height: 100vh;
 
       display: flex;
 
@@ -285,86 +303,228 @@
 
       align-items: center;
 
+      justify-content: space-between;
+
+      overflow: hidden;
+
+      z-index: 1;
+    }
+
+
+    /* =====================================================
+       TOPO
+    ===================================================== */
+
+    .top-bar {
+
+      width: 100%;
+
+      min-height: 72px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      position: relative;
+
+      z-index: 10;
+
+      background: rgba(255,255,255,0.95);
+
+      border-bottom: 3px solid #176ca8;
+
+      box-shadow:
+        0 4px 0
+        rgba(23,108,168,0.15);
+    }
+
+
+    .top-bar::before {
+
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      bottom: -8px;
+
+      height: 5px;
+
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #f6c700 0,
+          #f6c700 24px,
+          #ffd92b 24px,
+          #ffd92b 48px
+        );
+    }
+
+
+    .top-decoration {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      color: #176ca8;
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.08em;
+    }
+
+
+    .top-decoration-icon {
+
+      width: 12px;
+      height: 12px;
+
+      background: #f6c700;
+
+      box-shadow:
+        3px 3px 0 #176ca8;
+
+      transform: rotate(45deg);
+    }
+
+
+    /* =====================================================
+       ÁREA CENTRAL
+    ===================================================== */
+
+    .main-area {
+
+      width: 100%;
+
+      flex: 1;
+
+      display: flex;
+
+      align-items: center;
+
       justify-content: center;
 
       padding:
-        55px 20px 90px;
+        55px
+        18px
+        65px;
+
+      position: relative;
+
+      z-index: 5;
     }
 
-    /* =========================================
-       CARD PRINCIPAL
-    ========================================= */
+
+    /* =====================================================
+       CARD FÃ-SITE
+    ===================================================== */
 
     .fan-card {
+
       position: relative;
 
       width: 100%;
 
-      max-width: 510px;
+      max-width: 450px;
 
       background: #ffffff;
 
-      border:
-        3px solid #55b9f5;
-
-      border-radius: 4px;
+      border: 3px solid #176ca8;
 
       box-shadow:
-        8px 8px 0 #2788ca;
+        8px 8px 0
+        rgba(23,108,168,0.28);
 
-      overflow: hidden;
+      padding:
+        36px
+        34px
+        32px;
+
+      text-align: center;
+
+      border-radius: 4px;
     }
 
-    /*
-      Faixa pixel na parte superior
-    */
+
+    /* faixa superior */
 
     .fan-card::before {
+
       content: "";
 
-      display: block;
+      position: absolute;
 
-      width: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
 
-      height: 8px;
+      height: 9px;
 
       background:
-        linear-gradient(
+        repeating-linear-gradient(
           90deg,
-          #ffd447 0%,
-          #ffd447 25%,
-          #55b9f5 25%,
-          #55b9f5 75%,
-          #ffd447 75%,
-          #ffd447 100%
+          #55b9f5 0,
+          #55b9f5 36px,
+          #ffd447 36px,
+          #ffd447 72px
         );
     }
 
-    /* =========================================
-       CONTEÚDO
-    ========================================= */
 
-    .card-content {
-      padding: 34px 34px 30px;
+    /* pequenos pixels nos cantos */
+
+    .fan-card::after {
+
+      content: "";
+
+      position: absolute;
+
+      right: -3px;
+      bottom: -3px;
+
+      width: 18px;
+      height: 18px;
+
+      background: #f6c700;
+
+      border-left: 3px solid #176ca8;
+
+      border-top: 3px solid #176ca8;
     }
 
-    /* =========================================
+
+    /* =====================================================
        LOGO
-    ========================================= */
+    ===================================================== */
 
     .home-logo-area {
+
       display: flex;
 
       justify-content: center;
 
       align-items: center;
 
-      width: 100%;
+      margin-top: 8px;
 
-      margin-bottom: 12px;
+      margin-bottom: 19px;
+
+      min-height: 108px;
     }
 
+
     .home-logo {
+
       display: block;
 
       width: auto;
@@ -393,258 +553,58 @@
         transform 0.2s ease;
     }
 
+
     .home-logo:hover {
+
       transform:
         translateY(-3px);
     }
 
-    /* =========================================
-       TEXTOS
-    ========================================= */
 
-    .main-title {
-      margin: 8px 0 7px;
+    /* =====================================================
+       TEXTO
+    ===================================================== */
 
-      text-align: center;
+    .welcome-title {
 
-      color: #176ca8;
+      margin: 0;
 
-      font-size: 25px;
+      color: #243447;
+
+      font-size: 22px;
 
       line-height: 1.2;
 
-      font-weight: 800;
+      font-weight: 900;
 
-      letter-spacing: -0.5px;
+      letter-spacing: -0.025em;
     }
 
-    .main-subtitle {
-      margin: 0 auto 27px;
 
-      max-width: 360px;
-
-      text-align: center;
-
-      color: #64748b;
-
-      font-size: 13px;
-
-      line-height: 1.6;
-
-      font-weight: 500;
-    }
-
-    /* =========================================
-       FORM
-    ========================================= */
-
-    .field-group {
-      margin-bottom: 17px;
-    }
-
-    .field-label {
-      display: block;
-
-      margin-bottom: 7px;
-
-      color: #243447;
-
-      font-size: 12px;
-
-      font-weight: 800;
-
-      text-transform: uppercase;
-
-      letter-spacing: 0.4px;
-    }
-
-    .field-input {
-      width: 100%;
-
-      height: 48px;
-
-      padding:
-        0 14px;
-
-      border:
-        2px solid #d5e7f4;
-
-      border-radius: 3px;
-
-      outline: none;
-
-      background: #fafdff;
-
-      color: #243447;
-
-      font-family:
-        'Plus Jakarta Sans',
-        sans-serif;
-
-      font-size: 13px;
-
-      font-weight: 600;
-
-      transition:
-        border-color 0.15s ease,
-        box-shadow 0.15s ease;
-    }
-
-    .field-input::placeholder {
-      color: #94a3b8;
-    }
-
-    .field-input:focus {
-      border-color: #55b9f5;
-
-      box-shadow:
-        3px 3px 0
-        rgba(85,185,245,0.18);
-    }
-
-    /* =========================================
-       BOTÕES
-    ========================================= */
-
-    .pixel-button {
-      position: relative;
-
-      width: 100%;
-
-      min-height: 50px;
-
-      border: none;
-
-      border-radius: 3px;
-
-      padding:
-        12px 18px;
-
-      font-family:
-        'Plus Jakarta Sans',
-        sans-serif;
-
-      font-size: 13px;
-
-      font-weight: 800;
-
-      cursor: pointer;
-
-      transition:
-        transform 0.12s ease,
-        box-shadow 0.12s ease;
-    }
-
-    .pixel-button:active {
-      transform:
-        translate(3px, 3px);
-
-      box-shadow:
-        0 0 0 transparent !important;
-    }
-
-    .button-blue {
-      background: #55b9f5;
-
-      color: #ffffff;
-
-      box-shadow:
-        5px 5px 0 #2788ca;
-    }
-
-    .button-blue:hover {
-      background: #48aeea;
-    }
-
-    .button-yellow {
-      background: #ffd447;
-
-      color: #5f4900;
-
-      box-shadow:
-        5px 5px 0 #e6a900;
-    }
-
-    .button-yellow:hover {
-      background: #ffcf2c;
-    }
-
-    /* =========================================
-       DIVISOR
-    ========================================= */
-
-    .divider {
-      display: flex;
-
-      align-items: center;
-
-      gap: 12px;
+    .welcome-subtitle {
 
       margin:
-        23px 0;
-    }
+        9px
+        auto
+        22px;
 
-    .divider-line {
-      flex: 1;
-
-      height: 2px;
-
-      background: #e5eef5;
-    }
-
-    .divider-text {
-      color: #94a3b8;
-
-      font-size: 10px;
-
-      font-weight: 800;
-
-      letter-spacing: 1px;
-    }
-
-    /* =========================================
-       STATUS
-    ========================================= */
-
-    .online-status {
-      display: flex;
-
-      justify-content: center;
-
-      align-items: center;
-
-      gap: 7px;
-
-      margin-top: 24px;
+      max-width: 330px;
 
       color: #64748b;
 
       font-size: 11px;
 
+      line-height: 1.6;
+
       font-weight: 600;
     }
 
-    .online-dot {
-      width: 8px;
-      height: 8px;
 
-      background: #55cf70;
+    /* =====================================================
+       SEPARADOR PIXEL
+    ===================================================== */
 
-      border-radius: 50%;
-
-      box-shadow:
-        0 0 0 3px
-        rgba(85,207,112,0.12);
-    }
-
-    /* =========================================
-       MODAL
-    ========================================= */
-
-    .modal-overlay {
-      position: fixed;
-
-      inset: 0;
+    .pixel-divider {
 
       display: flex;
 
@@ -652,27 +612,475 @@
 
       justify-content: center;
 
-      padding: 20px;
+      gap: 6px;
+
+      margin:
+        0
+        0
+        22px;
+    }
+
+
+    .pixel-divider span {
+
+      width: 7px;
+      height: 7px;
+
+      background: #55b9f5;
+
+      box-shadow:
+        2px 2px 0 #2788ca;
+    }
+
+
+    .pixel-divider span:nth-child(2) {
+
+      width: 10px;
+      height: 10px;
+
+      background: #f6c700;
+
+      box-shadow:
+        2px 2px 0 #e6a900;
+    }
+
+
+    .pixel-divider span:nth-child(3) {
+
+      width: 7px;
+      height: 7px;
+
+      background: #55b9f5;
+
+      box-shadow:
+        2px 2px 0 #2788ca;
+    }
+
+
+    /* =====================================================
+       FORM
+    ===================================================== */
+
+    .field {
+
+      text-align: left;
+
+      margin-bottom: 15px;
+    }
+
+
+    .field-label {
+
+      display: block;
+
+      margin:
+        0
+        0
+        6px
+        4px;
+
+      color: #334155;
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.06em;
+    }
+
+
+    .fan-input {
+
+      width: 100%;
+
+      height: 45px;
+
+      padding:
+        0
+        13px;
+
+      border: 2px solid #b7d9ec;
+
+      border-radius: 3px;
+
+      background: #f4fbff;
+
+      color: #243447;
+
+      font-family: inherit;
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      outline: none;
+
+      box-shadow:
+        inset 2px 2px 0
+        rgba(23,108,168,0.05);
+
+      transition:
+        border-color 0.15s ease,
+        background 0.15s ease;
+    }
+
+
+    .fan-input:focus {
+
+      border-color: #2788ca;
+
+      background: #ffffff;
+
+      box-shadow:
+        3px 3px 0
+        rgba(39,136,202,0.13);
+    }
+
+
+    .fan-input::placeholder {
+
+      color: #9bb3c2;
+    }
+
+
+    .password-row {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      margin-bottom: 6px;
+    }
+
+
+    .forgot-link {
+
+      color: #2788ca;
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      text-decoration: none;
+    }
+
+
+    .forgot-link:hover {
+
+      text-decoration: underline;
+    }
+
+
+    /* =====================================================
+       BOTÃO PRINCIPAL
+    ===================================================== */
+
+    .pixel-button {
+
+      width: 100%;
+
+      height: 48px;
+
+      margin-top: 5px;
+
+      border: 2px solid #176ca8;
+
+      border-radius: 3px;
+
+      background: #55b9f5;
+
+      color: #ffffff;
+
+      font-family: inherit;
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.05em;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 5px 0 #176ca8;
+
+      transition:
+        transform 0.1s ease,
+        box-shadow 0.1s ease,
+        background 0.1s ease;
+    }
+
+
+    .pixel-button:hover {
+
+      background: #42adeb;
+    }
+
+
+    .pixel-button:active {
+
+      transform:
+        translateY(4px);
+
+      box-shadow:
+        0 1px 0 #176ca8;
+    }
+
+
+    /* =====================================================
+       DIVISÓRIA OU
+    ===================================================== */
+
+    .or-divider {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      margin:
+        23px
+        0
+        19px;
+    }
+
+
+    .or-divider-line {
+
+      height: 2px;
+
+      flex: 1;
 
       background:
-        rgba(23,108,168,0.48);
-
-      z-index: 100;
-
-      backdrop-filter:
-        blur(3px);
+        repeating-linear-gradient(
+          90deg,
+          #d5e7f4 0,
+          #d5e7f4 8px,
+          transparent 8px,
+          transparent 12px
+        );
     }
 
-    .modal-overlay.hidden {
+
+    .or-divider-text {
+
+      color: #94a3b8;
+
+      font-size: 9px;
+
+      font-weight: 900;
+    }
+
+
+    /* =====================================================
+       CADASTRO
+    ===================================================== */
+
+    .signup-question {
+
+      margin:
+        0
+        0
+        9px;
+
+      color: #475569;
+
+      font-size: 11px;
+
+      font-weight: 800;
+    }
+
+
+    .signup-button {
+
+      width: 100%;
+
+      min-height: 45px;
+
+      border: 2px solid #b78600;
+
+      border-radius: 3px;
+
+      background: #ffd447;
+
+      color: #5c4700;
+
+      font-family: inherit;
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.04em;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 5px 0 #b78600;
+
+      transition:
+        transform 0.1s ease,
+        box-shadow 0.1s ease,
+        background 0.1s ease;
+    }
+
+
+    .signup-button:hover {
+
+      background: #ffdc63;
+    }
+
+
+    .signup-button:active {
+
+      transform:
+        translateY(4px);
+
+      box-shadow:
+        0 1px 0 #b78600;
+    }
+
+
+    .signup-helper {
+
+      display: block;
+
+      margin-top: 12px;
+
+      color: #94a3b8;
+
+      font-size: 9px;
+
+      line-height: 1.5;
+
+      font-weight: 600;
+    }
+
+
+    /* =====================================================
+       STATUS
+    ===================================================== */
+
+    .online-status {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 6px;
+
+      margin-top: 20px;
+
+      color: #7c8d9a;
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.06em;
+    }
+
+
+    .online-dot {
+
+      width: 7px;
+      height: 7px;
+
+      background: #42c96b;
+
+      border: 1px solid #238d43;
+
+      box-shadow:
+        2px 2px 0
+        rgba(35,141,67,0.15);
+    }
+
+
+    /* =====================================================
+       RODAPÉ
+    ===================================================== */
+
+    .footer {
+
+      width: 100%;
+
+      position: relative;
+
+      z-index: 10;
+
+      background: #ffd447;
+
+      border-top: 3px solid #b78600;
+
+      box-shadow:
+        0 -4px 0
+        rgba(183,134,0,0.12);
+
+      padding:
+        12px
+        20px;
+
+      text-align: center;
+
+      color: #665000;
+
+      font-size: 9px;
+
+      font-weight: 800;
+    }
+
+
+    /* =====================================================
+       MODAL
+    ===================================================== */
+
+    .modal {
+
+      position: fixed;
+
+      inset: 0;
+
       display: none;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 18px;
+
+      background:
+        rgba(12,63,91,0.72);
+
+      z-index: 1000;
     }
+
+
+    .modal.active {
+
+      display: flex;
+    }
+
 
     .modal-box {
+
       position: relative;
 
       width: 100%;
 
-      max-width: 500px;
+      max-width: 440px;
 
       max-height: 90vh;
 
@@ -680,160 +1088,312 @@
 
       background: #ffffff;
 
-      border:
-        3px solid #55b9f5;
+      border: 3px solid #176ca8;
 
       border-radius: 4px;
 
       box-shadow:
-        9px 9px 0 #176ca8;
+        8px 8px 0
+        rgba(0,0,0,0.22);
+
+      padding:
+        30px
+        28px
+        27px;
     }
 
+
     .modal-box::before {
+
       content: "";
 
-      display: block;
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      right: 0;
 
       height: 8px;
 
       background:
-        linear-gradient(
+        repeating-linear-gradient(
           90deg,
-          #ffd447 0%,
-          #ffd447 30%,
-          #55b9f5 30%,
-          #55b9f5 70%,
-          #ffd447 70%,
-          #ffd447 100%
+          #55b9f5 0,
+          #55b9f5 30px,
+          #ffd447 30px,
+          #ffd447 60px
         );
     }
 
-    .modal-content {
-      padding: 28px;
-    }
 
-    .modal-title {
-      margin: 0 0 6px;
+    .modal-close {
 
-      color: #176ca8;
-
-      font-size: 22px;
-
-      font-weight: 800;
-    }
-
-    .modal-description {
-      margin: 0 0 22px;
-
-      color: #64748b;
-
-      font-size: 12px;
-
-      line-height: 1.6;
-    }
-
-    .close-modal {
       position: absolute;
 
       top: 17px;
-
       right: 17px;
 
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
 
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      border: 2px solid #d5e7f4;
-
-      background: #ffffff;
-
-      color: #64748b;
-
-      font-size: 17px;
-
-      font-weight: 800;
-
-      cursor: pointer;
+      border: 2px solid #a9cce4;
 
       border-radius: 3px;
-    }
 
-    .close-modal:hover {
-      border-color: #55b9f5;
+      background: #edf7fd;
 
       color: #176ca8;
+
+      font-size: 16px;
+
+      font-weight: 900;
+
+      cursor: pointer;
     }
 
-    /* =========================================
-       PIN
-    ========================================= */
 
-    .pin-area {
-      text-align: center;
+    .modal-close:hover {
+
+      background: #ffd447;
+
+      border-color: #b78600;
     }
 
-    .pin-label {
-      margin-bottom: 9px;
+
+    .modal-tag {
+
+      display: inline-block;
+
+      margin-bottom: 10px;
+
+      padding:
+        5px
+        9px;
+
+      background: #ffd447;
+
+      border: 2px solid #b78600;
+
+      color: #5c4700;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.06em;
+    }
+
+
+    .modal-title {
+
+      margin: 0;
+
+      color: #243447;
+
+      font-size: 20px;
+
+      font-weight: 900;
+    }
+
+
+    .modal-description {
+
+      margin:
+        7px
+        0
+        20px;
 
       color: #64748b;
+
+      font-size: 10px;
+
+      line-height: 1.6;
+
+      font-weight: 600;
+    }
+
+
+    .modal-label {
+
+      display: block;
+
+      margin:
+        0
+        0
+        6px
+        3px;
+
+      color: #334155;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+    }
+
+
+    .modal-input {
+
+      width: 100%;
+
+      height: 43px;
+
+      margin-bottom: 13px;
+
+      padding:
+        0
+        12px;
+
+      border: 2px solid #b7d9ec;
+
+      border-radius: 3px;
+
+      background: #f4fbff;
+
+      color: #243447;
+
+      font-family: inherit;
 
       font-size: 11px;
 
       font-weight: 700;
+
+      outline: none;
     }
 
-    .pin-display {
-      display: inline-block;
+
+    .modal-input:focus {
+
+      border-color: #2788ca;
+
+      background: #ffffff;
+
+      box-shadow:
+        3px 3px 0
+        rgba(39,136,202,0.12);
+    }
+
+
+    .modal-submit {
+
+      width: 100%;
+
+      min-height: 46px;
+
+      margin-top: 3px;
+
+      border: 2px solid #176ca8;
+
+      border-radius: 3px;
+
+      background: #55b9f5;
+
+      color: #ffffff;
+
+      font-family: inherit;
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 5px 0 #176ca8;
+    }
+
+
+    .modal-submit:disabled {
+
+      opacity: 0.65;
+
+      cursor: wait;
+    }
+
+
+    /* =====================================================
+       ETAPA PIN
+    ===================================================== */
+
+    .hidden {
+
+      display: none !important;
+    }
+
+
+    .pin-box {
 
       margin:
-        4px 0 18px;
+        18px
+        0;
 
       padding:
-        13px 22px;
+        18px;
 
-      background: #e7f6ff;
+      background: #edf8ff;
 
-      border:
-        3px dashed #55b9f5;
+      border: 3px dashed #55b9f5;
 
-      color: #176ca8;
-
-      font-size: 28px;
-
-      font-weight: 800;
-
-      letter-spacing: 2px;
+      text-align: center;
     }
 
-    .pin-instruction {
-      margin: 0 auto 20px;
 
-      max-width: 370px;
+    .pin-label {
+
+      display: block;
+
+      margin-bottom: 6px;
 
       color: #64748b;
 
-      font-size: 12px;
+      font-size: 8px;
 
-      line-height: 1.65;
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.1em;
     }
 
-    /* =========================================
-       FOOTER
-    ========================================= */
 
-    .site-footer {
-      position: fixed;
+    .pin-code {
 
-      left: 0;
-      right: 0;
-      bottom: 0;
+      color: #176ca8;
 
-      min-height: 42px;
+      font-family: monospace;
+
+      font-size: 28px;
+
+      font-weight: 900;
+
+      letter-spacing: 4px;
+    }
+
+
+    .instructions {
+
+      padding: 13px;
+
+      background: #fff9df;
+
+      border: 2px solid #f0cf45;
+
+      color: #665000;
+
+      font-size: 10px;
+
+      line-height: 1.7;
+
+      font-weight: 600;
+    }
+
+
+    .discord-button {
 
       display: flex;
 
@@ -841,163 +1401,231 @@
 
       justify-content: center;
 
-      padding:
-        8px 20px;
+      width: 100%;
 
-      background: #ffd447;
+      min-height: 43px;
 
-      border-top:
-        3px solid #e6a900;
+      margin-top: 12px;
 
-      color: #5f4900;
+      border: 2px solid #4b55b9;
+
+      border-radius: 3px;
+
+      background: #5865f2;
+
+      color: white;
+
+      text-decoration: none;
 
       font-size: 10px;
 
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      box-shadow:
+        0 4px 0 #3d469d;
+    }
+
+
+    .waiting-text {
+
+      margin:
+        13px
+        0
+        0;
+
+      color: #94a3b8;
+
+      text-align: center;
+
+      font-size: 9px;
+
       font-weight: 800;
-
-      letter-spacing: 0.5px;
-
-      z-index: 10;
     }
 
-    /* =========================================
-       UTILITÁRIO
-    ========================================= */
 
-    .hidden {
-      display: none !important;
-    }
-
-    /* =========================================
-       RESPONSIVO
-    ========================================= */
+    /* =====================================================
+       MOBILE
+    ===================================================== */
 
     @media (max-width: 600px) {
 
       .top-bar {
-        height: 70px;
+
+        min-height: 60px;
       }
 
-      .page-wrapper {
-        min-height:
-          calc(100vh - 70px);
+
+      .top-decoration {
+
+        font-size: 9px;
+      }
+
+
+      .main-area {
 
         padding:
-          35px 15px 75px;
+          45px
+          14px
+          55px;
       }
+
 
       .fan-card {
+
+        padding:
+          31px
+          20px
+          26px;
+
         box-shadow:
-          6px 6px 0 #2788ca;
+          6px 6px 0
+          rgba(23,108,168,0.25);
       }
 
-      .card-content {
-        padding:
-          27px 22px 25px;
+
+      .home-logo-area {
+
+        min-height: 95px;
+
+        margin-bottom: 13px;
       }
+
 
       .home-logo {
+
         height: 95px;
 
         max-width: 95%;
       }
 
-      .main-title {
-        font-size: 22px;
+
+      .welcome-title {
+
+        font-size: 20px;
       }
 
-      .main-subtitle {
-        font-size: 12px;
 
-        margin-bottom: 23px;
+      .welcome-subtitle {
+
+        font-size: 10px;
       }
 
-      .pixel-decoration.one {
-        left: 4%;
+
+      .pixel-1,
+      .pixel-2,
+      .pixel-3,
+      .pixel-4 {
+
+        display: none;
       }
 
-      .pixel-decoration.two {
-        right: 4%;
+
+      .cloud-1 {
+
+        left: -25px;
+
+        font-size: 42px;
       }
 
-      .pixel-decoration.three {
-        left: 5%;
+
+      .cloud-2 {
+
+        right: -20px;
+
+        font-size: 52px;
       }
 
-      .pixel-decoration.four {
-        right: 3%;
-      }
 
-      .modal-content {
+      .modal-box {
+
         padding:
-          25px 20px;
+          28px
+          19px
+          23px;
       }
 
-      .site-footer {
-        min-height: 38px;
-
-        font-size: 9px;
-      }
     }
 
   </style>
+
 </head>
+
 
 <body>
 
-  <!-- =========================================
-       TOPO
-       COMPLETAMENTE LIMPO
-       Espaço reservado para o futuro AutoDJ
-  ========================================= -->
 
-  <header class="top-bar">
-  </header>
+  <!-- =====================================================
+       FUNDO
+  ====================================================== -->
+
+  <div class="sky-grid"></div>
 
 
-  <!-- =========================================
-       DECORAÇÕES DO FUNDO
-  ========================================= -->
+  <!-- NUVENS -->
 
-  <span
-    class="pixel-decoration one"
-  ></span>
+  <div class="cloud cloud-1">
+    ☁️
+  </div>
 
-  <span
-    class="pixel-decoration two"
-  ></span>
+  <div class="cloud cloud-2">
+    ☁️
+  </div>
 
-  <span
-    class="pixel-decoration three"
-  ></span>
+  <div class="cloud cloud-3">
+    ☁️
+  </div>
 
-  <span
-    class="pixel-decoration four"
-  ></span>
+  <div class="cloud cloud-4">
+    ☁️
+  </div>
 
 
-  <!-- =========================================
-       NUVENS
-  ========================================= -->
+  <!-- PIXELS DECORATIVOS -->
 
-  <span
-    class="cloud one"
-  ></span>
+  <div class="pixel-square pixel-1"></div>
 
-  <span
-    class="cloud two"
-  ></span>
+  <div class="pixel-square blue pixel-2"></div>
+
+  <div class="pixel-square pixel-3"></div>
+
+  <div class="pixel-square blue pixel-4"></div>
 
 
-  <!-- =========================================
+  <!-- =====================================================
        PÁGINA
-  ========================================= -->
+  ====================================================== -->
 
-  <main class="page-wrapper">
+  <div class="page-wrapper">
 
-    <section class="fan-card">
 
-      <div class="card-content">
+    <!-- ===================================================
+         TOPO
+    ==================================================== -->
+
+    <header class="top-bar">
+
+      <div class="top-decoration">
+
+        <span class="top-decoration-icon"></span>
+
+        <span class="top-decoration-icon"></span>
+
+      </div>
+
+    </header>
+
+
+    <!-- ===================================================
+         ÁREA CENTRAL
+    ==================================================== -->
+
+    <main class="main-area">
+
+
+      <section class="fan-card">
+
 
         <!-- LOGO -->
 
@@ -1012,104 +1640,160 @@
         </div>
 
 
-        <!-- TÍTULO -->
+        <!-- TEXTO -->
 
-        <h1 class="main-title">
+        <h1 class="welcome-title">
+
           Entre na Comunidade
+
         </h1>
 
-        <p class="main-subtitle">
-          Acesse sua conta e entre no universo Pixelizados.
+
+        <p class="welcome-subtitle">
+
+          Acesse sua conta e entre no universo
+          Pixelizados.
+
         </p>
 
 
-        <!-- =====================================
+        <!-- DIVISOR PIXEL -->
+
+        <div class="pixel-divider">
+
+          <span></span>
+          <span></span>
+          <span></span>
+
+        </div>
+
+
+        <!-- =================================================
              LOGIN
-        ====================================== -->
+        ================================================== -->
 
         <form
           action="portal.html"
           method="GET"
         >
 
-          <div class="field-group">
 
-            <label
-              class="field-label"
-              for="login-user"
-            >
+          <!-- USUÁRIO -->
+
+          <div class="field">
+
+            <label class="field-label">
+
               Usuário
+
             </label>
 
+
             <input
-              id="login-user"
-              name="username"
               type="text"
-              class="field-input"
-              placeholder="Digite seu usuário"
-              autocomplete="username"
+              placeholder="Ex: FrankPixel"
+              required
+              class="fan-input"
             >
 
           </div>
 
 
-          <div class="field-group">
+          <!-- SENHA -->
 
-            <label
-              class="field-label"
-              for="login-password"
-            >
-              Senha
-            </label>
+          <div class="field">
+
+            <div class="password-row">
+
+              <label class="field-label">
+                Senha
+              </label>
+
+              <a
+                href="#"
+                class="forgot-link"
+              >
+                Esqueceu?
+              </a>
+
+            </div>
+
 
             <input
-              id="login-password"
-              name="password"
               type="password"
-              class="field-input"
-              placeholder="Digite sua senha"
-              autocomplete="current-password"
+              placeholder="••••••••"
+              required
+              class="fan-input"
             >
 
           </div>
 
+
+          <!-- BOTÃO -->
 
           <button
             type="submit"
-            class="pixel-button button-blue"
+            class="pixel-button"
           >
+
             Acessar Portal
+            &nbsp; ⚡
+
           </button>
+
 
         </form>
 
 
-        <!-- DIVISOR -->
+        <!-- =================================================
+             OU
+        ================================================== -->
 
-        <div class="divider">
+        <div class="or-divider">
 
-          <span class="divider-line"></span>
+          <div class="or-divider-line"></div>
 
-          <span class="divider-text">
+          <span class="or-divider-text">
             OU
           </span>
 
-          <span class="divider-line"></span>
+          <div class="or-divider-line"></div>
 
         </div>
 
 
-        <!-- =====================================
+        <!-- =================================================
              CADASTRO
-        ====================================== -->
+        ================================================== -->
 
-        <button
-          type="button"
-          class="pixel-button button-yellow"
-          onclick="abrirModal()"
-        >
-          Se torne um Pixelizado
-        </button>
+        <div>
+
+          <p class="signup-question">
+
+            Ainda não possui uma conta?
+
+          </p>
+
+
+          <button
+            type="button"
+            onclick="abrirModalCadastro()"
+            class="signup-button"
+          >
+
+            👾 Se torne um Pixelizado
+
+          </button>
+
+
+          <span class="signup-helper">
+
+            O cadastro e verificação de membros
+            é realizado via Discord oficial.
+
+          </span>
+
+        </div>
 
 
         <!-- STATUS -->
@@ -1122,209 +1806,290 @@
 
         </div>
 
-      </div>
 
-    </section>
-
-  </main>
+      </section>
 
 
-  <!-- =========================================
+    </main>
+
+
+    <!-- ===================================================
+         RODAPÉ
+    ==================================================== -->
+
+    <footer class="footer">
+
+      © 2026 Pixelizados.
+      Todos os direitos reservados aos criadores de pixels.
+
+    </footer>
+
+
+  </div>
+
+
+  <!-- =====================================================
        MODAL DE CADASTRO
-  ========================================= -->
+  ====================================================== -->
 
   <div
     id="modal-cadastro"
-    class="modal-overlay hidden"
+    class="modal"
   >
+
 
     <div class="modal-box">
 
+
+      <!-- FECHAR -->
+
       <button
         type="button"
-        class="close-modal"
         onclick="fecharModal()"
-        aria-label="Fechar"
+        class="modal-close"
       >
+
         ×
+
       </button>
 
 
-      <!-- =====================================
+      <!-- =================================================
            ETAPA 1
-      ====================================== -->
+      ================================================== -->
 
-      <div
-        id="etapa-1"
-        class="modal-content"
-      >
+      <div id="etapa-1">
+
+
+        <span class="modal-tag">
+
+          Beta Pixelizados
+
+        </span>
+
 
         <h2 class="modal-title">
+
           Criar Conta no Portal
+
         </h2>
 
+
         <p class="modal-description">
-          Preencha seus dados para solicitar
-          acesso à comunidade Pixelizados.
+
+          Vincule seu perfil do Discord
+          para continuar.
+
         </p>
 
 
         <form
+          id="form-cadastro"
           onsubmit="enviarCadastroSupabase(event)"
         >
 
-          <div class="field-group">
 
-            <label
-              class="field-label"
-              for="discord-tag"
-            >
-              Usuário do Discord
-            </label>
+          <!-- DISCORD -->
 
-            <input
-              id="discord-tag"
-              type="text"
-              class="field-input"
-              placeholder="Ex: usuario123"
-              required
-            >
+          <label
+            for="discord-tag"
+            class="modal-label"
+          >
 
-          </div>
+            Seu Username do Discord
+
+          </label>
 
 
-          <div class="field-group">
-
-            <label
-              class="field-label"
-              for="portal-user"
-            >
-              Usuário do Portal
-            </label>
-
-            <input
-              id="portal-user"
-              type="text"
-              class="field-input"
-              placeholder="Escolha seu usuário"
-              required
-            >
-
-          </div>
+          <input
+            type="text"
+            id="discord-tag"
+            placeholder="Ex: usuario_discord"
+            required
+            class="modal-input"
+          >
 
 
-          <div class="field-group">
+          <!-- USUÁRIO -->
 
-            <label
-              class="field-label"
-              for="portal-password"
-            >
-              Senha
-            </label>
+          <label
+            for="portal-user"
+            class="modal-label"
+          >
 
-            <input
-              id="portal-password"
-              type="password"
-              class="field-input"
-              placeholder="Crie uma senha"
-              required
-            >
+            Nome de Usuário no Portal
 
-          </div>
+          </label>
 
+
+          <input
+            type="text"
+            id="portal-user"
+            placeholder="Ex: Pixel_Master"
+            required
+            class="modal-input"
+          >
+
+
+          <!-- SENHA -->
+
+          <label
+            for="portal-pass"
+            class="modal-label"
+          >
+
+            Criar Senha
+
+          </label>
+
+
+          <input
+            type="password"
+            id="portal-pass"
+            placeholder="••••••••"
+            required
+            class="modal-input"
+          >
+
+
+          <!-- SUBMIT -->
 
           <button
             id="btn-submit"
             type="submit"
-            class="pixel-button button-blue"
+            class="modal-submit"
           >
+
             Gerar PIN de Verificação 🚀
+
           </button>
+
 
         </form>
 
+
       </div>
 
 
-      <!-- =====================================
-           ETAPA 2 — PIN
-      ====================================== -->
+      <!-- =================================================
+           ETAPA 2
+      ================================================== -->
 
       <div
         id="etapa-2"
-        class="modal-content hidden"
+        class="hidden"
       >
 
-        <div class="pin-area">
 
-          <h2 class="modal-title">
-            Quase lá!
-          </h2>
+        <span class="modal-tag">
 
-          <p class="modal-description">
-            Sua solicitação foi registrada.
-          </p>
+          Verificação
+
+        </span>
 
 
-          <p class="pin-label">
-            SEU PIN DE VERIFICAÇÃO
-          </p>
+        <h2 class="modal-title">
+
+          Quase lá!
+
+        </h2>
 
 
-          <div
+        <p
+          id="status-msg"
+          class="modal-description"
+        >
+
+          Envie o código abaixo no nosso
+          servidor do Discord para ativar
+          sua conta.
+
+        </p>
+
+
+        <!-- PIN -->
+
+        <div class="pin-box">
+
+
+          <span class="pin-label">
+
+            Seu PIN de Verificação
+
+          </span>
+
+
+          <span
             id="pin-display"
-            class="pin-display"
+            class="pin-code"
           >
+
             PX-0000
-          </div>
 
+          </span>
 
-          <p class="pin-instruction">
-            Envie este PIN para a equipe do
-            Pixelizados no Discord para que
-            sua conta seja aprovada.
-          </p>
-
-
-          <a
-            href="https://discord.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="pixel-button button-yellow"
-            style="
-              display:flex;
-              align-items:center;
-              justify-content:center;
-              text-decoration:none;
-            "
-          >
-            Ir para o Discord
-          </a>
 
         </div>
 
+
+        <!-- INSTRUÇÕES -->
+
+        <div class="instructions">
+
+          <strong>
+            Como continuar:
+          </strong>
+
+          <br>
+
+          1. Copie o PIN acima.
+
+          <br>
+
+          2. Entre no canal
+          <strong>#validar-conta</strong>
+          no Discord.
+
+          <br>
+
+          3. Envie o código no chat.
+
+        </div>
+
+
+        <!-- DISCORD -->
+
+        <a
+          href="https://discord.gg/pixelizados"
+          target="_blank"
+          class="discord-button"
+        >
+
+          Ir para o Discord
+
+        </a>
+
+
+        <!-- ESPERA -->
+
+        <p class="waiting-text">
+
+          ⏳ Aguardando aprovação automática...
+
+        </p>
+
+
       </div>
+
 
     </div>
 
   </div>
 
 
-  <!-- =========================================
-       FOOTER
-  ========================================= -->
-
-  <footer class="site-footer">
-
-    PIXELIZADOS © 2026
-    — TODOS OS DIREITOS RESERVADOS
-
-  </footer>
-
-
-  <!-- =========================================
+  <!-- =====================================================
        SUPABASE
-  ========================================= -->
+  ====================================================== -->
 
   <script
     src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
@@ -1333,11 +2098,18 @@
 
   <script>
 
+
+    /* =====================================================
+       SUPABASE
+    ===================================================== */
+
     const SUPABASE_URL =
       'https://znvytrvdwejjlivzsjzy.supabase.co';
 
+
     const SUPABASE_KEY =
       'sb_publishable_J60PUy390KR4sRTGe9tjNg_wllyvUAj';
+
 
     const supabaseClient =
       supabase.createClient(
@@ -1346,18 +2118,16 @@
       );
 
 
-    /* =========================================
+    /* =====================================================
        MODAL
-    ========================================= */
+    ===================================================== */
 
-    function abrirModal() {
+    function abrirModalCadastro() {
 
       document
-        .getElementById(
-          'modal-cadastro'
-        )
+        .getElementById('modal-cadastro')
         .classList
-        .remove('hidden');
+        .add('active');
 
     }
 
@@ -1365,30 +2135,39 @@
     function fecharModal() {
 
       document
-        .getElementById(
-          'modal-cadastro'
-        )
+        .getElementById('modal-cadastro')
         .classList
-        .add('hidden');
+        .remove('active');
+
+
+      setTimeout(() => {
+
+        document
+          .getElementById('etapa-1')
+          .classList
+          .remove('hidden');
+
+
+        document
+          .getElementById('etapa-2')
+          .classList
+          .add('hidden');
+
+      }, 300);
 
     }
 
 
-    /* =========================================
-       FECHAR CLICANDO FORA
-    ========================================= */
+    /* Fechar clicando fora */
 
     document
-      .getElementById(
-        'modal-cadastro'
-      )
+      .getElementById('modal-cadastro')
       .addEventListener(
         'click',
         function(event) {
 
           if (
-            event.target ===
-            this
+            event.target === this
           ) {
 
             fecharModal();
@@ -1399,9 +2178,9 @@
       );
 
 
-    /* =========================================
-       CADASTRO SUPABASE
-    ========================================= */
+    /* =====================================================
+       CADASTRO
+    ===================================================== */
 
     async function enviarCadastroSupabase(e) {
 
@@ -1446,6 +2225,10 @@
         );
 
 
+      /* ===================================================
+         SALVAR NO SUPABASE
+      ================================================== */
+
       const {
         data,
         error
@@ -1477,6 +2260,10 @@
         false;
 
 
+      /* ===================================================
+         ERRO
+      ================================================== */
+
       if (error) {
 
         console.error(
@@ -1494,6 +2281,10 @@
 
       }
 
+
+      /* ===================================================
+         MOSTRAR PIN
+      ================================================== */
 
       document
         .getElementById(
@@ -1519,6 +2310,10 @@
         .remove('hidden');
 
 
+      /* ===================================================
+         REALTIME
+      ================================================== */
+
       escutarAprovacaoRealtime(
         pinGerado
       );
@@ -1526,19 +2321,27 @@
     }
 
 
-    /* =========================================
-       REALTIME — APROVAÇÃO
-    ========================================= */
+    /* =====================================================
+       APROVAÇÃO REALTIME
+    ===================================================== */
 
-    function escutarAprovacaoRealtime(pin) {
+    function escutarAprovacaoRealtime(
+      pin
+    ) {
+
 
       supabaseClient
+
         .channel(
           'validacao-pixelizados'
         )
+
         .on(
+
           'postgres_changes',
+
           {
+
             event:
               'UPDATE',
 
@@ -1547,21 +2350,31 @@
 
             table:
               'usuarios'
+
           },
 
           (payload) => {
 
+
             if (
+
               payload.new &&
+
               payload.new.pin === pin &&
+
               payload.new.status === 'APROVADO'
+
             ) {
 
+
               localStorage.setItem(
+
                 'pixelizados_user',
+
                 JSON.stringify(
                   payload.new
                 )
+
               );
 
 
@@ -1578,11 +2391,15 @@
           }
 
         )
+
         .subscribe();
 
     }
 
+
   </script>
 
+
 </body>
+
 </html>
