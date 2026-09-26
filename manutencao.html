@@ -1,0 +1,1712 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Pixelizados — Em Manutenção</title>
+
+
+  <!-- =====================================================
+       GOOGLE FONT
+  ====================================================== -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <style>
+
+
+    /* =====================================================
+       BASE
+    ===================================================== */
+
+    * {
+
+      box-sizing: border-box;
+
+    }
+
+
+    html,
+    body {
+
+      width: 100%;
+      min-height: 100%;
+
+      margin: 0;
+      padding: 0;
+
+      overflow-x: hidden;
+
+    }
+
+
+    body {
+
+      font-family:
+        'Plus Jakarta Sans',
+        sans-serif;
+
+      color: #243447;
+
+      background:
+
+        linear-gradient(
+          180deg,
+          #1599dc 0%,
+          #48bdf0 48%,
+          #aee7fa 100%
+        );
+
+    }
+
+
+    /* =====================================================
+       PIXEL ART
+    ===================================================== */
+
+    .pixel-art {
+
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+
+    }
+
+
+    /* =====================================================
+       GRID DO CÉU
+    ===================================================== */
+
+    .sky-grid {
+
+      position: fixed;
+
+      inset: 0;
+
+      pointer-events: none;
+
+      opacity: 0.14;
+
+      background-image:
+
+        linear-gradient(
+          rgba(255,255,255,0.35) 1px,
+          transparent 1px
+        ),
+
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,0.35) 1px,
+          transparent 1px
+        );
+
+      background-size: 32px 32px;
+
+      z-index: 0;
+
+    }
+
+
+    /* =====================================================
+       NUVENS
+    ===================================================== */
+
+    .cloud {
+
+      position: absolute;
+
+      pointer-events: none;
+
+      user-select: none;
+
+      font-size: 60px;
+
+      opacity: 0.65;
+
+      filter:
+
+        drop-shadow(
+          3px 4px 0
+          rgba(60,145,190,0.12)
+        );
+
+    }
+
+
+    .cloud-1 {
+
+      top: 45px;
+      left: 4%;
+
+      animation:
+        floatCloud 22s ease-in-out infinite;
+
+    }
+
+
+    .cloud-2 {
+
+      top: 100px;
+      right: 6%;
+
+      font-size: 75px;
+
+      opacity: 0.48;
+
+      animation:
+        floatCloudReverse 27s ease-in-out infinite;
+
+    }
+
+
+    .cloud-3 {
+
+      bottom: 18%;
+      left: -25px;
+
+      font-size: 82px;
+
+      opacity: 0.30;
+
+      animation:
+        floatCloud 30s ease-in-out infinite;
+
+    }
+
+
+    .cloud-4 {
+
+      bottom: 8%;
+      right: -20px;
+
+      font-size: 70px;
+
+      opacity: 0.30;
+
+      animation:
+        floatCloudReverse 25s ease-in-out infinite;
+
+    }
+
+
+    @keyframes floatCloud {
+
+      0% {
+
+        transform:
+          translateX(-15px);
+
+      }
+
+      50% {
+
+        transform:
+          translateX(20px);
+
+      }
+
+      100% {
+
+        transform:
+          translateX(-15px);
+
+      }
+
+    }
+
+
+    @keyframes floatCloudReverse {
+
+      0% {
+
+        transform:
+          translateX(20px);
+
+      }
+
+      50% {
+
+        transform:
+          translateX(-20px);
+
+      }
+
+      100% {
+
+        transform:
+          translateX(20px);
+
+      }
+
+    }
+
+
+    /* =====================================================
+       PIXELS DECORATIVOS
+    ===================================================== */
+
+    .pixel-square {
+
+      position: absolute;
+
+      width: 14px;
+      height: 14px;
+
+      background: #f6c700;
+
+      box-shadow:
+        4px 4px 0 rgba(23,108,168,0.22);
+
+      pointer-events: none;
+
+    }
+
+
+    .pixel-square.blue {
+
+      background: #168fd0;
+
+      box-shadow:
+        4px 4px 0 rgba(255,255,255,0.3);
+
+    }
+
+
+    .pixel-1 {
+
+      top: 20%;
+      left: 12%;
+
+      transform:
+        rotate(12deg);
+
+    }
+
+
+    .pixel-2 {
+
+      top: 30%;
+      right: 12%;
+
+      transform:
+        rotate(-8deg);
+
+    }
+
+
+    .pixel-3 {
+
+      bottom: 27%;
+      left: 14%;
+
+      width: 10px;
+      height: 10px;
+
+      transform:
+        rotate(15deg);
+
+    }
+
+
+    .pixel-4 {
+
+      bottom: 25%;
+      right: 16%;
+
+      width: 18px;
+      height: 18px;
+
+      transform:
+        rotate(-10deg);
+
+    }
+
+
+    /* =====================================================
+       PÁGINA
+    ===================================================== */
+
+    .page-wrapper {
+
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      overflow: hidden;
+
+      z-index: 1;
+
+    }
+
+
+    /* =====================================================
+       TOPO
+    ===================================================== */
+
+    .top-bar {
+
+      width: 100%;
+
+      min-height: 72px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      position: relative;
+
+      z-index: 10;
+
+      background:
+        rgba(255,255,255,0.95);
+
+      border-bottom:
+        3px solid #176ca8;
+
+      box-shadow:
+        0 4px 0
+        rgba(23,108,168,0.15);
+
+    }
+
+
+    .top-bar::before {
+
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      bottom: -8px;
+
+      height: 5px;
+
+      background:
+
+        repeating-linear-gradient(
+          90deg,
+          #f6c700 0,
+          #f6c700 24px,
+          #ffd92b 24px,
+          #ffd92b 48px
+        );
+
+    }
+
+
+    .top-decoration {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+    }
+
+
+    .top-decoration-icon {
+
+      width: 12px;
+      height: 12px;
+
+      background: #f6c700;
+
+      box-shadow:
+        3px 3px 0 #176ca8;
+
+      transform:
+        rotate(45deg);
+
+    }
+
+
+    /* =====================================================
+       ÁREA PRINCIPAL
+    ===================================================== */
+
+    .main-area {
+
+      width: 100%;
+
+      flex: 1;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding:
+        55px
+        18px
+        65px;
+
+      position: relative;
+
+      z-index: 5;
+
+    }
+
+
+    /* =====================================================
+       CARD
+    ===================================================== */
+
+    .maintenance-card {
+
+      position: relative;
+
+      width: 100%;
+
+      max-width: 650px;
+
+      background: #ffffff;
+
+      border:
+        3px solid #176ca8;
+
+      box-shadow:
+        9px 9px 0
+        rgba(23,108,168,0.28);
+
+      padding:
+        38px
+        40px
+        34px;
+
+      text-align: center;
+
+      border-radius: 4px;
+
+    }
+
+
+    /* FAIXA PIXEL SUPERIOR */
+
+    .maintenance-card::before {
+
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 9px;
+
+      background:
+
+        repeating-linear-gradient(
+          90deg,
+          #55b9f5 0,
+          #55b9f5 36px,
+          #ffd447 36px,
+          #ffd447 72px
+        );
+
+    }
+
+
+    /* DETALHE AMARELO */
+
+    .maintenance-card::after {
+
+      content: "";
+
+      position: absolute;
+
+      right: -3px;
+      bottom: -3px;
+
+      width: 20px;
+      height: 20px;
+
+      background: #f6c700;
+
+      border-left:
+        3px solid #176ca8;
+
+      border-top:
+        3px solid #176ca8;
+
+    }
+
+
+    /* =====================================================
+       ÁREA DOS PERSONAGENS
+    ===================================================== */
+
+    .characters-area {
+
+      position: relative;
+
+      width: 100%;
+
+      height: 190px;
+
+      display: flex;
+
+      align-items: flex-end;
+
+      justify-content: center;
+
+      margin-top: 5px;
+
+      margin-bottom: 10px;
+
+    }
+
+
+    /* =====================================================
+       ESPAÇO PARA PERSONAGENS
+       
+       Substitua futuramente pelos seus PNGs.
+    ===================================================== */
+
+    .character {
+
+      position: relative;
+
+      width: 155px;
+      height: 180px;
+
+      display: flex;
+
+      align-items: flex-end;
+
+      justify-content: center;
+
+    }
+
+
+    .character img {
+
+      max-width: 100%;
+
+      max-height: 180px;
+
+      object-fit: contain;
+
+      image-rendering: auto;
+
+      filter:
+
+        drop-shadow(
+          4px 6px 0
+          rgba(23,108,168,0.18)
+        );
+
+    }
+
+
+    /* =====================================================
+       PLACEHOLDER TEMPORÁRIO
+       
+       Caso ainda não tenha os personagens,
+       aparece um boneco pixel simples.
+    ===================================================== */
+
+    .pixel-person {
+
+      position: relative;
+
+      width: 92px;
+
+      height: 145px;
+
+      filter:
+
+        drop-shadow(
+          4px 5px 0
+          rgba(23,108,168,0.18)
+        );
+
+    }
+
+
+    .pixel-head {
+
+      position: absolute;
+
+      top: 4px;
+      left: 20px;
+
+      width: 52px;
+      height: 52px;
+
+      background: #f2c49b;
+
+      border:
+        3px solid #8c5c42;
+
+      box-shadow:
+        4px 4px 0 #8c5c42;
+
+    }
+
+
+    .pixel-hair {
+
+      position: absolute;
+
+      top: 0;
+      left: 17px;
+
+      width: 58px;
+      height: 20px;
+
+      background: #4b3427;
+
+      border:
+        3px solid #302219;
+
+      z-index: 2;
+
+    }
+
+
+    .pixel-eye {
+
+      position: absolute;
+
+      top: 26px;
+
+      width: 6px;
+      height: 6px;
+
+      background: #243447;
+
+      z-index: 3;
+
+    }
+
+
+    .pixel-eye.left {
+
+      left: 34px;
+
+    }
+
+
+    .pixel-eye.right {
+
+      left: 55px;
+
+    }
+
+
+    .sad-mouth {
+
+      position: absolute;
+
+      top: 39px;
+      left: 38px;
+
+      width: 18px;
+      height: 7px;
+
+      border-top:
+        3px solid #8c4d42;
+
+      transform:
+        rotate(180deg);
+
+      z-index: 3;
+
+    }
+
+
+    .pixel-body {
+
+      position: absolute;
+
+      top: 65px;
+      left: 14px;
+
+      width: 64px;
+      height: 65px;
+
+      background: #55b9f5;
+
+      border:
+        3px solid #176ca8;
+
+      box-shadow:
+        4px 4px 0 #176ca8;
+
+    }
+
+
+    .pixel-leg {
+
+      position: absolute;
+
+      top: 128px;
+
+      width: 25px;
+      height: 18px;
+
+      background: #334155;
+
+      border:
+        3px solid #243447;
+
+    }
+
+
+    .pixel-leg.left {
+
+      left: 17px;
+
+    }
+
+
+    .pixel-leg.right {
+
+      left: 51px;
+
+    }
+
+
+    /* =====================================================
+       PLACA DE AVISO
+    ===================================================== */
+
+    .warning-sign {
+
+      position: absolute;
+
+      right: 8%;
+
+      top: 25px;
+
+      width: 100px;
+
+      transform:
+        rotate(3deg);
+
+      z-index: 5;
+
+    }
+
+
+    .warning-board {
+
+      width: 100px;
+
+      min-height: 65px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 7px;
+
+      background: #ffd447;
+
+      border:
+        3px solid #b78600;
+
+      box-shadow:
+        5px 5px 0
+        rgba(183,134,0,0.35);
+
+      color: #5c4700;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      line-height: 1.2;
+
+    }
+
+
+    .warning-icon {
+
+      font-size: 22px;
+
+      line-height: 1;
+
+      margin-bottom: 3px;
+
+    }
+
+
+    .warning-stick {
+
+      width: 7px;
+      height: 38px;
+
+      margin: 0 auto;
+
+      background: #b78600;
+
+    }
+
+
+    /* =====================================================
+       TAG
+    ===================================================== */
+
+    .status-tag {
+
+      display: inline-block;
+
+      margin-bottom: 11px;
+
+      padding:
+        6px
+        10px;
+
+      background: #fff5c7;
+
+      border:
+        2px solid #f0cf45;
+
+      color: #665000;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.08em;
+
+    }
+
+
+    /* =====================================================
+       TÍTULO
+    ===================================================== */
+
+    .maintenance-title {
+
+      margin: 0;
+
+      color: #243447;
+
+      font-size: 30px;
+
+      line-height: 1.15;
+
+      font-weight: 900;
+
+      letter-spacing: -0.035em;
+
+    }
+
+
+    .maintenance-title span {
+
+      color: #176ca8;
+
+    }
+
+
+    /* =====================================================
+       DESCRIÇÃO
+    ===================================================== */
+
+    .maintenance-description {
+
+      max-width: 480px;
+
+      margin:
+        12px auto
+        25px;
+
+      color: #64748b;
+
+      font-size: 11px;
+
+      line-height: 1.7;
+
+      font-weight: 600;
+
+    }
+
+
+    /* =====================================================
+       PROGRESSO
+    ===================================================== */
+
+    .progress-section {
+
+      width: 100%;
+
+      max-width: 500px;
+
+      margin:
+        0 auto
+        25px;
+
+      text-align: left;
+
+    }
+
+
+    .progress-header {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      margin-bottom: 7px;
+
+    }
+
+
+    .progress-label {
+
+      color: #334155;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.06em;
+
+    }
+
+
+    .progress-percent {
+
+      color: #176ca8;
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+    }
+
+
+    .progress-bar {
+
+      width: 100%;
+
+      height: 24px;
+
+      padding: 3px;
+
+      background: #e9f5fb;
+
+      border:
+        2px solid #9dcbe3;
+
+      box-shadow:
+        inset 2px 2px 0
+        rgba(23,108,168,0.08);
+
+    }
+
+
+    .progress-fill {
+
+      width: 50%;
+
+      height: 100%;
+
+      background:
+
+        repeating-linear-gradient(
+          90deg,
+          #55b9f5 0,
+          #55b9f5 16px,
+          #42adeb 16px,
+          #42adeb 32px
+        );
+
+      border-right:
+        2px solid #176ca8;
+
+      position: relative;
+
+      animation:
+        progressGlow 2s ease-in-out infinite;
+
+    }
+
+
+    @keyframes progressGlow {
+
+      0% {
+
+        opacity: 0.88;
+
+      }
+
+      50% {
+
+        opacity: 1;
+
+      }
+
+      100% {
+
+        opacity: 0.88;
+
+      }
+
+    }
+
+
+    /* =====================================================
+       STATUS
+    ===================================================== */
+
+    .progress-status {
+
+      margin-top: 8px;
+
+      color: #94a3b8;
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+    }
+
+
+    /* =====================================================
+       BOTÃO DISCORD
+    ===================================================== */
+
+    .discord-button {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 8px;
+
+      min-width: 260px;
+
+      min-height: 47px;
+
+      padding:
+        0
+        20px;
+
+      border:
+        2px solid #4b55b9;
+
+      border-radius: 3px;
+
+      background: #5865f2;
+
+      color: #ffffff;
+
+      text-decoration: none;
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.04em;
+
+      box-shadow:
+        0 5px 0 #3d469d;
+
+      transition:
+        transform 0.1s ease,
+        box-shadow 0.1s ease,
+        background 0.1s ease;
+
+    }
+
+
+    .discord-button:hover {
+
+      background: #4d59df;
+
+    }
+
+
+    .discord-button:active {
+
+      transform:
+        translateY(4px);
+
+      box-shadow:
+        0 1px 0 #3d469d;
+
+    }
+
+
+    .discord-icon {
+
+      font-size: 17px;
+
+      line-height: 1;
+
+    }
+
+
+    /* =====================================================
+       PEQUENA MENSAGEM
+    ===================================================== */
+
+    .small-message {
+
+      margin:
+        20px
+        0
+        0;
+
+      color: #94a3b8;
+
+      font-size: 8px;
+
+      font-weight: 800;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.06em;
+
+    }
+
+
+    /* =====================================================
+       RODAPÉ
+    ===================================================== */
+
+    .footer {
+
+      width: 100%;
+
+      position: relative;
+
+      z-index: 10;
+
+      background: #ffd447;
+
+      border-top:
+        3px solid #b78600;
+
+      box-shadow:
+        0 -4px 0
+        rgba(183,134,0,0.12);
+
+      padding:
+        12px
+        20px;
+
+      text-align: center;
+
+      color: #665000;
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media (max-width: 600px) {
+
+
+      .top-bar {
+
+        min-height: 60px;
+
+      }
+
+
+      .main-area {
+
+        padding:
+          40px
+          14px
+          50px;
+
+      }
+
+
+      .maintenance-card {
+
+        padding:
+          28px
+          19px
+          25px;
+
+        box-shadow:
+          6px 6px 0
+          rgba(23,108,168,0.25);
+
+      }
+
+
+      .characters-area {
+
+        height: 160px;
+
+      }
+
+
+      .character {
+
+        width: 125px;
+        height: 155px;
+
+      }
+
+
+      .pixel-person {
+
+        transform:
+          scale(0.86);
+
+        transform-origin:
+          bottom center;
+
+      }
+
+
+      .warning-sign {
+
+        right: 0;
+
+        top: 15px;
+
+        transform:
+          scale(0.72)
+          rotate(3deg);
+
+      }
+
+
+      .maintenance-title {
+
+        font-size: 23px;
+
+      }
+
+
+      .maintenance-description {
+
+        font-size: 10px;
+
+        margin-bottom: 21px;
+
+      }
+
+
+      .progress-bar {
+
+        height: 21px;
+
+      }
+
+
+      .discord-button {
+
+        width: 100%;
+
+        min-width: 0;
+
+      }
+
+
+      .pixel-1,
+      .pixel-2,
+      .pixel-3,
+      .pixel-4 {
+
+        display: none;
+
+      }
+
+
+      .cloud-1 {
+
+        left: -25px;
+
+        font-size: 42px;
+
+      }
+
+
+      .cloud-2 {
+
+        right: -20px;
+
+        font-size: 52px;
+
+      }
+
+    }
+
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =====================================================
+       FUNDO
+  ====================================================== -->
+
+  <div class="sky-grid"></div>
+
+
+  <!-- NUVENS -->
+
+  <div class="cloud cloud-1">
+    ☁️
+  </div>
+
+  <div class="cloud cloud-2">
+    ☁️
+  </div>
+
+  <div class="cloud cloud-3">
+    ☁️
+  </div>
+
+  <div class="cloud cloud-4">
+    ☁️
+  </div>
+
+
+  <!-- PIXELS -->
+
+  <div class="pixel-square pixel-1"></div>
+
+  <div class="pixel-square blue pixel-2"></div>
+
+  <div class="pixel-square pixel-3"></div>
+
+  <div class="pixel-square blue pixel-4"></div>
+
+
+  <!-- =====================================================
+       PÁGINA
+  ====================================================== -->
+
+  <div class="page-wrapper">
+
+
+    <!-- ===================================================
+         TOPO
+    ==================================================== -->
+
+    <header class="top-bar">
+
+      <div class="top-decoration">
+
+        <span class="top-decoration-icon"></span>
+
+        <span class="top-decoration-icon"></span>
+
+      </div>
+
+    </header>
+
+
+    <!-- ===================================================
+         CONTEÚDO
+    ==================================================== -->
+
+    <main class="main-area">
+
+
+      <section class="maintenance-card">
+
+
+        <!-- =================================================
+             PERSONAGENS
+        ================================================== -->
+
+        <div class="characters-area">
+
+
+          <!-- PERSONAGEM 1 -->
+
+          <div class="character">
+
+
+            <div class="pixel-person">
+
+
+              <div class="pixel-hair"></div>
+
+
+              <div class="pixel-head">
+
+                <span class="pixel-eye left"></span>
+
+                <span class="pixel-eye right"></span>
+
+                <span class="sad-mouth"></span>
+
+              </div>
+
+
+              <div class="pixel-body"></div>
+
+
+              <div class="pixel-leg left"></div>
+
+              <div class="pixel-leg right"></div>
+
+
+            </div>
+
+
+          </div>
+
+
+          <!-- PLACA -->
+
+          <div class="warning-sign">
+
+            <div class="warning-board">
+
+              <div class="warning-icon">
+                ⚠
+              </div>
+
+              Site em
+              manutenção
+
+            </div>
+
+            <div class="warning-stick"></div>
+
+          </div>
+
+
+          <!-- PERSONAGEM 2 -->
+
+          <div class="character">
+
+
+            <div
+              class="pixel-person"
+              style="transform: scaleX(-1);"
+            >
+
+
+              <div class="pixel-hair"></div>
+
+
+              <div class="pixel-head">
+
+                <span class="pixel-eye left"></span>
+
+                <span class="pixel-eye right"></span>
+
+                <span class="sad-mouth"></span>
+
+              </div>
+
+
+              <div class="pixel-body"></div>
+
+
+              <div class="pixel-leg left"></div>
+
+              <div class="pixel-leg right"></div>
+
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             TAG
+        ================================================== -->
+
+        <span class="status-tag">
+
+          ⚙ Atualização em andamento
+
+        </span>
+
+
+        <!-- =================================================
+             TÍTULO
+        ================================================== -->
+
+        <h1 class="maintenance-title">
+
+          Estamos em
+          <span>manutenção!</span>
+
+        </h1>
+
+
+        <!-- =================================================
+             DESCRIÇÃO
+        ================================================== -->
+
+        <p class="maintenance-description">
+
+          O Universo Pixelizados está passando
+          por algumas melhorias para deixar
+          nossa comunidade ainda melhor.
+          Voltaremos em breve!
+
+        </p>
+
+
+        <!-- =================================================
+             PROGRESSO
+        ================================================== -->
+
+        <div class="progress-section">
+
+
+          <div class="progress-header">
+
+            <span class="progress-label">
+
+              Progresso da atualização
+
+            </span>
+
+
+            <span class="progress-percent">
+
+              50%
+
+            </span>
+
+          </div>
+
+
+          <div class="progress-bar">
+
+            <div class="progress-fill"></div>
+
+          </div>
+
+
+          <div class="progress-status">
+
+            Estamos construindo algo novo para você.
+
+          </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             DISCORD
+        ================================================== -->
+
+        <a
+          href="https://discord.gg/pixelizados"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="discord-button"
+        >
+
+          <span class="discord-icon">
+            💬
+          </span>
+
+          Acompanhar no Discord
+
+        </a>
+
+
+        <!-- =================================================
+             MENSAGEM
+        ================================================== -->
+
+        <p class="small-message">
+
+          Fique ligado nas novidades da comunidade
+
+        </p>
+
+
+      </section>
+
+
+    </main>
+
+
+    <!-- ===================================================
+         RODAPÉ
+    ==================================================== -->
+
+    <footer class="footer">
+
+      © 2026 Pixelizados.
+      Todos os direitos reservados aos criadores de pixels.
+
+    </footer>
+
+
+  </div>
+
+
+</body>
+
+</html>
