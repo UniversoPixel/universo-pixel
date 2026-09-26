@@ -3,152 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal | Universo Pixel</title>
 
-  <title>Portal | Pixelizados</title>
-
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-  <!-- Font Awesome -->
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    rel="stylesheet"
-  >
-
-  <!-- Fonts -->
+  <!-- FONTES -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap"
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
 
   <style>
 
     /* =========================================================
-       PIXELIZADOS — DESIGN SYSTEM
-       MODERNO + PIXEL / HABBO
+       SISTEMA DE TIPOGRAFIA
     ========================================================= */
-
-    :root {
-
-      --blue: #55b9f5;
-      --blue-dark: #2788ca;
-      --blue-deep: #176ca8;
-      --blue-light: #e7f6ff;
-
-      --yellow: #ffd447;
-      --yellow-dark: #e6a900;
-
-      --green: #55cf70;
-      --red: #ff5c65;
-
-      --bg: #edf7fd;
-      --white: #ffffff;
-
-      --text: #243447;
-      --text-soft: #64748b;
-      --text-muted: #94a3b8;
-
-      --border: #d5e7f4;
-      --border-dark: #a9cce4;
-
-      --shadow:
-        0 8px 22px rgba(31, 93, 132, .09);
-
-      --shadow-hover:
-        0 12px 30px rgba(31, 93, 132, .15);
-
-      --pixel-shadow:
-        0 4px 0 rgba(31, 112, 161, .18);
-
-      --radius: 16px;
-    }
-
-
-    /* =========================================================
-       GLOBAL
-    ========================================================= */
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
 
     body {
-
-      margin: 0;
-
       font-family: 'Inter', sans-serif;
-
-      color: var(--text);
-
-      background:
-
-        radial-gradient(
-          circle at 10% 5%,
-          rgba(85,185,245,.18),
-          transparent 25%
-        ),
-
-        radial-gradient(
-          circle at 90% 20%,
-          rgba(255,212,71,.12),
-          transparent 20%
-        ),
-
-        linear-gradient(
-          180deg,
-          #e8f6ff 0%,
-          #f6fbfe 50%,
-          #edf7fd 100%
-        );
-
+      background: linear-gradient(180deg, #2bb7f6 0%, #179be3 100%);
       background-attachment: fixed;
-
+      color: #334155;
       padding-top: 76px;
-      padding-bottom: 92px;
-
-      min-height: 100vh;
+      padding-bottom: 90px;
     }
-
-
-    /* GRID PIXELIZADA DO FUNDO */
-
-    body::before {
-
-      content: "";
-
-      position: fixed;
-
-      inset: 0;
-
-      pointer-events: none;
-
-      z-index: -1;
-
-      opacity: .035;
-
-      background-image:
-
-        linear-gradient(
-          rgba(39,136,202,.8) 1px,
-          transparent 1px
-        ),
-
-        linear-gradient(
-          90deg,
-          rgba(39,136,202,.8) 1px,
-          transparent 1px
-        );
-
-      background-size: 32px 32px;
-    }
-
 
     .font-title {
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -164,756 +42,78 @@
 
 
     /* =========================================================
-       HEADER
+       HEADER FIXA NO TOPO
     ========================================================= */
 
     .top-header-bar {
-
       position: fixed;
-
       top: 0;
       left: 0;
-
       width: 100%;
-
       z-index: 9998;
 
-      background: rgba(255,255,255,.96);
+      background: rgba(255, 255, 255, 0.92);
 
-      border-bottom: 2px solid var(--border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
 
-      box-shadow:
-        0 3px 14px rgba(0,0,0,.06);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     }
 
 
-    .top-header-bar::after {
+    /* =========================================================
+       AUTODJ FIXO NO RODAPÉ
+    ========================================================= */
 
-      content: "";
-
-      position: absolute;
-
-      bottom: -2px;
-
+    .bg-habbo-yellow-footer-bar {
+      position: fixed;
+      bottom: 0;
       left: 0;
-
       width: 100%;
+      z-index: 9999;
 
-      height: 3px;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 203, 5, 0.96) 0%,
+        rgba(255, 180, 0, 0.96) 100%
+      );
 
-      background:
-        linear-gradient(
-          90deg,
-          var(--blue),
-          #8fd7ff,
-          var(--yellow)
-        );
-    }
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
 
-
-    /* =========================================================
-       PROFILE
-    ========================================================= */
-
-    .profile-box {
-
-      background: #fff;
-
-      border: 2px solid var(--border);
-
-      border-radius: 14px;
-
-      padding: 5px 8px;
-
-      box-shadow: var(--pixel-shadow);
-
-      transition: .2s ease;
-    }
-
-
-    .profile-box:hover {
-
-      border-color: var(--border-dark);
-
-      transform: translateY(-1px);
-    }
-
-
-    .avatar-frame {
-
-      width: 38px;
-      height: 38px;
-
-      border-radius: 10px;
-
-      padding: 2px;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--blue),
-          #a7e2ff
-        );
+      border-top: 2px solid #cc8e00;
 
       box-shadow:
-        0 3px 0 rgba(39,136,202,.25);
-    }
-
-
-    .avatar-frame img {
-
-      width: 100%;
-      height: 100%;
-
-      border-radius: 8px;
-
-      object-fit: cover;
-
-      background: #263238;
+        0 -4px 20px rgba(0, 0, 0, 0.15),
+        inset 0 2px 0 rgba(255, 255, 255, 0.25);
     }
 
 
     /* =========================================================
-       PX WALLET
+       GLASS CAPSULE
     ========================================================= */
 
-    .px-wallet {
+    .glass-capsule {
+      background: rgba(255, 255, 255, 0.92);
 
-      display: flex;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
 
-      align-items: center;
-
-      gap: 7px;
-
-      padding: 7px 11px;
-
-      border-radius: 11px;
-
-      background:
-        linear-gradient(
-          180deg,
-          #ffe36c,
-          #ffc928
-        );
-
-      color: #694c00;
-
-      border: 1px solid #e4ae17;
+      border: 1.5px solid rgba(255, 255, 255, 0.95);
 
       box-shadow:
-        inset 0 2px 0 rgba(255,255,255,.65),
-        0 3px 0 rgba(198,143,0,.22);
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 12px;
-
-      font-weight: 800;
+        0 4px 14px -2px rgba(0, 0, 0, 0.08);
     }
 
-
-    .px-wallet i {
-
-      font-size: 12px;
-
-      filter:
-        drop-shadow(
-          1px 1px 0 rgba(120,80,0,.2)
-        );
+    .glass-capsule-hover {
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-
-    /* =========================================================
-       LOGOUT
-    ========================================================= */
-
-    .logout-button {
-
-      width: 40px;
-      height: 40px;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 11px;
-
-      background: #fff;
-
-      color: #64748b;
-
-      border: 2px solid var(--border);
-
-      box-shadow: var(--pixel-shadow);
-
-      transition: .2s ease;
-    }
-
-
-    .logout-button:hover {
-
-      color: #e54854;
-
-      border-color: #ffc2c7;
-
-      background: #fff6f7;
-
+    .glass-capsule-hover:hover {
+      background: rgba(255, 255, 255, 1);
       transform: translateY(-2px);
-    }
-
-
-    /* =========================================================
-       NAVIGATION
-    ========================================================= */
-
-    .classic-nav-bar {
-
-      width: 100%;
-
-      background: rgba(255,255,255,.98);
-
-      border-bottom: 1px solid var(--border);
-
-      box-shadow:
-        0 3px 12px rgba(0,0,0,.04);
-    }
-
-
-    .nav-item {
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      gap: 8px;
-
-      height: 50px;
-
-      padding: 0 18px;
-
-      position: relative;
-
-      white-space: nowrap;
-
-      color: #526273;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 12px;
-
-      font-weight: 800;
-
-      transition: .2s ease;
-    }
-
-
-    .nav-item i {
-
-      font-size: 13px;
-
-      color: #7190a6;
-
-      transition: .2s ease;
-    }
-
-
-    .nav-item:hover {
-
-      color: var(--blue-dark);
-
-      background: #f1f9ff;
-
-      transform: translateY(-1px);
-    }
-
-
-    .nav-item:hover i {
-
-      color: var(--blue-dark);
-
-      transform: translateY(-2px);
-    }
-
-
-    .nav-item.active {
-
-      color: #fff;
-
-      background:
-        linear-gradient(
-          180deg,
-          #69c5fa,
-          #45aeea
-        );
-
-      box-shadow:
-        inset 0 -3px 0 rgba(0,0,0,.08);
-    }
-
-
-    .nav-item.active i {
-
-      color: #fff;
-    }
-
-
-    .nav-item.active::after {
-
-      content: "";
-
-      position: absolute;
-
-      left: 8px;
-      right: 8px;
-
-      bottom: -1px;
-
-      height: 3px;
-
-      background: var(--yellow);
-    }
-
-
-    /* =========================================================
-       MAIN
-    ========================================================= */
-
-    .pixel-card {
-
-      background: #fff;
-
-      border: 2px solid var(--border);
-
-      border-radius: var(--radius);
-
-      box-shadow:
-        var(--shadow),
-        var(--pixel-shadow);
-
-      position: relative;
-
-      overflow: hidden;
-
-      transition:
-        transform .22s ease,
-        box-shadow .22s ease,
-        border-color .22s ease;
-    }
-
-
-    .pixel-card::before {
-
-      content: "";
-
-      position: absolute;
-
-      top: 0;
-      left: 0;
-
-      width: 100%;
-      height: 4px;
-
-      background:
-        linear-gradient(
-          90deg,
-          var(--blue),
-          #8bd7ff,
-          var(--yellow)
-        );
-    }
-
-
-    .pixel-card-hover:hover {
-
-      transform: translateY(-3px);
-
-      border-color: var(--border-dark);
-
-      box-shadow:
-        var(--shadow-hover),
-        0 5px 0 rgba(39,136,202,.18);
-    }
-
-
-    /* =========================================================
-       CARD HEADER
-    ========================================================= */
-
-    .card-header-title {
-
-      border-bottom: 2px dashed #dcecf7;
-
-      position: relative;
-    }
-
-
-    .card-header-title::after {
-
-      content: "";
-
-      position: absolute;
-
-      bottom: -2px;
-
-      left: 0;
-
-      width: 52px;
-
-      height: 3px;
-
-      background: var(--blue);
-
-      box-shadow:
-        7px 0 0 var(--yellow),
-        14px 0 0 #8fd7ff;
-    }
-
-
-    /* =========================================================
-       ICON BOXES
-    ========================================================= */
-
-    .section-icon {
-
-      width: 38px;
-      height: 38px;
-
-      border-radius: 10px;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      background: var(--blue-light);
-
-      color: var(--blue-dark);
-
-      border: 2px solid #cbe9fa;
-
-      box-shadow:
-        0 3px 0 rgba(39,136,202,.12);
-    }
-
-
-    /* =========================================================
-       NEWS IMAGE
-    ========================================================= */
-
-    .img-zoom-container {
-
-      overflow: hidden;
-
-      border-radius: 13px;
-
-      border: 2px solid #cde4f3;
-
-      box-shadow:
-        0 5px 0 rgba(39,136,202,.12);
-    }
-
-
-    .img-zoom-container img {
-
-      transition:
-        transform .55s cubic-bezier(.16,1,.3,1);
-    }
-
-
-    .img-zoom-container:hover img {
-
-      transform: scale(1.035);
-    }
-
-
-    /* =========================================================
-       TAGS
-    ========================================================= */
-
-    .pixel-tag {
-
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 6px;
-
-      padding: 5px 9px;
-
-      border-radius: 8px;
-
-      background: #eaf7ff;
-
-      color: #267caf;
-
-      border: 1px solid #c8e8fa;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 9px;
-
-      font-weight: 900;
-
-      text-transform: uppercase;
-
-      letter-spacing: .08em;
-    }
-
-
-    /* =========================================================
-       BUTTONS
-    ========================================================= */
-
-    .pixel-button {
-
-      display: inline-flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 7px;
-
-      padding: 9px 13px;
-
-      border-radius: 10px;
-
-      border: 2px solid #d7e7f4;
-
-      background: #f8fcff;
-
-      color: #526273;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 11px;
-
-      font-weight: 800;
-
-      box-shadow:
-        0 3px 0 rgba(39,136,202,.08);
-
-      transition: .18s ease;
-    }
-
-
-    .pixel-button:hover {
-
-      transform: translateY(-2px);
-
-      background: #edf8ff;
-
-      border-color: #b7dbf1;
-
-      color: var(--blue-dark);
-    }
-
-
-    /* =========================================================
-       RANKING
-    ========================================================= */
-
-    .ranking-user {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 11px;
-
-      padding: 10px;
-
-      border-radius: 12px;
-
-      border: 2px solid transparent;
-
-      transition: .2s ease;
-    }
-
-
-    .ranking-user:hover {
-
-      background: #f4faff;
-
-      border-color: #d8ebf8;
-
-      transform: translateX(2px);
-    }
-
-
-    .ranking-avatar {
-
-      width: 38px;
-      height: 38px;
-
-      border-radius: 9px;
-
-      border: 2px solid #cbdfea;
-
-      background: #263238;
-    }
-
-
-    .pixel-medal {
-
-      width: 28px;
-      height: 28px;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 8px;
-
-      font-family: 'Plus Jakarta Sans', sans-serif;
-
-      font-size: 11px;
-
-      font-weight: 900;
-
-      box-shadow:
-        0 3px 0 rgba(0,0,0,.12);
-    }
-
-
-    .pixel-medal.gold {
-
-      background: #ffd447;
-
-      color: #705200;
-    }
-
-
-    .pixel-medal.silver {
-
-      background: #dce4ea;
-
-      color: #52606b;
-    }
-
-
-    .pixel-medal.bronze {
-
-      background: #dca57c;
-
-      color: #673c24;
-    }
-
-
-    /* =========================================================
-       EVENT CARDS
-    ========================================================= */
-
-    .event-card {
-
-      border: 2px solid #dce9f2;
-
-      border-radius: 13px;
-
-      background: #fff;
-
-      padding: 15px;
-
-      transition: .2s ease;
-
-      box-shadow:
-        0 3px 0 rgba(39,136,202,.06);
-    }
-
-
-    .event-card:hover {
-
-      transform: translateY(-2px);
-
-      border-color: #bddcf0;
-
-      box-shadow:
-        0 8px 18px rgba(39,136,202,.10);
-    }
-
-
-    /* =========================================================
-       SEARCH
-    ========================================================= */
-
-    .search-box {
-
-      border: 2px solid var(--border);
-
-      background: #f8fcff;
-
-      border-radius: 11px;
-
-      transition: .2s ease;
-    }
-
-
-    .search-box:focus-within {
-
-      border-color: var(--blue);
-
-      background: #fff;
-
-      box-shadow:
-        0 0 0 3px rgba(85,185,245,.15);
-    }
-
-
-    /* =========================================================
-       PARTNERS
-    ========================================================= */
-
-    .partner-card {
-
-      border: 2px solid #dce9f2;
-
-      background: #f8fcff;
-
-      border-radius: 12px;
-
-      transition: .2s ease;
-    }
-
-
-    .partner-card:hover {
-
-      background: #fff;
-
-      border-color: #b8dcf2;
-
-      transform: translateY(-2px);
-    }
-
-
-    /* =========================================================
-       HABBO COIN
-    ========================================================= */
-
-    .habbo-coin {
-
-      width: 21px;
-      height: 21px;
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle at 35% 30%,
-          #fff2a0 0%,
-          #ffd447 35%,
-          #e7a800 75%,
-          #a56b00 100%
-        );
-
-      border: 2px solid #a56b00;
-
-      box-shadow:
-        inset 2px 2px 0 rgba(255,255,255,.7),
-        inset -2px -2px 0 rgba(119,76,0,.25),
-        0 2px 3px rgba(0,0,0,.15);
     }
 
 
@@ -921,81 +121,7 @@
        AUTODJ
     ========================================================= */
 
-    .bg-habbo-yellow-footer-bar {
-
-      position: fixed;
-
-      bottom: 0;
-      left: 0;
-
-      width: 100%;
-
-      z-index: 9999;
-
-      background:
-        linear-gradient(
-          180deg,
-          #ffe16b,
-          #ffc928
-        );
-
-      border-top: 3px solid #e1a900;
-
-      box-shadow:
-        0 -4px 15px rgba(0,0,0,.12),
-        inset 0 2px 0 rgba(255,255,255,.5);
-    }
-
-
-    .autodj-box {
-
-      background: #fff;
-
-      border: 2px solid #e4bd32;
-
-      border-radius: 13px;
-
-      box-shadow:
-        0 4px 0 rgba(174,119,0,.18);
-
-      transition: .2s ease;
-    }
-
-
-    .autodj-box:hover {
-
-      transform: translateY(-2px);
-    }
-
-
-    .pulse-ring {
-
-      animation:
-        pulse-ring 2s infinite ease-in-out;
-    }
-
-
-    @keyframes pulse-ring {
-
-      0% {
-        transform: scale(.9);
-        opacity: .8;
-      }
-
-      50% {
-        transform: scale(1.3);
-        opacity: .3;
-      }
-
-      100% {
-        transform: scale(.9);
-        opacity: .8;
-      }
-    }
-
-
     @keyframes spin-record {
-
       from {
         transform: rotate(0deg);
       }
@@ -1005,1455 +131,1971 @@
       }
     }
 
-
     .pixel-vinyl-spin {
-
-      animation:
-        spin-record 3s linear infinite;
+      animation: spin-record 3s linear infinite;
     }
 
 
     /* =========================================================
-       DECORAÇÕES PIXEL
+       MOEDA PIXEL
     ========================================================= */
 
-    .pixel-square {
+    .habbo-coin {
+      width: 22px;
+      height: 22px;
+
+      background: radial-gradient(
+        circle,
+        #ffe066 30%,
+        #f59e0b 80%,
+        #b45309 100%
+      );
+
+      border: 1.5px solid #78350f;
+
+      box-shadow:
+        inset 1px 1px 0px #fff,
+        inset -1px -1px 0px #92400e,
+        0 2px 4px rgba(0,0,0,0.2);
+    }
+
+
+    /* =========================================================
+       PULSE
+    ========================================================= */
+
+    .pulse-ring {
+      animation: pulse-ring 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse-ring {
+
+      0% {
+        transform: scale(0.95);
+        opacity: 0.8;
+      }
+
+      50% {
+        transform: scale(1.15);
+        opacity: 0.4;
+      }
+
+      100% {
+        transform: scale(0.95);
+        opacity: 0.8;
+      }
+
+    }
+
+
+    /* =========================================================
+       BARRA DE NAVEGAÇÃO
+    ========================================================= */
+
+    .classic-nav-bar {
+      background: rgba(255, 255, 255, 0.92);
+
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+      box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-item {
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 8px;
+
+      padding: 0 24px;
+
+      height: 48px;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      color: #475569;
+
+      border-right: 1px solid rgba(0, 0, 0, 0.06);
+
+      transition: all 0.2s ease;
+
+      position: relative;
+    }
+
+    .nav-item:first-child {
+      border-left: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-item i {
+      font-size: 14px;
+      color: #64748b;
+
+      transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .nav-item:hover {
+      background-color: rgba(241, 245, 249, 0.8);
+      color: #0284c7;
+    }
+
+    .nav-item:hover i {
+      color: #0284c7;
+      transform: translateY(-1px);
+    }
+
+    .nav-item.active {
+      color: #0284c7;
+      background-color: #ffffff;
+    }
+
+    .nav-item.active i {
+      color: #0284c7;
+    }
+
+    .nav-item.active::after {
+
+      content: '';
 
       position: absolute;
 
-      width: 9px;
-      height: 9px;
+      bottom: 0;
+      left: 0;
+      right: 0;
 
-      background: var(--blue);
+      height: 3px;
 
-      opacity: .18;
-
-      pointer-events: none;
-    }
-
-
-    .pixel-square.yellow {
-
-      background: var(--yellow);
+      background-color: #0284c7;
     }
 
 
     /* =========================================================
-       MOBILE
+       CARDS
     ========================================================= */
 
-    @media(max-width:768px){
+    .pixel-card {
 
-      body {
+      background: rgba(255, 255, 255, 0.96);
 
-        padding-top: 70px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
 
-        padding-bottom: 112px;
-      }
+      border: 1px solid rgba(255, 255, 255, 0.9);
 
+      border-radius: 20px;
 
-      .nav-item {
+      box-shadow:
+        0 12px 32px -8px rgba(2, 132, 199, 0.12),
+        0 4px 12px -2px rgba(0, 0, 0, 0.04);
 
-        padding: 0 13px;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    }
 
-        font-size: 11px;
-      }
+    .pixel-card-hover:hover {
 
+      transform: translateY(-2px);
 
-      .nav-item span {
+      box-shadow:
+        0 16px 36px -6px rgba(2, 132, 199, 0.18),
+        0 6px 16px -2px rgba(0, 0, 0, 0.06);
+    }
 
-        display: none;
-      }
+    .card-header-title {
 
+      border-bottom: 2px solid #f1f5f9;
 
-      .nav-item i {
+      position: relative;
+    }
 
-        font-size: 16px;
-      }
+    .card-header-title::after {
 
+      content: '';
 
-      .profile-box {
+      position: absolute;
 
-        padding: 4px;
-      }
+      bottom: -2px;
+      left: 0;
 
+      width: 70px;
+      height: 2px;
 
-      .profile-name {
+      background:
+        linear-gradient(
+          90deg,
+          #0284c7 0%,
+          #38b6ff 100%
+        );
 
-        display: none;
-      }
-
-
-      .px-wallet {
-
-        padding: 7px 9px;
-      }
-
-
-      .top-header-bar {
-
-        padding-left: 12px !important;
-
-        padding-right: 12px !important;
-      }
-
-
-      .top-header-bar img {
-
-        max-height: 42px;
-      }
-
-
-      .bg-habbo-yellow-footer-bar {
-
-        padding:
-          7px 10px;
-      }
+      border-radius: 2px;
     }
 
 
-    @media(max-width:480px){
+    /* =========================================================
+       ZOOM DE IMAGENS
+    ========================================================= */
 
-      .pixel-card {
+    .img-zoom-container {
+      overflow: hidden;
+      border-radius: 14px;
+    }
 
-        border-radius: 14px;
+    .img-zoom-container img {
+
+      transition:
+        transform 0.6s cubic-bezier(
+          0.16,
+          1,
+          0.3,
+          1
+        );
+    }
+
+    .img-zoom-container:hover img {
+      transform: scale(1.04);
+    }
+
+
+    /* =========================================================
+       BUSCA
+    ========================================================= */
+
+    .search-input-glow:focus-within {
+
+      box-shadow:
+        0 0 0 3px rgba(
+          2,
+          132,
+          199,
+          0.2
+        );
+
+      border-color: #0284c7;
+    }
+
+
+    /* =========================================================
+       FORMULÁRIO DE VAGAS
+    ========================================================= */
+
+    .vagas-form {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 14px;
+    }
+
+    .form-group {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 7px;
+    }
+
+    .form-group label {
+
+      font-size: 11px;
+
+      font-weight: 800;
+
+      color: #334155;
+
+      text-transform: uppercase;
+
+      letter-spacing: .04em;
+    }
+
+    .form-group label i {
+
+      color: #0284c7;
+
+      margin-right: 5px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+
+      width: 100%;
+
+      border: 2px solid #dbeaf4;
+
+      background: #f8fcff;
+
+      color: #334155;
+
+      border-radius: 10px;
+
+      padding: 11px 12px;
+
+      font-family: inherit;
+
+      font-size: 12px;
+
+      outline: none;
+
+      transition: all .2s ease;
+    }
+
+    .form-group input,
+    .form-group select {
+      height: 42px;
+    }
+
+    .form-group textarea {
+
+      resize: vertical;
+
+      min-height: 105px;
+
+      line-height: 1.5;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+
+      color: #9aaebe;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+
+      border-color: #38b6ff;
+
+      background: #ffffff;
+
+      box-shadow:
+        0 0 0 3px rgba(
+          85,
+          185,
+          245,
+          0.12
+        );
+    }
+
+    .form-helper {
+
+      font-size: 9px;
+
+      color: #94a3b8;
+
+      text-align: right;
+
+      margin-top: -3px;
+    }
+
+    .vaga-submit {
+
+      width: 100%;
+
+      border: 0;
+
+      border-radius: 10px;
+
+      padding: 12px 14px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #38b6ff,
+          #0284c7
+        );
+
+      color: #ffffff;
+
+      font-family: inherit;
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      letter-spacing: .04em;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 5px 12px rgba(
+          39,
+          136,
+          202,
+          0.22
+        );
+
+      transition: all .2s ease;
+    }
+
+    .vaga-submit i {
+      margin-right: 6px;
+    }
+
+    .vaga-submit:hover {
+
+      transform: translateY(-1px);
+
+      box-shadow:
+        0 7px 16px rgba(
+          39,
+          136,
+          202,
+          0.28
+        );
+    }
+
+    .vaga-submit:active {
+      transform: translateY(0);
+    }
+
+
+    /* =========================================================
+       RESPONSIVIDADE
+    ========================================================= */
+
+    @media (max-width: 768px) {
+
+      body {
+        padding-top: 70px;
+        padding-bottom: 110px;
       }
 
-
-      .event-card {
-
-        padding: 12px;
+      .nav-item {
+        padding: 0 16px;
       }
 
+      .nav-item span {
+        font-size: 11px;
+      }
 
-      .bg-habbo-yellow-footer-bar
-      > div {
+    }
 
+    @media (max-width: 640px) {
+
+      .top-header-bar {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .top-header-bar .glass-capsule {
         gap: 6px;
       }
+
+      .pixel-card {
+        border-radius: 16px;
+      }
+
+      .nav-item {
+        padding: 0 14px;
+      }
+
+      .nav-item i {
+        font-size: 13px;
+      }
+
     }
 
   </style>
 </head>
 
 
-<body class="min-h-screen flex flex-col justify-between">
+<body class="min-h-screen flex flex-col justify-between font-body">
 
 
-<!-- =========================================================
-     CONTEÚDO
-========================================================= -->
-
-<div>
+  <div>
 
 
-  <!-- =======================================================
-       HEADER
-  ======================================================== -->
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
-  <header class="top-header-bar px-4 sm:px-8 py-3">
+    <header class="top-header-bar px-4 sm:px-8 py-3">
 
-    <div
-      class="max-w-7xl mx-auto flex justify-between items-center"
-    >
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
 
 
-      <!-- LOGO -->
+        <!-- LOGO -->
 
-      <div class="flex items-center">
+        <div class="flex items-center">
+
+          <a href="#" class="flex items-center">
+
+            <img
+              src="pixelizados.png.png"
+              alt="Logo Pixelizados"
+              class="h-10 sm:h-12 w-auto object-contain"
+            >
+
+          </a>
+
+        </div>
+
+
+        <!-- PERFIL -->
+
+        <div class="flex items-center gap-2">
+
+
+          <div
+            class="glass-capsule glass-capsule-hover rounded-full p-1.5 flex items-center gap-3"
+          >
+
+
+            <!-- PX -->
+
+            <div
+              class="flex items-center gap-2 bg-gradient-to-r from-amber-50 to-yellow-100/80 px-3 py-1 rounded-full border border-amber-200/80 shadow-inner"
+            >
+
+              <div
+                class="habbo-coin rounded-full flex-shrink-0 flex items-center justify-center font-black text-[9px] text-amber-950 select-none"
+              >
+                $
+              </div>
+
+              <div class="flex items-center gap-1 leading-none font-subtitle">
+
+                <span
+                  id="user-pixels"
+                  class="font-extrabold text-xs text-amber-950"
+                >
+                  0
+                </span>
+
+                <span
+                  class="text-[9px] font-extrabold text-amber-700 tracking-wider"
+                >
+                  PX
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="h-5 w-[1px] bg-slate-200"></div>
+
+
+            <!-- USUÁRIO -->
+
+            <div class="flex items-center gap-2 pr-2">
+
+              <div
+                onclick="abrirModalAvatar()"
+                title="Alterar foto de perfil"
+                class="relative group cursor-pointer w-8 h-8 rounded-full p-0.5 bg-gradient-to-tr from-[#38b6ff] to-sky-200 shadow-sm transition hover:scale-105"
+              >
+
+                <img
+                  id="user-avatar"
+                  src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Pixelizado"
+                  alt="Avatar do Usuário"
+                  class="w-full h-full rounded-full object-cover bg-slate-800"
+                >
+
+                <div
+                  class="absolute inset-0 rounded-full bg-[#0077cc]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition text-white text-[10px]"
+                >
+                  <i class="fa-solid fa-camera"></i>
+                </div>
+
+              </div>
+
+
+              <div class="flex flex-col">
+
+                <p
+                  id="user-nick"
+                  class="font-bold text-xs text-slate-900 truncate max-w-[110px] font-subtitle"
+                >
+                  Pixelizado
+                </p>
+
+                <div class="flex items-center gap-1">
+
+                  <span
+                    class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"
+                  ></span>
+
+                  <span
+                    class="text-[9px] font-bold text-slate-400 uppercase tracking-wider font-subtitle"
+                  >
+                    Online
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- LOGOUT -->
+
+          <button
+            onclick="fazerLogout()"
+            title="Sair do Portal"
+            class="glass-capsule glass-capsule-hover w-11 h-11 rounded-full flex items-center justify-center text-slate-600 hover:text-rose-600 hover:border-rose-300 transition group"
+          >
+
+            <i
+              class="fa-solid fa-power-off text-sm group-hover:scale-110 transition-transform"
+            ></i>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         NAVEGAÇÃO
+    ====================================================== -->
+
+    <nav class="classic-nav-bar w-full relative z-10 mt-[1px]">
+
+      <div
+        class="max-w-7xl mx-auto flex items-center overflow-x-auto no-scrollbar"
+      >
 
         <a
           href="#"
-          class="flex items-center"
+          class="nav-item active whitespace-nowrap"
         >
+          <i class="fa-solid fa-house"></i>
+          <span>Home</span>
+        </a>
 
-          <img
-            src="pixelizados.png.png"
-            alt="Logo Pixelizados"
-            class="h-10 sm:h-12 w-auto object-contain"
-          >
 
+        <a
+          href="#"
+          class="nav-item whitespace-nowrap"
+        >
+          <i class="fa-solid fa-users"></i>
+          <span>Comunidade</span>
+        </a>
+
+
+        <a
+          href="#"
+          class="nav-item whitespace-nowrap"
+        >
+          <i class="fa-solid fa-user-shield"></i>
+          <span>Equipe</span>
+        </a>
+
+
+        <a
+          href="#"
+          class="nav-item whitespace-nowrap"
+        >
+          <i class="fa-solid fa-trophy"></i>
+          <span>Ranking</span>
+        </a>
+
+
+        <a
+          href="#"
+          class="nav-item whitespace-nowrap"
+        >
+          <i class="fa-solid fa-newspaper"></i>
+          <span>Notícias</span>
+        </a>
+
+
+        <a
+          href="#vagas-form"
+          class="nav-item whitespace-nowrap"
+        >
+          <i class="fa-solid fa-user-plus"></i>
+          <span>Trabalhe Conosco</span>
+        </a>
+
+
+        <a
+          href="#"
+          target="_blank"
+          class="nav-item whitespace-nowrap"
+        >
+          <i class="fa-brands fa-discord"></i>
+          <span>Discord</span>
         </a>
 
       </div>
 
-
-      <!-- PERFIL -->
-
-      <div class="flex items-center gap-2">
+    </nav>
 
 
-        <!-- CARTEIRA + PERFIL -->
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+    ====================================================== -->
 
-        <div class="profile-box flex items-center gap-2">
-
-
-          <!-- PX -->
-
-          <div class="px-wallet">
-
-            <i class="fa-solid fa-coins"></i>
-
-            <span id="user-pixels">
-              0
-            </span>
-
-            <span>
-              PX
-            </span>
-
-          </div>
-
-
-          <div
-            class="h-6 w-px bg-slate-200"
-          ></div>
-
-
-          <!-- AVATAR -->
-
-          <div class="flex items-center gap-2">
-
-
-            <div
-              onclick="abrirModalAvatar()"
-              title="Alterar foto de perfil"
-              class="avatar-frame cursor-pointer relative group"
-            >
-
-              <img
-                id="user-avatar"
-                src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Pixelizado"
-                alt="Avatar do Usuário"
-              >
-
-              <div
-                class="absolute inset-0 rounded-lg bg-[#177bb5]/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition text-white text-[10px]"
-              >
-
-                <i class="fa-solid fa-camera"></i>
-
-              </div>
-
-            </div>
-
-
-            <!-- NOME -->
-
-            <div class="profile-name flex flex-col">
-
-              <p
-                id="user-nick"
-                class="font-bold text-xs text-slate-900 truncate max-w-[110px] font-subtitle"
-              >
-                Pixelizado
-              </p>
-
-              <div class="flex items-center gap-1">
-
-                <span
-                  class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"
-                ></span>
-
-                <span
-                  class="text-[9px] font-bold text-slate-400 uppercase tracking-wider"
-                >
-                  Online
-                </span>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- LOGOUT -->
-
-        <button
-          onclick="fazerLogout()"
-          title="Sair do Portal"
-          class="logout-button"
-        >
-
-          <i
-            class="fa-solid fa-power-off text-sm"
-          ></i>
-
-        </button>
-
-      </div>
-
-    </div>
-
-  </header>
-
-
-  <!-- =======================================================
-       NAVEGAÇÃO
-  ======================================================== -->
-
-  <nav class="classic-nav-bar">
-
-    <div
-      class="max-w-7xl mx-auto flex items-center overflow-x-auto"
+    <main
+      class="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-8"
     >
 
 
-      <a
-        href="#"
-        class="nav-item active"
-      >
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-        <i class="fa-solid fa-house"></i>
 
-        <span>
-          Home
-        </span>
+        <!-- =================================================
+             COLUNA ESQUERDA
+        ================================================== -->
 
-      </a>
+        <div class="lg:col-span-2 space-y-8">
 
 
-      <a
-        href="#"
-        class="nav-item"
-      >
+          <!-- =================================================
+               NOTÍCIAS
+          ================================================== -->
 
-        <i class="fa-solid fa-users"></i>
-
-        <span>
-          Comunidade
-        </span>
-
-      </a>
-
-
-      <a
-        href="#"
-        class="nav-item"
-      >
-
-        <i class="fa-solid fa-user-shield"></i>
-
-        <span>
-          Equipe
-        </span>
-
-      </a>
-
-
-      <a
-        href="#"
-        class="nav-item"
-      >
-
-        <i class="fa-solid fa-trophy"></i>
-
-        <span>
-          Ranking
-        </span>
-
-      </a>
-
-
-      <a
-        href="#"
-        class="nav-item"
-      >
-
-        <i class="fa-solid fa-newspaper"></i>
-
-        <span>
-          Notícias
-        </span>
-
-      </a>
-
-
-      <a
-        href="#vagas-form"
-        class="nav-item"
-      >
-
-        <i class="fa-solid fa-user-plus"></i>
-
-        <span>
-          Trabalhe Conosco
-        </span>
-
-      </a>
-
-
-      <a
-        href="#"
-        target="_blank"
-        class="nav-item"
-      >
-
-        <i class="fa-brands fa-discord"></i>
-
-        <span>
-          Discord
-        </span>
-
-      </a>
-
-    </div>
-
-  </nav>
-
-
-  <!-- =======================================================
-       MAIN
-  ======================================================== -->
-
-  <main
-    class="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-8"
-  >
-
-
-    <div
-      class="grid grid-cols-1 lg:grid-cols-3 gap-7"
-    >
-
-
-      <!-- ===================================================
-           COLUNA PRINCIPAL
-      ==================================================== -->
-
-      <div
-        class="lg:col-span-2 space-y-7"
-      >
-
-
-        <!-- ================================================
-             NOTÍCIAS
-        ================================================= -->
-
-        <section
-          class="pixel-card pixel-card-hover p-6 sm:p-7"
-        >
-
-
-          <div
-            class="card-header-title pb-4 mb-6 flex justify-between items-center"
-          >
-
-            <div class="flex items-center gap-3">
-
-
-              <div class="section-icon">
-
-                <i class="fa-solid fa-newspaper"></i>
-
-              </div>
-
-
-              <div>
-
-                <h2
-                  class="font-title font-extrabold text-base text-slate-800 uppercase tracking-wide"
-                >
-                  Timeline de Notícias
-                </h2>
-
-                <p
-                  class="font-subtitle text-[11px] text-slate-400 font-semibold"
-                >
-                  As novidades do universo Pixelizados
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <span class="pixel-tag">
-
-              <span
-                class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"
-              ></span>
-
-              AO VIVO
-
-            </span>
-
-          </div>
-
-
-          <!-- NOTÍCIA -->
-
-          <article class="space-y-5">
+          <section class="pixel-card pixel-card-hover p-6 sm:p-7">
 
 
             <div
-              class="text-center max-w-2xl mx-auto px-2 pt-1 pb-3"
+              class="card-header-title pb-3 mb-6 flex justify-between items-center"
             >
 
-
-              <div class="inline-flex mb-3">
-
-                <span class="pixel-tag">
-
-                  <i class="fa-solid fa-star text-[8px]"></i>
-
-                  Fã-Site Oficial
-
-                </span>
-
-              </div>
-
-
-              <h1
-                class="font-title text-2xl sm:text-3xl font-black text-slate-900 leading-snug tracking-tight hover:text-sky-600 transition cursor-pointer"
-              >
-
-                A Era dos Fã-Sites Oficiais:
-                O Futuro da Comunidade Pixelizada
-
-              </h1>
-
-
-              <div
-                class="flex items-center justify-center gap-3 mt-3 text-xs text-slate-500 flex-wrap"
-              >
+              <div class="flex items-center gap-2.5">
 
                 <div
-                  class="flex items-center gap-1.5"
+                  class="w-8 h-8 rounded-lg bg-sky-100 text-sky-600 flex items-center justify-center font-bold text-sm"
                 >
+                  <i class="fa-solid fa-newspaper"></i>
+                </div>
 
-                  <img
-                    src="https://api.dicebear.com/7.x/pixel-art/svg?seed=AdminPixel"
-                    class="w-6 h-6 rounded-lg bg-slate-800 border-2 border-sky-300"
-                    alt="Autor"
+
+                <div>
+
+                  <h2
+                    class="font-title font-extrabold text-base text-slate-800 uppercase tracking-wide leading-tight"
+                  >
+                    Timeline de Notícias
+                  </h2>
+
+                  <p
+                    class="font-subtitle text-[11px] text-slate-400 font-semibold"
+                  >
+                    Manchetes e artigos em destaque
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <span
+                class="font-subtitle text-[10px] font-extrabold text-sky-700 bg-sky-50 border border-sky-200/80 px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1.5"
+              >
+
+                <span
+                  class="w-1.5 h-1.5 rounded-full bg-sky-500 animate-ping"
+                ></span>
+
+                Edição #04
+
+              </span>
+
+            </div>
+
+
+            <article class="space-y-5">
+
+
+              <div
+                class="text-center max-w-2xl mx-auto px-2 pt-1 pb-3 border-b border-dashed border-slate-200/80"
+              >
+
+                <div class="inline-flex items-center gap-2 mb-2">
+
+                  <span
+                    class="font-subtitle text-[10px] font-extrabold text-[#0077cc] bg-sky-100/70 uppercase tracking-widest px-2.5 py-0.5 rounded-full border border-sky-200"
                   >
 
-                  <span class="font-semibold text-slate-700">
-                    Redação Pixel
+                    <i class="fa-solid fa-star text-[8px] mr-1"></i>
+
+                    Fã-Site Oficial
+
                   </span>
 
                 </div>
 
 
-                <span class="text-slate-300">
-                  •
-                </span>
+                <h1
+                  class="font-title text-2xl sm:text-3xl font-black text-slate-900 leading-snug tracking-tight hover:text-sky-600 transition cursor-pointer"
+                >
+                  A Era dos Fã-Sites Oficiais: O Futuro da Comunidade Pixelizada
+                </h1>
 
+
+                <div
+                  class="flex items-center justify-center gap-3 mt-3 text-xs font-medium text-slate-500 flex-wrap font-body"
+                >
+
+                  <div class="flex items-center gap-1.5">
+
+                    <img
+                      src="https://api.dicebear.com/7.x/pixel-art/svg?seed=AdminPixel"
+                      class="w-5 h-5 rounded-full bg-slate-800 border border-sky-300"
+                      alt="Autor"
+                    >
+
+                    <span class="font-semibold text-slate-700">
+                      Redação Pixel
+                    </span>
+
+                  </div>
+
+                  <span class="text-slate-300">•</span>
+
+                  <span class="flex items-center gap-1 text-slate-400">
+                    <i class="fa-regular fa-clock text-[11px]"></i>
+                    Há 2 horas
+                  </span>
+
+                  <span class="text-slate-300">•</span>
+
+                  <span class="flex items-center gap-1 text-slate-400">
+                    <i class="fa-regular fa-bookmark text-[11px]"></i>
+                    3 min de leitura
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <!-- IMAGEM -->
+
+              <div
+                class="relative img-zoom-container group shadow-md my-4"
+              >
+
+                <img
+                  src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1100&q=80"
+                  alt="Capa Notícia"
+                  class="w-full h-64 sm:h-72 object-cover"
+                >
+
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent"
+                ></div>
+
+
+                <div
+                  class="absolute bottom-3 left-3 right-3 flex justify-between items-end"
+                >
+
+                  <span
+                    class="bg-white/90 backdrop-blur-md text-slate-800 font-bold text-[11px] px-3 py-1 rounded-lg shadow-sm border border-white flex items-center gap-1.5 font-subtitle"
+                  >
+
+                    <i class="fa-solid fa-camera text-sky-500"></i>
+
+                    Evento Especial de Lançamento
+
+                  </span>
+
+
+                  <div class="flex gap-1.5">
+
+                    <span
+                      class="bg-black/60 backdrop-blur-md text-white font-semibold text-[11px] px-2.5 py-1 rounded-lg border border-white/20 font-body"
+                    >
+
+                      <i class="fa-regular fa-eye mr-1"></i>
+                      1.2k
+
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <p
+                class="text-slate-600 text-sm leading-relaxed font-normal px-1 font-body"
+              >
+                Confira as novidades exclusivas, eventos programados e melhorias da nossa plataforma para esta temporada. Junte-se aos membros da comunidade, acumule pixels virtuais no seu perfil e ajude a construir o melhor espaço de interação do hotel!
+              </p>
+
+
+              <!-- INTERAÇÕES -->
+
+              <div
+                class="flex items-center justify-between pt-4 border-t border-slate-100/80 text-xs font-body"
+              >
+
+                <div class="flex items-center gap-2">
+
+                  <button
+                    onclick="toggleLike(this)"
+                    class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200/80 text-slate-600 hover:text-rose-600 hover:bg-rose-50 hover:border-rose-200 transition font-semibold group"
+                  >
+
+                    <i
+                      class="fa-regular fa-heart text-sm group-hover:scale-110 transition-transform"
+                    ></i>
+
+                    <span class="like-count">
+                      124
+                    </span>
+
+                    <span class="hidden sm:inline text-slate-400 font-normal">
+                      Gostei
+                    </span>
+
+                  </button>
+
+
+                  <button
+                    class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200/80 text-slate-600 hover:text-sky-600 hover:bg-sky-50 hover:border-sky-200 transition font-semibold group"
+                  >
+
+                    <i
+                      class="fa-regular fa-comment text-sm group-hover:scale-110 transition-transform"
+                    ></i>
+
+                    <span>
+                      18
+                    </span>
+
+                    <span
+                      class="hidden sm:inline text-slate-400 font-normal"
+                    >
+                      Comentários
+                    </span>
+
+                  </button>
+
+                </div>
+
+
+                <button
+                  onclick="compartilharNoticia()"
+                  class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition group font-subtitle"
+                  title="Compartilhar Artigo"
+                >
+
+                  <i
+                    class="fa-solid fa-share-nodes text-xs group-hover:rotate-12 transition-transform"
+                  ></i>
+
+                  <span class="hidden sm:inline">
+                    Compartilhar
+                  </span>
+
+                </button>
+
+              </div>
+
+            </article>
+
+          </section>
+
+
+          <!-- =================================================
+               EVENTOS
+          ================================================== -->
+
+          <section class="pixel-card pixel-card-hover p-6 sm:p-7">
+
+
+            <div
+              class="card-header-title pb-3 mb-6 flex justify-between items-center"
+            >
+
+              <div class="flex items-center gap-2.5">
+
+                <div
+                  class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-sm"
+                >
+                  <i class="fa-solid fa-calendar-check"></i>
+                </div>
+
+
+                <div>
+
+                  <h2
+                    class="font-title font-extrabold text-base text-slate-800 uppercase tracking-wide leading-tight"
+                  >
+                    Atualizações & Eventos
+                  </h2>
+
+                  <p
+                    class="font-subtitle text-[11px] text-slate-400 font-semibold"
+                  >
+                    Sorteios ativos e agenda da rádio
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <a
+                href="#"
+                class="font-subtitle text-xs font-bold text-sky-600 hover:text-sky-700 flex items-center gap-1 group"
+              >
 
                 <span>
-                  <i class="fa-regular fa-clock"></i>
-                  Há 2 horas
+                  Ver todos
                 </span>
 
+                <i
+                  class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"
+                ></i>
 
-                <span class="text-slate-300">
-                  •
-                </span>
+              </a>
+
+            </div>
 
 
-                <span>
-                  <i class="fa-regular fa-bookmark"></i>
-                  3 min de leitura
-                </span>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+
+              <!-- SORTEIO -->
+
+              <div
+                class="p-4 rounded-2xl border border-slate-200/70 bg-gradient-to-b from-slate-50/80 to-white hover:border-amber-300 hover:shadow-md transition group relative overflow-hidden flex flex-col justify-between"
+              >
+
+                <div
+                  class="absolute top-0 right-0 w-16 h-16 bg-amber-400/10 rounded-bl-full pointer-events-none"
+                ></div>
+
+
+                <div>
+
+                  <div
+                    class="flex items-center justify-between gap-2 mb-3"
+                  >
+
+                    <span
+                      class="font-subtitle bg-amber-100 text-amber-800 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full border border-amber-200 flex items-center gap-1"
+                    >
+
+                      <i class="fa-solid fa-gift text-amber-600"></i>
+
+                      Sorteio
+
+                    </span>
+
+
+                    <span
+                      class="font-subtitle text-[10px] font-bold text-slate-400 bg-white px-2 py-0.5 rounded-md border border-slate-100"
+                    >
+
+                      <i
+                        class="fa-regular fa-clock mr-1 text-amber-500"
+                      ></i>
+
+                      Faltam 2d
+
+                    </span>
+
+                  </div>
+
+
+                  <h3
+                    class="font-subtitle font-extrabold text-slate-900 text-sm group-hover:text-amber-600 transition leading-snug"
+                  >
+                    Passaporte VIP Semestral + 500 PX
+                  </h3>
+
+
+                  <p
+                    class="text-xs text-slate-500 mt-1 line-clamp-2 font-body"
+                  >
+                    Comente na timeline oficial e participe automaticamente do sorteio da comunidade.
+                  </p>
+
+                </div>
+
+
+                <div class="mt-4 pt-3 border-t border-slate-100">
+
+                  <div
+                    class="flex justify-between items-center text-[10px] font-bold text-slate-500 mb-1.5 font-subtitle"
+                  >
+
+                    <span>
+                      92 Participantes
+                    </span>
+
+                    <span class="text-amber-600 font-extrabold">
+                      Meta 100%
+                    </span>
+
+                  </div>
+
+
+                  <div
+                    class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden"
+                  >
+
+                    <div
+                      class="bg-gradient-to-r from-amber-400 to-yellow-500 h-1.5 rounded-full"
+                      style="width: 85%"
+                    ></div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- RÁDIO -->
+
+              <div
+                class="p-4 rounded-2xl border border-slate-200/70 bg-gradient-to-b from-slate-50/80 to-white hover:border-sky-300 hover:shadow-md transition group relative overflow-hidden flex flex-col justify-between"
+              >
+
+                <div
+                  class="absolute top-0 right-0 w-16 h-16 bg-sky-400/10 rounded-bl-full pointer-events-none"
+                ></div>
+
+
+                <div>
+
+                  <div
+                    class="flex items-center justify-between gap-2 mb-3"
+                  >
+
+                    <span
+                      class="font-subtitle bg-rose-100 text-rose-700 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full border border-rose-200 flex items-center gap-1"
+                    >
+
+                      <span
+                        class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"
+                      ></span>
+
+                      AO VIVO
+
+                    </span>
+
+
+                    <span
+                      class="font-subtitle text-[10px] font-bold text-slate-400 bg-white px-2 py-0.5 rounded-md border border-slate-100"
+                    >
+                      20:00 Horas
+                    </span>
+
+                  </div>
+
+
+                  <h3
+                    class="font-subtitle font-extrabold text-slate-900 text-sm group-hover:text-sky-600 transition leading-snug"
+                  >
+                    Torneio de Quiz na Rádio Pixel
+                  </h3>
+
+
+                  <p
+                    class="text-xs text-slate-500 mt-1 line-clamp-2 font-body"
+                  >
+                    Sintonize com o locutor da noite e responda às perguntas no chat para faturar moedas.
+                  </p>
+
+                </div>
+
+
+                <div
+                  class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between"
+                >
+
+                  <div class="flex items-center gap-2">
+
+                    <img
+                      src="https://api.dicebear.com/7.x/pixel-art/svg?seed=DJRadio"
+                      class="w-5 h-5 rounded-full bg-slate-900"
+                      alt="Locutor"
+                    >
+
+                    <span
+                      class="text-[11px] font-bold text-slate-700 font-subtitle"
+                    >
+                      DJ Pixel
+                    </span>
+
+                  </div>
+
+
+                  <span
+                    class="font-subtitle text-[10px] font-extrabold text-sky-600 hover:underline cursor-pointer"
+                  >
+                    Ouvir Rádio →
+                  </span>
+
+                </div>
 
               </div>
 
             </div>
 
+          </section>
 
-            <!-- IMAGEM -->
+        </div>
 
-            <div
-              class="relative img-zoom-container group shadow-md my-4"
+
+        <!-- =================================================
+             COLUNA DIREITA
+        ================================================== -->
+
+        <aside class="space-y-6">
+
+
+          <!-- =================================================
+               PESQUISA
+          ================================================== -->
+
+          <div class="pixel-card p-3.5">
+
+            <form
+              onsubmit="event.preventDefault();"
+              class="relative search-input-glow rounded-xl transition"
             >
 
-              <img
-                src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1100&q=80"
-                alt="Capa Notícia"
-                class="w-full h-64 sm:h-72 object-cover"
+              <input
+                type="text"
+                placeholder="Pesquisar notícias, tópicos, membros..."
+                class="w-full bg-slate-100/90 border border-slate-200 rounded-xl py-2.5 pl-3.5 pr-12 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white transition font-body"
               >
 
 
               <div
-                class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/10 to-transparent"
-              ></div>
-
-
-              <div
-                class="absolute bottom-3 left-3 right-3 flex justify-between items-end"
+                class="absolute right-2.5 top-2 flex items-center gap-1"
               >
 
                 <span
-                  class="bg-white text-slate-800 font-bold text-[10px] px-3 py-1.5 rounded-lg shadow border border-white flex items-center gap-1.5"
+                  class="text-[9px] font-black text-slate-400 bg-white px-1.5 py-0.5 rounded border border-slate-200 hidden sm:inline font-subtitle"
                 >
-
-                  <i class="fa-solid fa-camera text-sky-500"></i>
-
-                  Evento Especial
-
+                  Ctrl K
                 </span>
 
 
-                <span
-                  class="bg-black/60 text-white font-semibold text-[10px] px-2.5 py-1.5 rounded-lg"
+                <button
+                  type="submit"
+                  class="w-7 h-7 bg-sky-500 hover:bg-sky-600 text-white rounded-lg flex items-center justify-center transition text-xs shadow-sm"
                 >
-
-                  <i class="fa-regular fa-eye mr-1"></i>
-
-                  1.2k
-
-                </span>
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
 
               </div>
 
-            </div>
+            </form>
+
+          </div>
 
 
-            <!-- TEXTO -->
+          <!-- =================================================
+               RANKING
+          ================================================== -->
 
-            <p
-              class="text-slate-600 text-sm leading-relaxed px-1"
-            >
+          <section class="pixel-card pixel-card-hover p-5">
 
-              Confira as novidades exclusivas,
-              eventos programados e melhorias
-              da nossa plataforma para esta temporada.
-
-              Junte-se aos membros da comunidade,
-              acumule pixels virtuais no seu perfil
-              e ajude a construir o melhor espaço
-              de interação do hotel!
-
-            </p>
-
-
-            <!-- AÇÕES -->
 
             <div
-              class="flex items-center justify-between pt-4 border-t-2 border-dashed border-slate-100"
+              class="card-header-title pb-3 mb-4 flex justify-between items-center"
             >
-
 
               <div class="flex items-center gap-2">
 
+                <i
+                  class="fa-solid fa-trophy text-amber-500 text-sm"
+                ></i>
 
-                <button
-                  onclick="toggleLike(this)"
-                  class="pixel-button hover:text-rose-600 hover:bg-rose-50"
+                <h3
+                  class="font-title font-extrabold text-xs text-slate-800 uppercase tracking-wide"
                 >
-
-                  <i class="fa-regular fa-heart"></i>
-
-                  <span class="like-count">
-                    124
-                  </span>
-
-                  <span class="hidden sm:inline">
-                    Gostei
-                  </span>
-
-                </button>
-
-
-                <button
-                  class="pixel-button"
-                >
-
-                  <i class="fa-regular fa-comment"></i>
-
-                  <span>
-                    18
-                  </span>
-
-                  <span class="hidden sm:inline">
-                    Comentários
-                  </span>
-
-                </button>
+                  Usuários Destaque
+                </h3>
 
               </div>
 
 
-              <button
-                onclick="compartilharNoticia()"
-                class="pixel-button"
+              <span
+                class="font-subtitle text-[9px] font-extrabold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded uppercase"
               >
-
-                <i class="fa-solid fa-share-nodes"></i>
-
-                <span class="hidden sm:inline">
-                  Compartilhar
-                </span>
-
-              </button>
-
-            </div>
-
-          </article>
-
-        </section>
-
-
-        <!-- ================================================
-             EVENTOS
-        ================================================= -->
-
-        <section
-          class="pixel-card pixel-card-hover p-6 sm:p-7"
-        >
-
-
-          <div
-            class="card-header-title pb-4 mb-6 flex justify-between items-center"
-          >
-
-            <div class="flex items-center gap-3">
-
-
-              <div class="section-icon">
-
-                <i class="fa-solid fa-calendar-star"></i>
-
-              </div>
-
-
-              <div>
-
-                <h2
-                  class="font-title font-extrabold text-base text-slate-800 uppercase tracking-wide"
-                >
-                  Atualizações & Eventos
-                </h2>
-
-                <p
-                  class="font-subtitle text-[11px] text-slate-400 font-semibold"
-                >
-                  O que está acontecendo na comunidade
-                </p>
-
-              </div>
+                Top Mês
+              </span>
 
             </div>
 
 
-            <a
-              href="#"
-              class="font-subtitle text-xs font-bold text-sky-600 hover:text-sky-700"
+            <!-- TOP 1 -->
+
+            <div
+              class="p-3.5 bg-gradient-to-r from-amber-100/80 via-amber-50 to-orange-50/60 border border-amber-300/80 rounded-2xl mb-3 relative shadow-xs"
             >
 
-              Ver todos
-              <i class="fa-solid fa-arrow-right ml-1"></i>
+              <div class="flex items-center gap-3">
 
-            </a>
-
-          </div>
-
-
-          <div
-            class="grid grid-cols-1 md:grid-cols-2 gap-4"
-          >
-
-
-            <!-- SORTEIO -->
-
-            <div class="event-card">
-
-
-              <div
-                class="flex items-center justify-between gap-2 mb-3"
-              >
-
-                <span
-                  class="font-subtitle bg-amber-100 text-amber-800 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-lg border border-amber-200 flex items-center gap-1"
-                >
-
-                  <i class="fa-solid fa-gift"></i>
-
-                  Sorteio
-
-                </span>
-
-
-                <span
-                  class="font-subtitle text-[10px] font-bold text-slate-400"
-                >
-
-                  <i class="fa-regular fa-clock mr-1 text-amber-500"></i>
-
-                  Faltam 2d
-
-                </span>
-
-              </div>
-
-
-              <h3
-                class="font-subtitle font-extrabold text-slate-900 text-sm leading-snug"
-              >
-
-                Passaporte VIP Semestral
-                + 500 PX
-
-              </h3>
-
-
-              <p
-                class="text-xs text-slate-500 mt-2 leading-relaxed"
-              >
-
-                Comente na timeline oficial
-                e participe automaticamente
-                do sorteio da comunidade.
-
-              </p>
-
-
-              <div
-                class="mt-4 pt-3 border-t border-slate-100"
-              >
-
-                <div
-                  class="flex justify-between items-center text-[10px] font-bold text-slate-500 mb-2"
-                >
-
-                  <span>
-                    92 Participantes
-                  </span>
-
-                  <span class="text-amber-600">
-                    85%
-                  </span>
-
-                </div>
-
-
-                <div
-                  class="w-full bg-slate-100 rounded-full h-2 overflow-hidden"
-                >
-
-                  <div
-                    class="bg-gradient-to-r from-amber-400 to-yellow-500 h-2 rounded-full"
-                    style="width:85%"
-                  ></div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-
-            <!-- RADIO -->
-
-            <div class="event-card">
-
-
-              <div
-                class="flex items-center justify-between gap-2 mb-3"
-              >
-
-                <span
-                  class="font-subtitle bg-rose-100 text-rose-700 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-lg border border-rose-200 flex items-center gap-1"
-                >
-
-                  <span
-                    class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"
-                  ></span>
-
-                  AO VIVO
-
-                </span>
-
-
-                <span
-                  class="font-subtitle text-[10px] font-bold text-slate-400"
-                >
-
-                  20:00 Horas
-
-                </span>
-
-              </div>
-
-
-              <h3
-                class="font-subtitle font-extrabold text-slate-900 text-sm leading-snug"
-              >
-
-                Torneio de Quiz
-                na Rádio Pixel
-
-              </h3>
-
-
-              <p
-                class="text-xs text-slate-500 mt-2 leading-relaxed"
-              >
-
-                Sintonize com o locutor
-                da noite e responda às perguntas
-                no chat para faturar moedas.
-
-              </p>
-
-
-              <div
-                class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between"
-              >
-
-                <div
-                  class="flex items-center gap-2"
-                >
+                <div class="relative flex-shrink-0">
 
                   <img
-                    src="https://api.dicebear.com/7.x/pixel-art/svg?seed=DJRadio"
-                    class="w-6 h-6 rounded-lg bg-slate-900"
-                    alt="Locutor"
+                    src="https://api.dicebear.com/7.x/pixel-art/svg?seed=KingPixel"
+                    alt="Top 1"
+                    class="w-12 h-12 rounded-full bg-slate-900 border-2 border-amber-400 p-0.5 shadow-sm"
                   >
 
-                  <span
-                    class="text-[11px] font-bold text-slate-700"
+
+                  <div
+                    class="absolute -top-1.5 -left-1.5 bg-amber-400 text-amber-950 font-black text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-white"
                   >
-                    DJ Pixel
-                  </span>
+
+                    <i class="fa-solid fa-crown text-[9px]"></i>
+
+                  </div>
 
                 </div>
 
 
-                <span
-                  class="font-subtitle text-[10px] font-extrabold text-sky-600"
-                >
+                <div class="flex-1 min-w-0">
 
-                  Ouvir Rádio →
+                  <div class="flex items-center gap-1.5">
 
+                    <p
+                      class="font-title font-extrabold text-xs text-slate-900 truncate"
+                    >
+                      KingPixel
+                    </p>
+
+                    <span
+                      class="font-subtitle text-[9px] bg-amber-200/80 text-amber-900 font-bold px-1.5 py-0.2 rounded"
+                    >
+                      Nível 42
+                    </span>
+
+                  </div>
+
+
+                  <p
+                    class="font-subtitle text-[11px] font-extrabold text-amber-800 mt-0.5 flex items-center gap-1"
+                  >
+
+                    <span
+                      class="habbo-coin scale-75 inline-block -ml-1"
+                    ></span>
+
+                    1.420 PX
+
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <div
+                class="mt-2.5 pt-2 border-t border-amber-200/60 flex items-center justify-between text-[9px] font-bold text-amber-800 font-subtitle"
+              >
+
+                <span>
+                  Líder de Atividade
+                </span>
+
+                <span class="text-amber-600">
+                  98% XP
                 </span>
 
               </div>
 
             </div>
 
-          </div>
 
-        </section>
+            <!-- TOP 2 -->
 
-      </div>
+            <div class="space-y-2">
 
-
-      <!-- ===================================================
-           SIDEBAR
-      ==================================================== -->
-
-      <aside class="space-y-6">
-
-
-        <!-- BUSCA -->
-
-        <div class="pixel-card p-3.5">
-
-          <form
-            onsubmit="event.preventDefault();"
-            class="search-box relative"
-          >
-
-            <input
-              type="text"
-              placeholder="Pesquisar notícias, membros..."
-              class="w-full bg-transparent border-0 rounded-xl py-3 pl-3.5 pr-12 text-xs text-slate-800 placeholder-slate-400 focus:outline-none"
-            >
-
-
-            <button
-              type="submit"
-              class="absolute right-2 top-2 w-8 h-8 bg-sky-500 hover:bg-sky-600 text-white rounded-lg flex items-center justify-center transition shadow-sm"
-            >
-
-              <i class="fa-solid fa-magnifying-glass"></i>
-
-            </button>
-
-          </form>
-
-        </div>
-
-
-        <!-- RANKING -->
-
-        <section
-          class="pixel-card pixel-card-hover p-5"
-        >
-
-
-          <div
-            class="card-header-title pb-3 mb-4 flex justify-between items-center"
-          >
-
-            <div class="flex items-center gap-2">
-
-              <i
-                class="fa-solid fa-trophy text-amber-500"
-              ></i>
-
-              <h3
-                class="font-title font-extrabold text-xs text-slate-800 uppercase tracking-wide"
+              <div
+                class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50/80 border border-slate-100 hover:bg-white hover:border-slate-200 transition"
               >
-                Hall da Fama
-              </h3>
 
-            </div>
-
-
-            <span
-              class="font-subtitle text-[9px] font-extrabold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-1 rounded"
-            >
-              TOP MÊS
-            </span>
-
-          </div>
-
-
-          <!-- PRIMEIRO -->
-
-          <div
-            class="p-4 bg-gradient-to-r from-amber-100 via-yellow-50 to-orange-50 border-2 border-amber-300 rounded-xl mb-3"
-          >
-
-            <div class="flex items-center gap-3">
-
-
-              <div class="relative flex-shrink-0">
-
-                <img
-                  src="https://api.dicebear.com/7.x/pixel-art/svg?seed=KingPixel"
-                  alt="Top 1"
-                  class="w-14 h-14 rounded-xl bg-slate-900 border-2 border-amber-400 p-0.5 shadow-sm"
-                >
-
-                <div
-                  class="absolute -top-2 -left-2 bg-amber-400 text-amber-950 font-black text-[10px] w-6 h-6 rounded-lg flex items-center justify-center border-2 border-white shadow"
-                >
-
-                  <i class="fa-solid fa-crown text-[9px]"></i>
-
-                </div>
-
-              </div>
-
-
-              <div class="flex-1 min-w-0">
-
-                <div
-                  class="flex items-center gap-1.5"
-                >
-
-                  <p
-                    class="font-title font-extrabold text-xs text-slate-900 truncate"
-                  >
-                    KingPixel
-                  </p>
+                <div class="flex items-center gap-2.5 min-w-0">
 
                   <span
-                    class="font-subtitle text-[8px] bg-amber-200 text-amber-900 font-bold px-1.5 py-0.5 rounded"
+                    class="font-title font-extrabold text-slate-400 text-xs w-4 text-center"
                   >
-                    Nível 42
+                    2
                   </span>
+
+                  <img
+                    src="https://api.dicebear.com/7.x/pixel-art/svg?seed=StarGirl"
+                    class="w-8 h-8 rounded-full bg-slate-800 border border-slate-300"
+                    alt="Top 2"
+                  >
+
+                  <div class="truncate">
+
+                    <p
+                      class="font-subtitle font-bold text-xs text-slate-800 truncate"
+                    >
+                      StarGirl
+                    </p>
+
+                    <p
+                      class="text-[9px] text-slate-400 font-body"
+                    >
+                      Ativa há 1h
+                    </p>
+
+                  </div>
 
                 </div>
 
 
-                <p
-                  class="font-subtitle text-[11px] font-extrabold text-amber-800 mt-1 flex items-center gap-1"
+                <span
+                  class="font-subtitle font-extrabold text-sky-600 text-xs bg-sky-50 border border-sky-100 px-2 py-0.5 rounded-lg"
                 >
+                  980 PX
+                </span>
 
-                  <span class="habbo-coin"></span>
+              </div>
 
-                  1.420 PX
 
-                </p>
+              <!-- TOP 3 -->
+
+              <div
+                class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50/80 border border-slate-100 hover:bg-white hover:border-slate-200 transition"
+              >
+
+                <div class="flex items-center gap-2.5 min-w-0">
+
+                  <span
+                    class="font-title font-extrabold text-amber-700/60 text-xs w-4 text-center"
+                  >
+                    3
+                  </span>
+
+                  <img
+                    src="https://api.dicebear.com/7.x/pixel-art/svg?seed=NeoUser"
+                    class="w-8 h-8 rounded-full bg-slate-800 border border-slate-300"
+                    alt="Top 3"
+                  >
+
+                  <div class="truncate">
+
+                    <p
+                      class="font-subtitle font-bold text-xs text-slate-800 truncate"
+                    >
+                      NeoUser
+                    </p>
+
+                    <p
+                      class="text-[9px] text-slate-400 font-body"
+                    >
+                      Ativo há 3h
+                    </p>
+
+                  </div>
+
+                </div>
+
+
+                <span
+                  class="font-subtitle font-extrabold text-sky-600 text-xs bg-sky-50 border border-sky-100 px-2 py-0.5 rounded-lg"
+                >
+                  850 PX
+                </span>
 
               </div>
 
             </div>
+
+          </section>
+
+
+          <!-- =================================================
+               PARCEIROS
+          ================================================== -->
+
+          <section class="pixel-card pixel-card-hover p-5">
 
 
             <div
-              class="mt-3 pt-2 border-t border-amber-200 flex justify-between text-[9px] font-bold text-amber-800"
+              class="card-header-title pb-3 mb-4 flex justify-between items-center"
             >
 
-              <span>
-                Líder de Atividade
-              </span>
+              <div class="flex items-center gap-2">
 
-              <span>
-                98% XP
-              </span>
+                <i
+                  class="fa-solid fa-handshake text-sky-500 text-sm"
+                ></i>
 
-            </div>
-
-          </div>
-
-
-          <!-- SEGUNDO -->
-
-          <div class="ranking-user">
-
-            <div class="pixel-medal silver">
-              2
-            </div>
-
-
-            <img
-              src="https://api.dicebear.com/7.x/pixel-art/svg?seed=StarGirl"
-              class="ranking-avatar"
-              alt="Top 2"
-            >
-
-
-            <div class="flex-1 min-w-0">
-
-              <p
-                class="font-subtitle font-bold text-xs text-slate-800 truncate"
-              >
-                StarGirl
-              </p>
-
-              <p
-                class="text-[9px] text-slate-400"
-              >
-                Ativa há 1h
-              </p>
-
-            </div>
-
-
-            <span
-              class="font-subtitle font-extrabold text-sky-600 text-[10px] bg-sky-50 border border-sky-100 px-2 py-1 rounded-lg"
-            >
-              980 PX
-            </span>
-
-          </div>
-
-
-          <!-- TERCEIRO -->
-
-          <div class="ranking-user">
-
-            <div class="pixel-medal bronze">
-              3
-            </div>
-
-
-            <img
-              src="https://api.dicebear.com/7.x/pixel-art/svg?seed=NeoUser"
-              class="ranking-avatar"
-              alt="Top 3"
-            >
-
-
-            <div class="flex-1 min-w-0">
-
-              <p
-                class="font-subtitle font-bold text-xs text-slate-800 truncate"
-              >
-                NeoUser
-              </p>
-
-              <p
-                class="text-[9px] text-slate-400"
-              >
-                Ativo há 3h
-              </p>
-
-            </div>
-
-
-            <span
-              class="font-subtitle font-extrabold text-sky-600 text-[10px] bg-sky-50 border border-sky-100 px-2 py-1 rounded-lg"
-            >
-              850 PX
-            </span>
-
-          </div>
-
-        </section>
-
-
-        <!-- PARCEIROS -->
-
-        <section
-          class="pixel-card pixel-card-hover p-5"
-        >
-
-
-          <div
-            class="card-header-title pb-3 mb-4 flex justify-between items-center"
-          >
-
-            <div class="flex items-center gap-2">
-
-              <i
-                class="fa-solid fa-handshake text-sky-500"
-              ></i>
-
-              <h3
-                class="font-title font-extrabold text-xs text-slate-800 uppercase tracking-wide"
-              >
-                Parceiros
-              </h3>
-
-            </div>
-
-
-            <span
-              class="font-subtitle text-[10px] text-slate-400"
-            >
-              Oficiais
-            </span>
-
-          </div>
-
-
-          <div
-            class="grid grid-cols-2 gap-2.5"
-          >
-
-
-            <a
-              href="#"
-              class="partner-card p-3 flex flex-col items-center text-center"
-            >
-
-              <div
-                class="w-9 h-9 rounded-lg bg-white border-2 border-slate-200 flex items-center justify-center text-sky-500 text-sm shadow-sm mb-1.5"
-              >
-
-                <i class="fa-solid fa-hotel"></i>
+                <h3
+                  class="font-title font-extrabold text-xs text-slate-800 uppercase tracking-wide"
+                >
+                  Parceiros Oficiais
+                </h3>
 
               </div>
 
 
               <span
-                class="font-subtitle font-bold text-xs text-slate-800"
+                class="font-subtitle text-[10px] text-slate-400 font-semibold"
               >
-                Habbo Hotel
+                Alianças
               </span>
 
+            </div>
 
-              <span
-                class="font-subtitle text-[9px] text-emerald-600 font-semibold mt-1 flex items-center gap-1"
+
+            <div class="grid grid-cols-2 gap-2.5">
+
+
+              <!-- HABBO -->
+
+              <a
+                href="#"
+                class="p-3 bg-gradient-to-b from-slate-50 to-slate-100/80 hover:from-sky-50 hover:to-blue-50/80 border border-slate-200/80 hover:border-sky-300 rounded-xl transition-all group flex flex-col items-center text-center"
               >
+
+                <div
+                  class="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-sky-500 text-sm shadow-2xs group-hover:scale-110 transition-transform mb-1.5"
+                >
+
+                  <i class="fa-solid fa-hotel"></i>
+
+                </div>
+
 
                 <span
-                  class="w-1.5 h-1.5 rounded-full bg-emerald-500"
-                ></span>
-
-                Online
-
-              </span>
-
-            </a>
+                  class="font-subtitle font-bold text-xs text-slate-800 group-hover:text-sky-600 transition"
+                >
+                  Habbo Hotel
+                </span>
 
 
-            <a
-              href="#"
-              class="partner-card p-3 flex flex-col items-center text-center"
-            >
+                <span
+                  class="font-subtitle text-[9px] text-emerald-600 font-semibold mt-0.5 flex items-center gap-1"
+                >
 
-              <div
-                class="w-9 h-9 rounded-lg bg-white border-2 border-slate-200 flex items-center justify-center text-indigo-500 text-sm shadow-sm mb-1.5"
+                  <span
+                    class="w-1 h-1 rounded-full bg-emerald-500"
+                  ></span>
+
+                  Online
+
+                </span>
+
+              </a>
+
+
+              <!-- RÁDIO PIXEL -->
+
+              <a
+                href="#"
+                class="p-3 bg-gradient-to-b from-slate-50 to-slate-100/80 hover:from-indigo-50 hover:to-purple-50/80 border border-slate-200/80 hover:border-indigo-300 rounded-xl transition-all group flex flex-col items-center text-center"
               >
 
-                <i class="fa-solid fa-radio"></i>
+                <div
+                  class="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-indigo-500 text-sm shadow-2xs group-hover:scale-110 transition-transform mb-1.5"
+                >
+
+                  <i class="fa-solid fa-radio"></i>
+
+                </div>
+
+
+                <span
+                  class="font-subtitle font-bold text-xs text-slate-800 group-hover:text-indigo-600 transition"
+                >
+                  Rádio Pixel
+                </span>
+
+
+                <span
+                  class="font-subtitle text-[9px] text-indigo-600 font-semibold mt-0.5 flex items-center gap-1"
+                >
+
+                  <span
+                    class="w-1 h-1 rounded-full bg-indigo-500"
+                  ></span>
+
+                  No Ar
+
+                </span>
+
+              </a>
+
+            </div>
+
+          </section>
+
+
+          <!-- =================================================
+               NOVO: TRABALHE CONOSCO / VAGAS
+          ================================================== -->
+
+          <section
+            class="pixel-card pixel-card-hover p-5"
+            id="vagas-form"
+          >
+
+
+            <!-- CABEÇALHO -->
+
+            <div
+              class="card-header-title pb-3 mb-5 flex justify-between items-center"
+            >
+
+              <div class="flex items-center gap-2">
+
+                <div
+                  class="w-8 h-8 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-sm"
+                >
+                  <i class="fa-solid fa-briefcase"></i>
+                </div>
+
+
+                <div>
+
+                  <h3
+                    class="font-title font-extrabold text-xs text-slate-800 uppercase tracking-wide"
+                  >
+                    Trabalhe Conosco
+                  </h3>
+
+                  <p
+                    class="font-subtitle text-[10px] text-slate-400 font-semibold mt-0.5"
+                  >
+                    Faça parte da equipe Pixelizados
+                  </p>
+
+                </div>
 
               </div>
 
 
               <span
-                class="font-subtitle font-bold text-xs text-slate-800"
+                class="font-subtitle text-[9px] font-extrabold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded uppercase"
               >
-                Rádio Pixel
+                Vagas
               </span>
 
-
-              <span
-                class="font-subtitle text-[9px] text-indigo-600 font-semibold mt-1 flex items-center gap-1"
-              >
-
-                <span
-                  class="w-1.5 h-1.5 rounded-full bg-indigo-500"
-                ></span>
-
-                No Ar
-
-              </span>
-
-            </a>
-
-          </div>
-
-        </section>
-
-      </aside>
-
-    </div>
-
-  </main>
-
-</div>
+            </div>
 
 
-<!-- =========================================================
-     AUTODJ
-========================================================= -->
+            <!-- FORMULÁRIO -->
 
-<footer
-  class="bg-habbo-yellow-footer-bar px-3 sm:px-8 py-2.5"
->
-
-
-  <div
-    class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2"
-  >
-
-
-    <!-- PLAYER -->
-
-    <div
-      class="autodj-box p-1.5 pr-5 flex items-center gap-3.5 w-full md:w-auto"
-    >
-
-
-      <!-- DJ AVATAR -->
-
-      <div class="relative flex-shrink-0">
-
-        <div
-          class="w-10 h-10 rounded-xl p-0.5 bg-gradient-to-tr from-[#38b6ff] to-cyan-300 shadow-md"
-        >
-
-          <img
-            id="dj-avatar"
-            src="https://api.dicebear.com/7.x/pixel-art/svg?seed=AutoDJ&backgroundColor=38b6ff"
-            alt="DJ Avatar"
-            class="w-full h-full rounded-lg object-cover bg-slate-900"
-          >
-
-        </div>
-
-
-        <span
-          class="absolute -bottom-1 -right-1 flex h-3.5 w-3.5"
-        >
-
-          <span
-            class="pulse-ring absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"
-          ></span>
-
-          <span
-            class="relative inline-flex rounded-full h-3.5 w-3.5 bg-rose-500 border-2 border-white"
-          ></span>
-
-        </span>
-
-      </div>
-
-
-      <!-- INFORMAÇÕES -->
-
-      <div
-        class="flex flex-col justify-center leading-tight"
-      >
-
-
-        <div
-          class="flex items-center gap-2"
-        >
-
-          <span
-            class="bg-sky-50 text-sky-700 text-[9px] font-extrabold uppercase tracking-wider px-2 py-1 rounded-md border border-sky-200 flex items-center gap-1.5"
-          >
-
-            <span
-              class="w-3.5 h-3.5 rounded-full bg-slate-900 border border-sky-400 flex items-center justify-center pixel-vinyl-spin"
+            <form
+              class="vagas-form"
+              onsubmit="event.preventDefault();"
             >
 
-              <span
-                class="w-1 h-1 rounded-full bg-amber-400"
-              ></span>
 
-            </span>
+              <!-- CARGO -->
 
-            NO AR
+              <div class="form-group">
 
-          </span>
+                <label for="vaga-cargo">
 
+                  <i class="fa-solid fa-user-tag"></i>
 
-          <p
-            class="text-xs font-black text-slate-900 tracking-tight"
-          >
+                  Cargo desejado
 
-            <span id="dj-name">
-              AutoDJ Pixel
-            </span>
-
-          </p>
-
-        </div>
+                </label>
 
 
-        <div
-          class="flex items-center gap-1.5 mt-1 text-[11px] text-slate-600"
-        >
+                <select
+                  id="vaga-cargo"
+                  name="cargo"
+                  required
+                >
 
-          <i
-            class="fa-solid fa-record-vinyl text-sky-500 pixel-vinyl-spin text-[12px]"
-          ></i>
+                  <option
+                    value=""
+                    disabled
+                    selected
+                  >
+                    Selecione um cargo
+                  </option>
+
+                  <option value="redator">
+                    Redator
+                  </option>
+
+                  <option value="moderador">
+                    Moderador
+                  </option>
+
+                  <option value="locutor">
+                    Locutor
+                  </option>
+
+                  <option value="apoiador">
+                    Apoiador
+                  </option>
+
+                </select>
+
+              </div>
 
 
-          <span
-            id="track-name"
-            class="truncate max-w-[200px] sm:max-w-[260px] font-semibold text-slate-800"
-          >
+              <!-- DISCORD -->
 
-            Universo Pixel -
-            Tocando as melhores!
+              <div class="form-group">
 
-          </span>
+                <label for="vaga-discord">
 
-        </div>
+                  <i class="fa-brands fa-discord"></i>
+
+                  Discord
+
+                </label>
+
+
+                <input
+                  type="text"
+                  id="vaga-discord"
+                  name="discord"
+                  placeholder="Seu usuário no Discord"
+                  maxlength="100"
+                  required
+                >
+
+              </div>
+
+
+              <!-- IDADE -->
+
+              <div class="form-group">
+
+                <label for="vaga-idade">
+
+                  <i class="fa-solid fa-cake-candles"></i>
+
+                  Idade
+
+                </label>
+
+
+                <input
+                  type="number"
+                  id="vaga-idade"
+                  name="idade"
+                  min="13"
+                  max="99"
+                  placeholder="Sua idade"
+                  required
+                >
+
+              </div>
+
+
+              <!-- EXPERIÊNCIAS -->
+
+              <div class="form-group">
+
+                <label for="vaga-experiencia">
+
+                  <i class="fa-solid fa-pen"></i>
+
+                  Experiências
+
+                </label>
+
+
+                <textarea
+                  id="vaga-experiencia"
+                  name="experiencia"
+                  rows="5"
+                  maxlength="1000"
+                  placeholder="Conte um pouco sobre suas experiências, habilidades ou trabalhos anteriores..."
+                  required
+                ></textarea>
+
+
+                <div class="form-helper">
+                  Máximo de 1000 caracteres
+                </div>
+
+              </div>
+
+
+              <!-- BOTÃO -->
+
+              <button
+                type="submit"
+                class="vaga-submit"
+              >
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+                ENVIAR CANDIDATURA
+
+              </button>
+
+            </form>
+
+          </section>
+
+
+        </aside>
 
       </div>
 
-    </div>
-
-
-    <!-- STATUS -->
-
-    <div
-      class="flex items-center gap-2 w-full md:w-auto justify-end"
-    >
-
-      <div
-        class="bg-white border-2 border-yellow-500/40 rounded-xl px-4 py-2 flex items-center gap-2 text-xs font-bold text-slate-700 shadow-sm"
-      >
-
-        <i
-          class="fa-solid fa-volume-high text-amber-600"
-        ></i>
-
-        <span>
-          Transmissão Automatizada 24h
-        </span>
-
-      </div>
-
-    </div>
+    </main>
 
   </div>
 
-</footer>
+
+  <!-- =====================================================
+       AUTODJ
+  ====================================================== -->
+
+  <footer
+    class="bg-habbo-yellow-footer-bar px-4 sm:px-8 py-2.5"
+  >
+
+    <div
+      class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3"
+    >
+
+
+      <!-- AUTODJ -->
+
+      <div
+        class="glass-capsule glass-capsule-hover rounded-full p-1.5 pr-5 flex items-center gap-3.5 w-full md:w-auto"
+      >
+
+        <div class="relative flex-shrink-0">
+
+          <div
+            class="w-10 h-10 rounded-full p-0.5 bg-gradient-to-tr from-[#38b6ff] to-cyan-300 shadow-md"
+          >
+
+            <img
+              id="dj-avatar"
+              src="https://api.dicebear.com/7.x/pixel-art/svg?seed=AutoDJ&backgroundColor=38b6ff"
+              alt="DJ Avatar"
+              class="w-full h-full rounded-full object-cover bg-slate-900"
+            >
+
+          </div>
+
+
+          <span
+            class="absolute -bottom-0.5 -right-0.5 flex h-3.5 w-3.5"
+          >
+
+            <span
+              class="pulse-ring absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"
+            ></span>
+
+            <span
+              class="relative inline-flex rounded-full h-3.5 w-3.5 bg-rose-500 border-2 border-white"
+            ></span>
+
+          </span>
+
+        </div>
+
+
+        <div class="flex flex-col justify-center leading-tight">
+
+          <div class="flex items-center gap-2">
+
+            <span
+              class="bg-[#38b6ff]/15 text-[#0077cc] text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full border border-[#38b6ff]/30 flex items-center gap-1.5 font-subtitle"
+            >
+
+              <span
+                class="w-3.5 h-3.5 rounded-full bg-slate-900 border border-sky-400 flex items-center justify-center pixel-vinyl-spin"
+              >
+
+                <span
+                  class="w-1 h-1 rounded-full bg-amber-400"
+                ></span>
+
+              </span>
+
+              <span>
+                NO AR
+              </span>
+
+            </span>
+
+
+            <p
+              class="text-xs font-black text-slate-900 tracking-tight font-subtitle"
+            >
+
+              <span id="dj-name">
+                AutoDJ Pixel
+              </span>
+
+            </p>
+
+          </div>
+
+
+          <div
+            class="flex items-center gap-1.5 mt-1 text-[11px] font-medium text-slate-600 font-body"
+          >
+
+            <i
+              class="fa-solid fa-record-vinyl text-[#38b6ff] pixel-vinyl-spin text-[12px]"
+            ></i>
+
+            <span
+              id="track-name"
+              class="truncate max-w-[200px] sm:max-w-[260px] font-semibold text-slate-800"
+            >
+              Universo Pixel - Tocando as melhores!
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- STATUS -->
+
+      <div
+        class="flex items-center gap-2 w-full md:w-auto justify-end"
+      >
+
+        <div
+          class="glass-capsule glass-capsule-hover rounded-full px-4 py-2 flex items-center gap-2 text-xs font-subtitle font-bold text-slate-700"
+        >
+
+          <i class="fa-solid fa-volume-high text-amber-600"></i>
+
+          <span>
+            Transmissão Automatizada 24h
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
 
 
 </body>
