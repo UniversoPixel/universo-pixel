@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
   <title>Pixelizados - Entrar na Comunidade</title>
 
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Google Fonts: Plus Jakarta Sans -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -19,38 +26,166 @@
 
   <style>
 
+    /* =====================================================
+       BASE
+    ===================================================== */
+
     html,
     body {
+
       margin: 0;
       padding: 0;
+
       width: 100%;
-      height: 100%;
+      min-height: 100%;
+
       overflow-x: hidden;
     }
 
+
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+
+      font-family:
+        'Plus Jakarta Sans',
+        sans-serif;
 
       background:
         linear-gradient(
           180deg,
-          #0284C7 0%,
-          #38BDF8 50%,
-          #BAE6FD 100%
+          #1599dc 0%,
+          #48bdf0 48%,
+          #aee7fa 100%
         );
+
+      color: #243447;
     }
 
+
+    * {
+      box-sizing: border-box;
+    }
+
+
     .pixel-art {
+
       image-rendering: pixelated;
       image-rendering: crisp-edges;
     }
 
-    /* Animação de Nuvens Flutuantes */
+
+    /* =====================================================
+       CÉU / PIXEL GRID
+    ===================================================== */
+
+    .sky-grid {
+
+      position: fixed;
+
+      inset: 0;
+
+      pointer-events: none;
+
+      opacity: 0.14;
+
+      background-image:
+
+        linear-gradient(
+          rgba(255,255,255,0.35) 1px,
+          transparent 1px
+        ),
+
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,0.35) 1px,
+          transparent 1px
+        );
+
+      background-size: 32px 32px;
+
+      z-index: 0;
+    }
+
+
+    /* =====================================================
+       NUVENS
+    ===================================================== */
+
+    .cloud {
+
+      position: absolute;
+
+      pointer-events: none;
+
+      user-select: none;
+
+      font-size: 55px;
+
+      opacity: 0.72;
+
+      filter:
+        drop-shadow(
+          3px 4px 0
+          rgba(60, 145, 190, 0.12)
+        );
+    }
+
+
+    .cloud-1 {
+
+      top: 45px;
+      left: 4%;
+
+      animation:
+        floatCloud 22s ease-in-out infinite;
+    }
+
+
+    .cloud-2 {
+
+      top: 105px;
+      right: 6%;
+
+      font-size: 72px;
+
+      opacity: 0.5;
+
+      animation:
+        floatCloudReverse 27s ease-in-out infinite;
+    }
+
+
+    .cloud-3 {
+
+      top: 45%;
+      left: -25px;
+
+      font-size: 80px;
+
+      opacity: 0.32;
+
+      animation:
+        floatCloud 30s ease-in-out infinite;
+    }
+
+
+    .cloud-4 {
+
+      bottom: 15%;
+      right: -20px;
+
+      font-size: 70px;
+
+      opacity: 0.35;
+
+      animation:
+        floatCloudReverse 25s ease-in-out infinite;
+    }
+
 
     @keyframes floatCloud {
 
       0% {
-        transform: translateX(-20px);
+        transform: translateX(-15px);
       }
 
       50% {
@@ -58,10 +193,11 @@
       }
 
       100% {
-        transform: translateX(-20px);
+        transform: translateX(-15px);
       }
 
     }
+
 
     @keyframes floatCloudReverse {
 
@@ -79,20 +215,1337 @@
 
     }
 
-    .cloud-slow {
-      animation:
-        floatCloud
-        25s
-        ease-in-out
-        infinite;
+
+    /* =====================================================
+       PIXELS DECORATIVOS
+    ===================================================== */
+
+    .pixel-square {
+
+      position: absolute;
+
+      width: 14px;
+      height: 14px;
+
+      background: #f6c700;
+
+      box-shadow:
+        4px 4px 0 rgba(23,108,168,0.22);
+
+      pointer-events: none;
     }
 
-    .cloud-fast {
-      animation:
-        floatCloudReverse
-        18s
-        ease-in-out
-        infinite;
+
+    .pixel-square.blue {
+
+      background: #168fd0;
+
+      box-shadow:
+        4px 4px 0 rgba(255,255,255,0.3);
+    }
+
+
+    .pixel-1 {
+
+      top: 25%;
+      left: 11%;
+
+      transform: rotate(12deg);
+    }
+
+
+    .pixel-2 {
+
+      top: 34%;
+      right: 13%;
+
+      transform: rotate(-8deg);
+    }
+
+
+    .pixel-3 {
+
+      bottom: 26%;
+      left: 15%;
+
+      width: 10px;
+      height: 10px;
+
+      transform: rotate(15deg);
+    }
+
+
+    .pixel-4 {
+
+      bottom: 31%;
+      right: 17%;
+
+      width: 18px;
+      height: 18px;
+
+      transform: rotate(-10deg);
+    }
+
+
+    /* =====================================================
+       CONTEÚDO PRINCIPAL
+    ===================================================== */
+
+    .page-wrapper {
+
+      position: relative;
+
+      min-height: 100vh;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      overflow: hidden;
+
+      z-index: 1;
+    }
+
+
+    /* =====================================================
+       TOPO
+    ===================================================== */
+
+    .top-bar {
+
+      width: 100%;
+
+      min-height: 72px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      position: relative;
+
+      z-index: 10;
+
+      background: rgba(255,255,255,0.95);
+
+      border-bottom: 3px solid #176ca8;
+
+      box-shadow:
+        0 4px 0
+        rgba(23,108,168,0.15);
+    }
+
+
+    .top-bar::before {
+
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      bottom: -8px;
+
+      height: 5px;
+
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #f6c700 0,
+          #f6c700 24px,
+          #ffd92b 24px,
+          #ffd92b 48px
+        );
+    }
+
+
+    .top-decoration {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      color: #176ca8;
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.08em;
+    }
+
+
+    .top-decoration-icon {
+
+      width: 12px;
+      height: 12px;
+
+      background: #f6c700;
+
+      box-shadow:
+        3px 3px 0 #176ca8;
+
+      transform: rotate(45deg);
+    }
+
+
+    /* =====================================================
+       ÁREA CENTRAL
+    ===================================================== */
+
+    .main-area {
+
+      width: 100%;
+
+      flex: 1;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding:
+        55px
+        18px
+        65px;
+
+      position: relative;
+
+      z-index: 5;
+    }
+
+
+    /* =====================================================
+       CARD FÃ-SITE
+    ===================================================== */
+
+    .fan-card {
+
+      position: relative;
+
+      width: 100%;
+
+      max-width: 450px;
+
+      background: #ffffff;
+
+      border: 3px solid #176ca8;
+
+      box-shadow:
+        8px 8px 0
+        rgba(23,108,168,0.28);
+
+      padding:
+        36px
+        34px
+        32px;
+
+      text-align: center;
+
+      border-radius: 4px;
+    }
+
+
+    /* faixa superior */
+
+    .fan-card::before {
+
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 9px;
+
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #55b9f5 0,
+          #55b9f5 36px,
+          #ffd447 36px,
+          #ffd447 72px
+        );
+    }
+
+
+    /* pequenos pixels nos cantos */
+
+    .fan-card::after {
+
+      content: "";
+
+      position: absolute;
+
+      right: -3px;
+      bottom: -3px;
+
+      width: 18px;
+      height: 18px;
+
+      background: #f6c700;
+
+      border-left: 3px solid #176ca8;
+
+      border-top: 3px solid #176ca8;
+    }
+
+
+    /* =====================================================
+       LOGO
+    ===================================================== */
+
+    .home-logo-area {
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      margin-top: 8px;
+
+      margin-bottom: 19px;
+
+      min-height: 108px;
+    }
+
+
+    .home-logo {
+
+      display: block;
+
+      width: auto;
+
+      height: 108px;
+
+      max-width: 92%;
+
+      object-fit: contain;
+
+      background: transparent;
+
+      border: none;
+
+      box-shadow: none;
+
+      image-rendering: auto;
+
+      filter:
+        drop-shadow(
+          4px 5px 0
+          rgba(23,108,168,0.13)
+        );
+
+      transition:
+        transform 0.2s ease;
+    }
+
+
+    .home-logo:hover {
+
+      transform:
+        translateY(-3px);
+    }
+
+
+    /* =====================================================
+       TEXTO
+    ===================================================== */
+
+    .welcome-title {
+
+      margin: 0;
+
+      color: #243447;
+
+      font-size: 22px;
+
+      line-height: 1.2;
+
+      font-weight: 900;
+
+      letter-spacing: -0.025em;
+    }
+
+
+    .welcome-subtitle {
+
+      margin:
+        9px
+        auto
+        22px;
+
+      max-width: 330px;
+
+      color: #64748b;
+
+      font-size: 11px;
+
+      line-height: 1.6;
+
+      font-weight: 600;
+    }
+
+
+    /* =====================================================
+       SEPARADOR PIXEL
+    ===================================================== */
+
+    .pixel-divider {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 6px;
+
+      margin:
+        0
+        0
+        22px;
+    }
+
+
+    .pixel-divider span {
+
+      width: 7px;
+      height: 7px;
+
+      background: #55b9f5;
+
+      box-shadow:
+        2px 2px 0 #2788ca;
+    }
+
+
+    .pixel-divider span:nth-child(2) {
+
+      width: 10px;
+      height: 10px;
+
+      background: #f6c700;
+
+      box-shadow:
+        2px 2px 0 #e6a900;
+    }
+
+
+    .pixel-divider span:nth-child(3) {
+
+      width: 7px;
+      height: 7px;
+
+      background: #55b9f5;
+
+      box-shadow:
+        2px 2px 0 #2788ca;
+    }
+
+
+    /* =====================================================
+       FORM
+    ===================================================== */
+
+    .field {
+
+      text-align: left;
+
+      margin-bottom: 15px;
+    }
+
+
+    .field-label {
+
+      display: block;
+
+      margin:
+        0
+        0
+        6px
+        4px;
+
+      color: #334155;
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.06em;
+    }
+
+
+    .fan-input {
+
+      width: 100%;
+
+      height: 45px;
+
+      padding:
+        0
+        13px;
+
+      border: 2px solid #b7d9ec;
+
+      border-radius: 3px;
+
+      background: #f4fbff;
+
+      color: #243447;
+
+      font-family: inherit;
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      outline: none;
+
+      box-shadow:
+        inset 2px 2px 0
+        rgba(23,108,168,0.05);
+
+      transition:
+        border-color 0.15s ease,
+        background 0.15s ease;
+    }
+
+
+    .fan-input:focus {
+
+      border-color: #2788ca;
+
+      background: #ffffff;
+
+      box-shadow:
+        3px 3px 0
+        rgba(39,136,202,0.13);
+    }
+
+
+    .fan-input::placeholder {
+
+      color: #9bb3c2;
+    }
+
+
+    .password-row {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      margin-bottom: 6px;
+    }
+
+
+    .forgot-link {
+
+      color: #2788ca;
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      text-decoration: none;
+    }
+
+
+    .forgot-link:hover {
+
+      text-decoration: underline;
+    }
+
+
+    /* =====================================================
+       BOTÃO PRINCIPAL
+    ===================================================== */
+
+    .pixel-button {
+
+      width: 100%;
+
+      height: 48px;
+
+      margin-top: 5px;
+
+      border: 2px solid #176ca8;
+
+      border-radius: 3px;
+
+      background: #55b9f5;
+
+      color: #ffffff;
+
+      font-family: inherit;
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.05em;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 5px 0 #176ca8;
+
+      transition:
+        transform 0.1s ease,
+        box-shadow 0.1s ease,
+        background 0.1s ease;
+    }
+
+
+    .pixel-button:hover {
+
+      background: #42adeb;
+    }
+
+
+    .pixel-button:active {
+
+      transform:
+        translateY(4px);
+
+      box-shadow:
+        0 1px 0 #176ca8;
+    }
+
+
+    /* =====================================================
+       DIVISÓRIA OU
+    ===================================================== */
+
+    .or-divider {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      margin:
+        23px
+        0
+        19px;
+    }
+
+
+    .or-divider-line {
+
+      height: 2px;
+
+      flex: 1;
+
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #d5e7f4 0,
+          #d5e7f4 8px,
+          transparent 8px,
+          transparent 12px
+        );
+    }
+
+
+    .or-divider-text {
+
+      color: #94a3b8;
+
+      font-size: 9px;
+
+      font-weight: 900;
+    }
+
+
+    /* =====================================================
+       CADASTRO
+    ===================================================== */
+
+    .signup-question {
+
+      margin:
+        0
+        0
+        9px;
+
+      color: #475569;
+
+      font-size: 11px;
+
+      font-weight: 800;
+    }
+
+
+    .signup-button {
+
+      width: 100%;
+
+      min-height: 45px;
+
+      border: 2px solid #b78600;
+
+      border-radius: 3px;
+
+      background: #ffd447;
+
+      color: #5c4700;
+
+      font-family: inherit;
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.04em;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 5px 0 #b78600;
+
+      transition:
+        transform 0.1s ease,
+        box-shadow 0.1s ease,
+        background 0.1s ease;
+    }
+
+
+    .signup-button:hover {
+
+      background: #ffdc63;
+    }
+
+
+    .signup-button:active {
+
+      transform:
+        translateY(4px);
+
+      box-shadow:
+        0 1px 0 #b78600;
+    }
+
+
+    .signup-helper {
+
+      display: block;
+
+      margin-top: 12px;
+
+      color: #94a3b8;
+
+      font-size: 9px;
+
+      line-height: 1.5;
+
+      font-weight: 600;
+    }
+
+
+    /* =====================================================
+       STATUS
+    ===================================================== */
+
+    .online-status {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 6px;
+
+      margin-top: 20px;
+
+      color: #7c8d9a;
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.06em;
+    }
+
+
+    .online-dot {
+
+      width: 7px;
+      height: 7px;
+
+      background: #42c96b;
+
+      border: 1px solid #238d43;
+
+      box-shadow:
+        2px 2px 0
+        rgba(35,141,67,0.15);
+    }
+
+
+    /* =====================================================
+       RODAPÉ
+    ===================================================== */
+
+    .footer {
+
+      width: 100%;
+
+      position: relative;
+
+      z-index: 10;
+
+      background: #ffd447;
+
+      border-top: 3px solid #b78600;
+
+      box-shadow:
+        0 -4px 0
+        rgba(183,134,0,0.12);
+
+      padding:
+        12px
+        20px;
+
+      text-align: center;
+
+      color: #665000;
+
+      font-size: 9px;
+
+      font-weight: 800;
+    }
+
+
+    /* =====================================================
+       MODAL
+    ===================================================== */
+
+    .modal {
+
+      position: fixed;
+
+      inset: 0;
+
+      display: none;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 18px;
+
+      background:
+        rgba(12,63,91,0.72);
+
+      z-index: 1000;
+    }
+
+
+    .modal.active {
+
+      display: flex;
+    }
+
+
+    .modal-box {
+
+      position: relative;
+
+      width: 100%;
+
+      max-width: 440px;
+
+      max-height: 90vh;
+
+      overflow-y: auto;
+
+      background: #ffffff;
+
+      border: 3px solid #176ca8;
+
+      border-radius: 4px;
+
+      box-shadow:
+        8px 8px 0
+        rgba(0,0,0,0.22);
+
+      padding:
+        30px
+        28px
+        27px;
+    }
+
+
+    .modal-box::before {
+
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 8px;
+
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #55b9f5 0,
+          #55b9f5 30px,
+          #ffd447 30px,
+          #ffd447 60px
+        );
+    }
+
+
+    .modal-close {
+
+      position: absolute;
+
+      top: 17px;
+      right: 17px;
+
+      width: 30px;
+      height: 30px;
+
+      border: 2px solid #a9cce4;
+
+      border-radius: 3px;
+
+      background: #edf7fd;
+
+      color: #176ca8;
+
+      font-size: 16px;
+
+      font-weight: 900;
+
+      cursor: pointer;
+    }
+
+
+    .modal-close:hover {
+
+      background: #ffd447;
+
+      border-color: #b78600;
+    }
+
+
+    .modal-tag {
+
+      display: inline-block;
+
+      margin-bottom: 10px;
+
+      padding:
+        5px
+        9px;
+
+      background: #ffd447;
+
+      border: 2px solid #b78600;
+
+      color: #5c4700;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.06em;
+    }
+
+
+    .modal-title {
+
+      margin: 0;
+
+      color: #243447;
+
+      font-size: 20px;
+
+      font-weight: 900;
+    }
+
+
+    .modal-description {
+
+      margin:
+        7px
+        0
+        20px;
+
+      color: #64748b;
+
+      font-size: 10px;
+
+      line-height: 1.6;
+
+      font-weight: 600;
+    }
+
+
+    .modal-label {
+
+      display: block;
+
+      margin:
+        0
+        0
+        6px
+        3px;
+
+      color: #334155;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+    }
+
+
+    .modal-input {
+
+      width: 100%;
+
+      height: 43px;
+
+      margin-bottom: 13px;
+
+      padding:
+        0
+        12px;
+
+      border: 2px solid #b7d9ec;
+
+      border-radius: 3px;
+
+      background: #f4fbff;
+
+      color: #243447;
+
+      font-family: inherit;
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      outline: none;
+    }
+
+
+    .modal-input:focus {
+
+      border-color: #2788ca;
+
+      background: #ffffff;
+
+      box-shadow:
+        3px 3px 0
+        rgba(39,136,202,0.12);
+    }
+
+
+    .modal-submit {
+
+      width: 100%;
+
+      min-height: 46px;
+
+      margin-top: 3px;
+
+      border: 2px solid #176ca8;
+
+      border-radius: 3px;
+
+      background: #55b9f5;
+
+      color: #ffffff;
+
+      font-family: inherit;
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 5px 0 #176ca8;
+    }
+
+
+    .modal-submit:disabled {
+
+      opacity: 0.65;
+
+      cursor: wait;
+    }
+
+
+    /* =====================================================
+       ETAPA PIN
+    ===================================================== */
+
+    .hidden {
+
+      display: none !important;
+    }
+
+
+    .pin-box {
+
+      margin:
+        18px
+        0;
+
+      padding:
+        18px;
+
+      background: #edf8ff;
+
+      border: 3px dashed #55b9f5;
+
+      text-align: center;
+    }
+
+
+    .pin-label {
+
+      display: block;
+
+      margin-bottom: 6px;
+
+      color: #64748b;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.1em;
+    }
+
+
+    .pin-code {
+
+      color: #176ca8;
+
+      font-family: monospace;
+
+      font-size: 28px;
+
+      font-weight: 900;
+
+      letter-spacing: 4px;
+    }
+
+
+    .instructions {
+
+      padding: 13px;
+
+      background: #fff9df;
+
+      border: 2px solid #f0cf45;
+
+      color: #665000;
+
+      font-size: 10px;
+
+      line-height: 1.7;
+
+      font-weight: 600;
+    }
+
+
+    .discord-button {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      width: 100%;
+
+      min-height: 43px;
+
+      margin-top: 12px;
+
+      border: 2px solid #4b55b9;
+
+      border-radius: 3px;
+
+      background: #5865f2;
+
+      color: white;
+
+      text-decoration: none;
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      box-shadow:
+        0 4px 0 #3d469d;
+    }
+
+
+    .waiting-text {
+
+      margin:
+        13px
+        0
+        0;
+
+      color: #94a3b8;
+
+      text-align: center;
+
+      font-size: 9px;
+
+      font-weight: 800;
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media (max-width: 600px) {
+
+      .top-bar {
+
+        min-height: 60px;
+      }
+
+
+      .top-decoration {
+
+        font-size: 9px;
+      }
+
+
+      .main-area {
+
+        padding:
+          45px
+          14px
+          55px;
+      }
+
+
+      .fan-card {
+
+        padding:
+          31px
+          20px
+          26px;
+
+        box-shadow:
+          6px 6px 0
+          rgba(23,108,168,0.25);
+      }
+
+
+      .home-logo-area {
+
+        min-height: 95px;
+
+        margin-bottom: 13px;
+      }
+
+
+      .home-logo {
+
+        height: 95px;
+
+        max-width: 95%;
+      }
+
+
+      .welcome-title {
+
+        font-size: 20px;
+      }
+
+
+      .welcome-subtitle {
+
+        font-size: 10px;
+      }
+
+
+      .pixel-1,
+      .pixel-2,
+      .pixel-3,
+      .pixel-4 {
+
+        display: none;
+      }
+
+
+      .cloud-1 {
+
+        left: -25px;
+
+        font-size: 42px;
+      }
+
+
+      .cloud-2 {
+
+        right: -20px;
+
+        font-size: 52px;
+      }
+
+
+      .modal-box {
+
+        padding:
+          28px
+          19px
+          23px;
+      }
+
     }
 
   </style>
@@ -100,156 +1553,169 @@
 </head>
 
 
-<body
-  class="selection:bg-yellow-300 selection:text-slate-900"
->
+<body>
 
 
-  <!-- WRAPPER PRINCIPAL PARA GARANTIR CENTRALIZAÇÃO ABSOLUTA -->
+  <!-- =====================================================
+       FUNDO
+  ====================================================== -->
 
-  <div
-    class="min-h-screen w-full relative overflow-hidden flex flex-col justify-between items-center"
-  >
-
-
-    <!-- NUVENS FLUTUANTES (TOPO) -->
-
-    <div
-      class="absolute top-0 left-0 right-0 w-full pointer-events-none z-0 opacity-80 flex justify-between px-6 pt-4 cloud-slow overflow-hidden"
-    >
-
-      <div
-        class="text-white/40 text-5xl sm:text-6xl select-none"
-      >
-        ☁️
-      </div>
-
-      <div
-        class="text-white/30 text-6xl sm:text-8xl select-none -mt-4"
-      >
-        ☁️
-      </div>
-
-      <div
-        class="text-white/50 text-5xl sm:text-7xl select-none"
-      >
-        ☁️
-      </div>
-
-    </div>
+  <div class="sky-grid"></div>
 
 
-    <!-- Cabeçalho -->
+  <!-- NUVENS -->
 
-    <header
-      class="w-full max-w-6xl mx-auto p-6 flex justify-between items-center z-10"
-    >
+  <div class="cloud cloud-1">
+    ☁️
+  </div>
 
-      <div class="flex items-center space-x-2">
+  <div class="cloud cloud-2">
+    ☁️
+  </div>
 
-        <span
-          class="bg-[#F6C700] text-slate-950 font-black text-[10px] px-3 py-1 rounded-full uppercase tracking-wider shadow-md"
-        >
-          Área de Membros
+  <div class="cloud cloud-3">
+    ☁️
+  </div>
+
+  <div class="cloud cloud-4">
+    ☁️
+  </div>
+
+
+  <!-- PIXELS DECORATIVOS -->
+
+  <div class="pixel-square pixel-1"></div>
+
+  <div class="pixel-square blue pixel-2"></div>
+
+  <div class="pixel-square pixel-3"></div>
+
+  <div class="pixel-square blue pixel-4"></div>
+
+
+  <!-- =====================================================
+       PÁGINA
+  ====================================================== -->
+
+  <div class="page-wrapper">
+
+
+    <!-- ===================================================
+         TOPO
+    ==================================================== -->
+
+    <header class="top-bar">
+
+      <div class="top-decoration">
+
+        <span class="top-decoration-icon"></span>
+
+        <span>
+          Pixelizados
         </span>
 
+        <span class="top-decoration-icon"></span>
+
       </div>
-
-
-      <!-- Link Direto para o Portal -->
-
-      <a
-        href="portal.html"
-        class="text-xs font-extrabold text-white bg-white/20 hover:bg-white/30 backdrop-blur-md px-4 py-2 rounded-xl transition-all"
-      >
-        Ir para o Portal →
-      </a>
 
     </header>
 
 
-    <!-- CARD CENTRALIZADO DE LOGIN -->
+    <!-- ===================================================
+         ÁREA CENTRAL
+    ==================================================== -->
 
-    <main
-      class="w-full max-w-md px-4 z-10 my-auto flex justify-center items-center"
-    >
-
-      <div
-        class="w-full bg-white/95 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/60 text-center relative overflow-hidden"
-      >
+    <main class="main-area">
 
 
-        <!-- Detalhe Amarelo Habbo Topo -->
-
-        <div
-          class="h-2 bg-[#F6C700] absolute top-0 left-0 right-0"
-        ></div>
+      <section class="fan-card">
 
 
-        <!-- LOGO PIXELIZADOS -->
-        <!-- ALTERAÇÃO: removida a moldura/quadrado -->
+        <!-- LOGO -->
 
-        <div
-          class="my-4 flex justify-center items-center"
-        >
+        <div class="home-logo-area">
 
           <img
             src="pixelizados.png"
             alt="Pixelizados"
-            class="h-16 md:h-20 w-auto object-contain pixel-art hover:scale-105 transition-transform duration-300 ease-out block mx-auto"
+            class="home-logo"
           >
 
         </div>
 
 
-        <p
-          class="text-slate-500 text-xs font-bold mb-6"
-        >
-          Acesse sua conta para entrar na rádio e fórum
+        <!-- TEXTO -->
+
+        <h1 class="welcome-title">
+
+          Entre na Comunidade
+
+        </h1>
+
+
+        <p class="welcome-subtitle">
+
+          Acesse sua conta e entre no universo
+          Pixelizados.
+
         </p>
 
 
-        <!-- Formulario Login -->
+        <!-- DIVISOR PIXEL -->
+
+        <div class="pixel-divider">
+
+          <span></span>
+          <span></span>
+          <span></span>
+
+        </div>
+
+
+        <!-- =================================================
+             LOGIN
+        ================================================== -->
 
         <form
           action="portal.html"
           method="GET"
-          class="space-y-4 text-left"
         >
 
-          <div>
 
-            <label
-              class="block text-slate-700 text-xs font-extrabold uppercase tracking-wider mb-1.5 ml-1"
-            >
+          <!-- USUÁRIO -->
+
+          <div class="field">
+
+            <label class="field-label">
+
               Usuário
+
             </label>
+
 
             <input
               type="text"
               placeholder="Ex: FrankPixel"
               required
-              class="w-full px-4 py-3 rounded-2xl bg-sky-50/50 border border-sky-200 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition-all"
-            />
+              class="fan-input"
+            >
 
           </div>
 
 
-          <div>
+          <!-- SENHA -->
 
-            <div
-              class="flex justify-between items-center mb-1.5 ml-1"
-            >
+          <div class="field">
 
-              <label
-                class="text-slate-700 text-xs font-extrabold uppercase tracking-wider"
-              >
+            <div class="password-row">
+
+              <label class="field-label">
                 Senha
               </label>
 
               <a
                 href="#"
-                class="text-[11px] font-bold text-sky-600 hover:underline"
+                class="forgot-link"
               >
                 Esqueceu?
               </a>
@@ -261,125 +1727,104 @@
               type="password"
               placeholder="••••••••"
               required
-              class="w-full px-4 py-3 rounded-2xl bg-sky-50/50 border border-sky-200 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition-all"
-            />
+              class="fan-input"
+            >
 
           </div>
 
 
-          <!-- Botão Acessar Portal -->
+          <!-- BOTÃO -->
 
           <button
             type="submit"
-            class="w-full bg-sky-500 hover:bg-sky-600 text-white font-black py-3.5 rounded-2xl shadow-lg shadow-sky-500/30 hover:shadow-xl transition-all uppercase tracking-wider text-xs flex items-center justify-center gap-2 mt-2"
+            class="pixel-button"
           >
 
-            <span>
-              Acessar portal
-            </span>
-
-            <span>
-              ⚡
-            </span>
+            Acessar Portal
+            &nbsp; ⚡
 
           </button>
+
 
         </form>
 
 
-        <!-- Divisória -->
+        <!-- =================================================
+             OU
+        ================================================== -->
 
-        <div
-          class="relative my-6 flex items-center justify-center"
-        >
+        <div class="or-divider">
 
-          <div
-            class="border-t border-slate-200 w-full"
-          ></div>
+          <div class="or-divider-line"></div>
 
-          <span
-            class="bg-white px-3 text-[10px] font-black text-slate-400 uppercase tracking-widest absolute"
-          >
+          <span class="or-divider-text">
             OU
           </span>
+
+          <div class="or-divider-line"></div>
 
         </div>
 
 
-        <!-- Chamada Discord -->
+        <!-- =================================================
+             CADASTRO
+        ================================================== -->
 
-        <div class="space-y-2">
+        <div>
 
-          <p
-            class="text-xs font-extrabold text-slate-700"
-          >
+          <p class="signup-question">
+
             Ainda não possui uma conta?
+
           </p>
 
 
           <button
             type="button"
             onclick="abrirModalCadastro()"
-            class="w-full bg-[#F6C700] hover:bg-yellow-400 text-slate-950 font-extrabold py-3 px-4 rounded-2xl flex items-center justify-center space-x-2 transition-all shadow-md shadow-yellow-500/20 text-xs uppercase tracking-wider cursor-pointer"
+            class="signup-button"
           >
 
-            <span>
-              👾 Se torne um Pixelizado
-            </span>
+            👾 Se torne um Pixelizado
 
           </button>
 
 
-          <span
-            class="text-[10px] text-slate-400 font-medium block pt-1"
-          >
-            O cadastro e verificação de membros é realizado via Discord oficial.
+          <span class="signup-helper">
+
+            O cadastro e verificação de membros
+            é realizado via Discord oficial.
+
           </span>
 
         </div>
 
 
-      </div>
+        <!-- STATUS -->
+
+        <div class="online-status">
+
+          <span class="online-dot"></span>
+
+          Comunidade online
+
+        </div>
+
+
+      </section>
+
 
     </main>
 
 
-    <!-- NUVENS FLUTUANTES (RODAPÉ) -->
+    <!-- ===================================================
+         RODAPÉ
+    ==================================================== -->
 
-    <div
-      class="w-full pointer-events-none z-0 opacity-90 flex justify-around pb-2 cloud-fast overflow-hidden"
-    >
+    <footer class="footer">
 
-      <div
-        class="text-white/60 text-6xl sm:text-8xl select-none -mb-6"
-      >
-        ☁️
-      </div>
-
-      <div
-        class="text-white/40 text-7xl sm:text-9xl select-none -mb-10 hidden sm:block"
-      >
-        ☁️
-      </div>
-
-      <div
-        class="text-white/70 text-5xl sm:text-7xl select-none -mb-4"
-      >
-        ☁️
-      </div>
-
-    </div>
-
-
-    <!-- Rodapé -->
-
-    <footer
-      class="w-full py-4 text-center text-white/80 text-[11px] font-bold z-10 backdrop-blur-sm bg-sky-950/10"
-    >
-
-      <p>
-        © 2026 Pixelizados. Todos os direitos reservados aos criadores de pixels.
-      </p>
+      © 2026 Pixelizados.
+      Todos os direitos reservados aos criadores de pixels.
 
     </footer>
 
@@ -387,227 +1832,256 @@
   </div>
 
 
-  <!-- MODAL DE CADASTRO DISCORD -->
+  <!-- =====================================================
+       MODAL DE CADASTRO
+  ====================================================== -->
 
   <div
     id="modal-cadastro"
-    class="fixed inset-0 bg-slate-950/70 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden"
+    class="modal"
   >
 
-    <div
-      class="bg-white/95 backdrop-blur-xl rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/60 w-full max-w-md relative overflow-hidden text-left"
-    >
+
+    <div class="modal-box">
 
 
-      <!-- Detalhe Amarelo Habbo Topo -->
-
-      <div
-        class="h-2 bg-[#F6C700] absolute top-0 left-0 right-0"
-      ></div>
-
-
-      <!-- Botão Fechar -->
+      <!-- FECHAR -->
 
       <button
         type="button"
         onclick="fecharModal()"
-        class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-2xl font-bold leading-none"
+        class="modal-close"
       >
-        &times;
+
+        ×
+
       </button>
 
 
-      <!-- ETAPA 1: PREENCHIMENTO DOS DADOS -->
+      <!-- =================================================
+           ETAPA 1
+      ================================================== -->
 
       <div id="etapa-1">
 
-        <div class="mb-5">
 
-          <span
-            class="bg-[#F6C700] text-slate-950 font-black text-[10px] px-3 py-1 rounded-full uppercase tracking-wider inline-block mb-2"
-          >
-            Beta Pixelizados
-          </span>
+        <span class="modal-tag">
 
-          <h2
-            class="text-xl font-black text-slate-900"
-          >
-            Criar Conta no Portal
-          </h2>
+          Beta Pixelizados
 
-          <p
-            class="text-slate-500 text-xs font-semibold mt-1"
-          >
-            Vincule seu perfil do Discord para continuar.
-          </p>
+        </span>
 
-        </div>
+
+        <h2 class="modal-title">
+
+          Criar Conta no Portal
+
+        </h2>
+
+
+        <p class="modal-description">
+
+          Vincule seu perfil do Discord
+          para continuar.
+
+        </p>
 
 
         <form
           id="form-cadastro"
           onsubmit="enviarCadastroSupabase(event)"
-          class="space-y-3.5"
         >
 
-          <div>
 
-            <label
-              for="discord-tag"
-              class="block text-slate-700 text-xs font-extrabold uppercase tracking-wider mb-1 ml-1"
-            >
-              Seu Username do Discord
-            </label>
+          <!-- DISCORD -->
 
-            <input
-              type="text"
-              id="discord-tag"
-              placeholder="Ex: usuario_discord"
-              required
-              class="w-full px-4 py-2.5 rounded-2xl bg-sky-50/50 border border-sky-200 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition-all"
-            />
+          <label
+            for="discord-tag"
+            class="modal-label"
+          >
 
-          </div>
+            Seu Username do Discord
+
+          </label>
 
 
-          <div>
-
-            <label
-              for="portal-user"
-              class="block text-slate-700 text-xs font-extrabold uppercase tracking-wider mb-1 ml-1"
-            >
-              Nome de Usuário no Portal
-            </label>
-
-            <input
-              type="text"
-              id="portal-user"
-              placeholder="Ex: Pixel_Master"
-              required
-              class="w-full px-4 py-2.5 rounded-2xl bg-sky-50/50 border border-sky-200 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition-all"
-            />
-
-          </div>
+          <input
+            type="text"
+            id="discord-tag"
+            placeholder="Ex: usuario_discord"
+            required
+            class="modal-input"
+          >
 
 
-          <div>
+          <!-- USUÁRIO -->
 
-            <label
-              for="portal-pass"
-              class="block text-slate-700 text-xs font-extrabold uppercase tracking-wider mb-1 ml-1"
-            >
-              Criar Senha
-            </label>
+          <label
+            for="portal-user"
+            class="modal-label"
+          >
 
-            <input
-              type="password"
-              id="portal-pass"
-              placeholder="••••••••"
-              required
-              class="w-full px-4 py-2.5 rounded-2xl bg-sky-50/50 border border-sky-200 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition-all"
-            />
+            Nome de Usuário no Portal
 
-          </div>
+          </label>
 
+
+          <input
+            type="text"
+            id="portal-user"
+            placeholder="Ex: Pixel_Master"
+            required
+            class="modal-input"
+          >
+
+
+          <!-- SENHA -->
+
+          <label
+            for="portal-pass"
+            class="modal-label"
+          >
+
+            Criar Senha
+
+          </label>
+
+
+          <input
+            type="password"
+            id="portal-pass"
+            placeholder="••••••••"
+            required
+            class="modal-input"
+          >
+
+
+          <!-- SUBMIT -->
 
           <button
             id="btn-submit"
             type="submit"
-            class="w-full bg-sky-500 hover:bg-sky-600 text-white font-black py-3 rounded-2xl shadow-lg shadow-sky-500/30 transition-all uppercase tracking-wider text-xs mt-2"
+            class="modal-submit"
           >
+
             Gerar PIN de Verificação 🚀
+
           </button>
 
+
         </form>
+
 
       </div>
 
 
-      <!-- ETAPA 2: PIN E INSTRUÇÕES -->
+      <!-- =================================================
+           ETAPA 2
+      ================================================== -->
 
       <div
         id="etapa-2"
         class="hidden"
       >
 
-        <div class="mb-4">
 
-          <h2
-            class="text-xl font-black text-slate-900"
-          >
-            Quase lá! Validação
-          </h2>
+        <span class="modal-tag">
 
-          <p
-            id="status-msg"
-            class="text-slate-500 text-xs font-semibold mt-1"
-          >
-            Envie o código abaixo no nosso servidor do Discord para ativar sua conta.
-          </p>
+          Verificação
 
-        </div>
+        </span>
 
 
-        <div
-          class="bg-sky-50 border-2 border-dashed border-sky-400 rounded-2xl p-4 text-center my-4"
+        <h2 class="modal-title">
+
+          Quase lá!
+
+        </h2>
+
+
+        <p
+          id="status-msg"
+          class="modal-description"
         >
 
-          <span
-            class="block text-[10px] font-black text-slate-400 uppercase tracking-widest"
-          >
+          Envie o código abaixo no nosso
+          servidor do Discord para ativar
+          sua conta.
+
+        </p>
+
+
+        <!-- PIN -->
+
+        <div class="pin-box">
+
+
+          <span class="pin-label">
+
             Seu PIN de Verificação
+
           </span>
+
 
           <span
             id="pin-display"
-            class="text-3xl font-black text-sky-600 tracking-widest block mt-1"
+            class="pin-code"
           >
+
             PX-0000
+
           </span>
 
+
         </div>
 
 
-        <div
-          class="bg-slate-100/80 rounded-2xl p-3.5 text-xs text-slate-600 space-y-1 mb-5 font-semibold"
+        <!-- INSTRUÇÕES -->
+
+        <div class="instructions">
+
+          <strong>
+            Como continuar:
+          </strong>
+
+          <br>
+
+          1. Copie o PIN acima.
+
+          <br>
+
+          2. Entre no canal
+          <strong>#validar-conta</strong>
+          no Discord.
+
+          <br>
+
+          3. Envie o código no chat.
+
+        </div>
+
+
+        <!-- DISCORD -->
+
+        <a
+          href="https://discord.gg/pixelizados"
+          target="_blank"
+          class="discord-button"
         >
 
-          <p>
-            1. Copie o PIN acima.
-          </p>
+          Ir para o Discord
 
-          <p>
-            2. Entre no canal
-            <strong class="text-slate-900">
-              #validar-conta
-            </strong>
-            no Discord.
-          </p>
-
-          <p>
-            3. Envie o código no chat.
-          </p>
-
-        </div>
+        </a>
 
 
-        <div class="space-y-2">
+        <!-- ESPERA -->
 
-          <a
-            href="https://discord.gg/pixelizados"
-            target="_blank"
-            class="w-full bg-[#5865F2] hover:bg-indigo-600 text-white font-extrabold py-3 rounded-2xl flex items-center justify-center space-x-2 transition-all shadow-md text-xs uppercase tracking-wider text-center block"
-          >
-            Ir para o Discord
-          </a>
+        <p class="waiting-text">
 
-          <p
-            class="text-[11px] text-center font-bold text-amber-600 animate-pulse pt-1"
-          >
-            ⏳ Aguardando aprovação automática...
-          </p>
+          ⏳ Aguardando aprovação automática...
 
-        </div>
+        </p>
+
 
       </div>
 
@@ -617,18 +2091,21 @@
   </div>
 
 
-  <!-- SDK DO SUPABASE -->
+  <!-- =====================================================
+       SUPABASE
+  ====================================================== -->
 
   <script
     src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
   ></script>
 
 
-  <!-- LÓGICA DO MODAL E INTEGRAÇÃO REALTIME -->
-
   <script>
 
-    // Inicialização da conexão com Supabase
+
+    /* =====================================================
+       SUPABASE
+    ===================================================== */
 
     const SUPABASE_URL =
       'https://znvytrvdwejjlivzsjzy.supabase.co';
@@ -645,12 +2122,16 @@
       );
 
 
+    /* =====================================================
+       MODAL
+    ===================================================== */
+
     function abrirModalCadastro() {
 
       document
         .getElementById('modal-cadastro')
         .classList
-        .remove('hidden');
+        .add('active');
 
     }
 
@@ -660,7 +2141,7 @@
       document
         .getElementById('modal-cadastro')
         .classList
-        .add('hidden');
+        .remove('active');
 
 
       setTimeout(() => {
@@ -681,7 +2162,29 @@
     }
 
 
-    // Processa o envio e salva no Supabase
+    /* Fechar clicando fora */
+
+    document
+      .getElementById('modal-cadastro')
+      .addEventListener(
+        'click',
+        function(event) {
+
+          if (
+            event.target === this
+          ) {
+
+            fecharModal();
+
+          }
+
+        }
+      );
+
+
+    /* =====================================================
+       CADASTRO
+    ===================================================== */
 
     async function enviarCadastroSupabase(e) {
 
@@ -695,7 +2198,7 @@
 
 
       btn.innerText =
-        "Gerando PIN...";
+        'Gerando PIN...';
 
 
       btn.disabled =
@@ -726,7 +2229,9 @@
         );
 
 
-      // Inserir registro com status PENDENTE
+      /* ===================================================
+         SALVAR NO SUPABASE
+      ================================================== */
 
       const {
         data,
@@ -752,12 +2257,16 @@
 
 
       btn.innerText =
-        "Gerar PIN de Verificação 🚀";
+        'Gerar PIN de Verificação 🚀';
 
 
       btn.disabled =
         false;
 
+
+      /* ===================================================
+         ERRO
+      ================================================== */
 
       if (error) {
 
@@ -777,7 +2286,9 @@
       }
 
 
-      // Exibir o PIN gerado no modal
+      /* ===================================================
+         MOSTRAR PIN
+      ================================================== */
 
       document
         .getElementById(
@@ -803,7 +2314,9 @@
         .remove('hidden');
 
 
-      // Ativar escuta em tempo real para redirecionamento automático
+      /* ===================================================
+         REALTIME
+      ================================================== */
 
       escutarAprovacaoRealtime(
         pinGerado
@@ -812,11 +2325,14 @@
     }
 
 
-    // Escuta em tempo real no banco do Supabase
+    /* =====================================================
+       APROVAÇÃO REALTIME
+    ===================================================== */
 
     function escutarAprovacaoRealtime(
       pin
     ) {
+
 
       supabaseClient
 
@@ -825,8 +2341,11 @@
         )
 
         .on(
+
           'postgres_changes',
+
           {
+
             event:
               'UPDATE',
 
@@ -835,23 +2354,31 @@
 
             table:
               'usuarios'
+
           },
 
           (payload) => {
 
-            // Verifica se o UPDATE pertence ao PIN deste utilizador
 
             if (
+
               payload.new &&
+
               payload.new.pin === pin &&
+
               payload.new.status === 'APROVADO'
+
             ) {
 
+
               localStorage.setItem(
+
                 'pixelizados_user',
+
                 JSON.stringify(
                   payload.new
                 )
+
               );
 
 
@@ -873,7 +2400,10 @@
 
     }
 
+
   </script>
 
+
 </body>
+
 </html>
