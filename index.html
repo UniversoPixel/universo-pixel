@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 
 <head>
-
   <meta charset="UTF-8">
 
   <meta
@@ -17,29 +16,26 @@
 
   <!-- Font Awesome -->
   <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
   >
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
   <style>
 
     :root {
-
       --blue: #55b9f5;
       --blue-dark: #2788ca;
       --blue-deep: #176ca8;
@@ -48,8 +44,10 @@
       --yellow: #ffd447;
       --yellow-dark: #e6a900;
 
-      --bg: #edf7fd;
+      --green: #55cf70;
+      --red: #ff5c65;
 
+      --bg: #edf7fd;
       --white: #ffffff;
 
       --text: #243447;
@@ -58,15 +56,6 @@
 
       --border: #d5e7f4;
       --border-dark: #a9cce4;
-
-      --green: #55cf70;
-
-      --shadow:
-        0 8px 24px rgba(35, 107, 151, .10);
-
-      --shadow-hover:
-        0 12px 30px rgba(35, 107, 151, .16);
-
     }
 
 
@@ -81,124 +70,61 @@
 
 
     body {
-
       margin: 0;
-
       min-height: 100vh;
 
-      font-family: 'Inter', sans-serif;
+      font-family:
+        'Plus Jakarta Sans',
+        'Inter',
+        sans-serif;
 
       color: var(--text);
 
       background:
-
-        radial-gradient(
-          circle at 12% 10%,
-          rgba(255,255,255,.95) 0,
-          rgba(255,255,255,0) 28%
-        ),
-
-        radial-gradient(
-          circle at 88% 20%,
-          rgba(117,207,255,.30) 0,
-          rgba(117,207,255,0) 32%
-        ),
-
         linear-gradient(
           180deg,
-          #dff3ff 0%,
-          #edf8fd 50%,
-          #e8f5fb 100%
+          #e9f7ff 0%,
+          #f5fbff 50%,
+          #e9f6ff 100%
         );
 
       overflow-x: hidden;
-
     }
 
 
-    /* GRID PIXELIZADO DE FUNDO */
+    /* =========================
+       PIXEL GRID
+    ========================= */
 
     body::before {
-
       content: "";
 
       position: fixed;
-
       inset: 0;
 
       pointer-events: none;
-
-      opacity: .38;
-
-      background-image:
-
-        linear-gradient(
-          rgba(39,136,202,.035) 1px,
-          transparent 1px
-        ),
-
-        linear-gradient(
-          90deg,
-          rgba(39,136,202,.035) 1px,
-          transparent 1px
-        );
-
-      background-size: 24px 24px;
-
-      z-index: -2;
-
-    }
-
-
-    body::after {
-
-      content: "";
-
-      position: fixed;
-
-      width: 420px;
-
-      height: 420px;
-
-      left: -180px;
-
-      top: 180px;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(85,185,245,.14),
-          transparent 68%
-        );
-
-      pointer-events: none;
-
       z-index: -1;
 
+      opacity: 0.28;
+
+      background-image:
+        linear-gradient(
+          rgba(39, 136, 202, 0.08) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(39, 136, 202, 0.08) 1px,
+          transparent 1px
+        );
+
+      background-size: 32px 32px;
     }
 
 
-    .font-title {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-
-
-    .font-subtitle {
-      font-family: 'Manrope', sans-serif;
-    }
-
-
-    .pixel-art {
-
-      image-rendering: pixelated;
-      image-rendering: crisp-edges;
-
-    }
-
-
-    /* =========================================
+    /* =========================
        HEADER
-    ========================================== */
+    ========================= */
 
     .top-header-bar {
 
@@ -208,15 +134,24 @@
       left: 0;
       right: 0;
 
-      z-index: 9998;
+      height: 70px;
 
-      background: rgba(255,255,255,.97);
+      background: rgba(255, 255, 255, 0.96);
 
-      border-bottom: 2px solid var(--border);
+      border-bottom: 1px solid var(--border);
 
       box-shadow:
-        0 4px 16px rgba(27,91,130,.10);
+        0 4px 16px rgba(23, 108, 168, 0.07);
 
+      z-index: 100;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: flex-end;
+
+      padding: 0 28px;
     }
 
 
@@ -226,23 +161,21 @@
 
       position: absolute;
 
-      bottom: -2px;
+      bottom: -4px;
 
       left: 0;
       right: 0;
 
-      height: 3px;
+      height: 4px;
 
       background:
-
         linear-gradient(
           90deg,
-          var(--blue-dark) 0%,
-          var(--blue) 62%,
-          var(--yellow) 62%,
+          var(--blue) 0%,
+          var(--blue) 72%,
+          var(--yellow) 72%,
           var(--yellow) 100%
         );
-
     }
 
 
@@ -252,112 +185,163 @@
 
       align-items: center;
 
-      gap: 7px;
+      gap: 9px;
 
-      padding: 8px 13px;
+      padding: 9px 15px;
 
-      background: #fff8d9;
+      border-radius: 8px;
 
-      border: 2px solid #f1cd45;
+      background: var(--blue-light);
 
-      border-radius: 9px;
+      color: var(--blue-deep);
 
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.8),
-        0 2px 0 #d7a900;
+      border: 1px solid var(--border);
 
-      color: #725600;
+      font-size: 12px;
 
-      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
 
-      font-size: 9px;
-
-      font-weight: 900;
-
-      letter-spacing: .07em;
-
-      text-transform: uppercase;
-
+      letter-spacing: 0.02em;
     }
 
 
     .member-badge i {
-
-      color: #bd8c00;
-
+      font-size: 13px;
     }
 
 
-    /* =========================================
-       NUVENS
-    ========================================== */
+    /* =========================
+       CLOUDS
+    ========================= */
 
-    @keyframes floatCloud {
+    .cloud {
 
-      0% {
-        transform: translateX(-18px);
-      }
+      position: fixed;
 
-      50% {
-        transform: translateX(18px);
-      }
+      width: 130px;
+      height: 45px;
 
-      100% {
-        transform: translateX(-18px);
-      }
+      border-radius: 30px;
 
+      background: rgba(255,255,255,0.72);
+
+      opacity: 0.6;
+
+      pointer-events: none;
+
+      z-index: -1;
+
+      filter: blur(0.2px);
     }
 
 
-    @keyframes floatCloudReverse {
+    .cloud::before,
+    .cloud::after {
 
-      0% {
-        transform: translateX(18px);
-      }
+      content: "";
 
-      50% {
-        transform: translateX(-18px);
-      }
+      position: absolute;
 
-      100% {
-        transform: translateX(18px);
-      }
+      background: inherit;
 
+      border-radius: 50%;
+    }
+
+
+    .cloud::before {
+
+      width: 55px;
+      height: 55px;
+
+      left: 20px;
+      bottom: 15px;
+    }
+
+
+    .cloud::after {
+
+      width: 72px;
+      height: 72px;
+
+      right: 16px;
+      bottom: 10px;
     }
 
 
     .cloud-slow {
 
-      animation:
-        floatCloud 28s ease-in-out infinite;
+      top: 18%;
 
+      left: -20px;
+
+      animation:
+        cloudMove 35s linear infinite;
     }
 
 
     .cloud-fast {
 
+      top: 62%;
+
+      right: -40px;
+
+      transform: scale(0.75);
+
       animation:
-        floatCloudReverse 21s ease-in-out infinite;
+        cloudMoveReverse 28s linear infinite;
+    }
+
+
+    @keyframes cloudMove {
+
+      from {
+        transform: translateX(-20px);
+      }
+
+      to {
+        transform: translateX(calc(100vw + 180px));
+      }
 
     }
 
 
-    .pixel-cloud {
+    @keyframes cloudMoveReverse {
 
-      position: absolute;
+      from {
+        transform: translateX(20px);
+      }
 
-      opacity: .52;
-
-      filter: saturate(.75);
-
-      user-select: none;
+      to {
+        transform: translateX(calc(-100vw - 180px));
+      }
 
     }
 
 
-    /* =========================================
+    /* =========================
+       MAIN
+    ========================= */
+
+    main {
+
+      min-height: 100vh;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      padding:
+        110px
+        20px
+        90px;
+    }
+
+
+    /* =========================
        LOGIN CARD
-    ========================================== */
+    ========================= */
 
     .login-card {
 
@@ -365,20 +349,19 @@
 
       width: 100%;
 
-      max-width: 430px;
+      max-width: 470px;
 
-      background: #fff;
+      background: var(--white);
 
       border: 2px solid var(--border);
 
       border-radius: 16px;
 
       box-shadow:
-        0 18px 45px rgba(35,107,151,.14),
-        0 4px 0 rgba(39,136,202,.08);
+        0 18px 45px rgba(23, 108, 168, 0.12),
+        0 5px 15px rgba(23, 108, 168, 0.05);
 
       overflow: hidden;
-
     }
 
 
@@ -392,289 +375,146 @@
       left: 0;
       right: 0;
 
-      height: 5px;
+      height: 7px;
 
       background:
-
         linear-gradient(
           90deg,
-          var(--blue-dark) 0%,
+          var(--blue) 0%,
           var(--blue) 72%,
           var(--yellow) 72%,
           var(--yellow) 100%
         );
-
     }
 
 
     .login-card-inner {
 
-      padding: 34px;
-
+      padding: 42px 38px 38px;
     }
 
 
-    /* =========================================
-       LOGO / ÍCONE
-    ========================================== */
+    /* =========================
+       LOGO
+    ========================= */
 
-    .pixel-icon-frame {
+    .home-logo {
 
-      position: relative;
+      display: block;
 
-      width: 106px;
-      height: 106px;
+      width: auto;
 
-      margin: 4px auto 20px;
+      height: 95px;
 
-      padding: 7px;
+      max-width: 82%;
 
-      background: #eaf7ff;
-
-      border: 2px solid #c6e4f5;
-
-      border-radius: 12px;
-
-      box-shadow:
-        inset 0 0 0 3px #f7fcff,
-        0 4px 0 #b9d8e9,
-        0 9px 22px rgba(39,136,202,.12);
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-    }
-
-
-    .pixel-icon-frame::before {
-
-      content: "";
-
-      position: absolute;
-
-      top: -2px;
-      left: -2px;
-
-      width: 14px;
-      height: 14px;
-
-      background: var(--yellow);
-
-      border: 2px solid #d8a700;
-
-      border-radius: 3px;
-
-    }
-
-
-    .pixel-icon-frame::after {
-
-      content: "";
-
-      position: absolute;
-
-      right: -2px;
-      bottom: -2px;
-
-      width: 10px;
-      height: 10px;
-
-      background: var(--blue);
-
-      border: 2px solid var(--blue-dark);
-
-      border-radius: 2px;
-
-    }
-
-
-    .pixel-icon {
-
-      width: 100%;
-      height: 100%;
+      margin: 0 auto 20px;
 
       object-fit: contain;
 
-      background:
+      background: transparent;
 
-        radial-gradient(
-          circle,
-          #b9e7ff 0%,
-          #6dc1ed 48%,
-          #3c9fd5 100%
+      border: none;
+
+      box-shadow: none;
+
+      filter:
+        drop-shadow(
+          0 6px 8px
+          rgba(23, 108, 168, 0.12)
         );
-
-      border: 2px solid #9bcce8;
-
-      border-radius: 5px;
-
-      padding: 5px;
-
     }
 
 
-    /* =========================================
-       TÍTULO
-    ========================================== */
+    /* =========================
+       TITLES
+    ========================= */
 
     .login-title {
 
       margin: 0;
 
-      color: #243b4d;
+      text-align: center;
 
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--text);
 
-      font-size: 22px;
+      font-size: 27px;
 
-      line-height: 1.2;
+      line-height: 1.15;
 
-      font-weight: 900;
+      font-weight: 800;
 
-      letter-spacing: -.04em;
-
+      letter-spacing: -0.03em;
     }
 
 
     .login-subtitle {
 
-      margin: 7px 0 0;
+      margin:
+        10px
+        auto
+        0;
 
-      color: #7a8d9c;
+      max-width: 340px;
 
-      font-size: 10px;
+      text-align: center;
 
-      line-height: 1.5;
+      color: var(--text-soft);
 
-      font-weight: 700;
+      font-size: 13px;
 
+      line-height: 1.6;
+
+      font-weight: 500;
     }
 
 
-    .login-subtitle strong {
-
-      color: var(--blue-dark);
-
-    }
-
-
-    /* =========================================
-       DIVISÓRIA PIXEL
-    ========================================== */
+    /* =========================
+       DIVIDER
+    ========================= */
 
     .pixel-divider {
 
-      display: flex;
-
-      align-items: center;
-
-      gap: 10px;
-
-      margin: 22px 0;
-
-    }
-
-
-    .pixel-divider-line {
-
-      flex: 1;
+      width: 100%;
 
       height: 2px;
 
-      background: #dceaf2;
+      margin: 27px 0;
 
+      background:
+        repeating-linear-gradient(
+          90deg,
+          var(--border-dark) 0,
+          var(--border-dark) 8px,
+          transparent 8px,
+          transparent 13px
+        );
+
+      opacity: 0.65;
     }
 
 
-    .pixel-divider-diamond {
-
-      width: 9px;
-      height: 9px;
-
-      background: var(--yellow);
-
-      border: 2px solid #c99500;
-
-      transform: rotate(45deg);
-
-    }
-
-
-    /* =========================================
+    /* =========================
        FORM
-    ========================================== */
+    ========================= */
 
     .form-group {
 
-      margin-bottom: 16px;
-
-    }
-
-
-    .form-label-row {
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      margin-bottom: 6px;
-
+      margin-bottom: 18px;
     }
 
 
     .form-label {
 
-      display: flex;
+      display: block;
 
-      align-items: center;
+      margin-bottom: 7px;
 
-      gap: 6px;
+      color: var(--text);
 
-      color: #597083;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 9px;
-
-      font-weight: 900;
-
-      text-transform: uppercase;
-
-      letter-spacing: .07em;
-
-    }
-
-
-    .form-label i {
-
-      color: var(--blue-dark);
-
-      font-size: 10px;
-
-    }
-
-
-    .forgot-link {
-
-      color: var(--blue-dark);
-
-      font-size: 9px;
+      font-size: 12px;
 
       font-weight: 800;
-
-      text-decoration: none;
-
-    }
-
-
-    .forgot-link:hover {
-
-      text-decoration: underline;
-
     }
 
 
@@ -682,42 +522,37 @@
 
       width: 100%;
 
-      height: 45px;
+      height: 48px;
 
-      padding: 0 13px;
+      padding:
+        0
+        14px;
 
-      background: #f5faff;
+      border-radius: 8px;
 
-      border: 2px solid var(--border);
+      border: 1px solid var(--border-dark);
 
-      border-radius: 9px;
+      background: #fbfdff;
 
-      outline: none;
+      color: var(--text);
 
-      color: #263b4c;
+      font-family: inherit;
 
-      font-family: 'Inter', sans-serif;
-
-      font-size: 11px;
+      font-size: 13px;
 
       font-weight: 600;
 
-      transition: .18s ease;
+      outline: none;
 
+      transition:
+        border-color .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
     }
 
 
     .login-input::placeholder {
-
-      color: #9aabb8;
-
-    }
-
-
-    .login-input:hover {
-
-      border-color: #bfdceb;
-
+      color: var(--text-muted);
     }
 
 
@@ -728,111 +563,89 @@
       border-color: var(--blue);
 
       box-shadow:
-        0 0 0 3px rgba(85,185,245,.12);
-
+        0 0 0 3px
+        rgba(85, 185, 245, 0.14);
     }
 
 
-    /* =========================================
-       BOTÕES
-    ========================================== */
+    /* =========================
+       LOGIN BUTTON
+    ========================= */
 
     .pixel-login-button {
 
       width: 100%;
 
-      height: 45px;
+      height: 50px;
 
-      display: flex;
+      margin-top: 5px;
 
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 8px;
-
-      margin-top: 4px;
-
-      background:
-
-        linear-gradient(
-          180deg,
-          #63c3fa,
-          #329bd7
-        );
-
-      border: 2px solid #1e78b2;
+      border: 2px solid var(--blue-dark);
 
       border-radius: 8px;
 
-      color: #fff;
+      background: var(--blue);
 
-      font-family: 'Manrope', sans-serif;
+      color: white;
 
-      font-size: 10px;
+      font-family: inherit;
 
-      font-weight: 900;
+      font-size: 13px;
 
-      text-transform: uppercase;
-
-      letter-spacing: .04em;
-
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.35),
-        0 3px 0 #155f8f;
+      font-weight: 800;
 
       cursor: pointer;
 
-      transition: .15s ease;
+      box-shadow:
+        0 4px 0 var(--blue-dark);
 
+      transition:
+        transform .12s ease,
+        box-shadow .12s ease,
+        background .15s ease;
     }
 
 
     .pixel-login-button:hover {
 
-      transform: translateY(-1px);
-
-      filter: brightness(1.04);
-
+      background: #46afea;
     }
 
 
     .pixel-login-button:active {
 
-      transform: translateY(2px);
+      transform: translateY(3px);
 
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.25),
-        0 1px 0 #155f8f;
-
+        0 1px 0 var(--blue-dark);
     }
 
 
-    /* =========================================
-       ÁREA DE CADASTRO
-    ========================================== */
+    /* =========================
+       SIGNUP
+    ========================= */
 
     .signup-area {
 
-      padding-top: 20px;
+      margin-top: 27px;
 
-      border-top: 2px solid #edf3f7;
+      padding-top: 23px;
 
-      margin-top: 22px;
+      border-top: 1px solid var(--border);
 
+      text-align: center;
     }
 
 
-    .signup-title {
+    .signup-helper {
 
-      color: #526879;
+      margin: 0 0 11px;
 
-      font-family: 'Manrope', sans-serif;
+      color: var(--text-soft);
 
-      font-size: 10px;
+      font-size: 11px;
 
-      font-weight: 900;
-
+      font-weight: 600;
     }
 
 
@@ -840,164 +653,127 @@
 
       width: 100%;
 
-      height: 42px;
+      min-height: 48px;
 
-      margin-top: 10px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 8px;
-
-      background:
-
-        linear-gradient(
-          180deg,
-          #ffe16a,
-          #ffd447
-        );
-
-      border: 2px solid #d29c00;
+      border: 2px solid var(--yellow-dark);
 
       border-radius: 8px;
 
-      color: #5e4700;
+      background: var(--yellow);
 
-      font-family: 'Manrope', sans-serif;
+      color: #634800;
 
-      font-size: 10px;
+      font-family: inherit;
 
-      font-weight: 900;
+      font-size: 13px;
 
-      text-transform: uppercase;
-
-      letter-spacing: .03em;
-
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.7),
-        0 3px 0 #b17e00;
+      font-weight: 800;
 
       cursor: pointer;
 
-      transition: .15s ease;
+      box-shadow:
+        0 4px 0 var(--yellow-dark);
 
+      transition:
+        transform .12s ease,
+        box-shadow .12s ease;
     }
 
 
     .signup-button:hover {
 
-      transform: translateY(-1px);
-
-      filter: brightness(1.03);
-
+      filter: brightness(1.02);
     }
 
 
     .signup-button:active {
 
-      transform: translateY(2px);
+      transform: translateY(3px);
 
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.6),
-        0 1px 0 #b17e00;
-
+        0 1px 0 var(--yellow-dark);
     }
 
 
-    .signup-helper {
-
-      display: block;
-
-      margin-top: 8px;
-
-      color: #9aaab6;
-
-      font-size: 8px;
-
-      line-height: 1.5;
-
-      font-weight: 600;
-
-    }
-
-
-    /* =========================================
-       STATUS
-    ========================================== */
+    /* =========================
+       ONLINE STATUS
+    ========================= */
 
     .community-status {
 
       display: flex;
 
-      align-items: center;
-
       justify-content: center;
 
-      gap: 6px;
+      align-items: center;
+
+      gap: 8px;
 
       margin-top: 22px;
 
-      color: #8798a5;
+      color: var(--text-muted);
 
-      font-size: 8px;
+      font-size: 10px;
 
-      font-weight: 800;
-
-      text-transform: uppercase;
-
-      letter-spacing: .08em;
-
+      font-weight: 700;
     }
 
 
     .status-dot {
 
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
 
       border-radius: 50%;
 
       background: var(--green);
 
       box-shadow:
-        0 0 0 3px rgba(85,207,112,.13);
-
+        0 0 0 3px
+        rgba(85, 207, 112, 0.12);
     }
 
 
-    /* =========================================
+    /* =========================
        FOOTER
-    ========================================== */
+    ========================= */
 
     .page-footer {
 
-      width: 100%;
+      position: fixed;
 
-      padding: 16px;
+      bottom: 0;
 
-      text-align: center;
+      left: 0;
+      right: 0;
 
-      color: #7892a4;
+      min-height: 43px;
 
-      font-size: 8px;
+      display: flex;
 
-      font-weight: 700;
+      align-items: center;
 
-      border-top: 1px solid rgba(169,204,228,.55);
+      justify-content: center;
 
-      background: rgba(255,255,255,.55);
+      padding: 8px 20px;
 
-      backdrop-filter: blur(8px);
+      background: var(--yellow);
 
+      border-top: 2px solid var(--yellow-dark);
+
+      color: #674d00;
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      z-index: 50;
     }
 
 
-    /* =========================================
+    /* =========================
        MODAL
-    ========================================== */
+    ========================= */
 
     .modal-overlay {
 
@@ -1005,27 +781,26 @@
 
       inset: 0;
 
-      z-index: 99999;
-
-      display: flex;
+      display: none;
 
       align-items: center;
 
       justify-content: center;
 
-      padding: 16px;
+      padding: 20px;
 
-      background: rgba(20,48,67,.70);
+      background:
+        rgba(18, 61, 88, 0.42);
 
-      backdrop-filter: blur(7px);
+      backdrop-filter: blur(4px);
 
+      z-index: 500;
     }
 
 
-    .modal-overlay.hidden {
+    .modal-overlay.active {
 
-      display: none;
-
+      display: flex;
     }
 
 
@@ -1035,23 +810,23 @@
 
       width: 100%;
 
-      max-width: 430px;
+      max-width: 480px;
 
       max-height: 90vh;
 
       overflow-y: auto;
 
-      background: #fff;
+      background: var(--white);
 
       border: 2px solid var(--border);
 
-      border-radius: 15px;
+      border-radius: 16px;
 
       box-shadow:
-        0 20px 55px rgba(15,57,83,.25);
+        0 25px 70px
+        rgba(23, 108, 168, 0.25);
 
       overflow-x: hidden;
-
     }
 
 
@@ -1065,25 +840,22 @@
       left: 0;
       right: 0;
 
-      height: 5px;
+      height: 7px;
 
       background:
-
         linear-gradient(
           90deg,
-          var(--blue-dark) 0%,
+          var(--blue) 0%,
           var(--blue) 72%,
           var(--yellow) 72%,
           var(--yellow) 100%
         );
-
     }
 
 
     .modal-inner {
 
-      padding: 28px;
-
+      padding: 36px;
     }
 
 
@@ -1091,42 +863,31 @@
 
       position: absolute;
 
-      top: 14px;
-      right: 14px;
+      top: 17px;
+      right: 18px;
 
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
 
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      background: #f4f9fc;
-
-      border: 2px solid var(--border);
+      border: 1px solid var(--border);
 
       border-radius: 7px;
 
-      color: #718493;
+      background: white;
 
-      font-size: 13px;
+      color: var(--text-soft);
 
       cursor: pointer;
 
-      z-index: 2;
-
+      font-size: 15px;
     }
 
 
     .modal-close:hover {
 
-      background: #fff2f3;
+      background: var(--blue-light);
 
-      border-color: #ffc4c8;
-
-      color: #c63a43;
-
+      color: var(--blue-deep);
     }
 
 
@@ -1134,84 +895,54 @@
 
       display: inline-flex;
 
-      padding: 5px 8px;
+      align-items: center;
 
-      background: #fff7d1;
+      gap: 7px;
 
-      border: 1px solid #ecd47b;
+      margin-bottom: 12px;
+
+      padding: 7px 10px;
 
       border-radius: 6px;
 
-      color: #8e6900;
+      background: var(--blue-light);
 
-      font-family: 'Manrope', sans-serif;
+      border: 1px solid var(--border);
 
-      font-size: 8px;
+      color: var(--blue-deep);
 
-      font-weight: 900;
+      font-size: 10px;
 
-      text-transform: uppercase;
-
-      letter-spacing: .06em;
-
+      font-weight: 800;
     }
 
 
     .modal-title {
 
-      margin: 10px 0 0;
+      margin: 0;
 
-      color: #25394a;
+      color: var(--text);
 
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 23px;
 
-      font-size: 19px;
+      font-weight: 800;
 
-      font-weight: 900;
-
+      letter-spacing: -0.025em;
     }
 
 
     .modal-description {
 
-      margin-top: 4px;
+      margin:
+        8px
+        0
+        24px;
 
-      color: #7b8c99;
+      color: var(--text-soft);
 
-      font-size: 9px;
+      font-size: 12px;
 
-      font-weight: 600;
-
-      line-height: 1.5;
-
-    }
-
-
-    .modal-form-group {
-
-      margin-bottom: 13px;
-
-    }
-
-
-    .modal-label {
-
-      display: block;
-
-      margin-bottom: 5px;
-
-      color: #526a7c;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 9px;
-
-      font-weight: 900;
-
-      text-transform: uppercase;
-
-      letter-spacing: .06em;
-
+      line-height: 1.6;
     }
 
 
@@ -1219,36 +950,37 @@
 
       width: 100%;
 
-      height: 40px;
+      height: 46px;
 
-      padding: 0 11px;
+      margin-bottom: 14px;
 
-      background: #f8fcff;
-
-      border: 2px solid var(--border);
+      padding: 0 13px;
 
       border-radius: 8px;
 
+      border: 1px solid var(--border-dark);
+
+      background: #fbfdff;
+
       outline: none;
 
-      color: var(--text);
+      font-family: inherit;
 
-      font-size: 10px;
+      font-size: 12px;
 
       font-weight: 600;
 
+      color: var(--text);
     }
 
 
     .modal-input:focus {
 
-      background: #fff;
-
       border-color: var(--blue);
 
       box-shadow:
-        0 0 0 3px rgba(85,185,245,.10);
-
+        0 0 0 3px
+        rgba(85, 185, 245, 0.14);
     }
 
 
@@ -1256,59 +988,61 @@
 
       width: 100%;
 
-      height: 42px;
+      min-height: 48px;
 
       margin-top: 4px;
 
-      background:
-
-        linear-gradient(
-          180deg,
-          #63c3fa,
-          #2788ca
-        );
-
-      border: 2px solid #1d72a8;
+      border: 2px solid var(--blue-dark);
 
       border-radius: 8px;
 
-      color: #fff;
+      background: var(--blue);
 
-      font-family: 'Manrope', sans-serif;
+      color: white;
 
-      font-size: 10px;
+      font-family: inherit;
 
-      font-weight: 900;
+      font-size: 12px;
 
-      text-transform: uppercase;
-
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.35),
-        0 3px 0 #155f8f;
+      font-weight: 800;
 
       cursor: pointer;
 
+      box-shadow:
+        0 4px 0 var(--blue-dark);
     }
 
 
-    /* =========================================
+    .modal-submit:disabled {
+
+      opacity: 0.6;
+
+      cursor: wait;
+    }
+
+
+    /* =========================
        PIN
-    ========================================== */
+    ========================= */
+
+    .hidden {
+      display: none !important;
+    }
+
 
     .pin-box {
 
-      margin: 18px 0;
+      margin-top: 20px;
 
-      padding: 15px;
+      padding: 20px;
 
-      text-align: center;
+      background: var(--blue-light);
 
-      background: #f1f9fe;
-
-      border: 2px dashed #8bc9e9;
+      border: 2px solid var(--border);
 
       border-radius: 10px;
 
+      text-align: center;
     }
 
 
@@ -1316,64 +1050,55 @@
 
       display: block;
 
-      color: #8a9aa7;
+      margin-bottom: 8px;
 
-      font-size: 8px;
+      color: var(--text-soft);
 
-      font-weight: 900;
+      font-size: 10px;
+
+      font-weight: 800;
 
       text-transform: uppercase;
 
-      letter-spacing: .1em;
-
+      letter-spacing: 0.08em;
     }
 
 
     .pin-code {
 
-      display: block;
+      color: var(--blue-deep);
 
-      margin-top: 5px;
-
-      color: var(--blue-dark);
-
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: monospace;
 
       font-size: 28px;
 
       font-weight: 900;
 
-      letter-spacing: .12em;
-
+      letter-spacing: 4px;
     }
 
 
     .instructions {
 
-      padding: 12px;
+      margin-top: 18px;
 
-      background: #f5f8fa;
+      padding: 15px;
 
-      border: 1px solid #e2ebf0;
+      border-radius: 8px;
 
-      border-radius: 9px;
+      background: #fffdf1;
 
-      color: #617482;
+      border: 1px solid #f2df8b;
 
-      font-size: 9px;
+      color: #6c5700;
 
-      line-height: 1.6;
+      font-size: 11px;
 
-      font-weight: 600;
-
+      line-height: 1.65;
     }
 
 
     .discord-button {
-
-      width: 100%;
-
-      height: 42px;
 
       display: flex;
 
@@ -1383,113 +1108,118 @@
 
       gap: 8px;
 
-      margin-top: 13px;
+      width: 100%;
 
-      background: #5865F2;
+      min-height: 44px;
 
-      border: 2px solid #4652d5;
+      margin-top: 14px;
+
+      border: 1px solid #c7d3e3;
 
       border-radius: 8px;
 
-      color: #fff;
+      background: #f5f7fb;
 
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 10px;
-
-      font-weight: 900;
-
-      text-transform: uppercase;
+      color: #45536b;
 
       text-decoration: none;
 
-      box-shadow:
-        0 3px 0 #3944b5;
+      font-size: 11px;
 
+      font-weight: 800;
+    }
+
+
+    .discord-button:hover {
+
+      background: #edf1f7;
     }
 
 
     .waiting-text {
 
-      margin-top: 9px;
+      margin-top: 15px;
 
       text-align: center;
 
-      color: #b78300;
+      color: var(--text-muted);
 
-      font-size: 9px;
+      font-size: 10px;
 
-      font-weight: 800;
-
-      animation: waitingPulse 1.7s infinite;
-
+      font-weight: 700;
     }
 
 
-    @keyframes waitingPulse {
+    /* =========================
+       MOBILE
+    ========================= */
 
-      0%,
-      100% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: .5;
-      }
-
-    }
-
-
-    /* =========================================
-       RESPONSIVO
-    ========================================== */
-
-    @media (max-width: 640px) {
+    @media (max-width: 600px) {
 
       .top-header-bar {
 
-        padding-left: 12px;
-        padding-right: 12px;
+        height: 62px;
 
+        padding: 0 15px;
+      }
+
+
+      main {
+
+        padding:
+          90px
+          15px
+          75px;
       }
 
 
       .login-card-inner {
 
-        padding: 26px 20px;
-
+        padding:
+          35px
+          22px
+          28px;
       }
 
 
-      .login-card {
+      .home-logo {
 
-        max-width: 400px;
+        height: 78px;
 
-      }
+        max-width: 88%;
 
-
-      .pixel-icon-frame {
-
-        width: 92px;
-        height: 92px;
-
+        margin-bottom: 17px;
       }
 
 
       .login-title {
 
-        font-size: 20px;
+        font-size: 23px;
+      }
 
+
+      .login-subtitle {
+
+        font-size: 12px;
       }
 
 
       .modal-inner {
 
-        padding: 25px 20px;
+        padding:
+          32px
+          22px
+          25px;
+      }
 
+
+      .page-footer {
+
+        font-size: 9px;
       }
 
     }
+
 
   </style>
 
@@ -1499,66 +1229,32 @@
 <body>
 
 
-  <!-- =========================================
-       NUVENS
-  ========================================== -->
+  <!-- CLOUDS -->
 
-  <div
-    class="fixed top-[92px] left-0 right-0 pointer-events-none z-0 cloud-slow"
-  >
+  <div class="cloud cloud-slow"></div>
 
-    <div
-      class="pixel-cloud left-[2%] top-0 text-5xl sm:text-7xl"
-    >
-      ☁️
-    </div>
-
-    <div
-      class="pixel-cloud right-[3%] top-[55px] text-6xl sm:text-8xl"
-    >
-      ☁️
-    </div>
-
-  </div>
+  <div class="cloud cloud-fast"></div>
 
 
-  <!-- =========================================
-       HEADER
-  ========================================== -->
+  <!-- HEADER -->
 
-  <header class="top-header-bar px-4 sm:px-8 py-3">
+  <header class="top-header-bar">
 
-    <div
-      class="max-w-7xl mx-auto flex items-center justify-between"
-    >
+    <div class="member-badge">
 
-      <div class="flex items-center">
+      <i class="fa-solid fa-user"></i>
 
-        <div class="member-badge">
-
-          <i class="fa-solid fa-user"></i>
-
-          Área de Membros
-
-        </div>
-
-      </div>
+      Área de Membros
 
     </div>
 
   </header>
 
 
-  <!-- =========================================
-       ÁREA PRINCIPAL
-  ========================================== -->
+  <!-- MAIN -->
 
-  <main
-    class="min-h-screen flex flex-col items-center justify-center px-4 pt-24 pb-8 relative z-10"
-  >
+  <main>
 
-
-    <!-- LOGIN CARD -->
 
     <section class="login-card">
 
@@ -1566,52 +1262,34 @@
       <div class="login-card-inner">
 
 
-        <!-- ÍCONE -->
+        <!-- LOGO SOLTA -->
 
-        <div class="pixel-icon-frame">
-
-          <img
-            src="icon.png.PNG"
-            alt="Pixelizados"
-            class="pixel-icon pixel-art"
-          >
-
-        </div>
+        <img
+          src="pixelizados.PNG"
+          alt="Pixelizados"
+          class="home-logo"
+        >
 
 
-        <!-- TÍTULO -->
+        <h1 class="login-title">
 
-        <h1 class="login-title text-center">
-
-          Bem-vindo ao Pixelizados
+          Área de Membros
 
         </h1>
 
 
-        <p class="login-subtitle text-center">
+        <p class="login-subtitle">
 
-          Sua comunidade pixelizada começa
-          <strong>aqui.</strong>
+          Entre na comunidade Pixelizados
+          e tenha acesso ao nosso universo.
 
         </p>
 
 
-        <!-- DIVISÓRIA -->
-
-        <div class="pixel-divider">
-
-          <div class="pixel-divider-line"></div>
-
-          <div class="pixel-divider-diamond"></div>
-
-          <div class="pixel-divider-line"></div>
-
-        </div>
+        <div class="pixel-divider"></div>
 
 
-        <!-- =====================================
-             LOGIN
-        ====================================== -->
+        <!-- LOGIN -->
 
         <form
           action="portal.html"
@@ -1619,79 +1297,47 @@
         >
 
 
-          <!-- USUÁRIO -->
-
           <div class="form-group">
 
-            <div class="form-label-row">
-
-              <label
-                class="form-label"
-                for="login-user"
-              >
-
-                <i class="fa-solid fa-user"></i>
-
-                Usuário
-
-              </label>
-
-            </div>
-
+            <label
+              class="form-label"
+              for="login-user"
+            >
+              Usuário
+            </label>
 
             <input
               id="login-user"
-              type="text"
-              placeholder="Ex.: FrankPixel"
-              required
               class="login-input"
+              type="text"
+              placeholder="Digite seu usuário"
+              autocomplete="username"
+              required
             >
 
           </div>
 
-
-          <!-- SENHA -->
 
           <div class="form-group">
 
-            <div class="form-label-row">
-
-              <label
-                class="form-label"
-                for="login-password"
-              >
-
-                <i class="fa-solid fa-lock"></i>
-
-                Senha
-
-              </label>
-
-
-              <a
-                href="#"
-                class="forgot-link"
-              >
-
-                Esqueceu?
-
-              </a>
-
-            </div>
-
+            <label
+              class="form-label"
+              for="login-password"
+            >
+              Senha
+            </label>
 
             <input
               id="login-password"
-              type="password"
-              placeholder="••••••••"
-              required
               class="login-input"
+              type="password"
+              placeholder="Digite sua senha"
+              autocomplete="current-password"
+              required
             >
 
           </div>
 
-
-          <!-- BOTÃO -->
 
           <button
             type="submit"
@@ -1699,6 +1345,8 @@
           >
 
             <i class="fa-solid fa-right-to-bracket"></i>
+
+            &nbsp;
 
             Entrar na Comunidade
 
@@ -1708,38 +1356,31 @@
         </form>
 
 
-        <!-- =====================================
-             CADASTRO
-        ====================================== -->
+        <!-- SIGNUP -->
 
         <div class="signup-area">
 
 
-          <p class="signup-title text-center">
+          <p class="signup-helper">
 
-            Ainda não possui uma conta?
+            Ainda não faz parte da comunidade?
 
           </p>
 
 
           <button
             type="button"
-            onclick="abrirModalCadastro()"
             class="signup-button"
+            onclick="abrirCadastro()"
           >
 
-            <i class="fa-solid fa-cube"></i>
+            <i class="fa-solid fa-user-plus"></i>
+
+            &nbsp;
 
             Se torne um Pixelizado
 
           </button>
-
-
-          <span class="signup-helper text-center">
-
-            O cadastro e a verificação de membros são realizados através do Discord oficial.
-
-          </span>
 
 
         </div>
@@ -1751,7 +1392,7 @@
 
           <span class="status-dot"></span>
 
-          Comunidade Online
+          Comunidade online
 
         </div>
 
@@ -1764,169 +1405,113 @@
   </main>
 
 
-  <!-- =========================================
-       FOOTER
-  ========================================== -->
+  <!-- FOOTER -->
 
   <footer class="page-footer">
 
-    © 2026 Pixelizados.
-    Todos os direitos reservados aos criadores de pixels.
+    Pixelizados • Um universo feito por fãs,
+    para fãs.
 
   </footer>
 
 
-  <!-- =========================================
-       MODAL DE CADASTRO
-  ========================================== -->
+  <!-- =========================
+       MODAL CADASTRO
+  ========================= -->
 
   <div
-    id="modal-cadastro"
-    class="modal-overlay hidden"
+    id="signup-modal"
+    class="modal-overlay"
   >
 
 
     <div class="modal-card">
 
 
+      <button
+        type="button"
+        class="modal-close"
+        onclick="fecharCadastro()"
+        aria-label="Fechar"
+      >
+
+        <i class="fa-solid fa-xmark"></i>
+
+      </button>
+
+
       <div class="modal-inner">
 
 
-        <!-- FECHAR -->
-
-        <button
-          type="button"
-          onclick="fecharModal()"
-          class="modal-close"
-          title="Fechar"
-        >
-
-          <i class="fa-solid fa-xmark"></i>
-
-        </button>
-
-
-        <!-- =====================================
-             ETAPA 1
-        ====================================== -->
+        <!-- ETAPA 1 -->
 
         <div id="etapa-1">
 
 
-          <span class="modal-badge">
+          <div class="modal-badge">
 
-            Beta Pixelizados
+            <i class="fa-solid fa-user-plus"></i>
 
-          </span>
+            NOVO PIXELIZADO
+
+          </div>
 
 
           <h2 class="modal-title">
 
-            Criar Conta no Portal
+            Faça seu cadastro
 
           </h2>
 
 
           <p class="modal-description">
 
-            Vincule seu perfil do Discord para continuar.
+            Preencha os dados abaixo para
+            solicitar acesso à comunidade.
+
+            Após o cadastro, você receberá
+            um PIN de verificação.
 
           </p>
 
 
-          <div
-            class="pixel-divider"
-            style="margin:18px 0;"
-          >
-
-            <div class="pixel-divider-line"></div>
-
-            <div class="pixel-divider-diamond"></div>
-
-            <div class="pixel-divider-line"></div>
-
-          </div>
-
-
           <form
-            id="form-cadastro"
             onsubmit="enviarCadastroSupabase(event)"
           >
 
 
-            <!-- DISCORD -->
-
-            <div class="modal-form-group">
-
-              <label
-                for="discord-tag"
-                class="modal-label"
-              >
-
-                Username do Discord
-
-              </label>
+            <label
+              class="form-label"
+              for="portal-user"
+            >
+              Nick no Habbo
+            </label>
 
 
-              <input
-                type="text"
-                id="discord-tag"
-                placeholder="Ex.: usuario_discord"
-                required
-                class="modal-input"
-              >
-
-            </div>
+            <input
+              id="portal-user"
+              class="modal-input"
+              type="text"
+              placeholder="Seu nick no Habbo"
+              required
+            >
 
 
-            <!-- USUÁRIO -->
-
-            <div class="modal-form-group">
-
-              <label
-                for="portal-user"
-                class="modal-label"
-              >
-
-                Nome de Usuário no Portal
-
-              </label>
+            <label
+              class="form-label"
+              for="discord-tag"
+            >
+              Usuário do Discord
+            </label>
 
 
-              <input
-                type="text"
-                id="portal-user"
-                placeholder="Ex.: Pixel_Master"
-                required
-                class="modal-input"
-              >
-
-            </div>
-
-
-            <!-- SENHA -->
-
-            <div class="modal-form-group">
-
-              <label
-                for="portal-pass"
-                class="modal-label"
-              >
-
-                Criar Senha
-
-              </label>
-
-
-              <input
-                type="password"
-                id="portal-pass"
-                placeholder="••••••••"
-                required
-                class="modal-input"
-              >
-
-            </div>
+            <input
+              id="discord-tag"
+              class="modal-input"
+              type="text"
+              placeholder="ex: pixelizado"
+              required
+            >
 
 
             <button
@@ -1937,8 +1522,6 @@
 
               Gerar PIN de Verificação
 
-              <i class="fa-solid fa-bolt"></i>
-
             </button>
 
 
@@ -1948,9 +1531,7 @@
         </div>
 
 
-        <!-- =====================================
-             ETAPA 2
-        ====================================== -->
+        <!-- ETAPA 2 -->
 
         <div
           id="etapa-2"
@@ -1958,95 +1539,97 @@
         >
 
 
-          <span class="modal-badge">
+          <div class="modal-badge">
 
-            Verificação
+            <i class="fa-solid fa-shield-halved"></i>
 
-          </span>
+            VERIFICAÇÃO
+
+          </div>
 
 
           <h2 class="modal-title">
 
-            Quase lá!
+            Seu PIN foi gerado!
 
           </h2>
 
 
-          <p
-            id="status-msg"
-            class="modal-description"
-          >
+          <p class="modal-description">
 
-            Envie o código abaixo no nosso servidor do Discord para ativar sua conta.
+            Envie o PIN abaixo para a equipe
+            responsável pela aprovação da sua conta.
 
           </p>
 
 
-          <!-- PIN -->
-
           <div class="pin-box">
+
 
             <span class="pin-label">
 
-              Seu PIN de Verificação
+              Seu código
 
             </span>
 
 
-            <span
+            <div
               id="pin-display"
               class="pin-code"
             >
 
               PX-0000
 
-            </span>
+            </div>
+
 
           </div>
 
-
-          <!-- INSTRUÇÕES -->
 
           <div class="instructions">
 
-            <p>
-              <strong>1.</strong>
-              Copie o PIN acima.
-            </p>
+            <strong>Como continuar?</strong>
 
-            <p>
-              <strong>2.</strong>
-              Entre no canal
-              <strong>#validar-conta</strong>
-              no Discord.
-            </p>
+            <br><br>
 
-            <p>
-              <strong>3.</strong>
-              Envie o código no chat.
-            </p>
+            1. Copie o seu PIN.
+
+            <br>
+
+            2. Entre no nosso Discord.
+
+            <br>
+
+            3. Envie o PIN para a equipe.
+
+            <br>
+
+            4. Aguarde a aprovação da sua conta.
 
           </div>
 
 
-          <!-- DISCORD -->
-
           <a
-            href="https://discord.gg/pixelizados"
-            target="_blank"
+            href="#"
             class="discord-button"
+            target="_blank"
+            rel="noopener noreferrer"
           >
 
             <i class="fa-brands fa-discord"></i>
 
-            Ir para o Discord
+            Entrar no Discord
 
           </a>
 
 
           <p class="waiting-text">
 
-            ⏳ Aguardando aprovação automática...
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+
+            &nbsp;
+
+            Aguardando aprovação...
 
           </p>
 
@@ -2061,19 +1644,12 @@
   </div>
 
 
-  <!-- =========================================
+  <!-- =========================
        SUPABASE
-  ========================================== -->
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
+  ========================= -->
 
   <script>
 
-
-    // =========================================
-    // CONEXÃO SUPABASE
-    // =========================================
 
     const SUPABASE_URL =
       'https://znvytrvdwejjlivzsjzy.supabase.co';
@@ -2090,53 +1666,53 @@
       );
 
 
-    // =========================================
-    // ABRIR MODAL
-    // =========================================
+    /* =========================
+       MODAL
+    ========================= */
 
-    function abrirModalCadastro() {
+
+    function abrirCadastro() {
 
       document
-        .getElementById('modal-cadastro')
+        .getElementById('signup-modal')
         .classList
-        .remove('hidden');
+        .add('active');
 
     }
 
 
-    // =========================================
-    // FECHAR MODAL
-    // =========================================
-
-    function fecharModal() {
+    function fecharCadastro() {
 
       document
-        .getElementById('modal-cadastro')
+        .getElementById('signup-modal')
         .classList
-        .add('hidden');
-
-
-      setTimeout(() => {
-
-        document
-          .getElementById('etapa-1')
-          .classList
-          .remove('hidden');
-
-
-        document
-          .getElementById('etapa-2')
-          .classList
-          .add('hidden');
-
-      }, 300);
+        .remove('active');
 
     }
 
 
-    // =========================================
-    // CADASTRO SUPABASE
-    // =========================================
+    document
+      .getElementById('signup-modal')
+      .addEventListener(
+        'click',
+        function(event) {
+
+          if (
+            event.target === this
+          ) {
+
+            fecharCadastro();
+
+          }
+
+        }
+      );
+
+
+    /* =========================
+       CADASTRO SUPABASE
+    ========================= */
+
 
     async function enviarCadastroSupabase(e) {
 
@@ -2159,13 +1735,17 @@
 
       const discordTag =
         document
-          .getElementById('discord-tag')
+          .getElementById(
+            'discord-tag'
+          )
           .value;
 
 
       const habboNick =
         document
-          .getElementById('portal-user')
+          .getElementById(
+            'portal-user'
+          )
           .value;
 
 
@@ -2177,16 +1757,14 @@
         );
 
 
-      // Inserir registro com status PENDENTE
-
-      const { data, error } =
+      const {
+        data,
+        error
+      } =
         await supabaseClient
-
           .from('usuarios')
-
           .insert([
             {
-
               habbo_nick:
                 habboNick,
 
@@ -2198,9 +1776,7 @@
 
               status:
                 'PENDENTE'
-
             }
-
           ]);
 
 
@@ -2230,27 +1806,29 @@
       }
 
 
-      // Exibir PIN
-
       document
-        .getElementById('pin-display')
+        .getElementById(
+          'pin-display'
+        )
         .innerText =
         pinGerado;
 
 
       document
-        .getElementById('etapa-1')
+        .getElementById(
+          'etapa-1'
+        )
         .classList
         .add('hidden');
 
 
       document
-        .getElementById('etapa-2')
+        .getElementById(
+          'etapa-2'
+        )
         .classList
         .remove('hidden');
 
-
-      // Ativar escuta Realtime
 
       escutarAprovacaoRealtime(
         pinGerado
@@ -2259,25 +1837,23 @@
     }
 
 
-    // =========================================
-    // SUPABASE REALTIME
-    // =========================================
+    /* =========================
+       REALTIME APROVAÇÃO
+    ========================= */
 
-    function escutarAprovacaoRealtime(pin) {
+
+    function escutarAprovacaoRealtime(
+      pin
+    ) {
 
 
       supabaseClient
-
         .channel(
           'validacao-pixelizados'
         )
-
         .on(
-
           'postgres_changes',
-
           {
-
             event:
               'UPDATE',
 
@@ -2286,31 +1862,23 @@
 
             table:
               'usuarios'
-
           },
 
           (payload) => {
 
 
             if (
-
               payload.new &&
-
               payload.new.pin === pin &&
-
               payload.new.status === 'APROVADO'
-
             ) {
 
 
               localStorage.setItem(
-
                 'pixelizados_user',
-
                 JSON.stringify(
                   payload.new
                 )
-
               );
 
 
@@ -2327,7 +1895,6 @@
           }
 
         )
-
         .subscribe();
 
     }
