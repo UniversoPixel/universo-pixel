@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -11,18 +10,12 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Pixelizados — Entrar na Comunidade</title>
+  <title>Pixelizados - Entrar na Comunidade</title>
 
-  <!-- Tailwind -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Font Awesome -->
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    rel="stylesheet"
-  >
-
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
 
   <link
@@ -32,122 +25,38 @@
   >
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet"
   >
 
   <style>
 
-    :root {
-
-      --blue: #55b9f5;
-      --blue-dark: #2788ca;
-      --blue-deep: #176ca8;
-      --blue-light: #e7f6ff;
-
-      --yellow: #ffd447;
-      --yellow-dark: #e6a900;
-
-      --green: #55cf70;
-      --red: #ff5c65;
-
-      --bg: #edf7fd;
-      --white: #ffffff;
-
-      --text: #243447;
-      --text-soft: #64748b;
-      --text-muted: #94a3b8;
-
-      --border: #d5e7f4;
-      --border-dark: #a9cce4;
-
-      --shadow:
-        0 12px 35px rgba(23, 108, 168, .15);
-
-      --shadow-heavy:
-        0 20px 55px rgba(23, 108, 168, .20);
-
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
     html,
     body {
+
       margin: 0;
+      padding: 0;
       width: 100%;
-      min-height: 100%;
+      height: 100%;
+      overflow-x: hidden;
+
     }
+
 
     body {
 
-      min-height: 100vh;
-
-      font-family: 'Inter', sans-serif;
-
-      color: var(--text);
-
-      overflow-x: hidden;
+      font-family: 'Plus Jakarta Sans', sans-serif;
 
       background:
-        radial-gradient(
-          circle at 15% 15%,
-          rgba(255,255,255,.9) 0,
-          rgba(255,255,255,0) 27%
-        ),
-        radial-gradient(
-          circle at 85% 20%,
-          rgba(117,207,255,.30) 0,
-          rgba(117,207,255,0) 30%
-        ),
         linear-gradient(
           180deg,
-          #bfeaff 0%,
-          #dff5ff 48%,
-          #edf8fd 100%
+          #0284C7 0%,
+          #38BDF8 50%,
+          #BAE6FD 100%
         );
 
-      position: relative;
-
     }
 
-    body::before {
-
-      content: "";
-
-      position: fixed;
-
-      inset: 0;
-
-      pointer-events: none;
-
-      opacity: .28;
-
-      background-image:
-        linear-gradient(
-          rgba(39,136,202,.055) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(39,136,202,.055) 1px,
-          transparent 1px
-        );
-
-      background-size: 24px 24px;
-
-      z-index: 0;
-
-    }
-
-    .font-title {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-
-    .font-subtitle {
-      font-family: 'Manrope', sans-serif;
-    }
 
     .pixel-art {
 
@@ -156,1452 +65,55 @@
 
     }
 
-    /* =========================================
-       NUVENS
-    ========================================= */
 
-    .cloud {
-
-      position: absolute;
-
-      pointer-events: none;
-
-      user-select: none;
-
-      color: white;
-
-      opacity: .65;
-
-      filter:
-        drop-shadow(
-          0 8px 10px rgba(23,108,168,.05)
-        );
-
-    }
-
-    .cloud-1 {
-
-      top: 7%;
-
-      left: -30px;
-
-      font-size: 75px;
-
-      animation:
-        floatCloud 22s ease-in-out infinite;
-
-    }
-
-    .cloud-2 {
-
-      top: 13%;
-
-      right: -35px;
-
-      font-size: 100px;
-
-      opacity: .42;
-
-      animation:
-        floatCloudReverse 27s ease-in-out infinite;
-
-    }
-
-    .cloud-3 {
-
-      bottom: 14%;
-
-      left: 4%;
-
-      font-size: 65px;
-
-      opacity: .55;
-
-      animation:
-        floatCloud 19s ease-in-out infinite;
-
-    }
-
-    .cloud-4 {
-
-      bottom: 8%;
-
-      right: 3%;
-
-      font-size: 85px;
-
-      opacity: .48;
-
-      animation:
-        floatCloudReverse 23s ease-in-out infinite;
-
-    }
+    /* Animação de Nuvens Flutuantes */
 
     @keyframes floatCloud {
 
-      0%,
-      100% {
-        transform: translateX(-15px);
+      0% {
+        transform: translateX(-20px);
       }
 
       50% {
-        transform: translateX(25px);
+        transform: translateX(20px);
+      }
+
+      100% {
+        transform: translateX(-20px);
       }
 
     }
 
+
     @keyframes floatCloudReverse {
 
-      0%,
-      100% {
+      0% {
         transform: translateX(20px);
       }
 
       50% {
-        transform: translateX(-25px);
+        transform: translateX(-20px);
       }
 
-    }
-
-    /* =========================================
-       HEADER
-    ========================================= */
-
-    .entry-header {
-
-      position: relative;
-
-      z-index: 20;
-
-      width: 100%;
-
-      background: rgba(255,255,255,.94);
-
-      border-bottom: 2px solid var(--border);
-
-      box-shadow:
-        0 4px 18px rgba(27,91,130,.10);
-
-    }
-
-    .entry-header::after {
-
-      content: "";
-
-      position: absolute;
-
-      bottom: -2px;
-
-      left: 0;
-
-      right: 0;
-
-      height: 3px;
-
-      background:
-        linear-gradient(
-          90deg,
-          var(--blue-dark) 0%,
-          var(--blue) 65%,
-          var(--yellow) 65%,
-          var(--yellow) 100%
-        );
-
-    }
-
-    .header-inner {
-
-      max-width: 1180px;
-
-      margin: auto;
-
-      padding:
-        12px 20px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      gap: 20px;
-
-    }
-
-    .member-badge {
-
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 7px;
-
-      padding:
-        7px 11px;
-
-      background: #fff8d9;
-
-      border: 2px solid #f1cd45;
-
-      border-radius: 8px;
-
-      color: #7b5a00;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 9px;
-
-      font-weight: 900;
-
-      text-transform: uppercase;
-
-      letter-spacing: .07em;
-
-      box-shadow:
-        0 2px 0 #d7a900;
-
-    }
-
-    .member-badge i {
-
-      color: #b27c00;
-
-    }
-
-    .portal-link {
-
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 7px;
-
-      padding:
-        8px 12px;
-
-      background: #f4fbff;
-
-      border: 2px solid var(--border);
-
-      border-radius: 8px;
-
-      color: #4d687b;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 9px;
-
-      font-weight: 900;
-
-      text-decoration: none;
-
-      text-transform: uppercase;
-
-      transition: .18s ease;
-
-    }
-
-    .portal-link:hover {
-
-      background: #e8f7ff;
-
-      border-color: #9ed3ed;
-
-      color: var(--blue-deep);
-
-      transform: translateY(-1px);
-
-    }
-
-    /* =========================================
-       MAIN
-    ========================================= */
-
-    .entry-wrapper {
-
-      position: relative;
-
-      z-index: 10;
-
-      min-height:
-        calc(100vh - 61px);
-
-      display: flex;
-
-      flex-direction: column;
-
-    }
-
-    .entry-main {
-
-      flex: 1;
-
-      width: 100%;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      padding:
-        42px 20px 60px;
-
-    }
-
-    /* =========================================
-       CARD LOGIN
-    ========================================= */
-
-    .login-card {
-
-      width: 100%;
-
-      max-width: 430px;
-
-      position: relative;
-
-      background: rgba(255,255,255,.98);
-
-      border:
-        2px solid var(--border);
-
-      border-radius: 16px;
-
-      box-shadow: var(--shadow-heavy);
-
-      overflow: hidden;
-
-      text-align: center;
-
-    }
-
-    .login-card::before {
-
-      content: "";
-
-      position: absolute;
-
-      top: 0;
-
-      left: 0;
-
-      right: 0;
-
-      height: 5px;
-
-      background:
-        linear-gradient(
-          90deg,
-          var(--blue-dark) 0%,
-          var(--blue) 72%,
-          var(--yellow) 72%,
-          var(--yellow) 100%
-        );
-
-    }
-
-    .login-card-inner {
-
-      padding:
-        34px 32px 30px;
-
-    }
-
-    /* =========================================
-       LOGO
-    ========================================= */
-
-    .logo-area {
-
-      display: flex;
-
-      flex-direction: column;
-
-      align-items: center;
-
-      margin-bottom: 20px;
-
-    }
-
-    .logo-frame {
-
-      width: 110px;
-
-      height: 110px;
-
-      padding: 6px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      background:
-        linear-gradient(
-          145deg,
-          #e9f8ff,
-          #ffffff
-        );
-
-      border:
-        2px solid var(--border);
-
-      border-radius: 14px;
-
-      box-shadow:
-        inset 0 1px 0 white,
-        0 4px 0 #c6deeb,
-        0 8px 18px rgba(39,136,202,.08);
-
-      transition: .2s ease;
-
-    }
-
-    .logo-frame:hover {
-
-      transform:
-        translateY(-2px)
-        scale(1.02);
-
-      border-color:
-        #a7d4eb;
-
-    }
-
-    .logo-image {
-
-      width: 100%;
-
-      height: 100%;
-
-      object-fit: contain;
-
-      image-rendering: pixelated;
-
-    }
-
-    .entry-title {
-
-      margin:
-        18px 0 4px;
-
-      color: #20384b;
-
-      font-family: 'Plus Jakarta Sans', sans-serif;
-
-      font-size: 22px;
-
-      font-weight: 900;
-
-      letter-spacing: -.02em;
-
-    }
-
-    .entry-subtitle {
-
-      margin: 0;
-
-      color: #7890a0;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 10px;
-
-      font-weight: 700;
-
-      line-height: 1.5;
-
-    }
-
-    .entry-subtitle strong {
-
-      color: var(--blue-dark);
-
-    }
-
-    /* =========================================
-       DIVISOR PIXEL
-    ========================================= */
-
-    .pixel-divider {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 9px;
-
-      margin:
-        23px 0;
-
-    }
-
-    .pixel-divider::before,
-    .pixel-divider::after {
-
-      content: "";
-
-      height: 2px;
-
-      flex: 1;
-
-      background:
-        #e3edf3;
-
-    }
-
-    .pixel-divider-square {
-
-      width: 7px;
-
-      height: 7px;
-
-      background: var(--yellow);
-
-      border:
-        2px solid #c89600;
-
-      transform:
-        rotate(45deg);
-
-    }
-
-    /* =========================================
-       FORM
-    ========================================= */
-
-    .login-form {
-
-      text-align: left;
-
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 15px;
-
-    }
-
-    .form-group {
-
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 6px;
-
-    }
-
-    .form-label-row {
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      gap: 10px;
-
-    }
-
-    .form-label {
-
-      margin-left: 2px;
-
-      color: #536b7b;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 9px;
-
-      font-weight: 900;
-
-      text-transform: uppercase;
-
-      letter-spacing: .07em;
-
-    }
-
-    .form-label i {
-
-      width: 14px;
-
-      color: var(--blue-dark);
-
-    }
-
-    .forgot-link {
-
-      color: #5b9ec5;
-
-      font-size: 9px;
-
-      font-weight: 800;
-
-      text-decoration: none;
-
-    }
-
-    .forgot-link:hover {
-
-      color: var(--blue-deep);
-
-      text-decoration: underline;
-
-    }
-
-    .form-input {
-
-      width: 100%;
-
-      height: 44px;
-
-      padding:
-        0 12px;
-
-      background: #f7fbfe;
-
-      border:
-        2px solid var(--border);
-
-      border-radius: 8px;
-
-      color: var(--text);
-
-      font-family: 'Inter', sans-serif;
-
-      font-size: 11px;
-
-      font-weight: 600;
-
-      outline: none;
-
-      transition: .18s ease;
-
-    }
-
-    .form-input::placeholder {
-
-      color: #a0b0bb;
-
-    }
-
-    .form-input:focus {
-
-      background: white;
-
-      border-color:
-        var(--blue);
-
-      box-shadow:
-        0 0 0 3px rgba(85,185,245,.12);
-
-    }
-
-    /* =========================================
-       BOTÃO LOGIN
-    ========================================= */
-
-    .login-button {
-
-      width: 100%;
-
-      height: 46px;
-
-      margin-top: 2px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 8px;
-
-      border:
-        2px solid #1d72a8;
-
-      border-radius: 8px;
-
-      background:
-        linear-gradient(
-          180deg,
-          #63c3fa,
-          #2788ca
-        );
-
-      color: white;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 10px;
-
-      font-weight: 900;
-
-      letter-spacing: .06em;
-
-      text-transform: uppercase;
-
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.35),
-        0 3px 0 #155f8f;
-
-      cursor: pointer;
-
-      transition: .15s ease;
-
-    }
-
-    .login-button:hover {
-
-      filter: brightness(1.04);
-
-      transform:
-        translateY(-1px);
-
-    }
-
-    .login-button:active {
-
-      transform:
-        translateY(2px);
-
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.25),
-        0 1px 0 #155f8f;
-
-    }
-
-    /* =========================================
-       CADASTRO
-    ========================================= */
-
-    .register-box {
-
-      padding:
-        14px;
-
-      background:
-        #f8fcff;
-
-      border:
-        2px solid var(--border);
-
-      border-radius: 10px;
-
-    }
-
-    .register-title {
-
-      margin-bottom: 4px;
-
-      color: #334b5d;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 11px;
-
-      font-weight: 900;
-
-    }
-
-    .register-description {
-
-      margin-bottom: 11px;
-
-      color: #8495a2;
-
-      font-size: 9px;
-
-      font-weight: 600;
-
-      line-height: 1.5;
-
-    }
-
-    .register-button {
-
-      width: 100%;
-
-      height: 40px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 7px;
-
-      background:
-        linear-gradient(
-          180deg,
-          #ffe26a,
-          #ffd447
-        );
-
-      border:
-        2px solid #d2a000;
-
-      border-radius: 8px;
-
-      color: #624900;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 9px;
-
-      font-weight: 900;
-
-      letter-spacing: .05em;
-
-      text-transform: uppercase;
-
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.7),
-        0 3px 0 #b88600;
-
-      cursor: pointer;
-
-      transition: .15s ease;
-
-    }
-
-    .register-button:hover {
-
-      filter: brightness(1.04);
-
-      transform:
-        translateY(-1px);
-
-    }
-
-    .register-button:active {
-
-      transform:
-        translateY(2px);
-
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.6),
-        0 1px 0 #b88600;
-
-    }
-
-    .register-note {
-
-      display: block;
-
-      margin-top: 9px;
-
-      color: #9aaab5;
-
-      font-size: 8px;
-
-      font-weight: 600;
-
-      line-height: 1.45;
-
-    }
-
-    .register-note i {
-
-      color: #5865F2;
-
-      margin-right: 3px;
-
-    }
-
-    /* =========================================
-       MODAL
-    ========================================= */
-
-    .modal-overlay {
-
-      position: fixed;
-
-      inset: 0;
-
-      z-index: 99999;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      padding: 18px;
-
-      background:
-        rgba(15,34,48,.72);
-
-      backdrop-filter:
-        blur(5px);
-
-    }
-
-    .modal-overlay.hidden {
-
-      display: none;
-
-    }
-
-    .modal-card {
-
-      width: 100%;
-
-      max-width: 440px;
-
-      max-height: 92vh;
-
-      overflow-y: auto;
-
-      position: relative;
-
-      background: #fff;
-
-      border:
-        2px solid var(--border);
-
-      border-radius: 14px;
-
-      box-shadow:
-        0 25px 70px rgba(0,0,0,.25);
-
-      overflow-x: hidden;
-
-    }
-
-    .modal-card::before {
-
-      content: "";
-
-      position: absolute;
-
-      top: 0;
-
-      left: 0;
-
-      right: 0;
-
-      height: 5px;
-
-      background:
-        linear-gradient(
-          90deg,
-          var(--blue-dark) 0%,
-          var(--blue) 70%,
-          var(--yellow) 70%,
-          var(--yellow) 100%
-        );
-
-    }
-
-    .modal-content {
-
-      padding:
-        29px 27px 25px;
-
-    }
-
-    .modal-close {
-
-      position: absolute;
-
-      top: 13px;
-
-      right: 13px;
-
-      width: 32px;
-
-      height: 32px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      background: #f5f9fc;
-
-      border:
-        2px solid var(--border);
-
-      border-radius: 7px;
-
-      color: #8496a3;
-
-      font-size: 17px;
-
-      font-weight: 900;
-
-      cursor: pointer;
-
-      transition: .18s ease;
-
-    }
-
-    .modal-close:hover {
-
-      color: var(--red);
-
-      background: #fff3f4;
-
-      border-color: #ffc1c5;
-
-    }
-
-    .modal-badge {
-
-      display: inline-flex;
-
-      padding:
-        5px 8px;
-
-      margin-bottom: 9px;
-
-      background: #fff8d9;
-
-      border:
-        1px solid #ecd37a;
-
-      border-radius: 6px;
-
-      color: #886400;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 8px;
-
-      font-weight: 900;
-
-      text-transform: uppercase;
-
-      letter-spacing: .06em;
-
-    }
-
-    .modal-title {
-
-      margin: 0;
-
-      color: #243447;
-
-      font-family: 'Plus Jakarta Sans', sans-serif;
-
-      font-size: 19px;
-
-      font-weight: 900;
-
-    }
-
-    .modal-subtitle {
-
-      margin-top: 4px;
-
-      color: #7c8f9d;
-
-      font-size: 9px;
-
-      font-weight: 600;
-
-    }
-
-    .modal-form {
-
-      margin-top: 19px;
-
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 12px;
-
-    }
-
-    .modal-input {
-
-      width: 100%;
-
-      height: 40px;
-
-      padding:
-        0 11px;
-
-      background: #f8fcff;
-
-      border:
-        2px solid var(--border);
-
-      border-radius: 8px;
-
-      outline: none;
-
-      color: var(--text);
-
-      font-size: 10px;
-
-      font-weight: 600;
-
-      transition: .18s ease;
-
-    }
-
-    .modal-input:focus {
-
-      background: #fff;
-
-      border-color:
-        var(--blue);
-
-      box-shadow:
-        0 0 0 3px rgba(85,185,245,.10);
-
-    }
-
-    .modal-submit {
-
-      width: 100%;
-
-      height: 42px;
-
-      margin-top: 2px;
-
-      border:
-        2px solid #1d72a8;
-
-      border-radius: 8px;
-
-      background:
-        linear-gradient(
-          180deg,
-          #63c3fa,
-          #2788ca
-        );
-
-      color: #fff;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 9px;
-
-      font-weight: 900;
-
-      text-transform: uppercase;
-
-      letter-spacing: .05em;
-
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.35),
-        0 3px 0 #155f8f;
-
-      cursor: pointer;
-
-    }
-
-    /* PIN */
-
-    .pin-box {
-
-      margin:
-        18px 0;
-
-      padding:
-        17px;
-
-      text-align: center;
-
-      background:
-        #eef9ff;
-
-      border:
-        2px dashed #78bfe5;
-
-      border-radius: 10px;
-
-    }
-
-    .pin-label {
-
-      display: block;
-
-      color: #8396a4;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 8px;
-
-      font-weight: 900;
-
-      text-transform: uppercase;
-
-      letter-spacing: .12em;
-
-    }
-
-    .pin-display {
-
-      display: block;
-
-      margin-top: 5px;
-
-      color: var(--blue-dark);
-
-      font-family: 'Plus Jakarta Sans', sans-serif;
-
-      font-size: 27px;
-
-      font-weight: 900;
-
-      letter-spacing: .12em;
-
-    }
-
-    .instruction-box {
-
-      padding:
-        12px;
-
-      background: #f5f8fa;
-
-      border:
-        2px solid #e3ebf0;
-
-      border-radius: 9px;
-
-      color: #667b8b;
-
-      font-size: 9px;
-
-      font-weight: 600;
-
-      line-height: 1.65;
-
-    }
-
-    .discord-button {
-
-      width: 100%;
-
-      height: 42px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 8px;
-
-      background:
-        #5865F2;
-
-      border:
-        2px solid #4652d4;
-
-      border-radius: 8px;
-
-      color: #fff;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 9px;
-
-      font-weight: 900;
-
-      text-transform: uppercase;
-
-      text-decoration: none;
-
-      box-shadow:
-        0 3px 0 #3e48bd;
-
-    }
-
-    .waiting-message {
-
-      margin-top: 9px;
-
-      text-align: center;
-
-      color: #c08a00;
-
-      font-size: 9px;
-
-      font-weight: 800;
-
-      animation: pulseWaiting 1.7s infinite;
-
-    }
-
-    @keyframes pulseWaiting {
-
-      0%,
       100% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: .5;
+        transform: translateX(20px);
       }
 
     }
 
-    /* =========================================
-       FOOTER
-    ========================================= */
 
-    .entry-footer {
+    .cloud-slow {
 
-      position: relative;
-
-      z-index: 20;
-
-      padding:
-        10px 20px;
-
-      text-align: center;
-
-      background:
-        rgba(255,255,255,.72);
-
-      border-top:
-        2px solid rgba(213,231,244,.85);
-
-      color: #7890a0;
-
-      font-size: 8px;
-
-      font-weight: 700;
+      animation:
+        floatCloud 25s ease-in-out infinite;
 
     }
 
-    .footer-pixels {
 
-      display: inline-flex;
+    .cloud-fast {
 
-      align-items: center;
-
-      gap: 5px;
-
-      margin-bottom: 3px;
-
-    }
-
-    .footer-pixel {
-
-      width: 5px;
-
-      height: 5px;
-
-      background: var(--blue);
-
-    }
-
-    .footer-pixel:nth-child(2) {
-
-      background: var(--yellow);
-
-    }
-
-    .footer-pixel:nth-child(3) {
-
-      background: var(--blue-dark);
-
-    }
-
-    /* =========================================
-       MOBILE
-    ========================================= */
-
-    @media (max-width: 640px) {
-
-      .header-inner {
-
-        padding:
-          10px 12px;
-
-      }
-
-      .member-badge {
-
-        font-size: 8px;
-
-        padding:
-          6px 8px;
-
-      }
-
-      .portal-link {
-
-        font-size: 8px;
-
-        padding:
-          7px 9px;
-
-      }
-
-      .entry-main {
-
-        padding:
-          30px 13px 40px;
-
-      }
-
-      .login-card {
-
-        max-width: 420px;
-
-        border-radius: 13px;
-
-      }
-
-      .login-card-inner {
-
-        padding:
-          29px 19px 22px;
-
-      }
-
-      .logo-frame {
-
-        width: 94px;
-
-        height: 94px;
-
-      }
-
-      .entry-title {
-
-        font-size: 19px;
-
-      }
-
-      .entry-subtitle {
-
-        font-size: 9px;
-
-      }
-
-      .cloud-1 {
-
-        font-size: 55px;
-
-      }
-
-      .cloud-2 {
-
-        font-size: 70px;
-
-      }
-
-      .cloud-3,
-      .cloud-4 {
-
-        opacity: .35;
-
-      }
+      animation:
+        floatCloudReverse 18s ease-in-out infinite;
 
     }
 
@@ -1610,284 +122,312 @@
 </head>
 
 
-<body>
-
-  <!-- NUVENS -->
-
-  <div class="cloud cloud-1">
-    ☁️
-  </div>
-
-  <div class="cloud cloud-2">
-    ☁️
-  </div>
-
-  <div class="cloud cloud-3">
-    ☁️
-  </div>
-
-  <div class="cloud cloud-4">
-    ☁️
-  </div>
+<body class="selection:bg-yellow-300 selection:text-slate-900">
 
 
-  <div class="entry-wrapper">
+  <!-- WRAPPER PRINCIPAL PARA GARANTIR CENTRALIZAÇÃO ABSOLUTA -->
+
+  <div
+    class="min-h-screen w-full relative overflow-hidden flex flex-col justify-between items-center"
+  >
 
 
-    <!-- HEADER -->
+    <!-- NUVENS FLUTUANTES (TOPO) -->
 
-    <header class="entry-header">
+    <div
+      class="absolute top-0 left-0 right-0 w-full pointer-events-none z-0 opacity-80 flex justify-between px-6 pt-4 cloud-slow overflow-hidden"
+    >
 
-      <div class="header-inner">
+      <div class="text-white/40 text-5xl sm:text-6xl select-none">
+        ☁️
+      </div>
 
-        <div class="member-badge">
+      <div class="text-white/30 text-6xl sm:text-8xl select-none -mt-4">
+        ☁️
+      </div>
 
-          <i class="fa-solid fa-user-astronaut"></i>
+      <div class="text-white/50 text-5xl sm:text-7xl select-none">
+        ☁️
+      </div>
+
+    </div>
+
+
+    <!-- =========================================
+         CABEÇALHO
+         BOTÃO "IR PARA O PORTAL" REMOVIDO
+    ========================================== -->
+
+    <header
+      class="w-full max-w-6xl mx-auto p-6 flex items-center z-10"
+    >
+
+      <div class="flex items-center space-x-2">
+
+        <span
+          class="bg-[#F6C700] text-slate-950 font-black text-[10px] px-3 py-1 rounded-full uppercase tracking-wider shadow-md"
+        >
 
           Área de Membros
 
-        </div>
-
-
-        <a
-          href="portal.html"
-          class="portal-link"
-        >
-
-          <i class="fa-solid fa-globe"></i>
-
-          Ir para o Portal
-
-          <i class="fa-solid fa-arrow-right"></i>
-
-        </a>
+        </span>
 
       </div>
 
     </header>
 
 
-    <!-- MAIN -->
+    <!-- =========================================
+         CARD CENTRALIZADO DE LOGIN
+    ========================================== -->
 
-    <main class="entry-main">
+    <main
+      class="w-full max-w-md px-4 z-10 my-auto flex justify-center items-center"
+    >
 
-
-      <section class="login-card">
-
-        <div class="login-card-inner">
-
-
-          <!-- LOGO -->
-
-          <div class="logo-area">
-
-            <div class="logo-frame">
-
-              <img
-                src="icon.png.PNG"
-                alt="Pixelizados"
-                class="logo-image"
-              >
-
-            </div>
+      <div
+        class="w-full bg-white/95 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/60 text-center relative overflow-hidden"
+      >
 
 
-            <h1 class="entry-title">
+        <!-- Detalhe Amarelo Habbo Topo -->
 
-              Bem-vindo ao Pixelizados
-
-            </h1>
-
-
-            <p class="entry-subtitle">
-
-              Sua comunidade pixelizada começa
-              <strong>aqui.</strong>
-
-            </p>
-
-          </div>
+        <div
+          class="h-2 bg-[#F6C700] absolute top-0 left-0 right-0"
+        ></div>
 
 
-          <!-- DIVISOR -->
+        <!-- Ícone Cubo em Pixel Art -->
 
-          <div class="pixel-divider">
+        <div
+          class="my-4 flex justify-center items-center"
+        >
 
-            <span class="pixel-divider-square"></span>
-
-          </div>
-
-
-          <!-- LOGIN -->
-
-          <form
-            action="portal.html"
-            method="GET"
-            class="login-form"
+          <div
+            class="p-2 bg-white/30 backdrop-blur-md rounded-2xl border border-white/50 shadow-md shadow-sky-900/10 hover:shadow-lg hover:shadow-sky-500/20 transition-all duration-300 group cursor-pointer"
           >
 
+            <img
+              src="icon.png.PNG"
+              alt="Pixelizados Icon"
+              class="h-16 md:h-20 w-auto object-contain pixel-art rounded-xl group-hover:scale-105 transition-transform duration-300 ease-out block mx-auto"
+            />
 
-            <div class="form-group">
+          </div>
+
+        </div>
+
+
+        <p
+          class="text-slate-500 text-xs font-bold mb-6"
+        >
+
+          Acesse sua conta para entrar na rádio e fórum
+
+        </p>
+
+
+        <!-- =====================================
+             FORMULÁRIO LOGIN
+             MANTIDO ORIGINALMENTE
+        ====================================== -->
+
+        <form
+          action="portal.html"
+          method="GET"
+          class="space-y-4 text-left"
+        >
+
+
+          <!-- USUÁRIO -->
+
+          <div>
+
+            <label
+              class="block text-slate-700 text-xs font-extrabold uppercase tracking-wider mb-1.5 ml-1"
+            >
+
+              Usuário
+
+            </label>
+
+            <input
+              type="text"
+              placeholder="Ex: FrankPixel"
+              required
+              class="w-full px-4 py-3 rounded-2xl bg-sky-50/50 border border-sky-200 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition-all"
+            />
+
+          </div>
+
+
+          <!-- SENHA -->
+
+          <div>
+
+            <div
+              class="flex justify-between items-center mb-1.5 ml-1"
+            >
 
               <label
-                for="login-user"
-                class="form-label"
+                class="text-slate-700 text-xs font-extrabold uppercase tracking-wider"
               >
 
-                <i class="fa-solid fa-user"></i>
-
-                Usuário
+                Senha
 
               </label>
 
-
-              <input
-                id="login-user"
-                type="text"
-                name="usuario"
-                placeholder="Ex: FrankPixel"
-                required
-                autocomplete="username"
-                class="form-input"
+              <a
+                href="#"
+                class="text-[11px] font-bold text-sky-600 hover:underline"
               >
+
+                Esqueceu?
+
+              </a>
 
             </div>
 
 
-            <div class="form-group">
-
-              <div class="form-label-row">
-
-                <label
-                  for="login-password"
-                  class="form-label"
-                >
-
-                  <i class="fa-solid fa-lock"></i>
-
-                  Senha
-
-                </label>
-
-
-                <a
-                  href="#"
-                  class="forgot-link"
-                >
-
-                  Esqueceu?
-
-                </a>
-
-              </div>
-
-
-              <input
-                id="login-password"
-                type="password"
-                name="senha"
-                placeholder="••••••••"
-                required
-                autocomplete="current-password"
-                class="form-input"
-              >
-
-            </div>
-
-
-            <button
-              type="submit"
-              class="login-button"
-            >
-
-              <i class="fa-solid fa-right-to-bracket"></i>
-
-              Entrar na comunidade
-
-            </button>
-
-          </form>
-
-
-          <!-- DIVISOR -->
-
-          <div class="pixel-divider">
-
-            <span class="pixel-divider-square"></span>
+            <input
+              type="password"
+              placeholder="••••••••"
+              required
+              class="w-full px-4 py-3 rounded-2xl bg-sky-50/50 border border-sky-200 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition-all"
+            />
 
           </div>
 
 
-          <!-- CADASTRO -->
+          <!-- BOTÃO ACESSAR PORTAL -->
 
-          <div class="register-box">
+          <button
+            type="submit"
+            class="w-full bg-sky-500 hover:bg-sky-600 text-white font-black py-3.5 rounded-2xl shadow-lg shadow-sky-500/30 hover:shadow-xl transition-all uppercase tracking-wider text-xs flex items-center justify-center gap-2 mt-2"
+          >
 
-
-            <div class="register-title">
-
-              Ainda não é um Pixelizado?
-
-            </div>
-
-
-            <div class="register-description">
-
-              Crie seu perfil e faça parte da nossa comunidade através do Discord oficial.
-
-            </div>
-
-
-            <button
-              type="button"
-              onclick="abrirModalCadastro()"
-              class="register-button"
-            >
-
-              <i class="fa-solid fa-cube"></i>
-
-              Se tornar um Pixelizado
-
-            </button>
-
-
-            <span class="register-note">
-
-              <i class="fa-brands fa-discord"></i>
-
-              O cadastro e a verificação dos membros são realizados pelo Discord oficial.
-
+            <span>
+              Acessar portal
             </span>
 
-          </div>
+            <span>
+              ⚡
+            </span>
+
+          </button>
+
+        </form>
+
+
+        <!-- =====================================
+             DIVISÓRIA
+        ====================================== -->
+
+        <div
+          class="relative my-6 flex items-center justify-center"
+        >
+
+          <div
+            class="border-t border-slate-200 w-full"
+          ></div>
+
+          <span
+            class="bg-white px-3 text-[10px] font-black text-slate-400 uppercase tracking-widest absolute"
+          >
+
+            OU
+
+          </span>
+
+        </div>
+
+
+        <!-- =====================================
+             CHAMADA DISCORD
+        ====================================== -->
+
+        <div class="space-y-2">
+
+
+          <p
+            class="text-xs font-extrabold text-slate-700"
+          >
+
+            Ainda não possui uma conta?
+
+          </p>
+
+
+          <button
+            type="button"
+            onclick="abrirModalCadastro()"
+            class="w-full bg-[#F6C700] hover:bg-yellow-400 text-slate-950 font-extrabold py-3 px-4 rounded-2xl flex items-center justify-center space-x-2 transition-all shadow-md shadow-yellow-500/20 text-xs uppercase tracking-wider cursor-pointer"
+          >
+
+            <span>
+              👾 Se torne um Pixelizado
+            </span>
+
+          </button>
+
+
+          <span
+            class="text-[10px] text-slate-400 font-medium block pt-1"
+          >
+
+            O cadastro e verificação de membros é realizado via Discord oficial.
+
+          </span>
 
 
         </div>
 
-      </section>
+
+      </div>
 
     </main>
 
 
-    <!-- FOOTER -->
+    <!-- =========================================
+         NUVENS FLUTUANTES (RODAPÉ)
+    ========================================== -->
 
-    <footer class="entry-footer">
+    <div
+      class="w-full pointer-events-none z-0 opacity-90 flex justify-around pb-2 cloud-fast overflow-hidden"
+    >
 
-      <div class="footer-pixels">
-
-        <span class="footer-pixel"></span>
-
-        <span class="footer-pixel"></span>
-
-        <span class="footer-pixel"></span>
-
+      <div
+        class="text-white/60 text-6xl sm:text-8xl select-none -mb-6"
+      >
+        ☁️
       </div>
 
-      <div>
-
-        © 2026 Pixelizados.
-        Todos os direitos reservados aos criadores de pixels.
-
+      <div
+        class="text-white/40 text-7xl sm:text-9xl select-none -mb-10 hidden sm:block"
+      >
+        ☁️
       </div>
+
+      <div
+        class="text-white/70 text-5xl sm:text-7xl select-none -mb-4"
+      >
+        ☁️
+      </div>
+
+    </div>
+
+
+    <!-- =========================================
+         RODAPÉ
+    ========================================== -->
+
+    <footer
+      class="w-full py-4 text-center text-white/80 text-[11px] font-bold z-10 backdrop-blur-sm bg-sky-950/10"
+    >
+
+      <p>
+        © 2026 Pixelizados. Todos os direitos reservados aos criadores de pixels.
+      </p>
 
     </footer>
 
@@ -1896,182 +436,206 @@
 
 
   <!-- =========================================
-       MODAL DE CADASTRO
-  ========================================= -->
+       MODAL DE CADASTRO DISCORD
+  ========================================== -->
 
   <div
     id="modal-cadastro"
-    class="modal-overlay hidden"
+    class="fixed inset-0 bg-slate-950/70 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden"
   >
 
-    <div class="modal-card">
 
+    <div
+      class="bg-white/95 backdrop-blur-xl rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/60 w-full max-w-md relative overflow-hidden text-left"
+    >
+
+
+      <!-- Detalhe Amarelo Habbo Topo -->
+
+      <div
+        class="h-2 bg-[#F6C700] absolute top-0 left-0 right-0"
+      ></div>
+
+
+      <!-- Botão Fechar -->
 
       <button
         type="button"
         onclick="fecharModal()"
-        class="modal-close"
-        aria-label="Fechar"
+        class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-2xl font-bold leading-none"
       >
 
-        ×
+        &times;
 
       </button>
 
 
-      <div class="modal-content">
+      <!-- =====================================
+           ETAPA 1: PREENCHIMENTO DOS DADOS
+      ====================================== -->
+
+      <div id="etapa-1">
 
 
-        <!-- ETAPA 1 -->
-
-        <div id="etapa-1">
+        <div class="mb-5">
 
 
-          <span class="modal-badge">
+          <span
+            class="bg-[#F6C700] text-slate-950 font-black text-[10px] px-3 py-1 rounded-full uppercase tracking-wider inline-block mb-2"
+          >
 
             Beta Pixelizados
 
           </span>
 
 
-          <h2 class="modal-title">
+          <h2
+            class="text-xl font-black text-slate-900"
+          >
 
             Criar Conta no Portal
 
           </h2>
 
 
-          <p class="modal-subtitle">
+          <p
+            class="text-slate-500 text-xs font-semibold mt-1"
+          >
 
             Vincule seu perfil do Discord para continuar.
 
           </p>
 
 
-          <form
-            id="form-cadastro"
-            onsubmit="enviarCadastroSupabase(event)"
-            class="modal-form"
-          >
-
-
-            <div class="form-group">
-
-              <label
-                for="discord-tag"
-                class="form-label"
-              >
-
-                <i class="fa-brands fa-discord"></i>
-
-                Seu Username do Discord
-
-              </label>
-
-
-              <input
-                type="text"
-                id="discord-tag"
-                placeholder="Ex: usuario_discord"
-                required
-                class="modal-input"
-              >
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label
-                for="portal-user"
-                class="form-label"
-              >
-
-                <i class="fa-solid fa-user"></i>
-
-                Nome de Usuário no Portal
-
-              </label>
-
-
-              <input
-                type="text"
-                id="portal-user"
-                placeholder="Ex: Pixel_Master"
-                required
-                class="modal-input"
-              >
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label
-                for="portal-pass"
-                class="form-label"
-              >
-
-                <i class="fa-solid fa-lock"></i>
-
-                Criar Senha
-
-              </label>
-
-
-              <input
-                type="password"
-                id="portal-pass"
-                placeholder="••••••••"
-                required
-                class="modal-input"
-              >
-
-            </div>
-
-
-            <button
-              id="btn-submit"
-              type="submit"
-              class="modal-submit"
-            >
-
-              Gerar PIN de Verificação
-
-              <i class="fa-solid fa-rocket"></i>
-
-            </button>
-
-          </form>
-
         </div>
 
 
-        <!-- ETAPA 2 -->
-
-        <div
-          id="etapa-2"
-          class="hidden"
+        <form
+          id="form-cadastro"
+          onsubmit="enviarCadastroSupabase(event)"
+          class="space-y-3.5"
         >
 
 
-          <span class="modal-badge">
+          <!-- DISCORD -->
 
-            Validação da Conta
+          <div>
 
-          </span>
+            <label
+              for="discord-tag"
+              class="block text-slate-700 text-xs font-extrabold uppercase tracking-wider mb-1 ml-1"
+            >
+
+              Seu Username do Discord
+
+            </label>
 
 
-          <h2 class="modal-title">
+            <input
+              type="text"
+              id="discord-tag"
+              placeholder="Ex: usuario_discord"
+              required
+              class="w-full px-4 py-2.5 rounded-2xl bg-sky-50/50 border border-sky-200 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition-all"
+            />
 
-            Quase lá!
+          </div>
+
+
+          <!-- USUÁRIO DO PORTAL -->
+
+          <div>
+
+            <label
+              for="portal-user"
+              class="block text-slate-700 text-xs font-extrabold uppercase tracking-wider mb-1 ml-1"
+            >
+
+              Nome de Usuário no Portal
+
+            </label>
+
+
+            <input
+              type="text"
+              id="portal-user"
+              placeholder="Ex: Pixel_Master"
+              required
+              class="w-full px-4 py-2.5 rounded-2xl bg-sky-50/50 border border-sky-200 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition-all"
+            />
+
+          </div>
+
+
+          <!-- SENHA -->
+
+          <div>
+
+            <label
+              for="portal-pass"
+              class="block text-slate-700 text-xs font-extrabold uppercase tracking-wider mb-1 ml-1"
+            >
+
+              Criar Senha
+
+            </label>
+
+
+            <input
+              type="password"
+              id="portal-pass"
+              placeholder="••••••••"
+              required
+              class="w-full px-4 py-2.5 rounded-2xl bg-sky-50/50 border border-sky-200 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition-all"
+            />
+
+          </div>
+
+
+          <!-- BOTÃO -->
+
+          <button
+            id="btn-submit"
+            type="submit"
+            class="w-full bg-sky-500 hover:bg-sky-600 text-white font-black py-3 rounded-2xl shadow-lg shadow-sky-500/30 transition-all uppercase tracking-wider text-xs mt-2"
+          >
+
+            Gerar PIN de Verificação 🚀
+
+          </button>
+
+
+        </form>
+
+
+      </div>
+
+
+      <!-- =====================================
+           ETAPA 2: PIN E INSTRUÇÕES
+      ====================================== -->
+
+      <div
+        id="etapa-2"
+        class="hidden"
+      >
+
+
+        <div class="mb-4">
+
+
+          <h2
+            class="text-xl font-black text-slate-900"
+          >
+
+            Quase lá! Validação
 
           </h2>
 
 
           <p
             id="status-msg"
-            class="modal-subtitle"
+            class="text-slate-500 text-xs font-semibold mt-1"
           >
 
             Envie o código abaixo no nosso servidor do Discord para ativar sua conta.
@@ -2079,73 +643,83 @@
           </p>
 
 
-          <div class="pin-box">
-
-            <span class="pin-label">
-
-              Seu PIN de Verificação
-
-            </span>
+        </div>
 
 
-            <span
-              id="pin-display"
-              class="pin-display"
-            >
+        <!-- PIN -->
 
-              PX-0000
+        <div
+          class="bg-sky-50 border-2 border-dashed border-sky-400 rounded-2xl p-4 text-center my-4"
+        >
 
-            </span>
+          <span
+            class="block text-[10px] font-black text-slate-400 uppercase tracking-widest"
+          >
 
-          </div>
+            Seu PIN de Verificação
 
-
-          <div class="instruction-box">
-
-            <p>
-              <strong>1.</strong>
-              Copie o PIN acima.
-            </p>
-
-            <p>
-              <strong>2.</strong>
-              Entre no canal
-              <strong>#validar-conta</strong>
-              no Discord.
-            </p>
-
-            <p>
-              <strong>3.</strong>
-              Envie o código no chat.
-            </p>
-
-          </div>
+          </span>
 
 
-          <div class="mt-4">
+          <span
+            id="pin-display"
+            class="text-3xl font-black text-sky-600 tracking-widest block mt-1"
+          >
 
-            <a
-              href="https://discord.gg/pixelizados"
-              target="_blank"
-              class="discord-button"
-            >
+            PX-0000
 
-              <i class="fa-brands fa-discord"></i>
-
-              Ir para o Discord
-
-            </a>
+          </span>
 
 
-            <p class="waiting-message">
+        </div>
 
-              <i class="fa-solid fa-spinner"></i>
 
-              Aguardando aprovação automática...
+        <!-- INSTRUÇÕES -->
 
-            </p>
+        <div
+          class="bg-slate-100/80 rounded-2xl p-3.5 text-xs text-slate-600 space-y-1 mb-5 font-semibold"
+        >
 
-          </div>
+          <p>
+            1. Copie o PIN acima.
+          </p>
+
+          <p>
+            2. Entre no canal
+            <strong class="text-slate-900">
+              #validar-conta
+            </strong>
+            no Discord.
+          </p>
+
+          <p>
+            3. Envie o código no chat.
+          </p>
+
+        </div>
+
+
+        <div class="space-y-2">
+
+
+          <a
+            href="https://discord.gg/pixelizados"
+            target="_blank"
+            class="w-full bg-[#5865F2] hover:bg-indigo-600 text-white font-extrabold py-3 rounded-2xl flex items-center justify-center space-x-2 transition-all shadow-md text-xs uppercase tracking-wider text-center block"
+          >
+
+            Ir para o Discord
+
+          </a>
+
+
+          <p
+            class="text-[11px] text-center font-bold text-amber-600 animate-pulse pt-1"
+          >
+
+            ⏳ Aguardando aprovação automática...
+
+          </p>
 
 
         </div>
@@ -2153,29 +727,35 @@
 
       </div>
 
+
     </div>
 
   </div>
 
 
   <!-- =========================================
-       SUPABASE
-  ========================================= -->
+       SDK DO SUPABASE
+  ========================================== -->
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
+  <!-- =========================================
+       LÓGICA DO MODAL E INTEGRAÇÃO REALTIME
+  ========================================== -->
+
   <script>
 
-    /* =========================================
-       CONFIGURAÇÃO SUPABASE
-    ========================================= */
+
+    // Inicialização da conexão com Supabase
 
     const SUPABASE_URL =
       'https://znvytrvdwejjlivzsjzy.supabase.co';
 
+
     const SUPABASE_KEY =
       'sb_publishable_J60PUy390KR4sRTGe9tjNg_wllyvUAj';
+
 
     const supabaseClient =
       supabase.createClient(
@@ -2184,9 +764,7 @@
       );
 
 
-    /* =========================================
-       ABRIR MODAL
-    ========================================= */
+    // Abrir modal
 
     function abrirModalCadastro() {
 
@@ -2198,9 +776,7 @@
     }
 
 
-    /* =========================================
-       FECHAR MODAL
-    ========================================= */
+    // Fechar modal
 
     function fecharModal() {
 
@@ -2228,9 +804,7 @@
     }
 
 
-    /* =========================================
-       CADASTRO SUPABASE
-    ========================================= */
+    // Processa o envio e salva no Supabase
 
     async function enviarCadastroSupabase(e) {
 
@@ -2241,11 +815,12 @@
         document.getElementById('btn-submit');
 
 
-      btn.innerHTML =
+      btn.innerText =
         'Gerando PIN...';
 
 
-      btn.disabled = true;
+      btn.disabled =
+        true;
 
 
       const discordTag =
@@ -2268,7 +843,7 @@
         );
 
 
-      /* INSERIR REGISTRO */
+      // Inserir registro com status PENDENTE
 
       const { data, error } =
         await supabaseClient
@@ -2276,9 +851,7 @@
           .from('usuarios')
 
           .insert([
-
             {
-
               habbo_nick:
                 habboNick,
 
@@ -2290,17 +863,16 @@
 
               status:
                 'PENDENTE'
-
             }
-
           ]);
 
 
-      btn.innerHTML =
-        'Gerar PIN de Verificação <i class="fa-solid fa-rocket"></i>';
+      btn.innerText =
+        'Gerar PIN de Verificação 🚀';
 
 
-      btn.disabled = false;
+      btn.disabled =
+        false;
 
 
       if (error) {
@@ -2321,7 +893,7 @@
       }
 
 
-      /* EXIBIR PIN */
+      // Exibir o PIN gerado no modal
 
       document
         .getElementById('pin-display')
@@ -2341,7 +913,7 @@
         .remove('hidden');
 
 
-      /* ESCUTAR APROVAÇÃO */
+      // Ativar escuta em tempo real
 
       escutarAprovacaoRealtime(
         pinGerado
@@ -2350,11 +922,10 @@
     }
 
 
-    /* =========================================
-       REALTIME
-    ========================================= */
+    // Escuta em tempo real no banco do Supabase
 
     function escutarAprovacaoRealtime(pin) {
+
 
       supabaseClient
 
@@ -2367,7 +938,6 @@
           'postgres_changes',
 
           {
-
             event:
               'UPDATE',
 
@@ -2376,11 +946,12 @@
 
             table:
               'usuarios'
-
           },
 
           (payload) => {
 
+
+            // Verifica se o UPDATE pertence ao PIN deste utilizador
 
             if (
 
@@ -2422,10 +993,10 @@
 
     }
 
+
   </script>
 
 
 </body>
 
 </html>
-```
