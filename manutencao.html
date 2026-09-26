@@ -594,8 +594,6 @@
 
     /* =====================================================
        ESPAÇO PARA PERSONAGENS
-       
-       Substitua futuramente pelos seus PNGs.
     ===================================================== */
 
     .character {
@@ -635,10 +633,7 @@
 
 
     /* =====================================================
-       PLACEHOLDER TEMPORÁRIO
-       
-       Caso ainda não tenha os personagens,
-       aparece um boneco pixel simples.
+       BONECO PIXEL TEMPORÁRIO
     ===================================================== */
 
     .pixel-person {
@@ -1027,6 +1022,10 @@
     }
 
 
+    /* =====================================================
+       BARRA DE PROGRESSO
+    ===================================================== */
+
     .progress-bar {
 
       width: 100%;
@@ -1044,8 +1043,14 @@
         inset 2px 2px 0
         rgba(23,108,168,0.08);
 
+      overflow: hidden;
+
     }
 
+
+    /* =====================================================
+       ÁREA PREENCHIDA — 50%
+    ===================================================== */
 
     .progress-fill {
 
@@ -1068,29 +1073,62 @@
 
       position: relative;
 
-      animation:
-        progressGlow 2s ease-in-out infinite;
+      overflow: hidden;
 
     }
 
 
-    @keyframes progressGlow {
+    /* =====================================================
+       BRILHO DE CARREGAMENTO
+    ===================================================== */
+
+    .progress-fill::after {
+
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      bottom: 0;
+
+      left: -60px;
+
+      width: 60px;
+
+      background:
+
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,0.65),
+          transparent
+        );
+
+      animation:
+
+        loadingSweep
+        1.5s
+        linear
+        infinite;
+
+    }
+
+
+    /* =====================================================
+       ANIMAÇÃO DO CARREGAMENTO
+    ===================================================== */
+
+    @keyframes loadingSweep {
 
       0% {
 
-        opacity: 0.88;
-
-      }
-
-      50% {
-
-        opacity: 1;
+        left: -60px;
 
       }
 
       100% {
 
-        opacity: 0.88;
+        left: 100%;
 
       }
 
