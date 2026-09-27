@@ -1889,6 +1889,27 @@
         >
 
 
+          <!-- E-MAIL -->
+
+          <label
+            for="portal-email"
+            class="modal-label"
+          >
+
+            Seu E-mail
+
+          </label>
+
+
+          <input
+            type="email"
+            id="portal-email"
+            placeholder="Ex: voce@email.com"
+            required
+            class="modal-input"
+          >
+
+
           <!-- DISCORD -->
 
           <label
@@ -1948,6 +1969,7 @@
             id="portal-pass"
             placeholder="••••••••"
             required
+            minlength="6"
             class="modal-input"
           >
 
@@ -2194,11 +2216,20 @@
 
 
       btn.innerText =
-        'Gerando PIN...';
+        'Criando conta...';
 
 
       btn.disabled =
         true;
+
+
+      const email =
+        document
+          .getElementById(
+            'portal-email'
+          )
+          .value
+          .trim();
 
 
       const discordTag =
@@ -2206,13 +2237,23 @@
           .getElementById(
             'discord-tag'
           )
-          .value;
+          .value
+          .trim();
 
 
       const habboNick =
         document
           .getElementById(
             'portal-user'
+          )
+          .value
+          .trim();
+
+
+      const password =
+        document
+          .getElementById(
+            'portal-pass'
           )
           .value;
 
@@ -2226,7 +2267,83 @@
 
 
       /* ===================================================
-         SALVAR NO SUPABASE
+         CRIAR USUÁRIO NO SUPABASE AUTH
+      ================================================== */
+
+      const {
+        data: authData,
+        error: authError
+      } =
+        await supabaseClient.auth.signUp({
+
+          email: email,
+
+          password: password
+
+        });
+
+
+      /* ===================================================
+         ERRO NO AUTH
+      ================================================== */
+
+      if (authError) {
+
+        console.error(
+          'Erro no Supabase Auth:',
+          authError
+        );
+
+
+        btn.innerText =
+          'Gerar PIN de Verificação 🚀';
+
+
+        btn.disabled =
+          false;
+
+
+        alert(
+          'Não foi possível criar a conta: ' +
+          authError.message
+        );
+
+
+        return;
+
+      }
+
+
+      /* ===================================================
+         VERIFICAR USUÁRIO CRIADO
+      ================================================== */
+
+      const authUser =
+        authData?.user;
+
+
+      if (!authUser) {
+
+        btn.innerText =
+          'Gerar PIN de Verificação 🚀';
+
+
+        btn.disabled =
+          false;
+
+
+        alert(
+          'A conta não pôde ser criada. Tenta novamente.'
+        );
+
+
+        return;
+
+      }
+
+
+      /* ===================================================
+         SALVAR PERFIL NA TABELA USUARIOS
       ================================================== */
 
       const {
@@ -2237,6 +2354,10 @@
           .from('usuarios')
           .insert([
             {
+
+              auth_user_id:
+                authUser.id,
+
               habbo_nick:
                 habboNick,
 
@@ -2248,6 +2369,7 @@
 
               status:
                 'PENDENTE'
+
             }
           ]);
 
@@ -2261,19 +2383,19 @@
 
 
       /* ===================================================
-         ERRO
+         ERRO AO SALVAR PERFIL
       ================================================== */
 
       if (error) {
 
         console.error(
-          'Erro no Supabase:',
+          'Erro ao salvar perfil no Supabase:',
           error
         );
 
 
         alert(
-          'Ocorreu um erro ao gerar o teu PIN. Tenta novamente.'
+          'A conta foi criada, mas ocorreu um erro ao salvar o perfil. Tenta novamente ou fala com a administração.'
         );
 
 
