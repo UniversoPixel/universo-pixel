@@ -1,0 +1,1827 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Pixelizados — Comunidade Pixel</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      background:
+        linear-gradient(180deg, #1599dc 0%, #48bdf0 42%, #aee7fa 100%);
+      color: #17324d;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ========================================
+       PIXEL GRID
+    ======================================== */
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.22;
+
+      background-image:
+        linear-gradient(rgba(255,255,255,0.65) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.65) 1px, transparent 1px);
+
+      background-size: 24px 24px;
+    }
+
+    /* ========================================
+       CLOUDS
+    ======================================== */
+
+    .cloud {
+      position: fixed;
+      z-index: 0;
+      pointer-events: none;
+      user-select: none;
+      opacity: 0.85;
+      font-size: 72px;
+    }
+
+    .cloud-1 {
+      top: 120px;
+      left: -20px;
+    }
+
+    .cloud-2 {
+      top: 330px;
+      right: -15px;
+      font-size: 92px;
+      opacity: 0.65;
+    }
+
+    .cloud-3 {
+      top: 680px;
+      left: 5%;
+      font-size: 60px;
+      opacity: 0.55;
+    }
+
+    /* ========================================
+       PIXEL DECORATIONS
+    ======================================== */
+
+    .pixel-decoration {
+      position: absolute;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .pixel-yellow {
+      width: 16px;
+      height: 16px;
+      background: #ffd72f;
+      box-shadow: 6px 6px 0 #e4ad00;
+    }
+
+    .pixel-blue {
+      width: 14px;
+      height: 14px;
+      background: #087cc2;
+      box-shadow: 5px 5px 0 #075e94;
+    }
+
+    .decoration-1 {
+      top: 180px;
+      left: 7%;
+    }
+
+    .decoration-2 {
+      top: 250px;
+      right: 8%;
+    }
+
+    .decoration-3 {
+      top: 820px;
+      right: 10%;
+    }
+
+    .decoration-4 {
+      top: 1050px;
+      left: 8%;
+    }
+
+    /* ========================================
+       HEADER
+    ======================================== */
+
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+
+      height: 74px;
+      background: #ffffff;
+
+      border-bottom: 3px solid #087cc2;
+
+      box-shadow:
+        0 5px 0 rgba(6, 86, 135, 0.15);
+
+      display: flex;
+      align-items: center;
+    }
+
+    .top-bar::after {
+      content: "";
+      position: absolute;
+      bottom: -7px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #ffd72f 0px,
+          #ffd72f 14px,
+          #087cc2 14px,
+          #087cc2 28px
+        );
+    }
+
+    .nav-container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-logo img {
+      width: auto;
+      height: 52px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .nav-links a {
+      color: #17324d;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #087cc2;
+      transform: translateY(-1px);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-login {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      height: 42px;
+      padding: 0 18px;
+
+      border: 2px solid #087cc2;
+      background: #ffffff;
+      color: #087cc2;
+
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 800;
+
+      box-shadow: 3px 3px 0 #087cc2;
+
+      transition: 0.15s ease;
+    }
+
+    .btn-login:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 #087cc2;
+    }
+
+    .btn-register {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      height: 42px;
+      padding: 0 18px;
+
+      border: 2px solid #d9a800;
+      background: #ffd72f;
+      color: #17324d;
+
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 800;
+
+      box-shadow: 3px 3px 0 #b98600;
+
+      transition: 0.15s ease;
+    }
+
+    .btn-register:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 #b98600;
+    }
+
+    /* ========================================
+       HERO
+    ======================================== */
+
+    .hero {
+      position: relative;
+      z-index: 2;
+
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+
+      min-height: 570px;
+
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .hero-content {
+      padding: 80px 0;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 8px 12px;
+
+      background: #ffffff;
+      border: 2px solid #087cc2;
+
+      font-size: 11px;
+      font-weight: 800;
+      color: #087cc2;
+
+      box-shadow: 4px 4px 0 rgba(8, 124, 194, 0.35);
+
+      margin-bottom: 22px;
+    }
+
+    .hero-tag span {
+      width: 8px;
+      height: 8px;
+      background: #48c774;
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(72,199,116,0.15);
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 70px);
+      line-height: 0.98;
+      letter-spacing: -3px;
+      color: #ffffff;
+      font-weight: 800;
+
+      text-shadow:
+        4px 4px 0 #087cc2,
+        7px 7px 0 rgba(5, 86, 137, 0.3);
+
+      margin-bottom: 25px;
+    }
+
+    .hero h1 .yellow {
+      color: #ffd72f;
+    }
+
+    .hero-description {
+      max-width: 570px;
+
+      color: #ffffff;
+      font-size: 16px;
+      line-height: 1.7;
+      font-weight: 500;
+
+      text-shadow: 0 2px 3px rgba(0,0,0,0.12);
+
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .hero-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 50px;
+      padding: 0 22px;
+
+      background: #ffd72f;
+      color: #17324d;
+
+      border: 3px solid #d5a500;
+
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+
+      box-shadow: 5px 5px 0 #087cc2;
+
+      transition: 0.15s ease;
+    }
+
+    .hero-primary:hover {
+      transform: translate(3px, 3px);
+      box-shadow: 2px 2px 0 #087cc2;
+    }
+
+    .hero-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 50px;
+      padding: 0 22px;
+
+      background: #ffffff;
+      color: #087cc2;
+
+      border: 3px solid #087cc2;
+
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+
+      box-shadow: 5px 5px 0 rgba(8, 124, 194, 0.55);
+
+      transition: 0.15s ease;
+    }
+
+    .hero-secondary:hover {
+      transform: translate(3px, 3px);
+      box-shadow: 2px 2px 0 rgba(8, 124, 194, 0.55);
+    }
+
+    /* ========================================
+       HERO PIXEL ART AREA
+    ======================================== */
+
+    .hero-visual {
+      position: relative;
+      min-height: 430px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pixel-scene {
+      position: relative;
+
+      width: min(430px, 100%);
+      height: 360px;
+
+      background: #dff6ff;
+
+      border: 4px solid #087cc2;
+
+      box-shadow:
+        10px 10px 0 #075e94,
+        18px 18px 0 rgba(255,255,255,0.45);
+
+      overflow: hidden;
+    }
+
+    .pixel-scene::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background-image:
+        linear-gradient(rgba(8,124,194,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(8,124,194,0.08) 1px, transparent 1px);
+
+      background-size: 20px 20px;
+    }
+
+    .scene-sun {
+      position: absolute;
+      top: 35px;
+      right: 38px;
+
+      width: 62px;
+      height: 62px;
+
+      background: #ffd72f;
+
+      border: 4px solid #e0ae00;
+
+      box-shadow:
+        8px 8px 0 rgba(224,174,0,0.35);
+    }
+
+    .scene-cloud {
+      position: absolute;
+      font-size: 50px;
+    }
+
+    .scene-cloud-1 {
+      top: 35px;
+      left: 35px;
+    }
+
+    .scene-cloud-2 {
+      top: 105px;
+      right: 115px;
+      font-size: 35px;
+    }
+
+    .pixel-ground {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 95px;
+
+      background: #68c55d;
+
+      border-top: 5px solid #318f39;
+    }
+
+    .pixel-ground::before {
+      content: "";
+
+      position: absolute;
+      top: 10px;
+      left: 0;
+      width: 100%;
+      height: 10px;
+
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #9de279 0,
+          #9de279 20px,
+          #68c55d 20px,
+          #68c55d 40px
+        );
+    }
+
+    .pixel-character {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      width: 105px;
+      height: 145px;
+
+      z-index: 3;
+    }
+
+    .character-hair {
+      position: absolute;
+      top: 0;
+      left: 17px;
+
+      width: 72px;
+      height: 48px;
+
+      background: #4b2a18;
+
+      border: 4px solid #28160d;
+    }
+
+    .character-face {
+      position: absolute;
+      top: 38px;
+      left: 23px;
+
+      width: 60px;
+      height: 65px;
+
+      background: #f4c39d;
+
+      border: 4px solid #a96f49;
+    }
+
+    .character-eye-left,
+    .character-eye-right {
+      position: absolute;
+      top: 27px;
+
+      width: 7px;
+      height: 9px;
+
+      background: #17324d;
+    }
+
+    .character-eye-left {
+      left: 12px;
+    }
+
+    .character-eye-right {
+      right: 12px;
+    }
+
+    .character-body {
+      position: absolute;
+      bottom: 0;
+      left: 12px;
+
+      width: 82px;
+      height: 62px;
+
+      background: #087cc2;
+
+      border: 4px solid #075e94;
+    }
+
+    .character-body::after {
+      content: "";
+
+      position: absolute;
+      top: 12px;
+      left: 22px;
+
+      width: 31px;
+      height: 12px;
+
+      background: #ffd72f;
+    }
+
+    .scene-block {
+      position: absolute;
+      bottom: 90px;
+      left: 35px;
+
+      width: 48px;
+      height: 48px;
+
+      background: #ffd72f;
+
+      border: 4px solid #d9a800;
+
+      box-shadow:
+        8px 8px 0 #087cc2;
+    }
+
+    .scene-block-2 {
+      position: absolute;
+      bottom: 90px;
+      right: 45px;
+
+      width: 35px;
+      height: 35px;
+
+      background: #087cc2;
+
+      border: 4px solid #075e94;
+    }
+
+    /* ========================================
+       MAIN
+    ======================================== */
+
+    main {
+      position: relative;
+      z-index: 2;
+    }
+
+    .section {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 85px 0;
+    }
+
+    .section-header {
+      margin-bottom: 30px;
+    }
+
+    .section-label {
+      display: inline-block;
+
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+
+      color: #087cc2;
+
+      margin-bottom: 9px;
+    }
+
+    .section-title {
+      color: #17324d;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      font-weight: 800;
+    }
+
+    .section-subtitle {
+      margin-top: 10px;
+
+      color: #4f7189;
+      font-size: 14px;
+      line-height: 1.6;
+      max-width: 650px;
+    }
+
+    /* ========================================
+       NEWS
+    ======================================== */
+
+    #noticias {
+      background: rgba(255,255,255,0.18);
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 18px;
+    }
+
+    .news-card {
+      position: relative;
+
+      background: #ffffff;
+
+      border: 3px solid #087cc2;
+
+      box-shadow: 6px 6px 0 rgba(8,124,194,0.35);
+
+      padding: 25px;
+
+      min-height: 220px;
+
+      transition: 0.18s ease;
+    }
+
+    .news-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 6px 10px 0 rgba(8,124,194,0.35);
+    }
+
+    .news-card.featured {
+      background: #087cc2;
+      color: #ffffff;
+    }
+
+    .news-card::before {
+      content: "";
+
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 6px;
+
+      background: #ffd72f;
+    }
+
+    .news-type {
+      display: inline-block;
+
+      margin-top: 5px;
+      margin-bottom: 16px;
+
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+
+      color: #087cc2;
+    }
+
+    .featured .news-type {
+      color: #ffd72f;
+    }
+
+    .news-card h3 {
+      font-size: 20px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
+
+    .news-card p {
+      font-size: 13px;
+      line-height: 1.65;
+      color: #638097;
+    }
+
+    .featured p {
+      color: rgba(255,255,255,0.84);
+    }
+
+    .news-date {
+      position: absolute;
+      bottom: 20px;
+      left: 25px;
+
+      font-size: 10px;
+      font-weight: 700;
+      opacity: 0.65;
+    }
+
+    /* ========================================
+       EVENTS
+    ======================================== */
+
+    #eventos {
+      background: #ffffff;
+      border-top: 3px solid #087cc2;
+      border-bottom: 3px solid #087cc2;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .event-card {
+      background: #f8fcff;
+
+      border: 3px solid #b8dff2;
+
+      padding: 22px;
+
+      position: relative;
+
+      box-shadow: 5px 5px 0 #d9eef8;
+    }
+
+    .event-date {
+      width: 55px;
+      height: 55px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      background: #ffd72f;
+
+      border: 3px solid #d9a800;
+
+      margin-bottom: 18px;
+    }
+
+    .event-date strong {
+      font-size: 19px;
+      line-height: 1;
+    }
+
+    .event-date span {
+      font-size: 8px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .event-card h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    .event-card p {
+      font-size: 12px;
+      line-height: 1.6;
+      color: #638097;
+    }
+
+    .event-status {
+      display: inline-block;
+
+      margin-top: 18px;
+
+      padding: 5px 8px;
+
+      background: #e5f8e8;
+      color: #23803c;
+
+      border: 1px solid #9ed7aa;
+
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    /* ========================================
+       COMMUNITY
+    ======================================== */
+
+    #comunidade {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .community-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .community-card {
+      background: #ffffff;
+
+      border: 3px solid #087cc2;
+
+      box-shadow: 6px 6px 0 rgba(8,124,194,0.3);
+
+      padding: 28px;
+    }
+
+    .community-card h3 {
+      font-size: 20px;
+      margin-bottom: 9px;
+    }
+
+    .community-card > p {
+      color: #638097;
+      font-size: 13px;
+      line-height: 1.65;
+      margin-bottom: 25px;
+    }
+
+    .community-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .stat {
+      background: #eef9ff;
+
+      border: 2px solid #b8dff2;
+
+      padding: 15px 10px;
+
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+
+      color: #087cc2;
+
+      font-size: 23px;
+      line-height: 1;
+
+      margin-bottom: 5px;
+    }
+
+    .stat span {
+      font-size: 9px;
+      font-weight: 800;
+      color: #638097;
+      text-transform: uppercase;
+    }
+
+    /* ========================================
+       RANKING
+    ======================================== */
+
+    .ranking-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .ranking-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      background: #f8fcff;
+
+      border: 2px solid #d4ebf7;
+
+      padding: 11px 13px;
+    }
+
+    .ranking-position {
+      width: 30px;
+      height: 30px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #ffd72f;
+
+      border: 2px solid #d2a600;
+
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .ranking-avatar {
+      width: 32px;
+      height: 32px;
+
+      background: #087cc2;
+
+      border: 2px solid #075e94;
+    }
+
+    .ranking-name {
+      flex: 1;
+
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .ranking-points {
+      color: #087cc2;
+
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    /* ========================================
+       DISCORD
+    ======================================== */
+
+    .discord-section {
+      padding: 80px 0;
+    }
+
+    .discord-box {
+      position: relative;
+      overflow: hidden;
+
+      background: #087cc2;
+
+      border: 4px solid #075e94;
+
+      box-shadow:
+        9px 9px 0 #ffd72f;
+
+      padding: 50px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .discord-box::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background-image:
+        linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+
+      background-size: 20px 20px;
+    }
+
+    .discord-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .discord-content span {
+      display: block;
+
+      color: #ffd72f;
+
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+
+      margin-bottom: 10px;
+    }
+
+    .discord-content h2 {
+      color: #ffffff;
+
+      font-size: clamp(27px, 4vw, 40px);
+      line-height: 1.05;
+
+      letter-spacing: -1px;
+
+      margin-bottom: 12px;
+    }
+
+    .discord-content p {
+      max-width: 570px;
+
+      color: rgba(255,255,255,0.82);
+
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .discord-button {
+      position: relative;
+      z-index: 2;
+
+      flex-shrink: 0;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 52px;
+
+      padding: 0 25px;
+
+      background: #ffd72f;
+      color: #17324d;
+
+      border: 3px solid #d3a300;
+
+      box-shadow: 5px 5px 0 #ffffff;
+
+      text-decoration: none;
+
+      font-size: 12px;
+      font-weight: 800;
+
+      transition: 0.15s ease;
+    }
+
+    .discord-button:hover {
+      transform: translate(3px, 3px);
+      box-shadow: 2px 2px 0 #ffffff;
+    }
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+
+    footer {
+      position: relative;
+      z-index: 3;
+
+      background: #ffffff;
+
+      border-top: 4px solid #087cc2;
+
+      padding: 35px 0 25px;
+    }
+
+    .footer-container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .footer-logo img {
+      height: 45px;
+      width: auto;
+    }
+
+    .footer-text {
+      font-size: 10px;
+      color: #7b96a9;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .footer-links a {
+      color: #087cc2;
+      text-decoration: none;
+
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    /* ========================================
+       MOBILE
+    ======================================== */
+
+    @media (max-width: 900px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 35px;
+      }
+
+      .hero-content {
+        padding: 45px 0 10px;
+        text-align: center;
+      }
+
+      .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        min-height: 390px;
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .events-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .community-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .discord-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .top-bar {
+        height: 66px;
+      }
+
+      .nav-container {
+        width: calc(100% - 24px);
+      }
+
+      .nav-logo img {
+        height: 44px;
+      }
+
+      .nav-actions {
+        gap: 7px;
+      }
+
+      .btn-login,
+      .btn-register {
+        height: 37px;
+        padding: 0 11px;
+        font-size: 10px;
+      }
+
+      .hero {
+        width: calc(100% - 28px);
+      }
+
+      .hero h1 {
+        font-size: 43px;
+        letter-spacing: -2px;
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+
+      .pixel-scene {
+        height: 310px;
+      }
+
+      .section {
+        width: calc(100% - 28px);
+        padding: 60px 0;
+      }
+
+      .community-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .discord-box {
+        padding: 32px 24px;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-links {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========================================
+       DECORAÇÕES
+  ======================================== -->
+
+  <div class="cloud cloud-1">☁️</div>
+  <div class="cloud cloud-2">☁️</div>
+  <div class="cloud cloud-3">☁️</div>
+
+  <div class="pixel-decoration pixel-yellow decoration-1"></div>
+  <div class="pixel-decoration pixel-blue decoration-2"></div>
+  <div class="pixel-decoration pixel-yellow decoration-3"></div>
+  <div class="pixel-decoration pixel-blue decoration-4"></div>
+
+
+  <!-- ========================================
+       HEADER
+  ======================================== -->
+
+  <header class="top-bar">
+
+    <div class="nav-container">
+
+      <a href="index.html" class="nav-logo">
+        <img src="pixelizados.png" alt="Pixelizados">
+      </a>
+
+      <nav class="nav-links">
+        <a href="#noticias">Notícias</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#comunidade">Comunidade</a>
+        <a href="#discord">Discord</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn-login">
+          Entrar
+        </a>
+
+        <a href="login.html" class="btn-register">
+          Criar conta
+        </a>
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- ========================================
+       HERO
+  ======================================== -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="hero-tag">
+        <span></span>
+        Comunidade online
+      </div>
+
+      <h1>
+        O universo<br>
+        <span class="yellow">pixel</span> está aqui.
+      </h1>
+
+      <p class="hero-description">
+        Notícias, eventos, histórias, comunidade e tudo aquilo que faz
+        parte do universo Pixelizados. Entre, participe e faça parte
+        dessa comunidade.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="login.html" class="hero-primary">
+          ENTRAR NA COMUNIDADE
+        </a>
+
+        <a href="#noticias" class="hero-secondary">
+          EXPLORAR O SITE
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- CENA PIXEL -->
+
+    <div class="hero-visual">
+
+      <div class="pixel-scene">
+
+        <div class="scene-sun"></div>
+
+        <div class="scene-cloud scene-cloud-1">
+          ☁️
+        </div>
+
+        <div class="scene-cloud scene-cloud-2">
+          ☁️
+        </div>
+
+        <div class="scene-block"></div>
+        <div class="scene-block-2"></div>
+
+        <div class="pixel-character">
+
+          <div class="character-hair"></div>
+
+          <div class="character-face">
+            <div class="character-eye-left"></div>
+            <div class="character-eye-right"></div>
+          </div>
+
+          <div class="character-body"></div>
+
+        </div>
+
+        <div class="pixel-ground"></div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <main>
+
+
+    <!-- ========================================
+         NOTÍCIAS
+    ======================================== -->
+
+    <section class="section" id="noticias">
+
+      <div class="section-header">
+
+        <span class="section-label">
+          Fique por dentro
+        </span>
+
+        <h2 class="section-title">
+          Últimas notícias
+        </h2>
+
+        <p class="section-subtitle">
+          Novidades, acontecimentos e conteúdos da comunidade Pixelizados.
+        </p>
+
+      </div>
+
+
+      <div class="news-grid">
+
+        <article class="news-card featured">
+
+          <span class="news-type">
+            Destaque
+          </span>
+
+          <h3>
+            Bem-vindo ao universo Pixelizados
+          </h3>
+
+          <p>
+            Um novo espaço para reunir a comunidade, compartilhar
+            novidades e acompanhar tudo o que acontece por aqui.
+          </p>
+
+          <span class="news-date">
+            Pixelizados
+          </span>
+
+        </article>
+
+
+        <article class="news-card">
+
+          <span class="news-type">
+            Comunidade
+          </span>
+
+          <h3>
+            Novidades estão chegando
+          </h3>
+
+          <p>
+            Em breve teremos novos conteúdos, funcionalidades e
+            atividades para a comunidade.
+          </p>
+
+          <span class="news-date">
+            Em breve
+          </span>
+
+        </article>
+
+
+        <article class="news-card">
+
+          <span class="news-type">
+            Site
+          </span>
+
+          <h3>
+            O portal está crescendo
+          </h3>
+
+          <p>
+            Acompanhe esta página para descobrir as próximas novidades
+            do Pixelizados.
+          </p>
+
+          <span class="news-date">
+            Em breve
+          </span>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- ========================================
+         EVENTOS
+    ======================================== -->
+
+    <section class="section" id="eventos">
+
+      <div class="section-header">
+
+        <span class="section-label">
+          Participe
+        </span>
+
+        <h2 class="section-title">
+          Eventos da comunidade
+        </h2>
+
+        <p class="section-subtitle">
+          Atividades, encontros e eventos especiais do universo Pixelizados.
+        </p>
+
+      </div>
+
+
+      <div class="events-grid">
+
+        <article class="event-card">
+
+          <div class="event-date">
+            <strong>?</strong>
+            <span>BREVE</span>
+          </div>
+
+          <h3>
+            Próximo evento
+          </h3>
+
+          <p>
+            Um novo evento está sendo preparado. Fique de olho nas
+            novidades da comunidade.
+          </p>
+
+          <span class="event-status">
+            Em breve
+          </span>
+
+        </article>
+
+
+        <article class="event-card">
+
+          <div class="event-date">
+            <strong>?</strong>
+            <span>BREVE</span>
+          </div>
+
+          <h3>
+            Evento especial
+          </h3>
+
+          <p>
+            Prepare-se para participar das próximas atividades
+            especiais do Pixelizados.
+          </p>
+
+          <span class="event-status">
+            Em breve
+          </span>
+
+        </article>
+
+
+        <article class="event-card">
+
+          <div class="event-date">
+            <strong>?</strong>
+            <span>BREVE</span>
+          </div>
+
+          <h3>
+            Atividades da comunidade
+          </h3>
+
+          <p>
+            Novas atividades poderão aparecer aqui conforme a
+            comunidade crescer.
+          </p>
+
+          <span class="event-status">
+            Em breve
+          </span>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- ========================================
+         COMUNIDADE
+    ======================================== -->
+
+    <section class="section" id="comunidade">
+
+      <div class="section-header">
+
+        <span class="section-label">
+          Nossa comunidade
+        </span>
+
+        <h2 class="section-title">
+          Feito para quem vive o universo Pixel
+        </h2>
+
+        <p class="section-subtitle">
+          Um espaço para encontrar pessoas, participar de atividades
+          e acompanhar tudo em um só lugar.
+        </p>
+
+      </div>
+
+
+      <div class="community-layout">
+
+
+        <!-- CARD COMUNIDADE -->
+
+        <div class="community-card">
+
+          <h3>
+            A comunidade
+          </h3>
+
+          <p>
+            O Pixelizados foi criado para ser um ponto de encontro
+            para fãs e membros da comunidade. Aqui, cada pessoa pode
+            construir sua própria história.
+          </p>
+
+          <div class="community-stats">
+
+            <div class="stat">
+              <strong>—</strong>
+              <span>Membros</span>
+            </div>
+
+            <div class="stat">
+              <strong>—</strong>
+              <span>Eventos</span>
+            </div>
+
+            <div class="stat">
+              <strong>—</strong>
+              <span>Online</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- RANKING -->
+
+        <div class="community-card">
+
+          <h3>
+            Ranking da comunidade
+          </h3>
+
+          <p>
+            Os membros poderão acumular pontos e conquistar posições
+            dentro da comunidade.
+          </p>
+
+          <div class="ranking-list">
+
+            <div class="ranking-item">
+
+              <div class="ranking-position">
+                1
+              </div>
+
+              <div class="ranking-avatar"></div>
+
+              <span class="ranking-name">
+                Em breve
+              </span>
+
+              <span class="ranking-points">
+                — pts
+              </span>
+
+            </div>
+
+
+            <div class="ranking-item">
+
+              <div class="ranking-position">
+                2
+              </div>
+
+              <div class="ranking-avatar"></div>
+
+              <span class="ranking-name">
+                Em breve
+              </span>
+
+              <span class="ranking-points">
+                — pts
+              </span>
+
+            </div>
+
+
+            <div class="ranking-item">
+
+              <div class="ranking-position">
+                3
+              </div>
+
+              <div class="ranking-avatar"></div>
+
+              <span class="ranking-name">
+                Em breve
+              </span>
+
+              <span class="ranking-points">
+                — pts
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ========================================
+         DISCORD
+    ======================================== -->
+
+    <section class="discord-section" id="discord">
+
+      <div class="section">
+
+        <div class="discord-box">
+
+          <div class="discord-content">
+
+            <span>
+              Faça parte
+            </span>
+
+            <h2>
+              A comunidade continua no Discord.
+            </h2>
+
+            <p>
+              Converse com outros membros, acompanhe novidades,
+              participe das atividades e fique por dentro de tudo
+              que acontece no Pixelizados.
+            </p>
+
+          </div>
+
+
+          <a
+            href="https://discord.gg/pixelizados"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="discord-button"
+          >
+            ENTRAR NO DISCORD
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- ========================================
+       FOOTER
+  ======================================== -->
+
+  <footer>
+
+    <div class="footer-container">
+
+      <a href="index.html" class="footer-logo">
+        <img src="pixelizados.png" alt="Pixelizados">
+      </a>
+
+      <div class="footer-text">
+        © 2026 Pixelizados. Comunidade independente.
+      </div>
+
+      <div class="footer-links">
+
+        <a href="login.html">
+          Entrar
+        </a>
+
+        <a href="#noticias">
+          Notícias
+        </a>
+
+        <a href="#eventos">
+          Eventos
+        </a>
+
+        <a href="#discord">
+          Discord
+        </a>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+</body>
+</html>
