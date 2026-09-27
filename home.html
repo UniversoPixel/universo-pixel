@@ -30,10 +30,6 @@
       overflow-x: hidden;
     }
 
-    /* ========================================
-       PIXEL GRID
-    ======================================== */
-
     body::before {
       content: "";
       position: fixed;
@@ -48,10 +44,6 @@
 
       background-size: 24px 24px;
     }
-
-    /* ========================================
-       CLOUDS
-    ======================================== */
 
     .cloud {
       position: fixed;
@@ -80,10 +72,6 @@
       font-size: 60px;
       opacity: 0.55;
     }
-
-    /* ========================================
-       PIXEL DECORATIONS
-    ======================================== */
 
     .pixel-decoration {
       position: absolute;
@@ -124,10 +112,6 @@
       top: 1050px;
       left: 8%;
     }
-
-    /* ========================================
-       HEADER
-    ======================================== */
 
     .top-bar {
       position: sticky;
@@ -263,10 +247,6 @@
       transform: translate(2px, 2px);
       box-shadow: 1px 1px 0 #b98600;
     }
-
-    /* ========================================
-       HERO
-    ======================================== */
 
     .hero {
       position: relative;
@@ -405,10 +385,6 @@
       box-shadow: 2px 2px 0 rgba(8, 124, 194, 0.55);
     }
 
-    /* ========================================
-       HERO PIXEL ART AREA
-    ======================================== */
-
     .hero-visual {
       position: relative;
       min-height: 430px;
@@ -540,10 +516,10 @@
     .character-face {
       position: absolute;
       top: 38px;
-      left: 23px;
+      left: 22px;
 
-      width: 60px;
-      height: 65px;
+      width: 62px;
+      height: 62px;
 
       background: #f4c39d;
 
@@ -553,7 +529,7 @@
     .character-eye-left,
     .character-eye-right {
       position: absolute;
-      top: 27px;
+      top: 23px;
 
       width: 7px;
       height: 9px;
@@ -562,110 +538,120 @@
     }
 
     .character-eye-left {
-      left: 12px;
+      left: 13px;
     }
 
     .character-eye-right {
-      right: 12px;
+      right: 13px;
     }
 
     .character-body {
       position: absolute;
       bottom: 0;
-      left: 12px;
+      left: 9px;
 
-      width: 82px;
-      height: 62px;
+      width: 87px;
+      height: 56px;
 
       background: #087cc2;
 
       border: 4px solid #075e94;
+
+      box-shadow: 5px 5px 0 rgba(7,94,148,0.35);
     }
 
-    .character-body::after {
+    .character-body::before {
       content: "";
 
       position: absolute;
-      top: 12px;
-      left: 22px;
+      top: 13px;
+      left: 25px;
 
-      width: 31px;
-      height: 12px;
+      width: 32px;
+      height: 9px;
 
       background: #ffd72f;
+    }
+
+    .scene-block,
+    .scene-block-2 {
+      position: absolute;
+      bottom: 95px;
+
+      width: 40px;
+      height: 40px;
+
+      z-index: 2;
     }
 
     .scene-block {
-      position: absolute;
-      bottom: 90px;
       left: 35px;
-
-      width: 48px;
-      height: 48px;
-
       background: #ffd72f;
-
-      border: 4px solid #d9a800;
-
-      box-shadow:
-        8px 8px 0 #087cc2;
+      border: 4px solid #d6a600;
+      box-shadow: 6px 6px 0 rgba(214,166,0,0.3);
     }
 
     .scene-block-2 {
-      position: absolute;
-      bottom: 90px;
-      right: 45px;
-
-      width: 35px;
-      height: 35px;
-
+      right: 40px;
       background: #087cc2;
-
       border: 4px solid #075e94;
+      box-shadow: 6px 6px 0 rgba(7,94,148,0.3);
     }
 
     /* ========================================
-       MAIN
+       SEÇÕES
     ======================================== */
 
     main {
       position: relative;
-      z-index: 2;
+      z-index: 3;
+
+      background: #ffffff;
+
+      border-top: 5px solid #087cc2;
     }
 
     .section {
       width: min(1180px, calc(100% - 40px));
       margin: 0 auto;
-      padding: 85px 0;
+
+      padding: 80px 0;
     }
 
     .section-header {
       margin-bottom: 30px;
+      text-align: center;
     }
 
     .section-label {
-      display: inline-block;
-
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
+      display: block;
 
       color: #087cc2;
 
-      margin-bottom: 9px;
+      font-size: 10px;
+      font-weight: 800;
+
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+
+      margin-bottom: 8px;
     }
 
     .section-title {
       color: #17324d;
+
       font-size: clamp(28px, 4vw, 40px);
       line-height: 1.1;
+
       letter-spacing: -1.5px;
-      font-weight: 800;
+
+      margin-bottom: 10px;
     }
 
     .section-subtitle {
       margin-top: 10px;
+      margin-left: auto;
+      margin-right: auto;
 
       color: #4f7189;
       font-size: 14px;
@@ -673,71 +659,59 @@
       max-width: 650px;
     }
 
-    /* ========================================
-       NEWS
-    ======================================== */
-
-    #noticias {
-      background: rgba(255,255,255,0.18);
-    }
-
     .news-grid {
       display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr;
+
+      grid-template-columns: 1.35fr 1fr 1fr;
+
       gap: 18px;
     }
 
     .news-card {
-      position: relative;
+      background: #f8fcff;
 
-      background: #ffffff;
-
-      border: 3px solid #087cc2;
-
-      box-shadow: 6px 6px 0 rgba(8,124,194,0.35);
+      border: 3px solid #b8dff2;
 
       padding: 25px;
 
+      position: relative;
+
       min-height: 220px;
 
-      transition: 0.18s ease;
+      box-shadow: 5px 5px 0 #d9eef8;
+
+      transition: 0.15s ease;
     }
 
     .news-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 6px 10px 0 rgba(8,124,194,0.35);
+      transform: translate(-2px, -2px);
+
+      box-shadow:
+        7px 7px 0 #d9eef8;
     }
 
     .news-card.featured {
       background: #087cc2;
+
+      border-color: #075e94;
+
       color: #ffffff;
-    }
 
-    .news-card::before {
-      content: "";
-
-      position: absolute;
-      top: 0;
-      left: 0;
-
-      width: 100%;
-      height: 6px;
-
-      background: #ffd72f;
+      box-shadow: 5px 5px 0 #ffd72f;
     }
 
     .news-type {
       display: inline-block;
 
-      margin-top: 5px;
-      margin-bottom: 16px;
+      color: #087cc2;
 
       font-size: 10px;
       font-weight: 800;
+
       text-transform: uppercase;
       letter-spacing: 1px;
 
-      color: #087cc2;
+      margin-bottom: 15px;
     }
 
     .featured .news-type {
@@ -745,20 +719,29 @@
     }
 
     .news-card h3 {
-      font-size: 20px;
+      color: #17324d;
+
+      font-size: 19px;
       line-height: 1.2;
+
       margin-bottom: 10px;
-      font-weight: 800;
+    }
+
+    .featured h3 {
+      color: #ffffff;
     }
 
     .news-card p {
-      font-size: 13px;
-      line-height: 1.65;
-      color: #638097;
+      color: #5d7b90;
+
+      font-size: 12px;
+      line-height: 1.7;
+
+      max-width: 420px;
     }
 
     .featured p {
-      color: rgba(255,255,255,0.84);
+      color: rgba(255,255,255,0.85);
     }
 
     .news-date {
@@ -766,24 +749,25 @@
       bottom: 20px;
       left: 25px;
 
-      font-size: 10px;
+      color: #8aa6b8;
+
+      font-size: 9px;
       font-weight: 700;
-      opacity: 0.65;
+    }
+
+    .featured .news-date {
+      color: rgba(255,255,255,0.65);
     }
 
     /* ========================================
-       EVENTS
+       EVENTOS
     ======================================== */
-
-    #eventos {
-      background: #ffffff;
-      border-top: 3px solid #087cc2;
-      border-bottom: 3px solid #087cc2;
-    }
 
     .events-grid {
       display: grid;
+
       grid-template-columns: repeat(3, 1fr);
+
       gap: 18px;
     }
 
@@ -796,10 +780,15 @@
 
       position: relative;
 
+      text-align: center;
+
       box-shadow: 5px 5px 0 #d9eef8;
     }
 
     .event-date {
+      margin-left: auto;
+      margin-right: auto;
+
       width: 55px;
       height: 55px;
 
@@ -810,31 +799,39 @@
 
       background: #ffd72f;
 
-      border: 3px solid #d9a800;
+      border: 3px solid #d3a300;
 
-      margin-bottom: 18px;
+      margin-bottom: 17px;
     }
 
     .event-date strong {
       font-size: 19px;
       line-height: 1;
+      color: #17324d;
     }
 
     .event-date span {
       font-size: 8px;
       font-weight: 800;
-      text-transform: uppercase;
+
+      color: #725d00;
+
+      margin-top: 3px;
     }
 
     .event-card h3 {
+      color: #17324d;
+
       font-size: 17px;
+
       margin-bottom: 8px;
     }
 
     .event-card p {
+      color: #5d7b90;
+
       font-size: 12px;
-      line-height: 1.6;
-      color: #638097;
+      line-height: 1.65;
     }
 
     .event-status {
@@ -842,66 +839,73 @@
 
       margin-top: 18px;
 
-      padding: 5px 8px;
+      padding: 6px 9px;
 
-      background: #e5f8e8;
-      color: #23803c;
+      background: #e9f8ed;
 
-      border: 1px solid #9ed7aa;
+      border: 1px solid #a8d9b5;
 
-      font-size: 9px;
+      color: #288244;
+
+      font-size: 8px;
       font-weight: 800;
+
       text-transform: uppercase;
     }
 
     /* ========================================
-       COMMUNITY
+       COMUNIDADE
     ======================================== */
-
-    #comunidade {
-      background: rgba(255,255,255,0.3);
-    }
 
     .community-layout {
       display: grid;
+
       grid-template-columns: 1fr 1fr;
-      gap: 22px;
+
+      gap: 18px;
     }
 
     .community-card {
-      background: #ffffff;
+      background: #f8fcff;
 
-      border: 3px solid #087cc2;
-
-      box-shadow: 6px 6px 0 rgba(8,124,194,0.3);
+      border: 3px solid #b8dff2;
 
       padding: 28px;
+
+      box-shadow: 5px 5px 0 #d9eef8;
     }
 
     .community-card h3 {
+      color: #17324d;
+
       font-size: 20px;
+
       margin-bottom: 9px;
     }
 
     .community-card > p {
-      color: #638097;
-      font-size: 13px;
-      line-height: 1.65;
-      margin-bottom: 25px;
+      color: #5d7b90;
+
+      font-size: 12px;
+      line-height: 1.7;
+
+      margin-bottom: 22px;
     }
 
     .community-stats {
       display: grid;
+
       grid-template-columns: repeat(3, 1fr);
+
       gap: 10px;
     }
 
     .stat {
-      background: #eef9ff;
+      background: #ffffff;
 
-      border: 2px solid #b8dff2;
+      border: 2px solid #d3e9f4;
 
-      padding: 15px 10px;
+      padding: 14px 8px;
 
       text-align: center;
     }
@@ -911,39 +915,38 @@
 
       color: #087cc2;
 
-      font-size: 23px;
-      line-height: 1;
+      font-size: 22px;
 
       margin-bottom: 5px;
     }
 
     .stat span {
-      font-size: 9px;
+      color: #6d899b;
+
+      font-size: 8px;
       font-weight: 800;
-      color: #638097;
+
       text-transform: uppercase;
     }
-
-    /* ========================================
-       RANKING
-    ======================================== */
 
     .ranking-list {
       display: flex;
       flex-direction: column;
-      gap: 9px;
+
+      gap: 8px;
     }
 
     .ranking-item {
       display: flex;
       align-items: center;
-      gap: 12px;
 
-      background: #f8fcff;
+      gap: 10px;
 
-      border: 2px solid #d4ebf7;
+      padding: 10px 12px;
 
-      padding: 11px 13px;
+      background: #ffffff;
+
+      border: 2px solid #d3e9f4;
     }
 
     .ranking-position {
@@ -954,34 +957,40 @@
       align-items: center;
       justify-content: center;
 
+      flex-shrink: 0;
+
       background: #ffd72f;
 
-      border: 2px solid #d2a600;
+      border: 2px solid #d3a300;
 
-      font-size: 11px;
+      color: #17324d;
+
+      font-size: 10px;
       font-weight: 800;
     }
 
     .ranking-avatar {
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
 
-      background: #087cc2;
+      background: #dff3fc;
 
-      border: 2px solid #075e94;
+      border: 2px solid #9bcde4;
     }
 
     .ranking-name {
       flex: 1;
 
-      font-size: 12px;
+      color: #3d6077;
+
+      font-size: 11px;
       font-weight: 800;
     }
 
     .ranking-points {
       color: #087cc2;
 
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 800;
     }
 
@@ -990,12 +999,13 @@
     ======================================== */
 
     .discord-section {
-      padding: 80px 0;
+      background: #ffffff;
+
+      padding: 10px 0 80px;
     }
 
     .discord-box {
       position: relative;
-      overflow: hidden;
 
       background: #087cc2;
 
@@ -1146,10 +1156,6 @@
       font-weight: 800;
     }
 
-    /* ========================================
-       MOBILE
-    ======================================== */
-
     @media (max-width: 900px) {
 
       .nav-links {
@@ -1267,10 +1273,6 @@
 
 <body>
 
-  <!-- ========================================
-       DECORAÇÕES
-  ======================================== -->
-
   <div class="cloud cloud-1">☁️</div>
   <div class="cloud cloud-2">☁️</div>
   <div class="cloud cloud-3">☁️</div>
@@ -1280,16 +1282,11 @@
   <div class="pixel-decoration pixel-yellow decoration-3"></div>
   <div class="pixel-decoration pixel-blue decoration-4"></div>
 
-
-  <!-- ========================================
-       HEADER
-  ======================================== -->
-
   <header class="top-bar">
 
     <div class="nav-container">
 
-      <a href="index.html" class="nav-logo">
+      <a href="home.html" class="nav-logo">
         <img src="pixelizados.png" alt="Pixelizados">
       </a>
 
@@ -1301,11 +1298,11 @@
       </nav>
 
       <div class="nav-actions">
-        <a href="login.html" class="btn-login">
+        <a href="index.html" class="btn-login">
           Entrar
         </a>
 
-        <a href="login.html" class="btn-register">
+        <a href="index.html" class="btn-register">
           Criar conta
         </a>
       </div>
@@ -1313,11 +1310,6 @@
     </div>
 
   </header>
-
-
-  <!-- ========================================
-       HERO
-  ======================================== -->
 
   <section class="hero">
 
@@ -1341,7 +1333,7 @@
 
       <div class="hero-buttons">
 
-        <a href="login.html" class="hero-primary">
+        <a href="index.html" class="hero-primary">
           ENTRAR NA COMUNIDADE
         </a>
 
@@ -1352,9 +1344,6 @@
       </div>
 
     </div>
-
-
-    <!-- CENA PIXEL -->
 
     <div class="hero-visual">
 
@@ -1394,13 +1383,7 @@
 
   </section>
 
-
   <main>
-
-
-    <!-- ========================================
-         NOTÍCIAS
-    ======================================== -->
 
     <section class="section" id="noticias">
 
@@ -1419,7 +1402,6 @@
         </p>
 
       </div>
-
 
       <div class="news-grid">
 
@@ -1444,7 +1426,6 @@
 
         </article>
 
-
         <article class="news-card">
 
           <span class="news-type">
@@ -1465,7 +1446,6 @@
           </span>
 
         </article>
-
 
         <article class="news-card">
 
@@ -1492,11 +1472,6 @@
 
     </section>
 
-
-    <!-- ========================================
-         EVENTOS
-    ======================================== -->
-
     <section class="section" id="eventos">
 
       <div class="section-header">
@@ -1514,7 +1489,6 @@
         </p>
 
       </div>
-
 
       <div class="events-grid">
 
@@ -1540,7 +1514,6 @@
 
         </article>
 
-
         <article class="event-card">
 
           <div class="event-date">
@@ -1562,7 +1535,6 @@
           </span>
 
         </article>
-
 
         <article class="event-card">
 
@@ -1590,11 +1562,6 @@
 
     </section>
 
-
-    <!-- ========================================
-         COMUNIDADE
-    ======================================== -->
-
     <section class="section" id="comunidade">
 
       <div class="section-header">
@@ -1614,11 +1581,7 @@
 
       </div>
 
-
       <div class="community-layout">
-
-
-        <!-- CARD COMUNIDADE -->
 
         <div class="community-card">
 
@@ -1653,9 +1616,6 @@
 
         </div>
 
-
-        <!-- RANKING -->
-
         <div class="community-card">
 
           <h3>
@@ -1687,7 +1647,6 @@
 
             </div>
 
-
             <div class="ranking-item">
 
               <div class="ranking-position">
@@ -1705,7 +1664,6 @@
               </span>
 
             </div>
-
 
             <div class="ranking-item">
 
@@ -1733,11 +1691,6 @@
 
     </section>
 
-
-    <!-- ========================================
-         DISCORD
-    ======================================== -->
-
     <section class="discord-section" id="discord">
 
       <div class="section">
@@ -1762,7 +1715,6 @@
 
           </div>
 
-
           <a
             href="https://discord.gg/pixelizados"
             target="_blank"
@@ -1778,19 +1730,13 @@
 
     </section>
 
-
   </main>
-
-
-  <!-- ========================================
-       FOOTER
-  ======================================== -->
 
   <footer>
 
     <div class="footer-container">
 
-      <a href="index.html" class="footer-logo">
+      <a href="home.html" class="footer-logo">
         <img src="pixelizados.png" alt="Pixelizados">
       </a>
 
@@ -1800,7 +1746,7 @@
 
       <div class="footer-links">
 
-        <a href="login.html">
+        <a href="index.html">
           Entrar
         </a>
 
@@ -1821,7 +1767,6 @@
     </div>
 
   </footer>
-
 
 </body>
 </html>
