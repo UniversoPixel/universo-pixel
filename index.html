@@ -1673,26 +1673,31 @@
         ================================================== -->
 
         <form
-          action="portal.html"
-          method="GET"
+          id="form-login"
+          onsubmit="fazerLogin(event)"
         >
 
 
-          <!-- USUÁRIO -->
+          <!-- E-MAIL -->
 
           <div class="field">
 
-            <label class="field-label">
+            <label
+              for="login-email"
+              class="field-label"
+            >
 
-              Usuário
+              E-mail
 
             </label>
 
 
             <input
-              type="text"
-              placeholder="Ex: FrankPixel"
+              type="email"
+              id="login-email"
+              placeholder="Ex: voce@email.com"
               required
+              autocomplete="email"
               class="fan-input"
             >
 
@@ -1705,13 +1710,17 @@
 
             <div class="password-row">
 
-              <label class="field-label">
+              <label
+                for="login-password"
+                class="field-label"
+              >
                 Senha
               </label>
 
               <a
                 href="#"
                 class="forgot-link"
+                onclick="return false;"
               >
                 Esqueceu?
               </a>
@@ -1721,8 +1730,10 @@
 
             <input
               type="password"
+              id="login-password"
               placeholder="••••••••"
               required
+              autocomplete="current-password"
               class="fan-input"
             >
 
@@ -1732,6 +1743,7 @@
           <!-- BOTÃO -->
 
           <button
+            id="btn-login"
             type="submit"
             class="pixel-button"
           >
@@ -2141,6 +2153,259 @@
 
 
     /* =====================================================
+       LOGIN
+    ===================================================== */
+
+    async function fazerLogin(e) {
+
+      e.preventDefault();
+
+
+      const btn =
+        document.getElementById(
+          'btn-login'
+        );
+
+
+      const email =
+        document
+          .getElementById(
+            'login-email'
+          )
+          .value
+          .trim();
+
+
+      const password =
+        document
+          .getElementById(
+            'login-password'
+          )
+          .value;
+
+
+      btn.innerText =
+        'Entrando...';
+
+
+      btn.disabled =
+        true;
+
+
+      /* ===================================================
+         AUTENTICAÇÃO SUPABASE
+      =================================================== */
+
+      const {
+        data: authData,
+        error: authError
+      } =
+        await supabaseClient.auth.signInWithPassword({
+
+          email:
+            email,
+
+          password:
+            password
+
+        });
+
+
+      /* ===================================================
+         ERRO DE LOGIN
+      =================================================== */
+
+      if (authError) {
+
+        console.error(
+          'Erro no login:',
+          authError
+        );
+
+
+        btn.innerText =
+          'Acessar Portal ⚡';
+
+
+        btn.disabled =
+          false;
+
+
+        alert(
+          'E-mail ou senha incorretos.'
+        );
+
+
+        return;
+
+      }
+
+
+      const authUser =
+        authData?.user;
+
+
+      if (!authUser) {
+
+        btn.innerText =
+          'Acessar Portal ⚡';
+
+
+        btn.disabled =
+          false;
+
+
+        alert(
+          'Não foi possível identificar sua conta.'
+        );
+
+
+        return;
+
+      }
+
+
+      /* ===================================================
+         BUSCAR PERFIL DO USUÁRIO
+      =================================================== */
+
+      const {
+        data: perfil,
+        error: perfilError
+      } =
+        await supabaseClient
+          .from('usuarios')
+          .select('*')
+          .eq(
+            'auth_user_id',
+            authUser.id
+          )
+          .maybeSingle();
+
+
+      /* ===================================================
+         ERRO AO BUSCAR PERFIL
+      =================================================== */
+
+      if (perfilError) {
+
+        console.error(
+          'Erro ao buscar perfil:',
+          perfilError
+        );
+
+
+        await supabaseClient.auth.signOut();
+
+
+        btn.innerText =
+          'Acessar Portal ⚡';
+
+
+        btn.disabled =
+          false;
+
+
+        alert(
+          'Não foi possível carregar seu perfil. Tente novamente.'
+        );
+
+
+        return;
+
+      }
+
+
+      /* ===================================================
+         PERFIL NÃO ENCONTRADO
+      =================================================== */
+
+      if (!perfil) {
+
+        await supabaseClient.auth.signOut();
+
+
+        btn.innerText =
+          'Acessar Portal ⚡';
+
+
+        btn.disabled =
+          false;
+
+
+        alert(
+          'Sua conta foi encontrada, mas seu perfil no Portal não existe. Fale com a administração.'
+        );
+
+
+        return;
+
+      }
+
+
+      /* ===================================================
+         AGUARDANDO APROVAÇÃO
+      =================================================== */
+
+      if (
+        perfil.status !== 'APROVADO'
+      ) {
+
+        await supabaseClient.auth.signOut();
+
+
+        btn.innerText =
+          'Acessar Portal ⚡';
+
+
+        btn.disabled =
+          false;
+
+
+        if (
+          perfil.status === 'PENDENTE'
+        ) {
+
+          alert(
+            'Sua conta ainda está aguardando aprovação no Discord.'
+          );
+
+        } else {
+
+          alert(
+            'Sua conta não está autorizada a acessar o Portal.'
+          );
+
+        }
+
+
+        return;
+
+      }
+
+
+      /* ===================================================
+         USUÁRIO APROVADO
+      =================================================== */
+
+      localStorage.setItem(
+
+        'pixelizados_user',
+
+        JSON.stringify(
+          perfil
+        )
+
+      );
+
+
+      window.location.href =
+        'portal.html';
+
+    }
+
+
+    /* =====================================================
        MODAL
     ===================================================== */
 
@@ -2268,7 +2533,7 @@
 
       /* ===================================================
          CRIAR USUÁRIO NO SUPABASE AUTH
-      ================================================== */
+      =================================================== */
 
       const {
         data: authData,
@@ -2285,7 +2550,7 @@
 
       /* ===================================================
          ERRO NO AUTH
-      ================================================== */
+      =================================================== */
 
       if (authError) {
 
@@ -2316,7 +2581,7 @@
 
       /* ===================================================
          VERIFICAR USUÁRIO CRIADO
-      ================================================== */
+      =================================================== */
 
       const authUser =
         authData?.user;
@@ -2344,7 +2609,7 @@
 
       /* ===================================================
          SALVAR PERFIL NA TABELA USUARIOS
-      ================================================== */
+      =================================================== */
 
       const {
         data,
@@ -2384,7 +2649,7 @@
 
       /* ===================================================
          ERRO AO SALVAR PERFIL
-      ================================================== */
+      =================================================== */
 
       if (error) {
 
@@ -2406,7 +2671,7 @@
 
       /* ===================================================
          MOSTRAR PIN
-      ================================================== */
+      =================================================== */
 
       document
         .getElementById(
@@ -2434,7 +2699,7 @@
 
       /* ===================================================
          REALTIME
-      ================================================== */
+      =================================================== */
 
       escutarAprovacaoRealtime(
         pinGerado
