@@ -28,6 +28,9 @@
       color: #17324d;
       min-height: 100vh;
       overflow-x: hidden;
+
+      /* Espaço para o AutoDJ fixo */
+      padding-bottom: 82px;
     }
 
     /* ========================================
@@ -1161,6 +1164,241 @@
     }
 
     /* ========================================
+       AUTODJ FIXO
+    ======================================== */
+
+    .autodj-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      z-index: 9999;
+
+      background: #ffd72f;
+
+      border-top: 3px solid #087cc2;
+
+      padding: 10px 20px;
+
+      box-shadow:
+        0 -4px 0 rgba(6, 86, 135, 0.12);
+    }
+
+    .autodj-container {
+      width: min(1180px, calc(100% - 20px));
+      margin: 0 auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+    .autodj-player {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      background: rgba(255,255,255,0.82);
+
+      border: 2px solid #087cc2;
+
+      border-radius: 999px;
+
+      padding: 5px 18px 5px 5px;
+
+      box-shadow:
+        3px 3px 0 rgba(8,124,194,0.35);
+
+      min-width: 310px;
+    }
+
+    .autodj-avatar {
+      position: relative;
+
+      width: 42px;
+      height: 42px;
+
+      flex-shrink: 0;
+
+      border-radius: 50%;
+
+      padding: 2px;
+
+      background: linear-gradient(
+        135deg,
+        #38b6ff,
+        #087cc2
+      );
+
+      border: 2px solid #087cc2;
+    }
+
+    .autodj-avatar img {
+      width: 100%;
+      height: 100%;
+
+      display: block;
+
+      border-radius: 50%;
+
+      object-fit: cover;
+
+      background: #17324d;
+    }
+
+    .autodj-live {
+      position: absolute;
+
+      right: -2px;
+      bottom: -1px;
+
+      width: 13px;
+      height: 13px;
+
+      background: #ef4444;
+
+      border: 2px solid #ffffff;
+
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 0 3px rgba(239,68,68,0.18);
+
+      animation: autodjPulse 1.5s infinite;
+    }
+
+    @keyframes autodjPulse {
+      0%,
+      100% {
+        box-shadow:
+          0 0 0 3px rgba(239,68,68,0.18);
+      }
+
+      50% {
+        box-shadow:
+          0 0 0 6px rgba(239,68,68,0.05);
+      }
+    }
+
+    .autodj-info {
+      min-width: 0;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      line-height: 1.1;
+    }
+
+    .autodj-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      margin-bottom: 5px;
+    }
+
+    .autodj-status {
+      display: inline-flex;
+      align-items: center;
+
+      padding: 4px 8px;
+
+      background: rgba(56,182,255,0.12);
+
+      border: 1px solid rgba(8,124,194,0.25);
+
+      border-radius: 999px;
+
+      color: #087cc2;
+
+      font-size: 8px;
+      font-weight: 800;
+
+      letter-spacing: 0.8px;
+    }
+
+    .autodj-name {
+      color: #17324d;
+
+      font-size: 11px;
+
+      font-weight: 800;
+    }
+
+    .autodj-track {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+
+      color: #638097;
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      max-width: 310px;
+    }
+
+    .autodj-record {
+      display: inline-flex;
+
+      color: #087cc2;
+
+      font-size: 13px;
+
+      animation: recordSpin 2s linear infinite;
+    }
+
+    @keyframes recordSpin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .autodj-message {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      color: #17324d;
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      white-space: nowrap;
+    }
+
+    .autodj-message-icon {
+      width: 28px;
+      height: 28px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #ffffff;
+
+      border: 2px solid #d9a800;
+
+      border-radius: 50%;
+
+      font-size: 12px;
+    }
+
+    /* ========================================
        MOBILE
     ======================================== */
 
@@ -1208,6 +1446,40 @@
       .discord-box {
         flex-direction: column;
         align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 700px) {
+
+      body {
+        padding-bottom: 108px;
+      }
+
+      .autodj-bar {
+        padding: 8px 10px;
+      }
+
+      .autodj-container {
+        width: 100%;
+
+        flex-direction: column;
+
+        gap: 7px;
+      }
+
+      .autodj-player {
+        width: 100%;
+        min-width: 0;
+
+        padding-right: 14px;
+      }
+
+      .autodj-track {
+        max-width: calc(100vw - 115px);
+      }
+
+      .autodj-message {
+        display: none;
       }
     }
 
@@ -1315,6 +1587,7 @@
       </nav>
 
       <div class="nav-actions">
+
         <a href="index.html" class="btn-login">
           Entrar
         </a>
@@ -1322,6 +1595,7 @@
         <a href="index.html" class="btn-register">
           Criar conta
         </a>
+
       </div>
 
     </div>
@@ -1835,6 +2109,77 @@
     </div>
 
   </footer>
+
+
+  <!-- ========================================
+       AUTODJ FIXO
+  ======================================== -->
+
+  <div class="autodj-bar">
+
+    <div class="autodj-container">
+
+      <div class="autodj-player">
+
+        <div class="autodj-avatar">
+
+          <img
+            src="https://api.dicebear.com/7.x/pixel-art/svg?seed=AutoDJ&backgroundColor=38b6ff"
+            alt="AutoDJ Pixel"
+          >
+
+          <span class="autodj-live"></span>
+
+        </div>
+
+
+        <div class="autodj-info">
+
+          <div class="autodj-top">
+
+            <span class="autodj-status">
+              NO AR
+            </span>
+
+            <span class="autodj-name">
+              AutoDJ Pixel
+            </span>
+
+          </div>
+
+
+          <div class="autodj-track">
+
+            <span class="autodj-record">
+              ◉
+            </span>
+
+            <span>
+              Universo Pixel - Tocando as melhores!
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="autodj-message">
+
+        <div class="autodj-message-icon">
+          🔊
+        </div>
+
+        <span>
+          Transmissão Automatizada 24h
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
 
 
 </body>
