@@ -310,6 +310,14 @@
 
       box-shadow:
         0 2px 0 #176ca8;
+
+      cursor: pointer;
+
+      position: relative;
+    }
+
+    .profile-avatar-frame:hover {
+      filter: brightness(1.03);
     }
 
     .profile-avatar {
@@ -1415,7 +1423,7 @@
 
           <div
             onclick="abrirModalAvatar()"
-            class="profile-avatar-frame cursor-pointer"
+            class="profile-avatar-frame"
             title="Alterar avatar"
           >
 
@@ -1427,6 +1435,15 @@
             >
 
           </div>
+
+          <!-- Seletor de arquivo invisível -->
+          <input
+            type="file"
+            id="avatar-file-input"
+            accept="image/png,image/jpeg,image/webp"
+            style="display:none;"
+            onchange="processarArquivoAvatar(event)"
+          >
 
 
           <div class="hidden sm:block">
@@ -2515,14 +2532,6 @@
         obterUsuarioPixelizados();
 
 
-      /*
-       * O portal só deve ser acessível por usuários
-       * autenticados/aprovados.
-       *
-       * auth_user_id é utilizado pelo fluxo atual
-       * de autenticação do Pixelizados.
-       */
-
       if (
         !usuario ||
         !usuario.auth_user_id
@@ -2688,7 +2697,7 @@
 
 
     /* =========================================================
-       AVATAR
+       AVATAR - SELETOR DE ARQUIVO
     ========================================================= */
 
     function abrirModalAvatar() {
@@ -2701,39 +2710,129 @@
       }
 
 
-      const avatarAtual =
-        obterPrimeiroValor(
-          usuario,
-          [
-            'avatar_url',
-            'avatar',
-            'avatarUrl'
-          ]
+      const input =
+        document.getElementById(
+          'avatar-file-input'
         );
 
 
-      const novoAvatar =
-        window.prompt(
-          'Cole a URL da imagem do seu avatar:\n\nVocê também pode usar uma URL do DiceBear.',
-          avatarAtual || ''
+      if (!input) {
+
+        console.error(
+          'Campo de upload do avatar não encontrado.'
         );
 
+        return;
 
-      if (
-        novoAvatar === null
-      ) {
+      }
+
+
+      /*
+       * Limpa o valor anterior para permitir
+       * selecionar novamente o mesmo arquivo.
+       */
+
+      input.value = '';
+
+      input.click();
+
+    }
+
+
+    /* =========================================================
+       AVATAR - PROCESSAMENTO DO ARQUIVO
+    ========================================================= */
+
+    async function processarArquivoAvatar(event) {
+
+      const arquivo =
+        event &&
+        event.target &&
+        event.target.files
+          ? event.target.files[0]
+          : null;
+
+
+      if (!arquivo) {
         return;
       }
 
 
-      const url =
-        novoAvatar.trim();
+      /*
+       * Limite de 5 MB.
+       */
+
+      const TAMANHO_MAXIMO =
+        5 * 1024 * 1024;
 
 
-      if (!url) {
+      if (arquivo.size > TAMANHO_MAXIMO) {
 
         alert(
-          'Informe uma URL válida para o avatar.'
+          'A imagem é muito grande. Escolha uma imagem de até 5 MB.'
+        );
+
+        event.target.value = '';
+
+        return;
+
+      }
+
+
+      /*
+       * Tipos permitidos.
+       */
+
+      const TIPOS_PERMITIDOS = [
+        'image/jpeg',
+        'image/png',
+        'image/webp'
+      ];
+
+
+      if (
+        !TIPOS_PERMITIDOS.includes(
+          arquivo.type
+        )
+      ) {
+
+        alert(
+          'Formato inválido. Escolha uma imagem JPG, PNG ou WEBP.'
+        );
+
+        event.target.value = '';
+
+        return;
+
+      }
+
+
+      await enviarAvatarParaSupabase(
+        arquivo
+      );
+
+
+      event.target.value = '';
+
+    }
+
+
+    /* =========================================================
+       AVATAR - UPLOAD SUPABASE
+    ========================================================= */
+
+    async function enviarAvatarParaSupabase(
+      arquivo
+    ) {
+
+      const usuario =
+        obterUsuarioPixelizados();
+
+
+      if (!usuario) {
+
+        alert(
+          'Sua sessão não foi encontrada. Faça login novamente.'
         );
 
         return;
@@ -2747,34 +2846,627 @@
         );
 
 
-      if (elementoAvatar) {
-
-        elementoAvatar.src =
-          url;
-
-      }
+      const frame =
+        document.querySelector(
+          '.profile-avatar-frame'
+        );
 
 
-      /*
-       * Mantém o avatar localmente enquanto
-       * o sistema de perfil/backend não possuir
-       * um campo específico de avatar confirmado.
-       */
+      const imagemAnterior =
+        elementoAvatar
+          ? elementoAvatar.src
+          : null;
+
 
       try {
 
+        /*
+         * Primeiro confirma que existe uma sessão
+         * real no Supabase Auth.
+         */
+
+        const {
+          data: sessaoData,
+          error: sessaoError
+        } =
+          await supabaseClient.auth.getSession();
+
+
+        if (
+          sessaoError ||
+          !sessaoData ||
+          !sessaoData.session ||
+          !sessaoData.session.user
+        ) {
+
+          throw new Error(
+            'Sua sessão do Supabase não está ativa. Faça login novamente.'
+          );
+
+        }
+
+
+        const authUser =
+          sessaoData.session.user;
+
+
+        /*
+         * Segurança extra:
+         * o usuário autenticado no Supabase precisa
+         * corresponder ao auth_user_id utilizado pelo
+         * sistema Pixelizados.
+         */
+
+        if (
+          usuario.auth_user_id &&
+          String(usuario.auth_user_id) !==
+          String(authUser.id)
+        ) {
+
+          throw new Error(
+            'A sessão atual não corresponde ao usuário do Pixelizados.'
+          );
+
+        }
+
+
+        const pastaUsuario =
+          authUser.id;
+
+
+        /*
+         * Mostra estado de carregamento sem alterar
+         * o design do portal.
+         */
+
+        if (frame) {
+
+          frame.style.opacity = '0.65';
+          frame.style.pointerEvents = 'none';
+
+        }
+
+
+        if (elementoAvatar) {
+
+          elementoAvatar.style.opacity = '0.55';
+
+        }
+
+
+        /*
+         * Busca os arquivos existentes na pasta
+         * do próprio usuário.
+         */
+
+        const {
+          data: arquivosExistentes,
+          error: erroListagem
+        } =
+          await supabaseClient.storage
+            .from('avatars')
+            .list(
+              pastaUsuario,
+              {
+                limit: 100,
+                offset: 0
+              }
+            );
+
+
+        if (erroListagem) {
+
+          throw erroListagem;
+
+        }
+
+
+        /*
+         * Remove os avatars antigos da pasta.
+         * Como a policy DELETE restringe a pasta
+         * pelo auth.uid(), o usuário não consegue
+         * remover arquivos de outro usuário.
+         */
+
+        if (
+          arquivosExistentes &&
+          arquivosExistentes.length > 0
+        ) {
+
+          const arquivosParaExcluir =
+            arquivosExistentes
+              .filter(
+                arquivoExistente =>
+                  arquivoExistente &&
+                  arquivoExistente.name
+              )
+              .map(
+                arquivoExistente =>
+                  `${pastaUsuario}/${arquivoExistente.name}`
+              );
+
+
+          if (
+            arquivosParaExcluir.length > 0
+          ) {
+
+            const {
+              error: erroRemocao
+            } =
+              await supabaseClient.storage
+                .from('avatars')
+                .remove(
+                  arquivosParaExcluir
+                );
+
+
+            if (erroRemocao) {
+
+              throw erroRemocao;
+
+            }
+
+          }
+
+        }
+
+
+        /*
+         * Define a extensão correta.
+         */
+
+        let extensao = 'jpg';
+
+
+        if (
+          arquivo.type === 'image/png'
+        ) {
+
+          extensao = 'png';
+
+        } else if (
+          arquivo.type === 'image/webp'
+        ) {
+
+          extensao = 'webp';
+
+        }
+
+
+        /*
+         * Caminho final:
+         *
+         * avatars/
+         *   ID_DO_USUARIO/
+         *     avatar.jpg
+         */
+
+        const caminhoAvatar =
+          `${pastaUsuario}/avatar.${extensao}`;
+
+
+        /*
+         * Faz o upload.
+         */
+
+        const {
+          data: uploadData,
+          error: uploadError
+        } =
+          await supabaseClient.storage
+            .from('avatars')
+            .upload(
+              caminhoAvatar,
+              arquivo,
+              {
+                cacheControl: '3600',
+                upsert: true,
+                contentType: arquivo.type
+              }
+            );
+
+
+        if (uploadError) {
+
+          throw uploadError;
+
+        }
+
+
+        /*
+         * Cria uma URL assinada.
+         *
+         * O bucket pode continuar protegido.
+         * Não precisamos tornar as imagens públicas.
+         */
+
+        const {
+          data: signedData,
+          error: signedError
+        } =
+          await supabaseClient.storage
+            .from('avatars')
+            .createSignedUrl(
+              caminhoAvatar,
+              60 * 60 * 24 * 365
+            );
+
+
+        if (signedError) {
+
+          throw signedError;
+
+        }
+
+
+        if (
+          !signedData ||
+          !signedData.signedUrl
+        ) {
+
+          throw new Error(
+            'O Supabase não retornou uma URL válida para o avatar.'
+          );
+
+        }
+
+
+        const avatarUrl =
+          signedData.signedUrl;
+
+
+        /*
+         * Atualiza imediatamente na tela.
+         */
+
+        if (elementoAvatar) {
+
+          elementoAvatar.src =
+            avatarUrl;
+
+          elementoAvatar.style.opacity =
+            '1';
+
+          elementoAvatar.onerror =
+            function() {
+
+              this.onerror = null;
+
+              this.src =
+                `https://api.dicebear.com/7.x/pixel-art/svg?seed=${encodeURIComponent(
+                  obterPrimeiroValor(
+                    usuario,
+                    [
+                      'habbo_nick',
+                      'nick',
+                      'username',
+                      'nome',
+                      'display_name'
+                    ]
+                  ) || 'Pixelizado'
+                )}`;
+
+            };
+
+        }
+
+
+        /*
+         * Guarda o caminho do Storage e a URL atual
+         * localmente.
+         *
+         * O caminho é a informação importante para
+         * recuperar o avatar novamente.
+         */
+
+        usuario.avatar_path =
+          uploadData &&
+          uploadData.path
+            ? uploadData.path
+            : caminhoAvatar;
+
+
         usuario.avatar_url =
-          url;
+          avatarUrl;
+
 
         localStorage.setItem(
           'pixelizados_user',
           JSON.stringify(usuario)
         );
 
+
+        alert(
+          'Seu avatar foi atualizado com sucesso!'
+        );
+
+
       } catch (error) {
 
         console.error(
-          'Não foi possível salvar o avatar:',
+          'Erro ao enviar avatar:',
+          error
+        );
+
+
+        /*
+         * Restaura a imagem anterior se houver erro.
+         */
+
+        if (
+          elementoAvatar &&
+          imagemAnterior
+        ) {
+
+          elementoAvatar.src =
+            imagemAnterior;
+
+        }
+
+
+        if (elementoAvatar) {
+
+          elementoAvatar.style.opacity =
+            '1';
+
+        }
+
+
+        const mensagem =
+          error &&
+          error.message
+            ? error.message
+            : 'Não foi possível enviar seu avatar.';
+
+
+        alert(
+          `Não foi possível atualizar o avatar.\n\n${mensagem}`
+        );
+
+
+      } finally {
+
+        if (frame) {
+
+          frame.style.opacity = '1';
+          frame.style.pointerEvents = 'auto';
+
+        }
+
+      }
+
+    }
+
+
+    /* =========================================================
+       AVATAR - RECUPERAÇÃO DO STORAGE
+    ========================================================= */
+
+    async function carregarAvatarDoSupabase() {
+
+      const usuario =
+        obterUsuarioPixelizados();
+
+
+      if (!usuario) {
+        return;
+
+      }
+
+
+      try {
+
+        /*
+         * Verifica a sessão real do Supabase.
+         */
+
+        const {
+          data: sessaoData,
+          error: sessaoError
+        } =
+          await supabaseClient.auth.getSession();
+
+
+        if (
+          sessaoError ||
+          !sessaoData ||
+          !sessaoData.session ||
+          !sessaoData.session.user
+        ) {
+
+          return;
+
+        }
+
+
+        const authUser =
+          sessaoData.session.user;
+
+
+        /*
+         * Se existir auth_user_id local, confirma
+         * que é o mesmo usuário autenticado.
+         */
+
+        if (
+          usuario.auth_user_id &&
+          String(usuario.auth_user_id) !==
+          String(authUser.id)
+        ) {
+
+          return;
+
+        }
+
+
+        const pastaUsuario =
+          authUser.id;
+
+
+        /*
+         * Se já temos o caminho salvo, tentamos
+         * recuperar diretamente.
+         */
+
+        let caminhoAvatar =
+          usuario.avatar_path || null;
+
+
+        /*
+         * Se não existe caminho salvo, procura
+         * automaticamente dentro da pasta do usuário.
+         */
+
+        if (!caminhoAvatar) {
+
+          const {
+            data: arquivos,
+            error: erroListagem
+          } =
+            await supabaseClient.storage
+              .from('avatars')
+              .list(
+                pastaUsuario,
+                {
+                  limit: 100,
+                  offset: 0
+                }
+              );
+
+
+          if (erroListagem) {
+
+            console.warn(
+              'Não foi possível listar os avatars:',
+              erroListagem
+            );
+
+            return;
+
+          }
+
+
+          if (
+            arquivos &&
+            arquivos.length > 0
+          ) {
+
+            /*
+             * Procura preferencialmente um arquivo
+             * chamado avatar.
+             */
+
+            const arquivoAvatar =
+              arquivos.find(
+                arquivo =>
+                  arquivo &&
+                  /^avatar\.(jpg|jpeg|png|webp)$/i.test(
+                    arquivo.name
+                  )
+              ) ||
+              arquivos.find(
+                arquivo =>
+                  arquivo &&
+                  /\.(jpg|jpeg|png|webp)$/i.test(
+                    arquivo.name
+                  )
+              );
+
+
+            if (arquivoAvatar) {
+
+              caminhoAvatar =
+                `${pastaUsuario}/${arquivoAvatar.name}`;
+
+            }
+
+          }
+
+        }
+
+
+        if (!caminhoAvatar) {
+
+          return;
+
+        }
+
+
+        /*
+         * Cria nova URL assinada para a imagem.
+         * Isso evita depender de uma URL pública.
+         */
+
+        const {
+          data: signedData,
+          error: signedError
+        } =
+          await supabaseClient.storage
+            .from('avatars')
+            .createSignedUrl(
+              caminhoAvatar,
+              60 * 60 * 24 * 365
+            );
+
+
+        if (signedError) {
+
+          console.warn(
+            'Não foi possível gerar URL do avatar:',
+            signedError
+          );
+
+          return;
+
+        }
+
+
+        if (
+          !signedData ||
+          !signedData.signedUrl
+        ) {
+
+          return;
+
+        }
+
+
+        const elementoAvatar =
+          document.getElementById(
+            'user-avatar'
+          );
+
+
+        if (elementoAvatar) {
+
+          elementoAvatar.src =
+            signedData.signedUrl;
+
+        }
+
+
+        /*
+         * Atualiza os dados locais para evitar
+         * uma nova busca pelo nome do arquivo.
+         */
+
+        usuario.avatar_path =
+          caminhoAvatar;
+
+        usuario.avatar_url =
+          signedData.signedUrl;
+
+
+        localStorage.setItem(
+          'pixelizados_user',
+          JSON.stringify(usuario)
+        );
+
+
+      } catch (error) {
+
+        console.warn(
+          'Não foi possível carregar avatar do Supabase:',
           error
         );
 
@@ -2960,11 +3652,6 @@
 
         } catch (error) {
 
-          /*
-           * O usuário pode simplesmente ter cancelado
-           * a janela de compartilhamento.
-           */
-
           if (
             error &&
             error.name === 'AbortError'
@@ -3093,15 +3780,6 @@
       }
 
 
-      /*
-       * O formulário ainda não possui integração
-       * com uma tabela Supabase confirmada para
-       * candidaturas.
-       *
-       * Por enquanto impedimos o envio silencioso
-       * e avisamos o usuário.
-       */
-
       alert(
         'Candidatura preenchida com sucesso! O envio para o sistema de recrutamento será conectado em uma próxima etapa.'
       );
@@ -3148,12 +3826,6 @@
       'DOMContentLoaded',
       function() {
 
-        /*
-         * Primeiro protegemos o portal.
-         * Se não houver sessão local válida,
-         * a função redireciona para index.html.
-         */
-
         if (!verificarAcessoPortal()) {
           return;
         }
@@ -3170,7 +3842,7 @@
 
 
   <!-- =======================================================
-       SUPABASE / LOGOUT
+       SUPABASE / AVATAR / LOGOUT
   ======================================================== -->
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -3192,22 +3864,34 @@
 
 
     /* =========================================================
+       CARREGAR AVATAR PERSISTENTE
+    ========================================================= */
+
+    document.addEventListener(
+      'DOMContentLoaded',
+      function() {
+
+        if (!verificarAcessoPortal()) {
+          return;
+        }
+
+
+        /*
+         * O script do Supabase já foi carregado
+         * neste ponto.
+         */
+
+        carregarAvatarDoSupabase();
+
+      }
+    );
+
+
+    /* =========================================================
        LOGOUT
     ========================================================= */
 
     async function fazerLogout() {
-
-      /*
-       * IMPORTANTE:
-       * Antes havia:
-       *
-       * document.querySelector('.logout-button')
-       *
-       * Isso pegava o botão do Fundador,
-       * pois ele também usa essa classe.
-       *
-       * Agora usamos o ID específico do botão Sair.
-       */
 
       const botao =
         document.getElementById(
@@ -3269,13 +3953,6 @@
 
         }
 
-
-        /*
-         * Mesmo que a sessão do Supabase
-         * já não exista, removemos a sessão
-         * local para evitar que o usuário
-         * permaneça preso no portal.
-         */
 
         try {
 
