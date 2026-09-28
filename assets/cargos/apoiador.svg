@@ -1,0 +1,311 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <!-- Azul principal -->
+    <linearGradient id="blue" x1="61" y1="51" x2="195" y2="211" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#DDF8FF"/>
+      <stop offset="0.2" stop-color="#72D9FF"/>
+      <stop offset="0.48" stop-color="#269DD5"/>
+      <stop offset="0.75" stop-color="#12658F"/>
+      <stop offset="1" stop-color="#073B59"/>
+    </linearGradient>
+
+    <!-- Azul escuro -->
+    <linearGradient id="blueDark" x1="91" y1="115" x2="177" y2="195" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#126F9F"/>
+      <stop offset="0.5" stop-color="#094D72"/>
+      <stop offset="1" stop-color="#052E46"/>
+    </linearGradient>
+
+    <!-- Branco da página -->
+    <linearGradient id="paper" x1="89" y1="63" x2="173" y2="181" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.65" stop-color="#EAF7FB"/>
+      <stop offset="1" stop-color="#BBDDE8"/>
+    </linearGradient>
+
+    <!-- Ouro -->
+    <linearGradient id="gold" x1="134" y1="104" x2="199" y2="202" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF7B0"/>
+      <stop offset="0.2" stop-color="#FFD95A"/>
+      <stop offset="0.5" stop-color="#F0B52A"/>
+      <stop offset="0.78" stop-color="#C17D0D"/>
+      <stop offset="1" stop-color="#855006"/>
+    </linearGradient>
+
+    <!-- Ouro claro -->
+    <linearGradient id="goldLight" x1="150" y1="102" x2="198" y2="171" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFDE2"/>
+      <stop offset="0.35" stop-color="#FFE979"/>
+      <stop offset="0.7" stop-color="#F3BC35"/>
+      <stop offset="1" stop-color="#B36D08"/>
+    </linearGradient>
+
+    <!-- Brilho -->
+    <linearGradient id="shine" x1="82" y1="62" x2="139" y2="133" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="shadowBlur" x="25" y="28" width="211" height="215" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+
+    <filter id="glow" x="116" y="78" width="112" height="137" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+  </defs>
+
+  <!-- Halo da pena -->
+  <path
+    d="M158 89L203 126L217 178L177 214L134 188L158 89Z"
+    fill="#FFD94D"
+    opacity="0.16"
+    filter="url(#glow)"
+  />
+
+  <!-- Sombra -->
+  <path
+    d="M54 177L78 207L158 207L192 184L174 202L157 216H81L62 195L54 177Z"
+    fill="#000"
+    opacity="0.17"
+  />
+
+  <g filter="url(#shadowBlur)">
+
+    <!-- JORNAL — parte traseira -->
+    <path
+      d="M48 66
+         L151 52
+         L181 72
+         L177 170
+         L153 193
+         L66 193
+         L48 174
+         Z"
+      fill="url(#blueDark)"
+      stroke="#063750"
+      stroke-width="5"
+      stroke-linejoin="round"
+    />
+
+    <!-- Folha principal -->
+    <path
+      d="M55 62
+         L151 50
+         L174 68
+         L170 165
+         L151 183
+         L66 183
+         L55 170
+         Z"
+      fill="url(#paper)"
+      stroke="#12698F"
+      stroke-width="4"
+      stroke-linejoin="round"
+    />
+
+    <!-- Dobra superior -->
+    <path
+      d="M151 50L151 72L174 68L151 50Z"
+      fill="#B6DCE7"
+      stroke="#12698F"
+      stroke-width="3"
+      stroke-linejoin="round"
+    />
+
+    <!-- Cabeçalho azul -->
+    <path
+      d="M63 76L163 64L162 91L62 103L63 76Z"
+      fill="url(#blue)"
+    />
+
+    <!-- Título do jornal -->
+    <path
+      d="M72 82L123 76"
+      stroke="#FFFFFF"
+      stroke-width="7"
+      stroke-linecap="square"
+    />
+
+    <path
+      d="M130 75L153 72"
+      stroke="#D8F7FF"
+      stroke-width="5"
+      stroke-linecap="square"
+    />
+
+    <!-- Linhas de texto -->
+    <path
+      d="M70 115L151 105"
+      stroke="#68A7BC"
+      stroke-width="5"
+      stroke-linecap="square"
+    />
+
+    <path
+      d="M70 127L153 117"
+      stroke="#8BB9C7"
+      stroke-width="4"
+      stroke-linecap="square"
+    />
+
+    <path
+      d="M69 139L136 131"
+      stroke="#8BB9C7"
+      stroke-width="4"
+      stroke-linecap="square"
+    />
+
+    <!-- Caixa de notícia -->
+    <path
+      d="M70 151L103 147L103 174L70 174V151Z"
+      fill="#269DD5"
+      opacity="0.9"
+    />
+
+    <path
+      d="M112 150L158 144"
+      stroke="#8BB9C7"
+      stroke-width="4"
+      stroke-linecap="square"
+    />
+
+    <path
+      d="M112 161L153 156"
+      stroke="#8BB9C7"
+      stroke-width="4"
+      stroke-linecap="square"
+    />
+
+    <path
+      d="M112 171L145 167"
+      stroke="#8BB9C7"
+      stroke-width="4"
+      stroke-linecap="square"
+    />
+
+    <!-- Reflexo da folha -->
+    <path
+      d="M62 65L150 53L150 69L71 79L62 91V65Z"
+      fill="url(#shine)"
+      opacity="0.65"
+    />
+
+    <!-- PENA — halo -->
+    <path
+      d="M155 101
+         C169 78 197 77 211 89
+         C209 116 190 143 166 160
+         L145 143
+         Z"
+      fill="#FFD84D"
+      opacity="0.16"
+    />
+
+    <!-- Pena traseira -->
+    <path
+      d="M149 157
+         C163 136 176 113 190 94
+         C198 83 211 85 215 92
+         C214 119 197 147 174 168
+         L151 180
+         Z"
+      fill="#8A5808"
+      stroke="#704405"
+      stroke-width="4"
+      stroke-linejoin="round"
+    />
+
+    <!-- Pena principal -->
+    <path
+      d="M145 153
+         C158 131 173 106 188 88
+         C196 79 208 82 212 89
+         C209 115 192 142 169 161
+         L149 173
+         Z"
+      fill="url(#gold)"
+      stroke="#9A650B"
+      stroke-width="4"
+      stroke-linejoin="round"
+    />
+
+    <!-- Lado claro da pena -->
+    <path
+      d="M145 153
+         C158 131 173 106 188 88
+         C193 84 198 83 202 84
+         C188 108 173 130 155 150
+         L149 173L145 153Z"
+      fill="url(#goldLight)"
+    />
+
+    <!-- Haste da pena -->
+    <path
+      d="M142 181L202 91"
+      stroke="#FFF0A0"
+      stroke-width="7"
+      stroke-linecap="round"
+    />
+
+    <path
+      d="M142 181L202 91"
+      stroke="#A96C08"
+      stroke-width="3"
+      stroke-linecap="round"
+    />
+
+    <!-- Divisões da pena -->
+    <path
+      d="M172 111L192 104"
+      stroke="#A96C08"
+      stroke-width="3"
+      opacity="0.8"
+    />
+
+    <path
+      d="M163 124L186 117"
+      stroke="#A96C08"
+      stroke-width="3"
+      opacity="0.8"
+    />
+
+    <path
+      d="M155 137L179 129"
+      stroke="#A96C08"
+      stroke-width="3"
+      opacity="0.8"
+    />
+
+    <path
+      d="M150 149L171 142"
+      stroke="#A96C08"
+      stroke-width="3"
+      opacity="0.8"
+    />
+
+    <!-- Ponta metálica -->
+    <path
+      d="M142 181L137 193L149 187L154 176L142 181Z"
+      fill="url(#goldLight)"
+      stroke="#95600A"
+      stroke-width="3"
+      stroke-linejoin="round"
+    />
+
+    <!-- Brilho da pena -->
+    <path
+      d="M194 88L199 94L204 96L198 99L194 106L190 99L185 96L190 93L194 88Z"
+      fill="#FFFDE0"
+      opacity="0.9"
+    />
+
+  </g>
+
+  <!-- Pixels decorativos -->
+  <rect x="42" y="91" width="7" height="7" fill="#8BE7FF" opacity="0.8"/>
+  <rect x="181" y="67" width="7" height="7" fill="#FFF1A0" opacity="0.8"/>
+  <rect x="205" y="154" width="6" height="6" fill="#FFE879" opacity="0.7"/>
+
+</svg>
