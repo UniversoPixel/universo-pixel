@@ -1474,7 +1474,7 @@
           id="btn-fundador"
           onclick="abrirPainelFundador()"
           class="logout-button"
-          title="Painel do Fundador"
+          title="Painel Administrativo"
           style="display:none; color:#b98500; border-color:#ecd47b; background:#fff9df;"
         >
 
@@ -2860,11 +2860,6 @@
 
       try {
 
-        /*
-         * Primeiro confirma que existe uma sessão
-         * real no Supabase Auth.
-         */
-
         const {
           data: sessaoData,
           error: sessaoError
@@ -2890,13 +2885,6 @@
           sessaoData.session.user;
 
 
-        /*
-         * Segurança extra:
-         * o usuário autenticado no Supabase precisa
-         * corresponder ao auth_user_id utilizado pelo
-         * sistema Pixelizados.
-         */
-
         if (
           usuario.auth_user_id &&
           String(usuario.auth_user_id) !==
@@ -2914,11 +2902,6 @@
           authUser.id;
 
 
-        /*
-         * Mostra estado de carregamento sem alterar
-         * o design do portal.
-         */
-
         if (frame) {
 
           frame.style.opacity = '0.65';
@@ -2933,11 +2916,6 @@
 
         }
 
-
-        /*
-         * Busca os arquivos existentes na pasta
-         * do próprio usuário.
-         */
 
         const {
           data: arquivosExistentes,
@@ -2960,13 +2938,6 @@
 
         }
 
-
-        /*
-         * Remove os avatars antigos da pasta.
-         * Como a policy DELETE restringe a pasta
-         * pelo auth.uid(), o usuário não consegue
-         * remover arquivos de outro usuário.
-         */
 
         if (
           arquivosExistentes &&
@@ -3011,10 +2982,6 @@
         }
 
 
-        /*
-         * Define a extensão correta.
-         */
-
         let extensao = 'jpg';
 
 
@@ -3033,21 +3000,9 @@
         }
 
 
-        /*
-         * Caminho final:
-         *
-         * avatars/
-         *   ID_DO_USUARIO/
-         *     avatar.jpg
-         */
-
         const caminhoAvatar =
           `${pastaUsuario}/avatar.${extensao}`;
 
-
-        /*
-         * Faz o upload.
-         */
 
         const {
           data: uploadData,
@@ -3072,13 +3027,6 @@
 
         }
 
-
-        /*
-         * Cria uma URL assinada.
-         *
-         * O bucket pode continuar protegido.
-         * Não precisamos tornar as imagens públicas.
-         */
 
         const {
           data: signedData,
@@ -3115,10 +3063,6 @@
           signedData.signedUrl;
 
 
-        /*
-         * Atualiza imediatamente na tela.
-         */
-
         if (elementoAvatar) {
 
           elementoAvatar.src =
@@ -3151,14 +3095,6 @@
         }
 
 
-        /*
-         * Guarda o caminho do Storage e a URL atual
-         * localmente.
-         *
-         * O caminho é a informação importante para
-         * recuperar o avatar novamente.
-         */
-
         usuario.avatar_path =
           uploadData &&
           uploadData.path
@@ -3188,10 +3124,6 @@
           error
         );
 
-
-        /*
-         * Restaura a imagem anterior se houver erro.
-         */
 
         if (
           elementoAvatar &&
@@ -3256,10 +3188,6 @@
 
       try {
 
-        /*
-         * Verifica a sessão real do Supabase.
-         */
-
         const {
           data: sessaoData,
           error: sessaoError
@@ -3283,11 +3211,6 @@
           sessaoData.session.user;
 
 
-        /*
-         * Se existir auth_user_id local, confirma
-         * que é o mesmo usuário autenticado.
-         */
-
         if (
           usuario.auth_user_id &&
           String(usuario.auth_user_id) !==
@@ -3303,19 +3226,9 @@
           authUser.id;
 
 
-        /*
-         * Se já temos o caminho salvo, tentamos
-         * recuperar diretamente.
-         */
-
         let caminhoAvatar =
           usuario.avatar_path || null;
 
-
-        /*
-         * Se não existe caminho salvo, procura
-         * automaticamente dentro da pasta do usuário.
-         */
 
         if (!caminhoAvatar) {
 
@@ -3350,11 +3263,6 @@
             arquivos &&
             arquivos.length > 0
           ) {
-
-            /*
-             * Procura preferencialmente um arquivo
-             * chamado avatar.
-             */
 
             const arquivoAvatar =
               arquivos.find(
@@ -3391,11 +3299,6 @@
 
         }
 
-
-        /*
-         * Cria nova URL assinada para a imagem.
-         * Isso evita depender de uma URL pública.
-         */
 
         const {
           data: signedData,
@@ -3445,11 +3348,6 @@
         }
 
 
-        /*
-         * Atualiza os dados locais para evitar
-         * uma nova busca pelo nome do arquivo.
-         */
-
         usuario.avatar_path =
           caminhoAvatar;
 
@@ -3479,6 +3377,48 @@
        FUNDADOR
     ========================================================= */
 
+    function obterCargoUsuario() {
+
+      const usuario =
+        obterUsuarioPixelizados();
+
+
+      if (!usuario) {
+        return null;
+      }
+
+
+      const cargo =
+        usuario.role ||
+        usuario.cargo ||
+        usuario.cargo_codigo ||
+        usuario.cargo_code ||
+        null;
+
+
+      if (!cargo) {
+        return null;
+      }
+
+
+      return String(cargo)
+        .trim()
+        .toUpperCase();
+
+    }
+
+
+    function usuarioEhFundador() {
+
+      const cargo =
+        obterCargoUsuario();
+
+
+      return cargo === 'FUNDADOR';
+
+    }
+
+
     function verificarAcessoFundador() {
 
       const btnFundador =
@@ -3486,19 +3426,13 @@
           'btn-fundador'
         );
 
+
       if (!btnFundador) {
         return;
       }
 
 
-      const usuario =
-        obterUsuarioPixelizados();
-
-
-      if (
-        usuario &&
-        usuario.role === 'FUNDADOR'
-      ) {
+      if (usuarioEhFundador()) {
 
         btnFundador.style.display =
           'flex';
@@ -3515,14 +3449,7 @@
 
     function abrirPainelFundador() {
 
-      const usuario =
-        obterUsuarioPixelizados();
-
-
-      if (
-        !usuario ||
-        usuario.role !== 'FUNDADOR'
-      ) {
+      if (!usuarioEhFundador()) {
 
         alert(
           'Acesso restrito ao Fundador.'
@@ -3534,7 +3461,7 @@
 
 
       window.location.href =
-        'fundador.html';
+        'admin.html';
 
     }
 
@@ -3875,11 +3802,6 @@
           return;
         }
 
-
-        /*
-         * O script do Supabase já foi carregado
-         * neste ponto.
-         */
 
         carregarAvatarDoSupabase();
 
