@@ -103,8 +103,6 @@
     }
 
 
-    /* textura sutil pixel */
-
     body::before {
       content: "";
 
@@ -491,7 +489,7 @@
 
 
     /* =========================================================
-       CARDS — PIXEL / FÃ-SITE
+       CARDS
     ========================================================= */
 
     .pixel-card {
@@ -542,10 +540,6 @@
       box-shadow: var(--shadow-hover);
     }
 
-
-    /* =========================================================
-       TÍTULOS DE SEÇÃO
-    ========================================================= */
 
     .section-title {
       display: flex;
@@ -602,10 +596,6 @@
       color: #91a2b0;
     }
 
-
-    /* =========================================================
-       CABEÇALHO DOS CARDS
-    ========================================================= */
 
     .card-header-title {
       display: flex;
@@ -1362,6 +1352,7 @@
 
 <body>
 
+
   <!-- =======================================================
        HEADER
   ======================================================== -->
@@ -1369,6 +1360,7 @@
   <header class="top-header-bar px-4 sm:px-8 py-3">
 
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+
 
       <!-- LOGO -->
 
@@ -1389,6 +1381,7 @@
       <!-- PERFIL -->
 
       <div class="profile-area">
+
 
         <!-- PX -->
 
@@ -1456,6 +1449,21 @@
           </div>
 
         </div>
+
+
+        <!-- PAINEL DO FUNDADOR -->
+
+        <button
+          id="btn-fundador"
+          onclick="abrirPainelFundador()"
+          class="logout-button"
+          title="Painel do Fundador"
+          style="display:none; color:#b98500; border-color:#ecd47b; background:#fff9df;"
+        >
+
+          <i class="fa-solid fa-crown"></i>
+
+        </button>
 
 
         <!-- SAIR -->
@@ -1560,7 +1568,9 @@
 
   <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
 
+
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-7">
+
 
       <!-- ===================================================
            ESQUERDA
@@ -1568,11 +1578,13 @@
 
       <div class="lg:col-span-2 space-y-7">
 
+
         <!-- =================================================
              NOTÍCIA
         ================================================== -->
 
         <section class="pixel-card pixel-card-hover p-5 sm:p-6">
+
 
           <div class="card-header-title mb-5">
 
@@ -1609,6 +1621,7 @@
 
 
           <article>
+
 
             <div class="text-center max-w-3xl mx-auto mb-5">
 
@@ -1657,8 +1670,6 @@
             </div>
 
 
-            <!-- IMAGEM -->
-
             <div class="news-image-frame">
 
               <img
@@ -1670,16 +1681,12 @@
             </div>
 
 
-            <!-- TEXTO -->
-
             <p
               class="text-sm leading-relaxed text-slate-600 mt-5 px-1"
             >
               Confira as novidades exclusivas, eventos programados e melhorias da nossa plataforma para esta temporada. Junte-se aos membros da comunidade, acumule pixels virtuais no seu perfil e ajude a construir o melhor espaço de interação do hotel!
             </p>
 
-
-            <!-- INTERAÇÕES -->
 
             <div
               class="flex items-center justify-between mt-5 pt-4 border-t-2 border-slate-100"
@@ -1740,6 +1747,7 @@
 
         <section class="pixel-card pixel-card-hover p-5 sm:p-6">
 
+
           <div class="card-header-title mb-5">
 
             <div class="section-title">
@@ -1778,7 +1786,6 @@
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-            <!-- SORTEIO -->
 
             <div class="event-card">
 
@@ -1843,8 +1850,6 @@
 
             </div>
 
-
-            <!-- RÁDIO -->
 
             <div class="event-card">
 
@@ -1919,9 +1924,6 @@
 
       <aside class="space-y-5">
 
-        <!-- =================================================
-             PESQUISA
-        ================================================== -->
 
         <div class="pixel-card p-3">
 
@@ -1948,10 +1950,6 @@
 
         </div>
 
-
-        <!-- =================================================
-             RANKING
-        ================================================== -->
 
         <section class="pixel-card pixel-card-hover p-5">
 
@@ -1985,8 +1983,6 @@
 
           <div class="space-y-2.5">
 
-            <!-- 1 -->
-
             <div class="ranking-user top-user">
 
               <div class="pixel-medal">
@@ -2019,8 +2015,6 @@
 
             </div>
 
-
-            <!-- 2 -->
 
             <div class="ranking-user">
 
@@ -2056,8 +2050,6 @@
 
             </div>
 
-
-            <!-- 3 -->
 
             <div class="ranking-user">
 
@@ -2097,10 +2089,6 @@
 
         </section>
 
-
-        <!-- =================================================
-             PARCEIROS
-        ================================================== -->
 
         <section class="pixel-card pixel-card-hover p-5">
 
@@ -2186,10 +2174,6 @@
         </section>
 
 
-        <!-- =================================================
-             TRABALHE CONOSCO
-        ================================================== -->
-
         <section
           id="vagas-form"
           class="pixel-card pixel-card-hover p-5"
@@ -2243,8 +2227,6 @@
             onsubmit="event.preventDefault();"
           >
 
-            <!-- CARGO -->
-
             <div class="form-group">
 
               <label for="vaga-cargo">
@@ -2291,8 +2273,6 @@
             </div>
 
 
-            <!-- DISCORD -->
-
             <div class="form-group">
 
               <label for="vaga-discord">
@@ -2315,8 +2295,6 @@
 
             </div>
 
-
-            <!-- IDADE -->
 
             <div class="form-group">
 
@@ -2341,8 +2319,6 @@
 
             </div>
 
-
-            <!-- EXPERIÊNCIAS -->
 
             <div class="form-group">
 
@@ -2370,8 +2346,6 @@
 
             </div>
 
-
-            <!-- ENVIAR -->
 
             <button
               type="submit"
@@ -2404,8 +2378,6 @@
     <div
       class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2"
     >
-
-      <!-- PLAYER -->
 
       <div class="autodj-box">
 
@@ -2460,8 +2432,6 @@
       </div>
 
 
-      <!-- STATUS -->
-
       <div
         class="bg-white border-2 border-[#dce9f0] rounded-lg px-3 py-2 flex items-center gap-2 shadow-sm"
       >
@@ -2484,7 +2454,79 @@
 
 
   <!-- =======================================================
-       SUPABASE AUTH — LOGOUT
+       FUNÇÃO FUNDADOR
+  ======================================================== -->
+
+  <script>
+
+    function verificarAcessoFundador() {
+
+      const btnFundador =
+        document.getElementById('btn-fundador');
+
+      if (!btnFundador) return;
+
+      try {
+
+        const usuario =
+          JSON.parse(
+            localStorage.getItem('pixelizados_user') || 'null'
+          );
+
+        if (usuario && usuario.role === 'FUNDADOR') {
+
+          btnFundador.style.display = 'flex';
+
+        } else {
+
+          btnFundador.style.display = 'none';
+
+        }
+
+      } catch (error) {
+
+        console.error(
+          'Erro ao verificar usuário:',
+          error
+        );
+
+        btnFundador.style.display = 'none';
+
+      }
+
+    }
+
+
+    function abrirPainelFundador() {
+
+      const usuario =
+        JSON.parse(
+          localStorage.getItem('pixelizados_user') || 'null'
+        );
+
+      if (!usuario || usuario.role !== 'FUNDADOR') {
+
+        alert('Acesso restrito ao Fundador.');
+
+        return;
+
+      }
+
+      window.location.href = 'fundador.html';
+
+    }
+
+
+    document.addEventListener(
+      'DOMContentLoaded',
+      verificarAcessoFundador
+    );
+
+  </script>
+
+
+  <!-- =======================================================
+       SUPABASE / LOGOUT
   ======================================================== -->
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -2497,11 +2539,11 @@
     const SUPABASE_KEY =
       'sb_publishable_J60PUy390KR4sRTGe9tjNg_wllyvUAj';
 
-
-    const supabaseClient = window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
+    const supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
 
 
     async function fazerLogout() {
@@ -2509,12 +2551,14 @@
       const botao =
         document.querySelector('.logout-button');
 
-
       try {
 
         if (botao) {
+
           botao.disabled = true;
+
           botao.style.opacity = '0.7';
+
         }
 
 
@@ -2523,7 +2567,9 @@
 
 
         if (error) {
+
           throw error;
+
         }
 
 
@@ -2535,7 +2581,6 @@
         window.location.href =
           'index.html';
 
-
       } catch (error) {
 
         console.error(
@@ -2545,8 +2590,11 @@
 
 
         if (botao) {
+
           botao.disabled = false;
+
           botao.style.opacity = '1';
+
         }
 
 
@@ -2559,6 +2607,7 @@
     }
 
   </script>
+
 
 </body>
 </html>
