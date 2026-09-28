@@ -134,6 +134,32 @@
 
 
     /* =========================================================
+       EMBLEMAS DOS CARGOS
+    ========================================================= */
+
+    .role-svg {
+      width: 30px;
+      height: 30px;
+
+      object-fit: contain;
+
+      display: block;
+
+      flex-shrink: 0;
+    }
+
+    .role-badge-icon .role-svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    .permission-role-icon .role-svg {
+      width: 38px;
+      height: 38px;
+    }
+
+
+    /* =========================================================
        HEADER
     ========================================================= */
 
@@ -273,7 +299,13 @@
     }
 
     .role-badge-icon {
-      font-size: 13px;
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      width: 25px;
+      height: 25px;
     }
 
     .role-badge-text {
@@ -1068,7 +1100,15 @@
     }
 
     .permission-role-icon {
-      font-size: 15px;
+      width: 38px;
+      height: 38px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
     }
 
     .permission-role-name {
@@ -1315,7 +1355,6 @@
             class="role-badge-icon"
             id="role-icon"
           >
-            👑
           </span>
 
           <span
@@ -1560,7 +1599,11 @@
         <div class="welcome-content">
 
           <span class="welcome-kicker">
-            <i class="fa-solid fa-crown"></i>
+            <span
+              id="welcome-role-icon"
+              class="role-badge-icon"
+            ></span>
+
             <span id="welcome-role">
               Aclamado/Fundador
             </span>
@@ -2051,7 +2094,11 @@
           <div class="permission-role-left">
 
             <span class="permission-role-icon">
-              👑
+              <img
+                src="assets/cargos/fundador.svg"
+                class="role-svg"
+                alt="Fundador"
+              >
             </span>
 
             <div>
@@ -2080,7 +2127,11 @@
           <div class="permission-role-left">
 
             <span class="permission-role-icon">
-              ⚜️
+              <img
+                src="assets/cargos/alta-cupula.svg"
+                class="role-svg"
+                alt="Alta Cúpula"
+              >
             </span>
 
             <div>
@@ -2109,7 +2160,11 @@
           <div class="permission-role-left">
 
             <span class="permission-role-icon">
-              💠
+              <img
+                src="assets/cargos/curadoria.svg"
+                class="role-svg"
+                alt="Curadoria"
+              >
             </span>
 
             <div>
@@ -2138,7 +2193,11 @@
           <div class="permission-role-left">
 
             <span class="permission-role-icon">
-              📰
+              <img
+                src="assets/cargos/voz-oficial.svg"
+                class="role-svg"
+                alt="Voz Oficial"
+              >
             </span>
 
             <div>
@@ -2167,7 +2226,11 @@
           <div class="permission-role-left">
 
             <span class="permission-role-icon">
-              🚀
+              <img
+                src="assets/cargos/apoiador.svg"
+                class="role-svg"
+                alt="Apoiador"
+              >
             </span>
 
             <div>
@@ -2196,7 +2259,11 @@
           <div class="permission-role-left">
 
             <span class="permission-role-icon">
-              🪪
+              <img
+                src="assets/cargos/entusiasta.svg"
+                class="role-svg"
+                alt="Entusiasta"
+              >
             </span>
 
             <div>
@@ -2215,35 +2282,6 @@
 
           <span class="permission-status">
             Membro
-          </span>
-
-        </div>
-
-
-        <div class="permission-role">
-
-          <div class="permission-role-left">
-
-            <span class="permission-role-icon">
-              🎟️
-            </span>
-
-            <div>
-
-              <div class="permission-role-name">
-                Espectador
-              </div>
-
-              <div class="permission-role-code">
-                ESPECTADOR
-              </div>
-
-            </div>
-
-          </div>
-
-          <span class="permission-status">
-            Visitante
           </span>
 
         </div>
@@ -2297,37 +2335,32 @@
 
       FUNDADOR: {
         nome: 'Aclamado/Fundador',
-        icone: '👑'
+        icone: 'assets/cargos/fundador.svg'
       },
 
       ALTA_CUPULA: {
         nome: 'Alta Cúpula',
-        icone: '⚜️'
+        icone: 'assets/cargos/alta-cupula.svg'
       },
 
       CURADORIA: {
         nome: 'Curadoria',
-        icone: '💠'
+        icone: 'assets/cargos/curadoria.svg'
       },
 
       VOZ_OFICIAL: {
         nome: 'Voz Oficial',
-        icone: '📰'
+        icone: 'assets/cargos/voz-oficial.svg'
       },
 
       APOIADOR: {
         nome: 'Apoiador',
-        icone: '🚀'
+        icone: 'assets/cargos/apoiador.svg'
       },
 
       ENTUSIASTA: {
         nome: 'Entusiasta',
-        icone: '🪪'
-      },
-
-      ESPECTADOR: {
-        nome: 'Espectador',
-        icone: '🎟️'
+        icone: 'assets/cargos/entusiasta.svg'
       }
 
     };
@@ -2518,10 +2551,52 @@
         + '&backgroundColor=38b6ff';
 
 
-      document.getElementById(
-        'role-icon'
-      ).textContent =
+      const roleIcon =
+        document.getElementById(
+          'role-icon'
+        );
+
+      roleIcon.innerHTML = '';
+
+      const roleImage =
+        document.createElement('img');
+
+      roleImage.src =
         cargo.icone;
+
+      roleImage.alt =
+        cargo.nome;
+
+      roleImage.className =
+        'role-svg';
+
+      roleIcon.appendChild(
+        roleImage
+      );
+
+
+      const welcomeRoleIcon =
+        document.getElementById(
+          'welcome-role-icon'
+        );
+
+      welcomeRoleIcon.innerHTML = '';
+
+      const welcomeImage =
+        document.createElement('img');
+
+      welcomeImage.src =
+        cargo.icone;
+
+      welcomeImage.alt =
+        cargo.nome;
+
+      welcomeImage.className =
+        'role-svg';
+
+      welcomeRoleIcon.appendChild(
+        welcomeImage
+      );
 
 
       document.getElementById(
