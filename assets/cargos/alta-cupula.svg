@@ -1,0 +1,230 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <!-- Ouro principal -->
+    <linearGradient id="gold" x1="58" y1="46" x2="198" y2="212" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF7B0"/>
+      <stop offset="0.2" stop-color="#FFD95A"/>
+      <stop offset="0.48" stop-color="#F2B72B"/>
+      <stop offset="0.76" stop-color="#C88712"/>
+      <stop offset="1" stop-color="#855308"/>
+    </linearGradient>
+
+    <!-- Ouro claro -->
+    <linearGradient id="goldLight" x1="79" y1="71" x2="177" y2="168" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFDE4"/>
+      <stop offset="0.3" stop-color="#FFE97A"/>
+      <stop offset="0.68" stop-color="#F4BE35"/>
+      <stop offset="1" stop-color="#B8730D"/>
+    </linearGradient>
+
+    <!-- Azul profundo do brasão -->
+    <linearGradient id="blue" x1="79" y1="75" x2="178" y2="188" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5DD4FF"/>
+      <stop offset="0.3" stop-color="#2196D8"/>
+      <stop offset="0.65" stop-color="#1167A7"/>
+      <stop offset="1" stop-color="#073B69"/>
+    </linearGradient>
+
+    <!-- Azul escuro -->
+    <linearGradient id="blueDark" x1="90" y1="105" x2="165" y2="184" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B5B91"/>
+      <stop offset="1" stop-color="#052C50"/>
+    </linearGradient>
+
+    <!-- Sombra -->
+    <linearGradient id="shadow" x1="78" y1="166" x2="181" y2="213" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A9680A"/>
+      <stop offset="1" stop-color="#603905"/>
+    </linearGradient>
+
+    <!-- Reflexo -->
+    <linearGradient id="shine" x1="80" y1="69" x2="156" y2="145" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="shadowBlur" x="22" y="25" width="212" height="216" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="10" stdDeviation="7" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+
+    <filter id="glow" x="42" y="28" width="172" height="190" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+  </defs>
+
+  <!-- Brilho externo -->
+  <path
+    d="M128 34L146 52L171 47L175 72L199 83L185 104L193 130L173 143L169 174L146 179L128 201L110 179L87 174L83 143L63 130L71 104L57 83L81 72L85 47L110 52L128 34Z"
+    fill="#39BFFF"
+    opacity="0.2"
+    filter="url(#glow)"
+  />
+
+  <!-- Sombra projetada -->
+  <path
+    d="M63 164L78 202L178 202L193 164L178 179L170 204H86L78 179L63 164Z"
+    fill="#000"
+    opacity="0.18"
+  />
+
+  <g filter="url(#shadowBlur)">
+
+    <!-- Parte traseira do brasão -->
+    <path
+      d="M128 43L151 61L178 56L181 83L204 96L190 119L194 147L174 161L168 190L145 193L128 210L111 193L88 190L82 161L62 147L66 119L52 96L75 83L78 56L105 61L128 43Z"
+      fill="url(#shadow)"
+      stroke="#704505"
+      stroke-width="5"
+      stroke-linejoin="round"
+    />
+
+    <!-- Brasão dourado -->
+    <path
+      d="M128 48L149 65L174 60L177 86L198 98L185 120L189 144L169 158L164 184L143 187L128 201L113 187L92 184L87 158L67 144L71 120L58 98L79 86L82 60L107 65L128 48Z"
+      fill="url(#gold)"
+      stroke="#99640C"
+      stroke-width="4"
+      stroke-linejoin="round"
+    />
+
+    <!-- Interior azul -->
+    <path
+      d="M128 69L145 82L164 78L166 99L183 108L172 126L175 145L158 157L154 176L137 178L128 188L119 178L102 176L98 157L81 145L84 126L73 108L90 99L92 78L111 82L128 69Z"
+      fill="url(#blue)"
+      stroke="#8A5B0A"
+      stroke-width="4"
+      stroke-linejoin="round"
+    />
+
+    <!-- Interior escuro inferior -->
+    <path
+      d="M99 143L113 155L128 164L143 155L157 143L154 176L137 178L128 188L119 178L102 176L99 143Z"
+      fill="url(#blueDark)"
+      opacity="0.82"
+    />
+
+    <!-- FLEUR-DE-LIS CENTRAL -->
+
+    <!-- haste -->
+    <path
+      d="M123 91H133V145H123V91Z"
+      fill="url(#goldLight)"
+      stroke="#9A650B"
+      stroke-width="2"
+    />
+
+    <!-- pétala central -->
+    <path
+      d="M128 78
+         C117 88 117 101 128 111
+         C139 101 139 88 128 78Z"
+      fill="url(#goldLight)"
+      stroke="#A46D0B"
+      stroke-width="3"
+      stroke-linejoin="round"
+    />
+
+    <!-- pétala esquerda -->
+    <path
+      d="M123 102
+         C108 94 101 100 102 111
+         C103 122 113 128 124 121
+         L124 109Z"
+      fill="url(#gold)"
+      stroke="#9A650B"
+      stroke-width="3"
+      stroke-linejoin="round"
+    />
+
+    <!-- pétala direita -->
+    <path
+      d="M133 102
+         C148 94 155 100 154 111
+         C153 122 143 128 132 121
+         L132 109Z"
+      fill="url(#gold)"
+      stroke="#9A650B"
+      stroke-width="3"
+      stroke-linejoin="round"
+    />
+
+    <!-- base do símbolo -->
+    <path
+      d="M111 121
+         L128 135
+         L145 121
+         L143 145
+         L128 157
+         L113 145
+         L111 121Z"
+      fill="url(#goldLight)"
+      stroke="#98630B"
+      stroke-width="3"
+      stroke-linejoin="round"
+    />
+
+    <!-- corte central -->
+    <path
+      d="M128 136V155"
+      stroke="#9C680C"
+      stroke-width="3"
+      opacity="0.7"
+    />
+
+    <!-- Reflexo no escudo -->
+    <path
+      d="M91 87L111 82L128 69L128 82L109 103L94 111L84 105L91 87Z"
+      fill="url(#shine)"
+      opacity="0.55"
+    />
+
+    <!-- Joias laterais -->
+    <path
+      d="M83 126L91 117L99 126L91 135L83 126Z"
+      fill="#FFF3A0"
+      stroke="#B77A0D"
+      stroke-width="2"
+    />
+
+    <path
+      d="M157 126L165 117L173 126L165 135L157 126Z"
+      fill="#FFF3A0"
+      stroke="#B77A0D"
+      stroke-width="2"
+    />
+
+    <!-- Joia inferior -->
+    <path
+      d="M119 172L128 163L137 172L128 181L119 172Z"
+      fill="#FFFBE0"
+      stroke="#B77A0D"
+      stroke-width="2"
+    />
+
+    <!-- Pequenos brilhos -->
+    <path
+      d="M78 78L81 85L88 88L81 91L78 98L75 91L68 88L75 85L78 78Z"
+      fill="#FFFDE8"
+      opacity="0.85"
+    />
+
+    <path
+      d="M179 86L182 92L188 95L182 98L179 104L176 98L170 95L176 92L179 86Z"
+      fill="#FFFDE8"
+      opacity="0.75"
+    />
+
+  </g>
+
+  <!-- Brilho superior -->
+  <path
+    d="M128 34L132 44L142 48L132 52L128 62L124 52L114 48L124 44L128 34Z"
+    fill="#FFF9C4"
+  />
+
+  <!-- Pixels de destaque -->
+  <rect x="49" y="112" width="7" height="7" fill="#FFF3A0" opacity="0.85"/>
+  <rect x="200" y="112" width="7" height="7" fill="#FFF3A0" opacity="0.75"/>
+
+</svg>
