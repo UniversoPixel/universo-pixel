@@ -1157,7 +1157,7 @@
 
 
     /* =========================================================
-       USUÁRIOS
+       VIEWS
     ========================================================= */
 
     .module-view {
@@ -1167,6 +1167,11 @@
     .module-view.active {
       display: block;
     }
+
+
+    /* =========================================================
+       USUÁRIOS
+    ========================================================= */
 
     .users-toolbar {
       display: flex;
@@ -1689,6 +1694,555 @@
 
 
     /* =========================================================
+       NOTÍCIAS
+    ========================================================= */
+
+    .news-toolbar {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 12px;
+
+      margin-bottom: 15px;
+
+      flex-wrap: wrap;
+    }
+
+    .news-search {
+      position: relative;
+
+      flex: 1;
+
+      min-width: 230px;
+    }
+
+    .news-search i {
+      position: absolute;
+
+      left: 12px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      color: #9aabb8;
+
+      font-size: 11px;
+    }
+
+    .news-search input {
+      width: 100%;
+
+      height: 40px;
+
+      padding: 0 13px 0 34px;
+
+      border: 2px solid var(--border);
+
+      border-radius: 9px;
+
+      background: #fff;
+
+      outline: none;
+
+      font-family: 'Inter', sans-serif;
+
+      font-size: 10px;
+
+      color: var(--text);
+
+      transition: .2s ease;
+    }
+
+    .news-search input:focus {
+      border-color: #8ec9e9;
+
+      box-shadow:
+        0 0 0 3px rgba(85,185,245,.10);
+    }
+
+    .news-filters {
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      flex-wrap: wrap;
+    }
+
+    .news-filter {
+      height: 40px;
+
+      padding: 0 11px;
+
+      border: 2px solid var(--border);
+
+      border-radius: 9px;
+
+      background: #fff;
+
+      color: #526779;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      outline: none;
+
+      cursor: pointer;
+    }
+
+    .news-filter:focus {
+      border-color: #8ec9e9;
+    }
+
+    .news-new-button {
+      height: 40px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 7px;
+
+      padding: 0 13px;
+
+      border: 2px solid var(--blue-dark);
+
+      border-radius: 9px;
+
+      background: var(--blue-dark);
+
+      color: #fff;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      cursor: pointer;
+
+      transition: .18s ease;
+
+      white-space: nowrap;
+    }
+
+    .news-new-button:hover {
+      background: var(--blue-deep);
+
+      border-color: var(--blue-deep);
+    }
+
+    .news-summary {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 10px;
+
+      margin-bottom: 10px;
+
+      padding: 11px 13px;
+
+      background: #f7fbfe;
+
+      border: 2px solid #e0edf4;
+
+      border-radius: 9px;
+    }
+
+    .news-summary-text {
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      color: #75899a;
+    }
+
+    .news-summary-text strong {
+      color: #2d4558;
+    }
+
+    .news-table-card {
+      background: #fff;
+
+      border: 2px solid var(--border);
+
+      border-radius: 12px;
+
+      box-shadow: var(--shadow);
+
+      overflow: hidden;
+    }
+
+    .news-table-wrapper {
+      width: 100%;
+
+      overflow-x: auto;
+    }
+
+    .news-table {
+      width: 100%;
+
+      border-collapse: collapse;
+
+      min-width: 900px;
+    }
+
+    .news-table th {
+      padding: 12px 13px;
+
+      text-align: left;
+
+      background: #f6fbfe;
+
+      border-bottom: 2px solid var(--border);
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      color: #91a1ad;
+
+      text-transform: uppercase;
+
+      letter-spacing: .06em;
+
+      white-space: nowrap;
+    }
+
+    .news-table td {
+      padding: 11px 13px;
+
+      border-bottom: 1px solid #edf3f7;
+
+      vertical-align: middle;
+
+      font-size: 9px;
+
+      color: #536979;
+    }
+
+    .news-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .news-table tbody tr {
+      transition: .15s ease;
+    }
+
+    .news-table tbody tr:hover {
+      background: #fbfdff;
+    }
+
+    .news-title-cell {
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      min-width: 300px;
+    }
+
+    .news-thumb {
+      width: 48px;
+      height: 38px;
+
+      flex-shrink: 0;
+
+      object-fit: cover;
+
+      border-radius: 7px;
+
+      border: 2px solid #d7eaf5;
+
+      background:
+        linear-gradient(
+          135deg,
+          #eaf7ff,
+          #d7effc
+        );
+    }
+
+    .news-thumb-placeholder {
+      width: 48px;
+      height: 38px;
+
+      flex-shrink: 0;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 7px;
+
+      border: 2px solid #d7eaf5;
+
+      background: #eaf7ff;
+
+      color: var(--blue-dark);
+
+      font-size: 13px;
+    }
+
+    .news-title {
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      color: #30485a;
+
+      line-height: 1.35;
+
+      max-width: 360px;
+    }
+
+    .news-title-meta {
+      margin-top: 3px;
+
+      font-size: 7px;
+
+      color: #9aaab7;
+    }
+
+    .news-category-badge {
+      display: inline-flex;
+
+      padding: 5px 8px;
+
+      border-radius: 6px;
+
+      background: #eaf7ff;
+
+      border: 1px solid #c6e5f6;
+
+      color: var(--blue-deep);
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 7px;
+
+      font-weight: 900;
+
+      white-space: nowrap;
+    }
+
+    .news-status {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 5px;
+
+      padding: 5px 8px;
+
+      border-radius: 6px;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 7px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      white-space: nowrap;
+    }
+
+    .news-status.publicada {
+      background: #edfff1;
+
+      border: 1px solid #bce9c6;
+
+      color: #39964e;
+    }
+
+    .news-status.rascunho {
+      background: #fff8d9;
+
+      border: 1px solid #f0d66b;
+
+      color: #977100;
+    }
+
+    .news-author {
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 8px;
+
+      font-weight: 800;
+
+      color: #617687;
+
+      white-space: nowrap;
+    }
+
+    .news-date {
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 8px;
+
+      font-weight: 700;
+
+      color: #8d9eaa;
+
+      white-space: nowrap;
+    }
+
+    .news-actions {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: flex-end;
+
+      gap: 5px;
+    }
+
+    .news-action-button {
+      width: 30px;
+      height: 30px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid var(--border);
+
+      border-radius: 7px;
+
+      background: #fff;
+
+      color: #718695;
+
+      cursor: pointer;
+
+      transition: .18s ease;
+    }
+
+    .news-action-button:hover {
+      color: var(--blue-dark);
+
+      background: #f0faff;
+
+      border-color: #b8d9eb;
+    }
+
+    .news-action-button.publish:hover {
+      color: #32934a;
+
+      background: #effff2;
+
+      border-color: #bce9c6;
+    }
+
+    .news-action-button.danger:hover {
+      color: var(--red);
+
+      background: #fff3f4;
+
+      border-color: #ffcdd1;
+    }
+
+    .news-loading {
+      padding: 50px 20px;
+
+      text-align: center;
+    }
+
+    .news-loading i {
+      color: var(--blue-dark);
+
+      font-size: 20px;
+
+      animation: spin .8s linear infinite;
+    }
+
+    .news-loading p {
+      margin: 10px 0 0;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      color: #8b9ca8;
+    }
+
+    .news-empty {
+      padding: 50px 20px;
+
+      text-align: center;
+    }
+
+    .news-empty-icon {
+      width: 50px;
+      height: 50px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      margin: 0 auto 12px;
+
+      background: #fff8d9;
+
+      border: 2px solid #f0d66b;
+
+      border-radius: 12px;
+
+      color: #a57700;
+
+      font-size: 18px;
+    }
+
+    .news-empty h3 {
+      margin: 0;
+
+      font-family: 'Plus Jakarta Sans', sans-serif;
+
+      font-size: 13px;
+
+      font-weight: 900;
+
+      color: #354d5f;
+    }
+
+    .news-empty p {
+      margin: 5px auto 0;
+
+      max-width: 400px;
+
+      font-size: 9px;
+
+      line-height: 1.6;
+
+      color: #91a1ad;
+    }
+
+
+    /* =========================================================
        MODAL
     ========================================================= */
 
@@ -1715,7 +2269,8 @@
       display: flex;
     }
 
-    .user-modal {
+    .user-modal,
+    .news-modal {
       width: 100%;
 
       max-width: 540px;
@@ -1734,6 +2289,10 @@
         0 24px 70px rgba(21,66,94,.25);
 
       animation: modalIn .18s ease;
+    }
+
+    .news-modal {
+      max-width: 720px;
     }
 
     @keyframes modalIn {
@@ -1930,10 +2489,9 @@
     }
 
     .form-input,
-    .form-select {
+    .form-select,
+    .form-textarea {
       width: 100%;
-
-      height: 38px;
 
       padding: 0 10px;
 
@@ -1952,20 +2510,70 @@
       outline: none;
     }
 
+    .form-input,
+    .form-select {
+      height: 38px;
+    }
+
+    .form-textarea {
+      min-height: 125px;
+
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      resize: vertical;
+
+      line-height: 1.6;
+    }
+
     .form-input:focus,
-    .form-select:focus {
+    .form-select:focus,
+    .form-textarea:focus {
       border-color: #8ec9e9;
 
       box-shadow:
         0 0 0 3px rgba(85,185,245,.09);
     }
 
-    .form-input[readonly] {
+    .form-input[readonly],
+    .form-textarea[readonly] {
       background: #f7fbfe;
 
       color: #8294a2;
 
       cursor: default;
+    }
+
+    .form-hint {
+      margin-top: 4px;
+
+      font-size: 7px;
+
+      line-height: 1.5;
+
+      color: #9aaab7;
+    }
+
+    .news-image-preview {
+      display: none;
+
+      width: 100%;
+
+      max-height: 190px;
+
+      object-fit: cover;
+
+      margin-top: 9px;
+
+      border-radius: 9px;
+
+      border: 2px solid var(--border);
+
+      background: #edf8ff;
+    }
+
+    .news-image-preview.visible {
+      display: block;
     }
 
     .modal-actions {
@@ -2050,6 +2658,148 @@
 
     .modal-button.success:hover {
       background: #43b95b;
+    }
+
+    .modal-button.danger {
+      color: var(--red);
+
+      border-color: #ffcdd1;
+
+      background: #fff7f8;
+    }
+
+    .modal-button.danger:hover {
+      background: #fff0f1;
+
+      border-color: #ffabb2;
+    }
+
+
+    /* =========================================================
+       PREVIEW DE NOTÍCIA
+    ========================================================= */
+
+    .news-preview-modal {
+      width: 100%;
+
+      max-width: 760px;
+
+      max-height: calc(100vh - 40px);
+
+      overflow-y: auto;
+
+      background: #fff;
+
+      border: 2px solid var(--border);
+
+      border-radius: 14px;
+
+      box-shadow:
+        0 24px 70px rgba(21,66,94,.25);
+
+      animation: modalIn .18s ease;
+    }
+
+    .news-preview-image {
+      width: 100%;
+
+      max-height: 320px;
+
+      object-fit: cover;
+
+      display: none;
+    }
+
+    .news-preview-image.visible {
+      display: block;
+    }
+
+    .news-preview-content {
+      padding: 22px;
+    }
+
+    .news-preview-category {
+      display: inline-flex;
+
+      padding: 5px 8px;
+
+      border-radius: 6px;
+
+      background: #eaf7ff;
+
+      border: 1px solid #c6e5f6;
+
+      color: var(--blue-deep);
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 7px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+    }
+
+    .news-preview-title {
+      margin: 10px 0 6px;
+
+      font-family: 'Plus Jakarta Sans', sans-serif;
+
+      font-size: 22px;
+
+      line-height: 1.25;
+
+      font-weight: 900;
+
+      color: #243447;
+    }
+
+    .news-preview-meta {
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      flex-wrap: wrap;
+
+      margin-bottom: 18px;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 8px;
+
+      font-weight: 700;
+
+      color: #8b9ca8;
+    }
+
+    .news-preview-summary {
+      margin-bottom: 15px;
+
+      padding: 12px;
+
+      border-left: 3px solid var(--blue);
+
+      background: #f5fbff;
+
+      border-radius: 0 8px 8px 0;
+
+      font-size: 10px;
+
+      line-height: 1.7;
+
+      color: #607585;
+    }
+
+    .news-preview-body {
+      font-size: 10px;
+
+      line-height: 1.9;
+
+      color: #526878;
+
+      word-break: break-word;
     }
 
 
@@ -2289,21 +3039,25 @@
         padding: 18px;
       }
 
-      .users-toolbar {
+      .users-toolbar,
+      .news-toolbar {
         align-items: stretch;
       }
 
-      .users-search {
+      .users-search,
+      .news-search {
         width: 100%;
 
         min-width: 100%;
       }
 
-      .users-filters {
+      .users-filters,
+      .news-filters {
         width: 100%;
       }
 
-      .users-filter {
+      .users-filter,
+      .news-filter {
         flex: 1;
 
         min-width: 0;
@@ -2313,12 +3067,20 @@
         flex-shrink: 0;
       }
 
+      .news-new-button {
+        width: 100%;
+      }
+
       .form-grid {
         grid-template-columns: 1fr;
       }
 
       .form-group.full {
         grid-column: auto;
+      }
+
+      .news-preview-title {
+        font-size: 18px;
       }
 
       .toast-container {
@@ -2367,6 +3129,7 @@
         >
 
         <div class="brand-text">
+
           <p class="brand-title">
             Pixelizados
           </p>
@@ -2374,6 +3137,7 @@
           <p class="brand-subtitle">
             Painel Administrativo
           </p>
+
         </div>
 
       </div>
@@ -2385,6 +3149,7 @@
           class="role-badge"
           id="role-badge"
         >
+
           <span
             class="role-badge-icon"
             id="role-icon"
@@ -2397,6 +3162,7 @@
           >
             FUNDADOR
           </span>
+
         </div>
 
 
@@ -2634,11 +3400,6 @@
         class="module-view active"
       >
 
-
-        <!-- ===============================================
-             WELCOME
-        ================================================ -->
-
         <section class="welcome-card">
 
           <div class="welcome-content">
@@ -2670,10 +3431,6 @@
 
         </section>
 
-
-        <!-- ===============================================
-             STATS
-        ================================================ -->
 
         <section class="stats-grid">
 
@@ -2707,7 +3464,10 @@
               Notícias
             </div>
 
-            <div class="stat-value">
+            <div
+              class="stat-value"
+              id="stat-news"
+            >
               —
             </div>
 
@@ -2749,10 +3509,6 @@
 
         </section>
 
-
-        <!-- ===============================================
-             MÓDULOS
-        ================================================ -->
 
         <div class="section-heading">
 
@@ -3100,13 +3856,8 @@
 
           </div>
 
-
         </section>
 
-
-        <!-- ===============================================
-             HIERARQUIA
-        ================================================ -->
 
         <div class="section-heading">
 
@@ -3141,11 +3892,13 @@
             <div class="permission-role-left">
 
               <span class="permission-role-icon">
+
                 <img
                   src="assets/cargos/fundador.svg"
                   class="role-svg"
                   alt="Fundador"
                 >
+
               </span>
 
               <div>
@@ -3174,11 +3927,13 @@
             <div class="permission-role-left">
 
               <span class="permission-role-icon">
+
                 <img
                   src="assets/cargos/alta-cupula.svg"
                   class="role-svg"
                   alt="Alta Cúpula"
                 >
+
               </span>
 
               <div>
@@ -3207,11 +3962,13 @@
             <div class="permission-role-left">
 
               <span class="permission-role-icon">
+
                 <img
                   src="assets/cargos/curadoria.svg"
                   class="role-svg"
                   alt="Curadoria"
                 >
+
               </span>
 
               <div>
@@ -3240,11 +3997,13 @@
             <div class="permission-role-left">
 
               <span class="permission-role-icon">
+
                 <img
                   src="assets/cargos/voz-oficial.svg"
                   class="role-svg"
                   alt="Voz Oficial"
                 >
+
               </span>
 
               <div>
@@ -3273,11 +4032,13 @@
             <div class="permission-role-left">
 
               <span class="permission-role-icon">
+
                 <img
                   src="assets/cargos/apoiador.svg"
                   class="role-svg"
                   alt="Apoiador"
                 >
+
               </span>
 
               <div>
@@ -3306,11 +4067,13 @@
             <div class="permission-role-left">
 
               <span class="permission-role-icon">
+
                 <img
                   src="assets/cargos/entusiasta.svg"
                   class="role-svg"
                   alt="Entusiasta"
                 >
+
               </span>
 
               <div>
@@ -3553,8 +4316,7 @@
 
               <tbody
                 id="users-table-body"
-              >
-              </tbody>
+              ></tbody>
 
             </table>
 
@@ -3566,6 +4328,250 @@
         <footer class="admin-footer">
 
           Pixelizados © 2026 · Gerenciamento de Usuários
+
+        </footer>
+
+      </div>
+
+
+      <!-- ===================================================
+           NOTÍCIAS
+      ==================================================== -->
+
+      <div
+        id="noticias-view"
+        class="module-view"
+      >
+
+        <div class="section-heading">
+
+          <div class="section-heading-left">
+
+            <div class="section-heading-icon">
+              <i class="fa-solid fa-newspaper"></i>
+            </div>
+
+            <div>
+
+              <h2>
+                Gerenciamento de notícias
+              </h2>
+
+              <p>
+                Crie, edite, publique e organize as notícias do Pixelizados.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="news-toolbar">
+
+          <div class="news-search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+              id="news-search"
+              type="text"
+              placeholder="Buscar por título ou autor..."
+              oninput="filtrarNoticias()"
+              autocomplete="off"
+            >
+
+          </div>
+
+
+          <div class="news-filters">
+
+            <select
+              id="news-category-filter"
+              class="news-filter"
+              onchange="filtrarNoticias()"
+            >
+
+              <option value="TODAS">
+                Todas as categorias
+              </option>
+
+              <option value="Fã-Site">
+                Fã-Site
+              </option>
+
+              <option value="Comunidade">
+                Comunidade
+              </option>
+
+              <option value="Eventos">
+                Eventos
+              </option>
+
+              <option value="Notícias">
+                Notícias
+              </option>
+
+              <option value="Atualizações">
+                Atualizações
+              </option>
+
+              <option value="Outros">
+                Outros
+              </option>
+
+            </select>
+
+
+            <select
+              id="news-status-filter"
+              class="news-filter"
+              onchange="filtrarNoticias()"
+            >
+
+              <option value="TODOS">
+                Todos os status
+              </option>
+
+              <option value="PUBLICADA">
+                Publicadas
+              </option>
+
+              <option value="RASCUNHO">
+                Rascunhos
+              </option>
+
+            </select>
+
+
+            <button
+              id="refresh-news-button"
+              class="refresh-button"
+              onclick="carregarNoticias(true)"
+              title="Atualizar notícias"
+            >
+              <i class="fa-solid fa-rotate"></i>
+            </button>
+
+
+            <button
+              class="news-new-button"
+              onclick="abrirNovaNoticia()"
+            >
+              <i class="fa-solid fa-plus"></i>
+              Nova notícia
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="news-summary">
+
+          <div
+            id="news-summary-text"
+            class="news-summary-text"
+          >
+            Carregando notícias...
+          </div>
+
+        </div>
+
+
+        <div class="news-table-card">
+
+          <div
+            id="news-loading"
+            class="news-loading"
+          >
+
+            <i class="fa-solid fa-spinner"></i>
+
+            <p>
+              Carregando notícias...
+            </p>
+
+          </div>
+
+
+          <div
+            id="news-empty"
+            class="news-empty"
+            style="display:none;"
+          >
+
+            <div class="news-empty-icon">
+              <i class="fa-solid fa-newspaper"></i>
+            </div>
+
+            <h3>
+              Nenhuma notícia encontrada
+            </h3>
+
+            <p>
+              Crie sua primeira notícia ou altere os filtros
+              selecionados.
+            </p>
+
+          </div>
+
+
+          <div
+            id="news-table-wrapper"
+            class="news-table-wrapper"
+            style="display:none;"
+          >
+
+            <table class="news-table">
+
+              <thead>
+
+                <tr>
+
+                  <th>
+                    Notícia
+                  </th>
+
+                  <th>
+                    Categoria
+                  </th>
+
+                  <th>
+                    Autor
+                  </th>
+
+                  <th>
+                    Status
+                  </th>
+
+                  <th>
+                    Data
+                  </th>
+
+                  <th style="text-align:right;">
+                    Ações
+                  </th>
+
+                </tr>
+
+              </thead>
+
+              <tbody
+                id="news-table-body"
+              ></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+
+        <footer class="admin-footer">
+
+          Pixelizados © 2026 · Gerenciamento de Notícias
 
         </footer>
 
@@ -3823,6 +4829,371 @@
 
 
   <!-- =======================================================
+       MODAL NOTÍCIA
+  ======================================================== -->
+
+  <div
+    id="news-modal-overlay"
+    class="modal-overlay"
+    onclick="fecharNoticiaAoClicarFora(event)"
+  >
+
+    <div
+      class="news-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="news-modal-title"
+    >
+
+      <div class="modal-header">
+
+        <div class="modal-title-area">
+
+          <div class="modal-title-icon">
+            <i class="fa-solid fa-newspaper"></i>
+          </div>
+
+          <div>
+
+            <h3
+              id="news-modal-title"
+              class="modal-title"
+            >
+              Nova notícia
+            </h3>
+
+            <p
+              id="news-modal-subtitle"
+              class="modal-subtitle"
+            >
+              Crie uma nova publicação para o Pixelizados.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="modal-close"
+          onclick="fecharNoticiaModal()"
+          title="Fechar"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+      </div>
+
+
+      <div class="modal-body">
+
+        <div class="form-grid">
+
+          <div class="form-group full">
+
+            <label class="form-label">
+              Título da notícia
+            </label>
+
+            <input
+              id="news-titulo"
+              class="form-input"
+              type="text"
+              maxlength="180"
+              placeholder="Digite o título da notícia..."
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label class="form-label">
+              Categoria
+            </label>
+
+            <select
+              id="news-categoria"
+              class="form-select"
+            >
+
+              <option value="Fã-Site">
+                Fã-Site
+              </option>
+
+              <option value="Comunidade">
+                Comunidade
+              </option>
+
+              <option value="Eventos">
+                Eventos
+              </option>
+
+              <option value="Notícias">
+                Notícias
+              </option>
+
+              <option value="Atualizações">
+                Atualizações
+              </option>
+
+              <option value="Outros">
+                Outros
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label class="form-label">
+              Status
+            </label>
+
+            <select
+              id="news-status"
+              class="form-select"
+            >
+
+              <option value="RASCUNHO">
+                RASCUNHO
+              </option>
+
+              <option value="PUBLICADA">
+                PUBLICADA
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label class="form-label">
+              Autor
+            </label>
+
+            <input
+              id="news-autor"
+              class="form-input"
+              type="text"
+              maxlength="100"
+              placeholder="Redação Pixel"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label class="form-label">
+              Imagem
+            </label>
+
+            <input
+              id="news-imagem-url"
+              class="form-input"
+              type="url"
+              placeholder="https://..."
+              oninput="atualizarPreviewImagem()"
+            >
+
+            <div class="form-hint">
+              Cole a URL pública da imagem que será usada na notícia.
+            </div>
+
+          </div>
+
+
+          <div class="form-group full">
+
+            <img
+              id="news-image-preview"
+              class="news-image-preview"
+              src=""
+              alt="Prévia da imagem"
+              onerror="this.classList.remove('visible')"
+            >
+
+          </div>
+
+
+          <div class="form-group full">
+
+            <label class="form-label">
+              Resumo
+            </label>
+
+            <textarea
+              id="news-resumo"
+              class="form-textarea"
+              style="min-height:90px;"
+              maxlength="500"
+              placeholder="Escreva um resumo curto da notícia..."
+            ></textarea>
+
+          </div>
+
+
+          <div class="form-group full">
+
+            <label class="form-label">
+              Conteúdo
+            </label>
+
+            <textarea
+              id="news-conteudo"
+              class="form-textarea"
+              style="min-height:220px;"
+              placeholder="Escreva o conteúdo completo da notícia..."
+            ></textarea>
+
+            <div class="form-hint">
+              O texto será exibido preservando as quebras de linha.
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            class="modal-button"
+            onclick="fecharNoticiaModal()"
+          >
+            Cancelar
+          </button>
+
+          <button
+            id="news-save-button"
+            class="modal-button primary"
+            onclick="salvarNoticia()"
+          >
+            <i class="fa-solid fa-floppy-disk"></i>
+            Salvar notícia
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =======================================================
+       MODAL PREVIEW NOTÍCIA
+  ======================================================== -->
+
+  <div
+    id="news-preview-overlay"
+    class="modal-overlay"
+    onclick="fecharPreviewAoClicarFora(event)"
+  >
+
+    <div
+      class="news-preview-modal"
+      role="dialog"
+      aria-modal="true"
+    >
+
+      <div class="modal-header">
+
+        <div class="modal-title-area">
+
+          <div class="modal-title-icon">
+            <i class="fa-solid fa-eye"></i>
+          </div>
+
+          <div>
+
+            <h3 class="modal-title">
+              Visualização da notícia
+            </h3>
+
+            <p class="modal-subtitle">
+              Prévia do conteúdo cadastrado.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="modal-close"
+          onclick="fecharPreviewNoticia()"
+          title="Fechar"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+      </div>
+
+
+      <img
+        id="news-preview-image"
+        class="news-preview-image"
+        src=""
+        alt=""
+        onerror="this.classList.remove('visible')"
+      >
+
+
+      <div class="news-preview-content">
+
+        <span
+          id="news-preview-category"
+          class="news-preview-category"
+        >
+          Fã-Site
+        </span>
+
+
+        <h2
+          id="news-preview-title"
+          class="news-preview-title"
+        >
+          —
+        </h2>
+
+
+        <div
+          id="news-preview-meta"
+          class="news-preview-meta"
+        >
+          —
+        </div>
+
+
+        <div
+          id="news-preview-summary"
+          class="news-preview-summary"
+          style="display:none;"
+        ></div>
+
+
+        <div
+          id="news-preview-body"
+          class="news-preview-body"
+        >
+          —
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =======================================================
        TOAST
   ======================================================== -->
 
@@ -3849,7 +5220,7 @@
       'https://znvytrvdwejjlivzsjzy.supabase.co';
 
     const SUPABASE_KEY =
-      'sb_publishable_J60PUy390KR4sRTGe9tjNg_wllyvUAj';
+      'sb_publishable_J60PuY390KR4sRTGe9tjNg_wllyvUAj';
 
     const supabaseClient =
       window.supabase.createClient(
@@ -3967,7 +5338,7 @@
 
 
     /* =========================================================
-       USUÁRIO ATUAL
+       ESTADO
     ========================================================= */
 
     let usuarioAtual = null;
@@ -3975,6 +5346,10 @@
     let usuariosCache = [];
 
     let usuarioModalAtual = null;
+
+    let noticiasCache = [];
+
+    let noticiaModalAtual = null;
 
 
     /* =========================================================
@@ -4217,27 +5592,57 @@
 
       try {
 
-        const resultado =
-          await supabaseClient
-            .from('usuarios')
-            .select(
-              'id',
-              {
-                count: 'exact',
-                head: true
-              }
-            );
+        const [
+          usuariosResultado,
+          noticiasResultado
+        ] =
+          await Promise.all([
+
+            supabaseClient
+              .from('usuarios')
+              .select(
+                'id',
+                {
+                  count: 'exact',
+                  head: true
+                }
+              ),
+
+            supabaseClient
+              .from('noticias')
+              .select(
+                'id',
+                {
+                  count: 'exact',
+                  head: true
+                }
+              )
+
+          ]);
 
 
         if (
-          !resultado.error &&
-          typeof resultado.count === 'number'
+          !usuariosResultado.error &&
+          typeof usuariosResultado.count === 'number'
         ) {
 
           document.getElementById(
             'stat-users'
           ).textContent =
-            resultado.count;
+            usuariosResultado.count;
+
+        }
+
+
+        if (
+          !noticiasResultado.error &&
+          typeof noticiasResultado.count === 'number'
+        ) {
+
+          document.getElementById(
+            'stat-news'
+          ).textContent =
+            noticiasResultado.count;
 
         }
 
@@ -4301,13 +5706,21 @@
       }
 
 
+      if (
+        modulo === 'noticias'
+      ) {
+
+        mostrarNoticias();
+
+        return;
+
+      }
+
+
       const nomes = {
 
         conteudo:
           'Conteúdo do Site',
-
-        noticias:
-          'Notícias',
 
         eventos:
           'Eventos',
@@ -4981,21 +6394,6 @@
       }
 
 
-      /*
-        FUNDADOR:
-        acesso administrativo completo.
-
-        ALTA_CUPULA:
-        pode administrar usuários,
-        mas não pode alterar/remover
-        a conta FUNDADOR.
-
-        CURADORIA:
-        acesso ao módulo para consulta
-        e moderação básica, sem alterar
-        cargos/status administrativos.
-      */
-
       if (
         usuarioAtual.role ===
         'FUNDADOR'
@@ -5132,11 +6530,6 @@
           ? usuario.role
           : 'ENTUSIASTA';
 
-
-      /*
-        Alta Cúpula não pode editar
-        uma conta Fundador.
-      */
 
       const podeEditarCargo =
         usuarioAtual.role ===
@@ -5461,7 +6854,1706 @@
 
 
     /* =========================================================
-       FECHAR MODAL
+       NOTÍCIAS — MOSTRAR MÓDULO
+    ========================================================= */
+
+    async function mostrarNoticias() {
+
+      document
+        .querySelectorAll(
+          '.module-view'
+        )
+        .forEach(
+          view => {
+            view.classList.remove(
+              'active'
+            );
+          }
+        );
+
+
+      document
+        .getElementById(
+          'noticias-view'
+        )
+        .classList.add(
+          'active'
+        );
+
+
+      document.getElementById(
+        'dashboard-footer'
+      ).style.display =
+        'none';
+
+
+      document.getElementById(
+        'page-title'
+      ).textContent =
+        'Notícias';
+
+
+      document.getElementById(
+        'page-description'
+      ).textContent =
+        'Gerencie as publicações do fã-site Pixelizados.';
+
+
+      await carregarNoticias();
+
+    }
+
+
+    /* =========================================================
+       CARREGAR NOTÍCIAS
+    ========================================================= */
+
+    async function carregarNoticias(
+      mostrarCarregamento = true
+    ) {
+
+      if (
+        !usuarioTemPermissao(
+          'noticias'
+        )
+      ) {
+
+        return;
+
+      }
+
+
+      const loading =
+        document.getElementById(
+          'news-loading'
+        );
+
+      const empty =
+        document.getElementById(
+          'news-empty'
+        );
+
+      const table =
+        document.getElementById(
+          'news-table-wrapper'
+        );
+
+      const refreshButton =
+        document.getElementById(
+          'refresh-news-button'
+        );
+
+
+      if (mostrarCarregamento) {
+
+        loading.style.display =
+          'block';
+
+        empty.style.display =
+          'none';
+
+        table.style.display =
+          'none';
+
+      }
+
+
+      refreshButton.classList.add(
+        'loading'
+      );
+
+
+      try {
+
+        const resultado =
+          await supabaseClient
+            .from('noticias')
+            .select(
+              `
+                id,
+                created_at,
+                titulo,
+                categoria,
+                resumo,
+                conteudo,
+                imagem_url,
+                autor,
+                status,
+                publicado_em
+              `
+            )
+            .order(
+              'created_at',
+              {
+                ascending: false
+              }
+            );
+
+
+        if (resultado.error) {
+
+          throw resultado.error;
+
+        }
+
+
+        noticiasCache =
+          resultado.data || [];
+
+
+        filtrarNoticias();
+
+
+      } catch (error) {
+
+        console.error(
+          'Erro ao carregar notícias:',
+          error
+        );
+
+
+        noticiasCache = [];
+
+
+        loading.style.display =
+          'none';
+
+        table.style.display =
+          'none';
+
+        empty.style.display =
+          'block';
+
+
+        empty.innerHTML = `
+
+          <div class="news-empty-icon">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
+
+          <h3>
+            Não foi possível carregar as notícias
+          </h3>
+
+          <p>
+            Verifique o RLS, as políticas da tabela
+            noticias e a conexão com o Supabase.
+          </p>
+
+        `;
+
+
+        document.getElementById(
+          'news-summary-text'
+        ).innerHTML =
+          '<strong>Erro</strong> ao carregar notícias.';
+
+
+        mostrarToast(
+          'Não foi possível carregar as notícias.',
+          'error'
+        );
+
+      } finally {
+
+        refreshButton.classList.remove(
+          'loading'
+        );
+
+      }
+
+    }
+
+
+    /* =========================================================
+       FILTRAR NOTÍCIAS
+    ========================================================= */
+
+    function filtrarNoticias() {
+
+      const busca =
+        (
+          document.getElementById(
+            'news-search'
+          ).value || ''
+        )
+        .trim()
+        .toLowerCase();
+
+
+      const categoriaFiltro =
+        document.getElementById(
+          'news-category-filter'
+        ).value;
+
+
+      const statusFiltro =
+        document.getElementById(
+          'news-status-filter'
+        ).value;
+
+
+      const filtradas =
+        noticiasCache.filter(
+          noticia => {
+
+            const titulo =
+              String(
+                noticia.titulo || ''
+              ).toLowerCase();
+
+
+            const autor =
+              String(
+                noticia.autor || ''
+              ).toLowerCase();
+
+
+            const categoria =
+              String(
+                noticia.categoria || ''
+              );
+
+
+            const status =
+              String(
+                noticia.status || ''
+              ).toUpperCase();
+
+
+            const correspondeBusca =
+              !busca ||
+              titulo.includes(busca) ||
+              autor.includes(busca);
+
+
+            const correspondeCategoria =
+              categoriaFiltro === 'TODAS' ||
+              categoria === categoriaFiltro;
+
+
+            const correspondeStatus =
+              statusFiltro === 'TODOS' ||
+              status === statusFiltro;
+
+
+            return (
+              correspondeBusca &&
+              correspondeCategoria &&
+              correspondeStatus
+            );
+
+          }
+        );
+
+
+      renderizarNoticias(
+        filtradas
+      );
+
+    }
+
+
+    /* =========================================================
+       RENDERIZAR NOTÍCIAS
+    ========================================================= */
+
+    function renderizarNoticias(
+      noticias
+    ) {
+
+      const loading =
+        document.getElementById(
+          'news-loading'
+        );
+
+      const empty =
+        document.getElementById(
+          'news-empty'
+        );
+
+      const table =
+        document.getElementById(
+          'news-table-wrapper'
+        );
+
+      const tbody =
+        document.getElementById(
+          'news-table-body'
+        );
+
+
+      loading.style.display =
+        'none';
+
+
+      tbody.innerHTML = '';
+
+
+      document.getElementById(
+        'news-summary-text'
+      ).innerHTML =
+        '<strong>'
+        + noticias.length
+        + '</strong> notícia(s) encontrada(s)';
+
+
+      if (
+        noticias.length === 0
+      ) {
+
+        table.style.display =
+          'none';
+
+        empty.style.display =
+          'block';
+
+        empty.innerHTML = `
+
+          <div class="news-empty-icon">
+            <i class="fa-solid fa-newspaper"></i>
+          </div>
+
+          <h3>
+            Nenhuma notícia encontrada
+          </h3>
+
+          <p>
+            Crie sua primeira notícia ou altere os filtros
+            selecionados.
+          </p>
+
+        `;
+
+        return;
+
+      }
+
+
+      empty.style.display =
+        'none';
+
+      table.style.display =
+        'block';
+
+
+      noticias.forEach(
+        noticia => {
+
+          const row =
+            document.createElement(
+              'tr'
+            );
+
+
+          const titulo =
+            noticia.titulo ||
+            'Sem título';
+
+
+          const categoria =
+            noticia.categoria ||
+            'Fã-Site';
+
+
+          const autor =
+            noticia.autor ||
+            'Redação Pixel';
+
+
+          const status =
+            String(
+              noticia.status || 'RASCUNHO'
+            ).toUpperCase();
+
+
+          const imagem =
+            noticia.imagem_url ||
+            '';
+
+
+          const data =
+            formatarData(
+              noticia.publicado_em ||
+              noticia.created_at
+            );
+
+
+          let statusClass =
+            'rascunho';
+
+          let statusIcon =
+            'fa-file-pen';
+
+          let statusText =
+            'RASCUNHO';
+
+
+          if (
+            status === 'PUBLICADA'
+          ) {
+
+            statusClass =
+              'publicada';
+
+            statusIcon =
+              'fa-circle-check';
+
+            statusText =
+              'PUBLICADA';
+
+          }
+
+
+          const imagemHtml =
+            imagem
+              ? `
+                <img
+                  class="news-thumb"
+                  src="${escapeHtml(imagem)}"
+                  alt="${escapeHtml(titulo)}"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+
+                <span
+                  class="news-thumb-placeholder"
+                  style="display:none;"
+                >
+                  <i class="fa-solid fa-image"></i>
+                </span>
+              `
+              : `
+                <span class="news-thumb-placeholder">
+                  <i class="fa-solid fa-newspaper"></i>
+                </span>
+              `;
+
+
+          row.innerHTML = `
+
+            <td>
+
+              <div class="news-title-cell">
+
+                ${imagemHtml}
+
+                <div>
+
+                  <div class="news-title">
+                    ${escapeHtml(titulo)}
+                  </div>
+
+                  <div class="news-title-meta">
+                    ID: ${escapeHtml(String(noticia.id || '—'))}
+                  </div>
+
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <td>
+
+              <span class="news-category-badge">
+                ${escapeHtml(categoria)}
+              </span>
+
+            </td>
+
+
+            <td>
+
+              <span class="news-author">
+                ${escapeHtml(autor)}
+              </span>
+
+            </td>
+
+
+            <td>
+
+              <span class="news-status ${statusClass}">
+
+                <i class="fa-solid ${statusIcon}"></i>
+
+                ${statusText}
+
+              </span>
+
+            </td>
+
+
+            <td>
+
+              <span class="news-date">
+                ${escapeHtml(data)}
+              </span>
+
+            </td>
+
+
+            <td>
+
+              <div class="news-actions">
+
+                <button
+                  class="news-action-button"
+                  onclick="visualizarNoticia('${escapeHtml(String(noticia.id))}')"
+                  title="Visualizar"
+                >
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+
+
+                <button
+                  class="news-action-button"
+                  onclick="editarNoticia('${escapeHtml(String(noticia.id))}')"
+                  title="Editar"
+                >
+                  <i class="fa-solid fa-pen"></i>
+                </button>
+
+
+                ${
+                  status === 'RASCUNHO'
+                    ? `
+                      <button
+                        class="news-action-button publish"
+                        onclick="publicarNoticia('${escapeHtml(String(noticia.id))}')"
+                        title="Publicar"
+                      >
+                        <i class="fa-solid fa-paper-plane"></i>
+                      </button>
+                    `
+                    : `
+                      <button
+                        class="news-action-button"
+                        onclick="transformarEmRascunho('${escapeHtml(String(noticia.id))}')"
+                        title="Transformar em rascunho"
+                      >
+                        <i class="fa-solid fa-file-pen"></i>
+                      </button>
+                    `
+                }
+
+
+                <button
+                  class="news-action-button danger"
+                  onclick="excluirNoticia('${escapeHtml(String(noticia.id))}')"
+                  title="Excluir"
+                >
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+
+              </div>
+
+            </td>
+
+          `;
+
+
+          tbody.appendChild(
+            row
+          );
+
+        }
+      );
+
+    }
+
+
+    /* =========================================================
+       NOVA NOTÍCIA
+    ========================================================= */
+
+    function abrirNovaNoticia() {
+
+      if (
+        !usuarioTemPermissao(
+          'noticias'
+        )
+      ) {
+
+        mostrarToast(
+          'Seu cargo não possui permissão para criar notícias.',
+          'error'
+        );
+
+        return;
+
+      }
+
+
+      noticiaModalAtual =
+        null;
+
+
+      document.getElementById(
+        'news-modal-title'
+      ).textContent =
+        'Nova notícia';
+
+
+      document.getElementById(
+        'news-modal-subtitle'
+      ).textContent =
+        'Crie uma nova publicação para o Pixelizados.';
+
+
+      document.getElementById(
+        'news-titulo'
+      ).value =
+        '';
+
+
+      document.getElementById(
+        'news-categoria'
+      ).value =
+        'Fã-Site';
+
+
+      document.getElementById(
+        'news-status'
+      ).value =
+        'RASCUNHO';
+
+
+      document.getElementById(
+        'news-autor'
+      ).value =
+        usuarioAtual?.habbo_nick ||
+        'Redação Pixel';
+
+
+      document.getElementById(
+        'news-imagem-url'
+      ).value =
+        '';
+
+
+      document.getElementById(
+        'news-resumo'
+      ).value =
+        '';
+
+
+      document.getElementById(
+        'news-conteudo'
+      ).value =
+        '';
+
+
+      const preview =
+        document.getElementById(
+          'news-image-preview'
+        );
+
+      preview.src = '';
+
+      preview.classList.remove(
+        'visible'
+      );
+
+
+      document.getElementById(
+        'news-modal-overlay'
+      ).classList.add(
+        'open'
+      );
+
+
+      setTimeout(
+        () => {
+
+          document.getElementById(
+            'news-titulo'
+          ).focus();
+
+        },
+        100
+      );
+
+    }
+
+
+    /* =========================================================
+       EDITAR NOTÍCIA
+    ========================================================= */
+
+    function editarNoticia(
+      id
+    ) {
+
+      if (
+        !usuarioTemPermissao(
+          'noticias'
+        )
+      ) {
+
+        mostrarToast(
+          'Seu cargo não possui permissão para editar notícias.',
+          'error'
+        );
+
+        return;
+
+      }
+
+
+      const noticia =
+        noticiasCache.find(
+          item =>
+            String(item.id) ===
+            String(id)
+        );
+
+
+      if (!noticia) {
+
+        mostrarToast(
+          'Notícia não encontrada.',
+          'error'
+        );
+
+        return;
+
+      }
+
+
+      noticiaModalAtual =
+        noticia;
+
+
+      document.getElementById(
+        'news-modal-title'
+      ).textContent =
+        'Editar notícia';
+
+
+      document.getElementById(
+        'news-modal-subtitle'
+      ).textContent =
+        'Altere as informações desta publicação.';
+
+
+      document.getElementById(
+        'news-titulo'
+      ).value =
+        noticia.titulo ||
+        '';
+
+
+      document.getElementById(
+        'news-categoria'
+      ).value =
+        noticia.categoria ||
+        'Fã-Site';
+
+
+      document.getElementById(
+        'news-status'
+      ).value =
+        noticia.status ||
+        'RASCUNHO';
+
+
+      document.getElementById(
+        'news-autor'
+      ).value =
+        noticia.autor ||
+        'Redação Pixel';
+
+
+      document.getElementById(
+        'news-imagem-url'
+      ).value =
+        noticia.imagem_url ||
+        '';
+
+
+      document.getElementById(
+        'news-resumo'
+      ).value =
+        noticia.resumo ||
+        '';
+
+
+      document.getElementById(
+        'news-conteudo'
+      ).value =
+        noticia.conteudo ||
+        '';
+
+
+      atualizarPreviewImagem();
+
+
+      document.getElementById(
+        'news-modal-overlay'
+      ).classList.add(
+        'open'
+      );
+
+    }
+
+
+    /* =========================================================
+       ATUALIZAR PREVIEW DA IMAGEM
+    ========================================================= */
+
+    function atualizarPreviewImagem() {
+
+      const url =
+        (
+          document.getElementById(
+            'news-imagem-url'
+          ).value || ''
+        ).trim();
+
+
+      const preview =
+        document.getElementById(
+          'news-image-preview'
+        );
+
+
+      if (!url) {
+
+        preview.src = '';
+
+        preview.classList.remove(
+          'visible'
+        );
+
+        return;
+
+      }
+
+
+      preview.onload =
+        function() {
+
+          preview.classList.add(
+            'visible'
+          );
+
+        };
+
+
+      preview.onerror =
+        function() {
+
+          preview.classList.remove(
+            'visible'
+          );
+
+        };
+
+
+      preview.src =
+        url;
+
+    }
+
+
+    /* =========================================================
+       SALVAR NOTÍCIA
+    ========================================================= */
+
+    async function salvarNoticia() {
+
+      if (
+        !usuarioTemPermissao(
+          'noticias'
+        )
+      ) {
+
+        mostrarToast(
+          'Seu cargo não possui permissão para salvar notícias.',
+          'error'
+        );
+
+        return;
+
+      }
+
+
+      const titulo =
+        document.getElementById(
+          'news-titulo'
+        ).value.trim();
+
+
+      const categoria =
+        document.getElementById(
+          'news-categoria'
+        ).value;
+
+
+      const status =
+        document.getElementById(
+          'news-status'
+        ).value;
+
+
+      const autor =
+        document.getElementById(
+          'news-autor'
+        ).value.trim() ||
+        'Redação Pixel';
+
+
+      const imagemUrl =
+        document.getElementById(
+          'news-imagem-url'
+        ).value.trim();
+
+
+      const resumo =
+        document.getElementById(
+          'news-resumo'
+        ).value.trim();
+
+
+      const conteudo =
+        document.getElementById(
+          'news-conteudo'
+        ).value.trim();
+
+
+      if (!titulo) {
+
+        mostrarToast(
+          'Digite um título para a notícia.',
+          'error'
+        );
+
+        document.getElementById(
+          'news-titulo'
+        ).focus();
+
+        return;
+
+      }
+
+
+      if (!conteudo) {
+
+        mostrarToast(
+          'Digite o conteúdo da notícia.',
+          'error'
+        );
+
+        document.getElementById(
+          'news-conteudo'
+        ).focus();
+
+        return;
+
+      }
+
+
+      const botao =
+        document.getElementById(
+          'news-save-button'
+        );
+
+
+      const textoOriginal =
+        botao.innerHTML;
+
+
+      botao.disabled =
+        true;
+
+      botao.innerHTML =
+        '<i class="fa-solid fa-spinner fa-spin"></i> Salvando...';
+
+
+      try {
+
+        const dados = {
+
+          titulo:
+            titulo,
+
+          categoria:
+            categoria,
+
+          resumo:
+            resumo || null,
+
+          conteudo:
+            conteudo,
+
+          imagem_url:
+            imagemUrl || null,
+
+          autor:
+            autor,
+
+          status:
+            status,
+
+          publicado_em:
+            status === 'PUBLICADA'
+              ? (
+                  noticiaModalAtual?.publicado_em ||
+                  new Date().toISOString()
+                )
+              : null
+
+        };
+
+
+        let resultado;
+
+
+        if (
+          noticiaModalAtual
+        ) {
+
+          resultado =
+            await supabaseClient
+              .from('noticias')
+              .update(
+                dados
+              )
+              .eq(
+                'id',
+                noticiaModalAtual.id
+              );
+
+        } else {
+
+          resultado =
+            await supabaseClient
+              .from('noticias')
+              .insert(
+                dados
+              );
+
+        }
+
+
+        if (resultado.error) {
+
+          throw resultado.error;
+
+        }
+
+
+        fecharNoticiaModal();
+
+
+        mostrarToast(
+          noticiaModalAtual
+            ? 'Notícia atualizada com sucesso.'
+            : 'Notícia criada com sucesso.',
+          'success'
+        );
+
+
+        await carregarNoticias(
+          false
+        );
+
+
+        carregarEstatisticas();
+
+
+      } catch (error) {
+
+        console.error(
+          'Erro ao salvar notícia:',
+          error
+        );
+
+
+        mostrarToast(
+          'Não foi possível salvar a notícia. Verifique as políticas RLS.',
+          'error'
+        );
+
+
+      } finally {
+
+        botao.disabled =
+          false;
+
+        botao.innerHTML =
+          textoOriginal;
+
+      }
+
+    }
+
+
+    /* =========================================================
+       PUBLICAR NOTÍCIA
+    ========================================================= */
+
+    async function publicarNoticia(
+      id
+    ) {
+
+      if (
+        !usuarioTemPermissao(
+          'noticias'
+        )
+      ) {
+
+        return;
+
+      }
+
+
+      const noticia =
+        noticiasCache.find(
+          item =>
+            String(item.id) ===
+            String(id)
+        );
+
+
+      if (!noticia) {
+
+        mostrarToast(
+          'Notícia não encontrada.',
+          'error'
+        );
+
+        return;
+
+      }
+
+
+      const confirmacao =
+        window.confirm(
+          'Deseja publicar a notícia "' +
+          (
+            noticia.titulo ||
+            'Sem título'
+          ) +
+          '"?'
+        );
+
+
+      if (!confirmacao) {
+
+        return;
+
+      }
+
+
+      try {
+
+        const resultado =
+          await supabaseClient
+            .from('noticias')
+            .update({
+
+              status:
+                'PUBLICADA',
+
+              publicado_em:
+                noticia.publicado_em ||
+                new Date().toISOString()
+
+            })
+            .eq(
+              'id',
+              noticia.id
+            );
+
+
+        if (resultado.error) {
+
+          throw resultado.error;
+
+        }
+
+
+        mostrarToast(
+          'Notícia publicada com sucesso.',
+          'success'
+        );
+
+
+        await carregarNoticias(
+          false
+        );
+
+
+        carregarEstatisticas();
+
+
+      } catch (error) {
+
+        console.error(
+          'Erro ao publicar notícia:',
+          error
+        );
+
+
+        mostrarToast(
+          'Não foi possível publicar a notícia.',
+          'error'
+        );
+
+      }
+
+    }
+
+
+    /* =========================================================
+       TRANSFORMAR EM RASCUNHO
+    ========================================================= */
+
+    async function transformarEmRascunho(
+      id
+    ) {
+
+      if (
+        !usuarioTemPermissao(
+          'noticias'
+        )
+      ) {
+
+        return;
+
+      }
+
+
+      const noticia =
+        noticiasCache.find(
+          item =>
+            String(item.id) ===
+            String(id)
+        );
+
+
+      if (!noticia) {
+
+        mostrarToast(
+          'Notícia não encontrada.',
+          'error'
+        );
+
+        return;
+
+      }
+
+
+      const confirmacao =
+        window.confirm(
+          'Deseja transformar esta notícia em rascunho?'
+        );
+
+
+      if (!confirmacao) {
+
+        return;
+
+      }
+
+
+      try {
+
+        const resultado =
+          await supabaseClient
+            .from('noticias')
+            .update({
+
+              status:
+                'RASCUNHO',
+
+              publicado_em:
+                null
+
+            })
+            .eq(
+              'id',
+              noticia.id
+            );
+
+
+        if (resultado.error) {
+
+          throw resultado.error;
+
+        }
+
+
+        mostrarToast(
+          'Notícia transformada em rascunho.',
+          'success'
+        );
+
+
+        await carregarNoticias(
+          false
+        );
+
+
+        carregarEstatisticas();
+
+
+      } catch (error) {
+
+        console.error(
+          'Erro ao transformar notícia:',
+          error
+        );
+
+
+        mostrarToast(
+          'Não foi possível alterar o status da notícia.',
+          'error'
+        );
+
+      }
+
+    }
+
+
+    /* =========================================================
+       EXCLUIR NOTÍCIA
+    ========================================================= */
+
+    async function excluirNoticia(
+      id
+    ) {
+
+      if (
+        !usuarioTemPermissao(
+          'noticias'
+        )
+      ) {
+
+        return;
+
+      }
+
+
+      const noticia =
+        noticiasCache.find(
+          item =>
+            String(item.id) ===
+            String(id)
+        );
+
+
+      if (!noticia) {
+
+        mostrarToast(
+          'Notícia não encontrada.',
+          'error'
+        );
+
+        return;
+
+      }
+
+
+      const confirmacao =
+        window.confirm(
+          'Tem certeza que deseja excluir a notícia "' +
+          (
+            noticia.titulo ||
+            'Sem título'
+          ) +
+          '"?\n\nEsta ação não poderá ser desfeita.'
+        );
+
+
+      if (!confirmacao) {
+
+        return;
+
+      }
+
+
+      try {
+
+        const resultado =
+          await supabaseClient
+            .from('noticias')
+            .delete()
+            .eq(
+              'id',
+              noticia.id
+            );
+
+
+        if (resultado.error) {
+
+          throw resultado.error;
+
+        }
+
+
+        mostrarToast(
+          'Notícia excluída com sucesso.',
+          'success'
+        );
+
+
+        await carregarNoticias(
+          false
+        );
+
+
+        carregarEstatisticas();
+
+
+      } catch (error) {
+
+        console.error(
+          'Erro ao excluir notícia:',
+          error
+        );
+
+
+        mostrarToast(
+          'Não foi possível excluir a notícia.',
+          'error'
+        );
+
+      }
+
+    }
+
+
+    /* =========================================================
+       VISUALIZAR NOTÍCIA
+    ========================================================= */
+
+    function visualizarNoticia(
+      id
+    ) {
+
+      const noticia =
+        noticiasCache.find(
+          item =>
+            String(item.id) ===
+            String(id)
+        );
+
+
+      if (!noticia) {
+
+        mostrarToast(
+          'Notícia não encontrada.',
+          'error'
+        );
+
+        return;
+
+      }
+
+
+      const categoria =
+        noticia.categoria ||
+        'Fã-Site';
+
+
+      const titulo =
+        noticia.titulo ||
+        'Sem título';
+
+
+      const autor =
+        noticia.autor ||
+        'Redação Pixel';
+
+
+      const status =
+        noticia.status ||
+        'RASCUNHO';
+
+
+      document.getElementById(
+        'news-preview-category'
+      ).textContent =
+        categoria;
+
+
+      document.getElementById(
+        'news-preview-title'
+      ).textContent =
+        titulo;
+
+
+      document.getElementById(
+        'news-preview-meta'
+      ).textContent =
+        autor
+        + ' · '
+        + formatarData(
+            noticia.publicado_em ||
+            noticia.created_at
+          )
+        + ' · '
+        + status;
+
+
+      const summary =
+        document.getElementById(
+          'news-preview-summary'
+        );
+
+
+      if (
+        noticia.resumo
+      ) {
+
+        summary.style.display =
+          'block';
+
+        summary.textContent =
+          noticia.resumo;
+
+      } else {
+
+        summary.style.display =
+          'none';
+
+        summary.textContent =
+          '';
+
+      }
+
+
+      document.getElementById(
+        'news-preview-body'
+      ).innerHTML =
+        formatarConteudoPreview(
+          noticia.conteudo ||
+          ''
+        );
+
+
+      const imagem =
+        document.getElementById(
+          'news-preview-image'
+        );
+
+
+      if (
+        noticia.imagem_url
+      ) {
+
+        imagem.onload =
+          function() {
+
+            imagem.classList.add(
+              'visible'
+            );
+
+          };
+
+
+        imagem.onerror =
+          function() {
+
+            imagem.classList.remove(
+              'visible'
+            );
+
+          };
+
+
+        imagem.src =
+          noticia.imagem_url;
+
+      } else {
+
+        imagem.src = '';
+
+        imagem.classList.remove(
+          'visible'
+        );
+
+      }
+
+
+      document.getElementById(
+        'news-preview-overlay'
+      ).classList.add(
+        'open'
+      );
+
+    }
+
+
+    /* =========================================================
+       FORMATAR CONTEÚDO DO PREVIEW
+    ========================================================= */
+
+    function formatarConteudoPreview(
+      texto
+    ) {
+
+      return escapeHtml(
+        texto
+      )
+      .replace(
+        /\n/g,
+        '<br>'
+      );
+
+    }
+
+
+    /* =========================================================
+       FORMATAR DATA
+    ========================================================= */
+
+    function formatarData(
+      valor
+    ) {
+
+      if (!valor) {
+
+        return '—';
+
+      }
+
+
+      const data =
+        new Date(
+          valor
+        );
+
+
+      if (
+        Number.isNaN(
+          data.getTime()
+        )
+      ) {
+
+        return '—';
+
+      }
+
+
+      return data.toLocaleDateString(
+        'pt-BR',
+        {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric'
+        }
+      );
+
+    }
+
+
+    /* =========================================================
+       FECHAR MODAL USUÁRIO
     ========================================================= */
 
     function fecharModal() {
@@ -5496,7 +8588,73 @@
 
 
     /* =========================================================
-       ESCAPE FECHA MODAL
+       FECHAR MODAL NOTÍCIA
+    ========================================================= */
+
+    function fecharNoticiaModal() {
+
+      document.getElementById(
+        'news-modal-overlay'
+      ).classList.remove(
+        'open'
+      );
+
+
+      noticiaModalAtual =
+        null;
+
+    }
+
+
+    function fecharNoticiaAoClicarFora(
+      event
+    ) {
+
+      if (
+        event.target.id ===
+        'news-modal-overlay'
+      ) {
+
+        fecharNoticiaModal();
+
+      }
+
+    }
+
+
+    /* =========================================================
+       FECHAR PREVIEW
+    ========================================================= */
+
+    function fecharPreviewNoticia() {
+
+      document.getElementById(
+        'news-preview-overlay'
+      ).classList.remove(
+        'open'
+      );
+
+    }
+
+
+    function fecharPreviewAoClicarFora(
+      event
+    ) {
+
+      if (
+        event.target.id ===
+        'news-preview-overlay'
+      ) {
+
+        fecharPreviewNoticia();
+
+      }
+
+    }
+
+
+    /* =========================================================
+       ESCAPE FECHA MODAIS
     ========================================================= */
 
     document.addEventListener(
@@ -5504,13 +8662,20 @@
       function(event) {
 
         if (
-          event.key ===
+          event.key !==
           'Escape'
         ) {
 
-          fecharModal();
+          return;
 
         }
+
+
+        fecharModal();
+
+        fecharNoticiaModal();
+
+        fecharPreviewNoticia();
 
       }
     );
