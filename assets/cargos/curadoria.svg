@@ -1,0 +1,227 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <!-- Azul principal -->
+    <linearGradient id="crystalBlue" x1="68" y1="45" x2="190" y2="211" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#D8F8FF"/>
+      <stop offset="0.18" stop-color="#72E2FF"/>
+      <stop offset="0.42" stop-color="#27B9F0"/>
+      <stop offset="0.7" stop-color="#087FC2"/>
+      <stop offset="1" stop-color="#045080"/>
+    </linearGradient>
+
+    <!-- Azul claro -->
+    <linearGradient id="crystalLight" x1="80" y1="64" x2="166" y2="161" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F0FDFF"/>
+      <stop offset="0.28" stop-color="#9BEEFF"/>
+      <stop offset="0.62" stop-color="#42CFFF"/>
+      <stop offset="1" stop-color="#128DCE"/>
+    </linearGradient>
+
+    <!-- Azul escuro -->
+    <linearGradient id="crystalDark" x1="99" y1="125" x2="164" y2="203" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0877B4"/>
+      <stop offset="0.5" stop-color="#05558A"/>
+      <stop offset="1" stop-color="#033653"/>
+    </linearGradient>
+
+    <!-- Reflexo -->
+    <linearGradient id="crystalShine" x1="80" y1="57" x2="130" y2="137" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.95"/>
+      <stop offset="0.45" stop-color="#DFFFFF" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Halo -->
+    <radialGradient id="halo">
+      <stop offset="0" stop-color="#58D9FF" stop-opacity="0.65"/>
+      <stop offset="0.55" stop-color="#25B8EF" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#25B8EF" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="shadowBlur" x="27" y="27" width="202" height="213" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="11" stdDeviation="8" flood-color="#000000" flood-opacity="0.28"/>
+    </filter>
+
+    <filter id="glow" x="37" y="28" width="182" height="202" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+
+  <!-- Halo externo -->
+  <ellipse
+    cx="128"
+    cy="126"
+    rx="82"
+    ry="92"
+    fill="url(#halo)"
+    filter="url(#glow)"
+  />
+
+  <!-- Sombra projetada -->
+  <path
+    d="M68 172L91 210H165L188 172L170 187L160 212H96L86 187L68 172Z"
+    fill="#000000"
+    opacity="0.18"
+  />
+
+  <g filter="url(#shadowBlur)">
+
+    <!-- Base traseira do cristal -->
+    <path
+      d="M128 40
+         L173 61
+         L198 105
+         L184 166
+         L151 203
+         L105 203
+         L72 166
+         L58 105
+         L83 61
+         Z"
+      fill="#064C78"
+      stroke="#033B60"
+      stroke-width="5"
+      stroke-linejoin="round"
+    />
+
+    <!-- Cristal principal -->
+    <path
+      d="M128 44
+         L169 64
+         L192 107
+         L179 161
+         L148 195
+         L108 195
+         L77 161
+         L64 107
+         L87 64
+         Z"
+      fill="url(#crystalBlue)"
+      stroke="#05679D"
+      stroke-width="4"
+      stroke-linejoin="round"
+    />
+
+    <!-- Face esquerda -->
+    <path
+      d="M128 44
+         L87 64
+         L64 107
+         L94 116
+         L128 100
+         Z"
+      fill="url(#crystalLight)"
+      stroke="#0784C2"
+      stroke-width="3"
+      stroke-linejoin="round"
+    />
+
+    <!-- Face direita -->
+    <path
+      d="M128 44
+         L169 64
+         L192 107
+         L162 116
+         L128 100
+         Z"
+      fill="#149DD7"
+      stroke="#0574AC"
+      stroke-width="3"
+      stroke-linejoin="round"
+    />
+
+    <!-- Face central superior -->
+    <path
+      d="M128 44
+         L162 116
+         L128 100
+         L94 116
+         Z"
+      fill="url(#crystalLight)"
+      stroke="#0784C2"
+      stroke-width="3"
+      stroke-linejoin="round"
+    />
+
+    <!-- Face central inferior -->
+    <path
+      d="M94 116
+         L128 100
+         L162 116
+         L179 161
+         L148 195
+         L108 195
+         L77 161
+         Z"
+      fill="url(#crystalDark)"
+      stroke="#045B8D"
+      stroke-width="3"
+      stroke-linejoin="round"
+    />
+
+    <!-- Face inferior esquerda -->
+    <path
+      d="M77 161L94 116L128 100L108 195L77 161Z"
+      fill="#0A83C1"
+      opacity="0.82"
+    />
+
+    <!-- Face inferior direita -->
+    <path
+      d="M162 116L179 161L148 195L128 100L162 116Z"
+      fill="#05669D"
+      opacity="0.82"
+    />
+
+    <!-- Linha central -->
+    <path
+      d="M128 100V195"
+      stroke="#8DEAFF"
+      stroke-width="2"
+      opacity="0.5"
+    />
+
+    <!-- Reflexo principal -->
+    <path
+      d="M88 65L128 45L128 78L102 110L77 102L88 65Z"
+      fill="url(#crystalShine)"
+      opacity="0.9"
+    />
+
+    <!-- Reflexo diagonal -->
+    <path
+      d="M78 116L92 111L105 117L92 157L82 150L78 116Z"
+      fill="#BDF6FF"
+      opacity="0.3"
+    />
+
+    <!-- Pequenos cristais -->
+    <path
+      d="M91 82L96 91L105 96L96 101L91 110L86 101L77 96L86 91L91 82Z"
+      fill="#E9FDFF"
+      opacity="0.85"
+    />
+
+    <path
+      d="M169 83L173 90L180 94L173 98L169 106L165 98L158 94L165 90L169 83Z"
+      fill="#E5FCFF"
+      opacity="0.65"
+    />
+
+    <!-- Brilho central -->
+    <path
+      d="M128 58L132 69L143 74L132 79L128 90L124 79L113 74L124 69L128 58Z"
+      fill="#FFFFFF"
+      opacity="0.85"
+    />
+
+  </g>
+
+  <!-- Partículas pixel -->
+  <rect x="48" y="108" width="7" height="7" fill="#BDF7FF" opacity="0.85"/>
+  <rect x="201" y="116" width="7" height="7" fill="#9CEEFF" opacity="0.75"/>
+  <rect x="66" y="151" width="6" height="6" fill="#7DE5FF" opacity="0.7"/>
+  <rect x="184" y="154" width="6" height="6" fill="#A7F1FF" opacity="0.65"/>
+
+</svg>
