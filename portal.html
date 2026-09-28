@@ -102,7 +102,6 @@
       position: relative;
     }
 
-
     body::before {
       content: "";
 
@@ -130,6 +129,9 @@
       z-index: -1;
     }
 
+    body.profile-modal-open {
+      overflow: hidden;
+    }
 
     .font-title {
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -276,7 +278,6 @@
       font-weight: 900;
     }
 
-
     .profile-box {
       display: flex;
 
@@ -403,6 +404,537 @@
       background: #fff5f6;
 
       transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       MODAL DE PERFIL
+    ========================================================= */
+
+    .profile-modal-overlay {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 10001;
+
+      display: none;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+
+      background: rgba(21, 55, 77, .48);
+
+      backdrop-filter: blur(5px);
+
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    .profile-modal-overlay.is-open {
+      display: flex;
+
+      animation: profileOverlayIn .18s ease;
+    }
+
+    @keyframes profileOverlayIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .profile-modal {
+      width: min(100%, 480px);
+
+      max-height: calc(100vh - 40px);
+
+      overflow-y: auto;
+
+      background: #fff;
+
+      border: 2px solid var(--border);
+
+      border-radius: 16px;
+
+      box-shadow:
+        0 20px 55px rgba(23, 108, 168, .24);
+
+      position: relative;
+
+      animation: profileModalIn .2s ease;
+    }
+
+    .profile-modal::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 5px;
+
+      border-radius: 14px 14px 0 0;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--blue-dark) 0%,
+          var(--blue) 72%,
+          var(--yellow) 72%,
+          var(--yellow) 100%
+        );
+    }
+
+    @keyframes profileModalIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .profile-modal-header {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+
+      padding: 24px 24px 16px;
+
+      border-bottom: 2px solid #e9f1f6;
+    }
+
+    .profile-modal-kicker {
+      margin: 0 0 3px;
+
+      color: var(--blue-dark);
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      letter-spacing: .12em;
+    }
+
+    .profile-modal-title {
+      margin: 0;
+
+      color: #25394a;
+
+      font-family: 'Plus Jakarta Sans', sans-serif;
+
+      font-size: 18px;
+
+      font-weight: 900;
+    }
+
+    .profile-modal-subtitle {
+      margin: 4px 0 0;
+
+      color: #91a2b0;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 9px;
+
+      font-weight: 700;
+    }
+
+    .profile-modal-close {
+      width: 34px;
+      height: 34px;
+
+      flex-shrink: 0;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border: 2px solid var(--border);
+
+      border-radius: 8px;
+
+      background: #f8fcff;
+
+      color: #718395;
+
+      cursor: pointer;
+
+      transition: .18s ease;
+    }
+
+    .profile-modal-close:hover {
+      color: var(--red);
+
+      border-color: #ffb8bd;
+
+      background: #fff5f6;
+    }
+
+    .profile-modal-body {
+      padding: 20px 24px 24px;
+    }
+
+    .profile-modal-hero {
+      display: flex;
+
+      align-items: center;
+
+      gap: 15px;
+
+      padding: 13px;
+
+      margin-bottom: 15px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f1faff,
+          #f8fcff
+        );
+
+      border: 2px solid var(--border);
+
+      border-radius: 12px;
+    }
+
+    .profile-modal-avatar-frame {
+      width: 76px;
+      height: 76px;
+
+      flex-shrink: 0;
+
+      padding: 3px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--blue-dark),
+          var(--blue)
+        );
+
+      border-radius: 12px;
+
+      box-shadow:
+        0 3px 0 #176ca8;
+    }
+
+    .profile-modal-avatar {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      background: #17364b;
+
+      border-radius: 8px;
+    }
+
+    .profile-modal-user-info {
+      min-width: 0;
+    }
+
+    .profile-modal-nick {
+      margin: 0;
+
+      color: #243447;
+
+      font-family: 'Plus Jakarta Sans', sans-serif;
+
+      font-size: 17px;
+
+      font-weight: 900;
+
+      word-break: break-word;
+    }
+
+    .profile-modal-role {
+      display: flex;
+
+      align-items: center;
+
+      gap: 6px;
+
+      margin-top: 5px;
+
+      color: #667d8d;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 9px;
+
+      font-weight: 800;
+    }
+
+    .profile-modal-role-icon {
+      width: 18px;
+      height: 18px;
+
+      object-fit: contain;
+    }
+
+    .profile-avatar-change {
+      width: 100%;
+
+      height: 38px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 7px;
+
+      margin-bottom: 15px;
+
+      background: #f8fcff;
+
+      border: 2px solid var(--border);
+
+      border-radius: 8px;
+
+      color: var(--blue-dark);
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      transition: .18s ease;
+    }
+
+    .profile-avatar-change:hover {
+      background: #eaf7ff;
+
+      border-color: #a8d6ef;
+
+      color: var(--blue-deep);
+    }
+
+    .profile-info-list {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 8px;
+    }
+
+    .profile-info-row {
+      display: flex;
+
+      align-items: center;
+
+      gap: 11px;
+
+      min-height: 48px;
+
+      padding: 8px 10px;
+
+      background: #f9fcfe;
+
+      border: 2px solid #e1edf4;
+
+      border-radius: 9px;
+    }
+
+    .profile-info-icon {
+      width: 31px;
+      height: 31px;
+
+      flex-shrink: 0;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 7px;
+
+      background: #e7f6ff;
+
+      border: 1px solid #c5e3f4;
+
+      color: var(--blue-dark);
+
+      font-size: 11px;
+    }
+
+    .profile-info-content {
+      min-width: 0;
+
+      flex: 1;
+    }
+
+    .profile-info-label {
+      display: block;
+
+      color: #94a3b8;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 7px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      letter-spacing: .08em;
+    }
+
+    .profile-info-value {
+      display: block;
+
+      margin-top: 2px;
+
+      color: #344b5c;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+
+      white-space: nowrap;
+    }
+
+    .profile-info-value.px-value {
+      color: #a97900;
+    }
+
+    .profile-account-status {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 5px;
+
+      padding: 4px 7px;
+
+      border-radius: 5px;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+    }
+
+    .profile-status-dot {
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: #94a3b8;
+    }
+
+    .profile-account-status.is-approved {
+      color: #278342;
+
+      background: #eaf9ed;
+
+      border: 1px solid #bce5c5;
+    }
+
+    .profile-account-status.is-approved .profile-status-dot {
+      background: var(--green);
+    }
+
+    .profile-account-status.is-pending {
+      color: #a87500;
+
+      background: #fff8d9;
+
+      border: 1px solid #ecd47b;
+    }
+
+    .profile-account-status.is-pending .profile-status-dot {
+      background: var(--yellow-dark);
+    }
+
+    .profile-account-status.is-blocked {
+      color: #b62e38;
+
+      background: #fff0f1;
+
+      border: 1px solid #ffc7cb;
+    }
+
+    .profile-account-status.is-blocked .profile-status-dot {
+      background: var(--red);
+    }
+
+    .profile-account-status.is-default {
+      color: #64748b;
+
+      background: #f1f5f9;
+
+      border: 1px solid #dbe4eb;
+    }
+
+    .profile-modal-future {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 10px;
+
+      margin-top: 15px;
+
+      padding: 10px 12px;
+
+      background: #f8fcff;
+
+      border: 1px dashed #b9d9eb;
+
+      border-radius: 8px;
+    }
+
+    .profile-modal-future span {
+      color: #8da0ae;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 8px;
+
+      font-weight: 800;
+    }
+
+    .profile-modal-future i {
+      color: #b6c7d2;
+
+      font-size: 10px;
     }
 
 
@@ -548,7 +1080,6 @@
       box-shadow: var(--shadow-hover);
     }
 
-
     .section-title {
       display: flex;
 
@@ -603,7 +1134,6 @@
 
       color: #91a2b0;
     }
-
 
     .card-header-title {
       display: flex;
@@ -1352,6 +1882,37 @@
         height: 220px;
       }
 
+      .profile-modal-overlay {
+        padding: 12px;
+      }
+
+      .profile-modal {
+        max-height: calc(100vh - 24px);
+
+        border-radius: 14px;
+      }
+
+      .profile-modal-header {
+        padding: 21px 18px 14px;
+      }
+
+      .profile-modal-body {
+        padding: 17px 18px 20px;
+      }
+
+      .profile-modal-hero {
+        padding: 11px;
+      }
+
+      .profile-modal-avatar-frame {
+        width: 64px;
+        height: 64px;
+      }
+
+      .profile-modal-nick {
+        font-size: 15px;
+      }
+
     }
 
   </style>
@@ -1422,9 +1983,9 @@
         <div class="profile-box">
 
           <div
-            onclick="abrirModalAvatar()"
+            onclick="abrirPerfilModal()"
             class="profile-avatar-frame"
-            title="Alterar avatar"
+            title="Abrir perfil"
           >
 
             <img
@@ -1451,6 +2012,9 @@
             <div
               id="user-nick"
               class="profile-name"
+              onclick="abrirPerfilModal()"
+              title="Abrir perfil"
+              style="cursor:pointer;"
             >
               Pixelizado
             </div>
@@ -2480,6 +3044,265 @@
 
 
   <!-- =======================================================
+       MODAL DE PERFIL DO PIXELIZADO
+  ======================================================== -->
+
+  <div
+    id="profile-modal"
+    class="profile-modal-overlay"
+    aria-hidden="true"
+  >
+
+    <div
+      class="profile-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="profile-modal-title"
+      onclick="event.stopPropagation()"
+    >
+
+      <div class="profile-modal-header">
+
+        <div>
+
+          <p class="profile-modal-kicker">
+            Comunidade Pixelizados
+          </p>
+
+          <h2
+            id="profile-modal-title"
+            class="profile-modal-title"
+          >
+            Perfil do Pixelizado
+          </h2>
+
+          <p class="profile-modal-subtitle">
+            Suas informações dentro da comunidade
+          </p>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="profile-modal-close"
+          onclick="fecharPerfilModal()"
+          aria-label="Fechar perfil"
+          title="Fechar"
+        >
+
+          <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+      </div>
+
+
+      <div class="profile-modal-body">
+
+
+        <!-- AVATAR + NICK + CARGO -->
+
+        <div class="profile-modal-hero">
+
+          <div class="profile-modal-avatar-frame">
+
+            <img
+              id="modal-profile-avatar"
+              class="profile-modal-avatar"
+              src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Pixelizado"
+              alt="Avatar do Pixelizado"
+            >
+
+          </div>
+
+
+          <div class="profile-modal-user-info">
+
+            <h3
+              id="modal-profile-nick"
+              class="profile-modal-nick"
+            >
+              Pixelizado
+            </h3>
+
+
+            <div class="profile-modal-role">
+
+              <img
+                id="modal-profile-role-icon"
+                class="profile-modal-role-icon"
+                src=""
+                alt=""
+                style="display:none;"
+              >
+
+              <span id="modal-profile-role">
+                Cargo não definido
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- ALTERAR AVATAR -->
+
+        <button
+          type="button"
+          class="profile-avatar-change"
+          onclick="abrirSeletorAvatarPerfil()"
+        >
+
+          <i class="fa-solid fa-camera"></i>
+
+          Alterar avatar
+
+        </button>
+
+
+        <!-- INFORMAÇÕES -->
+
+        <div class="profile-info-list">
+
+
+          <!-- PX -->
+
+          <div class="profile-info-row">
+
+            <div class="profile-info-icon">
+              <i class="fa-solid fa-star"></i>
+            </div>
+
+            <div class="profile-info-content">
+
+              <span class="profile-info-label">
+                Pixels acumulados
+              </span>
+
+              <span
+                id="modal-profile-points"
+                class="profile-info-value px-value"
+              >
+                0 PX
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- MEMBRO DESDE -->
+
+          <div class="profile-info-row">
+
+            <div class="profile-info-icon">
+              <i class="fa-solid fa-calendar-days"></i>
+            </div>
+
+            <div class="profile-info-content">
+
+              <span class="profile-info-label">
+                Membro desde
+              </span>
+
+              <span
+                id="modal-profile-member-since"
+                class="profile-info-value"
+              >
+                Não informado
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- DISCORD -->
+
+          <div class="profile-info-row">
+
+            <div class="profile-info-icon">
+              <i class="fa-brands fa-discord"></i>
+            </div>
+
+            <div class="profile-info-content">
+
+              <span class="profile-info-label">
+                Discord
+              </span>
+
+              <span
+                id="modal-profile-discord"
+                class="profile-info-value"
+              >
+                Não informado
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- STATUS -->
+
+          <div class="profile-info-row">
+
+            <div class="profile-info-icon">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+
+            <div class="profile-info-content">
+
+              <span class="profile-info-label">
+                Status da conta
+              </span>
+
+              <span
+                id="modal-profile-status"
+                class="profile-account-status is-default"
+              >
+
+                <span class="profile-status-dot"></span>
+
+                <span>
+                  Não informado
+                </span>
+
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- ESTRUTURA PREPARADA PARA PRÓXIMAS ETAPAS -->
+
+        <div
+          class="profile-modal-future"
+          data-profile-section="future"
+        >
+
+          <span>
+            Perfil • PX • Ranking • Conquistas
+          </span>
+
+          <i class="fa-solid fa-chevron-right"></i>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =======================================================
        PIXELIZADOS - ACESSO / PERFIL / INTERAÇÕES
   ======================================================== -->
 
@@ -2697,13 +3520,624 @@
 
 
     /* =========================================================
-       AVATAR - SELETOR DE ARQUIVO
+       CARGOS OFICIAIS PIXELIZADOS
     ========================================================= */
 
-    function abrirModalAvatar() {
+    const CARGOS_PIXELIZADOS = {
+
+      FUNDADOR: {
+        nome: 'Aclamado/Fundador',
+        icone: 'assets/cargos/fundador.svg'
+      },
+
+      ALTA_CUPULA: {
+        nome: 'Alta Cúpula',
+        icone: 'assets/cargos/alta-cupula.svg'
+      },
+
+      CURADORIA: {
+        nome: 'Curadoria',
+        icone: 'assets/cargos/curadoria.svg'
+      },
+
+      VOZ_OFICIAL: {
+        nome: 'Voz Oficial',
+        icone: 'assets/cargos/voz-oficial.svg'
+      },
+
+      APOIADOR: {
+        nome: 'Apoiador',
+        icone: 'assets/cargos/apoiador.svg'
+      },
+
+      ENTUSIASTA: {
+        nome: 'Entusiasta',
+        icone: 'assets/cargos/entusiasta.svg'
+      }
+
+    };
+
+
+    /* =========================================================
+       CARGO DO USUÁRIO
+    ========================================================= */
+
+    function obterCargoUsuario() {
 
       const usuario =
         obterUsuarioPixelizados();
+
+
+      if (!usuario) {
+        return null;
+      }
+
+
+      const cargo =
+        usuario.role ||
+        usuario.cargo ||
+        usuario.cargo_codigo ||
+        usuario.cargo_code ||
+        null;
+
+
+      if (!cargo) {
+        return null;
+      }
+
+
+      return String(cargo)
+        .trim()
+        .toUpperCase();
+
+    }
+
+
+    function obterDadosCargoPerfil(usuario) {
+
+      const cargo =
+        obterPrimeiroValor(
+          usuario,
+          [
+            'role',
+            'cargo',
+            'cargo_codigo',
+            'cargo_code'
+          ]
+        );
+
+
+      if (!cargo) {
+
+        return {
+          codigo: null,
+          nome: 'Cargo não definido',
+          icone: null
+        };
+
+      }
+
+
+      const codigo =
+        String(cargo)
+          .trim()
+          .toUpperCase();
+
+
+      const dadosCargo =
+        CARGOS_PIXELIZADOS[codigo];
+
+
+      if (!dadosCargo) {
+
+        return {
+          codigo,
+          nome: String(cargo),
+          icone: null
+        };
+
+      }
+
+
+      return {
+        codigo,
+        nome: dadosCargo.nome,
+        icone: dadosCargo.icone
+      };
+
+    }
+
+
+    /* =========================================================
+       MODAL DE PERFIL
+    ========================================================= */
+
+    function formatarPontosPerfil(pontos) {
+
+      const numero =
+        Number(pontos);
+
+
+      if (Number.isFinite(numero)) {
+
+        return `${numero.toLocaleString('pt-BR')} PX`;
+
+      }
+
+
+      if (
+        pontos !== null &&
+        pontos !== undefined &&
+        String(pontos).trim() !== ''
+      ) {
+
+        return `${String(pontos)} PX`;
+
+      }
+
+
+      return '0 PX';
+
+    }
+
+
+    function formatarDataMembro(data) {
+
+      if (!data) {
+        return 'Não informado';
+      }
+
+
+      const dataObjeto =
+        new Date(data);
+
+
+      if (
+        Number.isNaN(
+          dataObjeto.getTime()
+        )
+      ) {
+
+        return 'Não informado';
+
+      }
+
+
+      return new Intl.DateTimeFormat(
+        'pt-BR',
+        {
+          day: '2-digit',
+          month: 'long',
+          year: 'numeric'
+        }
+      ).format(dataObjeto);
+
+    }
+
+
+    function obterStatusPerfil(status) {
+
+      if (
+        !status ||
+        String(status).trim() === ''
+      ) {
+
+        return {
+          texto: 'Não informado',
+          classe: 'is-default'
+        };
+
+      }
+
+
+      const statusNormalizado =
+        String(status)
+          .trim()
+          .toUpperCase();
+
+
+      if (
+        statusNormalizado === 'APROVADO' ||
+        statusNormalizado === 'ATIVO' ||
+        statusNormalizado === 'ACTIVE'
+      ) {
+
+        return {
+          texto: 'Aprovado',
+          classe: 'is-approved'
+        };
+
+      }
+
+
+      if (
+        statusNormalizado === 'PENDENTE' ||
+        statusNormalizado === 'PENDING'
+      ) {
+
+        return {
+          texto: 'Pendente',
+          classe: 'is-pending'
+        };
+
+      }
+
+
+      if (
+        statusNormalizado === 'BLOQUEADO' ||
+        statusNormalizado === 'BANIDO' ||
+        statusNormalizado === 'INATIVO' ||
+        statusNormalizado === 'BANNED'
+      ) {
+
+        return {
+          texto: 'Bloqueado',
+          classe: 'is-blocked'
+        };
+
+      }
+
+
+      return {
+        texto: String(status),
+        classe: 'is-default'
+      };
+
+    }
+
+
+    function preencherModalPerfil(usuario) {
+
+      if (!usuario) {
+        return;
+      }
+
+
+      const nick =
+        obterPrimeiroValor(
+          usuario,
+          [
+            'habbo_nick',
+            'nick',
+            'username',
+            'nome',
+            'display_name'
+          ]
+        ) ||
+        'Pixelizado';
+
+
+      const pontos =
+        obterPrimeiroValor(
+          usuario,
+          [
+            'points',
+            'pixels',
+            'px',
+            'pontuacao'
+          ]
+        );
+
+
+      const discord =
+        obterPrimeiroValor(
+          usuario,
+          [
+            'discord_tag',
+            'discord',
+            'discordTag'
+          ]
+        ) ||
+        'Não informado';
+
+
+      const dataCriacao =
+        obterPrimeiroValor(
+          usuario,
+          [
+            'created_at',
+            'createdAt',
+            'data_cadastro',
+            'dataCadastro'
+          ]
+        );
+
+
+      const avatar =
+        obterPrimeiroValor(
+          usuario,
+          [
+            'avatar_url',
+            'avatar',
+            'avatarUrl',
+            'foto',
+            'imagem'
+          ]
+        );
+
+
+      const dadosCargo =
+        obterDadosCargoPerfil(usuario);
+
+
+      const status =
+        obterStatusPerfil(
+          obterPrimeiroValor(
+            usuario,
+            [
+              'status',
+              'situacao',
+              'state'
+            ]
+          )
+        );
+
+
+      const elementoNick =
+        document.getElementById(
+          'modal-profile-nick'
+        );
+
+
+      const elementoRole =
+        document.getElementById(
+          'modal-profile-role'
+        );
+
+
+      const elementoRoleIcon =
+        document.getElementById(
+          'modal-profile-role-icon'
+        );
+
+
+      const elementoPoints =
+        document.getElementById(
+          'modal-profile-points'
+        );
+
+
+      const elementoMemberSince =
+        document.getElementById(
+          'modal-profile-member-since'
+        );
+
+
+      const elementoDiscord =
+        document.getElementById(
+          'modal-profile-discord'
+        );
+
+
+      const elementoStatus =
+        document.getElementById(
+          'modal-profile-status'
+        );
+
+
+      const elementoAvatar =
+        document.getElementById(
+          'modal-profile-avatar'
+        );
+
+
+      if (elementoNick) {
+
+        elementoNick.textContent =
+          String(nick);
+
+      }
+
+
+      if (elementoRole) {
+
+        elementoRole.textContent =
+          dadosCargo.nome;
+
+      }
+
+
+      if (elementoRoleIcon) {
+
+        if (dadosCargo.icone) {
+
+          elementoRoleIcon.src =
+            dadosCargo.icone;
+
+          elementoRoleIcon.alt =
+            dadosCargo.nome;
+
+          elementoRoleIcon.style.display =
+            'block';
+
+          elementoRoleIcon.onerror =
+            function() {
+
+              this.style.display =
+                'none';
+
+            };
+
+        } else {
+
+          elementoRoleIcon.removeAttribute(
+            'src'
+          );
+
+          elementoRoleIcon.alt =
+            '';
+
+          elementoRoleIcon.style.display =
+            'none';
+
+        }
+
+      }
+
+
+      if (elementoPoints) {
+
+        elementoPoints.textContent =
+          formatarPontosPerfil(
+            pontos
+          );
+
+      }
+
+
+      if (elementoMemberSince) {
+
+        elementoMemberSince.textContent =
+          formatarDataMembro(
+            dataCriacao
+          );
+
+      }
+
+
+      if (elementoDiscord) {
+
+        elementoDiscord.textContent =
+          String(discord);
+
+      }
+
+
+      if (elementoStatus) {
+
+        elementoStatus.className =
+          `profile-account-status ${status.classe}`;
+
+        elementoStatus.innerHTML = `
+          <span class="profile-status-dot"></span>
+          <span>${escapeHtmlPerfil(status.texto)}</span>
+        `;
+
+      }
+
+
+      if (elementoAvatar) {
+
+        const fallback =
+          `https://api.dicebear.com/7.x/pixel-art/svg?seed=${encodeURIComponent(
+            nick
+          )}`;
+
+
+        elementoAvatar.onerror =
+          function() {
+
+            this.onerror = null;
+
+            this.src =
+              fallback;
+
+          };
+
+
+        elementoAvatar.src =
+          avatar
+            ? String(avatar)
+            : fallback;
+
+      }
+
+    }
+
+
+    function escapeHtmlPerfil(valor) {
+
+      return String(valor)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+
+    }
+
+
+    function abrirPerfilModal() {
+
+      const usuario =
+        obterUsuarioPixelizados();
+
+
+      if (!usuario) {
+        return;
+      }
+
+
+      preencherModalPerfil(
+        usuario
+      );
+
+
+      const modal =
+        document.getElementById(
+          'profile-modal'
+        );
+
+
+      if (!modal) {
+        return;
+      }
+
+
+      modal.classList.add(
+        'is-open'
+      );
+
+
+      modal.setAttribute(
+        'aria-hidden',
+        'false'
+      );
+
+
+      document.body.classList.add(
+        'profile-modal-open'
+      );
+
+    }
+
+
+    function fecharPerfilModal() {
+
+      const modal =
+        document.getElementById(
+          'profile-modal'
+        );
+
+
+      if (!modal) {
+        return;
+      }
+
+
+      modal.classList.remove(
+        'is-open'
+      );
+
+
+      modal.setAttribute(
+        'aria-hidden',
+        'true'
+      );
+
+
+      document.body.classList.remove(
+        'profile-modal-open'
+      );
+
+    }
+
+
+    function abrirSeletorAvatarPerfil() {
+
+      const usuario =
+        obterUsuarioPixelizados();
+
 
       if (!usuario) {
         return;
@@ -2727,14 +4161,128 @@
       }
 
 
-      /*
-       * Limpa o valor anterior para permitir
-       * selecionar novamente o mesmo arquivo.
-       */
-
       input.value = '';
 
       input.click();
+
+    }
+
+
+    /*
+     * Mantido como compatibilidade caso alguma
+     * outra parte do portal ainda chame esta função.
+     */
+
+    function abrirModalAvatar() {
+
+      abrirSeletorAvatarPerfil();
+
+    }
+
+
+    /* =========================================================
+       FECHAMENTO DO MODAL
+    ========================================================= */
+
+    document.addEventListener(
+      'click',
+      function(event) {
+
+        const modal =
+          document.getElementById(
+            'profile-modal'
+          );
+
+
+        if (
+          modal &&
+          event.target === modal
+        ) {
+
+          fecharPerfilModal();
+
+        }
+
+      }
+    );
+
+
+    document.addEventListener(
+      'keydown',
+      function(event) {
+
+        if (
+          event.key === 'Escape'
+        ) {
+
+          const modal =
+            document.getElementById(
+              'profile-modal'
+            );
+
+
+          if (
+            modal &&
+            modal.classList.contains(
+              'is-open'
+            )
+          ) {
+
+            fecharPerfilModal();
+
+          }
+
+        }
+
+      }
+    );
+
+
+    /* =========================================================
+       AVATAR - ATUALIZAÇÃO VISUAL
+    ========================================================= */
+
+    function atualizarAvatarVisual(
+      avatarUrl
+    ) {
+
+      if (!avatarUrl) {
+        return;
+      }
+
+
+      const elementoAvatar =
+        document.getElementById(
+          'user-avatar'
+        );
+
+
+      const elementoModalAvatar =
+        document.getElementById(
+          'modal-profile-avatar'
+        );
+
+
+      if (elementoAvatar) {
+
+        elementoAvatar.src =
+          avatarUrl;
+
+        elementoAvatar.style.opacity =
+          '1';
+
+      }
+
+
+      if (elementoModalAvatar) {
+
+        elementoModalAvatar.src =
+          avatarUrl;
+
+        elementoModalAvatar.style.opacity =
+          '1';
+
+      }
 
     }
 
@@ -2758,10 +4306,6 @@
       }
 
 
-      /*
-       * Limite de 5 MB.
-       */
-
       const TAMANHO_MAXIMO =
         5 * 1024 * 1024;
 
@@ -2778,10 +4322,6 @@
 
       }
 
-
-      /*
-       * Tipos permitidos.
-       */
 
       const TIPOS_PERMITIDOS = [
         'image/jpeg',
@@ -2846,6 +4386,12 @@
         );
 
 
+      const elementoModalAvatar =
+        document.getElementById(
+          'modal-profile-avatar'
+        );
+
+
       const frame =
         document.querySelector(
           '.profile-avatar-frame'
@@ -2904,15 +4450,27 @@
 
         if (frame) {
 
-          frame.style.opacity = '0.65';
-          frame.style.pointerEvents = 'none';
+          frame.style.opacity =
+            '0.65';
+
+          frame.style.pointerEvents =
+            'none';
 
         }
 
 
         if (elementoAvatar) {
 
-          elementoAvatar.style.opacity = '0.55';
+          elementoAvatar.style.opacity =
+            '0.55';
+
+        }
+
+
+        if (elementoModalAvatar) {
+
+          elementoModalAvatar.style.opacity =
+            '0.55';
 
         }
 
@@ -3063,36 +4621,9 @@
           signedData.signedUrl;
 
 
-        if (elementoAvatar) {
-
-          elementoAvatar.src =
-            avatarUrl;
-
-          elementoAvatar.style.opacity =
-            '1';
-
-          elementoAvatar.onerror =
-            function() {
-
-              this.onerror = null;
-
-              this.src =
-                `https://api.dicebear.com/7.x/pixel-art/svg?seed=${encodeURIComponent(
-                  obterPrimeiroValor(
-                    usuario,
-                    [
-                      'habbo_nick',
-                      'nick',
-                      'username',
-                      'nome',
-                      'display_name'
-                    ]
-                  ) || 'Pixelizado'
-                )}`;
-
-            };
-
-        }
+        atualizarAvatarVisual(
+          avatarUrl
+        );
 
 
         usuario.avatar_path =
@@ -3109,6 +4640,11 @@
         localStorage.setItem(
           'pixelizados_user',
           JSON.stringify(usuario)
+        );
+
+
+        preencherModalPerfil(
+          usuario
         );
 
 
@@ -3144,6 +4680,14 @@
         }
 
 
+        if (elementoModalAvatar) {
+
+          elementoModalAvatar.style.opacity =
+            '1';
+
+        }
+
+
         const mensagem =
           error &&
           error.message
@@ -3160,8 +4704,11 @@
 
         if (frame) {
 
-          frame.style.opacity = '1';
-          frame.style.pointerEvents = 'auto';
+          frame.style.opacity =
+            '1';
+
+          frame.style.pointerEvents =
+            'auto';
 
         }
 
@@ -3182,7 +4729,6 @@
 
       if (!usuario) {
         return;
-
       }
 
 
@@ -3334,18 +4880,9 @@
         }
 
 
-        const elementoAvatar =
-          document.getElementById(
-            'user-avatar'
-          );
-
-
-        if (elementoAvatar) {
-
-          elementoAvatar.src =
-            signedData.signedUrl;
-
-        }
+        atualizarAvatarVisual(
+          signedData.signedUrl
+        );
 
 
         usuario.avatar_path =
@@ -3359,6 +4896,26 @@
           'pixelizados_user',
           JSON.stringify(usuario)
         );
+
+
+        const modal =
+          document.getElementById(
+            'profile-modal'
+          );
+
+
+        if (
+          modal &&
+          modal.classList.contains(
+            'is-open'
+          )
+        ) {
+
+          preencherModalPerfil(
+            usuario
+          );
+
+        }
 
 
       } catch (error) {
@@ -3376,37 +4933,6 @@
     /* =========================================================
        FUNDADOR
     ========================================================= */
-
-    function obterCargoUsuario() {
-
-      const usuario =
-        obterUsuarioPixelizados();
-
-
-      if (!usuario) {
-        return null;
-      }
-
-
-      const cargo =
-        usuario.role ||
-        usuario.cargo ||
-        usuario.cargo_codigo ||
-        usuario.cargo_code ||
-        null;
-
-
-      if (!cargo) {
-        return null;
-      }
-
-
-      return String(cargo)
-        .trim()
-        .toUpperCase();
-
-    }
-
 
     function usuarioEhFundador() {
 
@@ -3769,7 +5295,7 @@
 
 
   <!-- =======================================================
-       SUPABASE / AVATAR / LOGOUT
+       SUPABASE / AVATAR / DADOS / LOGOUT
   ======================================================== -->
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -3791,19 +5317,156 @@
 
 
     /* =========================================================
+       SINCRONIZAR DADOS DO USUÁRIO COM SUPABASE
+    ========================================================= */
+
+    async function carregarDadosUsuarioDoSupabase() {
+
+      const usuarioLocal =
+        obterUsuarioPixelizados();
+
+
+      if (
+        !usuarioLocal ||
+        !usuarioLocal.auth_user_id
+      ) {
+
+        return;
+
+      }
+
+
+      try {
+
+        const {
+          data,
+          error
+        } =
+          await supabaseClient
+            .from('usuarios')
+            .select(
+              'id, created_at, habbo_nick, discord_tag, status, role, auth_user_id, avatar_url, points'
+            )
+            .eq(
+              'auth_user_id',
+              usuarioLocal.auth_user_id
+            )
+            .maybeSingle();
+
+
+        if (error) {
+
+          console.warn(
+            'Não foi possível sincronizar os dados do perfil:',
+            error
+          );
+
+          return;
+
+        }
+
+
+        if (!data) {
+
+          return;
+
+        }
+
+
+        /*
+         * Os dados vindos do banco atualizam o perfil.
+         *
+         * O avatar local é preservado porque a URL assinada
+         * é regenerada pelo Storage através de avatar_path.
+         */
+
+        const usuarioAtualizado = {
+          ...usuarioLocal,
+          ...data
+        };
+
+
+        if (
+          usuarioLocal.avatar_path
+        ) {
+
+          usuarioAtualizado.avatar_path =
+            usuarioLocal.avatar_path;
+
+        }
+
+
+        if (
+          usuarioLocal.avatar_url
+        ) {
+
+          usuarioAtualizado.avatar_url =
+            usuarioLocal.avatar_url;
+
+        }
+
+
+        localStorage.setItem(
+          'pixelizados_user',
+          JSON.stringify(
+            usuarioAtualizado
+          )
+        );
+
+
+        carregarPerfil();
+
+        verificarAcessoFundador();
+
+
+        const modal =
+          document.getElementById(
+            'profile-modal'
+          );
+
+
+        if (
+          modal &&
+          modal.classList.contains(
+            'is-open'
+          )
+        ) {
+
+          preencherModalPerfil(
+            usuarioAtualizado
+          );
+
+        }
+
+
+      } catch (error) {
+
+        console.warn(
+          'Erro ao sincronizar usuário com Supabase:',
+          error
+        );
+
+      }
+
+    }
+
+
+    /* =========================================================
        CARREGAR AVATAR PERSISTENTE
     ========================================================= */
 
     document.addEventListener(
       'DOMContentLoaded',
-      function() {
+      async function() {
 
         if (!verificarAcessoPortal()) {
           return;
         }
 
 
-        carregarAvatarDoSupabase();
+        await carregarDadosUsuarioDoSupabase();
+
+        await carregarAvatarDoSupabase();
 
       }
     );
