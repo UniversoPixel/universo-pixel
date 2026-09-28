@@ -1,0 +1,590 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+
+    <!-- AZUL PRINCIPAL -->
+    <linearGradient id="cardBlue" x1="54" y1="54" x2="204" y2="214" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#DDF8FF"/>
+      <stop offset="0.22" stop-color="#70DFFF"/>
+      <stop offset="0.52" stop-color="#159FE0"/>
+      <stop offset="0.8" stop-color="#0872B5"/>
+      <stop offset="1" stop-color="#034B82"/>
+    </linearGradient>
+
+    <!-- AZUL ESCURO -->
+    <linearGradient id="cardDark" x1="48" y1="67" x2="197" y2="207" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#07558F"/>
+      <stop offset="0.5" stop-color="#063E72"/>
+      <stop offset="1" stop-color="#022B52"/>
+    </linearGradient>
+
+    <!-- GELO -->
+    <linearGradient id="ice" x1="82" y1="73" x2="151" y2="145" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.18" stop-color="#DDFBFF"/>
+      <stop offset="0.42" stop-color="#8CEBFF"/>
+      <stop offset="0.7" stop-color="#2AC6F5"/>
+      <stop offset="1" stop-color="#087CC3"/>
+    </linearGradient>
+
+    <!-- GELO LATERAL -->
+    <linearGradient id="iceSide" x1="101" y1="115" x2="151" y2="160" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#69DDFF"/>
+      <stop offset="0.5" stop-color="#159EDB"/>
+      <stop offset="1" stop-color="#07558C"/>
+    </linearGradient>
+
+    <!-- BRILHO -->
+    <linearGradient id="shine" x1="66" y1="53" x2="144" y2="145" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="white" stop-opacity="0.95"/>
+      <stop offset="0.45" stop-color="#DFFFFF" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- PAPEL DO CARTÃO -->
+    <linearGradient id="paper" x1="76" y1="91" x2="190" y2="193" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.55" stop-color="#F1FBFF"/>
+      <stop offset="1" stop-color="#CDEBF5"/>
+    </linearGradient>
+
+    <!-- OURO DO SELO -->
+    <linearGradient id="gold" x1="179" y1="57" x2="207" y2="88" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF5A0"/>
+      <stop offset="0.35" stop-color="#FFD44D"/>
+      <stop offset="0.7" stop-color="#E7A91B"/>
+      <stop offset="1" stop-color="#9C6208"/>
+    </linearGradient>
+
+    <!-- HALO AZUL -->
+    <radialGradient id="halo">
+      <stop offset="0" stop-color="#49DFFF" stop-opacity="0.55"/>
+      <stop offset="0.55" stop-color="#18B7EF" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#18B7EF" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- SOMBRA -->
+    <filter id="shadow" x="22" y="22" width="220" height="220" filterUnits="userSpaceOnUse">
+      <feDropShadow
+        dx="0"
+        dy="12"
+        stdDeviation="8"
+        flood-color="#001B35"
+        flood-opacity="0.38"
+      />
+    </filter>
+
+    <!-- GLOW -->
+    <filter id="glow" x="35" y="30" width="190" height="205" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- HALO ATRÁS -->
+  <ellipse
+    cx="128"
+    cy="127"
+    rx="84"
+    ry="94"
+    fill="url(#halo)"
+    filter="url(#glow)"
+  />
+
+
+  <!-- SOMBRA NO CHÃO -->
+  <path
+    d="M55 190L78 215H177L202 189L179 207L162 220H94L76 207L55 190Z"
+    fill="#001B35"
+    opacity="0.2"
+  />
+
+
+  <g filter="url(#shadow)">
+
+    <!-- PARTE TRASEIRA / VOLUME DO CARTÃO -->
+    <path
+      d="
+        M50 72
+        L174 48
+        L207 72
+        L196 176
+        L173 202
+        L72 202
+        L49 180
+        Z
+      "
+      fill="url(#cardDark)"
+      stroke="#022D55"
+      stroke-width="5"
+      stroke-linejoin="round"
+    />
+
+
+    <!-- BORDA AZUL DO CARTÃO -->
+    <path
+      d="
+        M56 67
+        L174 47
+        L199 70
+        L188 169
+        L167 192
+        L72 192
+        L55 174
+        Z
+      "
+      fill="url(#cardBlue)"
+      stroke="#07558F"
+      stroke-width="4"
+      stroke-linejoin="round"
+    />
+
+
+    <!-- PARTE BRANCA DO CARTÃO -->
+    <path
+      d="
+        M61 72
+        L173 53
+        L192 71
+        L182 163
+        L162 183
+        L73 183
+        L61 170
+        Z
+      "
+      fill="url(#paper)"
+      stroke="#087FC1"
+      stroke-width="3"
+      stroke-linejoin="round"
+    />
+
+
+    <!-- TOPO AZUL -->
+    <path
+      d="
+        M61 72
+        L173 53
+        L192 71
+        L189 92
+        L61 111
+        Z
+      "
+      fill="url(#cardBlue)"
+    />
+
+
+    <!-- BRILHO DO TOPO -->
+    <path
+      d="
+        M65 73
+        L171 55
+        L174 66
+        L75 82
+        L65 91
+        Z
+      "
+      fill="url(#shine)"
+      opacity="0.8"
+    />
+
+
+    <!-- ================================================= -->
+    <!-- CUBO DE GELO PRINCIPAL -->
+    <!-- ================================================= -->
+
+    <!-- FACE ESQUERDA -->
+    <path
+      d="
+        M77 108
+        L108 91
+        L108 128
+        L77 145
+        Z
+      "
+      fill="url(#iceSide)"
+      stroke="#07558F"
+      stroke-width="3"
+      stroke-linejoin="round"
+    />
+
+    <!-- FACE DIREITA -->
+    <path
+      d="
+        M108 91
+        L139 107
+        L139 143
+        L108 128
+        Z
+      "
+      fill="url(#ice)"
+      stroke="#087FC1"
+      stroke-width="3"
+      stroke-linejoin="round"
+    />
+
+    <!-- TOPO DO CUBO -->
+    <path
+      d="
+        M77 108
+        L108 90
+        L139 106
+        L108 124
+        Z
+      "
+      fill="url(#ice)"
+      stroke="#0A82BF"
+      stroke-width="3"
+      stroke-linejoin="round"
+    />
+
+
+    <!-- BRILHO NO CUBO -->
+    <path
+      d="
+        M85 105
+        L106 94
+        L126 105
+        L107 115
+        Z
+      "
+      fill="#FFFFFF"
+      opacity="0.55"
+    />
+
+    <path
+      d="
+        M84 113
+        L84 135
+        L91 139
+        L91 117
+        Z
+      "
+      fill="#DFFFFF"
+      opacity="0.75"
+    />
+
+    <path
+      d="
+        M114 98
+        L133 108
+        L133 117
+        L114 107
+        Z
+      "
+      fill="#FFFFFF"
+      opacity="0.42"
+    />
+
+
+    <!-- PEQUENOS CRISTAIS DO CUBO -->
+    <rect
+      x="72"
+      y="94"
+      width="6"
+      height="6"
+      fill="#BFFFFF"
+      opacity="0.9"
+    />
+
+    <rect
+      x="137"
+      y="116"
+      width="5"
+      height="5"
+      fill="#8CEBFF"
+      opacity="0.8"
+    />
+
+
+    <!-- ================================================= -->
+    <!-- ÁREA DE IDENTIFICAÇÃO -->
+    <!-- ================================================= -->
+
+    <!-- FOTO PIXEL -->
+    <rect
+      x="148"
+      y="103"
+      width="31"
+      height="38"
+      rx="2"
+      fill="#0B78B5"
+      stroke="#07558F"
+      stroke-width="3"
+    />
+
+    <!-- CABEÇA -->
+    <path
+      d="
+        M157 112
+        L170 111
+        L175 117
+        L174 128
+        L168 134
+        L157 132
+        L153 126
+        L153 118
+        Z
+      "
+      fill="#FFD2A5"
+    />
+
+    <!-- CABELO PIXEL -->
+    <path
+      d="
+        M153 119
+        L154 111
+        L161 107
+        L171 108
+        L176 114
+        L172 119
+        L167 114
+        L161 118
+        L157 115
+        Z
+      "
+      fill="#57331F"
+    />
+
+    <!-- OLHOS -->
+    <rect x="158" y="121" width="3" height="3" fill="#173B45"/>
+    <rect x="169" y="121" width="3" height="3" fill="#173B45"/>
+
+    <!-- CAMISA -->
+    <path
+      d="
+        M156 132
+        L170 132
+        L177 141
+        L151 141
+        Z
+      "
+      fill="#42C7EF"
+    />
+
+
+    <!-- LINHAS DO CARTÃO -->
+    <rect
+      x="147"
+      y="148"
+      width="35"
+      height="4"
+      rx="1"
+      fill="#5D9DB8"
+    />
+
+    <rect
+      x="147"
+      y="157"
+      width="28"
+      height="4"
+      rx="1"
+      fill="#8ABBCB"
+    />
+
+    <rect
+      x="147"
+      y="166"
+      width="20"
+      height="4"
+      rx="1"
+      fill="#A5CBD7"
+    />
+
+
+    <!-- LINHAS INFERIORES ESQUERDA -->
+    <rect
+      x="76"
+      y="151"
+      width="55"
+      height="5"
+      rx="1"
+      fill="#5B9DB7"
+    />
+
+    <rect
+      x="76"
+      y="162"
+      width="45"
+      height="5"
+      rx="1"
+      fill="#91BBCB"
+    />
+
+    <rect
+      x="76"
+      y="173"
+      width="32"
+      height="4"
+      rx="1"
+      fill="#B0CED8"
+    />
+
+
+    <!-- ================================================= -->
+    <!-- SELO DE MEMBRO -->
+    <!-- ================================================= -->
+
+    <circle
+      cx="184"
+      cy="70"
+      r="14"
+      fill="url(#gold)"
+      stroke="#9D6508"
+      stroke-width="3"
+    />
+
+    <!-- CHECK -->
+    <path
+      d="
+        M177 70
+        L182 75
+        L191 64
+      "
+      stroke="#168A4A"
+      stroke-width="4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <!-- BRILHO DO SELO -->
+    <path
+      d="M178 63L183 61L188 63"
+      stroke="#FFF8B5"
+      stroke-width="2"
+      stroke-linecap="round"
+      opacity="0.9"
+    />
+
+
+    <!-- BRILHO GRANDE DO CARTÃO -->
+    <path
+      d="
+        M62 74
+        L173 54
+        L173 65
+        L76 82
+        L63 94
+        Z
+      "
+      fill="url(#shine)"
+      opacity="0.45"
+    />
+
+  </g>
+
+
+  <!-- ================================================= -->
+  <!-- CRISTAIS DE GELO AO REDOR -->
+  <!-- ================================================= -->
+
+  <!-- ESQUERDA -->
+  <path
+    d="
+      M47 105
+      L53 98
+      L59 105
+      L53 112
+      Z
+    "
+    fill="#67DFFF"
+    stroke="#087FC1"
+    stroke-width="2"
+  />
+
+  <!-- DIREITA -->
+  <path
+    d="
+      M201 112
+      L208 104
+      L215 112
+      L208 120
+      Z
+    "
+    fill="#74E5FF"
+    stroke="#087FC1"
+    stroke-width="2"
+  />
+
+  <!-- CRISTAL INFERIOR -->
+  <path
+    d="
+      M194 160
+      L201 151
+      L208 160
+      L201 170
+      Z
+    "
+    fill="#B7F5FF"
+    stroke="#159FE0"
+    stroke-width="2"
+  />
+
+  <!-- PEQUENO PIXEL -->
+  <rect
+    x="40"
+    y="151"
+    width="7"
+    height="7"
+    fill="#7DE7FF"
+  />
+
+  <rect
+    x="213"
+    y="139"
+    width="6"
+    height="6"
+    fill="#A8F2FF"
+  />
+
+  <rect
+    x="64"
+    y="61"
+    width="6"
+    height="6"
+    fill="#FFFFFF"
+    opacity="0.8"
+  />
+
+  <!-- BRILHO EM FORMA DE + -->
+  <path
+    d="
+      M48 77
+      H53
+      V72
+      H58
+      V77
+      H63
+      V82
+      H58
+      V87
+      H53
+      V82
+      H48
+      Z
+    "
+    fill="#DFFFFF"
+    opacity="0.9"
+  />
+
+  <path
+    d="
+      M202 86
+      H206
+      V82
+      H210
+      V86
+      H214
+      V90
+      H210
+      V94
+      H206
+      V90
+      H202
+      Z
+    "
+    fill="#FFFFFF"
+    opacity="0.8"
+  />
+
+</svg>
