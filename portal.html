@@ -1362,7 +1362,6 @@
 
 <body>
 
-
   <!-- =======================================================
        HEADER
   ======================================================== -->
@@ -1370,7 +1369,6 @@
   <header class="top-header-bar px-4 sm:px-8 py-3">
 
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
-
 
       <!-- LOGO -->
 
@@ -1391,7 +1389,6 @@
       <!-- PERFIL -->
 
       <div class="profile-area">
-
 
         <!-- PX -->
 
@@ -1563,9 +1560,7 @@
 
   <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
 
-
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-7">
-
 
       <!-- ===================================================
            ESQUERDA
@@ -1573,13 +1568,11 @@
 
       <div class="lg:col-span-2 space-y-7">
 
-
         <!-- =================================================
              NOTÍCIA
         ================================================== -->
 
         <section class="pixel-card pixel-card-hover p-5 sm:p-6">
-
 
           <div class="card-header-title mb-5">
 
@@ -1616,7 +1609,6 @@
 
 
           <article>
-
 
             <div class="text-center max-w-3xl mx-auto mb-5">
 
@@ -1748,7 +1740,6 @@
 
         <section class="pixel-card pixel-card-hover p-5 sm:p-6">
 
-
           <div class="card-header-title mb-5">
 
             <div class="section-title">
@@ -1786,7 +1777,6 @@
 
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
 
             <!-- SORTEIO -->
 
@@ -1929,7 +1919,6 @@
 
       <aside class="space-y-5">
 
-
         <!-- =================================================
              PESQUISA
         ================================================== -->
@@ -1966,7 +1955,6 @@
 
         <section class="pixel-card pixel-card-hover p-5">
 
-
           <div class="card-header-title mb-4">
 
             <div class="section-title">
@@ -1996,7 +1984,6 @@
 
 
           <div class="space-y-2.5">
-
 
             <!-- 1 -->
 
@@ -2117,7 +2104,6 @@
 
         <section class="pixel-card pixel-card-hover p-5">
 
-
           <div class="card-header-title mb-4">
 
             <div class="section-title">
@@ -2147,7 +2133,6 @@
 
 
           <div class="grid grid-cols-2 gap-2.5">
-
 
             <a
               href="#"
@@ -2210,7 +2195,6 @@
           class="pixel-card pixel-card-hover p-5"
         >
 
-
           <div class="card-header-title mb-4">
 
             <div class="section-title">
@@ -2258,7 +2242,6 @@
             class="vagas-form"
             onsubmit="event.preventDefault();"
           >
-
 
             <!-- CARGO -->
 
@@ -2422,7 +2405,6 @@
       class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2"
     >
 
-
       <!-- PLAYER -->
 
       <div class="autodj-box">
@@ -2500,6 +2482,83 @@
 
   </footer>
 
+
+  <!-- =======================================================
+       SUPABASE AUTH — LOGOUT
+  ======================================================== -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+
+    const SUPABASE_URL =
+      'https://znvytrvdwejjlivzsjzy.supabase.co';
+
+    const SUPABASE_KEY =
+      'sb_publishable_J60PUy390KR4sRTGe9tjNg_wllyvUAj';
+
+
+    const supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+
+    async function fazerLogout() {
+
+      const botao =
+        document.querySelector('.logout-button');
+
+
+      try {
+
+        if (botao) {
+          botao.disabled = true;
+          botao.style.opacity = '0.7';
+        }
+
+
+        const { error } =
+          await supabaseClient.auth.signOut();
+
+
+        if (error) {
+          throw error;
+        }
+
+
+        localStorage.removeItem(
+          'pixelizados_user'
+        );
+
+
+        window.location.href =
+          'index.html';
+
+
+      } catch (error) {
+
+        console.error(
+          'Erro ao fazer logout:',
+          error
+        );
+
+
+        if (botao) {
+          botao.disabled = false;
+          botao.style.opacity = '1';
+        }
+
+
+        alert(
+          'Não foi possível sair da conta. Tente novamente.'
+        );
+
+      }
+
+    }
+
+  </script>
 
 </body>
 </html>
