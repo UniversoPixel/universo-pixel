@@ -1,27 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Portal | Pixelizados</title>
-
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    rel="stylesheet"
-  >
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap"
-    rel="stylesheet"
-  >
-
-  <style>
+<!DOCTYPE html> <html lang="pt-BR"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Portal | Pixelizados</title> <script src="https://cdn.tailwindcss.com"></script> <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" > <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet" > <style>
 
     /* =========================================================
        IDENTIDADE PIXELIZADOS
@@ -998,10 +975,18 @@
       background: #f1faff;
     }
 
+    .nav-item:hover i {
+      color: var(--blue-dark);
+    }
+
     .nav-item.active {
       color: var(--blue-deep);
 
-      background: #eef9ff;
+      background: #eaf7ff;
+    }
+
+    .nav-item.active i {
+      color: var(--blue-dark);
     }
 
     .nav-item.active::after {
@@ -1014,235 +999,9 @@
       left: 0;
       right: 0;
 
-      height: 3px;
+      height: 4px;
 
       background: var(--blue-dark);
-    }
-
-
-    /* =========================================================
-       LOGO
-    ========================================================= */
-
-    .pixelizados-logo {
-      height: 48px;
-
-      width: auto;
-
-      max-width: 220px;
-
-      object-fit: contain;
-
-      image-rendering: pixelated;
-    }
-
-
-    /* =========================================================
-       CONTAINER PRINCIPAL
-    ========================================================= */
-
-    .portal-container {
-      width: min(1400px, calc(100% - 32px));
-
-      margin: 0 auto;
-    }
-
-    .portal-main {
-      padding: 24px 0 32px;
-    }
-
-
-    /* =========================================================
-       BANNER / TOPO
-    ========================================================= */
-
-    .portal-hero {
-      position: relative;
-
-      overflow: hidden;
-
-      min-height: 150px;
-
-      margin-bottom: 20px;
-
-      padding: 28px 30px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      gap: 25px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #5fc3f7 0%,
-          #3ca8e5 55%,
-          #2489c9 100%
-        );
-
-      border: 2px solid #2382ba;
-
-      border-radius: 15px;
-
-      box-shadow:
-        0 5px 0 #176ca8,
-        0 10px 28px rgba(23,108,168,.16);
-    }
-
-    .portal-hero::before {
-      content: "";
-
-      position: absolute;
-
-      width: 300px;
-      height: 300px;
-
-      right: -90px;
-      top: -130px;
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.11);
-    }
-
-    .portal-hero::after {
-      content: "";
-
-      position: absolute;
-
-      width: 190px;
-      height: 190px;
-
-      right: 140px;
-      bottom: -125px;
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.08);
-    }
-
-    .portal-hero-content {
-      position: relative;
-
-      z-index: 2;
-
-      max-width: 760px;
-    }
-
-    .portal-kicker {
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 6px;
-
-      margin-bottom: 7px;
-
-      padding: 5px 8px;
-
-      background: rgba(255,255,255,.18);
-
-      border: 1px solid rgba(255,255,255,.28);
-
-      border-radius: 5px;
-
-      color: #fff;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 8px;
-
-      font-weight: 900;
-
-      letter-spacing: .1em;
-
-      text-transform: uppercase;
-    }
-
-    .portal-hero h1 {
-      margin: 0;
-
-      color: #fff;
-
-      font-family: 'Plus Jakarta Sans', sans-serif;
-
-      font-size: clamp(22px, 3vw, 34px);
-
-      line-height: 1.08;
-
-      font-weight: 900;
-
-      letter-spacing: -.03em;
-    }
-
-    .portal-hero p {
-      max-width: 650px;
-
-      margin: 9px 0 0;
-
-      color: rgba(255,255,255,.86);
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 11px;
-
-      font-weight: 700;
-
-      line-height: 1.6;
-    }
-
-    .portal-hero-pixel {
-      position: relative;
-
-      z-index: 2;
-
-      flex-shrink: 0;
-
-      width: 110px;
-      height: 110px;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      border: 2px solid rgba(255,255,255,.30);
-
-      background: rgba(255,255,255,.10);
-
-      border-radius: 15px;
-
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.20);
-    }
-
-    .portal-hero-pixel i {
-      color: rgba(255,255,255,.92);
-
-      font-size: 46px;
-
-      text-shadow:
-        3px 3px 0 rgba(23,108,168,.40);
-    }
-
-
-    /* =========================================================
-       GRID PRINCIPAL
-    ========================================================= */
-
-    .portal-grid {
-      display: grid;
-
-      grid-template-columns:
-        minmax(0, 1.75fr)
-        minmax(300px, .85fr);
-
-      gap: 20px;
-
-      align-items: start;
     }
 
 
@@ -1250,376 +1009,65 @@
        CARDS
     ========================================================= */
 
-    .portal-card {
-      background: rgba(255,255,255,.96);
+    .pixel-card {
+      position: relative;
+
+      background: var(--white);
 
       border: 2px solid var(--border);
 
-      border-radius: 13px;
+      border-radius: 14px;
 
       box-shadow: var(--shadow);
 
       overflow: hidden;
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
     }
 
-    .portal-card-header {
-      display: flex;
+    .pixel-card::before {
+      content: "";
 
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 12px;
-
-      padding: 15px 17px;
-
-      border-bottom: 2px solid #e7f0f5;
-    }
-
-    .portal-card-title {
-      display: flex;
-
-      align-items: center;
-
-      gap: 8px;
-
-      color: #324b5d;
-
-      font-family: 'Plus Jakarta Sans', sans-serif;
-
-      font-size: 13px;
-
-      font-weight: 900;
-    }
-
-    .portal-card-title i {
-      color: var(--blue-dark);
-
-      font-size: 13px;
-    }
-
-    .portal-card-link {
-      color: var(--blue-dark);
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 8px;
-
-      font-weight: 900;
-
-      text-decoration: none;
-
-      text-transform: uppercase;
-
-      letter-spacing: .06em;
-    }
-
-    .portal-card-link:hover {
-      color: var(--blue-deep);
-    }
-
-
-    /* =========================================================
-       NOTÍCIA EM DESTAQUE
-    ========================================================= */
-
-    .featured-news {
-      position: relative;
-
-      overflow: hidden;
-    }
-
-    .featured-news-image-wrap {
-      position: relative;
-
-      height: 340px;
-
-      overflow: hidden;
-
-      background: #dceef8;
-    }
-
-    .featured-news-image {
-      width: 100%;
-      height: 100%;
-
-      display: block;
-
-      object-fit: cover;
-
-      transition: transform .35s ease;
-    }
-
-    .featured-news:hover .featured-news-image {
-      transform: scale(1.025);
-    }
-
-    .featured-news-overlay {
       position: absolute;
 
-      inset: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 4px;
 
       background:
         linear-gradient(
-          180deg,
-          rgba(11,42,61,0) 25%,
-          rgba(11,42,61,.12) 45%,
-          rgba(11,42,61,.82) 100%
+          90deg,
+          var(--blue-dark) 0%,
+          var(--blue) 72%,
+          var(--yellow) 72%,
+          var(--yellow) 100%
         );
-
-      pointer-events: none;
     }
 
-    .featured-news-badge {
-      position: absolute;
+    .pixel-card-hover:hover {
+      transform: translateY(-2px);
 
-      top: 15px;
-      left: 15px;
+      border-color: #bddced;
 
-      z-index: 2;
-
-      padding: 6px 9px;
-
-      background: var(--yellow);
-
-      border: 2px solid #d8a900;
-
-      border-radius: 6px;
-
-      color: #5e4700;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 8px;
-
-      font-weight: 900;
-
-      text-transform: uppercase;
-
-      letter-spacing: .06em;
-
-      box-shadow:
-        0 2px 0 #a97900;
+      box-shadow: var(--shadow-hover);
     }
 
-    .featured-news-content {
-      padding: 19px 19px 16px;
-    }
-
-    .featured-news-category {
-      color: var(--blue-dark);
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 8px;
-
-      font-weight: 900;
-
-      text-transform: uppercase;
-
-      letter-spacing: .1em;
-    }
-
-    .featured-news-title {
-      margin: 6px 0 9px;
-
-      color: #243447;
-
-      font-family: 'Plus Jakarta Sans', sans-serif;
-
-      font-size: clamp(20px, 2.2vw, 28px);
-
-      line-height: 1.12;
-
-      font-weight: 900;
-
-      letter-spacing: -.025em;
-    }
-
-    .featured-news-summary {
-      margin: 0;
-
-      color: #718495;
-
-      font-family: 'Inter', sans-serif;
-
-      font-size: 11px;
-
-      line-height: 1.65;
-    }
-
-    .featured-news-meta {
+    .section-title {
       display: flex;
 
       align-items: center;
 
-      flex-wrap: wrap;
-
-      gap: 9px;
-
-      margin-top: 13px;
+      gap: 10px;
     }
 
-    .featured-news-author {
-      display: flex;
-
-      align-items: center;
-
-      gap: 6px;
-
-      color: #607688;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 8px;
-
-      font-weight: 900;
-    }
-
-    .featured-news-author-avatar {
-      width: 23px;
-      height: 23px;
-
-      border-radius: 6px;
-
-      background: #dff3ff;
-
-      border: 1px solid #bcdcec;
-
-      object-fit: cover;
-    }
-
-    .featured-news-meta-separator {
-      color: #c2d0d9;
-
-      font-size: 9px;
-    }
-
-    .featured-news-date,
-    .featured-news-reading {
-      color: #93a3af;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 8px;
-
-      font-weight: 800;
-    }
-
-    .featured-news-actions {
-      display: flex;
-
-      align-items: center;
-
-      gap: 7px;
-
-      margin-top: 15px;
-
-      padding-top: 13px;
-
-      border-top: 1px solid #edf2f5;
-    }
-
-    .news-action-button {
-      min-width: 54px;
-
-      height: 32px;
-
-      display: inline-flex;
-
-      align-items: center;
-      justify-content: center;
-
-      gap: 5px;
-
-      padding: 0 9px;
-
-      border: 1px solid #dce9f1;
-
-      border-radius: 7px;
-
-      background: #f8fcff;
-
-      color: #718798;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 8px;
-
-      font-weight: 900;
-
-      cursor: pointer;
-
-      transition: .18s ease;
-    }
-
-    .news-action-button:hover {
-      color: var(--blue-dark);
-
-      border-color: #acd4ea;
-
-      background: #eef9ff;
-    }
-
-    .news-action-button.liked {
-      color: #e85b66;
-
-      border-color: #ffc5ca;
-
-      background: #fff4f5;
-    }
-
-    .news-action-button.share-button {
-      margin-left: auto;
-    }
-
-
-    /* =========================================================
-       EVENTOS / ATUALIZAÇÕES
-    ========================================================= */
-
-    .updates-card {
-      margin-top: 20px;
-    }
-
-    .updates-list {
-      display: grid;
-
-      grid-template-columns: repeat(2, minmax(0,1fr));
-
-      gap: 12px;
-
-      padding: 14px;
-    }
-
-    .update-item {
-      display: flex;
-
-      align-items: flex-start;
-
-      gap: 11px;
-
-      padding: 12px;
-
-      background: #f8fcff;
-
-      border: 1px solid #dfedf5;
-
-      border-radius: 9px;
-
-      transition: .18s ease;
-    }
-
-    .update-item:hover {
-      transform: translateY(-1px);
-
-      border-color: #bddded;
-
-      box-shadow: 0 5px 15px rgba(35,107,151,.07);
-    }
-
-    .update-icon {
-      width: 36px;
-      height: 36px;
+    .section-icon {
+      width: 34px;
+      height: 34px;
 
       flex-shrink: 0;
 
@@ -1630,168 +1078,787 @@
 
       border-radius: 8px;
 
-      background: #eaf7ff;
-
-      border: 1px solid #c8e3f3;
-
-      color: var(--blue-dark);
+      border: 2px solid currentColor;
 
       font-size: 13px;
     }
 
-    .update-item.event .update-icon {
-      background: #fff8db;
+    .section-title h2,
+    .section-title h3 {
+      margin: 0;
 
-      border-color: #eed77f;
+      font-family: 'Plus Jakarta Sans', sans-serif;
 
-      color: #b27c00;
+      font-weight: 900;
+
+      font-size: 13px;
+
+      color: #25394a;
+
+      text-transform: uppercase;
+
+      letter-spacing: .04em;
     }
 
-    .update-content {
-      min-width: 0;
-    }
+    .section-title p {
+      margin: 2px 0 0;
 
-    .update-tag {
-      display: inline-block;
-
-      margin-bottom: 3px;
-
-      color: var(--blue-dark);
+      font-size: 9px;
 
       font-family: 'Manrope', sans-serif;
 
-      font-size: 7px;
+      font-weight: 700;
+
+      color: #91a2b0;
+    }
+
+    .card-header-title {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      padding-bottom: 13px;
+
+      border-bottom: 2px solid #e9f1f6;
+
+      position: relative;
+    }
+
+    .card-header-title::after {
+      content: "";
+
+      position: absolute;
+
+      bottom: -2px;
+
+      left: 0;
+
+      width: 70px;
+
+      height: 2px;
+
+      background: var(--blue-dark);
+    }
+
+
+    /* =========================================================
+       NEWS
+    ========================================================= */
+
+    .news-image-frame {
+      padding: 5px;
+
+      background: #edf7fc;
+
+      border: 2px solid var(--border);
+
+      border-radius: 12px;
+    }
+
+    .news-image {
+      display: block;
+
+      width: 100%;
+      height: 290px;
+
+      object-fit: cover;
+
+      border-radius: 7px;
+
+      border: 1px solid #b8d5e6;
+    }
+
+    .pixel-tag {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 5px;
+
+      padding: 4px 8px;
+
+      border-radius: 6px;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 8px;
 
       font-weight: 900;
 
       text-transform: uppercase;
 
-      letter-spacing: .08em;
+      letter-spacing: .06em;
     }
 
-    .update-item.event .update-tag {
-      color: #ae7800;
+    .pixel-tag-blue {
+      color: #176ca8;
+
+      background: #e4f5ff;
+
+      border: 1px solid #b7ddf2;
     }
 
-    .update-title {
+    .pixel-tag-red {
+      color: #b62e38;
+
+      background: #fff0f1;
+
+      border: 1px solid #ffc7cb;
+    }
+
+
+    /* =========================================================
+       NEWS PORTAL — NOVA EXPERIÊNCIA EDITORIAL
+    ========================================================= */
+
+    .news-featured {
+      position: relative;
+      overflow: hidden;
+      min-height: 390px;
+      border: 2px solid #a9d5ed;
+      border-radius: 14px;
+      background: #dff3ff;
+      box-shadow: 0 8px 20px rgba(35,107,151,.10);
+      cursor: pointer;
+    }
+
+    .news-featured-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .45s ease, filter .45s ease;
+    }
+
+    .news-featured:hover .news-featured-image {
+      transform: scale(1.035);
+      filter: saturate(1.06);
+    }
+
+    .news-featured::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(17,65,94,.02) 10%, rgba(17,65,94,.18) 38%, rgba(12,45,66,.94) 100%);
+      pointer-events: none;
+    }
+
+    .news-featured-content {
+      position: relative;
+      z-index: 2;
+      min-height: 390px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 22px;
+      color: #fff;
+    }
+
+    .news-featured-top {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .news-featured-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 9px;
+      border: 2px solid rgba(255,255,255,.78);
+      border-radius: 7px;
+      background: rgba(255,255,255,.88);
+      color: var(--blue-deep);
+      font-family: 'Manrope', sans-serif;
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      box-shadow: 0 3px 10px rgba(0,0,0,.10);
+    }
+
+    .news-featured-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 8px;
+      border-radius: 6px;
+      background: rgba(20,55,76,.72);
+      border: 1px solid rgba(255,255,255,.25);
+      color: #fff;
+      font-family: 'Manrope', sans-serif;
+      font-size: 8px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      backdrop-filter: blur(4px);
+    }
+
+    .news-featured-live i {
+      color: var(--yellow);
+      font-size: 7px;
+    }
+
+    .news-featured-category {
+      margin-bottom: 8px;
+      color: #bfeaff;
+      font-family: 'Manrope', sans-serif;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .news-featured-title {
+      max-width: 760px;
       margin: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(23px, 3vw, 34px);
+      line-height: 1.08;
+      font-weight: 900;
+      letter-spacing: -.025em;
+      text-shadow: 0 2px 10px rgba(0,0,0,.20);
+    }
 
-      color: #40576a;
+    .news-featured-summary {
+      max-width: 700px;
+      margin: 10px 0 0;
+      color: rgba(255,255,255,.84);
+      font-size: 11px;
+      line-height: 1.55;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .news-featured-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+      color: rgba(255,255,255,.76);
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .news-featured-meta strong {
+      color: #fff;
+    }
+
+    .news-featured-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      width: fit-content;
+      margin-top: 15px;
+      padding: 9px 12px;
+      border: 2px solid rgba(255,255,255,.72);
+      border-radius: 7px;
+      background: rgba(255,255,255,.94);
+      color: var(--blue-deep);
+      font-family: 'Manrope', sans-serif;
+      font-size: 9px;
+      font-weight: 900;
+      text-transform: uppercase;
+      box-shadow: 0 3px 0 rgba(0,0,0,.10);
+      transition: .18s ease;
+    }
+
+    .news-featured:hover .news-featured-action {
+      transform: translateY(-1px);
+      background: #fff;
+    }
+
+    .news-latest-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 22px;
+      margin-bottom: 10px;
+    }
+
+    .news-latest-heading h3 {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 900;
+      color: #294256;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .news-latest-heading span {
+      color: #91a2b0;
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .news-latest-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .news-mini-card {
+      overflow: hidden;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(35,107,151,.06);
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+
+    .news-mini-card:hover {
+      transform: translateY(-3px);
+      border-color: #a8d6ef;
+      box-shadow: var(--shadow-hover);
+    }
+
+    .news-mini-image-wrap {
+      position: relative;
+      height: 126px;
+      overflow: hidden;
+      background: #dff3ff;
+    }
+
+    .news-mini-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .35s ease;
+    }
+
+    .news-mini-card:hover .news-mini-image {
+      transform: scale(1.05);
+    }
+
+    .news-mini-category {
+      position: absolute;
+      left: 8px;
+      bottom: 8px;
+      padding: 4px 6px;
+      border: 1px solid rgba(255,255,255,.72);
+      border-radius: 5px;
+      background: rgba(255,255,255,.90);
+      color: var(--blue-deep);
+      font-family: 'Manrope', sans-serif;
+      font-size: 7px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      box-shadow: 0 2px 6px rgba(0,0,0,.10);
+    }
+
+    .news-mini-body {
+      padding: 10px;
+    }
+
+    .news-mini-title {
+      margin: 0;
+      color: #2b4151;
+      font-family: 'Manrope', sans-serif;
+      font-size: 11px;
+      line-height: 1.35;
+      font-weight: 900;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .news-mini-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      color: #99a9b5;
+      font-size: 8px;
+      font-weight: 700;
+    }
+
+    .news-mini-meta i {
+      color: var(--blue);
+    }
+
+    .news-loading-state,
+    .news-empty-state {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 250px;
+      flex-direction: column;
+      gap: 9px;
+      border: 2px dashed #b9d9eb;
+      border-radius: 12px;
+      background: #f7fcff;
+      color: #8da1b0;
+      text-align: center;
+    }
+
+    .news-loading-state i {
+      color: var(--blue-dark);
+      font-size: 22px;
+      animation: spin 1s linear infinite;
+    }
+
+    .news-empty-state i {
+      color: #a9c3d3;
+      font-size: 22px;
+    }
+
+    .news-loading-state strong,
+    .news-empty-state strong {
+      color: #60798b;
+      font-family: 'Manrope', sans-serif;
+      font-size: 10px;
+    }
+
+    .news-loading-state span,
+    .news-empty-state span {
+      max-width: 340px;
+      font-size: 9px;
+      line-height: 1.5;
+    }
+
+    /* Modal de leitura da notícia */
+    .news-reader-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10002;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(19,55,77,.55);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    .news-reader-overlay.is-open {
+      display: flex;
+      animation: profileOverlayIn .18s ease;
+    }
+
+    .news-reader-modal {
+      width: min(100%, 820px);
+      max-height: calc(100vh - 36px);
+      overflow-y: auto;
+      background: #fff;
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 24px 65px rgba(23,108,168,.28);
+      position: relative;
+    }
+
+    .news-reader-cover {
+      position: relative;
+      height: 265px;
+      overflow: hidden;
+      background: #dff3ff;
+    }
+
+    .news-reader-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .news-reader-cover::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(20,64,89,.02), rgba(20,64,89,.62));
+      pointer-events: none;
+    }
+
+    .news-reader-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 3;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid rgba(255,255,255,.75);
+      border-radius: 8px;
+      background: rgba(25,61,82,.68);
+      color: #fff;
+      cursor: pointer;
+      transition: .18s ease;
+    }
+
+    .news-reader-close:hover {
+      background: #fff;
+      color: var(--red);
+    }
+
+    .news-reader-content {
+      padding: 22px 24px 26px;
+    }
+
+    .news-reader-title {
+      margin: 7px 0 0;
+      color: #263d4e;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(22px, 3vw, 31px);
+      line-height: 1.12;
+      font-weight: 900;
+    }
+
+    .news-reader-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+      color: #879aa8;
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .news-reader-body {
+      margin-top: 18px;
+      padding-top: 17px;
+      border-top: 2px solid #edf3f7;
+      color: #536b7c;
+      font-size: 12px;
+      line-height: 1.75;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .news-reader-summary {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-left: 4px solid var(--blue);
+      border-radius: 6px;
+      background: #f2faff;
+      color: #557082;
+      font-size: 11px;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    @media (max-width: 760px) {
+      .news-latest-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .news-mini-image-wrap {
+        height: 160px;
+      }
+
+      .news-featured,
+      .news-featured-content {
+        min-height: 350px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .news-featured-content {
+        padding: 16px;
+      }
+
+      .news-featured-top {
+        top: 12px;
+        left: 12px;
+        right: 12px;
+      }
+
+      .news-featured-title {
+        font-size: 22px;
+      }
+
+      .news-featured-summary {
+        font-size: 10px;
+      }
+
+      .news-reader-overlay {
+        padding: 10px;
+      }
+
+      .news-reader-modal {
+        max-height: calc(100vh - 20px);
+        border-radius: 14px;
+      }
+
+      .news-reader-cover {
+        height: 190px;
+      }
+
+      .news-reader-content {
+        padding: 18px;
+      }
+    }
+
+
+    /* =========================================================
+       BOTÕES
+    ========================================================= */
+
+    .pixel-button {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 7px;
+
+      padding: 8px 13px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #63c3fa,
+          #329bd7
+        );
+
+      border: 2px solid #1e78b2;
+
+      border-radius: 7px;
+
+      color: #fff;
 
       font-family: 'Manrope', sans-serif;
 
       font-size: 10px;
 
-      line-height: 1.35;
-
       font-weight: 900;
+
+      text-transform: uppercase;
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.35),
+        0 2px 0 #155f8f;
+
+      cursor: pointer;
+
+      transition: .15s ease;
     }
 
-    .update-meta {
-      margin-top: 5px;
+    .pixel-button:hover {
+      transform: translateY(-1px);
 
-      color: #91a2ae;
-
-      font-family: 'Inter', sans-serif;
-
-      font-size: 8px;
+      filter: brightness(1.04);
     }
 
+    .pixel-button:active {
+      transform: translateY(1px);
 
-    /* =========================================================
-       SIDEBAR
-    ========================================================= */
-
-    .sidebar-stack {
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 20px;
-    }
-
-    .sidebar-card-body {
-      padding: 14px;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.25),
+        0 1px 0 #155f8f;
     }
 
 
     /* =========================================================
-       PESQUISA
+       EVENTOS
     ========================================================= */
 
-    .portal-search {
-      display: flex;
+    .event-card {
+      position: relative;
 
-      align-items: center;
+      padding: 15px;
 
-      gap: 8px;
+      background: #f8fcff;
 
-      height: 39px;
+      border: 2px solid var(--border);
 
-      padding: 0 11px;
+      border-radius: 10px;
+
+      transition: .2s ease;
+    }
+
+    .event-card:hover {
+      background: #fff;
+
+      border-color: #a8d6ef;
+
+      transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       BUSCA
+    ========================================================= */
+
+    .search-box {
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+
+      height: 42px;
+
+      padding: 0 75px 0 13px;
 
       background: #f7fbfe;
 
       border: 2px solid var(--border);
 
-      border-radius: 8px;
+      border-radius: 9px;
 
-      transition: .18s ease;
-    }
+      outline: none;
 
-    .portal-search:focus-within {
-      background: #fff;
+      color: var(--text);
 
-      border-color: #9dcfe9;
-
-      box-shadow:
-        0 0 0 3px rgba(85,185,245,.10);
-    }
-
-    .portal-search i {
-      color: #9aafbd;
+      font-family: 'Inter', sans-serif;
 
       font-size: 11px;
+
+      transition: .2s ease;
     }
 
-    .portal-search input {
-      width: 100%;
+    .search-box input:focus {
+      background: #fff;
 
-      min-width: 0;
+      border-color: var(--blue);
+
+      box-shadow:
+        0 0 0 3px rgba(85,185,245,.12);
+    }
+
+    .search-button {
+      position: absolute;
+
+      right: 5px;
+      top: 5px;
+
+      width: 32px;
+      height: 32px;
 
       border: 0;
 
-      outline: 0;
+      border-radius: 6px;
 
-      background: transparent;
+      background: var(--blue-dark);
 
-      color: #3e5668;
+      color: #fff;
 
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 9px;
-
-      font-weight: 700;
-    }
-
-    .portal-search input::placeholder {
-      color: #aab9c3;
+      cursor: pointer;
     }
 
 
     /* =========================================================
-       HALL DA FAMA
+       RANKING
     ========================================================= */
 
-    .ranking-list {
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 7px;
-    }
-
-    .ranking-item {
+    .ranking-user {
       display: flex;
 
       align-items: center;
@@ -1800,82 +1867,74 @@
 
       padding: 9px;
 
-      background: #f8fcff;
+      background: #f7fbfe;
 
-      border: 1px solid #e2edf3;
+      border: 2px solid #e1edf4;
 
-      border-radius: 8px;
+      border-radius: 9px;
+
+      transition: .18s ease;
     }
 
-    .ranking-position {
-      width: 24px;
+    .ranking-user:hover {
+      background: #fff;
 
-      color: #8fa3b0;
-
-      font-family: 'Plus Jakarta Sans', sans-serif;
-
-      font-size: 9px;
-
-      font-weight: 900;
-
-      text-align: center;
+      border-color: #b9dced;
     }
 
-    .ranking-item:first-child .ranking-position {
-      color: #c18a00;
+    .ranking-user.top-user {
+      background:
+        linear-gradient(
+          135deg,
+          #fff8d8,
+          #fffdf1
+        );
+
+      border-color: #e8c847;
     }
 
     .ranking-avatar {
-      width: 31px;
-      height: 31px;
+      width: 34px;
+      height: 34px;
 
       flex-shrink: 0;
 
       object-fit: cover;
 
+      background: #20384a;
+
+      border: 2px solid #b9cfdd;
+
       border-radius: 7px;
-
-      background: #dff3ff;
-
-      border: 1px solid #c4deeb;
     }
 
-    .ranking-user {
-      min-width: 0;
+    .top-user .ranking-avatar {
+      width: 42px;
+      height: 42px;
 
-      flex: 1;
+      border-color: #e3ae00;
     }
 
-    .ranking-name {
-      display: block;
+    .pixel-medal {
+      width: 21px;
+      height: 21px;
 
-      overflow: hidden;
+      display: flex;
 
-      text-overflow: ellipsis;
+      align-items: center;
+      justify-content: center;
 
-      white-space: nowrap;
+      background: var(--yellow);
 
-      color: #40586a;
+      border: 2px solid #c99400;
 
-      font-family: 'Manrope', sans-serif;
+      border-radius: 5px;
 
-      font-size: 9px;
+      color: #705000;
+
+      font-size: 8px;
 
       font-weight: 900;
-    }
-
-    .ranking-points {
-      display: block;
-
-      margin-top: 2px;
-
-      color: #a37a00;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 7px;
-
-      font-weight: 800;
     }
 
 
@@ -1883,148 +1942,188 @@
        PARCEIROS
     ========================================================= */
 
-    .partners-grid {
-      display: grid;
+    .partner-card {
+      display: flex;
 
-      grid-template-columns: repeat(2, minmax(0,1fr));
+      align-items: center;
 
       gap: 8px;
+
+      padding: 9px;
+
+      background: #f8fcff;
+
+      border: 2px solid var(--border);
+
+      border-radius: 8px;
+
+      text-decoration: none;
+
+      transition: .18s ease;
     }
 
-    .partner-item {
-      min-height: 68px;
+    .partner-card:hover {
+      background: #fff;
+
+      border-color: #9ed4ef;
+
+      transform: translateY(-1px);
+    }
+
+    .partner-icon {
+      width: 30px;
+      height: 30px;
+
+      flex-shrink: 0;
 
       display: flex;
 
       align-items: center;
       justify-content: center;
 
-      padding: 10px;
+      background: #fff;
 
-      background: #f8fcff;
+      border: 2px solid #d5e7f4;
 
-      border: 1px solid #dfedf5;
+      border-radius: 6px;
 
-      border-radius: 8px;
-
-      color: #7d94a4;
-
-      font-family: 'Plus Jakarta Sans', sans-serif;
-
-      font-size: 9px;
-
-      font-weight: 900;
-
-      text-align: center;
-
-      transition: .18s ease;
-    }
-
-    .partner-item:hover {
       color: var(--blue-dark);
 
-      border-color: #b9dced;
-
-      background: #f0faff;
+      font-size: 12px;
     }
 
 
     /* =========================================================
-       TRABALHE CONOSCO
+       FORMULÁRIO DE VAGAS
     ========================================================= */
 
-    .jobs-intro {
-      margin: 0 0 13px;
+    .vagas-intro {
+      padding: 9px 10px;
 
-      color: #7d91a0;
+      margin-bottom: 14px;
 
-      font-family: 'Inter', sans-serif;
+      background: #f1f9fe;
 
-      font-size: 9px;
+      border: 1px dashed #afd4e9;
 
-      line-height: 1.6;
+      border-radius: 8px;
+
+      color: #637b8c;
+
+      font-size: 10px;
+
+      line-height: 1.5;
     }
 
-    .jobs-form {
+    .vagas-form {
       display: flex;
 
       flex-direction: column;
 
-      gap: 9px;
+      gap: 11px;
     }
 
-    .jobs-field {
+    .form-group {
       display: flex;
 
       flex-direction: column;
 
-      gap: 4px;
+      gap: 5px;
     }
 
-    .jobs-field label {
-      color: #788e9e;
-
+    .form-group label {
       font-family: 'Manrope', sans-serif;
 
-      font-size: 7px;
+      font-size: 9px;
 
       font-weight: 900;
 
+      color: #526a7c;
+
       text-transform: uppercase;
 
-      letter-spacing: .07em;
+      letter-spacing: .06em;
     }
 
-    .jobs-field input,
-    .jobs-field select,
-    .jobs-field textarea {
+    .form-group label i {
+      width: 13px;
+
+      color: var(--blue-dark);
+
+      margin-right: 2px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
       width: 100%;
 
-      border: 2px solid #dfeaf1;
+      border: 2px solid var(--border);
 
-      border-radius: 7px;
+      background: #f9fcfe;
 
-      outline: 0;
+      color: var(--text);
 
-      background: #fbfdff;
+      border-radius: 8px;
 
-      color: #455d6e;
+      padding: 9px 10px;
 
       font-family: 'Inter', sans-serif;
 
-      font-size: 9px;
+      font-size: 10px;
+
+      outline: none;
 
       transition: .18s ease;
     }
 
-    .jobs-field input,
-    .jobs-field select {
-      height: 36px;
-
-      padding: 0 9px;
+    .form-group input,
+    .form-group select {
+      height: 38px;
     }
 
-    .jobs-field textarea {
-      min-height: 72px;
-
-      padding: 8px 9px;
+    .form-group textarea {
+      min-height: 92px;
 
       resize: vertical;
+
+      line-height: 1.45;
     }
 
-    .jobs-field input:focus,
-    .jobs-field select:focus,
-    .jobs-field textarea:focus {
-      border-color: #9dcee7;
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #9aabb8;
+    }
 
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
       background: #fff;
 
+      border-color: var(--blue);
+
       box-shadow:
-        0 0 0 3px rgba(85,185,245,.08);
+        0 0 0 3px rgba(85,185,245,.10);
     }
 
-    .jobs-submit {
-      height: 38px;
+    .form-helper {
+      text-align: right;
+
+      margin-top: -2px;
+
+      color: #a1afba;
+
+      font-size: 8px;
+
+      font-weight: 600;
+    }
+
+    .vaga-submit {
+      width: 100%;
+
+      height: 40px;
+
+      margin-top: 2px;
 
       display: flex;
 
@@ -2033,67 +2132,44 @@
 
       gap: 7px;
 
-      margin-top: 3px;
+      background:
+        linear-gradient(
+          180deg,
+          #63c3fa,
+          #2788ca
+        );
 
-      border: 2px solid #d4a300;
+      color: #fff;
+
+      border: 2px solid #1d72a8;
 
       border-radius: 8px;
 
-      background: var(--yellow);
-
-      color: #654c00;
-
       font-family: 'Manrope', sans-serif;
 
-      font-size: 8px;
+      font-size: 10px;
 
       font-weight: 900;
 
-      text-transform: uppercase;
-
       letter-spacing: .04em;
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.35),
+        0 2px 0 #155f8f;
 
       cursor: pointer;
 
-      box-shadow:
-        0 2px 0 #b68100;
-
-      transition: .18s ease;
+      transition: .15s ease;
     }
 
-    .jobs-submit:hover {
+    .vaga-submit:hover {
+      filter: brightness(1.04);
+
       transform: translateY(-1px);
-
-      background: #ffdc5e;
     }
 
-    .jobs-submit:disabled {
-      cursor: default;
-
-      opacity: .72;
-
-      transform: none;
-    }
-
-
-    /* =========================================================
-       FOOTER
-    ========================================================= */
-
-    .portal-footer {
-      margin-top: 25px;
-
-      padding: 18px 0;
-
-      color: #8da0ae;
-
-      font-family: 'Manrope', sans-serif;
-
-      font-size: 8px;
-
-      font-weight: 700;
-
-      text-align: center;
+    .vaga-submit:active {
+      transform: translateY(1px);
     }
 
 
@@ -2101,79 +2177,78 @@
        AUTODJ
     ========================================================= */
 
-    .autodj-bar {
+    .bg-habbo-yellow-footer-bar {
       position: fixed;
 
       left: 0;
       right: 0;
       bottom: 0;
 
-      z-index: 9997;
-
-      min-height: 72px;
-
-      display: flex;
-
-      align-items: center;
+      z-index: 9999;
 
       background:
         linear-gradient(
-          90deg,
-          #fff4bd 0%,
-          #fff8d9 42%,
-          #fff3b5 100%
+          180deg,
+          #ffe16a 0%,
+          #ffd447 55%,
+          #f5c329 100%
         );
 
-      border-top: 2px solid #ebc83f;
+      border-top: 3px solid #d29c00;
 
       box-shadow:
-        0 -4px 18px rgba(148,111,0,.12);
+        0 -4px 16px rgba(0,0,0,.12),
+        inset 0 1px 0 rgba(255,255,255,.55);
     }
 
-    .autodj-inner {
-      width: min(1400px, calc(100% - 32px));
-
-      margin: 0 auto;
-
+    .autodj-box {
       display: flex;
 
       align-items: center;
 
-      gap: 12px;
+      gap: 10px;
+
+      padding: 5px 11px 5px 5px;
+
+      background: #fff;
+
+      border: 2px solid #dce9f0;
+
+      border-radius: 10px;
+
+      box-shadow:
+        0 2px 0 rgba(110,77,0,.16);
     }
 
     .autodj-avatar {
-      width: 43px;
-      height: 43px;
-
-      flex-shrink: 0;
-
-      border-radius: 9px;
+      width: 38px;
+      height: 38px;
 
       object-fit: cover;
 
-      background: #17364b;
+      background: #1b3446;
 
-      border: 2px solid #d8ae19;
+      border: 2px solid var(--blue-dark);
 
-      box-shadow:
-        0 2px 0 #ad8000;
-    }
-
-    .autodj-info {
-      min-width: 0;
-
-      flex: 1;
+      border-radius: 7px;
     }
 
     .autodj-live {
-      display: flex;
+      display: inline-flex;
 
       align-items: center;
 
-      gap: 5px;
+      gap: 4px;
 
-      color: #a67a00;
+      padding: 2px 6px;
+
+      background: #fff0f1;
+
+      border: 1px solid #ffc4c8;
+
+      border-radius: 4px;
+
+      color: #c63a43;
 
       font-family: 'Manrope', sans-serif;
 
@@ -2181,251 +2256,127 @@
 
       font-weight: 900;
 
-      text-transform: uppercase;
-
-      letter-spacing: .08em;
-    }
-
-    .autodj-live-dot {
-      width: 6px;
-      height: 6px;
-
-      border-radius: 50%;
-
-      background: #e4a700;
-
-      box-shadow:
-        0 0 0 2px rgba(228,167,0,.16);
-    }
-
-    .autodj-title {
-      margin-top: 2px;
-
-      overflow: hidden;
-
-      text-overflow: ellipsis;
-
-      white-space: nowrap;
-
-      color: #5c4c16;
-
-      font-family: 'Plus Jakarta Sans', sans-serif;
-
-      font-size: 10px;
-
-      font-weight: 900;
+      letter-spacing: .06em;
     }
 
     .autodj-track {
-      overflow: hidden;
+      color: #435a6a;
 
-      text-overflow: ellipsis;
+      font-size: 9px;
 
-      white-space: nowrap;
-
-      color: #8e7a3c;
-
-      font-family: 'Inter', sans-serif;
-
-      font-size: 8px;
+      font-weight: 700;
     }
 
-    .autodj-badge {
-      flex-shrink: 0;
+    .pulse-dot {
+      width: 5px;
+      height: 5px;
 
-      padding: 7px 10px;
+      border-radius: 50%;
 
-      border: 1px solid #e6ca58;
+      background: #ed4b55;
 
-      border-radius: 7px;
+      animation: pulse 1.5s infinite;
+    }
 
-      background: rgba(255,255,255,.55);
+    @keyframes pulse {
+      0%,100% {
+        opacity: 1;
+        transform: scale(1);
+      }
 
-      color: #9a7a00;
+      50% {
+        opacity: .45;
+        transform: scale(.8);
+      }
+    }
 
-      font-family: 'Manrope', sans-serif;
+    .record-spin {
+      animation: spin 3s linear infinite;
+    }
 
-      font-size: 7px;
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
 
-      font-weight: 900;
-
-      text-transform: uppercase;
+      to {
+        transform: rotate(360deg);
+      }
     }
 
 
     /* =========================================================
-       RESPONSIVIDADE
+       RESPONSIVO
     ========================================================= */
-
-    @media (max-width: 1100px) {
-
-      .nav-item {
-        padding: 0 12px;
-      }
-
-      .portal-grid {
-        grid-template-columns:
-          minmax(0, 1.45fr)
-          minmax(280px, .8fr);
-      }
-
-    }
-
 
     @media (max-width: 900px) {
 
-      .portal-grid {
-        grid-template-columns: 1fr;
+      body {
+        padding-top: 70px;
+        padding-bottom: 110px;
       }
 
-      .sidebar-stack {
-        display: grid;
-
-        grid-template-columns:
-          repeat(2, minmax(0,1fr));
-      }
-
-      .sidebar-card.jobs-card {
-        grid-column: 1 / -1;
+      .nav-item {
+        padding: 0 13px;
       }
 
     }
 
+    @media (max-width: 640px) {
 
-    @media (max-width: 720px) {
-
-      body {
-        padding-top: 68px;
-
-        padding-bottom: 82px;
-      }
-
-      .portal-container {
-        width: min(100% - 20px, 1400px);
-      }
-
-      .top-header-bar .portal-container {
-        width: calc(100% - 20px);
-      }
-
-      .pixelizados-logo {
-        height: 39px;
-
-        max-width: 150px;
-      }
-
-      .profile-name,
-      .online-status {
-        display: none;
-      }
-
-      .pixel-wallet {
-        padding: 6px 8px;
+      .top-header-bar {
+        padding-left: 10px;
+        padding-right: 10px;
       }
 
       .pixel-wallet-label {
         display: none;
       }
 
-      .profile-box {
-        padding-right: 4px;
+      .profile-name {
+        max-width: 70px;
+
+        overflow: hidden;
+
+        white-space: nowrap;
+
+        text-overflow: ellipsis;
       }
 
       .nav-item {
-        height: 43px;
+        padding: 0 12px;
 
-        padding: 0 10px;
-
-        font-size: 9px;
-      }
-
-      .nav-item span {
-        display: none;
+        font-size: 10px;
       }
 
       .nav-item i {
-        font-size: 13px;
+        font-size: 11px;
       }
 
-      .portal-main {
-        padding-top: 15px;
-      }
-
-      .portal-hero {
-        min-height: 0;
-
-        padding: 22px 20px;
-
-        align-items: flex-start;
-      }
-
-      .portal-hero-pixel {
-        display: none;
-      }
-
-      .featured-news-image-wrap {
-        height: 245px;
-      }
-
-      .updates-list {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar-stack {
-        display: flex;
-      }
-
-      .autodj-inner {
-        width: calc(100% - 20px);
-      }
-
-      .autodj-badge {
-        display: none;
+      .news-image {
+        height: 220px;
       }
 
       .profile-modal-overlay {
-        padding: 10px;
+        padding: 12px;
+      }
+
+      .profile-modal {
+        max-height: calc(100vh - 24px);
+
+        border-radius: 14px;
       }
 
       .profile-modal-header {
-        padding: 20px 18px 14px;
+        padding: 21px 18px 14px;
       }
 
       .profile-modal-body {
-        padding: 16px 18px 18px;
-      }
-
-    }
-
-
-    @media (max-width: 470px) {
-
-      .portal-hero h1 {
-        font-size: 22px;
-      }
-
-      .featured-news-image-wrap {
-        height: 210px;
-      }
-
-      .featured-news-content {
-        padding: 16px;
-      }
-
-      .featured-news-title {
-        font-size: 19px;
-      }
-
-      .featured-news-meta {
-        gap: 6px;
-      }
-
-      .featured-news-reading {
-        display: none;
+        padding: 17px 18px 20px;
       }
 
       .profile-modal-hero {
-        align-items: flex-start;
+        padding: 11px;
       }
 
       .profile-modal-avatar-frame {
@@ -2433,1225 +2384,16 @@
         height: 64px;
       }
 
+      .profile-modal-nick {
+        font-size: 15px;
+      }
+
     }
 
-  </style>
-</head>
-
-
-<body>
-
-  <!-- =======================================================
-       HEADER
-  ======================================================== -->
-
-  <header class="top-header-bar">
-
-    <div
-      class="portal-container"
-      style="
-        height:74px;
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        gap:20px;
-      "
-    >
-
-      <a
-        href="portal.html"
-        style="
-          display:flex;
-          align-items:center;
-          text-decoration:none;
-          min-width:0;
-        "
-      >
-
-        <img
-          src="pixelizados.png.png"
-          alt="Pixelizados"
-          class="pixelizados-logo"
-        >
-
-      </a>
-
-
-      <div class="profile-area">
-
-        <div class="pixel-wallet">
-
-          <div class="habbo-coin">
-            $
-          </div>
-
-          <div>
-            <div class="pixel-wallet-label">
-              PIXELS
-            </div>
-
-            <div
-              id="profile-points"
-              class="pixel-wallet-value"
-            >
-              0 PX
-            </div>
-          </div>
-
-        </div>
-
-
-        <div
-          class="profile-box"
-          onclick="abrirModalPerfil()"
-          style="cursor:pointer;"
-          title="Ver meu perfil"
-        >
-
-          <div
-            class="profile-avatar-frame"
-            onclick="event.stopPropagation(); abrirModalPerfil();"
-          >
-
-            <img
-              id="profile-avatar"
-              class="profile-avatar"
-              src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Pixelizado"
-              alt="Avatar"
-            >
-
-          </div>
-
-
-          <div>
-
-            <div
-              id="profile-name"
-              class="profile-name"
-            >
-              Pixelizado
-            </div>
-
-            <div class="online-status">
-
-              <span class="online-dot"></span>
-
-              Online
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <button
-          id="btn-fundador"
-          onclick="abrirPainelFundador()"
-          class="logout-button"
-          title="Painel Administrativo"
-          style="
-            display:none;
-            color:#b98500;
-            border-color:#ecd47b;
-            background:#fff9df;
-          "
-        >
-
-          <i class="fa-solid fa-crown"></i>
-
-        </button>
-
-
-        <button
-          id="logout-button"
-          onclick="fazerLogout()"
-          class="logout-button"
-          title="Sair"
-        >
-
-          <i class="fa-solid fa-right-from-bracket"></i>
-
-        </button>
-
-      </div>
-
-    </div>
-
-  </header>
-
-
-  <!-- =======================================================
-       NAVEGAÇÃO
-  ======================================================== -->
-
-  <nav class="classic-nav-bar">
-
-    <div
-      class="portal-container"
-      style="
-        display:flex;
-        align-items:center;
-        overflow-x:auto;
-      "
-    >
-
-      <a
-        href="#"
-        class="nav-item active"
-      >
-        <i class="fa-solid fa-house"></i>
-        <span>Home</span>
-      </a>
-
-      <a
-        href="#comunidade"
-        class="nav-item"
-      >
-        <i class="fa-solid fa-users"></i>
-        <span>Comunidade</span>
-      </a>
-
-      <a
-        href="#equipe"
-        class="nav-item"
-      >
-        <i class="fa-solid fa-user-group"></i>
-        <span>Equipe</span>
-      </a>
-
-      <a
-        href="#ranking"
-        class="nav-item"
-      >
-        <i class="fa-solid fa-ranking-star"></i>
-        <span>Ranking</span>
-      </a>
-
-      <a
-        href="#noticias"
-        class="nav-item"
-      >
-        <i class="fa-solid fa-newspaper"></i>
-        <span>Notícias</span>
-      </a>
-
-      <a
-        href="#trabalhe-conosco"
-        class="nav-item"
-      >
-        <i class="fa-solid fa-briefcase"></i>
-        <span>Trabalhe Conosco</span>
-      </a>
-
-      <a
-        href="https://discord.gg/pixelizados"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="nav-item"
-      >
-        <i class="fa-brands fa-discord"></i>
-        <span>Discord</span>
-      </a>
-
-    </div>
-
-  </nav>
-
-
-  <!-- =======================================================
-       CONTEÚDO
-  ======================================================== -->
-
-  <main class="portal-container portal-main">
-
-
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
-
-    <section class="portal-hero">
-
-      <div class="portal-hero-content">
-
-        <div class="portal-kicker">
-
-          <i class="fa-solid fa-sparkles"></i>
-
-          Portal Oficial Pixelizados
-
-        </div>
-
-        <h1>
-          O universo da comunidade Pixelizada.
-        </h1>
-
-        <p>
-          Notícias, eventos, ranking, comunidade e tudo que acontece
-          dentro do nosso espaço.
-        </p>
-
-      </div>
-
-
-      <div class="portal-hero-pixel">
-
-        <i class="fa-solid fa-cubes"></i>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         GRID
-    ====================================================== -->
-
-    <div class="portal-grid">
-
-
-      <!-- ===================================================
-           COLUNA ESQUERDA
-      ==================================================== -->
-
-      <div>
-
-
-        <!-- =================================================
-             NOTÍCIAS
-        ================================================== -->
-
-        <section
-          id="noticias"
-          class="portal-card"
-        >
-
-          <div class="portal-card-header">
-
-            <div class="portal-card-title">
-
-              <i class="fa-solid fa-newspaper"></i>
-
-              Timeline de Notícias
-
-            </div>
-
-            <a
-              href="#noticias"
-              class="portal-card-link"
-            >
-              Ver todas
-            </a>
-
-          </div>
-
-
-          <article class="featured-news">
-
-
-            <div class="featured-news-image-wrap">
-
-              <img
-                id="featured-news-image"
-                class="featured-news-image"
-                src="https://images.unsplash.com/photo-1550745165-9bc0b2527264?auto=format&fit=crop&w=1100&q=80"
-                alt="Notícia Pixelizados"
-              >
-
-              <div class="featured-news-overlay"></div>
-
-
-              <div class="featured-news-badge">
-
-                <i class="fa-solid fa-star"></i>
-
-                Destaque
-
-              </div>
-
-            </div>
-
-
-            <div class="featured-news-content">
-
-              <div
-                id="featured-news-category"
-                class="featured-news-category"
-              >
-                Fã-Site Oficial
-              </div>
-
-
-              <h2
-                id="featured-news-title"
-                class="featured-news-title"
-              >
-                A Era dos Fã-Sites Oficiais:
-                O Futuro da Comunidade Pixelizada
-              </h2>
-
-
-              <p
-                id="featured-news-summary"
-                class="featured-news-summary"
-              >
-                Confira as novidades exclusivas, eventos programados
-                e melhorias da nossa plataforma para esta temporada.
-                Junte-se aos membros da comunidade, acumule pixels
-                virtuais no seu perfil e ajude a construir o melhor
-                espaço de interação do hotel!
-              </p>
-
-
-              <div class="featured-news-meta">
-
-                <div class="featured-news-author">
-
-                  <img
-                    id="featured-news-author-avatar"
-                    class="featured-news-author-avatar"
-                    src="https://api.dicebear.com/7.x/pixel-art/svg?seed=RedacaoPixel"
-                    alt="Autor"
-                  >
-
-                  <span id="featured-news-author">
-                    Redação Pixel
-                  </span>
-
-                </div>
-
-
-                <span class="featured-news-meta-separator">
-                  •
-                </span>
-
-
-                <span
-                  id="featured-news-date"
-                  class="featured-news-date"
-                >
-                  Há 2 horas
-                </span>
-
-
-                <span class="featured-news-meta-separator">
-                  •
-                </span>
-
-
-                <span
-                  id="featured-news-reading"
-                  class="featured-news-reading"
-                >
-                  3 min de leitura
-                </span>
-
-              </div>
-
-
-              <div class="featured-news-actions">
-
-                <button
-                  class="news-action-button"
-                  onclick="toggleLike(this)"
-                  type="button"
-                >
-
-                  <i class="fa-regular fa-heart"></i>
-
-                  <span class="like-count">
-                    124
-                  </span>
-
-                </button>
-
-
-                <button
-                  class="news-action-button"
-                  type="button"
-                  onclick="document.getElementById('featured-news-summary').scrollIntoView({behavior:'smooth',block:'center'});"
-                >
-
-                  <i class="fa-regular fa-comment"></i>
-
-                  <span class="comment-count">
-                    18
-                  </span>
-
-                </button>
-
-
-                <button
-                  class="news-action-button share-button"
-                  type="button"
-                  onclick="compartilharNoticia()"
-                >
-
-                  <i class="fa-solid fa-share-nodes"></i>
-
-                  Compartilhar
-
-                </button>
-
-              </div>
-
-            </div>
-
-          </article>
-
-        </section>
-
-
-        <!-- =================================================
-             ATUALIZAÇÕES
-        ================================================== -->
-
-        <section class="portal-card updates-card">
-
-          <div class="portal-card-header">
-
-            <div class="portal-card-title">
-
-              <i class="fa-solid fa-bolt"></i>
-
-              Atualizações & Eventos
-
-            </div>
-
-          </div>
-
-
-          <div class="updates-list">
-
-
-            <div class="update-item event">
-
-              <div class="update-icon">
-
-                <i class="fa-solid fa-gift"></i>
-
-              </div>
-
-
-              <div class="update-content">
-
-                <span class="update-tag">
-                  Sorteio
-                </span>
-
-                <h3 class="update-title">
-                  Passaporte VIP Semestral + 500 PX
-                </h3>
-
-                <div class="update-meta">
-                  92 participantes · 85% concluído · termina em 2d
-                </div>
-
-              </div>
-
-            </div>
-
-
-            <div class="update-item">
-
-              <div class="update-icon">
-
-                <i class="fa-solid fa-microphone-lines"></i>
-
-              </div>
-
-
-              <div class="update-content">
-
-                <span class="update-tag">
-                  Rádio
-                </span>
-
-                <h3 class="update-title">
-                  Torneio de Quiz na Rádio Pixel
-                </h3>
-
-                <div class="update-meta">
-                  Hoje às 20:00 · DJ Pixel
-                </div>
-
-              </div>
-
-            </div>
-
-
-          </div>
-
-        </section>
-
-
-      </div>
-
-
-      <!-- ===================================================
-           SIDEBAR
-      ==================================================== -->
-
-      <aside class="sidebar-stack">
-
-
-        <!-- =================================================
-             PESQUISA
-        ================================================== -->
-
-        <section class="portal-card">
-
-          <div class="sidebar-card-body">
-
-            <form
-              class="portal-search"
-              onsubmit="pesquisarPortal(event)"
-            >
-
-              <i class="fa-solid fa-magnifying-glass"></i>
-
-              <input
-                id="portal-search"
-                type="search"
-                placeholder="Pesquisar no Pixelizados..."
-                autocomplete="off"
-              >
-
-            </form>
-
-          </div>
-
-        </section>
-
-
-        <!-- =================================================
-             HALL DA FAMA
-        ================================================== -->
-
-        <section
-          id="ranking"
-          class="portal-card"
-        >
-
-          <div class="portal-card-header">
-
-            <div class="portal-card-title">
-
-              <i class="fa-solid fa-ranking-star"></i>
-
-              Hall da Fama
-
-            </div>
-
-            <a
-              href="#ranking"
-              class="portal-card-link"
-            >
-              Ranking
-            </a>
-
-          </div>
-
-
-          <div class="sidebar-card-body">
-
-            <div class="ranking-list">
-
-
-              <div class="ranking-item">
-
-                <div class="ranking-position">
-                  01
-                </div>
-
-                <img
-                  class="ranking-avatar"
-                  src="https://api.dicebear.com/7.x/pixel-art/svg?seed=KingPixel"
-                  alt="KingPixel"
-                >
-
-                <div class="ranking-user">
-
-                  <span class="ranking-name">
-                    KingPixel
-                  </span>
-
-                  <span class="ranking-points">
-                    1.420 PX
-                  </span>
-
-                </div>
-
-              </div>
-
-
-              <div class="ranking-item">
-
-                <div class="ranking-position">
-                  02
-                </div>
-
-                <img
-                  class="ranking-avatar"
-                  src="https://api.dicebear.com/7.x/pixel-art/svg?seed=StarGirl"
-                  alt="StarGirl"
-                >
-
-                <div class="ranking-user">
-
-                  <span class="ranking-name">
-                    StarGirl
-                  </span>
-
-                  <span class="ranking-points">
-                    980 PX
-                  </span>
-
-                </div>
-
-              </div>
-
-
-              <div class="ranking-item">
-
-                <div class="ranking-position">
-                  03
-                </div>
-
-                <img
-                  class="ranking-avatar"
-                  src="https://api.dicebear.com/7.x/pixel-art/svg?seed=NeoUser"
-                  alt="NeoUser"
-                >
-
-                <div class="ranking-user">
-
-                  <span class="ranking-name">
-                    NeoUser
-                  </span>
-
-                  <span class="ranking-points">
-                    850 PX
-                  </span>
-
-                </div>
-
-              </div>
-
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-        <!-- =================================================
-             PARCEIROS
-        ================================================== -->
-
-        <section class="portal-card">
-
-          <div class="portal-card-header">
-
-            <div class="portal-card-title">
-
-              <i class="fa-solid fa-handshake"></i>
-
-              Parceiros
-
-            </div>
-
-          </div>
-
-
-          <div class="sidebar-card-body">
-
-            <div class="partners-grid">
-
-              <div class="partner-item">
-                Habbo Hotel
-              </div>
-
-              <div class="partner-item">
-                Rádio Pixel
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-        <!-- =================================================
-             TRABALHE CONOSCO
-        ================================================== -->
-
-        <section
-          id="trabalhe-conosco"
-          class="portal-card jobs-card"
-        >
-
-          <div class="portal-card-header">
-
-            <div class="portal-card-title">
-
-              <i class="fa-solid fa-briefcase"></i>
-
-              Trabalhe Conosco
-
-            </div>
-
-          </div>
-
-
-          <div class="sidebar-card-body">
-
-            <p class="jobs-intro">
-              Quer fazer parte da equipe Pixelizados?
-              Envie sua candidatura e conte um pouco
-              sobre você.
-            </p>
-
-
-            <form
-              id="vagas-formulario"
-              class="jobs-form"
-              onsubmit="enviarCandidatura(event)"
-            >
-
-
-              <div class="jobs-field">
-
-                <label for="vaga-cargo">
-                  Cargo desejado
-                </label>
-
-                <select
-                  id="vaga-cargo"
-                  required
-                >
-
-                  <option value="">
-                    Selecione...
-                  </option>
-
-                  <option value="redator">
-                    Redator
-                  </option>
-
-                  <option value="moderador">
-                    Moderador
-                  </option>
-
-                  <option value="locutor">
-                    Locutor
-                  </option>
-
-                  <option value="apoiador">
-                    Apoiador
-                  </option>
-
-                </select>
-
-              </div>
-
-
-              <div class="jobs-field">
-
-                <label for="vaga-discord">
-                  Discord
-                </label>
-
-                <input
-                  id="vaga-discord"
-                  type="text"
-                  placeholder="usuario#0000"
-                  required
-                >
-
-              </div>
-
-
-              <div class="jobs-field">
-
-                <label for="vaga-idade">
-                  Idade
-                </label>
-
-                <input
-                  id="vaga-idade"
-                  type="number"
-                  min="13"
-                  max="100"
-                  placeholder="Ex.: 18"
-                  required
-                >
-
-              </div>
-
-
-              <div class="jobs-field">
-
-                <label for="vaga-experiencias">
-                  Experiências
-                </label>
-
-                <textarea
-                  id="vaga-experiencias"
-                  placeholder="Conte brevemente suas experiências..."
-                  required
-                ></textarea>
-
-              </div>
-
-
-              <button
-                id="vaga-submit"
-                class="jobs-submit"
-                type="submit"
-              >
-
-                <i class="fa-solid fa-paper-plane"></i>
-
-                ENVIAR CANDIDATURA
-
-              </button>
-
-
-            </form>
-
-          </div>
-
-        </section>
-
-
-      </aside>
-
-    </div>
-
-
-    <footer class="portal-footer">
-
-      Pixelizados © 2026 · Todos os direitos reservados.
-
-    </footer>
-
-  </main>
-
-
-  <!-- =======================================================
-       MODAL DE PERFIL
-  ======================================================== -->
-
-  <div
-    id="profile-modal-overlay"
-    class="profile-modal-overlay"
-    onclick="fecharModalPerfilAoClicarFora(event)"
-  >
-
-    <div
-      id="profile-modal"
-      class="profile-modal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="profile-modal-title"
-    >
-
-      <div class="profile-modal-header">
-
-        <div>
-
-          <p class="profile-modal-kicker">
-            Perfil Pixelizado
-          </p>
-
-          <h2
-            id="profile-modal-title"
-            class="profile-modal-title"
-          >
-            Meu perfil
-          </h2>
-
-          <p class="profile-modal-subtitle">
-            Informações da sua conta na comunidade.
-          </p>
-
-        </div>
-
-
-        <button
-          class="profile-modal-close"
-          type="button"
-          onclick="fecharModalPerfil()"
-          title="Fechar"
-        >
-
-          <i class="fa-solid fa-xmark"></i>
-
-        </button>
-
-      </div>
-
-
-      <div class="profile-modal-body">
-
-        <div class="profile-modal-hero">
-
-          <div class="profile-modal-avatar-frame">
-
-            <img
-              id="profile-modal-avatar"
-              class="profile-modal-avatar"
-              src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Pixelizado"
-              alt="Avatar do perfil"
-            >
-
-          </div>
-
-
-          <div class="profile-modal-user-info">
-
-            <h3
-              id="profile-modal-nick"
-              class="profile-modal-nick"
-            >
-              Pixelizado
-            </h3>
-
-
-            <div class="profile-modal-role">
-
-              <img
-                id="profile-modal-role-icon"
-                class="profile-modal-role-icon"
-                src=""
-                alt=""
-              >
-
-              <span id="profile-modal-role">
-                Aclamado/Fundador
-              </span>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <button
-          id="profile-avatar-change"
-          class="profile-avatar-change"
-          type="button"
-          onclick="selecionarNovoAvatar()"
-        >
-
-          <i class="fa-solid fa-camera"></i>
-
-          Alterar foto de perfil
-
-        </button>
-
-
-        <input
-          id="profile-avatar-input"
-          type="file"
-          accept="image/png,image/jpeg,image/webp"
-          style="display:none;"
-          onchange="enviarNovoAvatar(event)"
-        >
-
-
-        <div class="profile-info-list">
-
-
-          <div class="profile-info-row">
-
-            <div class="profile-info-icon">
-
-              <i class="fa-solid fa-coins"></i>
-
-            </div>
-
-            <div class="profile-info-content">
-
-              <span class="profile-info-label">
-                Pixels acumulados
-              </span>
-
-              <span
-                id="profile-modal-points"
-                class="profile-info-value px-value"
-              >
-                0 PX
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <div class="profile-info-row">
-
-            <div class="profile-info-icon">
-
-              <i class="fa-solid fa-calendar"></i>
-
-            </div>
-
-            <div class="profile-info-content">
-
-              <span class="profile-info-label">
-                Membro desde
-              </span>
-
-              <span
-                id="profile-modal-member-since"
-                class="profile-info-value"
-              >
-                —
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <div class="profile-info-row">
-
-            <div class="profile-info-icon">
-
-              <i class="fa-brands fa-discord"></i>
-
-            </div>
-
-            <div class="profile-info-content">
-
-              <span class="profile-info-label">
-                Discord
-              </span>
-
-              <span
-                id="profile-modal-discord"
-                class="profile-info-value"
-              >
-                —
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <div class="profile-info-row">
-
-            <div class="profile-info-icon">
-
-              <i class="fa-solid fa-circle-check"></i>
-
-            </div>
-
-            <div class="profile-info-content">
-
-              <span class="profile-info-label">
-                Status da conta
-              </span>
-
-              <span
-                id="profile-modal-status"
-                class="profile-account-status is-default"
-              >
-
-                <span class="profile-status-dot"></span>
-
-                <span id="profile-modal-status-text">
-                  —
-                </span>
-
-              </span>
-
-            </div>
-
-          </div>
-
-
-        </div>
-
-
-        <div class="profile-modal-future">
-
-          <span>
-            Mais recursos de perfil serão adicionados em breve.
-          </span>
-
-          <i class="fa-solid fa-lock"></i>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- =======================================================
-       AUTODJ
-  ======================================================== -->
-
-  <footer class="autodj-bar">
-
-    <div class="autodj-inner">
-
-      <img
-        class="autodj-avatar"
-        src="https://api.dicebear.com/7.x/pixel-art/svg?seed=DJPixel"
-        alt="DJ Pixel"
-      >
-
-
-      <div class="autodj-info">
-
-        <div class="autodj-live">
-
-          <span class="autodj-live-dot"></span>
-
-          NO AR
-
-        </div>
-
-
-        <div class="autodj-title">
-          DJ Pixel
-        </div>
-
-
-        <div class="autodj-track">
-          Transmissão Automatizada 24h
-        </div>
-
-      </div>
-
-
-      <div class="autodj-badge">
-        Transmissão Automatizada 24h
-      </div>
-
-    </div>
-
-  </footer>
-
-
-  <!-- =======================================================
-       JAVASCRIPT PRINCIPAL
-  ======================================================== -->
-
-  <script>
+  </style> </head> <body> <header class="top-header-bar px-4 sm:px-8 py-3"> <div class="max-w-7xl mx-auto flex items-center justify-between gap-4"> <a href="#" class="flex items-center flex-shrink-0" > <img src="pixelizados.png.png" alt="Pixelizados" class="h-10 sm:h-12 w-auto object-contain" > </a> <div class="profile-area"> <div class="pixel-wallet"> <div class="habbo-coin"> $ </div> <div class="flex flex-col"> <span class="pixel-wallet-label"> PIXELS </span> <span id="user-pixels" class="pixel-wallet-value" > 0 PX </span> </div> </div> <div class="profile-box"> <div onclick="abrirPerfilModal()" class="profile-avatar-frame" title="Abrir perfil" > <img id="user-avatar" class="profile-avatar" src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Pixelizado" alt="Avatar" > </div> <input type="file" id="avatar-file-input" accept="image/png,image/jpeg,image/webp" style="display:none;" onchange="processarArquivoAvatar(event)" > <div class="hidden sm:block"> <div id="user-nick" class="profile-name" onclick="abrirPerfilModal()" title="Abrir perfil" style="cursor:pointer;" > Pixelizado </div> <div class="online-status"> <span class="online-dot"></span> Online </div> </div> </div> <button id="btn-fundador" onclick="abrirPainelFundador()" class="logout-button" title="Painel Administrativo" style="display:none; color:#b98500; border-color:#ecd47b; background:#fff9df;" > <i class="fa-solid fa-crown"></i> </button> <button id="logout-button" onclick="fazerLogout()" class="logout-button" title="Sair" > <i class="fa-solid fa-power-off"></i> </button> </div> </div> </header> <nav class="classic-nav-bar"> <div class="max-w-7xl mx-auto flex overflow-x-auto" > <a href="#" class="nav-item active" > <i class="fa-solid fa-house"></i> <span>Home</span> </a> <a href="#" class="nav-item" > <i class="fa-solid fa-users"></i> <span>Comunidade</span> </a> <a href="#" class="nav-item" > <i class="fa-solid fa-user-shield"></i> <span>Equipe</span> </a> <a href="#" class="nav-item" > <i class="fa-solid fa-trophy"></i> <span>Ranking</span> </a> <a href="#" class="nav-item" > <i class="fa-solid fa-newspaper"></i> <span>Notícias</span> </a> <a href="#vagas-form" class="nav-item" > <i class="fa-solid fa-briefcase"></i> <span>Trabalhe Conosco</span> </a> <a href="#" class="nav-item" > <i class="fa-brands fa-discord"></i> <span>Discord</span> </a> </div> </nav> <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8"> <div class="grid grid-cols-1 lg:grid-cols-3 gap-7"> <div class="lg:col-span-2 space-y-7"> <section id="noticias" class="pixel-card pixel-card-hover p-5 sm:p-6"> <div class="card-header-title mb-5"> <div class="section-title"> <div class="section-icon" style="color:#2788ca;background:#e7f6ff;" > <i class="fa-solid fa-newspaper"></i> </div> <div> <h2> Central de Notícias </h2> <p> As novidades, eventos e histórias da comunidade Pixelizada </p> </div> </div> <span class="pixel-tag pixel-tag-blue"> <i class="fa-solid fa-bolt"></i> Atualizado ao vivo </span> </div> <div id="portal-news-loading" class="news-loading-state"> <i class="fa-solid fa-spinner"></i> <strong>Carregando as notícias...</strong> <span>Buscando as últimas publicações da comunidade Pixelizados.</span> </div> <div id="portal-news-content" style="display:none;"> <article id="portal-featured-news" class="news-featured" onclick="abrirNoticiaPortal(noticiaPortalAtual)" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); abrirNoticiaPortal(noticiaPortalAtual); }" aria-label="Abrir notícia em destaque" > <img id="portal-news-image" class="news-featured-image" src="https://images.unsplash.com/photo-1550745165-9bc0b2527264?auto=format&fit=crop&w=1400&q=85" alt="Capa da notícia" > <div class="news-featured-content"> <div class="news-featured-top"> <span class="news-featured-badge"> <i class="fa-solid fa-star"></i> <span id="portal-news-category">Fã-Site</span> </span> <span class="news-featured-live"> <i class="fa-solid fa-circle"></i> Em destaque </span> </div> <div class="news-featured-category"> <i class="fa-solid fa-newspaper"></i> &nbsp;Notícia da comunidade </div> <h1 id="portal-news-title" class="news-featured-title"> Carregando notícia... </h1> <p id="portal-news-summary" class="news-featured-summary"> Carregando o conteúdo da notícia... </p> <div class="news-featured-meta"> <span> <strong id="portal-news-author">Redação Pixel</strong> </span> <span>•</span> <span id="portal-news-date">Recentemente</span> <span>•</span> <span id="portal-news-reading-time">1 min de leitura</span> </div> <span class="news-featured-action"> Ler notícia <i class="fa-solid fa-arrow-right"></i> </span> </div> </article> <div class="news-latest-heading"> <h3> <i class="fa-solid fa-layer-group"></i> &nbsp;Últimas notícias </h3> <span id="portal-news-count">Atualizações da comunidade</span> </div> <div id="portal-latest-news" class="news-latest-grid"></div> <div id="portal-news-empty-latest" class="news-empty-state" style="display:none;" > <i class="fa-regular fa-newspaper"></i> <strong>Ainda não há outras notícias publicadas.</strong> <span>Quando novas publicações forem ao ar, elas aparecerão aqui automaticamente.</span> </div> <div class="flex items-center justify-between mt-5 pt-4 border-t-2 border-slate-100"> <div class="flex gap-2"> <button id="like-button" onclick="event.stopPropagation(); toggleLike(this)" class="pixel-button" type="button" > <i class="fa-regular fa-heart"></i> <span class="like-count">0</span> </button> <button id="portal-news-comment-button" type="button" onclick="event.stopPropagation(); abrirNoticiaPortal(noticiaPortalAtual)" class="flex items-center gap-2 px-3 py-2 rounded-md border-2 border-slate-200 bg-white text-slate-500 text-[10px] font-bold hover:border-sky-300 hover:text-sky-600 transition" > <i class="fa-regular fa-comment"></i> <span id="portal-news-comment-count">0</span> </button> </div> <button onclick="event.stopPropagation(); compartilharNoticia()" type="button" class="flex items-center gap-2 px-3 py-2 rounded-md border-2 border-slate-200 bg-white text-slate-500 text-[10px] font-bold hover:border-sky-300 hover:text-sky-600 transition" > <i class="fa-solid fa-share-nodes"></i> <span class="hidden sm:inline">Compartilhar</span> </button> </div> </div> <div id="portal-news-error" class="news-empty-state" style="display:none;" > <i class="fa-solid fa-cloud-arrow-down"></i> <strong>Não foi possível carregar as notícias.</strong> <span>Verifique a conexão com o Supabase e tente novamente.</span> </div> </section> <section class="pixel-card pixel-card-hover p-5 sm:p-6"> <div class="card-header-title mb-5"> <div class="section-title"> <div class="section-icon" style="color:#4ca95f;background:#eaf9ed;" > <i class="fa-solid fa-calendar-check"></i> </div> <div> <h2> Atualizações & Eventos </h2> <p> Sorteios ativos e agenda da rádio </p> </div> </div> <a href="#" class="text-[10px] font-extrabold text-sky-600 hover:text-sky-800" > Ver todos → </a> </div> <div class="grid grid-cols-1 md:grid-cols-2 gap-4"> <div class="event-card"> <div class="flex justify-between items-center mb-3"> <span class="pixel-tag" style="color:#946b00;background:#fff6d3;border:1px solid #ecd37a;" > <i class="fa-solid fa-gift"></i> Sorteio </span> <span class="text-[9px] font-bold text-slate-400"> Faltam 2d </span> </div> <h3 class="font-subtitle font-extrabold text-sm text-slate-800" > Passaporte VIP Semestral + 500 PX </h3> <p class="text-[10px] text-slate-500 mt-1 leading-relaxed"> Comente na timeline oficial e participe automaticamente do sorteio da comunidade. </p> <div class="mt-4"> <div class="flex justify-between text-[9px] font-bold text-slate-500 mb-1" > <span> 92 Participantes </span> <span> 85% </span> </div> <div class="h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200" > <div class="h-full bg-yellow-400 rounded-full" style="width:85%;" ></div> </div> </div> </div> <div class="event-card"> <div class="flex justify-between items-center mb-3"> <span class="pixel-tag pixel-tag-red"> <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> AO VIVO </span> <span class="text-[9px] font-bold text-slate-400"> 20:00 </span> </div> <h3 class="font-subtitle font-extrabold text-sm text-slate-800" > Torneio de Quiz na Rádio Pixel </h3> <p class="text-[10px] text-slate-500 mt-1 leading-relaxed"> Sintonize com o locutor da noite e responda às perguntas no chat para faturar moedas. </p> <div class="flex items-center justify-between mt-4 pt-3 border-t border-slate-200" > <div class="flex items-center gap-2"> <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=DJRadio" class="w-6 h-6 rounded-md bg-slate-800" alt="DJ" > <span class="text-[9px] font-bold text-slate-600"> DJ Pixel </span> </div> <span class="text-[9px] font-extrabold text-sky-600" > Ouvir Rádio → </span> </div> </div> </div> </section> </div> <aside class="space-y-5"> <div class="pixel-card p-3"> <form onsubmit="pesquisarPortal(event)" class="search-box" > <input id="portal-search" type="text" placeholder="Pesquisar notícias, tópicos..." > <button class="search-button" type="submit" aria-label="Pesquisar" > <i class="fa-solid fa-magnifying-glass"></i> </button> </form> </div> <section class="pixel-card pixel-card-hover p-5"> <div class="card-header-title mb-4"> <div class="section-title"> <div class="section-icon" style="color:#bd8c00;background:#fff8d9;" > <i class="fa-solid fa-trophy"></i> </div> <div> <h3> Hall da Fama </h3> <p> Usuários em destaque </p> </div> </div> </div> <div class="space-y-2.5"> <div class="ranking-user top-user"> <div class="pixel-medal"> <i class="fa-solid fa-crown"></i> </div> <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=KingPixel" class="ranking-avatar" alt="KingPixel" > <div class="flex-1 min-w-0"> <div class="font-subtitle text-xs font-extrabold text-slate-800 truncate" > KingPixel </div> <div class="text-[9px] text-amber-700 font-extrabold mt-0.5" > 1.420 PX </div> </div> </div> <div class="ranking-user"> <div class="w-[21px] text-center text-[10px] font-black text-slate-400" > 2 </div> <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=StarGirl" class="ranking-avatar" alt="StarGirl" > <div class="flex-1 min-w-0"> <div class="font-subtitle text-xs font-extrabold text-slate-700 truncate" > StarGirl </div> <div class="text-[9px] text-sky-600 font-extrabold mt-0.5" > 980 PX </div> </div> </div> <div class="ranking-user"> <div class="w-[21px] text-center text-[10px] font-black text-slate-400" > 3 </div> <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=NeoUser" class="ranking-avatar" alt="NeoUser" > <div class="flex-1 min-w-0"> <div class="font-subtitle text-xs font-extrabold text-slate-700 truncate" > NeoUser </div> <div class="text-[9px] text-sky-600 font-extrabold mt-0.5" > 850 PX </div> </div> </div> </div> </section> <section class="pixel-card pixel-card-hover p-5"> <div class="card-header-title mb-4"> <div class="section-title"> <div class="section-icon" style="color:#2788ca;background:#e7f6ff;" > <i class="fa-solid fa-handshake"></i> </div> <div> <h3> Parceiros </h3> <p> Nossos aliados </p> </div> </div> </div> <div class="grid grid-cols-2 gap-2.5"> <a href="#" class="partner-card" > <div class="partner-icon"> <i class="fa-solid fa-hotel"></i> </div> <div> <div class="font-subtitle text-[10px] font-extrabold text-slate-700"> Habbo Hotel </div> <div class="text-[8px] font-bold text-green-600"> ● Online </div> </div> </a> <a href="#" class="partner-card" > <div class="partner-icon"> <i class="fa-solid fa-radio"></i> </div> <div> <div class="font-subtitle text-[10px] font-extrabold text-slate-700"> Rádio Pixel </div> <div class="text-[8px] font-bold text-indigo-500"> ● No Ar </div> </div> </a> </div> </section> <section id="vagas-form" class="pixel-card pixel-card-hover p-5" > <div class="card-header-title mb-4"> <div class="section-title"> <div class="section-icon" style="color:#b98500;background:#fff8d9;" > <i class="fa-solid fa-briefcase"></i> </div> <div> <h3> Trabalhe Conosco </h3> <p> Faça parte da equipe Pixelizados </p> </div> </div> <span class="pixel-tag" style="color:#956f00;background:#fff7d1;border:1px solid #ecd47b;" > VAGAS </span> </div> <div class="vagas-intro"> Estamos procurando pessoas que queiram ajudar a construir a comunidade Pixelizados. Escolha uma função e conte um pouco sobre você. </div> <form id="vagas-formulario" class="vagas-form" onsubmit="enviarCandidatura(event)" > <div class="form-group"> <label for="vaga-cargo"> <i class="fa-solid fa-user-tag"></i> Cargo desejado </label> <select id="vaga-cargo" name="cargo" required > <option value="" selected disabled > Selecione uma função </option> <option value="redator"> Redator </option> <option value="moderador"> Moderador </option> <option value="locutor"> Locutor </option> <option value="apoiador"> Apoiador </option> </select> </div> <div class="form-group"> <label for="vaga-discord"> <i class="fa-brands fa-discord"></i> Discord </label> <input type="text" id="vaga-discord" name="discord" maxlength="100" placeholder="Ex.: pixelizado" required > </div> <div class="form-group"> <label for="vaga-idade"> <i class="fa-solid fa-cake-candles"></i> Idade </label> <input type="number" id="vaga-idade" name="idade" min="13" max="99" placeholder="Sua idade" required > </div> <div class="form-group"> <label for="vaga-experiencia"> <i class="fa-solid fa-pen"></i> Experiências </label> <textarea id="vaga-experiencia" name="experiencia" maxlength="1000" placeholder="Conte sobre suas experiências, habilidades, projetos ou trabalhos anteriores..." required ></textarea> <div class="form-helper"> Máximo de 1.000 caracteres </div> </div> <button id="vaga-submit" type="submit" class="vaga-submit" > <i class="fa-solid fa-paper-plane"></i> ENVIAR CANDIDATURA </button> </form> </section> </aside> </div> </main> <footer class="bg-habbo-yellow-footer-bar px-4 sm:px-8 py-2.5"> <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2" > <div class="autodj-box"> <img id="dj-avatar" class="autodj-avatar" src="https://api.dicebear.com/7.x/pixel-art/svg?seed=AutoDJ" alt="AutoDJ" > <div> <div class="flex items-center gap-2"> <span class="autodj-live"> <span class="pulse-dot"></span> NO AR </span> <span id="dj-name" class="font-subtitle text-[10px] font-black text-slate-800" > AutoDJ Pixel </span> </div> <div class="flex items-center gap-1.5 mt-1"> <i class="fa-solid fa-record-vinyl record-spin text-[10px] text-sky-500" ></i> <span id="track-name" class="autodj-track" > Universo Pixel - Tocando as melhores! </span> </div> </div> </div> <div class="bg-white border-2 border-[#dce9f0] rounded-lg px-3 py-2 flex items-center gap-2 shadow-sm" > <i class="fa-solid fa-volume-high text-amber-600 text-[11px]" ></i> <span class="font-subtitle text-[9px] font-extrabold text-slate-600" > Transmissão Automatizada 24h </span> </div> </div> </footer> <div id="profile-modal" class="profile-modal-overlay" aria-hidden="true" > <div class="profile-modal" role="dialog" aria-modal="true" aria-labelledby="profile-modal-title" onclick="event.stopPropagation()" > <div class="profile-modal-header"> <div> <p class="profile-modal-kicker"> Comunidade Pixelizados </p> <h2 id="profile-modal-title" class="profile-modal-title" > Perfil do Pixelizado </h2> <p class="profile-modal-subtitle"> Suas informações dentro da comunidade </p> </div> <button type="button" class="profile-modal-close" onclick="fecharPerfilModal()" aria-label="Fechar perfil" title="Fechar" > <i class="fa-solid fa-xmark"></i> </button> </div> <div class="profile-modal-body"> <div class="profile-modal-hero"> <div class="profile-modal-avatar-frame"> <img id="modal-profile-avatar" class="profile-modal-avatar" src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Pixelizado" alt="Avatar do Pixelizado" > </div> <div class="profile-modal-user-info"> <h3 id="modal-profile-nick" class="profile-modal-nick" > Pixelizado </h3> <div class="profile-modal-role"> <img id="modal-profile-role-icon" class="profile-modal-role-icon" src="" alt="" style="display:none;" > <span id="modal-profile-role"> Cargo não definido </span> </div> </div> </div> <button type="button" class="profile-avatar-change" onclick="abrirSeletorAvatarPerfil()" > <i class="fa-solid fa-camera"></i> Alterar avatar </button> <div class="profile-info-list"> <div class="profile-info-row"> <div class="profile-info-icon"> <i class="fa-solid fa-star"></i> </div> <div class="profile-info-content"> <span class="profile-info-label"> Pixels acumulados </span> <span id="modal-profile-points" class="profile-info-value px-value" > 0 PX </span> </div> </div> <div class="profile-info-row"> <div class="profile-info-icon"> <i class="fa-solid fa-calendar-days"></i> </div> <div class="profile-info-content"> <span class="profile-info-label"> Membro desde </span> <span id="modal-profile-member-since" class="profile-info-value" > Não informado </span> </div> </div> <div class="profile-info-row"> <div class="profile-info-icon"> <i class="fa-brands fa-discord"></i> </div> <div class="profile-info-content"> <span class="profile-info-label"> Discord </span> <span id="modal-profile-discord" class="profile-info-value" > Não informado </span> </div> </div> <div class="profile-info-row"> <div class="profile-info-icon"> <i class="fa-solid fa-shield-halved"></i> </div> <div class="profile-info-content"> <span class="profile-info-label"> Status da conta </span> <span id="modal-profile-status" class="profile-account-status is-default" > <span class="profile-status-dot"></span> <span> Não informado </span> </span> </div> </div> </div> <div class="profile-modal-future" data-profile-section="future" > <span> Perfil • PX • Ranking • Conquistas </span> <i class="fa-solid fa-chevron-right"></i> </div> </div> </div> </div> <script>
 
     /* =========================================================
-       USUÁRIO LOCAL
+       LEITURA SEGURA DO USUÁRIO
     ========================================================= */
 
     function obterUsuarioPixelizados() {
@@ -3659,22 +2401,24 @@
       try {
 
         const dados =
-          localStorage.getItem(
-            'pixelizados_user'
-          );
-
+          localStorage.getItem('pixelizados_user');
 
         if (!dados) {
           return null;
         }
 
+        const usuario = JSON.parse(dados);
 
-        return JSON.parse(dados);
+        if (!usuario || typeof usuario !== 'object') {
+          return null;
+        }
+
+        return usuario;
 
       } catch (error) {
 
         console.error(
-          'Erro ao ler usuário local:',
+          'Erro ao ler pixelizados_user:',
           error
         );
 
@@ -3686,7 +2430,7 @@
 
 
     /* =========================================================
-       ACESSO AO PORTAL
+       PROTEÇÃO DE ACESSO
     ========================================================= */
 
     function verificarAcessoPortal() {
@@ -3700,6 +2444,10 @@
         !usuario.auth_user_id
       ) {
 
+        localStorage.removeItem(
+          'pixelizados_user'
+        );
+
         window.location.replace(
           'index.html'
         );
@@ -3708,17 +2456,158 @@
 
       }
 
-
       return true;
 
     }
 
 
     /* =========================================================
-       CARGOS
+       DADOS DO PERFIL
     ========================================================= */
 
-    const CARGOS_PORTAL = {
+    function obterPrimeiroValor(objeto, chaves) {
+
+      for (const chave of chaves) {
+
+        if (
+          objeto &&
+          objeto[chave] !== undefined &&
+          objeto[chave] !== null &&
+          String(objeto[chave]).trim() !== ''
+        ) {
+
+          return objeto[chave];
+
+        }
+
+      }
+
+      return null;
+
+    }
+
+
+    function carregarPerfil() {
+
+      const usuario =
+        obterUsuarioPixelizados();
+
+      if (!usuario) {
+        return;
+      }
+
+
+      const nick =
+        obterPrimeiroValor(
+          usuario,
+          [
+            'habbo_nick',
+            'nick',
+            'username',
+            'nome',
+            'display_name'
+          ]
+        );
+
+
+      const pixels =
+        obterPrimeiroValor(
+          usuario,
+          [
+            'points',
+            'pixels',
+            'px',
+            'pontuacao'
+          ]
+        );
+
+
+      const avatar =
+        obterPrimeiroValor(
+          usuario,
+          [
+            'avatar_url',
+            'avatar',
+            'avatarUrl',
+            'foto',
+            'imagem'
+          ]
+        );
+
+
+      const elementoNick =
+        document.getElementById(
+          'user-nick'
+        );
+
+
+      const elementoPixels =
+        document.getElementById(
+          'user-pixels'
+        );
+
+
+      const elementoAvatar =
+        document.getElementById(
+          'user-avatar'
+        );
+
+
+      if (elementoNick && nick) {
+
+        elementoNick.textContent =
+          String(nick);
+
+      }
+
+
+      if (elementoPixels && pixels !== null) {
+
+        const numeroPixels =
+          Number(pixels);
+
+        if (Number.isFinite(numeroPixels)) {
+
+          elementoPixels.textContent =
+            `${numeroPixels.toLocaleString('pt-BR')} PX`;
+
+        } else {
+
+          elementoPixels.textContent =
+            `${String(pixels)} PX`;
+
+        }
+
+      }
+
+
+      if (elementoAvatar && avatar) {
+
+        elementoAvatar.src =
+          String(avatar);
+
+        elementoAvatar.onerror =
+          function() {
+
+            this.onerror = null;
+
+            this.src =
+              `https://api.dicebear.com/7.x/pixel-art/svg?seed=${encodeURIComponent(
+                nick || 'Pixelizado'
+              )}`;
+
+          };
+
+      }
+
+    }
+
+
+    /* =========================================================
+       CARGOS OFICIAIS PIXELIZADOS
+    ========================================================= */
+
+    const CARGOS_PIXELIZADOS = {
 
       FUNDADOR: {
         nome: 'Aclamado/Fundador',
@@ -3757,31 +2646,1370 @@
        CARGO DO USUÁRIO
     ========================================================= */
 
-    function obterCargoUsuario(usuario) {
+    function obterCargoUsuario() {
+
+      const usuario =
+        obterUsuarioPixelizados();
+
 
       if (!usuario) {
         return null;
       }
 
 
-      const codigo =
+      const cargo =
         usuario.role ||
         usuario.cargo ||
         usuario.cargo_codigo ||
-        usuario.cargo_code;
+        usuario.cargo_code ||
+        null;
 
 
-      if (
-        codigo &&
-        CARGOS_PORTAL[codigo]
-      ) {
+      if (!cargo) {
+        return null;
+      }
 
-        return codigo;
+
+      return String(cargo)
+        .trim()
+        .toUpperCase();
+
+    }
+
+
+    function obterDadosCargoPerfil(usuario) {
+
+      const cargo =
+        obterPrimeiroValor(
+          usuario,
+          [
+            'role',
+            'cargo',
+            'cargo_codigo',
+            'cargo_code'
+          ]
+        );
+
+
+      if (!cargo) {
+
+        return {
+          codigo: null,
+          nome: 'Cargo não definido',
+          icone: null
+        };
 
       }
 
 
-      return null;
+      const codigo =
+        String(cargo)
+          .trim()
+          .toUpperCase();
+
+
+      const dadosCargo =
+        CARGOS_PIXELIZADOS[codigo];
+
+
+      if (!dadosCargo) {
+
+        return {
+          codigo,
+          nome: String(cargo),
+          icone: null
+        };
+
+      }
+
+
+      return {
+        codigo,
+        nome: dadosCargo.nome,
+        icone: dadosCargo.icone
+      };
+
+    }
+
+
+    /* =========================================================
+       MODAL DE PERFIL
+    ========================================================= */
+
+    function formatarPontosPerfil(pontos) {
+
+      const numero =
+        Number(pontos);
+
+
+      if (Number.isFinite(numero)) {
+
+        return `${numero.toLocaleString('pt-BR')} PX`;
+
+      }
+
+
+      if (
+        pontos !== null &&
+        pontos !== undefined &&
+        String(pontos).trim() !== ''
+      ) {
+
+        return `${String(pontos)} PX`;
+
+      }
+
+
+      return '0 PX';
+
+    }
+
+
+    function formatarDataMembro(data) {
+
+      if (!data) {
+        return 'Não informado';
+      }
+
+
+      const dataObjeto =
+        new Date(data);
+
+
+      if (
+        Number.isNaN(
+          dataObjeto.getTime()
+        )
+      ) {
+
+        return 'Não informado';
+
+      }
+
+
+      return new Intl.DateTimeFormat(
+        'pt-BR',
+        {
+          day: '2-digit',
+          month: 'long',
+          year: 'numeric'
+        }
+      ).format(dataObjeto);
+
+    }
+
+
+    function obterStatusPerfil(status) {
+
+      if (
+        !status ||
+        String(status).trim() === ''
+      ) {
+
+        return {
+          texto: 'Não informado',
+          classe: 'is-default'
+        };
+
+      }
+
+
+      const statusNormalizado =
+        String(status)
+          .trim()
+          .toUpperCase();
+
+
+      if (
+        statusNormalizado === 'APROVADO' ||
+        statusNormalizado === 'ATIVO' ||
+        statusNormalizado === 'ACTIVE'
+      ) {
+
+        return {
+          texto: 'Aprovado',
+          classe: 'is-approved'
+        };
+
+      }
+
+
+      if (
+        statusNormalizado === 'PENDENTE' ||
+        statusNormalizado === 'PENDING'
+      ) {
+
+        return {
+          texto: 'Pendente',
+          classe: 'is-pending'
+        };
+
+      }
+
+
+      if (
+        statusNormalizado === 'BLOQUEADO' ||
+        statusNormalizado === 'BANIDO' ||
+        statusNormalizado === 'INATIVO' ||
+        statusNormalizado === 'BANNED'
+      ) {
+
+        return {
+          texto: 'Bloqueado',
+          classe: 'is-blocked'
+        };
+
+      }
+
+
+      return {
+        texto: String(status),
+        classe: 'is-default'
+      };
+
+    }
+
+
+    function preencherModalPerfil(usuario) {
+
+      if (!usuario) {
+        return;
+      }
+
+
+      const nick =
+        obterPrimeiroValor(
+          usuario,
+          [
+            'habbo_nick',
+            'nick',
+            'username',
+            'nome',
+            'display_name'
+          ]
+        ) ||
+        'Pixelizado';
+
+
+      const pontos =
+        obterPrimeiroValor(
+          usuario,
+          [
+            'points',
+            'pixels',
+            'px',
+            'pontuacao'
+          ]
+        );
+
+
+      const discord =
+        obterPrimeiroValor(
+          usuario,
+          [
+            'discord_tag',
+            'discord',
+            'discordTag'
+          ]
+        ) ||
+        'Não informado';
+
+
+      const dataCriacao =
+        obterPrimeiroValor(
+          usuario,
+          [
+            'created_at',
+            'createdAt',
+            'data_cadastro',
+            'dataCadastro'
+          ]
+        );
+
+
+      const avatar =
+        obterPrimeiroValor(
+          usuario,
+          [
+            'avatar_url',
+            'avatar',
+            'avatarUrl',
+            'foto',
+            'imagem'
+          ]
+        );
+
+
+      const dadosCargo =
+        obterDadosCargoPerfil(usuario);
+
+
+      const status =
+        obterStatusPerfil(
+          obterPrimeiroValor(
+            usuario,
+            [
+              'status',
+              'situacao',
+              'state'
+            ]
+          )
+        );
+
+
+      const elementoNick =
+        document.getElementById(
+          'modal-profile-nick'
+        );
+
+
+      const elementoRole =
+        document.getElementById(
+          'modal-profile-role'
+        );
+
+
+      const elementoRoleIcon =
+        document.getElementById(
+          'modal-profile-role-icon'
+        );
+
+
+      const elementoPoints =
+        document.getElementById(
+          'modal-profile-points'
+        );
+
+
+      const elementoMemberSince =
+        document.getElementById(
+          'modal-profile-member-since'
+        );
+
+
+      const elementoDiscord =
+        document.getElementById(
+          'modal-profile-discord'
+        );
+
+
+      const elementoStatus =
+        document.getElementById(
+          'modal-profile-status'
+        );
+
+
+      const elementoAvatar =
+        document.getElementById(
+          'modal-profile-avatar'
+        );
+
+
+      if (elementoNick) {
+
+        elementoNick.textContent =
+          String(nick);
+
+      }
+
+
+      if (elementoRole) {
+
+        elementoRole.textContent =
+          dadosCargo.nome;
+
+      }
+
+
+      if (elementoRoleIcon) {
+
+        if (dadosCargo.icone) {
+
+          elementoRoleIcon.src =
+            dadosCargo.icone;
+
+          elementoRoleIcon.alt =
+            dadosCargo.nome;
+
+          elementoRoleIcon.style.display =
+            'block';
+
+          elementoRoleIcon.onerror =
+            function() {
+
+              this.style.display =
+                'none';
+
+            };
+
+        } else {
+
+          elementoRoleIcon.removeAttribute(
+            'src'
+          );
+
+          elementoRoleIcon.alt =
+            '';
+
+          elementoRoleIcon.style.display =
+            'none';
+
+        }
+
+      }
+
+
+      if (elementoPoints) {
+
+        elementoPoints.textContent =
+          formatarPontosPerfil(
+            pontos
+          );
+
+      }
+
+
+      if (elementoMemberSince) {
+
+        elementoMemberSince.textContent =
+          formatarDataMembro(
+            dataCriacao
+          );
+
+      }
+
+
+      if (elementoDiscord) {
+
+        elementoDiscord.textContent =
+          String(discord);
+
+      }
+
+
+      if (elementoStatus) {
+
+        elementoStatus.className =
+          `profile-account-status ${status.classe}`;
+
+        elementoStatus.innerHTML = `
+          <span class="profile-status-dot"></span>
+          <span>${escapeHtmlPerfil(status.texto)}</span>
+        `;
+
+      }
+
+
+      if (elementoAvatar) {
+
+        const fallback =
+          `https://api.dicebear.com/7.x/pixel-art/svg?seed=${encodeURIComponent(
+            nick
+          )}`;
+
+
+        elementoAvatar.onerror =
+          function() {
+
+            this.onerror = null;
+
+            this.src =
+              fallback;
+
+          };
+
+
+        elementoAvatar.src =
+          avatar
+            ? String(avatar)
+            : fallback;
+
+      }
+
+    }
+
+
+    function escapeHtmlPerfil(valor) {
+
+      return String(valor)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+
+    }
+
+
+    function abrirPerfilModal() {
+
+      const usuario =
+        obterUsuarioPixelizados();
+
+
+      if (!usuario) {
+        return;
+      }
+
+
+      preencherModalPerfil(
+        usuario
+      );
+
+
+      const modal =
+        document.getElementById(
+          'profile-modal'
+        );
+
+
+      if (!modal) {
+        return;
+      }
+
+
+      modal.classList.add(
+        'is-open'
+      );
+
+
+      modal.setAttribute(
+        'aria-hidden',
+        'false'
+      );
+
+
+      document.body.classList.add(
+        'profile-modal-open'
+      );
+
+    }
+
+
+    function fecharPerfilModal() {
+
+      const modal =
+        document.getElementById(
+          'profile-modal'
+        );
+
+
+      if (!modal) {
+        return;
+      }
+
+
+      modal.classList.remove(
+        'is-open'
+      );
+
+
+      modal.setAttribute(
+        'aria-hidden',
+        'true'
+      );
+
+
+      document.body.classList.remove(
+        'profile-modal-open'
+      );
+
+    }
+
+
+    function abrirSeletorAvatarPerfil() {
+
+      const usuario =
+        obterUsuarioPixelizados();
+
+
+      if (!usuario) {
+        return;
+      }
+
+
+      const input =
+        document.getElementById(
+          'avatar-file-input'
+        );
+
+
+      if (!input) {
+
+        console.error(
+          'Campo de upload do avatar não encontrado.'
+        );
+
+        return;
+
+      }
+
+
+      input.value = '';
+
+      input.click();
+
+    }
+
+
+    /*
+     * Mantido como compatibilidade caso alguma
+     * outra parte do portal ainda chame esta função.
+     */
+
+    function abrirModalAvatar() {
+
+      abrirSeletorAvatarPerfil();
+
+    }
+
+
+    /* =========================================================
+       FECHAMENTO DO MODAL
+    ========================================================= */
+
+    document.addEventListener(
+      'click',
+      function(event) {
+
+        const modal =
+          document.getElementById(
+            'profile-modal'
+          );
+
+
+        if (
+          modal &&
+          event.target === modal
+        ) {
+
+          fecharPerfilModal();
+
+        }
+
+      }
+    );
+
+
+    document.addEventListener(
+      'keydown',
+      function(event) {
+
+        if (
+          event.key === 'Escape'
+        ) {
+
+          const modal =
+            document.getElementById(
+              'profile-modal'
+            );
+
+
+          if (
+            modal &&
+            modal.classList.contains(
+              'is-open'
+            )
+          ) {
+
+            fecharPerfilModal();
+
+          }
+
+        }
+
+      }
+    );
+
+
+    /* =========================================================
+       AVATAR - ATUALIZAÇÃO VISUAL
+    ========================================================= */
+
+    function atualizarAvatarVisual(
+      avatarUrl
+    ) {
+
+      if (!avatarUrl) {
+        return;
+      }
+
+
+      const elementoAvatar =
+        document.getElementById(
+          'user-avatar'
+        );
+
+
+      const elementoModalAvatar =
+        document.getElementById(
+          'modal-profile-avatar'
+        );
+
+
+      if (elementoAvatar) {
+
+        elementoAvatar.src =
+          avatarUrl;
+
+        elementoAvatar.style.opacity =
+          '1';
+
+      }
+
+
+      if (elementoModalAvatar) {
+
+        elementoModalAvatar.src =
+          avatarUrl;
+
+        elementoModalAvatar.style.opacity =
+          '1';
+
+      }
+
+    }
+
+
+    /* =========================================================
+       AVATAR - PROCESSAMENTO DO ARQUIVO
+    ========================================================= */
+
+    async function processarArquivoAvatar(event) {
+
+      const arquivo =
+        event &&
+        event.target &&
+        event.target.files
+          ? event.target.files[0]
+          : null;
+
+
+      if (!arquivo) {
+        return;
+      }
+
+
+      const TAMANHO_MAXIMO =
+        5 * 1024 * 1024;
+
+
+      if (arquivo.size > TAMANHO_MAXIMO) {
+
+        alert(
+          'A imagem é muito grande. Escolha uma imagem de até 5 MB.'
+        );
+
+        event.target.value = '';
+
+        return;
+
+      }
+
+
+      const TIPOS_PERMITIDOS = [
+        'image/jpeg',
+        'image/png',
+        'image/webp'
+      ];
+
+
+      if (
+        !TIPOS_PERMITIDOS.includes(
+          arquivo.type
+        )
+      ) {
+
+        alert(
+          'Formato inválido. Escolha uma imagem JPG, PNG ou WEBP.'
+        );
+
+        event.target.value = '';
+
+        return;
+
+      }
+
+
+      await enviarAvatarParaSupabase(
+        arquivo
+      );
+
+
+      event.target.value = '';
+
+    }
+
+
+    /* =========================================================
+       AVATAR - UPLOAD SUPABASE
+    ========================================================= */
+
+    async function enviarAvatarParaSupabase(
+      arquivo
+    ) {
+
+      const usuario =
+        obterUsuarioPixelizados();
+
+
+      if (!usuario) {
+
+        alert(
+          'Sua sessão não foi encontrada. Faça login novamente.'
+        );
+
+        return;
+
+      }
+
+
+      const elementoAvatar =
+        document.getElementById(
+          'user-avatar'
+        );
+
+
+      const elementoModalAvatar =
+        document.getElementById(
+          'modal-profile-avatar'
+        );
+
+
+      const frame =
+        document.querySelector(
+          '.profile-avatar-frame'
+        );
+
+
+      const imagemAnterior =
+        elementoAvatar
+          ? elementoAvatar.src
+          : null;
+
+
+      try {
+
+        const {
+          data: sessaoData,
+          error: sessaoError
+        } =
+          await supabaseClient.auth.getSession();
+
+
+        if (
+          sessaoError ||
+          !sessaoData ||
+          !sessaoData.session ||
+          !sessaoData.session.user
+        ) {
+
+          throw new Error(
+            'Sua sessão do Supabase não está ativa. Faça login novamente.'
+          );
+
+        }
+
+
+        const authUser =
+          sessaoData.session.user;
+
+
+        if (
+          usuario.auth_user_id &&
+          String(usuario.auth_user_id) !==
+          String(authUser.id)
+        ) {
+
+          throw new Error(
+            'A sessão atual não corresponde ao usuário do Pixelizados.'
+          );
+
+        }
+
+
+        const pastaUsuario =
+          authUser.id;
+
+
+        if (frame) {
+
+          frame.style.opacity =
+            '0.65';
+
+          frame.style.pointerEvents =
+            'none';
+
+        }
+
+
+        if (elementoAvatar) {
+
+          elementoAvatar.style.opacity =
+            '0.55';
+
+        }
+
+
+        if (elementoModalAvatar) {
+
+          elementoModalAvatar.style.opacity =
+            '0.55';
+
+        }
+
+
+        const {
+          data: arquivosExistentes,
+          error: erroListagem
+        } =
+          await supabaseClient.storage
+            .from('avatars')
+            .list(
+              pastaUsuario,
+              {
+                limit: 100,
+                offset: 0
+              }
+            );
+
+
+        if (erroListagem) {
+
+          throw erroListagem;
+
+        }
+
+
+        if (
+          arquivosExistentes &&
+          arquivosExistentes.length > 0
+        ) {
+
+          const arquivosParaExcluir =
+            arquivosExistentes
+              .filter(
+                arquivoExistente =>
+                  arquivoExistente &&
+                  arquivoExistente.name
+              )
+              .map(
+                arquivoExistente =>
+                  `${pastaUsuario}/${arquivoExistente.name}`
+              );
+
+
+          if (
+            arquivosParaExcluir.length > 0
+          ) {
+
+            const {
+              error: erroRemocao
+            } =
+              await supabaseClient.storage
+                .from('avatars')
+                .remove(
+                  arquivosParaExcluir
+                );
+
+
+            if (erroRemocao) {
+
+              throw erroRemocao;
+
+            }
+
+          }
+
+        }
+
+
+        let extensao = 'jpg';
+
+
+        if (
+          arquivo.type === 'image/png'
+        ) {
+
+          extensao = 'png';
+
+        } else if (
+          arquivo.type === 'image/webp'
+        ) {
+
+          extensao = 'webp';
+
+        }
+
+
+        const caminhoAvatar =
+          `${pastaUsuario}/avatar.${extensao}`;
+
+
+        const {
+          data: uploadData,
+          error: uploadError
+        } =
+          await supabaseClient.storage
+            .from('avatars')
+            .upload(
+              caminhoAvatar,
+              arquivo,
+              {
+                cacheControl: '3600',
+                upsert: true,
+                contentType: arquivo.type
+              }
+            );
+
+
+        if (uploadError) {
+
+          throw uploadError;
+
+        }
+
+
+        const {
+          data: signedData,
+          error: signedError
+        } =
+          await supabaseClient.storage
+            .from('avatars')
+            .createSignedUrl(
+              caminhoAvatar,
+              60 * 60 * 24 * 365
+            );
+
+
+        if (signedError) {
+
+          throw signedError;
+
+        }
+
+
+        if (
+          !signedData ||
+          !signedData.signedUrl
+        ) {
+
+          throw new Error(
+            'O Supabase não retornou uma URL válida para o avatar.'
+          );
+
+        }
+
+
+        const avatarUrl =
+          signedData.signedUrl;
+
+
+        atualizarAvatarVisual(
+          avatarUrl
+        );
+
+
+        usuario.avatar_path =
+          uploadData &&
+          uploadData.path
+            ? uploadData.path
+            : caminhoAvatar;
+
+
+        usuario.avatar_url =
+          avatarUrl;
+
+
+        localStorage.setItem(
+          'pixelizados_user',
+          JSON.stringify(usuario)
+        );
+
+
+        preencherModalPerfil(
+          usuario
+        );
+
+
+        alert(
+          'Seu avatar foi atualizado com sucesso!'
+        );
+
+
+      } catch (error) {
+
+        console.error(
+          'Erro ao enviar avatar:',
+          error
+        );
+
+
+        if (
+          elementoAvatar &&
+          imagemAnterior
+        ) {
+
+          elementoAvatar.src =
+            imagemAnterior;
+
+        }
+
+
+        if (elementoAvatar) {
+
+          elementoAvatar.style.opacity =
+            '1';
+
+        }
+
+
+        if (elementoModalAvatar) {
+
+          elementoModalAvatar.style.opacity =
+            '1';
+
+        }
+
+
+        const mensagem =
+          error &&
+          error.message
+            ? error.message
+            : 'Não foi possível enviar seu avatar.';
+
+
+        alert(
+          `Não foi possível atualizar o avatar.\n\n${mensagem}`
+        );
+
+
+      } finally {
+
+        if (frame) {
+
+          frame.style.opacity =
+            '1';
+
+          frame.style.pointerEvents =
+            'auto';
+
+        }
+
+      }
+
+    }
+
+
+    /* =========================================================
+       AVATAR - RECUPERAÇÃO DO STORAGE
+    ========================================================= */
+
+    async function carregarAvatarDoSupabase() {
+
+      const usuario =
+        obterUsuarioPixelizados();
+
+
+      if (!usuario) {
+        return;
+      }
+
+
+      try {
+
+        const {
+          data: sessaoData,
+          error: sessaoError
+        } =
+          await supabaseClient.auth.getSession();
+
+
+        if (
+          sessaoError ||
+          !sessaoData ||
+          !sessaoData.session ||
+          !sessaoData.session.user
+        ) {
+
+          return;
+
+        }
+
+
+        const authUser =
+          sessaoData.session.user;
+
+
+        if (
+          usuario.auth_user_id &&
+          String(usuario.auth_user_id) !==
+          String(authUser.id)
+        ) {
+
+          return;
+
+        }
+
+
+        const pastaUsuario =
+          authUser.id;
+
+
+        let caminhoAvatar =
+          usuario.avatar_path || null;
+
+
+        if (!caminhoAvatar) {
+
+          const {
+            data: arquivos,
+            error: erroListagem
+          } =
+            await supabaseClient.storage
+              .from('avatars')
+              .list(
+                pastaUsuario,
+                {
+                  limit: 100,
+                  offset: 0
+                }
+              );
+
+
+          if (erroListagem) {
+
+            console.warn(
+              'Não foi possível listar os avatars:',
+              erroListagem
+            );
+
+            return;
+
+          }
+
+
+          if (
+            arquivos &&
+            arquivos.length > 0
+          ) {
+
+            const arquivoAvatar =
+              arquivos.find(
+                arquivo =>
+                  arquivo &&
+                  /^avatar\.(jpg|jpeg|png|webp)$/i.test(
+                    arquivo.name
+                  )
+              ) ||
+              arquivos.find(
+                arquivo =>
+                  arquivo &&
+                  /\.(jpg|jpeg|png|webp)$/i.test(
+                    arquivo.name
+                  )
+              );
+
+
+            if (arquivoAvatar) {
+
+              caminhoAvatar =
+                `${pastaUsuario}/${arquivoAvatar.name}`;
+
+            }
+
+          }
+
+        }
+
+
+        if (!caminhoAvatar) {
+
+          return;
+
+        }
+
+
+        const {
+          data: signedData,
+          error: signedError
+        } =
+          await supabaseClient.storage
+            .from('avatars')
+            .createSignedUrl(
+              caminhoAvatar,
+              60 * 60 * 24 * 365
+            );
+
+
+        if (signedError) {
+
+          console.warn(
+            'Não foi possível gerar URL do avatar:',
+            signedError
+          );
+
+          return;
+
+        }
+
+
+        if (
+          !signedData ||
+          !signedData.signedUrl
+        ) {
+
+          return;
+
+        }
+
+
+        atualizarAvatarVisual(
+          signedData.signedUrl
+        );
+
+
+        usuario.avatar_path =
+          caminhoAvatar;
+
+        usuario.avatar_url =
+          signedData.signedUrl;
+
+
+        localStorage.setItem(
+          'pixelizados_user',
+          JSON.stringify(usuario)
+        );
+
+
+        const modal =
+          document.getElementById(
+            'profile-modal'
+          );
+
+
+        if (
+          modal &&
+          modal.classList.contains(
+            'is-open'
+          )
+        ) {
+
+          preencherModalPerfil(
+            usuario
+          );
+
+        }
+
+
+      } catch (error) {
+
+        console.warn(
+          'Não foi possível carregar avatar do Supabase:',
+          error
+        );
+
+      }
 
     }
 
@@ -3792,14 +4020,11 @@
 
     function usuarioEhFundador() {
 
-      const usuario =
-        obterUsuarioPixelizados();
+      const cargo =
+        obterCargoUsuario();
 
 
-      return (
-        obterCargoUsuario(usuario) ===
-        'FUNDADOR'
-      );
+      return cargo === 'FUNDADOR';
 
     }
 
@@ -3852,1496 +4077,6 @@
 
 
     /* =========================================================
-       PERFIL
-    ========================================================= */
-
-    function carregarPerfil() {
-
-      const usuario =
-        obterUsuarioPixelizados();
-
-
-      if (!usuario) {
-        return;
-      }
-
-
-      const nick =
-        usuario.habbo_nick ||
-        'Pixelizado';
-
-
-      const pontos =
-        Number(
-          usuario.points || 0
-        );
-
-
-      const avatar =
-        usuario.avatar_url ||
-        `https://api.dicebear.com/7.x/pixel-art/svg?seed=${encodeURIComponent(nick)}`;
-
-
-      const profileName =
-        document.getElementById(
-          'profile-name'
-        );
-
-
-      const profilePoints =
-        document.getElementById(
-          'profile-points'
-        );
-
-
-      const profileAvatar =
-        document.getElementById(
-          'profile-avatar'
-        );
-
-
-      if (profileName) {
-
-        profileName.textContent =
-          nick;
-
-      }
-
-
-      if (profilePoints) {
-
-        profilePoints.textContent =
-          `${pontos.toLocaleString('pt-BR')} PX`;
-
-      }
-
-
-      if (profileAvatar) {
-
-        profileAvatar.src =
-          avatar;
-
-      }
-
-    }
-
-
-    /* =========================================================
-       MODAL PERFIL
-    ========================================================= */
-
-    function formatarDataPerfil(data) {
-
-      if (!data) {
-        return '—';
-      }
-
-
-      const dataObj =
-        new Date(data);
-
-
-      if (
-        Number.isNaN(
-          dataObj.getTime()
-        )
-      ) {
-
-        return '—';
-
-      }
-
-
-      return dataObj.toLocaleDateString(
-        'pt-BR',
-        {
-          day: '2-digit',
-          month: 'long',
-          year: 'numeric'
-        }
-      );
-
-    }
-
-
-    function obterTextoStatus(status) {
-
-      const valor =
-        String(
-          status || ''
-        ).toUpperCase();
-
-
-      if (valor === 'APROVADO') {
-        return 'Aprovado';
-      }
-
-
-      if (valor === 'PENDENTE') {
-        return 'Pendente';
-      }
-
-
-      if (
-        valor === 'BLOQUEADO' ||
-        valor === 'BANIDO'
-      ) {
-
-        return 'Bloqueado';
-
-      }
-
-
-      return status || '—';
-
-    }
-
-
-    function preencherModalPerfil(usuario) {
-
-      if (!usuario) {
-        return;
-      }
-
-
-      const nick =
-        usuario.habbo_nick ||
-        'Pixelizado';
-
-
-      const cargoCodigo =
-        obterCargoUsuario(usuario) ||
-        'ENTUSIASTA';
-
-
-      const cargo =
-        CARGOS_PORTAL[cargoCodigo] ||
-        CARGOS_PORTAL.ENTUSIASTA;
-
-
-      const pontos =
-        Number(
-          usuario.points || 0
-        );
-
-
-      const avatar =
-        usuario.avatar_url ||
-        `https://api.dicebear.com/7.x/pixel-art/svg?seed=${encodeURIComponent(nick)}`;
-
-
-      const nickElement =
-        document.getElementById(
-          'profile-modal-nick'
-        );
-
-
-      const roleElement =
-        document.getElementById(
-          'profile-modal-role'
-        );
-
-
-      const roleIcon =
-        document.getElementById(
-          'profile-modal-role-icon'
-        );
-
-
-      const avatarElement =
-        document.getElementById(
-          'profile-modal-avatar'
-        );
-
-
-      const pointsElement =
-        document.getElementById(
-          'profile-modal-points'
-        );
-
-
-      const memberSinceElement =
-        document.getElementById(
-          'profile-modal-member-since'
-        );
-
-
-      const discordElement =
-        document.getElementById(
-          'profile-modal-discord'
-        );
-
-
-      const statusElement =
-        document.getElementById(
-          'profile-modal-status'
-        );
-
-
-      const statusTextElement =
-        document.getElementById(
-          'profile-modal-status-text'
-        );
-
-
-      if (nickElement) {
-
-        nickElement.textContent =
-          nick;
-
-      }
-
-
-      if (roleElement) {
-
-        roleElement.textContent =
-          cargo.nome;
-
-      }
-
-
-      if (roleIcon) {
-
-        roleIcon.src =
-          cargo.icone;
-
-        roleIcon.alt =
-          cargo.nome;
-
-      }
-
-
-      if (avatarElement) {
-
-        avatarElement.src =
-          avatar;
-
-      }
-
-
-      if (pointsElement) {
-
-        pointsElement.textContent =
-          `${pontos.toLocaleString('pt-BR')} PX`;
-
-      }
-
-
-      if (memberSinceElement) {
-
-        memberSinceElement.textContent =
-          formatarDataPerfil(
-            usuario.created_at
-          );
-
-      }
-
-
-      if (discordElement) {
-
-        discordElement.textContent =
-          usuario.discord_tag ||
-          'Não informado';
-
-      }
-
-
-      if (
-        statusElement &&
-        statusTextElement
-      ) {
-
-        const status =
-          String(
-            usuario.status || ''
-          ).toUpperCase();
-
-
-        statusElement.className =
-          'profile-account-status';
-
-
-        if (status === 'APROVADO') {
-
-          statusElement.classList.add(
-            'is-approved'
-          );
-
-        } else if (
-          status === 'PENDENTE'
-        ) {
-
-          statusElement.classList.add(
-            'is-pending'
-          );
-
-        } else if (
-          status === 'BLOQUEADO' ||
-          status === 'BANIDO'
-        ) {
-
-          statusElement.classList.add(
-            'is-blocked'
-          );
-
-        } else {
-
-          statusElement.classList.add(
-            'is-default'
-          );
-
-        }
-
-
-        statusTextElement.textContent =
-          obterTextoStatus(
-            usuario.status
-          );
-
-      }
-
-    }
-
-
-    function abrirModalPerfil() {
-
-      const usuario =
-        obterUsuarioPixelizados();
-
-
-      if (!usuario) {
-        return;
-      }
-
-
-      preencherModalPerfil(
-        usuario
-      );
-
-
-      const overlay =
-        document.getElementById(
-          'profile-modal-overlay'
-        );
-
-
-      if (!overlay) {
-        return;
-      }
-
-
-      overlay.classList.add(
-        'is-open'
-      );
-
-
-      document.body.classList.add(
-        'profile-modal-open'
-      );
-
-    }
-
-
-    function fecharModalPerfil() {
-
-      const overlay =
-        document.getElementById(
-          'profile-modal-overlay'
-        );
-
-
-      if (!overlay) {
-        return;
-      }
-
-
-      overlay.classList.remove(
-        'is-open'
-      );
-
-
-      document.body.classList.remove(
-        'profile-modal-open'
-      );
-
-    }
-
-
-    function fecharModalPerfilAoClicarFora(
-      event
-    ) {
-
-      if (
-        event.target &&
-        event.target.id ===
-        'profile-modal-overlay'
-      ) {
-
-        fecharModalPerfil();
-
-      }
-
-    }
-
-
-    document.addEventListener(
-      'keydown',
-      function(event) {
-
-        if (
-          event.key ===
-          'Escape'
-        ) {
-
-          fecharModalPerfil();
-
-        }
-
-      }
-    );
-
-
-    /* =========================================================
-       AVATAR
-    ========================================================= */
-
-    function selecionarNovoAvatar() {
-
-      const input =
-        document.getElementById(
-          'profile-avatar-input'
-        );
-
-
-      if (input) {
-
-        input.click();
-
-      }
-
-    }
-
-
-    async function enviarNovoAvatar(event) {
-
-      const arquivo =
-        event.target.files &&
-        event.target.files[0];
-
-
-      if (!arquivo) {
-        return;
-      }
-
-
-      const usuario =
-        obterUsuarioPixelizados();
-
-
-      if (
-        !usuario ||
-        !usuario.auth_user_id
-      ) {
-
-        alert(
-          'Não foi possível identificar sua conta.'
-        );
-
-        return;
-
-      }
-
-
-      if (
-        arquivo.size >
-        5 * 1024 * 1024
-      ) {
-
-        alert(
-          'A imagem deve ter no máximo 5 MB.'
-        );
-
-        event.target.value = '';
-
-        return;
-
-      }
-
-
-      const tiposPermitidos = [
-        'image/jpeg',
-        'image/png',
-        'image/webp'
-      ];
-
-
-      if (
-        !tiposPermitidos.includes(
-          arquivo.type
-        )
-      ) {
-
-        alert(
-          'Envie uma imagem JPG, PNG ou WEBP.'
-        );
-
-        event.target.value = '';
-
-        return;
-
-      }
-
-
-      const avatarHeader =
-        document.getElementById(
-          'profile-avatar'
-        );
-
-
-      const avatarModal =
-        document.getElementById(
-          'profile-modal-avatar'
-        );
-
-
-      const avatarAnterior =
-        usuario.avatar_url ||
-        (
-          avatarHeader &&
-          avatarHeader.src
-        );
-
-
-      const botao =
-        document.getElementById(
-          'profile-avatar-change'
-        );
-
-
-      const textoOriginal =
-        botao
-          ? botao.innerHTML
-          : '';
-
-
-      try {
-
-        if (botao) {
-
-          botao.disabled =
-            true;
-
-          botao.innerHTML =
-            '<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
-
-        }
-
-
-        const {
-          data: sessionData,
-          error: sessionError
-        } =
-          await supabaseClient.auth.getSession();
-
-
-        if (sessionError) {
-          throw sessionError;
-        }
-
-
-        const session =
-          sessionData &&
-          sessionData.session;
-
-
-        if (
-          !session ||
-          !session.user
-        ) {
-
-          throw new Error(
-            'Sessão Supabase não encontrada.'
-          );
-
-        }
-
-
-        if (
-          session.user.id !==
-          usuario.auth_user_id
-        ) {
-
-          throw new Error(
-            'A sessão atual não corresponde ao usuário.'
-          );
-
-        }
-
-
-        const authUserId =
-          session.user.id;
-
-
-        const extensao =
-          arquivo.type === 'image/png'
-            ? 'png'
-            : arquivo.type === 'image/webp'
-              ? 'webp'
-              : 'jpg';
-
-
-        const pastaUsuario =
-          authUserId;
-
-
-        const arquivosExistentes =
-          await supabaseClient.storage
-            .from('avatars')
-            .list(
-              pastaUsuario
-            );
-
-
-        if (
-          arquivosExistentes.error
-        ) {
-
-          throw arquivosExistentes.error;
-
-        }
-
-
-        const arquivos =
-          arquivosExistentes.data ||
-          [];
-
-
-        for (
-          const arquivoExistente
-          of arquivos
-        ) {
-
-          const caminho =
-            `${pastaUsuario}/${arquivoExistente.name}`;
-
-
-          const resultadoDelete =
-            await supabaseClient.storage
-              .from('avatars')
-              .remove([
-                caminho
-              ]);
-
-
-          if (
-            resultadoDelete.error
-          ) {
-
-            console.warn(
-              'Não foi possível remover avatar antigo:',
-              resultadoDelete.error
-            );
-
-          }
-
-        }
-
-
-        const caminhoNovo =
-          `${pastaUsuario}/avatar.${extensao}`;
-
-
-        const upload =
-          await supabaseClient.storage
-            .from('avatars')
-            .upload(
-              caminhoNovo,
-              arquivo,
-              {
-                upsert: true,
-                contentType:
-                  arquivo.type,
-                cacheControl:
-                  '3600'
-              }
-            );
-
-
-        if (upload.error) {
-
-          throw upload.error;
-
-        }
-
-
-        const signed =
-          await supabaseClient.storage
-            .from('avatars')
-            .createSignedUrl(
-              caminhoNovo,
-              60 * 60 * 24 * 365
-            );
-
-
-        if (signed.error) {
-
-          throw signed.error;
-
-        }
-
-
-        const avatarUrl =
-          signed.data &&
-          signed.data.signedUrl;
-
-
-        if (!avatarUrl) {
-
-          throw new Error(
-            'Não foi possível gerar a URL do avatar.'
-          );
-
-        }
-
-
-        const usuarioAtualizado = {
-          ...usuario,
-          avatar_path:
-            caminhoNovo,
-          avatar_url:
-            avatarUrl
-        };
-
-
-        localStorage.setItem(
-          'pixelizados_user',
-          JSON.stringify(
-            usuarioAtualizado
-          )
-        );
-
-
-        if (avatarHeader) {
-
-          avatarHeader.src =
-            avatarUrl;
-
-        }
-
-
-        if (avatarModal) {
-
-          avatarModal.src =
-            avatarUrl;
-
-        }
-
-
-        alert(
-          'Foto de perfil atualizada com sucesso!'
-        );
-
-
-      } catch (error) {
-
-        console.error(
-          'Erro ao atualizar avatar:',
-          error
-        );
-
-
-        if (avatarHeader) {
-
-          avatarHeader.src =
-            avatarAnterior;
-
-        }
-
-
-        if (avatarModal) {
-
-          avatarModal.src =
-            avatarAnterior;
-
-        }
-
-
-        alert(
-          'Não foi possível atualizar sua foto de perfil.'
-        );
-
-      } finally {
-
-        if (botao) {
-
-          botao.disabled =
-            false;
-
-          botao.innerHTML =
-            textoOriginal;
-
-        }
-
-
-        event.target.value =
-          '';
-
-      }
-
-    }
-
-
-    async function carregarAvatarDoSupabase() {
-
-      const usuario =
-        obterUsuarioPixelizados();
-
-
-      if (
-        !usuario ||
-        !usuario.auth_user_id ||
-        typeof supabaseClient ===
-          'undefined'
-      ) {
-
-        return;
-
-      }
-
-
-      try {
-
-        const {
-          data: sessionData
-        } =
-          await supabaseClient.auth.getSession();
-
-
-        const session =
-          sessionData &&
-          sessionData.session;
-
-
-        if (
-          !session ||
-          !session.user
-        ) {
-
-          return;
-
-        }
-
-
-        if (
-          session.user.id !==
-          usuario.auth_user_id
-        ) {
-
-          return;
-
-        }
-
-
-        let avatarPath =
-          usuario.avatar_path ||
-          '';
-
-
-        if (!avatarPath) {
-
-          const arquivos =
-            await supabaseClient.storage
-              .from('avatars')
-              .list(
-                session.user.id
-              );
-
-
-          if (
-            !arquivos.error &&
-            arquivos.data &&
-            arquivos.data.length
-          ) {
-
-            const encontrado =
-              arquivos.data.find(
-                item =>
-                  /^avatar\.(png|jpg|jpeg|webp)$/i.test(
-                    item.name
-                  )
-              );
-
-
-            if (encontrado) {
-
-              avatarPath =
-                `${session.user.id}/${encontrado.name}`;
-
-            }
-
-          }
-
-        }
-
-
-        if (!avatarPath) {
-          return;
-        }
-
-
-        const signed =
-          await supabaseClient.storage
-            .from('avatars')
-            .createSignedUrl(
-              avatarPath,
-              60 * 60 * 24 * 365
-            );
-
-
-        if (
-          signed.error ||
-          !signed.data ||
-          !signed.data.signedUrl
-        ) {
-
-          return;
-
-        }
-
-
-        const avatarUrl =
-          signed.data.signedUrl;
-
-
-        const usuarioAtualizado = {
-          ...usuario,
-          avatar_path:
-            avatarPath,
-          avatar_url:
-            avatarUrl
-        };
-
-
-        localStorage.setItem(
-          'pixelizados_user',
-          JSON.stringify(
-            usuarioAtualizado
-          )
-        );
-
-
-        const avatarHeader =
-          document.getElementById(
-            'profile-avatar'
-          );
-
-
-        const avatarModal =
-          document.getElementById(
-            'profile-modal-avatar'
-          );
-
-
-        if (avatarHeader) {
-
-          avatarHeader.src =
-            avatarUrl;
-
-        }
-
-
-        if (avatarModal) {
-
-          avatarModal.src =
-            avatarUrl;
-
-        }
-
-      } catch (error) {
-
-        console.warn(
-          'Não foi possível carregar avatar persistente:',
-          error
-        );
-
-      }
-
-    }
-
-
-    /* =========================================================
-       NOTÍCIAS — INTEGRAÇÃO SUPABASE
-    ========================================================= */
-
-    let noticiaPortalAtual = null;
-
-
-    function escaparHtml(valor) {
-
-      const div =
-        document.createElement(
-          'div'
-        );
-
-
-      div.textContent =
-        valor == null
-          ? ''
-          : String(valor);
-
-
-      return div.innerHTML;
-
-    }
-
-
-    function limparHtml(valor) {
-
-      if (!valor) {
-        return '';
-      }
-
-
-      const div =
-        document.createElement(
-          'div'
-        );
-
-
-      div.innerHTML =
-        String(valor);
-
-
-      return (
-        div.textContent ||
-        div.innerText ||
-        ''
-      );
-
-    }
-
-
-    function calcularTempoLeitura(texto) {
-
-      const textoLimpo =
-        limparHtml(texto)
-          .trim();
-
-
-      if (!textoLimpo) {
-        return '1 min de leitura';
-      }
-
-
-      const palavras =
-        textoLimpo
-          .split(/\s+/)
-          .filter(Boolean)
-          .length;
-
-
-      const minutos =
-        Math.max(
-          1,
-          Math.ceil(
-            palavras / 200
-          )
-        );
-
-
-      return `${minutos} min de leitura`;
-
-    }
-
-
-    function formatarDataNoticia(data) {
-
-      if (!data) {
-        return 'Publicado recentemente';
-      }
-
-
-      const dataObj =
-        new Date(data);
-
-
-      if (
-        Number.isNaN(
-          dataObj.getTime()
-        )
-      ) {
-
-        return 'Publicado recentemente';
-
-      }
-
-
-      const agora =
-        new Date();
-
-
-      const diferenca =
-        agora.getTime() -
-        dataObj.getTime();
-
-
-      const segundos =
-        Math.floor(
-          diferenca / 1000
-        );
-
-
-      if (
-        segundos >= 0 &&
-        segundos < 60
-      ) {
-
-        return 'Agora';
-
-      }
-
-
-      const minutos =
-        Math.floor(
-          segundos / 60
-        );
-
-
-      if (
-        minutos >= 1 &&
-        minutos < 60
-      ) {
-
-        return (
-          minutos === 1
-            ? 'Há 1 minuto'
-            : `Há ${minutos} minutos`
-        );
-
-      }
-
-
-      const horas =
-        Math.floor(
-          minutos / 60
-        );
-
-
-      if (
-        horas >= 1 &&
-        horas < 24
-      ) {
-
-        return (
-          horas === 1
-            ? 'Há 1 hora'
-            : `Há ${horas} horas`
-        );
-
-      }
-
-
-      const dias =
-        Math.floor(
-          horas / 24
-        );
-
-
-      if (
-        dias >= 1 &&
-        dias < 7
-      ) {
-
-        return (
-          dias === 1
-            ? 'Há 1 dia'
-            : `Há ${dias} dias`
-        );
-
-      }
-
-
-      return dataObj.toLocaleDateString(
-        'pt-BR',
-        {
-          day: '2-digit',
-          month: 'short',
-          year: 'numeric'
-        }
-      );
-
-    }
-
-
-    function atualizarPortalComNoticia(
-      noticia
-    ) {
-
-      if (!noticia) {
-        return;
-      }
-
-
-      noticiaPortalAtual =
-        noticia;
-
-
-      const titulo =
-        document.getElementById(
-          'featured-news-title'
-        );
-
-
-      const categoria =
-        document.getElementById(
-          'featured-news-category'
-        );
-
-
-      const resumo =
-        document.getElementById(
-          'featured-news-summary'
-        );
-
-
-      const autor =
-        document.getElementById(
-          'featured-news-author'
-        );
-
-
-      const data =
-        document.getElementById(
-          'featured-news-date'
-        );
-
-
-      const leitura =
-        document.getElementById(
-          'featured-news-reading'
-        );
-
-
-      const imagem =
-        document.getElementById(
-          'featured-news-image'
-        );
-
-
-      const avatarAutor =
-        document.getElementById(
-          'featured-news-author-avatar'
-        );
-
-
-      const comentarios =
-        document.querySelector(
-          '.comment-count'
-        );
-
-
-      if (titulo) {
-
-        titulo.textContent =
-          noticia.titulo ||
-          'Notícia Pixelizados';
-
-      }
-
-
-      if (categoria) {
-
-        categoria.textContent =
-          noticia.categoria ||
-          'Fã-Site';
-
-      }
-
-
-      if (autor) {
-
-        autor.textContent =
-          noticia.autor ||
-          'Redação Pixel';
-
-      }
-
-
-      if (data) {
-
-        data.textContent =
-          formatarDataNoticia(
-            noticia.publicado_em ||
-            noticia.created_at
-          );
-
-      }
-
-
-      if (leitura) {
-
-        leitura.textContent =
-          calcularTempoLeitura(
-            noticia.conteudo ||
-            noticia.resumo
-          );
-
-      }
-
-
-      if (resumo) {
-
-        resumo.textContent =
-          noticia.resumo ||
-          noticia.conteudo ||
-          '';
-
-      }
-
-
-      const seedAutor =
-        encodeURIComponent(
-          noticia.autor ||
-          'RedacaoPixel'
-        );
-
-
-      if (avatarAutor) {
-
-        avatarAutor.src =
-          `https://api.dicebear.com/7.x/pixel-art/svg?seed=${seedAutor}`;
-
-      }
-
-
-      const imagemPadrao =
-        'https://images.unsplash.com/photo-1550745165-9bc0b2527264?auto=format&fit=crop&w=1100&q=80';
-
-
-      if (
-        imagem &&
-        noticia.imagem_url
-      ) {
-
-        imagem.src =
-          noticia.imagem_url;
-
-
-        imagem.onerror =
-          function() {
-
-            this.onerror =
-              null;
-
-            this.src =
-              imagemPadrao;
-
-          };
-
-      } else if (imagem) {
-
-        imagem.src =
-          imagemPadrao;
-
-      }
-
-
-      if (comentarios) {
-
-        comentarios.textContent =
-          '0';
-
-      }
-
-    }
-
-
-    async function carregarNoticiaPublicada() {
-
-      try {
-
-        if (
-          typeof supabaseClient ===
-          'undefined'
-        ) {
-
-          return;
-
-        }
-
-
-        const {
-          data,
-          error
-        } =
-          await supabaseClient
-            .from('noticias')
-            .select(
-              'id, created_at, titulo, categoria, resumo, conteudo, imagem_url, autor, status, publicado_em'
-            )
-            .eq(
-              'status',
-              'PUBLICADA'
-            )
-            .order(
-              'publicado_em',
-              {
-                ascending: false,
-                nullsFirst: false
-              }
-            )
-            .order(
-              'created_at',
-              {
-                ascending: false
-              }
-            )
-            .limit(
-              1
-            )
-            .maybeSingle();
-
-
-        if (error) {
-
-          console.warn(
-            'Não foi possível carregar a notícia publicada:',
-            error
-          );
-
-          return;
-
-        }
-
-
-        if (!data) {
-
-          console.warn(
-            'Nenhuma notícia publicada encontrada.'
-          );
-
-          return;
-
-        }
-
-
-        atualizarPortalComNoticia(
-          data
-        );
-
-      } catch (error) {
-
-        console.warn(
-          'Erro ao carregar notícia do Portal:',
-          error
-        );
-
-      }
-
-    }
-
-
-    /* =========================================================
        LIKE
     ========================================================= */
 
@@ -5357,44 +4092,27 @@
 
 
       const contador =
-        botao.querySelector(
-          '.like-count'
-        );
+        botao.querySelector('.like-count');
 
 
-      if (
-        !icone ||
-        !contador
-      ) {
-
+      if (!icone || !contador) {
         return;
-
       }
 
 
       const curtido =
-        botao.dataset.liked ===
-        'true';
+        botao.dataset.liked === 'true';
 
 
       let quantidade =
         parseInt(
-          contador.textContent.replace(
-            /\D/g,
-            ''
-          ),
+          contador.textContent.replace(/\D/g, ''),
           10
         );
 
 
-      if (
-        !Number.isFinite(
-          quantidade
-        )
-      ) {
-
+      if (!Number.isFinite(quantidade)) {
         quantidade = 0;
-
       }
 
 
@@ -5406,46 +4124,30 @@
             quantidade - 1
           );
 
-
         botao.dataset.liked =
           'false';
-
 
         icone.classList.remove(
           'fa-solid'
         );
 
-
         icone.classList.add(
           'fa-regular'
-        );
-
-
-        botao.classList.remove(
-          'liked'
         );
 
       } else {
 
         quantidade += 1;
 
-
         botao.dataset.liked =
           'true';
-
 
         icone.classList.remove(
           'fa-regular'
         );
 
-
         icone.classList.add(
           'fa-solid'
-        );
-
-
-        botao.classList.add(
-          'liked'
         );
 
       }
@@ -5461,12 +4163,296 @@
        COMPARTILHAR NOTÍCIA
     ========================================================= */
 
+    let noticiaPortalAtual = null;
+    let noticiasPortalCache = [];
+
+
+    /* =========================================================
+       NOTÍCIAS DO PORTAL — SUPABASE
+    ========================================================= */
+
+    function escaparHtml(valor) {
+      return String(valor ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+
+    function formatarDataNoticia(dataString) {
+      if (!dataString) return 'Recentemente';
+
+      const data = new Date(dataString);
+      if (Number.isNaN(data.getTime())) return 'Recentemente';
+
+      const agora = new Date();
+      const diferencaMs = Math.max(0, agora.getTime() - data.getTime());
+      const minutos = Math.floor(diferencaMs / 60000);
+      const horas = Math.floor(minutos / 60);
+      const dias = Math.floor(horas / 24);
+
+      if (minutos < 1) return 'Agora';
+      if (minutos < 60) return `Há ${minutos} min`;
+      if (horas < 24) return `Há ${horas} ${horas === 1 ? 'hora' : 'horas'}`;
+      if (dias < 7) return `Há ${dias} ${dias === 1 ? 'dia' : 'dias'}`;
+
+      return data.toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+      });
+    }
+
+
+    function calcularTempoLeitura(conteudo) {
+      const palavras = String(conteudo || '')
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean).length;
+
+      const minutos = Math.max(1, Math.ceil(palavras / 180));
+      return `${minutos} min de leitura`;
+    }
+
+
+    function imagemPadraoNoticia() {
+      return 'https://images.unsplash.com/photo-1550745165-9bc0b2527264?auto=format&fit=crop&w=1400&q=85';
+    }
+
+
+    function atualizarPortalComNoticia(noticias) {
+      if (!Array.isArray(noticias) || !noticias.length) {
+        return;
+      }
+
+      noticiaPortalAtual = noticias[0];
+      noticiasPortalCache = noticias;
+
+      const destaque = noticias[0];
+      const titulo = document.getElementById('portal-news-title');
+      const categoria = document.getElementById('portal-news-category');
+      const autor = document.getElementById('portal-news-author');
+      const data = document.getElementById('portal-news-date');
+      const leitura = document.getElementById('portal-news-reading-time');
+      const imagem = document.getElementById('portal-news-image');
+      const resumo = document.getElementById('portal-news-summary');
+      const comentarios = document.getElementById('portal-news-comment-count');
+
+      if (!titulo || !categoria || !autor || !data || !leitura || !imagem || !resumo) {
+        return;
+      }
+
+      titulo.textContent = destaque.titulo || 'Sem título';
+      categoria.textContent = destaque.categoria || 'Fã-Site';
+      autor.textContent = destaque.autor || 'Redação Pixel';
+      data.textContent = formatarDataNoticia(destaque.publicado_em || destaque.created_at);
+      leitura.textContent = calcularTempoLeitura(destaque.conteudo || destaque.resumo);
+      resumo.textContent = destaque.resumo || destaque.conteudo || 'Confira esta novidade da comunidade Pixelizados.';
+
+      imagem.src = destaque.imagem_url || imagemPadraoNoticia();
+      imagem.onerror = function() {
+        this.onerror = null;
+        this.src = imagemPadraoNoticia();
+      };
+
+      if (comentarios) {
+        comentarios.textContent = '0';
+      }
+
+      renderizarUltimasNoticias(noticias.slice(1));
+
+      const count = document.getElementById('portal-news-count');
+      if (count) {
+        count.textContent = `${noticias.length} ${noticias.length === 1 ? 'publicação disponível' : 'publicações disponíveis'}`;
+      }
+
+      const loading = document.getElementById('portal-news-loading');
+      const content = document.getElementById('portal-news-content');
+      const error = document.getElementById('portal-news-error');
+
+      if (loading) loading.style.display = 'none';
+      if (content) content.style.display = 'block';
+      if (error) error.style.display = 'none';
+    }
+
+
+    function renderizarUltimasNoticias(noticias) {
+      const container = document.getElementById('portal-latest-news');
+      const vazio = document.getElementById('portal-news-empty-latest');
+
+      if (!container || !vazio) return;
+
+      container.innerHTML = '';
+
+      if (!noticias.length) {
+        vazio.style.display = 'flex';
+        return;
+      }
+
+      vazio.style.display = 'none';
+
+      noticias.slice(0, 6).forEach(function(noticia, index) {
+        const card = document.createElement('article');
+        card.className = 'news-mini-card';
+        card.tabIndex = 0;
+        card.setAttribute('aria-label', `Abrir notícia: ${noticia.titulo || 'Notícia'}`);
+
+        const imagem = noticia.imagem_url || imagemPadraoNoticia();
+        const categoria = escaparHtml(noticia.categoria || 'Fã-Site');
+        const titulo = escaparHtml(noticia.titulo || 'Sem título');
+        const data = escaparHtml(formatarDataNoticia(noticia.publicado_em || noticia.created_at));
+        const autor = escaparHtml(noticia.autor || 'Redação Pixel');
+
+        card.innerHTML = `
+          <div class="news-mini-image-wrap">
+            <img
+              class="news-mini-image"
+              src="${escaparHtml(imagem)}"
+              alt=""
+              loading="lazy"
+            >
+            <span class="news-mini-category">
+              ${categoria}
+            </span>
+          </div>
+          <div class="news-mini-body">
+            <h4 class="news-mini-title">${titulo}</h4>
+            <div class="news-mini-meta">
+              <i class="fa-regular fa-clock"></i>
+              <span>${data}</span>
+              <span>•</span>
+              <span>${autor}</span>
+            </div>
+          </div>
+        `;
+
+        const img = card.querySelector('.news-mini-image');
+        if (img) {
+          img.onerror = function() {
+            this.onerror = null;
+            this.src = imagemPadraoNoticia();
+          };
+        }
+
+        card.addEventListener('click', function() {
+          abrirNoticiaPortal(noticia);
+        });
+
+        card.addEventListener('keydown', function(event) {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            abrirNoticiaPortal(noticia);
+          }
+        });
+
+        container.appendChild(card);
+      });
+    }
+
+
+    function abrirNoticiaPortal(noticia) {
+      if (!noticia) return;
+
+      noticiaPortalAtual = noticia;
+
+      const overlay = document.getElementById('news-reader-overlay');
+      const imagem = document.getElementById('news-reader-image');
+      const categoria = document.getElementById('news-reader-category');
+      const titulo = document.getElementById('news-reader-title');
+      const autor = document.getElementById('news-reader-author');
+      const data = document.getElementById('news-reader-date');
+      const leitura = document.getElementById('news-reader-reading-time');
+      const resumo = document.getElementById('news-reader-summary');
+      const corpo = document.getElementById('news-reader-body');
+
+      if (!overlay || !imagem || !categoria || !titulo || !autor || !data || !leitura || !resumo || !corpo) {
+        return;
+      }
+
+      imagem.src = noticia.imagem_url || imagemPadraoNoticia();
+      imagem.onerror = function() {
+        this.onerror = null;
+        this.src = imagemPadraoNoticia();
+      };
+      imagem.alt = noticia.titulo || 'Capa da notícia';
+      categoria.textContent = noticia.categoria || 'Fã-Site';
+      titulo.textContent = noticia.titulo || 'Sem título';
+      autor.textContent = noticia.autor || 'Redação Pixel';
+      data.textContent = formatarDataNoticia(noticia.publicado_em || noticia.created_at);
+      leitura.textContent = calcularTempoLeitura(noticia.conteudo || noticia.resumo);
+      resumo.textContent = noticia.resumo || '';
+      resumo.style.display = noticia.resumo ? 'block' : 'none';
+      corpo.textContent = noticia.conteudo || noticia.resumo || 'Esta notícia ainda não possui conteúdo disponível.';
+
+      overlay.classList.add('is-open');
+      document.body.classList.add('profile-modal-open');
+    }
+
+
+    function fecharNoticiaPortal() {
+      const overlay = document.getElementById('news-reader-overlay');
+      if (overlay) overlay.classList.remove('is-open');
+
+      const profile = document.getElementById('profile-modal');
+      if (!profile || !profile.classList.contains('is-open')) {
+        document.body.classList.remove('profile-modal-open');
+      }
+    }
+
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        fecharNoticiaPortal();
+      }
+    });
+
+
+    async function carregarNoticiaPublicada() {
+      try {
+        if (typeof supabaseClient === 'undefined') {
+          return;
+        }
+
+        const { data, error } = await supabaseClient
+          .from('noticias')
+          .select('id, created_at, titulo, categoria, resumo, conteudo, imagem_url, autor, status, publicado_em')
+          .eq('status', 'PUBLICADA')
+          .order('publicado_em', { ascending: false, nullsFirst: false })
+          .order('created_at', { ascending: false })
+          .limit(7);
+
+        if (error) {
+          throw error;
+        }
+
+        if (!data || !data.length) {
+          const loading = document.getElementById('portal-news-loading');
+          const errorBox = document.getElementById('portal-news-error');
+          if (loading) loading.style.display = 'none';
+          if (errorBox) errorBox.style.display = 'flex';
+          return;
+        }
+
+        atualizarPortalComNoticia(data);
+
+      } catch (error) {
+        console.warn('Erro ao carregar notícias do Portal:', error);
+
+        const loading = document.getElementById('portal-news-loading');
+        const errorBox = document.getElementById('portal-news-error');
+        if (loading) loading.style.display = 'none';
+        if (errorBox) errorBox.style.display = 'flex';
+      }
+    }
+
+
     async function compartilharNoticia() {
 
       const titulo =
         noticiaPortalAtual?.titulo ||
         'Notícia do Pixelizados';
-
 
       const url =
         window.location.href;
@@ -5474,8 +4460,7 @@
 
       if (
         navigator.share &&
-        typeof navigator.share ===
-          'function'
+        typeof navigator.share === 'function'
       ) {
 
         try {
@@ -5486,15 +4471,13 @@
             url: url
           });
 
-
           return;
 
         } catch (error) {
 
           if (
             error &&
-            error.name ===
-              'AbortError'
+            error.name === 'AbortError'
           ) {
 
             return;
@@ -5510,19 +4493,16 @@
 
         if (
           navigator.clipboard &&
-          typeof navigator.clipboard.writeText ===
-            'function'
+          typeof navigator.clipboard.writeText === 'function'
         ) {
 
           await navigator.clipboard.writeText(
             url
           );
 
-
           alert(
             'Link da notícia copiado para a área de transferência!'
           );
-
 
           return;
 
@@ -5644,7 +4624,6 @@
 
           formulario.reset();
 
-
           if (botao) {
 
             botao.innerHTML =
@@ -5682,16 +4661,7 @@
       }
     );
 
-  </script>
-
-
-  <!-- =======================================================
-       SUPABASE / AVATAR / DADOS / LOGOUT
-  ======================================================== -->
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-  <script>
+  </script> <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script> <script>
 
     const SUPABASE_URL =
       'https://znvytrvdwejjlivzsjzy.supabase.co';
@@ -5763,6 +4733,13 @@
 
         }
 
+
+        /*
+         * Os dados vindos do banco atualizam o perfil.
+         *
+         * O avatar local é preservado porque a URL assinada
+         * é regenerada pelo Storage através de avatar_path.
+         */
 
         const usuarioAtualizado = {
           ...usuarioLocal,
@@ -5954,8 +4931,4 @@
 
     }
 
-  </script>
-
-
-</body>
-</html>
+  </script> <div id="news-reader-overlay" class="news-reader-overlay" onclick="if(event.target === this) fecharNoticiaPortal()" > <article class="news-reader-modal" role="dialog" aria-modal="true" aria-labelledby="news-reader-title"> <div class="news-reader-cover"> <button type="button" class="news-reader-close" onclick="fecharNoticiaPortal()" aria-label="Fechar notícia" > <i class="fa-solid fa-xmark"></i> </button> <img id="news-reader-image" src="https://images.unsplash.com/photo-1550745165-9bc0b2527264?auto=format&fit=crop&w=1400&q=85" alt="Capa da notícia" > </div> <div class="news-reader-content"> <span id="news-reader-category" class="pixel-tag pixel-tag-blue">Fã-Site</span> <h2 id="news-reader-title" class="news-reader-title">Notícia</h2> <div class="news-reader-meta"> <span>Por <strong id="news-reader-author">Redação Pixel</strong></span> <span>•</span> <span id="news-reader-date">Recentemente</span> <span>•</span> <span id="news-reader-reading-time">1 min de leitura</span> </div> <div id="news-reader-summary" class="news-reader-summary" style="display:none;"></div> <div id="news-reader-body" class="news-reader-body"></div> </div> </article> </div> </body> </html>
