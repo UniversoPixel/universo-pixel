@@ -1,0 +1,2854 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Painel Administrativo | Pixelizados</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    rel="stylesheet"
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =========================================================
+       IDENTIDADE PIXELIZADOS
+    ========================================================= */
+
+    :root {
+      --blue: #55b9f5;
+      --blue-dark: #2788ca;
+      --blue-deep: #176ca8;
+      --blue-light: #e7f6ff;
+
+      --yellow: #ffd447;
+      --yellow-dark: #e6a900;
+
+      --green: #55cf70;
+      --red: #ff5c65;
+
+      --bg: #edf7fd;
+      --white: #ffffff;
+
+      --text: #243447;
+      --text-soft: #64748b;
+      --text-muted: #94a3b8;
+
+      --border: #d5e7f4;
+      --border-dark: #a9cce4;
+
+      --shadow:
+        0 8px 24px rgba(35, 107, 151, .10);
+
+      --shadow-hover:
+        0 12px 30px rgba(35, 107, 151, .16);
+    }
+
+
+    /* =========================================================
+       BASE
+    ========================================================= */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+
+      font-family: 'Inter', sans-serif;
+
+      color: var(--text);
+
+      background:
+        radial-gradient(
+          circle at 15% 10%,
+          rgba(255,255,255,.95) 0,
+          rgba(255,255,255,0) 28%
+        ),
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(117,207,255,.25) 0,
+          rgba(117,207,255,0) 30%
+        ),
+        linear-gradient(
+          180deg,
+          #dff3ff 0%,
+          #edf8fd 48%,
+          #e8f5fb 100%
+        );
+
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+
+      position: fixed;
+
+      inset: 0;
+
+      pointer-events: none;
+
+      opacity: .35;
+
+      background-image:
+        linear-gradient(
+          rgba(39,136,202,.035) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(39,136,202,.035) 1px,
+          transparent 1px
+        );
+
+      background-size: 24px 24px;
+
+      z-index: -1;
+    }
+
+    .font-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .font-subtitle {
+      font-family: 'Manrope', sans-serif;
+    }
+
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    .top-header {
+      position: fixed;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 72px;
+
+      z-index: 9998;
+
+      background: rgba(255,255,255,.97);
+
+      border-bottom: 2px solid var(--border);
+
+      box-shadow:
+        0 4px 16px rgba(27,91,130,.10);
+    }
+
+    .top-header::after {
+      content: "";
+
+      position: absolute;
+
+      bottom: -2px;
+
+      left: 0;
+      right: 0;
+
+      height: 3px;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--blue-dark) 0%,
+          var(--blue) 60%,
+          var(--yellow) 60%,
+          var(--yellow) 100%
+        );
+    }
+
+    .header-inner {
+      height: 100%;
+
+      max-width: 1440px;
+
+      margin: 0 auto;
+
+      padding: 0 22px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+    .brand-area {
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+
+      object-fit: contain;
+    }
+
+    .brand-text {
+      min-width: 0;
+    }
+
+    .brand-title {
+      margin: 0;
+
+      font-family: 'Plus Jakarta Sans', sans-serif;
+
+      font-size: 14px;
+
+      font-weight: 900;
+
+      color: #243447;
+    }
+
+    .brand-subtitle {
+      margin: 2px 0 0;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      color: #91a2b0;
+
+      text-transform: uppercase;
+
+      letter-spacing: .12em;
+    }
+
+    .header-right {
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+    }
+
+    .role-badge {
+      display: flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      padding: 7px 11px;
+
+      background: #fff8d9;
+
+      border: 2px solid #f1cd45;
+
+      border-radius: 9px;
+
+      box-shadow:
+        0 2px 0 #d7a900;
+    }
+
+    .role-badge-icon {
+      font-size: 13px;
+    }
+
+    .role-badge-text {
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      color: #765900;
+
+      text-transform: uppercase;
+
+      letter-spacing: .05em;
+    }
+
+    .profile-mini {
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      padding: 4px 9px 4px 4px;
+
+      background: #f4fbff;
+
+      border: 2px solid var(--border);
+
+      border-radius: 10px;
+    }
+
+    .profile-avatar {
+      width: 32px;
+      height: 32px;
+
+      object-fit: cover;
+
+      background: #17364b;
+
+      border-radius: 7px;
+
+      border: 2px solid var(--blue);
+    }
+
+    .profile-mini-name {
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      color: #243447;
+    }
+
+    .logout-button {
+      width: 36px;
+      height: 36px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border: 2px solid var(--border);
+
+      border-radius: 8px;
+
+      background: #fff;
+
+      color: #718395;
+
+      cursor: pointer;
+
+      transition: .2s ease;
+    }
+
+    .logout-button:hover {
+      color: var(--red);
+
+      border-color: #ffb8bd;
+
+      background: #fff5f6;
+    }
+
+
+    /* =========================================================
+       LAYOUT
+    ========================================================= */
+
+    .app-layout {
+      display: flex;
+
+      min-height: 100vh;
+
+      padding-top: 72px;
+    }
+
+
+    /* =========================================================
+       SIDEBAR
+    ========================================================= */
+
+    .sidebar {
+      position: fixed;
+
+      top: 72px;
+      bottom: 0;
+      left: 0;
+
+      width: 250px;
+
+      background: rgba(255,255,255,.97);
+
+      border-right: 2px solid var(--border);
+
+      overflow-y: auto;
+
+      z-index: 100;
+
+      padding: 18px 13px 30px;
+    }
+
+    .sidebar-label {
+      padding: 0 9px;
+
+      margin: 15px 0 7px;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      color: #9aabb8;
+
+      text-transform: uppercase;
+
+      letter-spacing: .12em;
+    }
+
+    .sidebar-label:first-child {
+      margin-top: 2px;
+    }
+
+    .menu-item {
+      width: 100%;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      padding: 10px 10px;
+
+      margin-bottom: 3px;
+
+      border: 2px solid transparent;
+
+      border-radius: 8px;
+
+      background: transparent;
+
+      color: #637789;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      text-decoration: none;
+
+      cursor: pointer;
+
+      transition: .18s ease;
+
+      text-align: left;
+    }
+
+    .menu-item i {
+      width: 17px;
+
+      text-align: center;
+
+      color: #7890a2;
+
+      font-size: 12px;
+    }
+
+    .menu-item:hover {
+      color: var(--blue-deep);
+
+      background: #f1faff;
+
+      border-color: #d9edf8;
+    }
+
+    .menu-item:hover i {
+      color: var(--blue-dark);
+    }
+
+    .menu-item.active {
+      color: var(--blue-deep);
+
+      background: #eaf7ff;
+
+      border-color: #c5e5f7;
+    }
+
+    .menu-item.active i {
+      color: var(--blue-dark);
+    }
+
+    .menu-item.locked {
+      opacity: .42;
+
+      cursor: not-allowed;
+    }
+
+    .menu-item.locked:hover {
+      background: transparent;
+
+      border-color: transparent;
+    }
+
+    .menu-lock {
+      margin-left: auto;
+
+      font-size: 8px;
+
+      color: #aab8c2;
+    }
+
+
+    /* =========================================================
+       CONTEÚDO
+    ========================================================= */
+
+    .main-content {
+      width: calc(100% - 250px);
+
+      margin-left: 250px;
+
+      padding: 28px;
+
+      max-width: 1500px;
+    }
+
+    .page-heading {
+      margin-bottom: 22px;
+    }
+
+    .page-heading h1 {
+      margin: 0;
+
+      font-family: 'Plus Jakarta Sans', sans-serif;
+
+      font-size: 24px;
+
+      font-weight: 900;
+
+      color: #243447;
+    }
+
+    .page-heading p {
+      margin: 5px 0 0;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      color: #8295a5;
+    }
+
+
+    /* =========================================================
+       WELCOME
+    ========================================================= */
+
+    .welcome-card {
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 22px;
+
+      margin-bottom: 22px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ffffff 0%,
+          #f0faff 100%
+        );
+
+      border: 2px solid var(--border);
+
+      border-radius: 14px;
+
+      box-shadow: var(--shadow);
+    }
+
+    .welcome-card::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 5px;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--blue-dark),
+          var(--blue) 70%,
+          var(--yellow) 70%
+        );
+    }
+
+    .welcome-card::after {
+      content: "PIXEL";
+
+      position: absolute;
+
+      right: -18px;
+      bottom: -28px;
+
+      font-family: 'Plus Jakarta Sans', sans-serif;
+
+      font-size: 80px;
+
+      font-weight: 900;
+
+      color: rgba(85,185,245,.055);
+
+      pointer-events: none;
+    }
+
+    .welcome-content {
+      position: relative;
+
+      z-index: 2;
+    }
+
+    .welcome-kicker {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 6px;
+
+      padding: 5px 8px;
+
+      background: #e5f6ff;
+
+      border: 1px solid #b9def1;
+
+      border-radius: 6px;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      color: var(--blue-deep);
+
+      text-transform: uppercase;
+
+      letter-spacing: .08em;
+    }
+
+    .welcome-title {
+      margin: 12px 0 4px;
+
+      font-family: 'Plus Jakarta Sans', sans-serif;
+
+      font-size: 20px;
+
+      font-weight: 900;
+
+      color: #243447;
+    }
+
+    .welcome-description {
+      margin: 0;
+
+      max-width: 700px;
+
+      font-size: 11px;
+
+      line-height: 1.7;
+
+      color: #708494;
+    }
+
+
+    /* =========================================================
+       STAT CARDS
+    ========================================================= */
+
+    .stats-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+      gap: 13px;
+
+      margin-bottom: 22px;
+    }
+
+    .stat-card {
+      background: #fff;
+
+      border: 2px solid var(--border);
+
+      border-radius: 11px;
+
+      padding: 15px;
+
+      box-shadow: var(--shadow);
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 3px;
+
+      background: var(--blue);
+    }
+
+    .stat-card.yellow::before {
+      background: var(--yellow-dark);
+    }
+
+    .stat-card.green::before {
+      background: var(--green);
+    }
+
+    .stat-card.red::before {
+      background: var(--red);
+    }
+
+    .stat-icon {
+      width: 32px;
+      height: 32px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      margin-bottom: 10px;
+
+      border-radius: 7px;
+
+      background: #eaf7ff;
+
+      border: 2px solid #c9e8f7;
+
+      color: var(--blue-dark);
+
+      font-size: 12px;
+    }
+
+    .yellow .stat-icon {
+      background: #fff8d9;
+
+      border-color: #f0d66b;
+
+      color: #a57700;
+    }
+
+    .green .stat-icon {
+      background: #edfff1;
+
+      border-color: #bce9c6;
+
+      color: #38a550;
+    }
+
+    .red .stat-icon {
+      background: #fff1f2;
+
+      border-color: #ffcdd1;
+
+      color: #d84b55;
+    }
+
+    .stat-label {
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      color: #94a4b1;
+
+      text-transform: uppercase;
+
+      letter-spacing: .08em;
+    }
+
+    .stat-value {
+      margin-top: 3px;
+
+      font-family: 'Plus Jakarta Sans', sans-serif;
+
+      font-size: 18px;
+
+      font-weight: 900;
+
+      color: #243447;
+    }
+
+
+    /* =========================================================
+       MODULE GRID
+    ========================================================= */
+
+    .section-heading {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 12px;
+
+      margin-bottom: 12px;
+    }
+
+    .section-heading-left {
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+    }
+
+    .section-heading-icon {
+      width: 30px;
+      height: 30px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      background: #eaf7ff;
+
+      border: 2px solid #c6e5f6;
+
+      border-radius: 7px;
+
+      color: var(--blue-dark);
+
+      font-size: 11px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+
+      font-family: 'Plus Jakarta Sans', sans-serif;
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+      color: #243447;
+
+      text-transform: uppercase;
+
+      letter-spacing: .04em;
+    }
+
+    .section-heading p {
+      margin: 2px 0 0;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 8px;
+
+      font-weight: 700;
+
+      color: #9aaab7;
+    }
+
+    .modules-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 13px;
+
+      margin-bottom: 25px;
+    }
+
+    .module-card {
+      display: flex;
+
+      align-items: flex-start;
+
+      gap: 12px;
+
+      min-height: 105px;
+
+      padding: 15px;
+
+      background: #fff;
+
+      border: 2px solid var(--border);
+
+      border-radius: 11px;
+
+      box-shadow: var(--shadow);
+
+      cursor: pointer;
+
+      transition: .2s ease;
+
+      position: relative;
+    }
+
+    .module-card:hover {
+      transform: translateY(-2px);
+
+      border-color: #b8d9eb;
+
+      box-shadow: var(--shadow-hover);
+    }
+
+    .module-card.disabled {
+      opacity: .48;
+
+      cursor: not-allowed;
+    }
+
+    .module-card.disabled:hover {
+      transform: none;
+
+      border-color: var(--border);
+
+      box-shadow: var(--shadow);
+    }
+
+    .module-icon {
+      width: 38px;
+      height: 38px;
+
+      flex-shrink: 0;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      background: #eaf7ff;
+
+      border: 2px solid #c6e5f6;
+
+      border-radius: 8px;
+
+      color: var(--blue-dark);
+
+      font-size: 14px;
+    }
+
+    .module-card.yellow .module-icon {
+      background: #fff8d9;
+
+      border-color: #f0d66b;
+
+      color: #9b7300;
+    }
+
+    .module-card.green .module-icon {
+      background: #edfff1;
+
+      border-color: #bce9c6;
+
+      color: #3aa352;
+    }
+
+    .module-card.purple .module-icon {
+      background: #f4efff;
+
+      border-color: #d9c9fa;
+
+      color: #7651bd;
+    }
+
+    .module-info {
+      min-width: 0;
+    }
+
+    .module-title {
+      margin: 0 0 4px;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      color: #293d4e;
+    }
+
+    .module-description {
+      margin: 0;
+
+      font-size: 9px;
+
+      line-height: 1.5;
+
+      color: #8798a6;
+    }
+
+    .module-arrow {
+      position: absolute;
+
+      right: 12px;
+      bottom: 12px;
+
+      color: #a4b5c0;
+
+      font-size: 9px;
+    }
+
+
+    /* =========================================================
+       PERMISSÕES
+    ========================================================= */
+
+    .permission-card {
+      padding: 17px;
+
+      background: #fff;
+
+      border: 2px solid var(--border);
+
+      border-radius: 11px;
+
+      box-shadow: var(--shadow);
+
+      margin-bottom: 25px;
+    }
+
+    .permission-role {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding: 10px;
+
+      background: #f7fbfe;
+
+      border: 2px solid #e0edf4;
+
+      border-radius: 8px;
+
+      margin-top: 10px;
+    }
+
+    .permission-role-left {
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+    }
+
+    .permission-role-icon {
+      font-size: 15px;
+    }
+
+    .permission-role-name {
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      color: #34495a;
+    }
+
+    .permission-role-code {
+      margin-top: 2px;
+
+      font-size: 7px;
+
+      font-weight: 700;
+
+      color: #9baab5;
+
+      letter-spacing: .06em;
+    }
+
+    .permission-status {
+      padding: 4px 7px;
+
+      border-radius: 5px;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 7px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      letter-spacing: .05em;
+
+      background: #edfff1;
+
+      border: 1px solid #bce9c6;
+
+      color: #39964e;
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    .admin-footer {
+      padding: 20px 0 5px;
+
+      text-align: center;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 8px;
+
+      font-weight: 700;
+
+      color: #9aaab7;
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    .mobile-menu-button {
+      display: none;
+
+      width: 36px;
+      height: 36px;
+
+      border: 2px solid var(--border);
+
+      border-radius: 8px;
+
+      background: #fff;
+
+      color: var(--blue-dark);
+
+      cursor: pointer;
+    }
+
+    .sidebar-overlay {
+      display: none;
+    }
+
+    @media (max-width: 1100px) {
+
+      .stats-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .modules-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+    }
+
+    @media (max-width: 850px) {
+
+      .mobile-menu-button {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+      }
+
+      .sidebar {
+        transform: translateX(-100%);
+
+        transition: transform .25s ease;
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .sidebar-overlay {
+        position: fixed;
+
+        inset: 0;
+
+        background: rgba(17,52,73,.35);
+
+        z-index: 90;
+      }
+
+      .sidebar-overlay.open {
+        display: block;
+      }
+
+      .main-content {
+        width: 100%;
+
+        margin-left: 0;
+
+        padding: 20px 15px;
+      }
+
+      .header-inner {
+        padding: 0 12px;
+      }
+
+      .brand-subtitle {
+        display: none;
+      }
+
+      .role-badge-text {
+        display: none;
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      .header-right {
+        gap: 5px;
+      }
+
+      .profile-mini-name {
+        display: none;
+      }
+
+      .profile-mini {
+        padding-right: 4px;
+      }
+
+      .page-heading h1 {
+        font-size: 20px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .modules-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .welcome-card {
+        padding: 18px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <!-- =======================================================
+       HEADER
+  ======================================================== -->
+
+  <header class="top-header">
+
+    <div class="header-inner">
+
+      <div class="brand-area">
+
+        <button
+          id="mobile-menu-button"
+          class="mobile-menu-button"
+          onclick="toggleSidebar()"
+          aria-label="Abrir menu"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <img
+          src="pixelizados.png"
+          alt="Pixelizados"
+          class="brand-logo"
+        >
+
+        <div class="brand-text">
+          <p class="brand-title">
+            Pixelizados
+          </p>
+
+          <p class="brand-subtitle">
+            Painel Administrativo
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="header-right">
+
+        <div
+          class="role-badge"
+          id="role-badge"
+        >
+          <span
+            class="role-badge-icon"
+            id="role-icon"
+          >
+            👑
+          </span>
+
+          <span
+            class="role-badge-text"
+            id="role-name"
+          >
+            FUNDADOR
+          </span>
+        </div>
+
+
+        <div class="profile-mini">
+
+          <img
+            id="profile-avatar"
+            class="profile-avatar"
+            src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Pixelizado&backgroundColor=38b6ff"
+            alt="Avatar"
+          >
+
+          <span
+            class="profile-mini-name"
+            id="profile-name"
+          >
+            Pixelizado
+          </span>
+
+        </div>
+
+
+        <button
+          class="logout-button"
+          onclick="fazerLogout()"
+          title="Sair"
+        >
+          <i class="fa-solid fa-power-off"></i>
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =======================================================
+       LAYOUT
+  ======================================================== -->
+
+  <div class="app-layout">
+
+
+    <div
+      id="sidebar-overlay"
+      class="sidebar-overlay"
+      onclick="toggleSidebar()"
+    ></div>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside
+      id="sidebar"
+      class="sidebar"
+    >
+
+      <div class="sidebar-label">
+        Geral
+      </div>
+
+      <button
+        class="menu-item active"
+        onclick="selecionarMenu(this, 'dashboard')"
+      >
+        <i class="fa-solid fa-gauge-high"></i>
+        <span>Dashboard</span>
+      </button>
+
+
+      <div class="sidebar-label">
+        Conteúdo
+      </div>
+
+      <button
+        class="menu-item"
+        data-permission="conteudo"
+        onclick="selecionarMenu(this, 'conteudo')"
+      >
+        <i class="fa-solid fa-window-maximize"></i>
+        <span>Conteúdo do Site</span>
+      </button>
+
+      <button
+        class="menu-item"
+        data-permission="noticias"
+        onclick="selecionarMenu(this, 'noticias')"
+      >
+        <i class="fa-solid fa-newspaper"></i>
+        <span>Notícias</span>
+      </button>
+
+      <button
+        class="menu-item"
+        data-permission="eventos"
+        onclick="selecionarMenu(this, 'eventos')"
+      >
+        <i class="fa-solid fa-calendar-days"></i>
+        <span>Eventos</span>
+      </button>
+
+      <button
+        class="menu-item"
+        data-permission="imagens"
+        onclick="selecionarMenu(this, 'imagens')"
+      >
+        <i class="fa-solid fa-images"></i>
+        <span>Biblioteca de Imagens</span>
+      </button>
+
+
+      <div class="sidebar-label">
+        Comunidade
+      </div>
+
+      <button
+        class="menu-item"
+        data-permission="usuarios"
+        onclick="selecionarMenu(this, 'usuarios')"
+      >
+        <i class="fa-solid fa-users"></i>
+        <span>Usuários</span>
+      </button>
+
+      <button
+        class="menu-item"
+        data-permission="moderacao"
+        onclick="selecionarMenu(this, 'moderacao')"
+      >
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>Moderação</span>
+      </button>
+
+
+      <div class="sidebar-label">
+        Equipe
+      </div>
+
+      <button
+        class="menu-item"
+        data-permission="cargos"
+        onclick="selecionarMenu(this, 'cargos')"
+      >
+        <i class="fa-solid fa-crown"></i>
+        <span>Cargos & Permissões</span>
+      </button>
+
+      <button
+        class="menu-item"
+        data-permission="equipe"
+        onclick="selecionarMenu(this, 'equipe')"
+      >
+        <i class="fa-solid fa-user-group"></i>
+        <span>Equipe</span>
+      </button>
+
+
+      <div class="sidebar-label">
+        Sistema
+      </div>
+
+      <button
+        class="menu-item"
+        data-permission="autodj"
+        onclick="selecionarMenu(this, 'autodj')"
+      >
+        <i class="fa-solid fa-record-vinyl"></i>
+        <span>AutoDJ</span>
+      </button>
+
+      <button
+        class="menu-item"
+        data-permission="discord"
+        onclick="selecionarMenu(this, 'discord')"
+      >
+        <i class="fa-brands fa-discord"></i>
+        <span>Discord</span>
+      </button>
+
+      <button
+        class="menu-item"
+        data-permission="configuracoes"
+        onclick="selecionarMenu(this, 'configuracoes')"
+      >
+        <i class="fa-solid fa-gear"></i>
+        <span>Configurações</span>
+      </button>
+
+
+      <div class="sidebar-label">
+        Navegação
+      </div>
+
+      <a
+        href="portal.html"
+        class="menu-item"
+      >
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Voltar ao Portal</span>
+      </a>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+      <div class="page-heading">
+
+        <h1>
+          Painel Administrativo
+        </h1>
+
+        <p>
+          Central de gerenciamento do universo Pixelizados.
+        </p>
+
+      </div>
+
+
+      <!-- ===================================================
+           WELCOME
+      ==================================================== -->
+
+      <section class="welcome-card">
+
+        <div class="welcome-content">
+
+          <span class="welcome-kicker">
+            <i class="fa-solid fa-crown"></i>
+            <span id="welcome-role">
+              Aclamado/Fundador
+            </span>
+          </span>
+
+          <h2 class="welcome-title">
+            Bem-vindo ao centro de comando.
+          </h2>
+
+          <p class="welcome-description">
+            Aqui você poderá administrar o conteúdo,
+            comunidade, equipe e recursos do Pixelizados.
+            As ferramentas serão liberadas progressivamente.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- ===================================================
+           STATS
+      ==================================================== -->
+
+      <section class="stats-grid">
+
+        <div class="stat-card">
+
+          <div class="stat-icon">
+            <i class="fa-solid fa-users"></i>
+          </div>
+
+          <div class="stat-label">
+            Usuários
+          </div>
+
+          <div
+            class="stat-value"
+            id="stat-users"
+          >
+            —
+          </div>
+
+        </div>
+
+
+        <div class="stat-card yellow">
+
+          <div class="stat-icon">
+            <i class="fa-solid fa-newspaper"></i>
+          </div>
+
+          <div class="stat-label">
+            Notícias
+          </div>
+
+          <div class="stat-value">
+            —
+          </div>
+
+        </div>
+
+
+        <div class="stat-card green">
+
+          <div class="stat-icon">
+            <i class="fa-solid fa-calendar-days"></i>
+          </div>
+
+          <div class="stat-label">
+            Eventos
+          </div>
+
+          <div class="stat-value">
+            —
+          </div>
+
+        </div>
+
+
+        <div class="stat-card red">
+
+          <div class="stat-icon">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+
+          <div class="stat-label">
+            Status do sistema
+          </div>
+
+          <div class="stat-value">
+            Online
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ===================================================
+           MÓDULOS
+      ==================================================== -->
+
+      <div class="section-heading">
+
+        <div class="section-heading-left">
+
+          <div class="section-heading-icon">
+            <i class="fa-solid fa-layer-group"></i>
+          </div>
+
+          <div>
+
+            <h2>
+              Módulos administrativos
+            </h2>
+
+            <p>
+              Ferramentas disponíveis para sua função.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <section class="modules-grid">
+
+
+        <div
+          class="module-card"
+          data-module="conteudo"
+          data-permission="conteudo"
+          onclick="abrirModulo('conteudo')"
+        >
+
+          <div class="module-icon">
+            <i class="fa-solid fa-window-maximize"></i>
+          </div>
+
+          <div class="module-info">
+
+            <h3 class="module-title">
+              Conteúdo do Site
+            </h3>
+
+            <p class="module-description">
+              Gerencie logo, banner, hero, textos e
+              informações principais da Home.
+            </p>
+
+          </div>
+
+          <i class="fa-solid fa-chevron-right module-arrow"></i>
+
+        </div>
+
+
+        <div
+          class="module-card yellow"
+          data-module="noticias"
+          data-permission="noticias"
+          onclick="abrirModulo('noticias')"
+        >
+
+          <div class="module-icon">
+            <i class="fa-solid fa-newspaper"></i>
+          </div>
+
+          <div class="module-info">
+
+            <h3 class="module-title">
+              Notícias
+            </h3>
+
+            <p class="module-description">
+              Crie, edite e organize as notícias
+              publicadas no fã-site.
+            </p>
+
+          </div>
+
+          <i class="fa-solid fa-chevron-right module-arrow"></i>
+
+        </div>
+
+
+        <div
+          class="module-card green"
+          data-module="eventos"
+          data-permission="eventos"
+          onclick="abrirModulo('eventos')"
+        >
+
+          <div class="module-icon">
+            <i class="fa-solid fa-calendar-days"></i>
+          </div>
+
+          <div class="module-info">
+
+            <h3 class="module-title">
+              Eventos
+            </h3>
+
+            <p class="module-description">
+              Cadastre e organize eventos da
+              comunidade Pixelizados.
+            </p>
+
+          </div>
+
+          <i class="fa-solid fa-chevron-right module-arrow"></i>
+
+        </div>
+
+
+        <div
+          class="module-card"
+          data-module="imagens"
+          data-permission="imagens"
+          onclick="abrirModulo('imagens')"
+        >
+
+          <div class="module-icon">
+            <i class="fa-solid fa-images"></i>
+          </div>
+
+          <div class="module-info">
+
+            <h3 class="module-title">
+              Biblioteca de Imagens
+            </h3>
+
+            <p class="module-description">
+              Centralize banners, fotos, logos e
+              mídias utilizadas pelo site.
+            </p>
+
+          </div>
+
+          <i class="fa-solid fa-chevron-right module-arrow"></i>
+
+        </div>
+
+
+        <div
+          class="module-card purple"
+          data-module="usuarios"
+          data-permission="usuarios"
+          onclick="abrirModulo('usuarios')"
+        >
+
+          <div class="module-icon">
+            <i class="fa-solid fa-users"></i>
+          </div>
+
+          <div class="module-info">
+
+            <h3 class="module-title">
+              Usuários
+            </h3>
+
+            <p class="module-description">
+              Gerencie membros, status, cargos e
+              informações da comunidade.
+            </p>
+
+          </div>
+
+          <i class="fa-solid fa-chevron-right module-arrow"></i>
+
+        </div>
+
+
+        <div
+          class="module-card"
+          data-module="moderacao"
+          data-permission="moderacao"
+          onclick="abrirModulo('moderacao')"
+        >
+
+          <div class="module-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+
+          <div class="module-info">
+
+            <h3 class="module-title">
+              Moderação
+            </h3>
+
+            <p class="module-description">
+              Ferramentas de segurança, denúncias e
+              organização da comunidade.
+            </p>
+
+          </div>
+
+          <i class="fa-solid fa-chevron-right module-arrow"></i>
+
+        </div>
+
+
+        <div
+          class="module-card yellow"
+          data-module="cargos"
+          data-permission="cargos"
+          onclick="abrirModulo('cargos')"
+        >
+
+          <div class="module-icon">
+            <i class="fa-solid fa-crown"></i>
+          </div>
+
+          <div class="module-info">
+
+            <h3 class="module-title">
+              Cargos & Permissões
+            </h3>
+
+            <p class="module-description">
+              Estrutura oficial da hierarquia e
+              permissões administrativas.
+            </p>
+
+          </div>
+
+          <i class="fa-solid fa-chevron-right module-arrow"></i>
+
+        </div>
+
+
+        <div
+          class="module-card"
+          data-module="equipe"
+          data-permission="equipe"
+          onclick="abrirModulo('equipe')"
+        >
+
+          <div class="module-icon">
+            <i class="fa-solid fa-user-group"></i>
+          </div>
+
+          <div class="module-info">
+
+            <h3 class="module-title">
+              Equipe
+            </h3>
+
+            <p class="module-description">
+              Administração dos membros que fazem
+              parte da equipe oficial.
+            </p>
+
+          </div>
+
+          <i class="fa-solid fa-chevron-right module-arrow"></i>
+
+        </div>
+
+
+        <div
+          class="module-card"
+          data-module="autodj"
+          data-permission="autodj"
+          onclick="abrirModulo('autodj')"
+        >
+
+          <div class="module-icon">
+            <i class="fa-solid fa-record-vinyl"></i>
+          </div>
+
+          <div class="module-info">
+
+            <h3 class="module-title">
+              AutoDJ
+            </h3>
+
+            <p class="module-description">
+              Controle das informações e identidade
+              visual do AutoDJ.
+            </p>
+
+          </div>
+
+          <i class="fa-solid fa-chevron-right module-arrow"></i>
+
+        </div>
+
+
+        <div
+          class="module-card"
+          data-module="discord"
+          data-permission="discord"
+          onclick="abrirModulo('discord')"
+        >
+
+          <div class="module-icon">
+            <i class="fa-brands fa-discord"></i>
+          </div>
+
+          <div class="module-info">
+
+            <h3 class="module-title">
+              Discord
+            </h3>
+
+            <p class="module-description">
+              Gerencie links e informações oficiais
+              da comunidade.
+            </p>
+
+          </div>
+
+          <i class="fa-solid fa-chevron-right module-arrow"></i>
+
+        </div>
+
+
+        <div
+          class="module-card"
+          data-module="configuracoes"
+          data-permission="configuracoes"
+          onclick="abrirModulo('configuracoes')"
+        >
+
+          <div class="module-icon">
+            <i class="fa-solid fa-gear"></i>
+          </div>
+
+          <div class="module-info">
+
+            <h3 class="module-title">
+              Configurações
+            </h3>
+
+            <p class="module-description">
+              Configurações gerais e administrativas
+              do projeto.
+            </p>
+
+          </div>
+
+          <i class="fa-solid fa-chevron-right module-arrow"></i>
+
+        </div>
+
+
+      </section>
+
+
+      <!-- ===================================================
+           HIERARQUIA
+      ==================================================== -->
+
+      <div class="section-heading">
+
+        <div class="section-heading-left">
+
+          <div class="section-heading-icon">
+            <i class="fa-solid fa-sitemap"></i>
+          </div>
+
+          <div>
+
+            <h2>
+              Hierarquia Pixelizados
+            </h2>
+
+            <p>
+              Estrutura oficial de cargos do projeto.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <section class="permission-card">
+
+
+        <div class="permission-role">
+
+          <div class="permission-role-left">
+
+            <span class="permission-role-icon">
+              👑
+            </span>
+
+            <div>
+
+              <div class="permission-role-name">
+                Aclamado/Fundador
+              </div>
+
+              <div class="permission-role-code">
+                FUNDADOR
+              </div>
+
+            </div>
+
+          </div>
+
+          <span class="permission-status">
+            Acesso total
+          </span>
+
+        </div>
+
+
+        <div class="permission-role">
+
+          <div class="permission-role-left">
+
+            <span class="permission-role-icon">
+              ⚜️
+            </span>
+
+            <div>
+
+              <div class="permission-role-name">
+                Alta Cúpula
+              </div>
+
+              <div class="permission-role-code">
+                ALTA_CUPULA
+              </div>
+
+            </div>
+
+          </div>
+
+          <span class="permission-status">
+            Administração
+          </span>
+
+        </div>
+
+
+        <div class="permission-role">
+
+          <div class="permission-role-left">
+
+            <span class="permission-role-icon">
+              💠
+            </span>
+
+            <div>
+
+              <div class="permission-role-name">
+                Curadoria
+              </div>
+
+              <div class="permission-role-code">
+                CURADORIA
+              </div>
+
+            </div>
+
+          </div>
+
+          <span class="permission-status">
+            Moderação
+          </span>
+
+        </div>
+
+
+        <div class="permission-role">
+
+          <div class="permission-role-left">
+
+            <span class="permission-role-icon">
+              📰
+            </span>
+
+            <div>
+
+              <div class="permission-role-name">
+                Voz Oficial
+              </div>
+
+              <div class="permission-role-code">
+                VOZ_OFICIAL
+              </div>
+
+            </div>
+
+          </div>
+
+          <span class="permission-status">
+            Conteúdo
+          </span>
+
+        </div>
+
+
+        <div class="permission-role">
+
+          <div class="permission-role-left">
+
+            <span class="permission-role-icon">
+              🚀
+            </span>
+
+            <div>
+
+              <div class="permission-role-name">
+                Apoiador
+              </div>
+
+              <div class="permission-role-code">
+                APOIADOR
+              </div>
+
+            </div>
+
+          </div>
+
+          <span class="permission-status">
+            Em breve
+          </span>
+
+        </div>
+
+
+        <div class="permission-role">
+
+          <div class="permission-role-left">
+
+            <span class="permission-role-icon">
+              🪪
+            </span>
+
+            <div>
+
+              <div class="permission-role-name">
+                Entusiasta
+              </div>
+
+              <div class="permission-role-code">
+                ENTUSIASTA
+              </div>
+
+            </div>
+
+          </div>
+
+          <span class="permission-status">
+            Membro
+          </span>
+
+        </div>
+
+
+        <div class="permission-role">
+
+          <div class="permission-role-left">
+
+            <span class="permission-role-icon">
+              🎟️
+            </span>
+
+            <div>
+
+              <div class="permission-role-name">
+                Espectador
+              </div>
+
+              <div class="permission-role-code">
+                ESPECTADOR
+              </div>
+
+            </div>
+
+          </div>
+
+          <span class="permission-status">
+            Visitante
+          </span>
+
+        </div>
+
+
+      </section>
+
+
+      <footer class="admin-footer">
+
+        Pixelizados © 2026 · Painel Administrativo
+
+      </footer>
+
+    </main>
+
+  </div>
+
+
+  <!-- =======================================================
+       SUPABASE
+  ======================================================== -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+  <script>
+
+    /* =========================================================
+       SUPABASE
+    ========================================================= */
+
+    const SUPABASE_URL =
+      'https://znvytrvdwejjlivzsjzy.supabase.co';
+
+    const SUPABASE_KEY =
+      'sb_publishable_J60PUy390KR4sRTGe9tjNg_wllyvUAj';
+
+    const supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
+
+
+    /* =========================================================
+       CARGOS
+    ========================================================= */
+
+    const CARGOS = {
+
+      FUNDADOR: {
+        nome: 'Aclamado/Fundador',
+        icone: '👑'
+      },
+
+      ALTA_CUPULA: {
+        nome: 'Alta Cúpula',
+        icone: '⚜️'
+      },
+
+      CURADORIA: {
+        nome: 'Curadoria',
+        icone: '💠'
+      },
+
+      VOZ_OFICIAL: {
+        nome: 'Voz Oficial',
+        icone: '📰'
+      },
+
+      APOIADOR: {
+        nome: 'Apoiador',
+        icone: '🚀'
+      },
+
+      ENTUSIASTA: {
+        nome: 'Entusiasta',
+        icone: '🪪'
+      },
+
+      ESPECTADOR: {
+        nome: 'Espectador',
+        icone: '🎟️'
+      }
+
+    };
+
+
+    /* =========================================================
+       PERMISSÕES
+    ========================================================= */
+
+    const PERMISSOES = {
+
+      conteudo: [
+        'FUNDADOR',
+        'ALTA_CUPULA'
+      ],
+
+      noticias: [
+        'FUNDADOR',
+        'ALTA_CUPULA',
+        'VOZ_OFICIAL'
+      ],
+
+      eventos: [
+        'FUNDADOR',
+        'ALTA_CUPULA',
+        'VOZ_OFICIAL'
+      ],
+
+      imagens: [
+        'FUNDADOR',
+        'ALTA_CUPULA',
+        'VOZ_OFICIAL'
+      ],
+
+      usuarios: [
+        'FUNDADOR',
+        'ALTA_CUPULA',
+        'CURADORIA'
+      ],
+
+      moderacao: [
+        'FUNDADOR',
+        'ALTA_CUPULA',
+        'CURADORIA'
+      ],
+
+      cargos: [
+        'FUNDADOR'
+      ],
+
+      equipe: [
+        'FUNDADOR',
+        'ALTA_CUPULA'
+      ],
+
+      autodj: [
+        'FUNDADOR',
+        'ALTA_CUPULA'
+      ],
+
+      discord: [
+        'FUNDADOR',
+        'ALTA_CUPULA',
+        'CURADORIA',
+        'VOZ_OFICIAL'
+      ],
+
+      configuracoes: [
+        'FUNDADOR'
+      ]
+
+    };
+
+
+    /* =========================================================
+       USUÁRIO ATUAL
+    ========================================================= */
+
+    let usuarioAtual = null;
+
+
+    function obterUsuarioLocal() {
+
+      try {
+
+        return JSON.parse(
+          localStorage.getItem(
+            'pixelizados_user'
+          ) || 'null'
+        );
+
+      } catch (error) {
+
+        console.error(
+          'Erro ao ler usuário:',
+          error
+        );
+
+        return null;
+
+      }
+
+    }
+
+
+    /* =========================================================
+       VERIFICAR ACESSO
+    ========================================================= */
+
+    async function verificarAcesso() {
+
+      usuarioAtual =
+        obterUsuarioLocal();
+
+
+      if (
+        !usuarioAtual ||
+        !usuarioAtual.auth_user_id
+      ) {
+
+        window.location.href =
+          'index.html';
+
+        return false;
+
+      }
+
+
+      if (
+        !usuarioAtual.role ||
+        !CARGOS[usuarioAtual.role]
+      ) {
+
+        window.location.href =
+          'portal.html';
+
+        return false;
+
+      }
+
+
+      /*
+        Nesta primeira versão utilizamos o perfil salvo
+        pelo fluxo de login.
+
+        A proteção definitiva das operações será feita
+        posteriormente através do Supabase/RLS.
+      */
+
+      preencherPerfil();
+
+      aplicarPermissoes();
+
+      carregarEstatisticas();
+
+      return true;
+
+    }
+
+
+    /* =========================================================
+       PREENCHER PERFIL
+    ========================================================= */
+
+    function preencherPerfil() {
+
+      const cargo =
+        CARGOS[
+          usuarioAtual.role
+        ];
+
+
+      const nome =
+        usuarioAtual.habbo_nick ||
+        'Pixelizado';
+
+
+      document.getElementById(
+        'profile-name'
+      ).textContent = nome;
+
+
+      document.getElementById(
+        'profile-avatar'
+      ).src =
+        'https://api.dicebear.com/7.x/pixel-art/svg?seed='
+        + encodeURIComponent(nome)
+        + '&backgroundColor=38b6ff';
+
+
+      document.getElementById(
+        'role-icon'
+      ).textContent =
+        cargo.icone;
+
+
+      document.getElementById(
+        'role-name'
+      ).textContent =
+        usuarioAtual.role;
+
+
+      document.getElementById(
+        'welcome-role'
+      ).textContent =
+        cargo.nome;
+
+    }
+
+
+    /* =========================================================
+       APLICAR PERMISSÕES
+    ========================================================= */
+
+    function aplicarPermissoes() {
+
+      const elementos =
+        document.querySelectorAll(
+          '[data-permission]'
+        );
+
+
+      elementos.forEach(
+        elemento => {
+
+          const permissao =
+            elemento.dataset.permission;
+
+
+          const cargosPermitidos =
+            PERMISSOES[
+              permissao
+            ] || [];
+
+
+          const permitido =
+            cargosPermitidos.includes(
+              usuarioAtual.role
+            );
+
+
+          if (!permitido) {
+
+            elemento.classList.add(
+              'locked'
+            );
+
+            elemento.dataset.locked =
+              'true';
+
+          }
+
+        }
+      );
+
+    }
+
+
+    /* =========================================================
+       ESTATÍSTICAS
+    ========================================================= */
+
+    async function carregarEstatisticas() {
+
+      try {
+
+        const resultado =
+          await supabaseClient
+            .from('usuarios')
+            .select(
+              'id',
+              {
+                count: 'exact',
+                head: true
+              }
+            );
+
+
+        if (
+          !resultado.error &&
+          typeof resultado.count === 'number'
+        ) {
+
+          document.getElementById(
+            'stat-users'
+          ).textContent =
+            resultado.count;
+
+        }
+
+      } catch (error) {
+
+        console.error(
+          'Erro ao carregar estatísticas:',
+          error
+        );
+
+      }
+
+    }
+
+
+    /* =========================================================
+       ABRIR MÓDULO
+    ========================================================= */
+
+    function abrirModulo(
+      modulo
+    ) {
+
+      const permitido =
+        (
+          PERMISSOES[modulo] || []
+        ).includes(
+          usuarioAtual.role
+        );
+
+
+      if (!permitido) {
+
+        alert(
+          'Seu cargo não possui permissão para acessar esta área.'
+        );
+
+        return;
+
+      }
+
+
+      /*
+        Por enquanto os módulos são apenas a estrutura
+        visual do painel.
+
+        Nas próximas etapas cada módulo ganhará sua
+        própria função real.
+      */
+
+      const nomes = {
+
+        conteudo:
+          'Conteúdo do Site',
+
+        noticias:
+          'Notícias',
+
+        eventos:
+          'Eventos',
+
+        imagens:
+          'Biblioteca de Imagens',
+
+        usuarios:
+          'Usuários',
+
+        moderacao:
+          'Moderação',
+
+        cargos:
+          'Cargos & Permissões',
+
+        equipe:
+          'Equipe',
+
+        autodj:
+          'AutoDJ',
+
+        discord:
+          'Discord',
+
+        configuracoes:
+          'Configurações'
+
+      };
+
+
+      alert(
+        nomes[modulo]
+        + ' será desenvolvido na próxima etapa.'
+      );
+
+    }
+
+
+    /* =========================================================
+       MENU
+    ========================================================= */
+
+    function selecionarMenu(
+      elemento,
+      modulo
+    ) {
+
+      if (
+        elemento.dataset.locked ===
+        'true'
+      ) {
+
+        alert(
+          'Seu cargo não possui permissão para acessar esta área.'
+        );
+
+        return;
+
+      }
+
+
+      document
+        .querySelectorAll(
+          '.menu-item'
+        )
+        .forEach(
+          item => {
+            item.classList.remove(
+              'active'
+            );
+          }
+        );
+
+
+      elemento.classList.add(
+        'active'
+      );
+
+
+      abrirModulo(
+        modulo
+      );
+
+
+      if (
+        window.innerWidth <= 850
+      ) {
+
+        toggleSidebar();
+
+      }
+
+    }
+
+
+    /* =========================================================
+       SIDEBAR MOBILE
+    ========================================================= */
+
+    function toggleSidebar() {
+
+      document
+        .getElementById(
+          'sidebar'
+        )
+        .classList.toggle(
+          'open'
+        );
+
+
+      document
+        .getElementById(
+          'sidebar-overlay'
+        )
+        .classList.toggle(
+          'open'
+        );
+
+    }
+
+
+    /* =========================================================
+       LOGOUT
+    ========================================================= */
+
+    async function fazerLogout() {
+
+      try {
+
+        const {
+          error
+        } =
+          await supabaseClient
+            .auth
+            .signOut();
+
+
+        if (error) {
+          throw error;
+        }
+
+
+        localStorage.removeItem(
+          'pixelizados_user'
+        );
+
+
+        window.location.href =
+          'index.html';
+
+      } catch (error) {
+
+        console.error(
+          'Erro ao sair:',
+          error
+        );
+
+        alert(
+          'Não foi possível sair da conta. Tente novamente.'
+        );
+
+      }
+
+    }
+
+
+    /* =========================================================
+       INICIALIZAÇÃO
+    ========================================================= */
+
+    document.addEventListener(
+      'DOMContentLoaded',
+      verificarAcesso
+    );
+
+  </script>
+
+</body>
+</html>
