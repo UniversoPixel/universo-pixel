@@ -6,42 +6,60 @@
 
   <title>Portal | Pixelizados</title>
 
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Font Awesome -->
   <link
-    rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    rel="stylesheet"
   >
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap"
     rel="stylesheet"
   >
 
   <style>
+
+    /* =========================================================
+       IDENTIDADE PIXELIZADOS
+    ========================================================= */
+
     :root {
-      --blue: #7ec8ff;
-      --blue-light: #eaf7ff;
-      --blue-dark: #2798e8;
-      --blue-deep: #1577c9;
+      --blue: #55b9f5;
+      --blue-dark: #2788ca;
+      --blue-deep: #176ca8;
+      --blue-light: #e7f6ff;
 
-      --text: #34495e;
-      --text-light: #7890a3;
+      --yellow: #ffd447;
+      --yellow-dark: #e6a900;
 
-      --border: #dceaf3;
-      --card: rgba(255, 255, 255, 0.94);
+      --green: #55cf70;
+      --red: #ff5c65;
 
-      --yellow: #ffd95c;
-      --green: #4bc98b;
-      --red: #ff6d7a;
+      --bg: #edf7fd;
+      --white: #ffffff;
 
-      --shadow: 0 10px 35px rgba(50, 120, 170, 0.08);
+      --text: #243447;
+      --text-soft: #64748b;
+      --text-muted: #94a3b8;
+
+      --border: #d5e7f4;
+      --border-dark: #a9cce4;
+
+      --shadow:
+        0 8px 24px rgba(35, 107, 151, .10);
+
+      --shadow-hover:
+        0 12px 30px rgba(35, 107, 151, .16);
     }
+
+
+    /* =========================================================
+       BASE
+    ========================================================= */
 
     * {
       box-sizing: border-box;
@@ -53,1739 +71,2296 @@
 
     body {
       margin: 0;
-      padding: 0;
-      padding-bottom: 84px;
+
       font-family: 'Inter', sans-serif;
+
       color: var(--text);
+
       background:
+        radial-gradient(
+          circle at 15% 10%,
+          rgba(255,255,255,.95) 0,
+          rgba(255,255,255,0) 28%
+        ),
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(117,207,255,.25) 0,
+          rgba(117,207,255,0) 30%
+        ),
         linear-gradient(
           180deg,
-          #eaf8ff 0%,
-          #f7fcff 38%,
-          #ffffff 100%
+          #dff3ff 0%,
+          #edf8fd 48%,
+          #e8f5fb 100%
         );
+
       min-height: 100vh;
+
+      padding-top: 76px;
+      padding-bottom: 92px;
+
+      position: relative;
     }
 
-    button,
-    input,
-    select,
-    textarea {
-      font-family: inherit;
-    }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    body::before {
+      content: "";
 
-    /* =========================
-       HEADER
-    ========================= */
-
-    .site-header {
       position: fixed;
+
+      inset: 0;
+
+      pointer-events: none;
+
+      opacity: .35;
+
+      background-image:
+        linear-gradient(
+          rgba(39,136,202,.035) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(39,136,202,.035) 1px,
+          transparent 1px
+        );
+
+      background-size: 24px 24px;
+
+      z-index: -1;
+    }
+
+
+    .font-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .font-subtitle {
+      font-family: 'Manrope', sans-serif;
+    }
+
+    .font-body {
+      font-family: 'Inter', sans-serif;
+    }
+
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    .top-header-bar {
+      position: fixed;
+
       top: 0;
       left: 0;
       right: 0;
-      z-index: 1000;
 
-      height: 74px;
+      z-index: 9998;
 
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: rgba(255,255,255,.97);
 
-      border-bottom: 1px solid rgba(205, 228, 242, 0.9);
+      border-bottom: 2px solid var(--border);
 
-      box-shadow: 0 5px 24px rgba(65, 130, 170, 0.07);
+      box-shadow:
+        0 4px 16px rgba(27,91,130,.10);
     }
 
-    .header-inner {
-      width: min(1420px, calc(100% - 32px));
-      height: 100%;
-      margin: 0 auto;
+    .top-header-bar::after {
+      content: "";
 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+      position: absolute;
+
+      bottom: -2px;
+      left: 0;
+      right: 0;
+
+      height: 3px;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--blue-dark) 0%,
+          var(--blue) 60%,
+          var(--yellow) 60%,
+          var(--yellow) 100%
+        );
     }
 
-    .header-left {
-      display: flex;
-      align-items: center;
-      min-width: 0;
-    }
 
-    .logo-link {
-      display: flex;
-      align-items: center;
-      transition: transform .2s ease;
-    }
-
-    .logo-link:hover {
-      transform: translateY(-1px);
-    }
-
-    .logo {
-      width: 145px;
-      height: auto;
-      display: block;
-      image-rendering: auto;
-    }
-
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .points-wallet {
-      height: 40px;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-
-      padding: 0 13px;
-
-      border: 1px solid var(--border);
-      border-radius: 10px;
-
-      background: #fff;
-
-      font-size: 12px;
-      font-weight: 800;
-      color: #60798c;
-
-      box-shadow: 0 3px 12px rgba(70, 130, 170, 0.05);
-    }
-
-    .points-wallet i {
-      color: #f2bb27;
-      font-size: 16px;
-    }
+    /* =========================================================
+       HEADER PERFIL
+    ========================================================= */
 
     .profile-area {
       display: flex;
+
       align-items: center;
+
       gap: 9px;
-      padding-left: 4px;
     }
 
-    .avatar-button {
-      border: 0;
-      background: transparent;
-      padding: 0;
-      cursor: pointer;
+    .pixel-wallet {
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      padding: 7px 11px;
+
+      background: #fff8d9;
+
+      border: 2px solid #f1cd45;
+
+      border-radius: 10px;
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.8),
+        0 2px 0 #d7a900;
+    }
+
+    .pixel-wallet-label {
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      color: #987000;
+
+      letter-spacing: .08em;
+    }
+
+    .pixel-wallet-value {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+      color: #5d4700;
+    }
+
+    .habbo-coin {
+      width: 22px;
+      height: 22px;
+
+      flex-shrink: 0;
+
       border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle at 35% 30%,
+          #fff4a8 0,
+          #ffd447 35%,
+          #e5a900 72%,
+          #b87a00 100%
+        );
+
+      border: 2px solid #9a6900;
+
+      box-shadow:
+        inset 1px 1px 0 #fff7b9,
+        0 2px 0 #a16d00;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      color: #795600;
+
+      font-size: 9px;
+
+      font-weight: 900;
+    }
+
+
+    .profile-box {
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      padding: 4px 9px 4px 4px;
+
+      background: #f4fbff;
+
+      border: 2px solid var(--border);
+
+      border-radius: 12px;
+    }
+
+    .profile-avatar-frame {
+      width: 34px;
+      height: 34px;
+
+      padding: 2px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--blue-dark),
+          var(--blue)
+        );
+
+      border-radius: 8px;
+
+      box-shadow:
+        0 2px 0 #176ca8;
     }
 
     .profile-avatar {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
+      width: 100%;
+      height: 100%;
 
       object-fit: cover;
 
-      border: 2px solid #d9efff;
-      background: #eef9ff;
+      background: #17364b;
+
+      border-radius: 6px;
+    }
+
+    .profile-name {
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      color: #243447;
+    }
+
+    .online-status {
+      display: flex;
+
+      align-items: center;
+
+      gap: 4px;
+
+      margin-top: 1px;
+
+      font-size: 8px;
+
+      font-weight: 800;
+
+      color: #6d8292;
+
+      text-transform: uppercase;
+
+      letter-spacing: .08em;
+    }
+
+    .online-dot {
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: var(--green);
+
+      box-shadow:
+        0 0 0 2px rgba(85,207,112,.15);
+    }
+
+    .logout-button {
+      width: 38px;
+      height: 38px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border: 2px solid var(--border);
+
+      border-radius: 9px;
+
+      background: #fff;
+
+      color: #718395;
+
+      cursor: pointer;
 
       transition: .2s ease;
     }
 
-    .avatar-button:hover .profile-avatar {
-      transform: scale(1.05);
-      border-color: var(--blue);
-    }
-
-    .profile-info {
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-    }
-
-    .profile-nick {
-      max-width: 145px;
-
-      font-family: 'Manrope', sans-serif;
-      font-size: 12px;
-      font-weight: 900;
-
-      color: #34495e;
-
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .profile-role {
-      font-size: 9px;
-      font-weight: 800;
-      color: #8aa1b1;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-    }
-
-    .logout-button {
-      height: 38px;
-
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-
-      padding: 0 12px;
-
-      border: 1px solid #f1dfe1;
-      border-radius: 9px;
-
-      background: #fff8f8;
-      color: #e16c78;
-
-      font-size: 10px;
-      font-weight: 900;
-
-      cursor: pointer;
-
-      transition: .18s ease;
-    }
-
     .logout-button:hover {
-      background: #fff0f1;
-      border-color: #efc8cd;
+      color: var(--red);
+
+      border-color: #ffb8bd;
+
+      background: #fff5f6;
+
       transform: translateY(-1px);
     }
 
-    /* =========================
-       NAV
-    ========================= */
 
-    .main-nav {
-      margin-top: 74px;
+    /* =========================================================
+       NAVEGAÇÃO
+    ========================================================= */
 
-      background: rgba(255,255,255,.8);
-      border-bottom: 1px solid rgba(214, 233, 243, .8);
+    .classic-nav-bar {
+      background: #fff;
+
+      border-bottom: 2px solid var(--border);
+
+      box-shadow:
+        0 3px 12px rgba(35,107,151,.06);
     }
 
-    .nav-inner {
-      width: min(1420px, calc(100% - 32px));
-      margin: 0 auto;
+    .nav-item {
+      position: relative;
 
-      min-height: 48px;
+      height: 49px;
+
+      padding: 0 18px;
 
       display: flex;
+
       align-items: center;
-      gap: 5px;
+      justify-content: center;
 
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .nav-inner::-webkit-scrollbar {
-      display: none;
-    }
-
-    .nav-link {
-      flex-shrink: 0;
-
-      display: inline-flex;
-      align-items: center;
       gap: 7px;
 
-      padding: 9px 12px;
+      color: #637789;
 
-      border-radius: 8px;
+      font-family: 'Manrope', sans-serif;
 
-      color: #7890a3;
+      font-size: 11px;
 
-      font-size: 10px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .035em;
+      font-weight: 800;
+
+      text-decoration: none;
+
+      border-right: 1px solid #e4eef5;
 
       transition: .18s ease;
+
+      white-space: nowrap;
     }
 
-    .nav-link:hover,
-    .nav-link.active {
+    .nav-item:first-child {
+      border-left: 1px solid #e4eef5;
+    }
+
+    .nav-item i {
+      color: #7890a2;
+
+      font-size: 12px;
+    }
+
+    .nav-item:hover {
+      color: var(--blue-deep);
+
+      background: #f1faff;
+    }
+
+    .nav-item:hover i {
       color: var(--blue-dark);
-      background: #edf8ff;
     }
 
-    .nav-link i {
-      font-size: 11px;
+    .nav-item.active {
+      color: var(--blue-deep);
+
+      background: #eaf7ff;
     }
 
-    /* =========================
-       CONTAINER
-    ========================= */
-
-    .page-container {
-      width: min(1420px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 28px 0 60px;
-    }
-
-    .page-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.75fr) minmax(290px, .75fr);
-      gap: 24px;
-      align-items: start;
-    }
-
-    .section-title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-
-      margin-bottom: 13px;
-    }
-
-    .section-title h1,
-    .section-title h2 {
-      margin: 0;
-
-      font-family: 'Plus Jakarta Sans', sans-serif;
-
-      font-size: 15px;
-      font-weight: 900;
-
-      color: #40576a;
-    }
-
-    .section-kicker {
+    .nav-item.active i {
       color: var(--blue-dark);
-      font-size: 9px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .09em;
     }
 
-    /* =========================
+    .nav-item.active::after {
+      content: "";
+
+      position: absolute;
+
+      bottom: -2px;
+
+      left: 0;
+      right: 0;
+
+      height: 4px;
+
+      background: var(--blue-dark);
+    }
+
+
+    /* =========================================================
        CARDS
-    ========================= */
+    ========================================================= */
 
-    .card {
-      background: var(--card);
+    .pixel-card {
+      position: relative;
 
-      border: 1px solid var(--border);
-      border-radius: 15px;
+      background: var(--white);
+
+      border: 2px solid var(--border);
+
+      border-radius: 14px;
 
       box-shadow: var(--shadow);
 
       overflow: hidden;
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
     }
 
-    /* =========================
-       NEWS
-    ========================= */
+    .pixel-card::before {
+      content: "";
 
-    .news-card {
-      margin-bottom: 18px;
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 4px;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--blue-dark) 0%,
+          var(--blue) 72%,
+          var(--yellow) 72%,
+          var(--yellow) 100%
+        );
     }
 
-    .news-image {
-      width: 100%;
-      height: 275px;
+    .pixel-card-hover:hover {
+      transform: translateY(-2px);
 
-      object-fit: cover;
+      border-color: #bddced;
 
-      display: block;
-
-      background: linear-gradient(
-        135deg,
-        #bce9ff,
-        #e9f8ff
-      );
+      box-shadow: var(--shadow-hover);
     }
 
-    .news-content {
-      padding: 18px 19px 16px;
-    }
 
-    .news-meta {
+    .section-title {
       display: flex;
-      align-items: center;
-      gap: 8px;
 
-      margin-bottom: 9px;
-    }
-
-    .news-tag {
-      display: inline-flex;
       align-items: center;
 
-      min-height: 22px;
-
-      padding: 0 8px;
-
-      border-radius: 6px;
-
-      background: #eaf7ff;
-      color: var(--blue-dark);
-
-      font-size: 8px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .05em;
+      gap: 10px;
     }
 
-    .news-date {
-      font-size: 9px;
-      color: #9aadb9;
-      font-weight: 700;
-    }
-
-    .news-title {
-      margin: 0 0 7px;
-
-      font-family: 'Plus Jakarta Sans', sans-serif;
-
-      font-size: 20px;
-      line-height: 1.25;
-      font-weight: 900;
-
-      color: #34495e;
-    }
-
-    .news-description {
-      margin: 0;
-
-      font-size: 12px;
-      line-height: 1.7;
-
-      color: #73899a;
-    }
-
-    .news-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-
-      padding: 13px 19px;
-
-      border-top: 1px solid #edf3f6;
-    }
-
-    .action-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-
-      min-height: 32px;
-
-      padding: 0 10px;
-
-      border: 1px solid #e0ebf1;
-      border-radius: 8px;
-
-      background: #fff;
-
-      color: #8499a8;
-
-      font-size: 9px;
-      font-weight: 900;
-
-      cursor: pointer;
-
-      transition: .18s ease;
-    }
-
-    .action-button:hover {
-      color: var(--blue-dark);
-      border-color: #c7e8fb;
-      background: #f5fbff;
-    }
-
-    .action-button.liked {
-      color: #f16e7a;
-      background: #fff4f5;
-      border-color: #f5d5d9;
-    }
-
-    /* =========================
-       EVENTS
-    ========================= */
-
-    .events-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .event-card {
-      padding: 16px;
-
-      display: flex;
-      gap: 13px;
-      align-items: flex-start;
-    }
-
-    .event-icon {
-      width: 42px;
-      height: 42px;
+    .section-icon {
+      width: 34px;
+      height: 34px;
 
       flex-shrink: 0;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
-      border-radius: 10px;
+      border-radius: 8px;
 
-      background: #eaf7ff;
-      color: var(--blue-dark);
+      border: 2px solid currentColor;
 
-      font-size: 16px;
+      font-size: 13px;
     }
 
-    .event-info h3 {
-      margin: 0 0 5px;
-
-      font-size: 12px;
-      font-weight: 900;
-
-      color: #40576a;
-    }
-
-    .event-info p {
+    .section-title h2,
+    .section-title h3 {
       margin: 0;
 
-      font-size: 10px;
-      line-height: 1.55;
+      font-family: 'Plus Jakarta Sans', sans-serif;
 
-      color: #8499a8;
-    }
-
-    .event-date {
-      margin-top: 7px;
-
-      font-size: 8px;
       font-weight: 900;
 
-      color: var(--blue-dark);
+      font-size: 13px;
+
+      color: #25394a;
 
       text-transform: uppercase;
+
       letter-spacing: .04em;
     }
 
-    /* =========================
-       SIDEBAR
-    ========================= */
+    .section-title p {
+      margin: 2px 0 0;
 
-    .sidebar-card {
-      margin-bottom: 15px;
+      font-size: 9px;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-weight: 700;
+
+      color: #91a2b0;
     }
 
-    .sidebar-header {
-      padding: 14px 15px;
 
-      border-bottom: 1px solid #edf3f6;
-
+    .card-header-title {
       display: flex;
+
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+
+      padding-bottom: 13px;
+
+      border-bottom: 2px solid #e9f1f6;
+
+      position: relative;
     }
 
-    .sidebar-header h3 {
-      margin: 0;
+    .card-header-title::after {
+      content: "";
 
-      font-size: 11px;
+      position: absolute;
+
+      bottom: -2px;
+
+      left: 0;
+
+      width: 70px;
+
+      height: 2px;
+
+      background: var(--blue-dark);
+    }
+
+
+    /* =========================================================
+       NEWS
+    ========================================================= */
+
+    .news-image-frame {
+      padding: 5px;
+
+      background: #edf7fc;
+
+      border: 2px solid var(--border);
+
+      border-radius: 12px;
+    }
+
+    .news-image {
+      display: block;
+
+      width: 100%;
+      height: 290px;
+
+      object-fit: cover;
+
+      border-radius: 7px;
+
+      border: 1px solid #b8d5e6;
+    }
+
+    .pixel-tag {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 5px;
+
+      padding: 4px 8px;
+
+      border-radius: 6px;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 8px;
+
       font-weight: 900;
 
-      color: #40576a;
+      text-transform: uppercase;
+
+      letter-spacing: .06em;
     }
 
-    .sidebar-body {
-      padding: 14px;
+    .pixel-tag-blue {
+      color: #176ca8;
+
+      background: #e4f5ff;
+
+      border: 1px solid #b7ddf2;
     }
 
-    /* Search */
+    .pixel-tag-red {
+      color: #b62e38;
+
+      background: #fff0f1;
+
+      border: 1px solid #ffc7cb;
+    }
+
+
+    /* =========================================================
+       BOTÕES
+    ========================================================= */
+
+    .pixel-button {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 7px;
+
+      padding: 8px 13px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #63c3fa,
+          #329bd7
+        );
+
+      border: 2px solid #1e78b2;
+
+      border-radius: 7px;
+
+      color: #fff;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.35),
+        0 2px 0 #155f8f;
+
+      cursor: pointer;
+
+      transition: .15s ease;
+    }
+
+    .pixel-button:hover {
+      transform: translateY(-1px);
+
+      filter: brightness(1.04);
+    }
+
+    .pixel-button:active {
+      transform: translateY(1px);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.25),
+        0 1px 0 #155f8f;
+    }
+
+
+    /* =========================================================
+       EVENTOS
+    ========================================================= */
+
+    .event-card {
+      position: relative;
+
+      padding: 15px;
+
+      background: #f8fcff;
+
+      border: 2px solid var(--border);
+
+      border-radius: 10px;
+
+      transition: .2s ease;
+    }
+
+    .event-card:hover {
+      background: #fff;
+
+      border-color: #a8d6ef;
+
+      transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       BUSCA
+    ========================================================= */
 
     .search-box {
       position: relative;
     }
 
-    .search-box i {
-      position: absolute;
-
-      left: 12px;
-      top: 50%;
-
-      transform: translateY(-50%);
-
-      color: #9db0bd;
-      font-size: 12px;
-    }
-
-    .search-input {
+    .search-box input {
       width: 100%;
-      height: 38px;
 
-      border: 1px solid var(--border);
+      height: 42px;
+
+      padding: 0 75px 0 13px;
+
+      background: #f7fbfe;
+
+      border: 2px solid var(--border);
+
       border-radius: 9px;
-
-      background: #fbfdfe;
-
-      padding: 0 12px 0 35px;
 
       outline: none;
 
-      color: #526b7d;
-      font-size: 10px;
-      font-weight: 700;
+      color: var(--text);
+
+      font-family: 'Inter', sans-serif;
+
+      font-size: 11px;
+
+      transition: .2s ease;
+    }
+
+    .search-box input:focus {
+      background: #fff;
+
+      border-color: var(--blue);
+
+      box-shadow:
+        0 0 0 3px rgba(85,185,245,.12);
+    }
+
+    .search-button {
+      position: absolute;
+
+      right: 5px;
+      top: 5px;
+
+      width: 32px;
+      height: 32px;
+
+      border: 0;
+
+      border-radius: 6px;
+
+      background: var(--blue-dark);
+
+      color: #fff;
+
+      cursor: pointer;
+    }
+
+
+    /* =========================================================
+       RANKING
+    ========================================================= */
+
+    .ranking-user {
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      padding: 9px;
+
+      background: #f7fbfe;
+
+      border: 2px solid #e1edf4;
+
+      border-radius: 9px;
 
       transition: .18s ease;
     }
 
-    .search-input:focus {
-      border-color: #a9dcfa;
+    .ranking-user:hover {
       background: #fff;
-      box-shadow: 0 0 0 3px rgba(126, 200, 255, .12);
+
+      border-color: #b9dced;
     }
 
-    /* Hall */
+    .ranking-user.top-user {
+      background:
+        linear-gradient(
+          135deg,
+          #fff8d8,
+          #fffdf1
+        );
 
-    .hall-list {
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
+      border-color: #e8c847;
     }
 
-    .hall-item {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-    }
+    .ranking-avatar {
+      width: 34px;
+      height: 34px;
 
-    .hall-position {
-      width: 21px;
-
-      font-size: 9px;
-      font-weight: 900;
-
-      color: #a2b3bf;
-
-      text-align: center;
-    }
-
-    .hall-avatar {
-      width: 31px;
-      height: 31px;
-
-      border-radius: 8px;
-
-      background: #eef8ff;
+      flex-shrink: 0;
 
       object-fit: cover;
+
+      background: #20384a;
+
+      border: 2px solid #b9cfdd;
+
+      border-radius: 7px;
     }
 
-    .hall-info {
-      flex: 1;
-      min-width: 0;
+    .top-user .ranking-avatar {
+      width: 42px;
+      height: 42px;
+
+      border-color: #e3ae00;
     }
 
-    .hall-name {
-      display: block;
-
-      font-size: 9px;
-      font-weight: 900;
-
-      color: #536b7c;
-
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .hall-points {
-      display: block;
-
-      margin-top: 1px;
-
-      font-size: 8px;
-      font-weight: 700;
-
-      color: #9aacb7;
-    }
-
-    /* Partners */
-
-    .partners-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 9px;
-    }
-
-    .partner {
-      min-height: 65px;
+    .pixel-medal {
+      width: 21px;
+      height: 21px;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
-      border: 1px solid #e7f0f4;
-      border-radius: 10px;
+      background: var(--yellow);
 
-      background: #fbfdfe;
+      border: 2px solid #c99400;
 
-      padding: 8px;
+      border-radius: 5px;
 
-      text-align: center;
+      color: #705000;
 
-      color: #8aa0af;
+      font-size: 8px;
 
-      font-size: 9px;
       font-weight: 900;
+    }
+
+
+    /* =========================================================
+       PARCEIROS
+    ========================================================= */
+
+    .partner-card {
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      padding: 9px;
+
+      background: #f8fcff;
+
+      border: 2px solid var(--border);
+
+      border-radius: 8px;
+
+      text-decoration: none;
 
       transition: .18s ease;
     }
 
-    .partner:hover {
-      border-color: #cbe8f8;
-      background: #f4fbff;
-      color: var(--blue-dark);
+    .partner-card:hover {
+      background: #fff;
+
+      border-color: #9ed4ef;
+
+      transform: translateY(-1px);
     }
 
-    /* =========================
-       WORK WITH US
-    ========================= */
+    .partner-icon {
+      width: 30px;
+      height: 30px;
 
-    .work-form {
+      flex-shrink: 0;
+
       display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      background: #fff;
+
+      border: 2px solid #d5e7f4;
+
+      border-radius: 6px;
+
+      color: var(--blue-dark);
+
+      font-size: 12px;
+    }
+
+
+    /* =========================================================
+       FORMULÁRIO DE VAGAS
+    ========================================================= */
+
+    .vagas-intro {
+      padding: 9px 10px;
+
+      margin-bottom: 14px;
+
+      background: #f1f9fe;
+
+      border: 1px dashed #afd4e9;
+
+      border-radius: 8px;
+
+      color: #637b8c;
+
+      font-size: 10px;
+
+      line-height: 1.5;
+    }
+
+    .vagas-form {
+      display: flex;
+
       flex-direction: column;
-      gap: 10px;
+
+      gap: 11px;
     }
 
     .form-group {
       display: flex;
+
       flex-direction: column;
+
       gap: 5px;
     }
 
-    .form-label {
-      font-size: 8px;
+    .form-group label {
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 9px;
+
       font-weight: 900;
 
-      color: #718899;
+      color: #526a7c;
 
       text-transform: uppercase;
-      letter-spacing: .04em;
+
+      letter-spacing: .06em;
     }
 
-    .form-input,
-    .form-select,
-    .form-textarea {
+    .form-group label i {
+      width: 13px;
+
+      color: var(--blue-dark);
+
+      margin-right: 2px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
       width: 100%;
 
-      border: 1px solid var(--border);
-      border-radius: 8px;
+      border: 2px solid var(--border);
 
-      background: #fbfdfe;
+      background: #f9fcfe;
+
+      color: var(--text);
+
+      border-radius: 8px;
 
       padding: 9px 10px;
 
-      outline: none;
-
-      color: #536b7c;
+      font-family: 'Inter', sans-serif;
 
       font-size: 10px;
-      font-weight: 600;
+
+      outline: none;
 
       transition: .18s ease;
     }
 
-    .form-input,
-    .form-select {
-      height: 36px;
-    }
-
-    .form-textarea {
-      min-height: 72px;
-      resize: vertical;
-    }
-
-    .form-input:focus,
-    .form-select:focus,
-    .form-textarea:focus {
-      border-color: #a9dcfa;
-      background: #fff;
-      box-shadow: 0 0 0 3px rgba(126, 200, 255, .1);
-    }
-
-    .submit-button {
-      width: 100%;
+    .form-group input,
+    .form-group select {
       height: 38px;
+    }
 
-      border: 0;
-      border-radius: 8px;
+    .form-group textarea {
+      min-height: 92px;
 
-      background: var(--blue-dark);
+      resize: vertical;
+
+      line-height: 1.45;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #9aabb8;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      background: #fff;
+
+      border-color: var(--blue);
+
+      box-shadow:
+        0 0 0 3px rgba(85,185,245,.10);
+    }
+
+    .form-helper {
+      text-align: right;
+
+      margin-top: -2px;
+
+      color: #a1afba;
+
+      font-size: 8px;
+
+      font-weight: 600;
+    }
+
+    .vaga-submit {
+      width: 100%;
+
+      height: 40px;
+
+      margin-top: 2px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 7px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #63c3fa,
+          #2788ca
+        );
+
       color: #fff;
 
-      font-size: 9px;
+      border: 2px solid #1d72a8;
+
+      border-radius: 8px;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 10px;
+
       font-weight: 900;
 
-      text-transform: uppercase;
       letter-spacing: .04em;
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.35),
+        0 2px 0 #155f8f;
 
       cursor: pointer;
 
-      transition: .18s ease;
+      transition: .15s ease;
     }
 
-    .submit-button:hover {
-      background: var(--blue-deep);
+    .vaga-submit:hover {
+      filter: brightness(1.04);
+
       transform: translateY(-1px);
     }
 
-    /* =========================
-       FOOTER
-    ========================= */
-
-    .site-footer {
-      width: min(1420px, calc(100% - 32px));
-      margin: 0 auto;
-
-      padding: 25px 0 35px;
-
-      color: #9aadb9;
-
-      font-size: 9px;
-      text-align: center;
+    .vaga-submit:active {
+      transform: translateY(1px);
     }
 
-    /* =========================
-       AUTODJ
-    ========================= */
 
-    .autodj {
+    /* =========================================================
+       AUTODJ
+    ========================================================= */
+
+    .bg-habbo-yellow-footer-bar {
       position: fixed;
+
       left: 0;
       right: 0;
       bottom: 0;
 
-      z-index: 1100;
+      z-index: 9999;
 
-      height: 65px;
+      background:
+        linear-gradient(
+          180deg,
+          #ffe16a 0%,
+          #ffd447 55%,
+          #f5c329 100%
+        );
 
-      background: rgba(255,255,255,.96);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
+      border-top: 3px solid #d29c00;
 
-      border-top: 1px solid #dceaf3;
-
-      box-shadow: 0 -8px 30px rgba(60, 120, 160, .08);
+      box-shadow:
+        0 -4px 16px rgba(0,0,0,.12),
+        inset 0 1px 0 rgba(255,255,255,.55);
     }
 
-    .autodj-inner {
-      width: min(1420px, calc(100% - 32px));
-      height: 100%;
-      margin: 0 auto;
-
+    .autodj-box {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-    }
 
-    .autodj-info {
-      display: flex;
       align-items: center;
+
       gap: 10px;
 
-      min-width: 0;
+      padding: 5px 11px 5px 5px;
+
+      background: #fff;
+
+      border: 2px solid #dce9f0;
+
+      border-radius: 10px;
+
+      box-shadow:
+        0 2px 0 rgba(110,77,0,.16);
     }
 
-    .autodj-icon {
+    .autodj-avatar {
       width: 38px;
       height: 38px;
 
-      display: flex;
+      object-fit: cover;
+
+      background: #1b3446;
+
+      border: 2px solid var(--blue-dark);
+
+      border-radius: 7px;
+    }
+
+    .autodj-live {
+      display: inline-flex;
+
       align-items: center;
-      justify-content: center;
 
-      flex-shrink: 0;
+      gap: 4px;
 
-      border-radius: 9px;
+      padding: 2px 6px;
 
-      background: #eaf7ff;
-      color: var(--blue-dark);
+      background: #fff0f1;
 
-      font-size: 14px;
+      border: 1px solid #ffc4c8;
+
+      border-radius: 4px;
+
+      color: #c63a43;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 7px;
+
+      font-weight: 900;
+
+      letter-spacing: .06em;
     }
 
-    .autodj-text {
-      min-width: 0;
-    }
-
-    .autodj-title {
-      display: block;
+    .autodj-track {
+      color: #435a6a;
 
       font-size: 9px;
-      font-weight: 900;
 
-      color: #526b7d;
-
-      text-transform: uppercase;
-      letter-spacing: .04em;
+      font-weight: 700;
     }
 
-    .autodj-subtitle {
-      display: block;
-
-      margin-top: 2px;
-
-      font-size: 8px;
-      color: #9aacb7;
-    }
-
-    .autodj-controls {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .dj-button {
-      width: 34px;
-      height: 34px;
-
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      border: 1px solid var(--border);
-      border-radius: 8px;
-
-      background: #fff;
-
-      color: #7890a3;
-
-      cursor: pointer;
-
-      transition: .18s ease;
-    }
-
-    .dj-button:hover {
-      color: var(--blue-dark);
-      background: #f2faff;
-      border-color: #c8e8f8;
-    }
-
-    /* =========================
-       MODAL AVATAR
-    ========================= */
-
-    .avatar-modal {
-      position: fixed;
-      inset: 0;
-
-      z-index: 2000;
-
-      display: none;
-      align-items: center;
-      justify-content: center;
-
-      padding: 20px;
-
-      background: rgba(42, 73, 95, .35);
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-    }
-
-    .avatar-modal.show {
-      display: flex;
-    }
-
-    .avatar-modal-card {
-      width: min(400px, 100%);
-
-      background: #fff;
-
-      border: 1px solid var(--border);
-      border-radius: 16px;
-
-      box-shadow: 0 25px 70px rgba(30, 80, 120, .2);
-
-      padding: 20px;
-    }
-
-    .avatar-modal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-
-      margin-bottom: 15px;
-    }
-
-    .avatar-modal-header h3 {
-      margin: 0;
-
-      font-size: 13px;
-      font-weight: 900;
-      color: #40576a;
-    }
-
-    .close-modal {
-      width: 30px;
-      height: 30px;
-
-      border: 0;
-      border-radius: 8px;
-
-      background: #f4f8fa;
-      color: #8296a5;
-
-      cursor: pointer;
-    }
-
-    .avatar-preview {
-      display: flex;
-      justify-content: center;
-
-      margin-bottom: 18px;
-    }
-
-    .avatar-preview img {
-      width: 90px;
-      height: 90px;
+    .pulse-dot {
+      width: 5px;
+      height: 5px;
 
       border-radius: 50%;
 
-      border: 3px solid #d9efff;
+      background: #ed4b55;
 
-      background: #eef9ff;
+      animation: pulse 1.5s infinite;
     }
 
-    .avatar-help {
-      margin: 0;
-
-      text-align: center;
-
-      font-size: 10px;
-      line-height: 1.6;
-
-      color: #899daa;
-    }
-
-    /* =========================
-       TOAST
-    ========================= */
-
-    .toast {
-      position: fixed;
-
-      right: 20px;
-      bottom: 85px;
-
-      z-index: 3000;
-
-      min-width: 240px;
-      max-width: 350px;
-
-      padding: 12px 14px;
-
-      display: flex;
-      align-items: center;
-      gap: 9px;
-
-      background: #fff;
-
-      border: 1px solid var(--border);
-      border-radius: 10px;
-
-      box-shadow: 0 15px 45px rgba(40, 90, 120, .15);
-
-      color: #60798c;
-
-      font-size: 10px;
-      font-weight: 800;
-
-      transform: translateY(20px);
-      opacity: 0;
-
-      pointer-events: none;
-
-      transition: .25s ease;
-    }
-
-    .toast.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    .toast i {
-      color: var(--blue-dark);
-    }
-
-    /* =========================
-       RESPONSIVE
-    ========================= */
-
-    @media (max-width: 1050px) {
-      .page-grid {
-        grid-template-columns: 1fr;
+    @keyframes pulse {
+      0%,100% {
+        opacity: 1;
+        transform: scale(1);
       }
 
-      .sidebar {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 15px;
-        align-items: start;
-      }
-
-      .sidebar-card {
-        margin-bottom: 0;
+      50% {
+        opacity: .45;
+        transform: scale(.8);
       }
     }
 
-    @media (max-width: 720px) {
+    .record-spin {
+      animation: spin 3s linear infinite;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+
+    /* =========================================================
+       RESPONSIVO
+    ========================================================= */
+
+    @media (max-width: 900px) {
+
       body {
-        padding-bottom: 75px;
+        padding-top: 70px;
+        padding-bottom: 110px;
       }
 
-      .site-header {
-        height: 65px;
+      .nav-item {
+        padding: 0 13px;
       }
 
-      .main-nav {
-        margin-top: 65px;
-      }
-
-      .header-inner,
-      .nav-inner,
-      .page-container,
-      .site-footer,
-      .autodj-inner {
-        width: min(100% - 20px, 1420px);
-      }
-
-      .logo {
-        width: 115px;
-      }
-
-      .points-wallet {
-        padding: 0 9px;
-      }
-
-      .profile-info {
-        display: none;
-      }
-
-      .logout-button span {
-        display: none;
-      }
-
-      .logout-button {
-        width: 36px;
-        padding: 0;
-      }
-
-      .page-container {
-        padding-top: 20px;
-      }
-
-      .news-image {
-        height: 210px;
-      }
-
-      .events-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .autodj {
-        height: 58px;
-      }
-
-      .autodj-inner {
-        width: calc(100% - 20px);
-      }
-
-      .autodj-icon {
-        width: 33px;
-        height: 33px;
-      }
-
-      .autodj-controls .dj-button {
-        width: 31px;
-        height: 31px;
-      }
-
-      .autodj-subtitle {
-        display: none;
-      }
-
-      .toast {
-        left: 10px;
-        right: 10px;
-        bottom: 68px;
-        max-width: none;
-      }
     }
 
-    @media (max-width: 460px) {
-      .header-right {
-        gap: 6px;
+    @media (max-width: 640px) {
+
+      .top-header-bar {
+        padding-left: 10px;
+        padding-right: 10px;
       }
 
-      .points-wallet {
-        height: 34px;
+      .pixel-wallet-label {
+        display: none;
+      }
+
+      .profile-name {
+        max-width: 70px;
+
+        overflow: hidden;
+
+        white-space: nowrap;
+
+        text-overflow: ellipsis;
+      }
+
+      .nav-item {
+        padding: 0 12px;
+
         font-size: 10px;
       }
 
-      .points-wallet i {
-        font-size: 13px;
+      .nav-item i {
+        font-size: 11px;
       }
 
-      .profile-avatar {
-        width: 34px;
-        height: 34px;
+      .news-image {
+        height: 220px;
       }
 
-      .news-title {
-        font-size: 17px;
-      }
-
-      .nav-link {
-        padding: 8px 9px;
-        font-size: 9px;
-      }
-
-      .nav-link i {
-        display: none;
-      }
     }
+
   </style>
 </head>
 
+
 <body>
 
-  <!-- =========================================================
+
+  <!-- =======================================================
        HEADER
-  ========================================================== -->
+  ======================================================== -->
 
-  <header class="site-header">
-    <div class="header-inner">
+  <header class="top-header-bar px-4 sm:px-8 py-3">
 
-      <div class="header-left">
-        <a href="portal.html" class="logo-link" aria-label="Pixelizados">
-          <img
-            src="pixelizados.png.png"
-            alt="Pixelizados"
-            class="logo"
-            onerror="this.onerror=null; this.src='pixelizados.png';"
-          >
-        </a>
-      </div>
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
 
-      <div class="header-right">
 
-        <!-- Pontos -->
-        <div class="points-wallet" title="Seus pontos">
-          <i class="fa-solid fa-coins"></i>
-          <span id="user-pixels">0 PX</span>
+      <!-- LOGO -->
+
+      <a
+        href="#"
+        class="flex items-center flex-shrink-0"
+      >
+
+        <img
+          src="pixelizados.png.png"
+          alt="Pixelizados"
+          class="h-10 sm:h-12 w-auto object-contain"
+        >
+
+      </a>
+
+
+      <!-- PERFIL -->
+
+      <div class="profile-area">
+
+
+        <!-- PX -->
+
+        <div class="pixel-wallet">
+
+          <div class="habbo-coin">
+            $
+          </div>
+
+          <div class="flex flex-col">
+
+            <span class="pixel-wallet-label">
+              PIXELS
+            </span>
+
+            <span
+              id="user-pixels"
+              class="pixel-wallet-value"
+            >
+              0 PX
+            </span>
+
+          </div>
+
         </div>
 
-        <!-- Perfil -->
-        <div class="profile-area">
 
-          <button
-            type="button"
-            class="avatar-button"
+        <!-- USUÁRIO -->
+
+        <div class="profile-box">
+
+          <div
             onclick="abrirModalAvatar()"
-            aria-label="Abrir perfil"
+            class="profile-avatar-frame cursor-pointer"
+            title="Alterar avatar"
           >
+
             <img
               id="user-avatar"
               class="profile-avatar"
-              src="https://api.dicebear.com/9.x/pixel-art/svg?seed=Pixelizado"
+              src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Pixelizado"
               alt="Avatar"
             >
-          </button>
 
-          <div class="profile-info">
-            <span id="user-nick" class="profile-nick">Pixelizado</span>
-            <span id="user-role" class="profile-role">Pixelizado</span>
+          </div>
+
+
+          <div class="hidden sm:block">
+
+            <div
+              id="user-nick"
+              class="profile-name"
+            >
+              Pixelizado
+            </div>
+
+            <div class="online-status">
+
+              <span class="online-dot"></span>
+
+              Online
+
+            </div>
+
           </div>
 
         </div>
 
-        <!-- Painel do fundador -->
+
+        <!-- PAINEL DO FUNDADOR -->
+
         <button
           id="btn-fundador"
-          type="button"
-          class="logout-button"
-          style="display:none;"
           onclick="abrirPainelFundador()"
+          class="logout-button"
+          title="Painel do Fundador"
+          style="display:none; color:#b98500; border-color:#ecd47b; background:#fff9df;"
         >
-          <i class="fa-solid fa-shield-halved"></i>
-          <span>Fundador</span>
+
+          <i class="fa-solid fa-crown"></i>
+
         </button>
 
-        <!-- Logout -->
+
+        <!-- SAIR -->
+
         <button
-          id="logout-button"
-          type="button"
-          class="logout-button"
           onclick="fazerLogout()"
+          class="logout-button"
+          title="Sair"
         >
-          <i class="fa-solid fa-right-from-bracket"></i>
-          <span>Sair</span>
+
+          <i class="fa-solid fa-power-off"></i>
+
         </button>
 
       </div>
+
     </div>
+
   </header>
 
 
-  <!-- =========================================================
-       NAV
-  ========================================================== -->
+  <!-- =======================================================
+       NAVEGAÇÃO
+  ======================================================== -->
 
-  <nav class="main-nav">
-    <div class="nav-inner">
+  <nav class="classic-nav-bar">
 
-      <a href="#inicio" class="nav-link active">
-        <i class="fa-solid fa-house"></i>
-        Home
-      </a>
-
-      <a href="#comunidade" class="nav-link">
-        <i class="fa-solid fa-users"></i>
-        Comunidade
-      </a>
-
-      <a href="#equipe" class="nav-link">
-        <i class="fa-solid fa-user-group"></i>
-        Equipe
-      </a>
-
-      <a href="#ranking" class="nav-link">
-        <i class="fa-solid fa-ranking-star"></i>
-        Ranking
-      </a>
-
-      <a href="#noticias" class="nav-link">
-        <i class="fa-solid fa-newspaper"></i>
-        Notícias
-      </a>
-
-      <a href="#trabalhe-conosco" class="nav-link">
-        <i class="fa-solid fa-briefcase"></i>
-        Trabalhe Conosco
-      </a>
+    <div
+      class="max-w-7xl mx-auto flex overflow-x-auto"
+    >
 
       <a
-        href="https://discord.gg/pixelizados"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="nav-link"
+        href="#"
+        class="nav-item active"
+      >
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+
+
+      <a
+        href="#"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-users"></i>
+        <span>Comunidade</span>
+      </a>
+
+
+      <a
+        href="#"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-user-shield"></i>
+        <span>Equipe</span>
+      </a>
+
+
+      <a
+        href="#"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-trophy"></i>
+        <span>Ranking</span>
+      </a>
+
+
+      <a
+        href="#"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-newspaper"></i>
+        <span>Notícias</span>
+      </a>
+
+
+      <a
+        href="#vagas-form"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-briefcase"></i>
+        <span>Trabalhe Conosco</span>
+      </a>
+
+
+      <a
+        href="#"
+        class="nav-item"
       >
         <i class="fa-brands fa-discord"></i>
-        Discord
+        <span>Discord</span>
       </a>
 
     </div>
+
   </nav>
 
 
-  <!-- =========================================================
+  <!-- =======================================================
        CONTEÚDO
-  ========================================================== -->
+  ======================================================== -->
 
-  <main class="page-container" id="inicio">
-
-    <div class="page-grid">
-
-      <!-- =====================================================
-           COLUNA PRINCIPAL
-      ====================================================== -->
-
-      <section>
-
-        <!-- Notícias -->
-        <div class="section-title" id="noticias">
-          <div>
-            <span class="section-kicker">Pixelizados</span>
-            <h1>Timeline de Notícias</h1>
-          </div>
-        </div>
-
-        <article class="card news-card">
-
-          <img
-            class="news-image"
-            src="https://placehold.co/1200x550/e8f7ff/4f9ed6?text=Pixelizados"
-            alt="Notícia Pixelizados"
-          >
-
-          <div class="news-content">
-
-            <div class="news-meta">
-              <span class="news-tag">Comunicado</span>
-              <span class="news-date">Hoje</span>
-            </div>
-
-            <h2 class="news-title">
-              Bem-vindo ao novo Portal Pixelizados!
-            </h2>
-
-            <p class="news-description">
-              O nosso espaço está de cara nova. Acompanhe as novidades,
-              eventos, notícias e tudo o que acontece dentro da comunidade.
-            </p>
-
-          </div>
-
-          <div class="news-actions">
-
-            <button
-              type="button"
-              class="action-button"
-              onclick="toggleLike(this)"
-            >
-              <i class="fa-regular fa-heart"></i>
-              Curtir
-            </button>
-
-            <button
-              type="button"
-              class="action-button"
-              onclick="compartilharNoticia()"
-            >
-              <i class="fa-solid fa-share-nodes"></i>
-              Compartilhar
-            </button>
-
-          </div>
-
-        </article>
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
 
 
-        <!-- Eventos -->
-        <div class="section-title" id="comunidade">
-          <div>
-            <span class="section-kicker">Agenda</span>
-            <h2>Atualizações & Eventos</h2>
-          </div>
-        </div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-7">
 
-        <div class="events-grid">
 
-          <article class="card event-card">
+      <!-- ===================================================
+           ESQUERDA
+      ==================================================== -->
 
-            <div class="event-icon">
-              <i class="fa-solid fa-gift"></i>
-            </div>
+      <div class="lg:col-span-2 space-y-7">
 
-            <div class="event-info">
 
-              <h3>Sorteio Pixelizado</h3>
+        <!-- =================================================
+             NOTÍCIA
+        ================================================== -->
 
-              <p>
-                Participe do próximo sorteio da comunidade
-                e concorra a prêmios.
-              </p>
+        <section class="pixel-card pixel-card-hover p-5 sm:p-6">
 
-              <div class="event-date">
-                <i class="fa-regular fa-calendar"></i>
-                Em breve
+
+          <div class="card-header-title mb-5">
+
+            <div class="section-title">
+
+              <div
+                class="section-icon"
+                style="color:#2788ca;background:#e7f6ff;"
+              >
+                <i class="fa-solid fa-newspaper"></i>
+              </div>
+
+              <div>
+
+                <h2>
+                  Timeline de Notícias
+                </h2>
+
+                <p>
+                  Manchetes e artigos em destaque
+                </p>
+
               </div>
 
             </div>
 
-          </article>
+
+            <span class="pixel-tag pixel-tag-blue">
+              <i class="fa-solid fa-star"></i>
+              Fã-Site
+            </span>
+
+          </div>
 
 
-          <article class="card event-card">
+          <article>
 
-            <div class="event-icon">
-              <i class="fa-solid fa-microphone"></i>
-            </div>
 
-            <div class="event-info">
+            <div class="text-center max-w-3xl mx-auto mb-5">
 
-              <h3>Live Pixelizados</h3>
+              <span class="pixel-tag pixel-tag-blue mb-3">
+                Fã-Site Oficial
+              </span>
 
-              <p>
-                Fique de olho nos próximos eventos,
-                encontros e transmissões.
-              </p>
 
-              <div class="event-date">
-                <i class="fa-regular fa-calendar"></i>
-                Em breve
+              <h1
+                class="font-title text-2xl sm:text-3xl font-black leading-tight text-slate-800 mt-2"
+              >
+                A Era dos Fã-Sites Oficiais: O Futuro da Comunidade Pixelizada
+              </h1>
+
+
+              <div
+                class="flex flex-wrap items-center justify-center gap-3 mt-3 text-[10px] text-slate-500 font-semibold"
+              >
+
+                <span class="flex items-center gap-1.5">
+
+                  <img
+                    src="https://api.dicebear.com/7.x/pixel-art/svg?seed=AdminPixel"
+                    class="w-5 h-5 rounded-md bg-slate-800"
+                    alt="Autor"
+                  >
+
+                  Redação Pixel
+
+                </span>
+
+                <span>•</span>
+
+                <span>
+                  Há 2 horas
+                </span>
+
+                <span>•</span>
+
+                <span>
+                  3 min de leitura
+                </span>
+
               </div>
 
             </div>
 
-          </article>
 
-        </div>
+            <div class="news-image-frame">
 
-      </section>
-
-
-      <!-- =====================================================
-           SIDEBAR
-      ====================================================== -->
-
-      <aside class="sidebar">
-
-        <!-- Pesquisa -->
-        <div class="card sidebar-card">
-
-          <div class="sidebar-header">
-            <h3>Pesquisar</h3>
-          </div>
-
-          <div class="sidebar-body">
-
-            <div class="search-box">
-
-              <i class="fa-solid fa-magnifying-glass"></i>
-
-              <input
-                id="portal-search"
-                type="search"
-                class="search-input"
-                placeholder="Pesquisar no portal..."
-                autocomplete="off"
+              <img
+                class="news-image"
+                src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1100&q=80"
+                alt="Capa da notícia"
               >
 
             </div>
 
-          </div>
 
-        </div>
-
-
-        <!-- Hall da Fama -->
-        <div class="card sidebar-card" id="ranking">
-
-          <div class="sidebar-header">
-            <h3>Hall da Fama</h3>
-
-            <i
-              class="fa-solid fa-trophy"
-              style="color:#f2bd2e;font-size:12px;"
-            ></i>
-          </div>
-
-          <div class="sidebar-body">
-
-            <div class="hall-list">
-
-              <div class="hall-item">
-
-                <span class="hall-position">01</span>
-
-                <img
-                  class="hall-avatar"
-                  src="https://api.dicebear.com/9.x/pixel-art/svg?seed=Pixel1"
-                  alt="Pixelizado"
-                >
-
-                <div class="hall-info">
-                  <span class="hall-name">Pixelizado #1</span>
-                  <span class="hall-points">1.000 PX</span>
-                </div>
-
-              </div>
+            <p
+              class="text-sm leading-relaxed text-slate-600 mt-5 px-1"
+            >
+              Confira as novidades exclusivas, eventos programados e melhorias da nossa plataforma para esta temporada. Junte-se aos membros da comunidade, acumule pixels virtuais no seu perfil e ajude a construir o melhor espaço de interação do hotel!
+            </p>
 
 
-              <div class="hall-item">
-
-                <span class="hall-position">02</span>
-
-                <img
-                  class="hall-avatar"
-                  src="https://api.dicebear.com/9.x/pixel-art/svg?seed=Pixel2"
-                  alt="Pixelizado"
-                >
-
-                <div class="hall-info">
-                  <span class="hall-name">Pixelizado #2</span>
-                  <span class="hall-points">850 PX</span>
-                </div>
-
-              </div>
-
-
-              <div class="hall-item">
-
-                <span class="hall-position">03</span>
-
-                <img
-                  class="hall-avatar"
-                  src="https://api.dicebear.com/9.x/pixel-art/svg?seed=Pixel3"
-                  alt="Pixelizado"
-                >
-
-                <div class="hall-info">
-                  <span class="hall-name">Pixelizado #3</span>
-                  <span class="hall-points">700 PX</span>
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- Parceiros -->
-        <div class="card sidebar-card" id="equipe">
-
-          <div class="sidebar-header">
-            <h3>Parceiros</h3>
-          </div>
-
-          <div class="sidebar-body">
-
-            <div class="partners-grid">
-
-              <a href="#" class="partner">
-                Parceiro 01
-              </a>
-
-              <a href="#" class="partner">
-                Parceiro 02
-              </a>
-
-              <a href="#" class="partner">
-                Parceiro 03
-              </a>
-
-              <a href="#" class="partner">
-                Parceiro 04
-              </a>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- Trabalhe Conosco -->
-        <div class="card sidebar-card" id="trabalhe-conosco">
-
-          <div class="sidebar-header">
-            <h3>Trabalhe Conosco</h3>
-
-            <i
-              class="fa-solid fa-briefcase"
-              style="color:#53a9df;font-size:12px;"
-            ></i>
-          </div>
-
-          <div class="sidebar-body">
-
-            <form
-              class="work-form"
-              id="work-form"
-              onsubmit="enviarCandidatura(event)"
+            <div
+              class="flex items-center justify-between mt-5 pt-4 border-t-2 border-slate-100"
             >
 
-              <div class="form-group">
+              <div class="flex gap-2">
 
-                <label class="form-label" for="vaga-cargo">
-                  Cargo
-                </label>
-
-                <select
-                  id="vaga-cargo"
-                  class="form-select"
-                  required
-                >
-                  <option value="">Selecione</option>
-                  <option value="REDATOR">Redator</option>
-                  <option value="MODERADOR">Moderador</option>
-                  <option value="LOCUTOR">Locutor</option>
-                  <option value="APOIADOR">Apoiador</option>
-                </select>
-
-              </div>
-
-
-              <div class="form-group">
-
-                <label class="form-label" for="vaga-discord">
-                  Discord
-                </label>
-
-                <input
-                  id="vaga-discord"
-                  class="form-input"
-                  type="text"
-                  placeholder="Seu Discord"
-                  required
+                <button
+                  onclick="toggleLike(this)"
+                  class="pixel-button"
                 >
 
-              </div>
+                  <i class="fa-regular fa-heart"></i>
+
+                  <span class="like-count">
+                    124
+                  </span>
+
+                </button>
 
 
-              <div class="form-group">
-
-                <label class="form-label" for="vaga-idade">
-                  Idade
-                </label>
-
-                <input
-                  id="vaga-idade"
-                  class="form-input"
-                  type="number"
-                  min="13"
-                  max="100"
-                  placeholder="Sua idade"
-                  required
+                <button
+                  class="flex items-center gap-2 px-3 py-2 rounded-md border-2 border-slate-200 bg-white text-slate-500 text-[10px] font-bold hover:border-sky-300 hover:text-sky-600 transition"
                 >
 
-              </div>
+                  <i class="fa-regular fa-comment"></i>
 
+                  18
 
-              <div class="form-group">
-
-                <label class="form-label" for="vaga-experiencia">
-                  Experiências
-                </label>
-
-                <textarea
-                  id="vaga-experiencia"
-                  class="form-textarea"
-                  placeholder="Conte um pouco sobre suas experiências..."
-                  required
-                ></textarea>
+                </button>
 
               </div>
 
 
               <button
-                type="submit"
-                class="submit-button"
-                id="vaga-submit"
+                onclick="compartilharNoticia()"
+                class="flex items-center gap-2 px-3 py-2 rounded-md border-2 border-slate-200 bg-white text-slate-500 text-[10px] font-bold hover:border-sky-300 hover:text-sky-600 transition"
               >
-                Enviar candidatura
+
+                <i class="fa-solid fa-share-nodes"></i>
+
+                <span class="hidden sm:inline">
+                  Compartilhar
+                </span>
+
               </button>
 
-            </form>
+            </div>
+
+          </article>
+
+        </section>
+
+
+        <!-- =================================================
+             EVENTOS
+        ================================================== -->
+
+        <section class="pixel-card pixel-card-hover p-5 sm:p-6">
+
+
+          <div class="card-header-title mb-5">
+
+            <div class="section-title">
+
+              <div
+                class="section-icon"
+                style="color:#4ca95f;background:#eaf9ed;"
+              >
+                <i class="fa-solid fa-calendar-check"></i>
+              </div>
+
+              <div>
+
+                <h2>
+                  Atualizações & Eventos
+                </h2>
+
+                <p>
+                  Sorteios ativos e agenda da rádio
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <a
+              href="#"
+              class="text-[10px] font-extrabold text-sky-600 hover:text-sky-800"
+            >
+              Ver todos →
+            </a>
 
           </div>
 
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+
+            <div class="event-card">
+
+              <div class="flex justify-between items-center mb-3">
+
+                <span
+                  class="pixel-tag"
+                  style="color:#946b00;background:#fff6d3;border:1px solid #ecd37a;"
+                >
+                  <i class="fa-solid fa-gift"></i>
+                  Sorteio
+                </span>
+
+                <span class="text-[9px] font-bold text-slate-400">
+                  Faltam 2d
+                </span>
+
+              </div>
+
+
+              <h3
+                class="font-subtitle font-extrabold text-sm text-slate-800"
+              >
+                Passaporte VIP Semestral + 500 PX
+              </h3>
+
+
+              <p class="text-[10px] text-slate-500 mt-1 leading-relaxed">
+                Comente na timeline oficial e participe automaticamente do sorteio da comunidade.
+              </p>
+
+
+              <div class="mt-4">
+
+                <div
+                  class="flex justify-between text-[9px] font-bold text-slate-500 mb-1"
+                >
+
+                  <span>
+                    92 Participantes
+                  </span>
+
+                  <span>
+                    85%
+                  </span>
+
+                </div>
+
+
+                <div
+                  class="h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200"
+                >
+
+                  <div
+                    class="h-full bg-yellow-400 rounded-full"
+                    style="width:85%;"
+                  ></div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="event-card">
+
+              <div class="flex justify-between items-center mb-3">
+
+                <span class="pixel-tag pixel-tag-red">
+
+                  <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+
+                  AO VIVO
+
+                </span>
+
+                <span class="text-[9px] font-bold text-slate-400">
+                  20:00
+                </span>
+
+              </div>
+
+
+              <h3
+                class="font-subtitle font-extrabold text-sm text-slate-800"
+              >
+                Torneio de Quiz na Rádio Pixel
+              </h3>
+
+
+              <p class="text-[10px] text-slate-500 mt-1 leading-relaxed">
+                Sintonize com o locutor da noite e responda às perguntas no chat para faturar moedas.
+              </p>
+
+
+              <div
+                class="flex items-center justify-between mt-4 pt-3 border-t border-slate-200"
+              >
+
+                <div class="flex items-center gap-2">
+
+                  <img
+                    src="https://api.dicebear.com/7.x/pixel-art/svg?seed=DJRadio"
+                    class="w-6 h-6 rounded-md bg-slate-800"
+                    alt="DJ"
+                  >
+
+                  <span class="text-[9px] font-bold text-slate-600">
+                    DJ Pixel
+                  </span>
+
+                </div>
+
+
+                <span
+                  class="text-[9px] font-extrabold text-sky-600"
+                >
+                  Ouvir Rádio →
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+
+      <!-- ===================================================
+           DIREITA
+      ==================================================== -->
+
+      <aside class="space-y-5">
+
+
+        <div class="pixel-card p-3">
+
+          <form
+            onsubmit="event.preventDefault();"
+            class="search-box"
+          >
+
+            <input
+              type="text"
+              placeholder="Pesquisar notícias, tópicos..."
+            >
+
+            <button
+              class="search-button"
+              type="submit"
+            >
+
+              <i class="fa-solid fa-magnifying-glass"></i>
+
+            </button>
+
+          </form>
+
         </div>
+
+
+        <section class="pixel-card pixel-card-hover p-5">
+
+          <div class="card-header-title mb-4">
+
+            <div class="section-title">
+
+              <div
+                class="section-icon"
+                style="color:#bd8c00;background:#fff8d9;"
+              >
+                <i class="fa-solid fa-trophy"></i>
+              </div>
+
+              <div>
+
+                <h3>
+                  Hall da Fama
+                </h3>
+
+                <p>
+                  Usuários em destaque
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="space-y-2.5">
+
+            <div class="ranking-user top-user">
+
+              <div class="pixel-medal">
+                <i class="fa-solid fa-crown"></i>
+              </div>
+
+
+              <img
+                src="https://api.dicebear.com/7.x/pixel-art/svg?seed=KingPixel"
+                class="ranking-avatar"
+                alt="KingPixel"
+              >
+
+
+              <div class="flex-1 min-w-0">
+
+                <div
+                  class="font-subtitle text-xs font-extrabold text-slate-800 truncate"
+                >
+                  KingPixel
+                </div>
+
+                <div
+                  class="text-[9px] text-amber-700 font-extrabold mt-0.5"
+                >
+                  1.420 PX
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="ranking-user">
+
+              <div
+                class="w-[21px] text-center text-[10px] font-black text-slate-400"
+              >
+                2
+              </div>
+
+
+              <img
+                src="https://api.dicebear.com/7.x/pixel-art/svg?seed=StarGirl"
+                class="ranking-avatar"
+                alt="StarGirl"
+              >
+
+
+              <div class="flex-1 min-w-0">
+
+                <div
+                  class="font-subtitle text-xs font-extrabold text-slate-700 truncate"
+                >
+                  StarGirl
+                </div>
+
+                <div
+                  class="text-[9px] text-sky-600 font-extrabold mt-0.5"
+                >
+                  980 PX
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="ranking-user">
+
+              <div
+                class="w-[21px] text-center text-[10px] font-black text-slate-400"
+              >
+                3
+              </div>
+
+
+              <img
+                src="https://api.dicebear.com/7.x/pixel-art/svg?seed=NeoUser"
+                class="ranking-avatar"
+                alt="NeoUser"
+              >
+
+
+              <div class="flex-1 min-w-0">
+
+                <div
+                  class="font-subtitle text-xs font-extrabold text-slate-700 truncate"
+                >
+                  NeoUser
+                </div>
+
+                <div
+                  class="text-[9px] text-sky-600 font-extrabold mt-0.5"
+                >
+                  850 PX
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <section class="pixel-card pixel-card-hover p-5">
+
+          <div class="card-header-title mb-4">
+
+            <div class="section-title">
+
+              <div
+                class="section-icon"
+                style="color:#2788ca;background:#e7f6ff;"
+              >
+                <i class="fa-solid fa-handshake"></i>
+              </div>
+
+              <div>
+
+                <h3>
+                  Parceiros
+                </h3>
+
+                <p>
+                  Nossos aliados
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="grid grid-cols-2 gap-2.5">
+
+            <a
+              href="#"
+              class="partner-card"
+            >
+
+              <div class="partner-icon">
+                <i class="fa-solid fa-hotel"></i>
+              </div>
+
+              <div>
+
+                <div class="font-subtitle text-[10px] font-extrabold text-slate-700">
+                  Habbo Hotel
+                </div>
+
+                <div class="text-[8px] font-bold text-green-600">
+                  ● Online
+                </div>
+
+              </div>
+
+            </a>
+
+
+            <a
+              href="#"
+              class="partner-card"
+            >
+
+              <div class="partner-icon">
+                <i class="fa-solid fa-radio"></i>
+              </div>
+
+              <div>
+
+                <div class="font-subtitle text-[10px] font-extrabold text-slate-700">
+                  Rádio Pixel
+                </div>
+
+                <div class="text-[8px] font-bold text-indigo-500">
+                  ● No Ar
+                </div>
+
+              </div>
+
+            </a>
+
+          </div>
+
+        </section>
+
+
+        <section
+          id="vagas-form"
+          class="pixel-card pixel-card-hover p-5"
+        >
+
+          <div class="card-header-title mb-4">
+
+            <div class="section-title">
+
+              <div
+                class="section-icon"
+                style="color:#b98500;background:#fff8d9;"
+              >
+                <i class="fa-solid fa-briefcase"></i>
+              </div>
+
+              <div>
+
+                <h3>
+                  Trabalhe Conosco
+                </h3>
+
+                <p>
+                  Faça parte da equipe Pixelizados
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <span
+              class="pixel-tag"
+              style="color:#956f00;background:#fff7d1;border:1px solid #ecd47b;"
+            >
+              VAGAS
+            </span>
+
+          </div>
+
+
+          <div class="vagas-intro">
+
+            Estamos procurando pessoas que queiram ajudar a construir a comunidade Pixelizados. Escolha uma função e conte um pouco sobre você.
+
+          </div>
+
+
+          <form
+            class="vagas-form"
+            onsubmit="event.preventDefault();"
+          >
+
+            <div class="form-group">
+
+              <label for="vaga-cargo">
+
+                <i class="fa-solid fa-user-tag"></i>
+
+                Cargo desejado
+
+              </label>
+
+
+              <select
+                id="vaga-cargo"
+                name="cargo"
+                required
+              >
+
+                <option
+                  value=""
+                  selected
+                  disabled
+                >
+                  Selecione uma função
+                </option>
+
+                <option value="redator">
+                  Redator
+                </option>
+
+                <option value="moderador">
+                  Moderador
+                </option>
+
+                <option value="locutor">
+                  Locutor
+                </option>
+
+                <option value="apoiador">
+                  Apoiador
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="vaga-discord">
+
+                <i class="fa-brands fa-discord"></i>
+
+                Discord
+
+              </label>
+
+
+              <input
+                type="text"
+                id="vaga-discord"
+                name="discord"
+                maxlength="100"
+                placeholder="Ex.: pixelizado"
+                required
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="vaga-idade">
+
+                <i class="fa-solid fa-cake-candles"></i>
+
+                Idade
+
+              </label>
+
+
+              <input
+                type="number"
+                id="vaga-idade"
+                name="idade"
+                min="13"
+                max="99"
+                placeholder="Sua idade"
+                required
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="vaga-experiencia">
+
+                <i class="fa-solid fa-pen"></i>
+
+                Experiências
+
+              </label>
+
+
+              <textarea
+                id="vaga-experiencia"
+                name="experiencia"
+                maxlength="1000"
+                placeholder="Conte sobre suas experiências, habilidades, projetos ou trabalhos anteriores..."
+                required
+              ></textarea>
+
+
+              <div class="form-helper">
+                Máximo de 1.000 caracteres
+              </div>
+
+            </div>
+
+
+            <button
+              type="submit"
+              class="vaga-submit"
+            >
+
+              <i class="fa-solid fa-paper-plane"></i>
+
+              ENVIAR CANDIDATURA
+
+            </button>
+
+          </form>
+
+        </section>
 
       </aside>
 
@@ -1794,156 +2369,169 @@
   </main>
 
 
-  <!-- =========================================================
-       FOOTER
-  ========================================================== -->
+  <!-- =======================================================
+       AUTODJ
+  ======================================================== -->
 
-  <footer class="site-footer">
-    © 2026 Pixelizados. Todos os direitos reservados.
+  <footer class="bg-habbo-yellow-footer-bar px-4 sm:px-8 py-2.5">
+
+    <div
+      class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2"
+    >
+
+      <div class="autodj-box">
+
+        <img
+          id="dj-avatar"
+          class="autodj-avatar"
+          src="https://api.dicebear.com/7.x/pixel-art/svg?seed=AutoDJ"
+          alt="AutoDJ"
+        >
+
+
+        <div>
+
+          <div class="flex items-center gap-2">
+
+            <span class="autodj-live">
+
+              <span class="pulse-dot"></span>
+
+              NO AR
+
+            </span>
+
+
+            <span
+              id="dj-name"
+              class="font-subtitle text-[10px] font-black text-slate-800"
+            >
+              AutoDJ Pixel
+            </span>
+
+          </div>
+
+
+          <div class="flex items-center gap-1.5 mt-1">
+
+            <i
+              class="fa-solid fa-record-vinyl record-spin text-[10px] text-sky-500"
+            ></i>
+
+            <span
+              id="track-name"
+              class="autodj-track"
+            >
+              Universo Pixel - Tocando as melhores!
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="bg-white border-2 border-[#dce9f0] rounded-lg px-3 py-2 flex items-center gap-2 shadow-sm"
+      >
+
+        <i
+          class="fa-solid fa-volume-high text-amber-600 text-[11px]"
+        ></i>
+
+        <span
+          class="font-subtitle text-[9px] font-extrabold text-slate-600"
+        >
+          Transmissão Automatizada 24h
+        </span>
+
+      </div>
+
+    </div>
+
   </footer>
 
 
-  <!-- =========================================================
-       AUTODJ
-  ========================================================== -->
-
-  <div class="autodj">
-
-    <div class="autodj-inner">
-
-      <div class="autodj-info">
-
-        <div class="autodj-icon">
-          <i class="fa-solid fa-radio"></i>
-        </div>
-
-        <div class="autodj-text">
-
-          <span class="autodj-title">
-            Pixelizados AutoDJ
-          </span>
-
-          <span class="autodj-subtitle">
-            Rádio da comunidade
-          </span>
-
-        </div>
-
-      </div>
-
-
-      <div class="autodj-controls">
-
-        <button
-          type="button"
-          class="dj-button"
-          title="Anterior"
-          onclick="mostrarAvisoDJ('Função de rádio será ativada em breve.')"
-        >
-          <i class="fa-solid fa-backward-step"></i>
-        </button>
-
-        <button
-          type="button"
-          class="dj-button"
-          title="Reproduzir"
-          onclick="mostrarAvisoDJ('O AutoDJ será ativado em breve.')"
-        >
-          <i class="fa-solid fa-play"></i>
-        </button>
-
-        <button
-          type="button"
-          class="dj-button"
-          title="Próxima"
-          onclick="mostrarAvisoDJ('Função de rádio será ativada em breve.')"
-        >
-          <i class="fa-solid fa-forward-step"></i>
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- =========================================================
-       MODAL DO AVATAR
-  ========================================================== -->
-
-  <div
-    id="avatar-modal"
-    class="avatar-modal"
-    onclick="fecharModalAvatar(event)"
-  >
-
-    <div
-      class="avatar-modal-card"
-      onclick="event.stopPropagation()"
-    >
-
-      <div class="avatar-modal-header">
-
-        <h3>Meu perfil</h3>
-
-        <button
-          type="button"
-          class="close-modal"
-          onclick="fecharModalAvatar()"
-          aria-label="Fechar"
-        >
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-
-      </div>
-
-      <div class="avatar-preview">
-
-        <img
-          id="modal-avatar"
-          src="https://api.dicebear.com/9.x/pixel-art/svg?seed=Pixelizado"
-          alt="Avatar"
-        >
-
-      </div>
-
-      <p class="avatar-help">
-        Seu avatar atual é baseado no seu perfil Pixelizados.
-        As opções de personalização poderão ser adicionadas posteriormente.
-      </p>
-
-    </div>
-
-  </div>
-
-
-  <!-- =========================================================
-       TOAST
-  ========================================================== -->
-
-  <div id="toast" class="toast">
-    <i class="fa-solid fa-circle-info"></i>
-    <span id="toast-message">Mensagem</span>
-  </div>
-
-
-  <!-- =========================================================
-       SUPABASE
-  ========================================================== -->
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-
-  <!-- =========================================================
-       JAVASCRIPT
-  ========================================================== -->
+  <!-- =======================================================
+       FUNÇÃO FUNDADOR
+  ======================================================== -->
 
   <script>
 
-    /* ========================================================
-       CONFIGURAÇÃO
-    ======================================================== */
+    function verificarAcessoFundador() {
+
+      const btnFundador =
+        document.getElementById('btn-fundador');
+
+      if (!btnFundador) return;
+
+      try {
+
+        const usuario =
+          JSON.parse(
+            localStorage.getItem('pixelizados_user') || 'null'
+          );
+
+        if (usuario && usuario.role === 'FUNDADOR') {
+
+          btnFundador.style.display = 'flex';
+
+        } else {
+
+          btnFundador.style.display = 'none';
+
+        }
+
+      } catch (error) {
+
+        console.error(
+          'Erro ao verificar usuário:',
+          error
+        );
+
+        btnFundador.style.display = 'none';
+
+      }
+
+    }
+
+
+    function abrirPainelFundador() {
+
+      const usuario =
+        JSON.parse(
+          localStorage.getItem('pixelizados_user') || 'null'
+        );
+
+      if (!usuario || usuario.role !== 'FUNDADOR') {
+
+        alert('Acesso restrito ao Fundador.');
+
+        return;
+
+      }
+
+      window.location.href = 'fundador.html';
+
+    }
+
+
+    document.addEventListener(
+      'DOMContentLoaded',
+      verificarAcessoFundador
+    );
+
+  </script>
+
+
+  <!-- =======================================================
+       SUPABASE / LOGOUT
+  ======================================================== -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
 
     const SUPABASE_URL =
       'https://znvytrvdwejjlivzsjzy.supabase.co';
@@ -1958,853 +2546,68 @@
       );
 
 
-    /* ========================================================
-       CARGOS OFICIAIS
-    ======================================================== */
-
-    const CARGOS = {
-      FUNDADOR: 'Aclamado/Fundador',
-      ALTA_CUPULA: 'Alta Cúpula',
-      CURADORIA: 'Curadoria',
-      VOZ_OFICIAL: 'Voz Oficial',
-      APOIADOR: 'Apoiador',
-      ENTUSIASTA: 'Entusiasta'
-    };
-
-
-    /* ========================================================
-       USUÁRIO ATUAL
-    ======================================================== */
-
-    let usuarioAtual = null;
-
-
-    /* ========================================================
-       BUSCAR USUÁRIO DO LOCALSTORAGE
-    ======================================================== */
-
-    function obterUsuarioLocal() {
-
-      try {
-
-        const dados =
-          localStorage.getItem('pixelizados_user');
-
-        if (!dados) {
-          return null;
-        }
-
-        return JSON.parse(dados);
-
-      } catch (erro) {
-
-        console.error(
-          'Erro ao ler pixelizados_user:',
-          erro
-        );
-
-        return null;
-      }
-    }
-
-
-    /* ========================================================
-       NORMALIZAR ROLE
-    ======================================================== */
-
-    function normalizarRole(role) {
-
-      if (!role) {
-        return '';
-      }
-
-      return String(role)
-        .trim()
-        .toUpperCase();
-
-    }
-
-
-    /* ========================================================
-       VERIFICAR ACESSO AO PORTAL
-    ======================================================== */
-
-    function verificarAcessoPortal() {
-
-      const usuario =
-        obterUsuarioLocal();
-
-      /*
-       * Se não existir sessão local,
-       * não deve conseguir entrar diretamente
-       * no portal.html.
-       */
-
-      if (!usuario) {
-
-        window.location.href = 'index.html';
-
-        return false;
-      }
-
-
-      /*
-       * O fluxo atual do Pixelizados utiliza
-       * auth_user_id como identificação da conta.
-       */
-
-      if (!usuario.auth_user_id) {
-
-        localStorage.removeItem(
-          'pixelizados_user'
-        );
-
-        window.location.href = 'index.html';
-
-        return false;
-      }
-
-
-      /*
-       * Se o objeto armazenar status,
-       * garantimos que somente contas aprovadas
-       * tenham acesso ao Portal.
-       */
-
-      if (
-        usuario.status &&
-        String(usuario.status).toUpperCase() !== 'APROVADO'
-      ) {
-
-        localStorage.removeItem(
-          'pixelizados_user'
-        );
-
-        window.location.href = 'index.html';
-
-        return false;
-      }
-
-
-      usuarioAtual = usuario;
-
-      return true;
-    }
-
-
-    /* ========================================================
-       PERFIL
-    ======================================================== */
-
-    function preencherPerfil() {
-
-      if (!usuarioAtual) {
-        return;
-      }
-
-
-      /* Nick */
-
-      const nick =
-        usuarioAtual.habbo_nick ||
-        usuarioAtual.nick ||
-        usuarioAtual.username ||
-        'Pixelizado';
-
-      const elementoNick =
-        document.getElementById('user-nick');
-
-      if (elementoNick) {
-
-        elementoNick.textContent =
-          nick;
-
-        elementoNick.title =
-          nick;
-      }
-
-
-      /* Role */
-
-      const role =
-        normalizarRole(
-          usuarioAtual.role ||
-          usuarioAtual.cargo
-        );
-
-      const elementoRole =
-        document.getElementById('user-role');
-
-      if (elementoRole) {
-
-        elementoRole.textContent =
-          CARGOS[role] ||
-          role ||
-          'Pixelizado';
-      }
-
-
-      /* Pontos */
-
-      const pontos =
-        usuarioAtual.points ??
-        usuarioAtual.pixels ??
-        usuarioAtual.pontos ??
-        0;
-
-      const elementoPontos =
-        document.getElementById('user-pixels');
-
-      if (elementoPontos) {
-
-        elementoPontos.textContent =
-          `${Number(pontos).toLocaleString('pt-BR')} PX`;
-      }
-
-
-      /* Avatar */
-
-      let avatar =
-        usuarioAtual.avatar ||
-        usuarioAtual.avatar_url ||
-        usuarioAtual.avatarUrl ||
-        '';
-
-      if (!avatar) {
-
-        avatar =
-          `https://api.dicebear.com/9.x/pixel-art/svg?seed=${encodeURIComponent(nick)}`;
-      }
-
-      const elementoAvatar =
-        document.getElementById('user-avatar');
-
-      if (elementoAvatar) {
-
-        elementoAvatar.src =
-          avatar;
-
-        elementoAvatar.alt =
-          `Avatar de ${nick}`;
-      }
-
-
-      const modalAvatar =
-        document.getElementById('modal-avatar');
-
-      if (modalAvatar) {
-
-        modalAvatar.src =
-          avatar;
-      }
-
-    }
-
-
-    /* ========================================================
-       PAINEL DO FUNDADOR
-    ======================================================== */
-
-    function verificarAcessoFundador() {
-
-      const botao =
-        document.getElementById('btn-fundador');
-
-      if (!botao) {
-        return;
-      }
-
-      const role =
-        normalizarRole(
-          usuarioAtual?.role ||
-          usuarioAtual?.cargo
-        );
-
-      if (role === 'FUNDADOR') {
-
-        botao.style.display =
-          'inline-flex';
-
-      } else {
-
-        botao.style.display =
-          'none';
-      }
-
-    }
-
-
-    function abrirPainelFundador() {
-
-      const role =
-        normalizarRole(
-          usuarioAtual?.role ||
-          usuarioAtual?.cargo
-        );
-
-      if (role !== 'FUNDADOR') {
-
-        mostrarToast(
-          'Você não possui permissão para acessar o painel do fundador.'
-        );
-
-        return;
-      }
-
-      window.location.href =
-        'fundador.html';
-    }
-
-
-    /* ========================================================
-       LOGOUT
-    ======================================================== */
-
     async function fazerLogout() {
 
       const botao =
-        document.getElementById('logout-button');
-
-      const textoOriginal =
-        botao
-          ? botao.innerHTML
-          : '';
+        document.querySelector('.logout-button');
 
       try {
 
         if (botao) {
 
-          botao.disabled =
-            true;
+          botao.disabled = true;
 
-          botao.innerHTML =
-            '<i class="fa-solid fa-spinner fa-spin"></i><span>Sair</span>';
+          botao.style.opacity = '0.7';
+
         }
 
 
-        /*
-         * Encerra também a sessão Supabase,
-         * caso exista uma.
-         */
-
-        try {
-
+        const { error } =
           await supabaseClient.auth.signOut();
 
-        } catch (erroSupabase) {
 
-          console.warn(
-            'Não foi possível encerrar a sessão Supabase:',
-            erroSupabase
-          );
+        if (error) {
+
+          throw error;
+
         }
 
-
-        /*
-         * Limpa a sessão local do Pixelizados.
-         */
 
         localStorage.removeItem(
           'pixelizados_user'
-        );
-
-
-        /*
-         * Também removemos possíveis dados
-         * antigos de autenticação.
-         */
-
-        localStorage.removeItem(
-          'pixelizados_auth'
         );
 
 
         window.location.href =
           'index.html';
 
-      } catch (erro) {
+      } catch (error) {
 
         console.error(
           'Erro ao fazer logout:',
-          erro
+          error
         );
+
 
         if (botao) {
 
-          botao.disabled =
-            false;
+          botao.disabled = false;
 
-          botao.innerHTML =
-            textoOriginal;
-        }
-
-        mostrarToast(
-          'Não foi possível sair. Tente novamente.'
-        );
-      }
-
-    }
-
-
-    /* ========================================================
-       AVATAR
-    ======================================================== */
-
-    function abrirModalAvatar() {
-
-      const modal =
-        document.getElementById('avatar-modal');
-
-      if (!modal) {
-        return;
-      }
-
-      modal.classList.add('show');
-
-    }
-
-
-    function fecharModalAvatar(event) {
-
-      if (
-        event &&
-        event.target !== event.currentTarget
-      ) {
-        return;
-      }
-
-      const modal =
-        document.getElementById('avatar-modal');
-
-      if (!modal) {
-        return;
-      }
-
-      modal.classList.remove('show');
-
-    }
-
-
-    /* ========================================================
-       LIKE
-    ======================================================== */
-
-    function toggleLike(botao) {
-
-      if (!botao) {
-        return;
-      }
-
-      const curtido =
-        botao.classList.toggle('liked');
-
-      const icone =
-        botao.querySelector('i');
-
-      if (icone) {
-
-        icone.className =
-          curtido
-            ? 'fa-solid fa-heart'
-            : 'fa-regular fa-heart';
-      }
-
-      botao.childNodes.forEach(
-        node => {
-
-          if (
-            node.nodeType === Node.TEXT_NODE &&
-            node.textContent.trim()
-          ) {
-
-            node.textContent =
-              curtido
-                ? ' Curtido'
-                : ' Curtir';
-          }
+          botao.style.opacity = '1';
 
         }
-      );
-
-    }
 
 
-    /* ========================================================
-       COMPARTILHAR
-    ======================================================== */
-
-    async function compartilharNoticia() {
-
-      const titulo =
-        'Pixelizados - Novo Portal';
-
-      const url =
-        window.location.href;
-
-      try {
-
-        if (
-          navigator.share
-        ) {
-
-          await navigator.share({
-            title: titulo,
-            text: 'Confira as novidades do Pixelizados!',
-            url: url
-          });
-
-          return;
-        }
-
-
-        if (
-          navigator.clipboard
-        ) {
-
-          await navigator.clipboard.writeText(
-            url
-          );
-
-          mostrarToast(
-            'Link copiado para a área de transferência!'
-          );
-
-          return;
-        }
-
-
-        mostrarToast(
-          'Copie o endereço desta página para compartilhar.'
+        alert(
+          'Não foi possível sair da conta. Tente novamente.'
         );
 
-      } catch (erro) {
-
-        if (
-          erro &&
-          erro.name === 'AbortError'
-        ) {
-
-          return;
-        }
-
-        console.error(
-          'Erro ao compartilhar:',
-          erro
-        );
-
-        mostrarToast(
-          'Não foi possível compartilhar a notícia.'
-        );
       }
 
     }
-
-
-    /* ========================================================
-       BUSCA
-    ======================================================== */
-
-    function configurarBusca() {
-
-      const campo =
-        document.getElementById('portal-search');
-
-      if (!campo) {
-        return;
-      }
-
-      campo.addEventListener(
-        'keydown',
-        function(event) {
-
-          if (
-            event.key !== 'Enter'
-          ) {
-            return;
-          }
-
-          event.preventDefault();
-
-          const termo =
-            campo.value.trim();
-
-          if (!termo) {
-
-            mostrarToast(
-              'Digite algo para pesquisar.'
-            );
-
-            return;
-          }
-
-          mostrarToast(
-            `A busca por "${termo}" será ativada em uma próxima etapa.`
-          );
-
-        }
-      );
-
-    }
-
-
-    /* ========================================================
-       CANDIDATURA
-    ======================================================== */
-
-    async function enviarCandidatura(event) {
-
-      event.preventDefault();
-
-      const cargo =
-        document.getElementById('vaga-cargo')?.value;
-
-      const discord =
-        document.getElementById('vaga-discord')?.value.trim();
-
-      const idade =
-        document.getElementById('vaga-idade')?.value;
-
-      const experiencia =
-        document
-          .getElementById('vaga-experiencia')
-          ?.value
-          .trim();
-
-      const botao =
-        document.getElementById('vaga-submit');
-
-
-      if (
-        !cargo ||
-        !discord ||
-        !idade ||
-        !experiencia
-      ) {
-
-        mostrarToast(
-          'Preencha todos os campos da candidatura.'
-        );
-
-        return;
-      }
-
-
-      /*
-       * Neste momento o formulário ainda não possui
-       * uma tabela/backend próprio configurado.
-       *
-       * Portanto NÃO fazemos uma tentativa de INSERT
-       * em uma tabela que pode não existir.
-       *
-       * A interface fica preparada para ativação
-       * posteriormente.
-       */
-
-      const textoOriginal =
-        botao.innerHTML;
-
-      botao.disabled =
-        true;
-
-      botao.innerHTML =
-        '<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
-
-
-      setTimeout(
-        () => {
-
-          botao.disabled =
-            false;
-
-          botao.innerHTML =
-            textoOriginal;
-
-          mostrarToast(
-            'O formulário está preparado, mas o envio das candidaturas ainda será conectado ao banco de dados.'
-          );
-
-        },
-        700
-      );
-
-    }
-
-
-    /* ========================================================
-       AUTODJ
-    ======================================================== */
-
-    function mostrarAvisoDJ(mensagem) {
-
-      mostrarToast(
-        mensagem
-      );
-
-    }
-
-
-    /* ========================================================
-       TOAST
-    ======================================================== */
-
-    let toastTimeout = null;
-
-
-    function mostrarToast(mensagem) {
-
-      const toast =
-        document.getElementById('toast');
-
-      const mensagemElemento =
-        document.getElementById('toast-message');
-
-      if (
-        !toast ||
-        !mensagemElemento
-      ) {
-        return;
-      }
-
-      mensagemElemento.textContent =
-        mensagem;
-
-      toast.classList.add('show');
-
-
-      clearTimeout(
-        toastTimeout
-      );
-
-
-      toastTimeout =
-        setTimeout(
-          () => {
-
-            toast.classList.remove(
-              'show'
-            );
-
-          },
-          3500
-        );
-
-    }
-
-
-    /* ========================================================
-       LINKS DE NAVEGAÇÃO
-    ======================================================== */
-
-    function configurarNavegacao() {
-
-      const links =
-        document.querySelectorAll(
-          '.nav-link[href^="#"]'
-        );
-
-      links.forEach(
-        link => {
-
-          link.addEventListener(
-            'click',
-            function() {
-
-              links.forEach(
-                item =>
-                  item.classList.remove(
-                    'active'
-                  )
-              );
-
-              this.classList.add(
-                'active'
-              );
-
-            }
-          );
-
-        }
-      );
-
-    }
-
-
-    /* ========================================================
-       INICIALIZAÇÃO
-    ======================================================== */
-
-    document.addEventListener(
-      'DOMContentLoaded',
-      function() {
-
-        /*
-         * PRIMEIRO:
-         * verifica se o usuário realmente
-         * possui uma sessão válida no fluxo
-         * atual do Pixelizados.
-         */
-
-        if (
-          !verificarAcessoPortal()
-        ) {
-          return;
-        }
-
-
-        /*
-         * Depois carregamos os dados
-         * do perfil.
-         */
-
-        preencherPerfil();
-
-
-        /*
-         * Exibe o botão do fundador somente
-         * para quem possui esse cargo.
-         */
-
-        verificarAcessoFundador();
-
-
-        /*
-         * Ativa pesquisa.
-         */
-
-        configurarBusca();
-
-
-        /*
-         * Ativa navegação.
-         */
-
-        configurarNavegacao();
-
-      }
-    );
-
-
-    /* ========================================================
-       ESC
-    ======================================================== */
-
-    document.addEventListener(
-      'keydown',
-      function(event) {
-
-        if (
-          event.key !== 'Escape'
-        ) {
-
-          return;
-        }
-
-        fecharModalAvatar();
-
-      }
-    );
 
   </script>
+
 
 </body>
 </html>
