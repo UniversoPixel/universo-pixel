@@ -1157,6 +1157,982 @@
 
 
     /* =========================================================
+       USUÁRIOS
+    ========================================================= */
+
+    .module-view {
+      display: none;
+    }
+
+    .module-view.active {
+      display: block;
+    }
+
+    .users-toolbar {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 12px;
+
+      margin-bottom: 15px;
+
+      flex-wrap: wrap;
+    }
+
+    .users-search {
+      position: relative;
+
+      flex: 1;
+
+      min-width: 230px;
+    }
+
+    .users-search i {
+      position: absolute;
+
+      left: 12px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      color: #9aabb8;
+
+      font-size: 11px;
+    }
+
+    .users-search input {
+      width: 100%;
+
+      height: 40px;
+
+      padding: 0 13px 0 34px;
+
+      border: 2px solid var(--border);
+
+      border-radius: 9px;
+
+      background: #fff;
+
+      outline: none;
+
+      font-family: 'Inter', sans-serif;
+
+      font-size: 10px;
+
+      color: var(--text);
+
+      transition: .2s ease;
+    }
+
+    .users-search input:focus {
+      border-color: #8ec9e9;
+
+      box-shadow:
+        0 0 0 3px rgba(85,185,245,.10);
+    }
+
+    .users-filters {
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      flex-wrap: wrap;
+    }
+
+    .users-filter {
+      height: 40px;
+
+      padding: 0 11px;
+
+      border: 2px solid var(--border);
+
+      border-radius: 9px;
+
+      background: #fff;
+
+      color: #526779;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      outline: none;
+
+      cursor: pointer;
+    }
+
+    .users-filter:focus {
+      border-color: #8ec9e9;
+    }
+
+    .refresh-button {
+      width: 40px;
+      height: 40px;
+
+      border: 2px solid var(--border);
+
+      border-radius: 9px;
+
+      background: #fff;
+
+      color: var(--blue-dark);
+
+      cursor: pointer;
+
+      transition: .2s ease;
+    }
+
+    .refresh-button:hover {
+      background: #f1faff;
+
+      border-color: #b8d9eb;
+    }
+
+    .refresh-button.loading i {
+      animation: spin .8s linear infinite;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .users-summary {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 10px;
+
+      margin-bottom: 10px;
+
+      padding: 11px 13px;
+
+      background: #f7fbfe;
+
+      border: 2px solid #e0edf4;
+
+      border-radius: 9px;
+    }
+
+    .users-summary-text {
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      color: #75899a;
+    }
+
+    .users-summary-text strong {
+      color: #2d4558;
+    }
+
+    .users-table-card {
+      background: #fff;
+
+      border: 2px solid var(--border);
+
+      border-radius: 12px;
+
+      box-shadow: var(--shadow);
+
+      overflow: hidden;
+    }
+
+    .users-table-wrapper {
+      width: 100%;
+
+      overflow-x: auto;
+    }
+
+    .users-table {
+      width: 100%;
+
+      border-collapse: collapse;
+
+      min-width: 780px;
+    }
+
+    .users-table th {
+      padding: 12px 13px;
+
+      text-align: left;
+
+      background: #f6fbfe;
+
+      border-bottom: 2px solid var(--border);
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      color: #91a1ad;
+
+      text-transform: uppercase;
+
+      letter-spacing: .06em;
+
+      white-space: nowrap;
+    }
+
+    .users-table td {
+      padding: 12px 13px;
+
+      border-bottom: 1px solid #edf3f7;
+
+      vertical-align: middle;
+
+      font-size: 9px;
+
+      color: #536979;
+    }
+
+    .users-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .users-table tbody tr {
+      transition: .15s ease;
+    }
+
+    .users-table tbody tr:hover {
+      background: #fbfdff;
+    }
+
+    .user-cell {
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      min-width: 170px;
+    }
+
+    .user-cell-avatar {
+      width: 34px;
+      height: 34px;
+
+      border-radius: 7px;
+
+      border: 2px solid #cde8f7;
+
+      background: #edf8ff;
+
+      object-fit: cover;
+
+      flex-shrink: 0;
+    }
+
+    .user-cell-name {
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      color: #30485a;
+    }
+
+    .user-cell-id {
+      margin-top: 2px;
+
+      font-size: 7px;
+
+      color: #a1afb9;
+    }
+
+    .discord-cell {
+      color: #5d7181;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 9px;
+
+      font-weight: 700;
+    }
+
+    .role-cell {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      padding: 5px 8px;
+
+      background: #f7fbfe;
+
+      border: 1px solid #deebf2;
+
+      border-radius: 7px;
+
+      white-space: nowrap;
+    }
+
+    .role-cell img {
+      width: 24px;
+      height: 24px;
+
+      object-fit: contain;
+    }
+
+    .role-cell-name {
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      color: #445b6c;
+    }
+
+    .status-badge {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 5px;
+
+      padding: 5px 8px;
+
+      border-radius: 6px;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 7px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      letter-spacing: .04em;
+
+      white-space: nowrap;
+    }
+
+    .status-badge.aprovado {
+      background: #edfff1;
+
+      border: 1px solid #bce9c6;
+
+      color: #39964e;
+    }
+
+    .status-badge.pendente {
+      background: #fff8d9;
+
+      border: 1px solid #f0d66b;
+
+      color: #977100;
+    }
+
+    .status-badge.outro {
+      background: #f1f5f8;
+
+      border: 1px solid #dbe5eb;
+
+      color: #718391;
+    }
+
+    .user-actions {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: flex-end;
+
+      gap: 5px;
+    }
+
+    .user-action-button {
+      width: 30px;
+      height: 30px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid var(--border);
+
+      border-radius: 7px;
+
+      background: #fff;
+
+      color: #718695;
+
+      cursor: pointer;
+
+      transition: .18s ease;
+    }
+
+    .user-action-button:hover {
+      color: var(--blue-dark);
+
+      background: #f0faff;
+
+      border-color: #b8d9eb;
+    }
+
+    .user-action-button.approve:hover {
+      color: #32934a;
+
+      background: #effff2;
+
+      border-color: #bce9c6;
+    }
+
+    .user-action-button.danger:hover {
+      color: var(--red);
+
+      background: #fff3f4;
+
+      border-color: #ffcdd1;
+    }
+
+    .users-empty {
+      padding: 50px 20px;
+
+      text-align: center;
+    }
+
+    .users-empty-icon {
+      width: 50px;
+      height: 50px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      margin: 0 auto 12px;
+
+      background: #eaf7ff;
+
+      border: 2px solid #c6e5f6;
+
+      border-radius: 12px;
+
+      color: var(--blue-dark);
+
+      font-size: 18px;
+    }
+
+    .users-empty h3 {
+      margin: 0;
+
+      font-family: 'Plus Jakarta Sans', sans-serif;
+
+      font-size: 13px;
+
+      font-weight: 900;
+
+      color: #354d5f;
+    }
+
+    .users-empty p {
+      margin: 5px auto 0;
+
+      max-width: 380px;
+
+      font-size: 9px;
+
+      line-height: 1.6;
+
+      color: #91a1ad;
+    }
+
+    .users-loading {
+      padding: 50px 20px;
+
+      text-align: center;
+    }
+
+    .users-loading i {
+      color: var(--blue-dark);
+
+      font-size: 20px;
+
+      animation: spin .8s linear infinite;
+    }
+
+    .users-loading p {
+      margin: 10px 0 0;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      color: #8b9ca8;
+    }
+
+
+    /* =========================================================
+       MODAL
+    ========================================================= */
+
+    .modal-overlay {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 10000;
+
+      display: none;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+
+      background: rgba(24,54,74,.48);
+
+      backdrop-filter: blur(3px);
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .user-modal {
+      width: 100%;
+
+      max-width: 540px;
+
+      max-height: calc(100vh - 40px);
+
+      overflow-y: auto;
+
+      background: #fff;
+
+      border: 2px solid var(--border);
+
+      border-radius: 14px;
+
+      box-shadow:
+        0 24px 70px rgba(21,66,94,.25);
+
+      animation: modalIn .18s ease;
+    }
+
+    @keyframes modalIn {
+      from {
+        opacity: 0;
+
+        transform: translateY(8px) scale(.98);
+      }
+
+      to {
+        opacity: 1;
+
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .modal-header {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 12px;
+
+      padding: 16px 18px;
+
+      border-bottom: 2px solid var(--border);
+
+      background: #f8fcff;
+    }
+
+    .modal-title-area {
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+    }
+
+    .modal-title-icon {
+      width: 34px;
+      height: 34px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      background: #eaf7ff;
+
+      border: 2px solid #c6e5f6;
+
+      border-radius: 8px;
+
+      color: var(--blue-dark);
+
+      font-size: 13px;
+    }
+
+    .modal-title {
+      margin: 0;
+
+      font-family: 'Plus Jakarta Sans', sans-serif;
+
+      font-size: 13px;
+
+      font-weight: 900;
+
+      color: #2d4354;
+    }
+
+    .modal-subtitle {
+      margin: 2px 0 0;
+
+      font-size: 8px;
+
+      color: #94a4b0;
+    }
+
+    .modal-close {
+      width: 32px;
+      height: 32px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 7px;
+
+      background: #fff;
+
+      color: #7c8e9b;
+
+      cursor: pointer;
+    }
+
+    .modal-close:hover {
+      color: var(--red);
+
+      border-color: #ffcdd1;
+
+      background: #fff5f6;
+    }
+
+    .modal-body {
+      padding: 18px;
+    }
+
+    .modal-user-header {
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      padding: 12px;
+
+      margin-bottom: 16px;
+
+      background: #f7fbfe;
+
+      border: 2px solid #e0edf4;
+
+      border-radius: 10px;
+    }
+
+    .modal-user-avatar {
+      width: 48px;
+      height: 48px;
+
+      border-radius: 9px;
+
+      border: 2px solid #c4e4f5;
+
+      object-fit: cover;
+
+      background: #edf8ff;
+    }
+
+    .modal-user-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+
+      font-size: 13px;
+
+      font-weight: 900;
+
+      color: #30485a;
+    }
+
+    .modal-user-discord {
+      margin-top: 3px;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 8px;
+
+      font-weight: 700;
+
+      color: #8a9ba7;
+    }
+
+    .form-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 12px;
+    }
+
+    .form-group {
+      min-width: 0;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-label {
+      display: block;
+
+      margin-bottom: 5px;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      color: #718595;
+
+      text-transform: uppercase;
+
+      letter-spacing: .06em;
+    }
+
+    .form-input,
+    .form-select {
+      width: 100%;
+
+      height: 38px;
+
+      padding: 0 10px;
+
+      border: 2px solid var(--border);
+
+      border-radius: 8px;
+
+      background: #fff;
+
+      color: #3c5364;
+
+      font-family: 'Inter', sans-serif;
+
+      font-size: 9px;
+
+      outline: none;
+    }
+
+    .form-input:focus,
+    .form-select:focus {
+      border-color: #8ec9e9;
+
+      box-shadow:
+        0 0 0 3px rgba(85,185,245,.09);
+    }
+
+    .form-input[readonly] {
+      background: #f7fbfe;
+
+      color: #8294a2;
+
+      cursor: default;
+    }
+
+    .modal-actions {
+      display: flex;
+
+      justify-content: flex-end;
+
+      gap: 8px;
+
+      margin-top: 18px;
+
+      padding-top: 15px;
+
+      border-top: 2px solid #edf3f7;
+    }
+
+    .modal-button {
+      height: 38px;
+
+      padding: 0 13px;
+
+      border-radius: 8px;
+
+      border: 2px solid var(--border);
+
+      background: #fff;
+
+      color: #64798a;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      cursor: pointer;
+
+      transition: .18s ease;
+    }
+
+    .modal-button:hover {
+      background: #f5faff;
+
+      border-color: #b8d9eb;
+    }
+
+    .modal-button.primary {
+      background: var(--blue-dark);
+
+      border-color: var(--blue-dark);
+
+      color: #fff;
+    }
+
+    .modal-button.primary:hover {
+      background: var(--blue-deep);
+
+      border-color: var(--blue-deep);
+    }
+
+    .modal-button.success {
+      background: var(--green);
+
+      border-color: #46bc61;
+
+      color: #fff;
+    }
+
+    .modal-button.success:hover {
+      background: #43b95b;
+    }
+
+
+    /* =========================================================
+       TOAST
+    ========================================================= */
+
+    .toast-container {
+      position: fixed;
+
+      right: 20px;
+      bottom: 20px;
+
+      z-index: 11000;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 8px;
+
+      pointer-events: none;
+    }
+
+    .toast {
+      min-width: 260px;
+
+      max-width: 360px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      padding: 11px 13px;
+
+      background: #fff;
+
+      border: 2px solid var(--border);
+
+      border-radius: 9px;
+
+      box-shadow:
+        0 12px 30px rgba(35,107,151,.18);
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      color: #4c6475;
+
+      animation: toastIn .2s ease;
+    }
+
+    .toast.success {
+      border-color: #bce9c6;
+    }
+
+    .toast.success i {
+      color: #3aa352;
+    }
+
+    .toast.error {
+      border-color: #ffcdd1;
+    }
+
+    .toast.error i {
+      color: var(--red);
+    }
+
+    .toast.info {
+      border-color: #c6e5f6;
+    }
+
+    .toast.info i {
+      color: var(--blue-dark);
+    }
+
+    @keyframes toastIn {
+      from {
+        opacity: 0;
+
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+
+        transform: translateY(0);
+      }
+    }
+
+
+    /* =========================================================
        FOOTER
     ========================================================= */
 
@@ -1299,6 +2275,50 @@
         padding: 18px;
       }
 
+      .users-toolbar {
+        align-items: stretch;
+      }
+
+      .users-search {
+        width: 100%;
+
+        min-width: 100%;
+      }
+
+      .users-filters {
+        width: 100%;
+      }
+
+      .users-filter {
+        flex: 1;
+
+        min-width: 0;
+      }
+
+      .refresh-button {
+        flex-shrink: 0;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full {
+        grid-column: auto;
+      }
+
+      .toast-container {
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+      }
+
+      .toast {
+        min-width: 0;
+
+        width: 100%;
+      }
+
     }
 
   </style>
@@ -1428,6 +2448,7 @@
       </div>
 
       <button
+        id="menu-dashboard"
         class="menu-item active"
         onclick="selecionarMenu(this, 'dashboard')"
       >
@@ -1579,11 +2600,11 @@
 
       <div class="page-heading">
 
-        <h1>
+        <h1 id="page-title">
           Painel Administrativo
         </h1>
 
-        <p>
+        <p id="page-description">
           Central de gerenciamento do universo Pixelizados.
         </p>
 
@@ -1591,706 +2612,960 @@
 
 
       <!-- ===================================================
-           WELCOME
+           DASHBOARD
       ==================================================== -->
 
-      <section class="welcome-card">
+      <div
+        id="dashboard-view"
+        class="module-view active"
+      >
 
-        <div class="welcome-content">
 
-          <span class="welcome-kicker">
-            <span
-              id="welcome-role-icon"
-              class="role-badge-icon"
-            ></span>
+        <!-- ===============================================
+             WELCOME
+        ================================================ -->
 
-            <span id="welcome-role">
-              Aclamado/Fundador
+        <section class="welcome-card">
+
+          <div class="welcome-content">
+
+            <span class="welcome-kicker">
+
+              <span
+                id="welcome-role-icon"
+                class="role-badge-icon"
+              ></span>
+
+              <span id="welcome-role">
+                Aclamado/Fundador
+              </span>
+
             </span>
-          </span>
 
-          <h2 class="welcome-title">
-            Bem-vindo ao centro de comando.
-          </h2>
+            <h2 class="welcome-title">
+              Bem-vindo ao centro de comando.
+            </h2>
 
-          <p class="welcome-description">
-            Aqui você poderá administrar o conteúdo,
-            comunidade, equipe e recursos do Pixelizados.
-            As ferramentas serão liberadas progressivamente.
-          </p>
+            <p class="welcome-description">
+              Aqui você poderá administrar o conteúdo,
+              comunidade, equipe e recursos do Pixelizados.
+              As ferramentas serão liberadas progressivamente.
+            </p>
+
+          </div>
+
+        </section>
+
+
+        <!-- ===============================================
+             STATS
+        ================================================ -->
+
+        <section class="stats-grid">
+
+          <div class="stat-card">
+
+            <div class="stat-icon">
+              <i class="fa-solid fa-users"></i>
+            </div>
+
+            <div class="stat-label">
+              Usuários
+            </div>
+
+            <div
+              class="stat-value"
+              id="stat-users"
+            >
+              —
+            </div>
+
+          </div>
+
+
+          <div class="stat-card yellow">
+
+            <div class="stat-icon">
+              <i class="fa-solid fa-newspaper"></i>
+            </div>
+
+            <div class="stat-label">
+              Notícias
+            </div>
+
+            <div class="stat-value">
+              —
+            </div>
+
+          </div>
+
+
+          <div class="stat-card green">
+
+            <div class="stat-icon">
+              <i class="fa-solid fa-calendar-days"></i>
+            </div>
+
+            <div class="stat-label">
+              Eventos
+            </div>
+
+            <div class="stat-value">
+              —
+            </div>
+
+          </div>
+
+
+          <div class="stat-card red">
+
+            <div class="stat-icon">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+
+            <div class="stat-label">
+              Status do sistema
+            </div>
+
+            <div class="stat-value">
+              Online
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ===============================================
+             MÓDULOS
+        ================================================ -->
+
+        <div class="section-heading">
+
+          <div class="section-heading-left">
+
+            <div class="section-heading-icon">
+              <i class="fa-solid fa-layer-group"></i>
+            </div>
+
+            <div>
+
+              <h2>
+                Módulos administrativos
+              </h2>
+
+              <p>
+                Ferramentas disponíveis para sua função.
+              </p>
+
+            </div>
+
+          </div>
 
         </div>
 
-      </section>
 
+        <section class="modules-grid">
 
-      <!-- ===================================================
-           STATS
-      ==================================================== -->
-
-      <section class="stats-grid">
-
-        <div class="stat-card">
-
-          <div class="stat-icon">
-            <i class="fa-solid fa-users"></i>
-          </div>
-
-          <div class="stat-label">
-            Usuários
-          </div>
 
           <div
-            class="stat-value"
-            id="stat-users"
+            class="module-card"
+            data-module="conteudo"
+            data-permission="conteudo"
+            onclick="abrirModulo('conteudo')"
           >
-            —
+
+            <div class="module-icon">
+              <i class="fa-solid fa-window-maximize"></i>
+            </div>
+
+            <div class="module-info">
+
+              <h3 class="module-title">
+                Conteúdo do Site
+              </h3>
+
+              <p class="module-description">
+                Gerencie logo, banner, hero, textos e
+                informações principais da Home.
+              </p>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right module-arrow"></i>
+
+          </div>
+
+
+          <div
+            class="module-card yellow"
+            data-module="noticias"
+            data-permission="noticias"
+            onclick="abrirModulo('noticias')"
+          >
+
+            <div class="module-icon">
+              <i class="fa-solid fa-newspaper"></i>
+            </div>
+
+            <div class="module-info">
+
+              <h3 class="module-title">
+                Notícias
+              </h3>
+
+              <p class="module-description">
+                Crie, edite e organize as notícias
+                publicadas no fã-site.
+              </p>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right module-arrow"></i>
+
+          </div>
+
+
+          <div
+            class="module-card green"
+            data-module="eventos"
+            data-permission="eventos"
+            onclick="abrirModulo('eventos')"
+          >
+
+            <div class="module-icon">
+              <i class="fa-solid fa-calendar-days"></i>
+            </div>
+
+            <div class="module-info">
+
+              <h3 class="module-title">
+                Eventos
+              </h3>
+
+              <p class="module-description">
+                Cadastre e organize eventos da
+                comunidade Pixelizados.
+              </p>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right module-arrow"></i>
+
+          </div>
+
+
+          <div
+            class="module-card"
+            data-module="imagens"
+            data-permission="imagens"
+            onclick="abrirModulo('imagens')"
+          >
+
+            <div class="module-icon">
+              <i class="fa-solid fa-images"></i>
+            </div>
+
+            <div class="module-info">
+
+              <h3 class="module-title">
+                Biblioteca de Imagens
+              </h3>
+
+              <p class="module-description">
+                Centralize banners, fotos, logos e
+                mídias utilizadas pelo site.
+              </p>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right module-arrow"></i>
+
+          </div>
+
+
+          <div
+            class="module-card purple"
+            data-module="usuarios"
+            data-permission="usuarios"
+            onclick="abrirModulo('usuarios')"
+          >
+
+            <div class="module-icon">
+              <i class="fa-solid fa-users"></i>
+            </div>
+
+            <div class="module-info">
+
+              <h3 class="module-title">
+                Usuários
+              </h3>
+
+              <p class="module-description">
+                Gerencie membros, status, cargos e
+                informações da comunidade.
+              </p>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right module-arrow"></i>
+
+          </div>
+
+
+          <div
+            class="module-card"
+            data-module="moderacao"
+            data-permission="moderacao"
+            onclick="abrirModulo('moderacao')"
+          >
+
+            <div class="module-icon">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+
+            <div class="module-info">
+
+              <h3 class="module-title">
+                Moderação
+              </h3>
+
+              <p class="module-description">
+                Ferramentas de segurança, denúncias e
+                organização da comunidade.
+              </p>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right module-arrow"></i>
+
+          </div>
+
+
+          <div
+            class="module-card yellow"
+            data-module="cargos"
+            data-permission="cargos"
+            onclick="abrirModulo('cargos')"
+          >
+
+            <div class="module-icon">
+              <i class="fa-solid fa-crown"></i>
+            </div>
+
+            <div class="module-info">
+
+              <h3 class="module-title">
+                Cargos & Permissões
+              </h3>
+
+              <p class="module-description">
+                Estrutura oficial da hierarquia e
+                permissões administrativas.
+              </p>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right module-arrow"></i>
+
+          </div>
+
+
+          <div
+            class="module-card"
+            data-module="equipe"
+            data-permission="equipe"
+            onclick="abrirModulo('equipe')"
+          >
+
+            <div class="module-icon">
+              <i class="fa-solid fa-user-group"></i>
+            </div>
+
+            <div class="module-info">
+
+              <h3 class="module-title">
+                Equipe
+              </h3>
+
+              <p class="module-description">
+                Administração dos membros que fazem
+                parte da equipe oficial.
+              </p>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right module-arrow"></i>
+
+          </div>
+
+
+          <div
+            class="module-card"
+            data-module="autodj"
+            data-permission="autodj"
+            onclick="abrirModulo('autodj')"
+          >
+
+            <div class="module-icon">
+              <i class="fa-solid fa-record-vinyl"></i>
+            </div>
+
+            <div class="module-info">
+
+              <h3 class="module-title">
+                AutoDJ
+              </h3>
+
+              <p class="module-description">
+                Controle das informações e identidade
+                visual do AutoDJ.
+              </p>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right module-arrow"></i>
+
+          </div>
+
+
+          <div
+            class="module-card"
+            data-module="discord"
+            data-permission="discord"
+            onclick="abrirModulo('discord')"
+          >
+
+            <div class="module-icon">
+              <i class="fa-brands fa-discord"></i>
+            </div>
+
+            <div class="module-info">
+
+              <h3 class="module-title">
+                Discord
+              </h3>
+
+              <p class="module-description">
+                Gerencie links e informações oficiais
+                da comunidade.
+              </p>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right module-arrow"></i>
+
+          </div>
+
+
+          <div
+            class="module-card"
+            data-module="configuracoes"
+            data-permission="configuracoes"
+            onclick="abrirModulo('configuracoes')"
+          >
+
+            <div class="module-icon">
+              <i class="fa-solid fa-gear"></i>
+            </div>
+
+            <div class="module-info">
+
+              <h3 class="module-title">
+                Configurações
+              </h3>
+
+              <p class="module-description">
+                Configurações gerais e administrativas
+                do projeto.
+              </p>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right module-arrow"></i>
+
+          </div>
+
+
+        </section>
+
+
+        <!-- ===============================================
+             HIERARQUIA
+        ================================================ -->
+
+        <div class="section-heading">
+
+          <div class="section-heading-left">
+
+            <div class="section-heading-icon">
+              <i class="fa-solid fa-sitemap"></i>
+            </div>
+
+            <div>
+
+              <h2>
+                Hierarquia Pixelizados
+              </h2>
+
+              <p>
+                Estrutura oficial de cargos do projeto.
+              </p>
+
+            </div>
+
           </div>
 
         </div>
 
 
-        <div class="stat-card yellow">
-
-          <div class="stat-icon">
-            <i class="fa-solid fa-newspaper"></i>
-          </div>
-
-          <div class="stat-label">
-            Notícias
-          </div>
-
-          <div class="stat-value">
-            —
-          </div>
-
-        </div>
+        <section class="permission-card">
 
 
-        <div class="stat-card green">
+          <div class="permission-role">
 
-          <div class="stat-icon">
-            <i class="fa-solid fa-calendar-days"></i>
-          </div>
+            <div class="permission-role-left">
 
-          <div class="stat-label">
-            Eventos
-          </div>
+              <span class="permission-role-icon">
+                <img
+                  src="assets/cargos/fundador.svg"
+                  class="role-svg"
+                  alt="Fundador"
+                >
+              </span>
 
-          <div class="stat-value">
-            —
-          </div>
+              <div>
 
-        </div>
+                <div class="permission-role-name">
+                  Aclamado/Fundador
+                </div>
 
+                <div class="permission-role-code">
+                  FUNDADOR
+                </div>
 
-        <div class="stat-card red">
+              </div>
 
-          <div class="stat-icon">
-            <i class="fa-solid fa-circle-check"></i>
-          </div>
+            </div>
 
-          <div class="stat-label">
-            Status do sistema
-          </div>
-
-          <div class="stat-value">
-            Online
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- ===================================================
-           MÓDULOS
-      ==================================================== -->
-
-      <div class="section-heading">
-
-        <div class="section-heading-left">
-
-          <div class="section-heading-icon">
-            <i class="fa-solid fa-layer-group"></i>
-          </div>
-
-          <div>
-
-            <h2>
-              Módulos administrativos
-            </h2>
-
-            <p>
-              Ferramentas disponíveis para sua função.
-            </p>
+            <span class="permission-status">
+              Acesso total
+            </span>
 
           </div>
 
-        </div>
 
-      </div>
+          <div class="permission-role">
 
+            <div class="permission-role-left">
 
-      <section class="modules-grid">
+              <span class="permission-role-icon">
+                <img
+                  src="assets/cargos/alta-cupula.svg"
+                  class="role-svg"
+                  alt="Alta Cúpula"
+                >
+              </span>
 
+              <div>
 
-        <div
-          class="module-card"
-          data-module="conteudo"
-          data-permission="conteudo"
-          onclick="abrirModulo('conteudo')"
-        >
+                <div class="permission-role-name">
+                  Alta Cúpula
+                </div>
 
-          <div class="module-icon">
-            <i class="fa-solid fa-window-maximize"></i>
-          </div>
+                <div class="permission-role-code">
+                  ALTA_CUPULA
+                </div>
 
-          <div class="module-info">
+              </div>
 
-            <h3 class="module-title">
-              Conteúdo do Site
-            </h3>
+            </div>
 
-            <p class="module-description">
-              Gerencie logo, banner, hero, textos e
-              informações principais da Home.
-            </p>
-
-          </div>
-
-          <i class="fa-solid fa-chevron-right module-arrow"></i>
-
-        </div>
-
-
-        <div
-          class="module-card yellow"
-          data-module="noticias"
-          data-permission="noticias"
-          onclick="abrirModulo('noticias')"
-        >
-
-          <div class="module-icon">
-            <i class="fa-solid fa-newspaper"></i>
-          </div>
-
-          <div class="module-info">
-
-            <h3 class="module-title">
-              Notícias
-            </h3>
-
-            <p class="module-description">
-              Crie, edite e organize as notícias
-              publicadas no fã-site.
-            </p>
+            <span class="permission-status">
+              Administração
+            </span>
 
           </div>
 
-          <i class="fa-solid fa-chevron-right module-arrow"></i>
 
-        </div>
+          <div class="permission-role">
 
+            <div class="permission-role-left">
 
-        <div
-          class="module-card green"
-          data-module="eventos"
-          data-permission="eventos"
-          onclick="abrirModulo('eventos')"
-        >
+              <span class="permission-role-icon">
+                <img
+                  src="assets/cargos/curadoria.svg"
+                  class="role-svg"
+                  alt="Curadoria"
+                >
+              </span>
 
-          <div class="module-icon">
-            <i class="fa-solid fa-calendar-days"></i>
-          </div>
+              <div>
 
-          <div class="module-info">
+                <div class="permission-role-name">
+                  Curadoria
+                </div>
 
-            <h3 class="module-title">
-              Eventos
-            </h3>
+                <div class="permission-role-code">
+                  CURADORIA
+                </div>
 
-            <p class="module-description">
-              Cadastre e organize eventos da
-              comunidade Pixelizados.
-            </p>
+              </div>
 
-          </div>
+            </div>
 
-          <i class="fa-solid fa-chevron-right module-arrow"></i>
-
-        </div>
-
-
-        <div
-          class="module-card"
-          data-module="imagens"
-          data-permission="imagens"
-          onclick="abrirModulo('imagens')"
-        >
-
-          <div class="module-icon">
-            <i class="fa-solid fa-images"></i>
-          </div>
-
-          <div class="module-info">
-
-            <h3 class="module-title">
-              Biblioteca de Imagens
-            </h3>
-
-            <p class="module-description">
-              Centralize banners, fotos, logos e
-              mídias utilizadas pelo site.
-            </p>
-
-          </div>
-
-          <i class="fa-solid fa-chevron-right module-arrow"></i>
-
-        </div>
-
-
-        <div
-          class="module-card purple"
-          data-module="usuarios"
-          data-permission="usuarios"
-          onclick="abrirModulo('usuarios')"
-        >
-
-          <div class="module-icon">
-            <i class="fa-solid fa-users"></i>
-          </div>
-
-          <div class="module-info">
-
-            <h3 class="module-title">
-              Usuários
-            </h3>
-
-            <p class="module-description">
-              Gerencie membros, status, cargos e
-              informações da comunidade.
-            </p>
-
-          </div>
-
-          <i class="fa-solid fa-chevron-right module-arrow"></i>
-
-        </div>
-
-
-        <div
-          class="module-card"
-          data-module="moderacao"
-          data-permission="moderacao"
-          onclick="abrirModulo('moderacao')"
-        >
-
-          <div class="module-icon">
-            <i class="fa-solid fa-shield-halved"></i>
-          </div>
-
-          <div class="module-info">
-
-            <h3 class="module-title">
+            <span class="permission-status">
               Moderação
-            </h3>
-
-            <p class="module-description">
-              Ferramentas de segurança, denúncias e
-              organização da comunidade.
-            </p>
+            </span>
 
           </div>
 
-          <i class="fa-solid fa-chevron-right module-arrow"></i>
 
-        </div>
+          <div class="permission-role">
 
+            <div class="permission-role-left">
 
-        <div
-          class="module-card yellow"
-          data-module="cargos"
-          data-permission="cargos"
-          onclick="abrirModulo('cargos')"
-        >
+              <span class="permission-role-icon">
+                <img
+                  src="assets/cargos/voz-oficial.svg"
+                  class="role-svg"
+                  alt="Voz Oficial"
+                >
+              </span>
 
-          <div class="module-icon">
-            <i class="fa-solid fa-crown"></i>
-          </div>
+              <div>
 
-          <div class="module-info">
+                <div class="permission-role-name">
+                  Voz Oficial
+                </div>
 
-            <h3 class="module-title">
-              Cargos & Permissões
-            </h3>
+                <div class="permission-role-code">
+                  VOZ_OFICIAL
+                </div>
 
-            <p class="module-description">
-              Estrutura oficial da hierarquia e
-              permissões administrativas.
-            </p>
+              </div>
 
-          </div>
+            </div>
 
-          <i class="fa-solid fa-chevron-right module-arrow"></i>
-
-        </div>
-
-
-        <div
-          class="module-card"
-          data-module="equipe"
-          data-permission="equipe"
-          onclick="abrirModulo('equipe')"
-        >
-
-          <div class="module-icon">
-            <i class="fa-solid fa-user-group"></i>
-          </div>
-
-          <div class="module-info">
-
-            <h3 class="module-title">
-              Equipe
-            </h3>
-
-            <p class="module-description">
-              Administração dos membros que fazem
-              parte da equipe oficial.
-            </p>
+            <span class="permission-status">
+              Conteúdo
+            </span>
 
           </div>
 
-          <i class="fa-solid fa-chevron-right module-arrow"></i>
 
-        </div>
+          <div class="permission-role">
 
+            <div class="permission-role-left">
 
-        <div
-          class="module-card"
-          data-module="autodj"
-          data-permission="autodj"
-          onclick="abrirModulo('autodj')"
-        >
+              <span class="permission-role-icon">
+                <img
+                  src="assets/cargos/apoiador.svg"
+                  class="role-svg"
+                  alt="Apoiador"
+                >
+              </span>
 
-          <div class="module-icon">
-            <i class="fa-solid fa-record-vinyl"></i>
-          </div>
+              <div>
 
-          <div class="module-info">
+                <div class="permission-role-name">
+                  Apoiador
+                </div>
 
-            <h3 class="module-title">
-              AutoDJ
-            </h3>
+                <div class="permission-role-code">
+                  APOIADOR
+                </div>
 
-            <p class="module-description">
-              Controle das informações e identidade
-              visual do AutoDJ.
-            </p>
+              </div>
 
-          </div>
+            </div>
 
-          <i class="fa-solid fa-chevron-right module-arrow"></i>
-
-        </div>
-
-
-        <div
-          class="module-card"
-          data-module="discord"
-          data-permission="discord"
-          onclick="abrirModulo('discord')"
-        >
-
-          <div class="module-icon">
-            <i class="fa-brands fa-discord"></i>
-          </div>
-
-          <div class="module-info">
-
-            <h3 class="module-title">
-              Discord
-            </h3>
-
-            <p class="module-description">
-              Gerencie links e informações oficiais
-              da comunidade.
-            </p>
+            <span class="permission-status">
+              Em breve
+            </span>
 
           </div>
 
-          <i class="fa-solid fa-chevron-right module-arrow"></i>
 
-        </div>
+          <div class="permission-role">
 
+            <div class="permission-role-left">
 
-        <div
-          class="module-card"
-          data-module="configuracoes"
-          data-permission="configuracoes"
-          onclick="abrirModulo('configuracoes')"
-        >
+              <span class="permission-role-icon">
+                <img
+                  src="assets/cargos/entusiasta.svg"
+                  class="role-svg"
+                  alt="Entusiasta"
+                >
+              </span>
 
-          <div class="module-icon">
-            <i class="fa-solid fa-gear"></i>
-          </div>
+              <div>
 
-          <div class="module-info">
+                <div class="permission-role-name">
+                  Entusiasta
+                </div>
 
-            <h3 class="module-title">
-              Configurações
-            </h3>
+                <div class="permission-role-code">
+                  ENTUSIASTA
+                </div>
 
-            <p class="module-description">
-              Configurações gerais e administrativas
-              do projeto.
-            </p>
+              </div>
 
-          </div>
+            </div>
 
-          <i class="fa-solid fa-chevron-right module-arrow"></i>
-
-        </div>
-
-
-      </section>
-
-
-      <!-- ===================================================
-           HIERARQUIA
-      ==================================================== -->
-
-      <div class="section-heading">
-
-        <div class="section-heading-left">
-
-          <div class="section-heading-icon">
-            <i class="fa-solid fa-sitemap"></i>
-          </div>
-
-          <div>
-
-            <h2>
-              Hierarquia Pixelizados
-            </h2>
-
-            <p>
-              Estrutura oficial de cargos do projeto.
-            </p>
+            <span class="permission-status">
+              Membro
+            </span>
 
           </div>
 
-        </div>
+
+        </section>
+
 
       </div>
 
 
-      <section class="permission-card">
+      <!-- ===================================================
+           USUÁRIOS
+      ==================================================== -->
 
+      <div
+        id="usuarios-view"
+        class="module-view"
+      >
 
-        <div class="permission-role">
+        <div class="section-heading">
 
-          <div class="permission-role-left">
+          <div class="section-heading-left">
 
-            <span class="permission-role-icon">
-              <img
-                src="assets/cargos/fundador.svg"
-                class="role-svg"
-                alt="Fundador"
-              >
-            </span>
+            <div class="section-heading-icon">
+              <i class="fa-solid fa-users"></i>
+            </div>
 
             <div>
 
-              <div class="permission-role-name">
+              <h2>
+                Gerenciamento de usuários
+              </h2>
+
+              <p>
+                Controle membros, status e cargos da comunidade.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="users-toolbar">
+
+          <div class="users-search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+              id="users-search"
+              type="text"
+              placeholder="Buscar por Nick ou Discord..."
+              oninput="filtrarUsuarios()"
+              autocomplete="off"
+            >
+
+          </div>
+
+
+          <div class="users-filters">
+
+            <select
+              id="users-status-filter"
+              class="users-filter"
+              onchange="filtrarUsuarios()"
+            >
+
+              <option value="TODOS">
+                Todos os status
+              </option>
+
+              <option value="APROVADO">
+                Aprovados
+              </option>
+
+              <option value="PENDENTE">
+                Pendentes
+              </option>
+
+            </select>
+
+
+            <select
+              id="users-role-filter"
+              class="users-filter"
+              onchange="filtrarUsuarios()"
+            >
+
+              <option value="TODOS">
+                Todos os cargos
+              </option>
+
+              <option value="FUNDADOR">
                 Aclamado/Fundador
-              </div>
+              </option>
 
-              <div class="permission-role-code">
-                FUNDADOR
-              </div>
-
-            </div>
-
-          </div>
-
-          <span class="permission-status">
-            Acesso total
-          </span>
-
-        </div>
-
-
-        <div class="permission-role">
-
-          <div class="permission-role-left">
-
-            <span class="permission-role-icon">
-              <img
-                src="assets/cargos/alta-cupula.svg"
-                class="role-svg"
-                alt="Alta Cúpula"
-              >
-            </span>
-
-            <div>
-
-              <div class="permission-role-name">
+              <option value="ALTA_CUPULA">
                 Alta Cúpula
-              </div>
+              </option>
 
-              <div class="permission-role-code">
-                ALTA_CUPULA
-              </div>
-
-            </div>
-
-          </div>
-
-          <span class="permission-status">
-            Administração
-          </span>
-
-        </div>
-
-
-        <div class="permission-role">
-
-          <div class="permission-role-left">
-
-            <span class="permission-role-icon">
-              <img
-                src="assets/cargos/curadoria.svg"
-                class="role-svg"
-                alt="Curadoria"
-              >
-            </span>
-
-            <div>
-
-              <div class="permission-role-name">
+              <option value="CURADORIA">
                 Curadoria
-              </div>
+              </option>
 
-              <div class="permission-role-code">
-                CURADORIA
-              </div>
-
-            </div>
-
-          </div>
-
-          <span class="permission-status">
-            Moderação
-          </span>
-
-        </div>
-
-
-        <div class="permission-role">
-
-          <div class="permission-role-left">
-
-            <span class="permission-role-icon">
-              <img
-                src="assets/cargos/voz-oficial.svg"
-                class="role-svg"
-                alt="Voz Oficial"
-              >
-            </span>
-
-            <div>
-
-              <div class="permission-role-name">
+              <option value="VOZ_OFICIAL">
                 Voz Oficial
-              </div>
+              </option>
 
-              <div class="permission-role-code">
-                VOZ_OFICIAL
-              </div>
-
-            </div>
-
-          </div>
-
-          <span class="permission-status">
-            Conteúdo
-          </span>
-
-        </div>
-
-
-        <div class="permission-role">
-
-          <div class="permission-role-left">
-
-            <span class="permission-role-icon">
-              <img
-                src="assets/cargos/apoiador.svg"
-                class="role-svg"
-                alt="Apoiador"
-              >
-            </span>
-
-            <div>
-
-              <div class="permission-role-name">
+              <option value="APOIADOR">
                 Apoiador
-              </div>
+              </option>
 
-              <div class="permission-role-code">
-                APOIADOR
-              </div>
-
-            </div>
-
-          </div>
-
-          <span class="permission-status">
-            Em breve
-          </span>
-
-        </div>
-
-
-        <div class="permission-role">
-
-          <div class="permission-role-left">
-
-            <span class="permission-role-icon">
-              <img
-                src="assets/cargos/entusiasta.svg"
-                class="role-svg"
-                alt="Entusiasta"
-              >
-            </span>
-
-            <div>
-
-              <div class="permission-role-name">
+              <option value="ENTUSIASTA">
                 Entusiasta
-              </div>
+              </option>
 
-              <div class="permission-role-code">
-                ENTUSIASTA
-              </div>
+            </select>
 
-            </div>
+
+            <button
+              id="refresh-users-button"
+              class="refresh-button"
+              onclick="carregarUsuarios(true)"
+              title="Atualizar usuários"
+            >
+              <i class="fa-solid fa-rotate"></i>
+            </button>
 
           </div>
-
-          <span class="permission-status">
-            Membro
-          </span>
 
         </div>
 
 
-      </section>
+        <div class="users-summary">
+
+          <div
+            id="users-summary-text"
+            class="users-summary-text"
+          >
+            Carregando usuários...
+          </div>
+
+        </div>
 
 
-      <footer class="admin-footer">
+        <div class="users-table-card">
+
+          <div
+            id="users-loading"
+            class="users-loading"
+          >
+
+            <i class="fa-solid fa-spinner"></i>
+
+            <p>
+              Carregando usuários...
+            </p>
+
+          </div>
+
+
+          <div
+            id="users-empty"
+            class="users-empty"
+            style="display:none;"
+          >
+
+            <div class="users-empty-icon">
+              <i class="fa-solid fa-user-slash"></i>
+            </div>
+
+            <h3>
+              Nenhum usuário encontrado
+            </h3>
+
+            <p>
+              Não existem usuários correspondentes
+              aos filtros selecionados.
+            </p>
+
+          </div>
+
+
+          <div
+            id="users-table-wrapper"
+            class="users-table-wrapper"
+            style="display:none;"
+          >
+
+            <table class="users-table">
+
+              <thead>
+
+                <tr>
+
+                  <th>
+                    Usuário
+                  </th>
+
+                  <th>
+                    Discord
+                  </th>
+
+                  <th>
+                    Cargo
+                  </th>
+
+                  <th>
+                    Status
+                  </th>
+
+                  <th style="text-align:right;">
+                    Ações
+                  </th>
+
+                </tr>
+
+              </thead>
+
+              <tbody
+                id="users-table-body"
+              >
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+
+        <footer class="admin-footer">
+
+          Pixelizados © 2026 · Gerenciamento de Usuários
+
+        </footer>
+
+      </div>
+
+
+      <!-- ===================================================
+           FOOTER DASHBOARD
+      ==================================================== -->
+
+      <footer
+        id="dashboard-footer"
+        class="admin-footer"
+      >
 
         Pixelizados © 2026 · Painel Administrativo
 
@@ -2299,6 +3574,248 @@
     </main>
 
   </div>
+
+
+  <!-- =======================================================
+       MODAL USUÁRIO
+  ======================================================== -->
+
+  <div
+    id="user-modal-overlay"
+    class="modal-overlay"
+    onclick="fecharModalAoClicarFora(event)"
+  >
+
+    <div
+      class="user-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="user-modal-title"
+    >
+
+      <div class="modal-header">
+
+        <div class="modal-title-area">
+
+          <div class="modal-title-icon">
+            <i class="fa-solid fa-user-gear"></i>
+          </div>
+
+          <div>
+
+            <h3
+              id="user-modal-title"
+              class="modal-title"
+            >
+              Gerenciar usuário
+            </h3>
+
+            <p
+              id="user-modal-subtitle"
+              class="modal-subtitle"
+            >
+              Visualize e altere as informações administrativas.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="modal-close"
+          onclick="fecharModal()"
+          title="Fechar"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+      </div>
+
+
+      <div class="modal-body">
+
+        <div class="modal-user-header">
+
+          <img
+            id="modal-user-avatar"
+            class="modal-user-avatar"
+            src=""
+            alt="Avatar"
+          >
+
+          <div>
+
+            <div
+              id="modal-user-name"
+              class="modal-user-name"
+            >
+              —
+            </div>
+
+            <div
+              id="modal-user-discord"
+              class="modal-user-discord"
+            >
+              —
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label class="form-label">
+              Nick do Habbo
+            </label>
+
+            <input
+              id="modal-habbo-nick"
+              class="form-input"
+              type="text"
+              readonly
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label class="form-label">
+              Discord
+            </label>
+
+            <input
+              id="modal-discord"
+              class="form-input"
+              type="text"
+              readonly
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label class="form-label">
+              Status
+            </label>
+
+            <select
+              id="modal-status"
+              class="form-select"
+            >
+
+              <option value="PENDENTE">
+                PENDENTE
+              </option>
+
+              <option value="APROVADO">
+                APROVADO
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label class="form-label">
+              Cargo
+            </label>
+
+            <select
+              id="modal-role"
+              class="form-select"
+            >
+
+              <option value="FUNDADOR">
+                Aclamado/Fundador
+              </option>
+
+              <option value="ALTA_CUPULA">
+                Alta Cúpula
+              </option>
+
+              <option value="CURADORIA">
+                Curadoria
+              </option>
+
+              <option value="VOZ_OFICIAL">
+                Voz Oficial
+              </option>
+
+              <option value="APOIADOR">
+                Apoiador
+              </option>
+
+              <option value="ENTUSIASTA">
+                Entusiasta
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group full">
+
+            <label class="form-label">
+              ID do usuário
+            </label>
+
+            <input
+              id="modal-user-id"
+              class="form-input"
+              type="text"
+              readonly
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            class="modal-button"
+            onclick="fecharModal()"
+          >
+            Cancelar
+          </button>
+
+          <button
+            id="modal-save-button"
+            class="modal-button primary"
+            onclick="salvarUsuario()"
+          >
+            <i class="fa-solid fa-floppy-disk"></i>
+            &nbsp;Salvar alterações
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =======================================================
+       TOAST
+  ======================================================== -->
+
+  <div
+    id="toast-container"
+    class="toast-container"
+  ></div>
 
 
   <!-- =======================================================
@@ -2441,6 +3958,14 @@
 
     let usuarioAtual = null;
 
+    let usuariosCache = [];
+
+    let usuarioModalAtual = null;
+
+
+    /* =========================================================
+       OBTER USUÁRIO LOCAL
+    ========================================================= */
 
     function obterUsuarioLocal() {
 
@@ -2501,14 +4026,6 @@
 
       }
 
-
-      /*
-        Nesta primeira versão utilizamos o perfil salvo
-        pelo fluxo de login.
-
-        A proteção definitiva das operações será feita
-        posteriormente através do Supabase/RLS.
-      */
 
       preencherPerfil();
 
@@ -2662,6 +4179,23 @@
 
 
     /* =========================================================
+       VERIFICAR PERMISSÃO
+    ========================================================= */
+
+    function usuarioTemPermissao(
+      permissao
+    ) {
+
+      return (
+        PERMISSOES[permissao] || []
+      ).includes(
+        usuarioAtual?.role
+      );
+
+    }
+
+
+    /* =========================================================
        ESTATÍSTICAS
     ========================================================= */
 
@@ -2714,17 +4248,16 @@
     ) {
 
       const permitido =
-        (
-          PERMISSOES[modulo] || []
-        ).includes(
-          usuarioAtual.role
+        usuarioTemPermissao(
+          modulo
         );
 
 
       if (!permitido) {
 
-        alert(
-          'Seu cargo não possui permissão para acessar esta área.'
+        mostrarToast(
+          'Seu cargo não possui permissão para acessar esta área.',
+          'error'
         );
 
         return;
@@ -2732,13 +4265,27 @@
       }
 
 
-      /*
-        Por enquanto os módulos são apenas a estrutura
-        visual do painel.
+      if (
+        modulo === 'dashboard'
+      ) {
 
-        Nas próximas etapas cada módulo ganhará sua
-        própria função real.
-      */
+        mostrarDashboard();
+
+        return;
+
+      }
+
+
+      if (
+        modulo === 'usuarios'
+      ) {
+
+        mostrarUsuarios();
+
+        return;
+
+      }
+
 
       const nomes = {
 
@@ -2753,9 +4300,6 @@
 
         imagens:
           'Biblioteca de Imagens',
-
-        usuarios:
-          'Usuários',
 
         moderacao:
           'Moderação',
@@ -2778,9 +4322,1301 @@
       };
 
 
-      alert(
+      mostrarToast(
         nomes[modulo]
-        + ' será desenvolvido na próxima etapa.'
+        + ' será desenvolvido na próxima etapa.',
+        'info'
+      );
+
+    }
+
+
+    /* =========================================================
+       MOSTRAR DASHBOARD
+    ========================================================= */
+
+    function mostrarDashboard() {
+
+      document
+        .querySelectorAll(
+          '.module-view'
+        )
+        .forEach(
+          view => {
+            view.classList.remove(
+              'active'
+            );
+          }
+        );
+
+
+      document
+        .getElementById(
+          'dashboard-view'
+        )
+        .classList.add(
+          'active'
+        );
+
+
+      document.getElementById(
+        'dashboard-footer'
+      ).style.display =
+        'block';
+
+
+      document.getElementById(
+        'page-title'
+      ).textContent =
+        'Painel Administrativo';
+
+
+      document.getElementById(
+        'page-description'
+      ).textContent =
+        'Central de gerenciamento do universo Pixelizados.';
+
+    }
+
+
+    /* =========================================================
+       MOSTRAR USUÁRIOS
+    ========================================================= */
+
+    async function mostrarUsuarios() {
+
+      document
+        .querySelectorAll(
+          '.module-view'
+        )
+        .forEach(
+          view => {
+            view.classList.remove(
+              'active'
+            );
+          }
+        );
+
+
+      document
+        .getElementById(
+          'usuarios-view'
+        )
+        .classList.add(
+          'active'
+        );
+
+
+      document.getElementById(
+        'dashboard-footer'
+      ).style.display =
+        'none';
+
+
+      document.getElementById(
+        'page-title'
+      ).textContent =
+        'Usuários';
+
+
+      document.getElementById(
+        'page-description'
+      ).textContent =
+        'Gerencie os membros cadastrados na comunidade Pixelizados.';
+
+
+      await carregarUsuarios();
+
+    }
+
+
+    /* =========================================================
+       CARREGAR USUÁRIOS
+    ========================================================= */
+
+    async function carregarUsuarios(
+      mostrarCarregamento = true
+    ) {
+
+      if (
+        !usuarioTemPermissao(
+          'usuarios'
+        )
+      ) {
+
+        return;
+
+      }
+
+
+      const loading =
+        document.getElementById(
+          'users-loading'
+        );
+
+      const empty =
+        document.getElementById(
+          'users-empty'
+        );
+
+      const table =
+        document.getElementById(
+          'users-table-wrapper'
+        );
+
+      const refreshButton =
+        document.getElementById(
+          'refresh-users-button'
+        );
+
+
+      if (mostrarCarregamento) {
+
+        loading.style.display =
+          'block';
+
+        empty.style.display =
+          'none';
+
+        table.style.display =
+          'none';
+
+      }
+
+
+      refreshButton.classList.add(
+        'loading'
+      );
+
+
+      try {
+
+        const resultado =
+          await supabaseClient
+            .from('usuarios')
+            .select(
+              'id, habbo_nick, discord_tag, pin, status, role'
+            );
+
+
+        if (resultado.error) {
+
+          throw resultado.error;
+
+        }
+
+
+        usuariosCache =
+          resultado.data || [];
+
+
+        filtrarUsuarios();
+
+
+      } catch (error) {
+
+        console.error(
+          'Erro ao carregar usuários:',
+          error
+        );
+
+
+        usuariosCache = [];
+
+
+        loading.style.display =
+          'none';
+
+        table.style.display =
+          'none';
+
+        empty.style.display =
+          'block';
+
+
+        empty.innerHTML = `
+
+          <div class="users-empty-icon">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
+
+          <h3>
+            Não foi possível carregar os usuários
+          </h3>
+
+          <p>
+            Verifique a conexão com o Supabase e
+            as permissões da tabela usuarios.
+          </p>
+
+        `;
+
+
+        document.getElementById(
+          'users-summary-text'
+        ).innerHTML =
+          '<strong>Erro</strong> ao carregar usuários.';
+
+
+        mostrarToast(
+          'Não foi possível carregar os usuários.',
+          'error'
+        );
+
+      } finally {
+
+        refreshButton.classList.remove(
+          'loading'
+        );
+
+      }
+
+    }
+
+
+    /* =========================================================
+       FILTRAR USUÁRIOS
+    ========================================================= */
+
+    function filtrarUsuarios() {
+
+      const busca =
+        (
+          document.getElementById(
+            'users-search'
+          ).value || ''
+        )
+        .trim()
+        .toLowerCase();
+
+
+      const statusFiltro =
+        document.getElementById(
+          'users-status-filter'
+        ).value;
+
+
+      const roleFiltro =
+        document.getElementById(
+          'users-role-filter'
+        ).value;
+
+
+      const filtrados =
+        usuariosCache.filter(
+          usuario => {
+
+            const nick =
+              String(
+                usuario.habbo_nick || ''
+              ).toLowerCase();
+
+
+            const discord =
+              String(
+                usuario.discord_tag || ''
+              ).toLowerCase();
+
+
+            const correspondeBusca =
+              !busca ||
+              nick.includes(busca) ||
+              discord.includes(busca);
+
+
+            const status =
+              String(
+                usuario.status || ''
+              ).toUpperCase();
+
+
+            const role =
+              String(
+                usuario.role || ''
+              ).toUpperCase();
+
+
+            const correspondeStatus =
+              statusFiltro === 'TODOS' ||
+              status === statusFiltro;
+
+
+            const correspondeRole =
+              roleFiltro === 'TODOS' ||
+              role === roleFiltro;
+
+
+            return (
+              correspondeBusca &&
+              correspondeStatus &&
+              correspondeRole
+            );
+
+          }
+        );
+
+
+      renderizarUsuarios(
+        filtrados
+      );
+
+    }
+
+
+    /* =========================================================
+       RENDERIZAR USUÁRIOS
+    ========================================================= */
+
+    function renderizarUsuarios(
+      usuarios
+    ) {
+
+      const loading =
+        document.getElementById(
+          'users-loading'
+        );
+
+      const empty =
+        document.getElementById(
+          'users-empty'
+        );
+
+      const table =
+        document.getElementById(
+          'users-table-wrapper'
+        );
+
+      const tbody =
+        document.getElementById(
+          'users-table-body'
+        );
+
+
+      loading.style.display =
+        'none';
+
+
+      tbody.innerHTML = '';
+
+
+      document.getElementById(
+        'users-summary-text'
+      ).innerHTML =
+        '<strong>'
+        + usuarios.length
+        + '</strong> usuário(s) encontrado(s)';
+
+
+      if (
+        usuarios.length === 0
+      ) {
+
+        table.style.display =
+          'none';
+
+        empty.style.display =
+          'block';
+
+        empty.innerHTML = `
+
+          <div class="users-empty-icon">
+            <i class="fa-solid fa-user-slash"></i>
+          </div>
+
+          <h3>
+            Nenhum usuário encontrado
+          </h3>
+
+          <p>
+            Não existem usuários correspondentes
+            aos filtros selecionados.
+          </p>
+
+        `;
+
+        return;
+
+      }
+
+
+      empty.style.display =
+        'none';
+
+      table.style.display =
+        'block';
+
+
+      usuarios.forEach(
+        usuario => {
+
+          const row =
+            document.createElement(
+              'tr'
+            );
+
+
+          const nick =
+            usuario.habbo_nick ||
+            'Sem Nick';
+
+
+          const discord =
+            usuario.discord_tag ||
+            'Não informado';
+
+
+          const role =
+            CARGOS[
+              usuario.role
+            ] ||
+            CARGOS.ENTUSIASTA;
+
+
+          const status =
+            String(
+              usuario.status || ''
+            ).toUpperCase();
+
+
+          const avatar =
+            'https://api.dicebear.com/7.x/pixel-art/svg?seed='
+            + encodeURIComponent(nick)
+            + '&backgroundColor=38b6ff';
+
+
+          let statusClass =
+            'outro';
+
+          let statusIcon =
+            'fa-circle-question';
+
+          let statusText =
+            usuario.status ||
+            'NÃO DEFINIDO';
+
+
+          if (
+            status === 'APROVADO'
+          ) {
+
+            statusClass =
+              'aprovado';
+
+            statusIcon =
+              'fa-circle-check';
+
+            statusText =
+              'APROVADO';
+
+          } else if (
+            status === 'PENDENTE'
+          ) {
+
+            statusClass =
+              'pendente';
+
+            statusIcon =
+              'fa-clock';
+
+            statusText =
+              'PENDENTE';
+
+          }
+
+
+          const podeEditar =
+            usuarioPodeEditar(
+              usuario
+            );
+
+
+          const podeAprovar =
+            podeEditar &&
+            status === 'PENDENTE';
+
+
+          row.innerHTML = `
+
+            <td>
+
+              <div class="user-cell">
+
+                <img
+                  class="user-cell-avatar"
+                  src="${avatar}"
+                  alt="Avatar de ${escapeHtml(nick)}"
+                >
+
+                <div>
+
+                  <div class="user-cell-name">
+                    ${escapeHtml(nick)}
+                  </div>
+
+                  <div class="user-cell-id">
+                    ID: ${escapeHtml(String(usuario.id || '—'))}
+                  </div>
+
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <td>
+
+              <span class="discord-cell">
+                ${escapeHtml(discord)}
+              </span>
+
+            </td>
+
+
+            <td>
+
+              <span class="role-cell">
+
+                <img
+                  src="${role.icone}"
+                  alt="${escapeHtml(role.nome)}"
+                >
+
+                <span class="role-cell-name">
+                  ${escapeHtml(role.nome)}
+                </span>
+
+              </span>
+
+            </td>
+
+
+            <td>
+
+              <span class="status-badge ${statusClass}">
+
+                <i class="fa-solid ${statusIcon}"></i>
+
+                ${escapeHtml(statusText)}
+
+              </span>
+
+            </td>
+
+
+            <td>
+
+              <div class="user-actions">
+
+                <button
+                  class="user-action-button"
+                  onclick="abrirUsuario('${escapeHtml(String(usuario.id))}')"
+                  title="Ver e editar usuário"
+                >
+                  <i class="fa-solid fa-pen"></i>
+                </button>
+
+
+                ${
+                  podeAprovar
+                    ? `
+                      <button
+                        class="user-action-button approve"
+                        onclick="aprovarUsuario('${escapeHtml(String(usuario.id))}')"
+                        title="Aprovar usuário"
+                      >
+                        <i class="fa-solid fa-check"></i>
+                      </button>
+                    `
+                    : ''
+                }
+
+              </div>
+
+            </td>
+
+          `;
+
+
+          tbody.appendChild(
+            row
+          );
+
+        }
+      );
+
+    }
+
+
+    /* =========================================================
+       VERIFICAR SE PODE EDITAR USUÁRIO
+    ========================================================= */
+
+    function usuarioPodeEditar(
+      usuario
+    ) {
+
+      if (
+        !usuarioTemPermissao(
+          'usuarios'
+        )
+      ) {
+
+        return false;
+
+      }
+
+
+      /*
+        FUNDADOR:
+        acesso administrativo completo.
+
+        ALTA_CUPULA:
+        pode administrar usuários,
+        mas não pode alterar/remover
+        a conta FUNDADOR.
+
+        CURADORIA:
+        acesso ao módulo para consulta
+        e moderação básica, sem alterar
+        cargos/status administrativos.
+      */
+
+      if (
+        usuarioAtual.role ===
+        'FUNDADOR'
+      ) {
+
+        return true;
+
+      }
+
+
+      if (
+        usuarioAtual.role ===
+        'ALTA_CUPULA'
+      ) {
+
+        return usuario.role !==
+          'FUNDADOR';
+
+      }
+
+
+      return false;
+
+    }
+
+
+    /* =========================================================
+       ABRIR USUÁRIO
+    ========================================================= */
+
+    function abrirUsuario(
+      id
+    ) {
+
+      const usuario =
+        usuariosCache.find(
+          item =>
+            String(item.id) ===
+            String(id)
+        );
+
+
+      if (!usuario) {
+
+        mostrarToast(
+          'Usuário não encontrado.',
+          'error'
+        );
+
+        return;
+
+      }
+
+
+      if (
+        !usuarioPodeEditar(
+          usuario
+        )
+      ) {
+
+        mostrarToast(
+          'Seu cargo não pode editar este usuário.',
+          'error'
+        );
+
+        return;
+
+      }
+
+
+      usuarioModalAtual =
+        usuario;
+
+
+      const nick =
+        usuario.habbo_nick ||
+        'Sem Nick';
+
+
+      const discord =
+        usuario.discord_tag ||
+        'Não informado';
+
+
+      document.getElementById(
+        'modal-user-name'
+      ).textContent =
+        nick;
+
+
+      document.getElementById(
+        'modal-user-discord'
+      ).textContent =
+        discord;
+
+
+      document.getElementById(
+        'modal-user-avatar'
+      ).src =
+        'https://api.dicebear.com/7.x/pixel-art/svg?seed='
+        + encodeURIComponent(nick)
+        + '&backgroundColor=38b6ff';
+
+
+      document.getElementById(
+        'modal-habbo-nick'
+      ).value =
+        nick;
+
+
+      document.getElementById(
+        'modal-discord'
+      ).value =
+        discord;
+
+
+      document.getElementById(
+        'modal-user-id'
+      ).value =
+        usuario.id || '—';
+
+
+      document.getElementById(
+        'modal-status'
+      ).value =
+        usuario.status || 'PENDENTE';
+
+
+      document.getElementById(
+        'modal-role'
+      ).value =
+        usuario.role &&
+        CARGOS[usuario.role]
+          ? usuario.role
+          : 'ENTUSIASTA';
+
+
+      /*
+        Alta Cúpula não pode editar
+        uma conta Fundador.
+      */
+
+      const podeEditarCargo =
+        usuarioAtual.role ===
+        'FUNDADOR' ||
+        (
+          usuarioAtual.role ===
+          'ALTA_CUPULA' &&
+          usuario.role !==
+          'FUNDADOR'
+        );
+
+
+      document.getElementById(
+        'modal-status'
+      ).disabled =
+        !podeEditarCargo;
+
+
+      document.getElementById(
+        'modal-role'
+      ).disabled =
+        !podeEditarCargo;
+
+
+      document.getElementById(
+        'modal-save-button'
+      ).style.display =
+        podeEditarCargo
+          ? 'inline-flex'
+          : 'none';
+
+
+      document.getElementById(
+        'user-modal-overlay'
+      ).classList.add(
+        'open'
+      );
+
+    }
+
+
+    /* =========================================================
+       APROVAR USUÁRIO
+    ========================================================= */
+
+    async function aprovarUsuario(
+      id
+    ) {
+
+      const usuario =
+        usuariosCache.find(
+          item =>
+            String(item.id) ===
+            String(id)
+        );
+
+
+      if (!usuario) {
+
+        mostrarToast(
+          'Usuário não encontrado.',
+          'error'
+        );
+
+        return;
+
+      }
+
+
+      if (
+        !usuarioPodeEditar(
+          usuario
+        )
+      ) {
+
+        mostrarToast(
+          'Seu cargo não pode aprovar este usuário.',
+          'error'
+        );
+
+        return;
+
+      }
+
+
+      const confirmacao =
+        window.confirm(
+          'Deseja aprovar o usuário "' +
+          (
+            usuario.habbo_nick ||
+            'Sem Nick'
+          ) +
+          '"?'
+        );
+
+
+      if (!confirmacao) {
+
+        return;
+
+      }
+
+
+      try {
+
+        const resultado =
+          await supabaseClient
+            .from('usuarios')
+            .update({
+              status: 'APROVADO'
+            })
+            .eq(
+              'id',
+              usuario.id
+            );
+
+
+        if (resultado.error) {
+
+          throw resultado.error;
+
+        }
+
+
+        usuario.status =
+          'APROVADO';
+
+
+        mostrarToast(
+          'Usuário aprovado com sucesso.',
+          'success'
+        );
+
+
+        filtrarUsuarios();
+
+        carregarEstatisticas();
+
+
+      } catch (error) {
+
+        console.error(
+          'Erro ao aprovar usuário:',
+          error
+        );
+
+
+        mostrarToast(
+          'Não foi possível aprovar o usuário.',
+          'error'
+        );
+
+      }
+
+    }
+
+
+    /* =========================================================
+       SALVAR USUÁRIO
+    ========================================================= */
+
+    async function salvarUsuario() {
+
+      if (
+        !usuarioModalAtual
+      ) {
+
+        return;
+
+      }
+
+
+      const usuario =
+        usuarioModalAtual;
+
+
+      if (
+        !usuarioPodeEditar(
+          usuario
+        )
+      ) {
+
+        mostrarToast(
+          'Seu cargo não pode editar este usuário.',
+          'error'
+        );
+
+        return;
+
+      }
+
+
+      const novoStatus =
+        document.getElementById(
+          'modal-status'
+        ).value;
+
+
+      const novoRole =
+        document.getElementById(
+          'modal-role'
+        ).value;
+
+
+      if (
+        !CARGOS[novoRole]
+      ) {
+
+        mostrarToast(
+          'Cargo inválido.',
+          'error'
+        );
+
+        return;
+
+      }
+
+
+      if (
+        usuarioAtual.role !==
+        'FUNDADOR' &&
+        usuario.role ===
+        'FUNDADOR'
+      ) {
+
+        mostrarToast(
+          'A conta Fundador não pode ser alterada por este cargo.',
+          'error'
+        );
+
+        return;
+
+      }
+
+
+      const botao =
+        document.getElementById(
+          'modal-save-button'
+        );
+
+
+      const textoOriginal =
+        botao.innerHTML;
+
+
+      botao.disabled =
+        true;
+
+      botao.innerHTML =
+        '<i class="fa-solid fa-spinner fa-spin"></i> &nbsp;Salvando...';
+
+
+      try {
+
+        const resultado =
+          await supabaseClient
+            .from('usuarios')
+            .update({
+              status: novoStatus,
+              role: novoRole
+            })
+            .eq(
+              'id',
+              usuario.id
+            );
+
+
+        if (resultado.error) {
+
+          throw resultado.error;
+
+        }
+
+
+        usuario.status =
+          novoStatus;
+
+
+        usuario.role =
+          novoRole;
+
+
+        fecharModal();
+
+
+        mostrarToast(
+          'Alterações salvas com sucesso.',
+          'success'
+        );
+
+
+        filtrarUsuarios();
+
+        carregarEstatisticas();
+
+
+      } catch (error) {
+
+        console.error(
+          'Erro ao salvar usuário:',
+          error
+        );
+
+
+        mostrarToast(
+          'Não foi possível salvar as alterações.',
+          'error'
+        );
+
+
+      } finally {
+
+        botao.disabled =
+          false;
+
+        botao.innerHTML =
+          textoOriginal;
+
+      }
+
+    }
+
+
+    /* =========================================================
+       FECHAR MODAL
+    ========================================================= */
+
+    function fecharModal() {
+
+      document.getElementById(
+        'user-modal-overlay'
+      ).classList.remove(
+        'open'
+      );
+
+
+      usuarioModalAtual =
+        null;
+
+    }
+
+
+    function fecharModalAoClicarFora(
+      event
+    ) {
+
+      if (
+        event.target.id ===
+        'user-modal-overlay'
+      ) {
+
+        fecharModal();
+
+      }
+
+    }
+
+
+    /* =========================================================
+       ESCAPE FECHA MODAL
+    ========================================================= */
+
+    document.addEventListener(
+      'keydown',
+      function(event) {
+
+        if (
+          event.key ===
+          'Escape'
+        ) {
+
+          fecharModal();
+
+        }
+
+      }
+    );
+
+
+    /* =========================================================
+       ESCAPE HTML
+    ========================================================= */
+
+    function escapeHtml(
+      valor
+    ) {
+
+      return String(
+        valor ?? ''
+      )
+      .replace(
+        /&/g,
+        '&amp;'
+      )
+      .replace(
+        /</g,
+        '&lt;'
+      )
+      .replace(
+        />/g,
+        '&gt;'
+      )
+      .replace(
+        /"/g,
+        '&quot;'
+      )
+      .replace(
+        /'/g,
+        '&#039;'
+      );
+
+    }
+
+
+    /* =========================================================
+       TOAST
+    ========================================================= */
+
+    function mostrarToast(
+      mensagem,
+      tipo = 'info'
+    ) {
+
+      const container =
+        document.getElementById(
+          'toast-container'
+        );
+
+
+      const toast =
+        document.createElement(
+          'div'
+        );
+
+
+      const icones = {
+
+        success:
+          'fa-circle-check',
+
+        error:
+          'fa-circle-exclamation',
+
+        info:
+          'fa-circle-info'
+
+      };
+
+
+      toast.className =
+        'toast ' +
+        tipo;
+
+
+      toast.innerHTML = `
+
+        <i class="fa-solid ${icones[tipo] || icones.info}"></i>
+
+        <span>
+          ${escapeHtml(mensagem)}
+        </span>
+
+      `;
+
+
+      container.appendChild(
+        toast
+      );
+
+
+      setTimeout(
+        () => {
+
+          toast.style.opacity =
+            '0';
+
+          toast.style.transform =
+            'translateY(8px)';
+
+          toast.style.transition =
+            '.2s ease';
+
+
+          setTimeout(
+            () => {
+
+              toast.remove();
+
+            },
+            220
+          );
+
+        },
+        3200
       );
 
     }
@@ -2800,8 +5636,9 @@
         'true'
       ) {
 
-        alert(
-          'Seu cargo não possui permissão para acessar esta área.'
+        mostrarToast(
+          'Seu cargo não possui permissão para acessar esta área.',
+          'error'
         );
 
         return;
@@ -2815,9 +5652,11 @@
         )
         .forEach(
           item => {
+
             item.classList.remove(
               'active'
             );
+
           }
         );
 
@@ -2905,8 +5744,9 @@
           error
         );
 
-        alert(
-          'Não foi possível sair da conta. Tente novamente.'
+        mostrarToast(
+          'Não foi possível sair da conta. Tente novamente.',
+          'error'
         );
 
       }
