@@ -1469,6 +1469,7 @@
         <!-- SAIR -->
 
         <button
+          id="logout-button"
           onclick="fazerLogout()"
           class="logout-button"
           title="Sair"
@@ -1674,7 +1675,7 @@
 
               <img
                 class="news-image"
-                src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1100&q=80"
+                src="https://images.unsplash.com/photo-1550745165-9bc0b2527264?auto=format&fit=crop&w=1100&q=80"
                 alt="Capa da notícia"
               >
 
@@ -1695,8 +1696,10 @@
               <div class="flex gap-2">
 
                 <button
+                  id="like-button"
                   onclick="toggleLike(this)"
                   class="pixel-button"
+                  type="button"
                 >
 
                   <i class="fa-regular fa-heart"></i>
@@ -1709,6 +1712,7 @@
 
 
                 <button
+                  type="button"
                   class="flex items-center gap-2 px-3 py-2 rounded-md border-2 border-slate-200 bg-white text-slate-500 text-[10px] font-bold hover:border-sky-300 hover:text-sky-600 transition"
                 >
 
@@ -1723,6 +1727,7 @@
 
               <button
                 onclick="compartilharNoticia()"
+                type="button"
                 class="flex items-center gap-2 px-3 py-2 rounded-md border-2 border-slate-200 bg-white text-slate-500 text-[10px] font-bold hover:border-sky-300 hover:text-sky-600 transition"
               >
 
@@ -1928,11 +1933,12 @@
         <div class="pixel-card p-3">
 
           <form
-            onsubmit="event.preventDefault();"
+            onsubmit="pesquisarPortal(event)"
             class="search-box"
           >
 
             <input
+              id="portal-search"
               type="text"
               placeholder="Pesquisar notícias, tópicos..."
             >
@@ -1940,6 +1946,7 @@
             <button
               class="search-button"
               type="submit"
+              aria-label="Pesquisar"
             >
 
               <i class="fa-solid fa-magnifying-glass"></i>
@@ -2223,8 +2230,9 @@
 
 
           <form
+            id="vagas-formulario"
             class="vagas-form"
-            onsubmit="event.preventDefault();"
+            onsubmit="enviarCandidatura(event)"
           >
 
             <div class="form-group">
@@ -2348,6 +2356,7 @@
 
 
             <button
+              id="vaga-submit"
               type="submit"
               class="vaga-submit"
             >
@@ -2454,43 +2463,358 @@
 
 
   <!-- =======================================================
-       FUNÇÃO FUNDADOR
+       PIXELIZADOS - ACESSO / PERFIL / INTERAÇÕES
   ======================================================== -->
 
   <script>
 
-    function verificarAcessoFundador() {
+    /* =========================================================
+       LEITURA SEGURA DO USUÁRIO
+    ========================================================= */
 
-      const btnFundador =
-        document.getElementById('btn-fundador');
-
-      if (!btnFundador) return;
+    function obterUsuarioPixelizados() {
 
       try {
 
-        const usuario =
-          JSON.parse(
-            localStorage.getItem('pixelizados_user') || 'null'
-          );
+        const dados =
+          localStorage.getItem('pixelizados_user');
 
-        if (usuario && usuario.role === 'FUNDADOR') {
-
-          btnFundador.style.display = 'flex';
-
-        } else {
-
-          btnFundador.style.display = 'none';
-
+        if (!dados) {
+          return null;
         }
+
+        const usuario = JSON.parse(dados);
+
+        if (!usuario || typeof usuario !== 'object') {
+          return null;
+        }
+
+        return usuario;
 
       } catch (error) {
 
         console.error(
-          'Erro ao verificar usuário:',
+          'Erro ao ler pixelizados_user:',
           error
         );
 
-        btnFundador.style.display = 'none';
+        return null;
+
+      }
+
+    }
+
+
+    /* =========================================================
+       PROTEÇÃO DE ACESSO
+    ========================================================= */
+
+    function verificarAcessoPortal() {
+
+      const usuario =
+        obterUsuarioPixelizados();
+
+
+      /*
+       * O portal só deve ser acessível por usuários
+       * autenticados/aprovados.
+       *
+       * auth_user_id é utilizado pelo fluxo atual
+       * de autenticação do Pixelizados.
+       */
+
+      if (
+        !usuario ||
+        !usuario.auth_user_id
+      ) {
+
+        localStorage.removeItem(
+          'pixelizados_user'
+        );
+
+        window.location.replace(
+          'index.html'
+        );
+
+        return false;
+
+      }
+
+      return true;
+
+    }
+
+
+    /* =========================================================
+       DADOS DO PERFIL
+    ========================================================= */
+
+    function obterPrimeiroValor(objeto, chaves) {
+
+      for (const chave of chaves) {
+
+        if (
+          objeto &&
+          objeto[chave] !== undefined &&
+          objeto[chave] !== null &&
+          String(objeto[chave]).trim() !== ''
+        ) {
+
+          return objeto[chave];
+
+        }
+
+      }
+
+      return null;
+
+    }
+
+
+    function carregarPerfil() {
+
+      const usuario =
+        obterUsuarioPixelizados();
+
+      if (!usuario) {
+        return;
+      }
+
+
+      const nick =
+        obterPrimeiroValor(
+          usuario,
+          [
+            'habbo_nick',
+            'nick',
+            'username',
+            'nome',
+            'display_name'
+          ]
+        );
+
+
+      const pixels =
+        obterPrimeiroValor(
+          usuario,
+          [
+            'points',
+            'pixels',
+            'px',
+            'pontuacao'
+          ]
+        );
+
+
+      const avatar =
+        obterPrimeiroValor(
+          usuario,
+          [
+            'avatar_url',
+            'avatar',
+            'avatarUrl',
+            'foto',
+            'imagem'
+          ]
+        );
+
+
+      const elementoNick =
+        document.getElementById(
+          'user-nick'
+        );
+
+
+      const elementoPixels =
+        document.getElementById(
+          'user-pixels'
+        );
+
+
+      const elementoAvatar =
+        document.getElementById(
+          'user-avatar'
+        );
+
+
+      if (elementoNick && nick) {
+
+        elementoNick.textContent =
+          String(nick);
+
+      }
+
+
+      if (elementoPixels && pixels !== null) {
+
+        const numeroPixels =
+          Number(pixels);
+
+        if (Number.isFinite(numeroPixels)) {
+
+          elementoPixels.textContent =
+            `${numeroPixels.toLocaleString('pt-BR')} PX`;
+
+        } else {
+
+          elementoPixels.textContent =
+            `${String(pixels)} PX`;
+
+        }
+
+      }
+
+
+      if (elementoAvatar && avatar) {
+
+        elementoAvatar.src =
+          String(avatar);
+
+        elementoAvatar.onerror =
+          function() {
+
+            this.onerror = null;
+
+            this.src =
+              `https://api.dicebear.com/7.x/pixel-art/svg?seed=${encodeURIComponent(
+                nick || 'Pixelizado'
+              )}`;
+
+          };
+
+      }
+
+    }
+
+
+    /* =========================================================
+       AVATAR
+    ========================================================= */
+
+    function abrirModalAvatar() {
+
+      const usuario =
+        obterUsuarioPixelizados();
+
+      if (!usuario) {
+        return;
+      }
+
+
+      const avatarAtual =
+        obterPrimeiroValor(
+          usuario,
+          [
+            'avatar_url',
+            'avatar',
+            'avatarUrl'
+          ]
+        );
+
+
+      const novoAvatar =
+        window.prompt(
+          'Cole a URL da imagem do seu avatar:\n\nVocê também pode usar uma URL do DiceBear.',
+          avatarAtual || ''
+        );
+
+
+      if (
+        novoAvatar === null
+      ) {
+        return;
+      }
+
+
+      const url =
+        novoAvatar.trim();
+
+
+      if (!url) {
+
+        alert(
+          'Informe uma URL válida para o avatar.'
+        );
+
+        return;
+
+      }
+
+
+      const elementoAvatar =
+        document.getElementById(
+          'user-avatar'
+        );
+
+
+      if (elementoAvatar) {
+
+        elementoAvatar.src =
+          url;
+
+      }
+
+
+      /*
+       * Mantém o avatar localmente enquanto
+       * o sistema de perfil/backend não possuir
+       * um campo específico de avatar confirmado.
+       */
+
+      try {
+
+        usuario.avatar_url =
+          url;
+
+        localStorage.setItem(
+          'pixelizados_user',
+          JSON.stringify(usuario)
+        );
+
+      } catch (error) {
+
+        console.error(
+          'Não foi possível salvar o avatar:',
+          error
+        );
+
+      }
+
+    }
+
+
+    /* =========================================================
+       FUNDADOR
+    ========================================================= */
+
+    function verificarAcessoFundador() {
+
+      const btnFundador =
+        document.getElementById(
+          'btn-fundador'
+        );
+
+      if (!btnFundador) {
+        return;
+      }
+
+
+      const usuario =
+        obterUsuarioPixelizados();
+
+
+      if (
+        usuario &&
+        usuario.role === 'FUNDADOR'
+      ) {
+
+        btnFundador.style.display =
+          'flex';
+
+      } else {
+
+        btnFundador.style.display =
+          'none';
 
       }
 
@@ -2500,26 +2824,346 @@
     function abrirPainelFundador() {
 
       const usuario =
-        JSON.parse(
-          localStorage.getItem('pixelizados_user') || 'null'
+        obterUsuarioPixelizados();
+
+
+      if (
+        !usuario ||
+        usuario.role !== 'FUNDADOR'
+      ) {
+
+        alert(
+          'Acesso restrito ao Fundador.'
         );
-
-      if (!usuario || usuario.role !== 'FUNDADOR') {
-
-        alert('Acesso restrito ao Fundador.');
 
         return;
 
       }
 
-      window.location.href = 'fundador.html';
+
+      window.location.href =
+        'fundador.html';
 
     }
 
 
+    /* =========================================================
+       LIKE
+    ========================================================= */
+
+    function toggleLike(botao) {
+
+      if (!botao) {
+        return;
+      }
+
+
+      const icone =
+        botao.querySelector('i');
+
+
+      const contador =
+        botao.querySelector('.like-count');
+
+
+      if (!icone || !contador) {
+        return;
+      }
+
+
+      const curtido =
+        botao.dataset.liked === 'true';
+
+
+      let quantidade =
+        parseInt(
+          contador.textContent.replace(/\D/g, ''),
+          10
+        );
+
+
+      if (!Number.isFinite(quantidade)) {
+        quantidade = 0;
+      }
+
+
+      if (curtido) {
+
+        quantidade =
+          Math.max(
+            0,
+            quantidade - 1
+          );
+
+        botao.dataset.liked =
+          'false';
+
+        icone.classList.remove(
+          'fa-solid'
+        );
+
+        icone.classList.add(
+          'fa-regular'
+        );
+
+      } else {
+
+        quantidade += 1;
+
+        botao.dataset.liked =
+          'true';
+
+        icone.classList.remove(
+          'fa-regular'
+        );
+
+        icone.classList.add(
+          'fa-solid'
+        );
+
+      }
+
+
+      contador.textContent =
+        quantidade;
+
+    }
+
+
+    /* =========================================================
+       COMPARTILHAR NOTÍCIA
+    ========================================================= */
+
+    async function compartilharNoticia() {
+
+      const titulo =
+        'A Era dos Fã-Sites Oficiais: O Futuro da Comunidade Pixelizada';
+
+      const url =
+        window.location.href;
+
+
+      if (
+        navigator.share &&
+        typeof navigator.share === 'function'
+      ) {
+
+        try {
+
+          await navigator.share({
+            title: titulo,
+            text: 'Confira esta notícia no Pixelizados!',
+            url: url
+          });
+
+          return;
+
+        } catch (error) {
+
+          /*
+           * O usuário pode simplesmente ter cancelado
+           * a janela de compartilhamento.
+           */
+
+          if (
+            error &&
+            error.name === 'AbortError'
+          ) {
+
+            return;
+
+          }
+
+        }
+
+      }
+
+
+      try {
+
+        if (
+          navigator.clipboard &&
+          typeof navigator.clipboard.writeText === 'function'
+        ) {
+
+          await navigator.clipboard.writeText(
+            url
+          );
+
+          alert(
+            'Link da notícia copiado para a área de transferência!'
+          );
+
+          return;
+
+        }
+
+      } catch (error) {
+
+        console.error(
+          'Erro ao copiar link:',
+          error
+        );
+
+      }
+
+
+      window.prompt(
+        'Copie o link da notícia:',
+        url
+      );
+
+    }
+
+
+    /* =========================================================
+       PESQUISA
+    ========================================================= */
+
+    function pesquisarPortal(event) {
+
+      event.preventDefault();
+
+
+      const campo =
+        document.getElementById(
+          'portal-search'
+        );
+
+
+      if (!campo) {
+        return;
+      }
+
+
+      const termo =
+        campo.value.trim();
+
+
+      if (!termo) {
+
+        campo.focus();
+
+        return;
+
+      }
+
+
+      alert(
+        `A pesquisa por "${termo}" será conectada ao sistema de notícias em uma próxima etapa.`
+      );
+
+    }
+
+
+    /* =========================================================
+       FORMULÁRIO DE VAGAS
+    ========================================================= */
+
+    function enviarCandidatura(event) {
+
+      event.preventDefault();
+
+
+      const formulario =
+        document.getElementById(
+          'vagas-formulario'
+        );
+
+
+      const botao =
+        document.getElementById(
+          'vaga-submit'
+        );
+
+
+      if (!formulario) {
+        return;
+      }
+
+
+      if (
+        !formulario.checkValidity()
+      ) {
+
+        formulario.reportValidity();
+
+        return;
+
+      }
+
+
+      /*
+       * O formulário ainda não possui integração
+       * com uma tabela Supabase confirmada para
+       * candidaturas.
+       *
+       * Por enquanto impedimos o envio silencioso
+       * e avisamos o usuário.
+       */
+
+      alert(
+        'Candidatura preenchida com sucesso! O envio para o sistema de recrutamento será conectado em uma próxima etapa.'
+      );
+
+
+      if (botao) {
+
+        botao.innerHTML =
+          '<i class="fa-solid fa-check"></i> CANDIDATURA RECEBIDA';
+
+        botao.disabled =
+          true;
+
+      }
+
+
+      setTimeout(
+        function() {
+
+          formulario.reset();
+
+          if (botao) {
+
+            botao.innerHTML =
+              '<i class="fa-solid fa-paper-plane"></i> ENVIAR CANDIDATURA';
+
+            botao.disabled =
+              false;
+
+          }
+
+        },
+        2500
+      );
+
+    }
+
+
+    /* =========================================================
+       INICIALIZAÇÃO
+    ========================================================= */
+
     document.addEventListener(
       'DOMContentLoaded',
-      verificarAcessoFundador
+      function() {
+
+        /*
+         * Primeiro protegemos o portal.
+         * Se não houver sessão local válida,
+         * a função redireciona para index.html.
+         */
+
+        if (!verificarAcessoPortal()) {
+          return;
+        }
+
+
+        carregarPerfil();
+
+        verificarAcessoFundador();
+
+      }
     );
 
   </script>
@@ -2537,7 +3181,8 @@
       'https://znvytrvdwejjlivzsjzy.supabase.co';
 
     const SUPABASE_KEY =
-      'sb_publishable_J60PUy390KR4sRTGe9tjNg_wllyvUAj';
+      'sb_publishable_J60PuY390KR4sRTGe9tjNg_wllyvUAj';
+
 
     const supabaseClient =
       window.supabase.createClient(
@@ -2546,23 +3191,46 @@
       );
 
 
+    /* =========================================================
+       LOGOUT
+    ========================================================= */
+
     async function fazerLogout() {
 
+      /*
+       * IMPORTANTE:
+       * Antes havia:
+       *
+       * document.querySelector('.logout-button')
+       *
+       * Isso pegava o botão do Fundador,
+       * pois ele também usa essa classe.
+       *
+       * Agora usamos o ID específico do botão Sair.
+       */
+
       const botao =
-        document.querySelector('.logout-button');
+        document.getElementById(
+          'logout-button'
+        );
+
 
       try {
 
         if (botao) {
 
-          botao.disabled = true;
+          botao.disabled =
+            true;
 
-          botao.style.opacity = '0.7';
+          botao.style.opacity =
+            '0.7';
 
         }
 
 
-        const { error } =
+        const {
+          error
+        } =
           await supabaseClient.auth.signOut();
 
 
@@ -2578,8 +3246,10 @@
         );
 
 
-        window.location.href =
-          'index.html';
+        window.location.replace(
+          'index.html'
+        );
+
 
       } catch (error) {
 
@@ -2591,15 +3261,45 @@
 
         if (botao) {
 
-          botao.disabled = false;
+          botao.disabled =
+            false;
 
-          botao.style.opacity = '1';
+          botao.style.opacity =
+            '1';
+
+        }
+
+
+        /*
+         * Mesmo que a sessão do Supabase
+         * já não exista, removemos a sessão
+         * local para evitar que o usuário
+         * permaneça preso no portal.
+         */
+
+        try {
+
+          localStorage.removeItem(
+            'pixelizados_user'
+          );
+
+        } catch (storageError) {
+
+          console.error(
+            'Erro ao limpar sessão local:',
+            storageError
+          );
 
         }
 
 
         alert(
-          'Não foi possível sair da conta. Tente novamente.'
+          'A sessão foi encerrada. Você será redirecionado.'
+        );
+
+
+        window.location.replace(
+          'index.html'
         );
 
       }
