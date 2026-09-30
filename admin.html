@@ -3097,6 +3097,138 @@
 
     }
 
+  
+
+    /* =========================================================
+       BIBLIOTECA DE IMAGENS
+    ========================================================= */
+
+    .media-library-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .media-card {
+      overflow: hidden;
+      border: 1px solid #e7edf3;
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 5px 18px rgba(15, 23, 42, .05);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .media-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 26px rgba(15, 23, 42, .08);
+    }
+
+    .media-preview {
+      width: 100%;
+      height: 155px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #f4f7fa;
+    }
+
+    .media-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .media-preview-fallback {
+      color: #94a3b8;
+      font-size: 28px;
+    }
+
+    .media-card-body {
+      padding: 14px;
+    }
+
+    .media-card-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1e293b;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .media-card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 7px;
+      color: #64748b;
+      font-size: 11px;
+    }
+
+    .media-card-url {
+      margin-top: 9px;
+      font-size: 11px;
+      color: #94a3b8;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .media-card-actions {
+      display: flex;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .media-action {
+      flex: 1;
+      min-height: 34px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      background: #fff;
+      color: #64748b;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .media-action:hover {
+      border-color: #7dd3fc;
+      color: #0284c7;
+    }
+
+    .media-action.danger:hover {
+      border-color: #fecaca;
+      color: #dc2626;
+      background: #fff7f7;
+    }
+
+    .media-library-empty {
+      padding: 55px 20px;
+      text-align: center;
+      color: #94a3b8;
+    }
+
+    .media-library-empty i {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 34px;
+    }
+
+    @media (max-width: 700px) {
+      .media-library-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .media-preview {
+        height: 125px;
+      }
+    }
+
+
   </style>
 </head>
 
@@ -4688,6 +4820,72 @@
 
       </footer>
 
+
+      <!-- ===================================================
+           BIBLIOTECA DE IMAGENS
+      ==================================================== -->
+
+      <div id="imagens-view" class="module-view">
+
+        <div class="section-heading">
+          <div class="section-heading-left">
+            <div class="section-heading-icon">
+              <i class="fa-solid fa-images"></i>
+            </div>
+            <div>
+              <h2>Biblioteca de Imagens</h2>
+              <p>Organize as imagens usadas no universo Pixelizados através de URLs públicas.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="news-toolbar">
+          <div class="news-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input id="media-search" type="text" placeholder="Buscar por nome, categoria ou descrição..." oninput="filtrarMidias()" autocomplete="off">
+          </div>
+          <div class="news-filters">
+            <select id="media-category-filter" class="news-filter" onchange="filtrarMidias()">
+              <option value="TODOS">Todas as categorias</option>
+              <option value="NOTICIAS">Notícias</option>
+              <option value="EVENTOS">Eventos</option>
+              <option value="BANNERS">Banners</option>
+              <option value="LOGO">Logo</option>
+              <option value="OUTROS">Outros</option>
+            </select>
+            <button id="refresh-media-button" class="refresh-button" onclick="carregarMidias(true)" title="Atualizar biblioteca">
+              <i class="fa-solid fa-rotate"></i>
+            </button>
+            <button class="modal-button primary" onclick="abrirNovaMidia()">
+              <i class="fa-solid fa-plus"></i>
+              Adicionar imagem
+            </button>
+          </div>
+        </div>
+
+        <div class="users-summary">
+          <div id="media-summary-text" class="users-summary-text">Carregando imagens...</div>
+        </div>
+
+        <div class="users-table-card">
+          <div id="media-loading" class="users-loading">
+            <i class="fa-solid fa-spinner"></i>
+            <p>Carregando biblioteca...</p>
+          </div>
+          <div id="media-empty" class="media-library-empty" style="display:none;">
+            <i class="fa-regular fa-images"></i>
+            <strong>Nenhuma imagem encontrada</strong>
+            <p>Adicione uma imagem usando uma URL pública.</p>
+          </div>
+          <div id="media-grid" class="media-library-grid" style="display:none;"></div>
+        </div>
+
+        <footer class="admin-footer">
+          Pixelizados © 2026 · Biblioteca de Imagens
+        </footer>
+
+      </div>
+
     </main>
 
   </div>
@@ -5430,6 +5628,64 @@
 
 
   <!-- =======================================================
+       MODAL BIBLIOTECA DE IMAGENS
+  ======================================================== -->
+
+  <div id="media-modal-overlay" class="modal-overlay" onclick="fecharMidiaAoClicarFora(event)">
+    <div class="news-modal" role="dialog" aria-modal="true" aria-labelledby="media-modal-title">
+      <div class="modal-header">
+        <div class="modal-title-area">
+          <div class="modal-title-icon"><i class="fa-solid fa-image"></i></div>
+          <div>
+            <h3 id="media-modal-title" class="modal-title">Adicionar imagem</h3>
+            <p id="media-modal-subtitle" class="modal-subtitle">Cadastre uma imagem através de uma URL pública.</p>
+          </div>
+        </div>
+        <button class="modal-close" onclick="fecharMidiaModal()" title="Fechar"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-grid">
+          <div class="form-group full">
+            <label class="form-label">Nome da imagem</label>
+            <input id="media-nome" class="form-input" type="text" maxlength="150" placeholder="Ex.: Banner Festa Pixelizados">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Categoria</label>
+            <select id="media-categoria" class="form-select">
+              <option value="NOTICIAS">Notícias</option>
+              <option value="EVENTOS">Eventos</option>
+              <option value="BANNERS">Banners</option>
+              <option value="LOGO">Logo</option>
+              <option value="OUTROS">Outros</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Autor</label>
+            <input id="media-autor" class="form-input" type="text" maxlength="100" placeholder="Seu nick">
+          </div>
+          <div class="form-group full">
+            <label class="form-label">URL da imagem</label>
+            <input id="media-url" class="form-input" type="url" placeholder="https://..." oninput="atualizarPreviewMidia()">
+            <div class="form-hint">Use uma URL pública direta para a imagem.</div>
+          </div>
+          <div class="form-group full">
+            <img id="media-image-preview" class="news-image-preview" src="" alt="Prévia da imagem" onerror="this.classList.remove('visible')">
+          </div>
+          <div class="form-group full">
+            <label class="form-label">Descrição <span style="font-weight:400;color:#94a3b8;">(opcional)</span></label>
+            <textarea id="media-descricao" class="form-textarea" style="min-height:90px;" maxlength="300" placeholder="Para que esta imagem será usada?"></textarea>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="modal-button" onclick="fecharMidiaModal()">Cancelar</button>
+          <button id="media-save-button" class="modal-button primary" onclick="salvarMidia()"><i class="fa-solid fa-floppy-disk"></i> Salvar imagem</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =======================================================
        TOAST
   ======================================================== -->
 
@@ -5898,6 +6154,194 @@
     }
 
 
+
+    /* =========================================================
+       BIBLIOTECA DE IMAGENS
+    ========================================================= */
+
+    let midiasCache = [];
+    let midiaAtual = null;
+
+    async function mostrarImagens() {
+      document.querySelectorAll('.module-view').forEach(view => view.classList.remove('active'));
+      document.getElementById('imagens-view').classList.add('active');
+      document.getElementById('dashboard-footer').style.display = 'none';
+      document.getElementById('page-title').textContent = 'Biblioteca de Imagens';
+      document.getElementById('page-description').textContent = 'Organize as imagens usadas no universo Pixelizados.';
+      await carregarMidias(true);
+    }
+
+    async function carregarMidias(mostrarCarregamento = true) {
+      if (!usuarioTemPermissao('imagens')) return;
+      const loading = document.getElementById('media-loading');
+      const empty = document.getElementById('media-empty');
+      const grid = document.getElementById('media-grid');
+      const button = document.getElementById('refresh-media-button');
+      if (mostrarCarregamento) {
+        loading.style.display = 'block';
+        empty.style.display = 'none';
+        grid.style.display = 'none';
+      }
+      button?.classList.add('loading');
+      try {
+        const resultado = await supabaseClient.from('midias').select('*').order('created_at', { ascending: false });
+        if (resultado.error) throw resultado.error;
+        midiasCache = resultado.data || [];
+        filtrarMidias();
+      } catch (error) {
+        console.error('Erro ao carregar biblioteca:', error);
+        midiasCache = [];
+        loading.style.display = 'none';
+        grid.style.display = 'none';
+        empty.style.display = 'block';
+        empty.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i><strong>Não foi possível carregar a biblioteca.</strong><p>Verifique as permissões da tabela midias no Supabase.</p>';
+        mostrarToast('Não foi possível carregar a biblioteca de imagens.', 'error');
+      } finally {
+        button?.classList.remove('loading');
+      }
+    }
+
+    function filtrarMidias() {
+      const busca = (document.getElementById('media-search')?.value || '').trim().toLowerCase();
+      const categoria = document.getElementById('media-category-filter')?.value || 'TODOS';
+      const filtradas = midiasCache.filter(midia => {
+        const texto = [midia.nome, midia.categoria, midia.descricao, midia.autor, midia.url].join(' ').toLowerCase();
+        return (!busca || texto.includes(busca)) && (categoria === 'TODOS' || midia.categoria === categoria);
+      });
+      renderizarMidias(filtradas);
+    }
+
+    function renderizarMidias(midias) {
+      const loading = document.getElementById('media-loading');
+      const empty = document.getElementById('media-empty');
+      const grid = document.getElementById('media-grid');
+      const summary = document.getElementById('media-summary-text');
+      loading.style.display = 'none';
+      summary.innerHTML = '<strong>' + midias.length + '</strong> ' + (midias.length === 1 ? 'imagem encontrada' : 'imagens encontradas');
+      if (!midias.length) {
+        grid.innerHTML = '';
+        grid.style.display = 'none';
+        empty.style.display = 'block';
+        return;
+      }
+      empty.style.display = 'none';
+      grid.style.display = 'grid';
+      grid.innerHTML = midias.map(midia => {
+        const categoria = escapeHtml(midia.categoria || 'OUTROS');
+        const nome = escapeHtml(midia.nome || 'Sem nome');
+        const descricao = escapeHtml(midia.descricao || '');
+        const autor = escapeHtml(midia.autor || '—');
+        const url = escapeHtml(midia.url || '');
+        const id = escapeHtml(String(midia.id));
+        return `
+          <article class="media-card">
+            <div class="media-preview">
+              <img src="${url}" alt="${nome}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+              <div class="media-preview-fallback" style="display:none;"><i class="fa-regular fa-image"></i></div>
+            </div>
+            <div class="media-card-body">
+              <div class="media-card-name" title="${nome}">${nome}</div>
+              <div class="media-card-meta"><span class="pixel-tag">${categoria}</span><span>${autor}</span></div>
+              ${descricao ? '<div class="media-card-url" title="' + descricao + '">' + descricao + '</div>' : ''}
+              <div class="media-card-url" title="${url}">${url}</div>
+              <div class="media-card-actions">
+                <button class="media-action" onclick="copiarUrlMidia('${id}')" title="Copiar URL"><i class="fa-solid fa-link"></i> Copiar URL</button>
+                <button class="media-action danger" onclick="excluirMidia('${id}')" title="Excluir"><i class="fa-solid fa-trash"></i></button>
+              </div>
+            </div>
+          </article>`;
+      }).join('');
+    }
+
+    function abrirNovaMidia() {
+      if (!usuarioTemPermissao('imagens')) {
+        mostrarToast('Seu cargo não possui permissão para gerenciar imagens.', 'error');
+        return;
+      }
+      midiaAtual = null;
+      document.getElementById('media-modal-title').textContent = 'Adicionar imagem';
+      document.getElementById('media-modal-subtitle').textContent = 'Cadastre uma imagem através de uma URL pública.';
+      document.getElementById('media-nome').value = '';
+      document.getElementById('media-categoria').value = 'NOTICIAS';
+      document.getElementById('media-autor').value = usuarioAtual?.habbo_nick || 'Redação Pixel';
+      document.getElementById('media-url').value = '';
+      document.getElementById('media-descricao').value = '';
+      document.getElementById('media-image-preview').src = '';
+      document.getElementById('media-image-preview').classList.remove('visible');
+      document.getElementById('media-modal-overlay').classList.add('open');
+    }
+
+    function atualizarPreviewMidia() {
+      const input = document.getElementById('media-url');
+      const preview = document.getElementById('media-image-preview');
+      const url = input.value.trim();
+      if (!url) { preview.src = ''; preview.classList.remove('visible'); return; }
+      preview.src = url;
+      preview.classList.add('visible');
+    }
+
+    async function salvarMidia() {
+      if (!usuarioTemPermissao('imagens')) return;
+      const nome = document.getElementById('media-nome').value.trim();
+      const categoria = document.getElementById('media-categoria').value;
+      const autor = document.getElementById('media-autor').value.trim() || usuarioAtual?.habbo_nick || 'Redação Pixel';
+      const url = document.getElementById('media-url').value.trim();
+      const descricao = document.getElementById('media-descricao').value.trim();
+      if (!nome) { mostrarToast('Informe o nome da imagem.', 'error'); return; }
+      if (!url) { mostrarToast('Informe a URL da imagem.', 'error'); return; }
+      try { new URL(url); } catch { mostrarToast('Informe uma URL válida.', 'error'); return; }
+      const button = document.getElementById('media-save-button');
+      button.disabled = true;
+      try {
+        const resultado = await supabaseClient.from('midias').insert({ nome, categoria, url, descricao: descricao || null, autor });
+        if (resultado.error) throw resultado.error;
+        mostrarToast('Imagem adicionada à biblioteca.', 'success');
+        fecharMidiaModal();
+        await carregarMidias(false);
+      } catch (error) {
+        console.error('Erro ao salvar mídia:', error);
+        mostrarToast('Não foi possível adicionar a imagem.', 'error');
+      } finally {
+        button.disabled = false;
+      }
+    }
+
+    async function copiarUrlMidia(id) {
+      const midia = midiasCache.find(item => String(item.id) === String(id));
+      if (!midia) return;
+      try {
+        await navigator.clipboard.writeText(midia.url);
+        mostrarToast('URL copiada para a área de transferência.', 'success');
+      } catch {
+        window.prompt('Copie a URL da imagem:', midia.url);
+      }
+    }
+
+    async function excluirMidia(id) {
+      if (!usuarioTemPermissao('imagens')) return;
+      const midia = midiasCache.find(item => String(item.id) === String(id));
+      if (!midia) return;
+      if (!window.confirm('Deseja excluir esta imagem da biblioteca?\n\nA imagem hospedada externamente não será apagada. Apenas o cadastro será removido do Pixelizados.')) return;
+      try {
+        const resultado = await supabaseClient.from('midias').delete().eq('id', midia.id);
+        if (resultado.error) throw resultado.error;
+        mostrarToast('Imagem removida da biblioteca.', 'success');
+        await carregarMidias(false);
+      } catch (error) {
+        console.error('Erro ao excluir mídia:', error);
+        mostrarToast('Não foi possível excluir a imagem.', 'error');
+      }
+    }
+
+    function fecharMidiaModal() {
+      document.getElementById('media-modal-overlay')?.classList.remove('open');
+      midiaAtual = null;
+    }
+
+    function fecharMidiaAoClicarFora(event) {
+      if (event.target === event.currentTarget) fecharMidiaModal();
+    }
+
     /* =========================================================
        ABRIR MÓDULO
     ========================================================= */
@@ -5962,6 +6406,17 @@
       ) {
 
         mostrarEventos();
+
+        return;
+
+      }
+
+
+      if (
+        modulo === 'imagens'
+      ) {
+
+        mostrarImagens();
 
         return;
 
