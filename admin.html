@@ -6505,10 +6505,12 @@
           </div>
 
           <div class="form-group full">
-            <label class="form-label">Avatar</label>
+            <label class="form-label">Foto do perfil</label>
             <div style="display:flex;align-items:center;gap:12px;">
-              <img id="equipe-avatar-preview" src="" alt="Avatar" style="display:none;width:42px;height:42px;border-radius:9px;object-fit:cover;border:1px solid #dfe8ee;flex-shrink:0;">
-              <input id="equipe-avatar" class="form-input" type="text" readonly placeholder="URL do avatar do cadastro" style="flex:1;">
+              <img id="equipe-avatar-preview" src="" alt="Foto do perfil" style="display:none;width:52px;height:52px;border-radius:12px;object-fit:cover;border:1px solid #dfe8ee;flex-shrink:0;">
+              <div style="font-size:9px;color:#93a2ad;line-height:1.5;">
+                A foto é obtida automaticamente do perfil do usuário. Para alterá-la, o usuário deve atualizar a própria foto no perfil.
+              </div>
             </div>
           </div>
 
@@ -7874,9 +7876,7 @@
       document.getElementById(
         'profile-avatar'
       ).src =
-        'https://api.dicebear.com/7.x/pixel-art/svg?seed='
-        + encodeURIComponent(nome)
-        + '&backgroundColor=38b6ff';
+        obterAvatarUsuario(usuarioAtual);
 
 
       const roleIcon =
@@ -9231,6 +9231,19 @@
     /* =========================================================
        EQUIPE
     ========================================================= */
+
+    function obterAvatarUsuario(usuario) {
+      if (usuario?.avatar_url) {
+        return usuario.avatar_url;
+      }
+
+      const nick = usuario?.habbo_nick || 'Pixelizado';
+
+      return 'https://api.dicebear.com/7.x/pixel-art/svg?seed='
+        + encodeURIComponent(nick)
+        + '&backgroundColor=38b6ff';
+    }
+
     let equipeCache = [];
     let equipeUsuariosCache = [];
     let equipeModalAtual = null;
@@ -9298,7 +9311,6 @@
       document.getElementById('equipe-nick').value = usuario?.habbo_nick || '';
       document.getElementById('equipe-discord').value = usuario?.discord_tag || '';
       document.getElementById('equipe-cargo').value = usuario ? nomeCargoEquipe(usuario.role) : '';
-      document.getElementById('equipe-avatar').value = usuario?.avatar_url || '';
 
       const roleIcon = document.getElementById('equipe-cargo-icon');
       const roleImage = CARGOS[usuario?.role]?.icone || '';
@@ -9309,8 +9321,8 @@
 
       const preview = document.getElementById('equipe-avatar-preview');
       if (preview) {
-        if (usuario?.avatar_url) {
-          preview.src = usuario.avatar_url;
+        if (usuario) {
+          preview.src = obterAvatarUsuario(usuario);
           preview.style.display = 'block';
         } else {
           preview.removeAttribute('src');
@@ -9360,7 +9372,7 @@
             nick_usuario: usuario?.habbo_nick || item.nick_usuario || '',
             discord_tag: usuario?.discord_tag || item.discord_tag || '',
             cargo: usuario?.role || item.cargo || '',
-            avatar_url: usuario?.avatar_url || item.avatar_url || ''
+            avatar_url: obterAvatarUsuario(usuario || item)
           };
         });
 
@@ -9475,7 +9487,6 @@
         nick_usuario: usuario.habbo_nick || null,
         cargo: usuario.role || null,
         discord_tag: usuario.discord_tag || null,
-        avatar_url: usuario.avatar_url || null,
         data_entrada: document.getElementById('equipe-data').value || null,
         status: document.getElementById('equipe-status').value,
         ordem: Math.max(0, parseInt(document.getElementById('equipe-ordem').value || '0', 10) || 0),
@@ -9767,11 +9778,7 @@
         const isFounder = role === 'FUNDADOR';
         const podeGerenciar = usuarioAtual?.role === 'FUNDADOR' && !isCurrent && !isFounder;
 
-        const avatar = usuario.avatar_url || (
-          'https://api.dicebear.com/7.x/pixel-art/svg?seed=' +
-          encodeURIComponent(usuario.habbo_nick || 'Pixelizado') +
-          '&backgroundColor=38b6ff'
-        );
+        const avatar = obterAvatarUsuario(usuario);
 
         const statusClass = status === 'APROVADO' ? 'aprovado' : (status === 'PENDENTE' ? 'pendente' : 'outro');
 
@@ -10611,9 +10618,7 @@
 
 
           const avatar =
-            'https://api.dicebear.com/7.x/pixel-art/svg?seed='
-            + encodeURIComponent(nick)
-            + '&backgroundColor=38b6ff';
+            obterAvatarUsuario(usuario);
 
 
           let statusClass =
@@ -10898,9 +10903,7 @@
       document.getElementById(
         'modal-user-avatar'
       ).src =
-        'https://api.dicebear.com/7.x/pixel-art/svg?seed='
-        + encodeURIComponent(nick)
-        + '&backgroundColor=38b6ff';
+        obterAvatarUsuario(usuario);
 
 
       document.getElementById(
