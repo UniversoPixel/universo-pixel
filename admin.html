@@ -6503,7 +6503,93 @@
       </div>
 
 
-    </main>
+    
+
+      <!-- =====================================================
+           AUTODJ
+      ====================================================== -->
+      <div id="autodj-view" class="module-view">
+
+        <div class="section-heading">
+          <div class="section-heading-left">
+            <div class="section-heading-icon"><i class="fa-solid fa-record-vinyl"></i></div>
+            <div>
+              <h2>AutoDJ</h2>
+              <p>Gerencie as músicas que poderão ser reproduzidas automaticamente no Pixelizados.</p>
+            </div>
+          </div>
+          <div class="autodj-toolbar">
+            <button class="refresh-button" onclick="carregarAutodj(true)" title="Atualizar">
+              <i class="fa-solid fa-rotate"></i>
+            </button>
+            <button class="autodj-add-button" onclick="prepararNovaMusicaAutodj()">
+              <i class="fa-solid fa-plus"></i> Adicionar música
+            </button>
+          </div>
+        </div>
+
+        <div class="autodj-summary">
+          <div class="autodj-summary-card"><div class="autodj-summary-label">Músicas cadastradas</div><div class="autodj-summary-value" id="autodj-total">—</div></div>
+          <div class="autodj-summary-card"><div class="autodj-summary-label">Ativas</div><div class="autodj-summary-value" id="autodj-active">—</div></div>
+          <div class="autodj-summary-card"><div class="autodj-summary-label">Inativas</div><div class="autodj-summary-value" id="autodj-inactive">—</div></div>
+        </div>
+
+        <div class="autodj-panel" id="autodj-form-panel" style="display:none;">
+          <div class="autodj-panel-header">
+            <div>
+              <div class="autodj-panel-title" id="autodj-form-title">Adicionar música</div>
+              <div class="autodj-panel-subtitle">Cadastre os dados da faixa. O áudio será carregado pelo link informado.</div>
+            </div>
+          </div>
+          <div class="autodj-form">
+            <div class="autodj-form-group">
+              <label class="autodj-form-label">Título *</label>
+              <input id="autodj-titulo" class="autodj-form-input" type="text" placeholder="Nome da música">
+            </div>
+            <div class="autodj-form-group">
+              <label class="autodj-form-label">Artista</label>
+              <input id="autodj-artista" class="autodj-form-input" type="text" placeholder="Nome do artista">
+            </div>
+            <div class="autodj-form-group full">
+              <label class="autodj-form-label">URL do áudio *</label>
+              <input id="autodj-audio-url" class="autodj-form-input" type="url" placeholder="https://.../musica.mp3">
+            </div>
+            <div class="autodj-form-group full">
+              <label class="autodj-form-label">URL da capa</label>
+              <input id="autodj-capa-url" class="autodj-form-input" type="url" placeholder="https://.../capa.jpg">
+            </div>
+            <div class="autodj-form-actions">
+              <button class="autodj-secondary-button" onclick="cancelarEdicaoAutodj()">Cancelar</button>
+              <button class="autodj-primary-button" id="autodj-save-button" onclick="salvarMusicaAutodj()">Salvar música</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="autodj-panel">
+          <div class="autodj-panel-header">
+            <div>
+              <div class="autodj-panel-title">Playlist</div>
+              <div class="autodj-panel-subtitle">As músicas ativas ficarão disponíveis para o player público do AutoDJ.</div>
+            </div>
+          </div>
+          <div id="autodj-loading" class="autodj-loading"><i class="fa-solid fa-spinner fa-spin"></i><p>Carregando playlist...</p></div>
+          <div id="autodj-empty" class="autodj-empty" style="display:none;">
+            <div class="autodj-empty-icon"><i class="fa-solid fa-record-vinyl"></i></div>
+            <h3>Nenhuma música cadastrada</h3>
+            <p>Adicione a primeira música para começar a montar a playlist do AutoDJ.</p>
+          </div>
+          <div id="autodj-table-wrap" class="autodj-table-wrap" style="display:none;">
+            <table class="autodj-table">
+              <thead><tr><th>Música</th><th>Áudio</th><th>Status</th><th>Cadastrada em</th><th></th></tr></thead>
+              <tbody id="autodj-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <footer class="admin-footer">Pixelizados © 2026 · AutoDJ</footer>
+      </div>
+
+</main>
 
   </div>
 
@@ -10149,9 +10235,9 @@
           '<td>' + status + '</td>' +
           '<td>' + formatarDataAutodj(item.created_at) + '</td>' +
           '<td><div class="autodj-actions">' +
-            '<button class="autodj-action-button" onclick="editarMusicaAutodj('' + item.id + '')" title="Editar"><i class="fa-solid fa-pen"></i></button>' +
-            '<button class="autodj-action-button" onclick="alternarMusicaAutodj('' + item.id + '')" title="Ativar/desativar"><i class="fa-solid ' + (item.ativa ? 'fa-toggle-on' : 'fa-toggle-off') + '"></i></button>' +
-            '<button class="autodj-action-button danger" onclick="excluirMusicaAutodj('' + item.id + '')" title="Excluir"><i class="fa-solid fa-trash"></i></button>' +
+            '<button class="autodj-action-button" onclick="editarMusicaAutodj(&#39;' + item.id + '&#39;)" title="Editar"><i class="fa-solid fa-pen"></i></button>' +
+            '<button class="autodj-action-button" onclick="alternarMusicaAutodj(&#39;' + item.id + '&#39;)" title="Ativar/desativar"><i class="fa-solid ' + (item.ativa ? 'fa-toggle-on' : 'fa-toggle-off') + '"></i></button>' +
+            '<button class="autodj-action-button danger" onclick="excluirMusicaAutodj(&#39;' + item.id + '&#39;)" title="Excluir"><i class="fa-solid fa-trash"></i></button>' +
           '</div></td>' +
         '</tr>';
       }).join('');
@@ -14390,89 +14476,4 @@
   </script>
 
 </body>
-</html
-
-      <!-- =====================================================
-           AUTODJ
-      ====================================================== -->
-      <div id="autodj-view" class="module-view">
-
-        <div class="section-heading">
-          <div class="section-heading-left">
-            <div class="section-heading-icon"><i class="fa-solid fa-record-vinyl"></i></div>
-            <div>
-              <h2>AutoDJ</h2>
-              <p>Gerencie as músicas que poderão ser reproduzidas automaticamente no Pixelizados.</p>
-            </div>
-          </div>
-          <div class="autodj-toolbar">
-            <button class="refresh-button" onclick="carregarAutodj(true)" title="Atualizar">
-              <i class="fa-solid fa-rotate"></i>
-            </button>
-            <button class="autodj-add-button" onclick="prepararNovaMusicaAutodj()">
-              <i class="fa-solid fa-plus"></i> Adicionar música
-            </button>
-          </div>
-        </div>
-
-        <div class="autodj-summary">
-          <div class="autodj-summary-card"><div class="autodj-summary-label">Músicas cadastradas</div><div class="autodj-summary-value" id="autodj-total">—</div></div>
-          <div class="autodj-summary-card"><div class="autodj-summary-label">Ativas</div><div class="autodj-summary-value" id="autodj-active">—</div></div>
-          <div class="autodj-summary-card"><div class="autodj-summary-label">Inativas</div><div class="autodj-summary-value" id="autodj-inactive">—</div></div>
-        </div>
-
-        <div class="autodj-panel" id="autodj-form-panel" style="display:none;">
-          <div class="autodj-panel-header">
-            <div>
-              <div class="autodj-panel-title" id="autodj-form-title">Adicionar música</div>
-              <div class="autodj-panel-subtitle">Cadastre os dados da faixa. O áudio será carregado pelo link informado.</div>
-            </div>
-          </div>
-          <div class="autodj-form">
-            <div class="autodj-form-group">
-              <label class="autodj-form-label">Título *</label>
-              <input id="autodj-titulo" class="autodj-form-input" type="text" placeholder="Nome da música">
-            </div>
-            <div class="autodj-form-group">
-              <label class="autodj-form-label">Artista</label>
-              <input id="autodj-artista" class="autodj-form-input" type="text" placeholder="Nome do artista">
-            </div>
-            <div class="autodj-form-group full">
-              <label class="autodj-form-label">URL do áudio *</label>
-              <input id="autodj-audio-url" class="autodj-form-input" type="url" placeholder="https://.../musica.mp3">
-            </div>
-            <div class="autodj-form-group full">
-              <label class="autodj-form-label">URL da capa</label>
-              <input id="autodj-capa-url" class="autodj-form-input" type="url" placeholder="https://.../capa.jpg">
-            </div>
-            <div class="autodj-form-actions">
-              <button class="autodj-secondary-button" onclick="cancelarEdicaoAutodj()">Cancelar</button>
-              <button class="autodj-primary-button" id="autodj-save-button" onclick="salvarMusicaAutodj()">Salvar música</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="autodj-panel">
-          <div class="autodj-panel-header">
-            <div>
-              <div class="autodj-panel-title">Playlist</div>
-              <div class="autodj-panel-subtitle">As músicas ativas ficarão disponíveis para o player público do AutoDJ.</div>
-            </div>
-          </div>
-          <div id="autodj-loading" class="autodj-loading"><i class="fa-solid fa-spinner fa-spin"></i><p>Carregando playlist...</p></div>
-          <div id="autodj-empty" class="autodj-empty" style="display:none;">
-            <div class="autodj-empty-icon"><i class="fa-solid fa-record-vinyl"></i></div>
-            <h3>Nenhuma música cadastrada</h3>
-            <p>Adicione a primeira música para começar a montar a playlist do AutoDJ.</p>
-          </div>
-          <div id="autodj-table-wrap" class="autodj-table-wrap" style="display:none;">
-            <table class="autodj-table">
-              <thead><tr><th>Música</th><th>Áudio</th><th>Status</th><th>Cadastrada em</th><th></th></tr></thead>
-              <tbody id="autodj-table-body"></tbody>
-            </table>
-          </div>
-        </div>
-
-        <footer class="admin-footer">Pixelizados © 2026 · AutoDJ</footer>
-      </div>
->
+</html>
