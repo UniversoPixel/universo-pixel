@@ -4220,6 +4220,7 @@
     .team-empty-icon { width:52px; height:52px; border-radius:16px; background:#f1f6f9; margin:0 auto 12px; display:flex; align-items:center; justify-content:center; font-size:20px; color:#8ca0ad; }
     .team-empty h3 { margin:0; font:900 14px 'Manrope',sans-serif; color:#455762; }
     .team-empty p { margin:7px 0 0; font:700 10px 'Manrope',sans-serif; color:#95a2aa; }
+    .team-order-input { width:65px; padding:7px 8px; border:1px solid #dce5ea; border-radius:8px; font:800 10px 'Manrope',sans-serif; }
     @media (max-width:850px) {
       .team-search { min-width:100%; }
       .team-filter, .team-add-button { width:100%; }
@@ -4237,6 +4238,61 @@
     #equipe-nick[readonly],
     #equipe-discord[readonly],
     #equipe-cargo[readonly],
+    #equipe-avatar[readonly] {
+      background: #f7fafc;
+      color: #5f7180;
+      cursor: default;
+    }
+
+
+    /* =========================================================
+       AUTODJ
+    ========================================================= */
+    .autodj-toolbar { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+    .autodj-add-button { border:0; background:#55b9f5; color:#fff; border-radius:9px; padding:10px 13px; font:900 9px 'Manrope',sans-serif; cursor:pointer; box-shadow:0 3px 0 #2788ca; }
+    .autodj-add-button:hover { background:#46aceb; }
+    .autodj-summary { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-bottom:14px; }
+    .autodj-summary-card { background:#fff; border:2px solid var(--border); border-radius:11px; padding:14px; box-shadow:var(--shadow); }
+    .autodj-summary-label { font:900 8px 'Manrope',sans-serif; color:#94a4b1; text-transform:uppercase; letter-spacing:.08em; }
+    .autodj-summary-value { margin-top:4px; font:900 20px 'Plus Jakarta Sans',sans-serif; color:#243447; }
+    .autodj-panel { background:#fff; border:2px solid var(--border); border-radius:11px; box-shadow:var(--shadow); overflow:hidden; margin-bottom:16px; }
+    .autodj-panel-header { padding:15px 16px; border-bottom:1px solid #e8eff3; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+    .autodj-panel-title { font:900 11px 'Plus Jakarta Sans',sans-serif; color:#243447; }
+    .autodj-panel-subtitle { margin-top:3px; font:700 8px 'Manrope',sans-serif; color:#96a5af; }
+    .autodj-form { padding:16px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+    .autodj-form-group { display:flex; flex-direction:column; gap:6px; }
+    .autodj-form-group.full { grid-column:1/-1; }
+    .autodj-form-label { font:900 8px 'Manrope',sans-serif; color:#70828e; text-transform:uppercase; letter-spacing:.06em; }
+    .autodj-form-input { width:100%; border:1px solid #d9e5eb; background:#fbfdfe; border-radius:8px; padding:10px 11px; outline:none; font:700 10px 'Manrope',sans-serif; color:#344955; }
+    .autodj-form-input:focus { border-color:#7cc9f4; box-shadow:0 0 0 3px rgba(85,185,245,.10); }
+    .autodj-form-actions { grid-column:1/-1; display:flex; justify-content:flex-end; gap:8px; padding-top:3px; }
+    .autodj-secondary-button, .autodj-primary-button { border-radius:8px; padding:9px 12px; font:900 9px 'Manrope',sans-serif; cursor:pointer; }
+    .autodj-secondary-button { border:1px solid #dce6eb; background:#fff; color:#637783; }
+    .autodj-primary-button { border:0; background:#55b9f5; color:#fff; box-shadow:0 2px 0 #2788ca; }
+    .autodj-primary-button:disabled { opacity:.6; cursor:not-allowed; }
+    .autodj-table-wrap { overflow-x:auto; }
+    .autodj-table { width:100%; border-collapse:collapse; min-width:780px; }
+    .autodj-table th { padding:12px 14px; background:#f7fafb; border-bottom:1px solid #e3eaee; text-align:left; font:900 8px 'Manrope',sans-serif; text-transform:uppercase; letter-spacing:.06em; color:#8796a0; }
+    .autodj-table td { padding:12px 14px; border-bottom:1px solid #edf1f3; font:700 9px 'Manrope',sans-serif; color:#4b5d68; vertical-align:middle; }
+    .autodj-table tr:last-child td { border-bottom:0; }
+    .autodj-song-cell { display:flex; align-items:center; gap:9px; min-width:220px; }
+    .autodj-cover { width:38px; height:38px; border-radius:9px; object-fit:cover; background:#eaf3f8; border:1px solid #dce7ec; flex:0 0 auto; }
+    .autodj-cover-fallback { width:38px; height:38px; border-radius:9px; background:#eaf3f8; color:#6e8797; display:flex; align-items:center; justify-content:center; flex:0 0 auto; }
+    .autodj-song-title { font-weight:900; color:#2d414d; }
+    .autodj-song-artist { margin-top:2px; color:#9aa8b0; font-size:8px; }
+    .autodj-status { display:inline-flex; align-items:center; gap:5px; border-radius:999px; padding:5px 8px; font:900 8px 'Manrope',sans-serif; }
+    .autodj-status.active { background:#eaf7ef; color:#3e8a5d; }
+    .autodj-status.inactive { background:#f1f3f4; color:#89959b; }
+    .autodj-action-button { border:1px solid #dfe7eb; background:#fff; color:#61737e; border-radius:8px; width:31px; height:31px; cursor:pointer; }
+    .autodj-action-button:hover { background:#f6fafc; color:#263d4b; }
+    .autodj-action-button.danger:hover { color:#b84b4b; background:#fff5f5; }
+    .autodj-actions { display:flex; justify-content:flex-end; gap:5px; }
+    .autodj-empty, .autodj-loading { padding:42px 20px; text-align:center; color:#8b9ca7; }
+    .autodj-empty-icon { width:52px; height:52px; border-radius:16px; background:#f1f6f9; margin:0 auto 12px; display:flex; align-items:center; justify-content:center; font-size:20px; color:#8ca0ad; }
+    .autodj-empty h3 { margin:0; font:900 14px 'Manrope',sans-serif; color:#455762; }
+    .autodj-empty p { margin:7px 0 0; font:700 10px 'Manrope',sans-serif; color:#95a2aa; }
+    @media (max-width:850px) { .autodj-summary { grid-template-columns:1fr; } .autodj-form { grid-template-columns:1fr; } .autodj-form-group.full { grid-column:auto; } .autodj-form-actions { grid-column:auto; } }
+
 </style>
 </head>
 
@@ -6433,6 +6489,7 @@
                   <th>Cargo</th>
                   <th>Status</th>
                   <th>Entrada</th>
+                  <th>Ordem</th>
                   <th>Visibilidade</th>
                   <th></th>
                 </tr>
@@ -6499,10 +6556,10 @@
 
           <div class="form-group full">
             <label class="form-label">Foto do perfil</label>
-            <div style="display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid #dfe8ee;border-radius:10px;background:#f7fafc;">
-              <img id="equipe-avatar-preview" src="" alt="Foto do perfil" style="display:none;width:46px;height:46px;border-radius:10px;object-fit:cover;border:1px solid #dfe8ee;flex-shrink:0;">
-              <div style="font:700 10px 'Manrope',sans-serif;color:#7f909b;line-height:1.5;">
-                A foto é vinculada ao perfil do usuário e será atualizada automaticamente quando ele alterar seu avatar.
+            <div style="display:flex;align-items:center;gap:12px;">
+              <img id="equipe-avatar-preview" src="" alt="Foto do perfil" style="display:none;width:52px;height:52px;border-radius:12px;object-fit:cover;border:1px solid #dfe8ee;flex-shrink:0;">
+              <div style="font-size:9px;color:#93a2ad;line-height:1.5;">
+                A foto é obtida automaticamente do perfil do usuário. Para alterá-la, o usuário deve atualizar a própria foto no perfil.
               </div>
             </div>
           </div>
@@ -6518,6 +6575,11 @@
               <option value="ATIVO">Ativo</option>
               <option value="AFASTADO">Afastado</option>
             </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Ordem de exibição</label>
+            <input id="equipe-ordem" class="form-input" type="number" min="0" step="1" value="0">
           </div>
 
           <div class="form-group full">
@@ -7861,16 +7923,10 @@
       ).textContent = nome;
 
 
-      const profileAvatar =
-        document.getElementById('profile-avatar');
-
-      if (profileAvatar) {
-        profileAvatar.src =
-          usuarioAtual.avatar_url ||
-          ('https://api.dicebear.com/7.x/pixel-art/svg?seed='
-            + encodeURIComponent(nome)
-            + '&backgroundColor=38b6ff');
-      }
+      document.getElementById(
+        'profile-avatar'
+      ).src =
+        obterAvatarUsuario(usuarioAtual);
 
 
       const roleIcon =
@@ -9225,6 +9281,19 @@
     /* =========================================================
        EQUIPE
     ========================================================= */
+
+    function obterAvatarUsuario(usuario) {
+      if (usuario?.avatar_url) {
+        return usuario.avatar_url;
+      }
+
+      const nick = usuario?.habbo_nick || 'Pixelizado';
+
+      return 'https://api.dicebear.com/7.x/pixel-art/svg?seed='
+        + encodeURIComponent(nick)
+        + '&backgroundColor=38b6ff';
+    }
+
     let equipeCache = [];
     let equipeUsuariosCache = [];
     let equipeModalAtual = null;
@@ -9302,8 +9371,8 @@
 
       const preview = document.getElementById('equipe-avatar-preview');
       if (preview) {
-        if (usuario?.avatar_url) {
-          preview.src = usuario.avatar_url;
+        if (usuario) {
+          preview.src = obterAvatarUsuario(usuario);
           preview.style.display = 'block';
         } else {
           preview.removeAttribute('src');
@@ -9322,22 +9391,8 @@
       await carregarEquipe(true);
     }
 
-    const EQUIPE_CARGO_ORDEM = {
-      FUNDADOR: 1,
-      ALTA_CUPULA: 2,
-      CURADORIA: 3,
-      VOZ_OFICIAL: 4,
-      APOIADOR: 5,
-      ENTUSIASTA: 6
-    };
-
-    function obterOrdemCargoEquipe(cargo) {
-      return EQUIPE_CARGO_ORDEM[String(cargo || '').toUpperCase()] || 99;
-    }
-
     async function carregarEquipe(mostrarCarregamento = true) {
       if (!usuarioTemPermissao('equipe')) return;
-
       const loading = document.getElementById('team-loading');
       const empty = document.getElementById('team-empty');
       const wrapper = document.getElementById('team-table-wrapper');
@@ -9348,27 +9403,26 @@
         empty.style.display = 'none';
         wrapper.style.display = 'none';
       }
-
       button?.classList.add('loading');
 
       try {
         const resultado = await supabaseClient
           .from('equipe')
           .select(`*, usuarios:usuario_id(id, habbo_nick, discord_tag, role, avatar_url)`)
+          .order('ordem', { ascending: true })
           .order('created_at', { ascending: true });
 
         if (resultado.error) throw resultado.error;
 
         equipeCache = (resultado.data || []).map(item => {
           const usuario = item.usuarios || null;
-
           return {
             ...item,
             _usuario: usuario,
             nick_usuario: usuario?.habbo_nick || item.nick_usuario || '',
             discord_tag: usuario?.discord_tag || item.discord_tag || '',
             cargo: usuario?.role || item.cargo || '',
-            avatar_url: usuario?.avatar_url || item.avatar_url || ''
+            avatar_url: obterAvatarUsuario(usuario || item)
           };
         });
 
@@ -9380,7 +9434,7 @@
         loading.style.display = 'none';
         wrapper.style.display = 'none';
         empty.style.display = 'block';
-        empty.innerHTML = '<div class="team-empty-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><h3>Não foi possível carregar a equipe</h3><p>Verifique as permissões e a relação usuario_id da tabela equipe no Supabase.</p>';
+        empty.innerHTML = '<div class="team-empty-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><h3>Não foi possível carregar a equipe</h3><p>Verifique as permissões e a relação usuario_id da tabela equipe.</p>';
         mostrarToast('Não foi possível carregar a equipe.', 'error');
       } finally {
         button?.classList.remove('loading');
@@ -9391,42 +9445,12 @@
       const busca = (document.getElementById('team-search')?.value || '').trim().toLowerCase();
       const status = document.getElementById('team-status-filter')?.value || 'TODOS';
       const role = document.getElementById('team-role-filter')?.value || 'TODOS';
-
-      const filtrados = equipeCache
-        .filter(item => {
-          const texto = [
-            item.nick_usuario,
-            item.cargo,
-            item.discord_tag,
-            item.descricao
-          ].join(' ').toLowerCase();
-
-          return (!busca || texto.includes(busca)) &&
-            (status === 'TODOS' || item.status === status) &&
-            (role === 'TODOS' || item.cargo === role);
-        })
-        .sort((a, b) => {
-          const ordemA = obterOrdemCargoEquipe(a.cargo);
-          const ordemB = obterOrdemCargoEquipe(b.cargo);
-
-          if (ordemA !== ordemB) {
-            return ordemA - ordemB;
-          }
-
-          const dataA = a.data_entrada ? new Date(a.data_entrada + 'T00:00:00').getTime() : Number.MAX_SAFE_INTEGER;
-          const dataB = b.data_entrada ? new Date(b.data_entrada + 'T00:00:00').getTime() : Number.MAX_SAFE_INTEGER;
-
-          if (dataA !== dataB) {
-            return dataA - dataB;
-          }
-
-          return String(a.nick_usuario || '').localeCompare(
-            String(b.nick_usuario || ''),
-            'pt-BR',
-            { sensitivity: 'base' }
-          );
-        });
-
+      const filtrados = equipeCache.filter(item => {
+        const texto = [item.nick_usuario, item.cargo, item.discord_tag, item.descricao].join(' ').toLowerCase();
+        return (!busca || texto.includes(busca)) &&
+          (status === 'TODOS' || item.status === status) &&
+          (role === 'TODOS' || item.cargo === role);
+      });
       renderizarEquipe(filtrados);
     }
 
@@ -9435,7 +9459,6 @@
       const empty = document.getElementById('team-empty');
       const wrapper = document.getElementById('team-table-wrapper');
       const body = document.getElementById('team-table-body');
-
       loading.style.display = 'none';
 
       document.getElementById('team-total').textContent = equipeCache.length;
@@ -9451,65 +9474,27 @@
 
       empty.style.display = 'none';
       wrapper.style.display = 'block';
-
       body.innerHTML = membros.map(item => {
-        const role = CARGOS[item.cargo] || {
-          nome: item.cargo || 'Sem cargo',
-          icone: 'assets/cargos/entusiasta.svg'
-        };
-
+        const role = CARGOS[item.cargo] || { nome: item.cargo || 'Sem cargo', icone: 'assets/cargos/entusiasta.svg' };
         const statusClass = item.status === 'ATIVO' ? 'active' : 'away';
-        const data = item.data_entrada
-          ? new Date(item.data_entrada + 'T00:00:00').toLocaleDateString('pt-BR')
-          : '—';
-
-        const avatar = item.avatar_url
-          ? `<img class="team-avatar" src="${escapeHtml(item.avatar_url)}" alt="${escapeHtml(item.nick_usuario || 'Membro')}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">`
-          : '';
-
+        const data = item.data_entrada ? new Date(item.data_entrada + 'T00:00:00').toLocaleDateString('pt-BR') : '—';
+        const avatar = item.avatar_url ? `<img class="team-avatar" src="${escapeHtml(item.avatar_url)}" alt="${escapeHtml(item.nick_usuario || 'Membro')}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">` : '';
         const fallback = `<div class="team-avatar-fallback" ${item.avatar_url ? 'style="display:none;"' : ''}><i class="fa-solid fa-user"></i></div>`;
         const editId = String(item.id).replace(/'/g, "\\'");
-
         return `
           <tr>
             <td>
               <div class="team-member-cell">
                 ${avatar}${fallback}
-                <div>
-                  <div class="team-member-name">${escapeHtml(item.nick_usuario || 'Sem Nick')}</div>
-                  <div class="team-member-discord">${escapeHtml(item.discord_tag || 'Discord não informado')}</div>
-                </div>
+                <div><div class="team-member-name">${escapeHtml(item.nick_usuario || 'Sem Nick')}</div><div class="team-member-discord">${escapeHtml(item.discord_tag || 'Discord não informado')}</div></div>
               </div>
             </td>
-            <td>
-              <span class="team-role-badge">
-                <img src="${escapeHtml(role.icone)}" alt="" style="width:14px;height:14px;">
-                ${escapeHtml(role.nome)}
-              </span>
-            </td>
-            <td>
-              <span class="team-status-badge ${statusClass}">
-                <i class="fa-solid ${item.status === 'ATIVO' ? 'fa-circle-check' : 'fa-clock'}"></i>
-                ${item.status === 'ATIVO' ? 'Ativo' : 'Afastado'}
-              </span>
-            </td>
+            <td><span class="team-role-badge"><img src="${escapeHtml(role.icone)}" alt="" style="width:14px;height:14px;">${escapeHtml(role.nome)}</span></td>
+            <td><span class="team-status-badge ${statusClass}"><i class="fa-solid ${item.status === 'ATIVO' ? 'fa-circle-check' : 'fa-clock'}"></i>${item.status === 'ATIVO' ? 'Ativo' : 'Afastado'}</span></td>
             <td>${escapeHtml(data)}</td>
-            <td>
-              <span class="team-visible-badge ${item.visivel ? '' : 'off'}">
-                <i class="fa-solid ${item.visivel ? 'fa-eye' : 'fa-eye-slash'}"></i>
-                ${item.visivel ? 'Visível' : 'Oculto'}
-              </span>
-            </td>
-            <td>
-              <div class="team-actions">
-                <button class="team-action-button" title="Editar" onclick="abrirEquipeModal('${editId}')">
-                  <i class="fa-solid fa-pen"></i>
-                </button>
-                <button class="team-action-button danger" title="Remover" onclick="removerMembroEquipe('${editId}')">
-                  <i class="fa-solid fa-trash"></i>
-                </button>
-              </div>
-            </td>
+            <td>${escapeHtml(String(item.ordem ?? 0))}</td>
+            <td><span class="team-visible-badge ${item.visivel ? '' : 'off'}"><i class="fa-solid ${item.visivel ? 'fa-eye' : 'fa-eye-slash'}"></i>${item.visivel ? 'Visível' : 'Oculto'}</span></td>
+            <td><div class="team-actions"><button class="team-action-button" title="Editar" onclick="abrirEquipeModal('${editId}')"><i class="fa-solid fa-pen"></i></button><button class="team-action-button danger" title="Remover" onclick="removerMembroEquipe('${editId}')"><i class="fa-solid fa-trash"></i></button></div></td>
           </tr>`;
       }).join('');
     }
@@ -9526,6 +9511,7 @@
 
       document.getElementById('equipe-data').value = equipeModalAtual?.data_entrada || '';
       document.getElementById('equipe-status').value = equipeModalAtual?.status || 'ATIVO';
+      document.getElementById('equipe-ordem').value = equipeModalAtual?.ordem ?? 0;
       document.getElementById('equipe-descricao').value = equipeModalAtual?.descricao || '';
       document.getElementById('equipe-visivel').checked = equipeModalAtual?.visivel ?? true;
 
@@ -9553,7 +9539,7 @@
         discord_tag: usuario.discord_tag || null,
         data_entrada: document.getElementById('equipe-data').value || null,
         status: document.getElementById('equipe-status').value,
-        ordem: obterOrdemCargoEquipe(usuario.role),
+        ordem: Math.max(0, parseInt(document.getElementById('equipe-ordem').value || '0', 10) || 0),
         descricao: document.getElementById('equipe-descricao').value.trim() || null,
         visivel: document.getElementById('equipe-visivel').checked,
         atualizado_em: new Date().toISOString()
@@ -9842,11 +9828,7 @@
         const isFounder = role === 'FUNDADOR';
         const podeGerenciar = usuarioAtual?.role === 'FUNDADOR' && !isCurrent && !isFounder;
 
-        const avatar = usuario.avatar_url || (
-          'https://api.dicebear.com/7.x/pixel-art/svg?seed=' +
-          encodeURIComponent(usuario.habbo_nick || 'Pixelizado') +
-          '&backgroundColor=38b6ff'
-        );
+        const avatar = obterAvatarUsuario(usuario);
 
         const statusClass = status === 'APROVADO' ? 'aprovado' : (status === 'PENDENTE' ? 'pendente' : 'outro');
 
@@ -10073,6 +10055,207 @@
 
 
     /* =========================================================
+       AUTODJ
+    ========================================================= */
+
+    let autodjCache = [];
+    let autodjEdicaoId = null;
+
+    function escaparHtmlAutodj(valor) {
+      return String(valor ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function formatarDataAutodj(valor) {
+      if (!valor) return '—';
+      const data = new Date(valor);
+      if (Number.isNaN(data.getTime())) return '—';
+      return data.toLocaleDateString('pt-BR');
+    }
+
+    async function mostrarAutodj() {
+      if (!usuarioTemPermissao('autodj')) return;
+      document.querySelectorAll('.module-view').forEach(view => view.classList.remove('active'));
+      document.getElementById('autodj-view')?.classList.add('active');
+      document.getElementById('dashboard-footer').style.display = 'none';
+      document.getElementById('page-title').textContent = 'AutoDJ';
+      document.getElementById('page-description').textContent = 'Gerencie a playlist e as informações das músicas do AutoDJ.';
+      cancelarEdicaoAutodj();
+      await carregarAutodj(true);
+    }
+
+    async function carregarAutodj(mostrarCarregamento = false) {
+      if (!usuarioTemPermissao('autodj')) return;
+      const loading = document.getElementById('autodj-loading');
+      const empty = document.getElementById('autodj-empty');
+      const table = document.getElementById('autodj-table-wrap');
+      if (mostrarCarregamento) {
+        loading.style.display = 'block';
+        empty.style.display = 'none';
+        table.style.display = 'none';
+      }
+      try {
+        const resultado = await supabaseClient
+          .from('autodj_musicas')
+          .select('id, created_at, titulo, artista, audio_url, capa_url, ordem, ativa')
+          .order('ordem', { ascending: true })
+          .order('created_at', { ascending: true });
+        if (resultado.error) throw resultado.error;
+        autodjCache = resultado.data || [];
+        renderizarAutodj();
+      } catch (error) {
+        console.error('Erro ao carregar AutoDJ:', error);
+        autodjCache = [];
+        loading.style.display = 'none';
+        table.style.display = 'none';
+        empty.style.display = 'block';
+        empty.innerHTML = '<div class="autodj-empty-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><h3>Não foi possível carregar o AutoDJ</h3><p>Verifique a conexão com o Supabase e as permissões da tabela autodj_musicas.</p>';
+        mostrarToast('Não foi possível carregar o AutoDJ.', 'error');
+      }
+    }
+
+    function renderizarAutodj() {
+      const loading = document.getElementById('autodj-loading');
+      const empty = document.getElementById('autodj-empty');
+      const table = document.getElementById('autodj-table-wrap');
+      const body = document.getElementById('autodj-table-body');
+      const total = autodjCache.length;
+      const ativas = autodjCache.filter(item => item.ativa).length;
+      document.getElementById('autodj-total').textContent = total;
+      document.getElementById('autodj-active').textContent = ativas;
+      document.getElementById('autodj-inactive').textContent = total - ativas;
+      loading.style.display = 'none';
+      if (!total) {
+        table.style.display = 'none';
+        empty.style.display = 'block';
+        return;
+      }
+      empty.style.display = 'none';
+      table.style.display = 'block';
+      body.innerHTML = autodjCache.map(item => {
+        const capa = item.capa_url
+          ? '<img class="autodj-cover" src="' + escaparHtmlAutodj(item.capa_url) + '" alt="">'
+          : '<div class="autodj-cover-fallback"><i class="fa-solid fa-music"></i></div>';
+        const status = item.ativa
+          ? '<span class="autodj-status active"><i class="fa-solid fa-circle"></i> Ativa</span>'
+          : '<span class="autodj-status inactive"><i class="fa-solid fa-circle"></i> Inativa</span>';
+        return '<tr>' +
+          '<td><div class="autodj-song-cell">' + capa + '<div><div class="autodj-song-title">' + escaparHtmlAutodj(item.titulo) + '</div><div class="autodj-song-artist">' + escaparHtmlAutodj(item.artista || 'Artista não informado') + '</div></div></div></td>' +
+          '<td><a href="' + escaparHtmlAutodj(item.audio_url) + '" target="_blank" rel="noopener noreferrer" style="color:#2788ca;font-weight:900;text-decoration:none;"><i class="fa-solid fa-link"></i> Abrir áudio</a></td>' +
+          '<td>' + status + '</td>' +
+          '<td>' + formatarDataAutodj(item.created_at) + '</td>' +
+          '<td><div class="autodj-actions">' +
+            '<button class="autodj-action-button" onclick="editarMusicaAutodj('' + item.id + '')" title="Editar"><i class="fa-solid fa-pen"></i></button>' +
+            '<button class="autodj-action-button" onclick="alternarMusicaAutodj('' + item.id + '')" title="Ativar/desativar"><i class="fa-solid ' + (item.ativa ? 'fa-toggle-on' : 'fa-toggle-off') + '"></i></button>' +
+            '<button class="autodj-action-button danger" onclick="excluirMusicaAutodj('' + item.id + '')" title="Excluir"><i class="fa-solid fa-trash"></i></button>' +
+          '</div></td>' +
+        '</tr>';
+      }).join('');
+    }
+
+    function prepararNovaMusicaAutodj() {
+      autodjEdicaoId = null;
+      document.getElementById('autodj-form-title').textContent = 'Adicionar música';
+      document.getElementById('autodj-save-button').textContent = 'Salvar música';
+      document.getElementById('autodj-titulo').value = '';
+      document.getElementById('autodj-artista').value = '';
+      document.getElementById('autodj-audio-url').value = '';
+      document.getElementById('autodj-capa-url').value = '';
+      document.getElementById('autodj-form-panel').style.display = 'block';
+      document.getElementById('autodj-titulo').focus();
+    }
+
+    function editarMusicaAutodj(id) {
+      const item = autodjCache.find(musica => String(musica.id) === String(id));
+      if (!item) return;
+      autodjEdicaoId = item.id;
+      document.getElementById('autodj-form-title').textContent = 'Editar música';
+      document.getElementById('autodj-save-button').textContent = 'Salvar alterações';
+      document.getElementById('autodj-titulo').value = item.titulo || '';
+      document.getElementById('autodj-artista').value = item.artista || '';
+      document.getElementById('autodj-audio-url').value = item.audio_url || '';
+      document.getElementById('autodj-capa-url').value = item.capa_url || '';
+      document.getElementById('autodj-form-panel').style.display = 'block';
+      document.getElementById('autodj-titulo').focus();
+    }
+
+    function cancelarEdicaoAutodj() {
+      autodjEdicaoId = null;
+      const panel = document.getElementById('autodj-form-panel');
+      if (panel) panel.style.display = 'none';
+    }
+
+    async function salvarMusicaAutodj() {
+      if (!usuarioTemPermissao('autodj')) return;
+      const titulo = document.getElementById('autodj-titulo').value.trim();
+      const artista = document.getElementById('autodj-artista').value.trim();
+      const audio_url = document.getElementById('autodj-audio-url').value.trim();
+      const capa_url = document.getElementById('autodj-capa-url').value.trim();
+      if (!titulo || !audio_url) {
+        mostrarToast('Preencha o título e a URL do áudio.', 'error');
+        return;
+      }
+      const button = document.getElementById('autodj-save-button');
+      const original = button.innerHTML;
+      button.disabled = true;
+      button.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Salvando...';
+      try {
+        let resultado;
+        if (autodjEdicaoId) {
+          resultado = await supabaseClient.from('autodj_musicas').update({ titulo, artista: artista || null, audio_url, capa_url: capa_url || null }).eq('id', autodjEdicaoId);
+        } else {
+          const proximaOrdem = autodjCache.length ? Math.max(...autodjCache.map(item => Number(item.ordem) || 0)) + 1 : 1;
+          resultado = await supabaseClient.from('autodj_musicas').insert({ titulo, artista: artista || null, audio_url, capa_url: capa_url || null, ordem: proximaOrdem, ativa: true });
+        }
+        if (resultado.error) throw resultado.error;
+        mostrarToast(autodjEdicaoId ? 'Música atualizada.' : 'Música adicionada à playlist.', 'success');
+        cancelarEdicaoAutodj();
+        await carregarAutodj(true);
+      } catch (error) {
+        console.error('Erro ao salvar música do AutoDJ:', error);
+        mostrarToast(error?.message || 'Não foi possível salvar a música.', 'error');
+      } finally {
+        button.disabled = false;
+        button.innerHTML = original;
+      }
+    }
+
+    async function alternarMusicaAutodj(id) {
+      if (!usuarioTemPermissao('autodj')) return;
+      const item = autodjCache.find(musica => String(musica.id) === String(id));
+      if (!item) return;
+      try {
+        const resultado = await supabaseClient.from('autodj_musicas').update({ ativa: !item.ativa }).eq('id', id);
+        if (resultado.error) throw resultado.error;
+        mostrarToast(item.ativa ? 'Música desativada.' : 'Música ativada.', 'success');
+        await carregarAutodj(true);
+      } catch (error) {
+        console.error('Erro ao alterar status da música:', error);
+        mostrarToast(error?.message || 'Não foi possível alterar o status.', 'error');
+      }
+    }
+
+    async function excluirMusicaAutodj(id) {
+      if (!usuarioTemPermissao('autodj')) return;
+      const item = autodjCache.find(musica => String(musica.id) === String(id));
+      if (!item) return;
+      if (!window.confirm('Excluir a música "' + (item.titulo || 'Sem título') + '" da playlist?')) return;
+      try {
+        const resultado = await supabaseClient.from('autodj_musicas').delete().eq('id', id);
+        if (resultado.error) throw resultado.error;
+        mostrarToast('Música excluída da playlist.', 'success');
+        await carregarAutodj(true);
+      } catch (error) {
+        console.error('Erro ao excluir música do AutoDJ:', error);
+        mostrarToast(error?.message || 'Não foi possível excluir a música.', 'error');
+      }
+    }
+
+    /* =========================================================
        ABRIR MÓDULO
     ========================================================= */
 
@@ -10191,6 +10374,17 @@
       ) {
 
         mostrarEquipe();
+
+        return;
+
+      }
+
+
+      if (
+        modulo === 'autodj'
+      ) {
+
+        mostrarAutodj();
 
         return;
 
@@ -10686,9 +10880,7 @@
 
 
           const avatar =
-            'https://api.dicebear.com/7.x/pixel-art/svg?seed='
-            + encodeURIComponent(nick)
-            + '&backgroundColor=38b6ff';
+            obterAvatarUsuario(usuario);
 
 
           let statusClass =
@@ -10973,9 +11165,7 @@
       document.getElementById(
         'modal-user-avatar'
       ).src =
-        'https://api.dicebear.com/7.x/pixel-art/svg?seed='
-        + encodeURIComponent(nick)
-        + '&backgroundColor=38b6ff';
+        obterAvatarUsuario(usuario);
 
 
       document.getElementById(
@@ -14200,4 +14390,89 @@
   </script>
 
 </body>
-</html>
+</html
+
+      <!-- =====================================================
+           AUTODJ
+      ====================================================== -->
+      <div id="autodj-view" class="module-view">
+
+        <div class="section-heading">
+          <div class="section-heading-left">
+            <div class="section-heading-icon"><i class="fa-solid fa-record-vinyl"></i></div>
+            <div>
+              <h2>AutoDJ</h2>
+              <p>Gerencie as músicas que poderão ser reproduzidas automaticamente no Pixelizados.</p>
+            </div>
+          </div>
+          <div class="autodj-toolbar">
+            <button class="refresh-button" onclick="carregarAutodj(true)" title="Atualizar">
+              <i class="fa-solid fa-rotate"></i>
+            </button>
+            <button class="autodj-add-button" onclick="prepararNovaMusicaAutodj()">
+              <i class="fa-solid fa-plus"></i> Adicionar música
+            </button>
+          </div>
+        </div>
+
+        <div class="autodj-summary">
+          <div class="autodj-summary-card"><div class="autodj-summary-label">Músicas cadastradas</div><div class="autodj-summary-value" id="autodj-total">—</div></div>
+          <div class="autodj-summary-card"><div class="autodj-summary-label">Ativas</div><div class="autodj-summary-value" id="autodj-active">—</div></div>
+          <div class="autodj-summary-card"><div class="autodj-summary-label">Inativas</div><div class="autodj-summary-value" id="autodj-inactive">—</div></div>
+        </div>
+
+        <div class="autodj-panel" id="autodj-form-panel" style="display:none;">
+          <div class="autodj-panel-header">
+            <div>
+              <div class="autodj-panel-title" id="autodj-form-title">Adicionar música</div>
+              <div class="autodj-panel-subtitle">Cadastre os dados da faixa. O áudio será carregado pelo link informado.</div>
+            </div>
+          </div>
+          <div class="autodj-form">
+            <div class="autodj-form-group">
+              <label class="autodj-form-label">Título *</label>
+              <input id="autodj-titulo" class="autodj-form-input" type="text" placeholder="Nome da música">
+            </div>
+            <div class="autodj-form-group">
+              <label class="autodj-form-label">Artista</label>
+              <input id="autodj-artista" class="autodj-form-input" type="text" placeholder="Nome do artista">
+            </div>
+            <div class="autodj-form-group full">
+              <label class="autodj-form-label">URL do áudio *</label>
+              <input id="autodj-audio-url" class="autodj-form-input" type="url" placeholder="https://.../musica.mp3">
+            </div>
+            <div class="autodj-form-group full">
+              <label class="autodj-form-label">URL da capa</label>
+              <input id="autodj-capa-url" class="autodj-form-input" type="url" placeholder="https://.../capa.jpg">
+            </div>
+            <div class="autodj-form-actions">
+              <button class="autodj-secondary-button" onclick="cancelarEdicaoAutodj()">Cancelar</button>
+              <button class="autodj-primary-button" id="autodj-save-button" onclick="salvarMusicaAutodj()">Salvar música</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="autodj-panel">
+          <div class="autodj-panel-header">
+            <div>
+              <div class="autodj-panel-title">Playlist</div>
+              <div class="autodj-panel-subtitle">As músicas ativas ficarão disponíveis para o player público do AutoDJ.</div>
+            </div>
+          </div>
+          <div id="autodj-loading" class="autodj-loading"><i class="fa-solid fa-spinner fa-spin"></i><p>Carregando playlist...</p></div>
+          <div id="autodj-empty" class="autodj-empty" style="display:none;">
+            <div class="autodj-empty-icon"><i class="fa-solid fa-record-vinyl"></i></div>
+            <h3>Nenhuma música cadastrada</h3>
+            <p>Adicione a primeira música para começar a montar a playlist do AutoDJ.</p>
+          </div>
+          <div id="autodj-table-wrap" class="autodj-table-wrap" style="display:none;">
+            <table class="autodj-table">
+              <thead><tr><th>Música</th><th>Áudio</th><th>Status</th><th>Cadastrada em</th><th></th></tr></thead>
+              <tbody id="autodj-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <footer class="admin-footer">Pixelizados © 2026 · AutoDJ</footer>
+      </div>
+>
