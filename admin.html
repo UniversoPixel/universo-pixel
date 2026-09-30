@@ -3229,7 +3229,98 @@
     }
 
 
-  </style>
+  
+
+    /* =========================================================
+       CONTEÚDO DO SITE
+    ========================================================= */
+
+    .site-content-notice {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      padding: 13px 15px;
+      margin-bottom: 16px;
+      background: #f1faff;
+      border: 2px solid #cce8f7;
+      border-radius: 10px;
+      color: var(--blue-deep);
+    }
+
+    .site-content-notice > i {
+      margin-top: 2px;
+      font-size: 13px;
+    }
+
+    .site-content-notice strong {
+      display: block;
+      font-family: 'Manrope', sans-serif;
+      font-size: 9px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .site-content-notice p {
+      margin: 4px 0 0;
+      font-size: 9px;
+      line-height: 1.55;
+      color: #6e8798;
+    }
+
+    .site-content-section {
+      margin-bottom: 16px;
+      padding: 17px;
+      background: #fff;
+      border: 2px solid var(--border);
+      border-radius: 11px;
+      box-shadow: var(--shadow);
+    }
+
+    .site-content-section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #edf3f7;
+    }
+
+    .site-content-section-icon {
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: #eaf7ff;
+      border: 2px solid #c6e5f6;
+      color: var(--blue-dark);
+      font-size: 12px;
+    }
+
+    .site-content-section-header h3 {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 900;
+      color: #243447;
+    }
+
+    .site-content-section-header p {
+      margin: 3px 0 0;
+      font-size: 8px;
+      font-weight: 700;
+      color: #9aaab7;
+    }
+
+    .site-content-bottom-save {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 18px;
+    }
+</style>
 </head>
 
 
@@ -4886,6 +4977,184 @@
 
       </div>
 
+
+      <!-- ===================================================
+           CONTEÚDO DO SITE
+      ==================================================== -->
+
+      <div id="conteudo-view" class="module-view">
+
+        <div class="section-heading">
+          <div class="section-heading-left">
+            <div class="section-heading-icon">
+              <i class="fa-solid fa-window-maximize"></i>
+            </div>
+            <div>
+              <h2>Conteúdo do Site</h2>
+              <p>Gerencie os textos, links e imagens configuráveis do portal Pixelizados.</p>
+            </div>
+          </div>
+
+          <button class="modal-button primary" id="site-content-save-button" onclick="salvarConteudoSite()">
+            <i class="fa-solid fa-floppy-disk"></i>
+            Salvar alterações
+          </button>
+        </div>
+
+        <div class="site-content-notice">
+          <i class="fa-solid fa-circle-info"></i>
+          <div>
+            <strong>Conteúdo centralizado</strong>
+            <p>As alterações ficam salvas no Supabase. Nesta etapa, elas serão apenas gerenciadas pelo painel; o portal será conectado a esses campos na próxima etapa.</p>
+          </div>
+        </div>
+
+        <section class="site-content-section">
+          <div class="site-content-section-header">
+            <div class="site-content-section-icon"><i class="fa-solid fa-house"></i></div>
+            <div>
+              <h3>Hero / Destaque principal</h3>
+              <p>Conteúdo exibido na área principal do portal.</p>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group full">
+              <label class="form-label">Título principal</label>
+              <input id="site-hero-titulo" class="form-input" type="text" placeholder="Ex.: Bem-vindo ao Pixelizados">
+            </div>
+
+            <div class="form-group full">
+              <label class="form-label">Descrição</label>
+              <textarea id="site-hero-descricao" class="form-textarea" style="min-height:100px;" placeholder="Descrição principal do fã-site."></textarea>
+            </div>
+
+            <div class="form-group full">
+              <label class="form-label">Imagem do Hero</label>
+              <input id="site-hero-imagem" class="form-input" type="url" placeholder="https://...">
+              <div class="form-hint">Use uma URL pública direta para a imagem.</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Texto do botão principal</label>
+              <input id="site-hero-botao-principal-texto" class="form-input" type="text" placeholder="Ex.: Área de Membros">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Link do botão principal</label>
+              <input id="site-hero-botao-principal-url" class="form-input" type="text" placeholder="Ex.: portal.html">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Texto do botão secundário</label>
+              <input id="site-hero-botao-secundario-texto" class="form-input" type="text" placeholder="Ex.: Discord">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Link do botão secundário</label>
+              <input id="site-hero-botao-secundario-url" class="form-input" type="text" placeholder="https://...">
+            </div>
+          </div>
+        </section>
+
+        <section class="site-content-section">
+          <div class="site-content-section-header">
+            <div class="site-content-section-icon"><i class="fa-solid fa-newspaper"></i></div>
+            <div>
+              <h3>Notícias</h3>
+              <p>Configurações do título e descrição da seção de notícias.</p>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Título da seção</label>
+              <input id="site-noticias-titulo" class="form-input" type="text" placeholder="Ex.: Últimas Notícias">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Descrição da seção</label>
+              <input id="site-noticias-descricao" class="form-input" type="text" placeholder="Ex.: Fique por dentro do Pixelizados.">
+            </div>
+          </div>
+        </section>
+
+        <section class="site-content-section">
+          <div class="site-content-section-header">
+            <div class="site-content-section-icon"><i class="fa-solid fa-calendar-check"></i></div>
+            <div>
+              <h3>Eventos</h3>
+              <p>Configurações do título e descrição da seção de eventos.</p>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Título da seção</label>
+              <input id="site-eventos-titulo" class="form-input" type="text" placeholder="Ex.: Próximos Eventos">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Descrição da seção</label>
+              <input id="site-eventos-descricao" class="form-input" type="text" placeholder="Ex.: Confira o que está acontecendo na comunidade.">
+            </div>
+          </div>
+        </section>
+
+        <section class="site-content-section">
+          <div class="site-content-section-header">
+            <div class="site-content-section-icon"><i class="fa-brands fa-discord"></i></div>
+            <div>
+              <h3>Comunidade</h3>
+              <p>Informações e acesso à comunidade oficial.</p>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Nome da comunidade</label>
+              <input id="site-comunidade-nome" class="form-input" type="text" placeholder="Ex.: Pixelizados">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Link do Discord</label>
+              <input id="site-discord-url" class="form-input" type="url" placeholder="https://discord.gg/...">
+            </div>
+            <div class="form-group full">
+              <label class="form-label">Descrição da comunidade</label>
+              <textarea id="site-comunidade-descricao" class="form-textarea" style="min-height:90px;" placeholder="Apresente a comunidade Pixelizados."></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="site-content-section">
+          <div class="site-content-section-header">
+            <div class="site-content-section-icon"><i class="fa-solid fa-palette"></i></div>
+            <div>
+              <h3>Identidade</h3>
+              <p>Elementos básicos da identidade visual configurável.</p>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group full">
+              <label class="form-label">URL da logo</label>
+              <input id="site-logo-url" class="form-input" type="url" placeholder="https://...">
+              <div class="form-hint">Use uma URL pública da logo. A alteração será aplicada ao portal somente quando fizermos a integração do conteúdo.</div>
+            </div>
+          </div>
+        </section>
+
+        <div class="site-content-bottom-save">
+          <button class="modal-button primary" id="site-content-save-button-bottom" onclick="salvarConteudoSite()">
+            <i class="fa-solid fa-floppy-disk"></i>
+            Salvar alterações
+          </button>
+        </div>
+
+        <footer class="admin-footer">
+          Pixelizados © 2026 · Conteúdo do Site
+        </footer>
+
+      </div>
+
     </main>
 
   </div>
@@ -6342,6 +6611,132 @@
       if (event.target === event.currentTarget) fecharMidiaModal();
     }
 
+
+
+    /* =========================================================
+       CONTEÚDO DO SITE
+    ========================================================= */
+
+    const SITE_CONTEUDO_CAMPOS = [
+      { id: 'site-hero-titulo', chave: 'hero_titulo', tipo: 'texto', grupo: 'hero', descricao: 'Título principal do Hero.' },
+      { id: 'site-hero-descricao', chave: 'hero_descricao', tipo: 'texto', grupo: 'hero', descricao: 'Descrição principal do Hero.' },
+      { id: 'site-hero-imagem', chave: 'hero_imagem', tipo: 'imagem', grupo: 'hero', descricao: 'URL da imagem principal do Hero.' },
+      { id: 'site-hero-botao-principal-texto', chave: 'hero_botao_principal_texto', tipo: 'texto', grupo: 'hero', descricao: 'Texto do botão principal.' },
+      { id: 'site-hero-botao-principal-url', chave: 'hero_botao_principal_url', tipo: 'url', grupo: 'hero', descricao: 'Link do botão principal.' },
+      { id: 'site-hero-botao-secundario-texto', chave: 'hero_botao_secundario_texto', tipo: 'texto', grupo: 'hero', descricao: 'Texto do botão secundário.' },
+      { id: 'site-hero-botao-secundario-url', chave: 'hero_botao_secundario_url', tipo: 'url', grupo: 'hero', descricao: 'Link do botão secundário.' },
+      { id: 'site-noticias-titulo', chave: 'noticias_titulo', tipo: 'texto', grupo: 'noticias', descricao: 'Título da seção de notícias.' },
+      { id: 'site-noticias-descricao', chave: 'noticias_descricao', tipo: 'texto', grupo: 'noticias', descricao: 'Descrição da seção de notícias.' },
+      { id: 'site-eventos-titulo', chave: 'eventos_titulo', tipo: 'texto', grupo: 'eventos', descricao: 'Título da seção de eventos.' },
+      { id: 'site-eventos-descricao', chave: 'eventos_descricao', tipo: 'texto', grupo: 'eventos', descricao: 'Descrição da seção de eventos.' },
+      { id: 'site-comunidade-nome', chave: 'comunidade_nome', tipo: 'texto', grupo: 'comunidade', descricao: 'Nome da comunidade.' },
+      { id: 'site-comunidade-descricao', chave: 'comunidade_descricao', tipo: 'texto', grupo: 'comunidade', descricao: 'Descrição da comunidade.' },
+      { id: 'site-discord-url', chave: 'discord_url', tipo: 'url', grupo: 'comunidade', descricao: 'URL do Discord.' },
+      { id: 'site-logo-url', chave: 'logo_url', tipo: 'imagem', grupo: 'identidade', descricao: 'URL da logo do Pixelizados.' }
+    ];
+
+    async function mostrarConteudoSite() {
+
+      if (!usuarioTemPermissao('conteudo')) return;
+
+      document.querySelectorAll('.module-view').forEach(view => {
+        view.classList.remove('active');
+      });
+
+      document.getElementById('conteudo-view').classList.add('active');
+      document.getElementById('dashboard-footer').style.display = 'none';
+      document.getElementById('page-title').textContent = 'Conteúdo do Site';
+      document.getElementById('page-description').textContent = 'Gerencie os conteúdos configuráveis do universo Pixelizados.';
+
+      await carregarConteudoSite();
+    }
+
+    async function carregarConteudoSite() {
+
+      if (!usuarioTemPermissao('conteudo')) return;
+
+      try {
+
+        const resultado = await supabaseClient
+          .from('site_conteudo')
+          .select('chave, valor')
+          .order('grupo', { ascending: true })
+          .order('chave', { ascending: true });
+
+        if (resultado.error) throw resultado.error;
+
+        const mapa = {};
+        (resultado.data || []).forEach(item => {
+          mapa[item.chave] = item.valor ?? '';
+        });
+
+        SITE_CONTEUDO_CAMPOS.forEach(campo => {
+          const elemento = document.getElementById(campo.id);
+          if (elemento) elemento.value = mapa[campo.chave] ?? '';
+        });
+
+      } catch (error) {
+
+        console.error('Erro ao carregar conteúdo do site:', error);
+        mostrarToast('Não foi possível carregar o conteúdo do site.', 'error');
+
+      }
+    }
+
+    async function salvarConteudoSite() {
+
+      if (!usuarioTemPermissao('conteudo')) return;
+
+      const botoes = [
+        document.getElementById('site-content-save-button'),
+        document.getElementById('site-content-save-button-bottom')
+      ].filter(Boolean);
+
+      botoes.forEach(botao => {
+        botao.disabled = true;
+        botao.classList.add('loading');
+        botao.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Salvando...';
+      });
+
+      try {
+
+        const { data: { user } = {} } = await supabaseClient.auth.getUser();
+        const usuarioId = user?.id || usuarioAtual?.auth_user_id || null;
+
+        const registros = SITE_CONTEUDO_CAMPOS.map(campo => ({
+          chave: campo.chave,
+          valor: document.getElementById(campo.id)?.value?.trim() || null,
+          tipo: campo.tipo,
+          grupo: campo.grupo,
+          descricao: campo.descricao,
+          atualizado_em: new Date().toISOString(),
+          atualizado_por: usuarioId
+        }));
+
+        const resultado = await supabaseClient
+          .from('site_conteudo')
+          .upsert(registros, { onConflict: 'chave' });
+
+        if (resultado.error) throw resultado.error;
+
+        mostrarToast('Conteúdo do site salvo com sucesso.', 'success');
+
+      } catch (error) {
+
+        console.error('Erro ao salvar conteúdo do site:', error);
+        mostrarToast('Não foi possível salvar o conteúdo. Verifique as políticas da tabela site_conteudo.', 'error');
+
+      } finally {
+
+        botoes.forEach((botao, indice) => {
+          botao.disabled = false;
+          botao.classList.remove('loading');
+          botao.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Salvar alterações';
+        });
+
+      }
+    }
+
     /* =========================================================
        ABRIR MÓDULO
     ========================================================= */
@@ -6417,6 +6812,17 @@
       ) {
 
         mostrarImagens();
+
+        return;
+
+      }
+
+
+      if (
+        modulo === 'conteudo'
+      ) {
+
+        mostrarConteudoSite();
 
         return;
 
