@@ -4828,6 +4828,239 @@
   </div>
 
 
+
+  <!-- ===================================================
+       EVENTOS
+  ==================================================== -->
+
+  <div id="eventos-view" class="module-view">
+
+    <div class="section-heading">
+      <div class="section-heading-left">
+        <div class="section-heading-icon">
+          <i class="fa-solid fa-calendar-check"></i>
+        </div>
+        <div>
+          <h2>Gerenciamento de eventos</h2>
+          <p>Crie, edite, publique e organize os eventos do Pixelizados.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="news-toolbar">
+
+      <div class="news-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input id="event-search" type="text"
+          placeholder="Buscar por título, local ou autor..."
+          oninput="filtrarEventos()" autocomplete="off">
+      </div>
+
+      <div class="news-filters">
+
+        <select id="event-status-filter" class="news-filter"
+          onchange="filtrarEventos()">
+          <option value="TODOS">Todos os status</option>
+          <option value="PUBLICADA">Publicados</option>
+          <option value="RASCUNHO">Rascunhos</option>
+        </select>
+
+        <button id="refresh-events-button" class="refresh-button"
+          onclick="carregarEventos(true)" title="Atualizar eventos">
+          <i class="fa-solid fa-rotate"></i>
+        </button>
+
+        <button class="news-new-button" onclick="abrirNovoEvento()">
+          <i class="fa-solid fa-plus"></i>
+          Novo evento
+        </button>
+
+      </div>
+    </div>
+
+    <div class="news-summary">
+      <div id="event-summary-text" class="news-summary-text">
+        Carregando eventos...
+      </div>
+    </div>
+
+    <div class="news-table-card">
+
+      <div id="event-loading" class="news-loading">
+        <i class="fa-solid fa-spinner"></i>
+        <p>Carregando eventos...</p>
+      </div>
+
+      <div id="event-empty" class="news-empty" style="display:none;">
+        <div class="news-empty-icon">
+          <i class="fa-solid fa-calendar-xmark"></i>
+        </div>
+        <h3>Nenhum evento encontrado</h3>
+        <p>Crie o primeiro evento ou altere os filtros selecionados.</p>
+      </div>
+
+      <div id="event-table-wrapper" class="news-table-wrapper"
+        style="display:none;">
+        <table class="news-table">
+          <thead>
+            <tr>
+              <th>Evento</th>
+              <th>Data</th>
+              <th>Local</th>
+              <th>Status</th>
+              <th>Autor</th>
+              <th style="text-align:right;">Ações</th>
+            </tr>
+          </thead>
+          <tbody id="event-table-body"></tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <footer class="admin-footer">
+      Pixelizados © 2026 · Gerenciamento de Eventos
+    </footer>
+
+  </div>
+
+
+
+  <!-- =======================================================
+       MODAL EVENTO
+  ======================================================== -->
+
+  <div id="event-modal-overlay" class="modal-overlay"
+    onclick="fecharEventoAoClicarFora(event)">
+
+    <div class="news-modal" role="dialog" aria-modal="true"
+      aria-labelledby="event-modal-title">
+
+      <div class="modal-header">
+
+        <div class="modal-title-area">
+          <div class="modal-title-icon">
+            <i class="fa-solid fa-calendar-check"></i>
+          </div>
+
+          <div>
+            <h3 id="event-modal-title" class="modal-title">Novo evento</h3>
+            <p id="event-modal-subtitle" class="modal-subtitle">
+              Crie um novo evento para o Pixelizados.
+            </p>
+          </div>
+        </div>
+
+        <button class="modal-close" onclick="fecharEventoModal()" title="Fechar">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+      </div>
+
+      <div class="modal-body">
+
+        <div class="form-grid">
+
+          <div class="form-group full">
+            <label class="form-label">Título do evento</label>
+            <input id="event-titulo" class="form-input" type="text"
+              maxlength="180" placeholder="Digite o título do evento...">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Categoria</label>
+            <select id="event-categoria" class="form-select">
+              <option value="Eventos">Eventos</option>
+              <option value="Sorteio">Sorteio</option>
+              <option value="Comunidade">Comunidade</option>
+              <option value="Rádio">Rádio</option>
+              <option value="Competição">Competição</option>
+              <option value="Outros">Outros</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Status</label>
+            <select id="event-status" class="form-select">
+              <option value="RASCUNHO">RASCUNHO</option>
+              <option value="PUBLICADA">PUBLICADA</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Data</label>
+            <input id="event-data" class="form-input" type="date">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Horário</label>
+            <input id="event-hora" class="form-input" type="time">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Local</label>
+            <input id="event-local" class="form-input" type="text"
+              maxlength="180" placeholder="Ex.: Rádio Pixel / Discord / Hotel">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Autor</label>
+            <input id="event-autor" class="form-input" type="text"
+              maxlength="100" placeholder="Redação Pixel">
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label">Imagem</label>
+            <input id="event-imagem-url" class="form-input" type="url"
+              placeholder="https://..."
+              oninput="atualizarPreviewImagemEvento()">
+            <div class="form-hint">
+              Cole a URL pública da imagem que será usada no evento.
+            </div>
+          </div>
+
+          <div class="form-group full">
+            <img id="event-image-preview" class="news-image-preview"
+              src="" alt="Prévia da imagem"
+              onerror="this.classList.remove('visible')">
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label">Resumo</label>
+            <textarea id="event-resumo" class="form-textarea"
+              style="min-height:90px;" maxlength="500"
+              placeholder="Escreva um resumo curto do evento..."></textarea>
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label">Descrição</label>
+            <textarea id="event-conteudo" class="form-textarea"
+              style="min-height:180px;"
+              placeholder="Descreva o evento, regras, informações e detalhes..."></textarea>
+          </div>
+
+        </div>
+
+        <div class="modal-actions">
+
+          <button class="modal-button" onclick="fecharEventoModal()">
+            Cancelar
+          </button>
+
+          <button id="event-save-button" class="modal-button primary"
+            onclick="salvarEvento()">
+            <i class="fa-solid fa-floppy-disk"></i>
+            Salvar evento
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
   <!-- =======================================================
        MODAL NOTÍCIA
   ======================================================== -->
@@ -5351,6 +5584,10 @@
 
     let noticiaModalAtual = null;
 
+    let eventosCache = [];
+
+    let eventoModalAtual = null;
+
 
     /* =========================================================
        OBTER USUÁRIO LOCAL
@@ -5711,6 +5948,17 @@
       ) {
 
         mostrarNoticias();
+
+        return;
+
+      }
+
+
+      if (
+        modulo === 'eventos'
+      ) {
+
+        mostrarEventos();
 
         return;
 
@@ -7461,6 +7709,779 @@
         }
       );
 
+    }
+
+
+
+    /* =========================================================
+       EVENTOS — MOSTRAR MÓDULO
+    ========================================================= */
+
+    async function mostrarEventos() {
+
+      if (!usuarioTemPermissao('eventos')) {
+        mostrarToast(
+          'Seu cargo não possui permissão para acessar eventos.',
+          'error'
+        );
+        return;
+      }
+
+      document.querySelectorAll('.module-view').forEach(view => {
+        view.classList.remove('active');
+      });
+
+      document.getElementById('eventos-view').classList.add('active');
+
+      document.getElementById('dashboard-footer').style.display = 'none';
+      document.getElementById('page-title').textContent = 'Eventos';
+      document.getElementById('page-description').textContent =
+        'Gerencie os eventos e atividades do fã-site Pixelizados.';
+
+      await carregarEventos();
+    }
+
+
+    async function carregarEventos(mostrarCarregamento = true) {
+
+      if (!usuarioTemPermissao('eventos')) return;
+
+      const loading = document.getElementById('event-loading');
+      const empty = document.getElementById('event-empty');
+      const table = document.getElementById('event-table-wrapper');
+      const refreshButton = document.getElementById('refresh-events-button');
+
+      if (mostrarCarregamento) {
+        loading.style.display = 'block';
+        empty.style.display = 'none';
+        table.style.display = 'none';
+      }
+
+      if (refreshButton) refreshButton.classList.add('loading');
+
+      try {
+
+        const resultado = await supabaseClient
+          .from('eventos')
+          .select(`
+            id,
+            created_at,
+            titulo,
+            categoria,
+            resumo,
+            conteudo,
+            imagem_url,
+            data_evento,
+            hora_evento,
+            local,
+            autor,
+            status,
+            publicado_em
+          `)
+          .order('data_evento', {
+            ascending: true,
+            nullsFirst: false
+          })
+          .order('hora_evento', {
+            ascending: true,
+            nullsFirst: false
+          })
+          .order('created_at', {
+            ascending: false
+          });
+
+        if (resultado.error) throw resultado.error;
+
+        eventosCache = resultado.data || [];
+        filtrarEventos();
+
+      } catch (error) {
+
+        console.error('Erro ao carregar eventos:', error);
+
+        eventosCache = [];
+
+        loading.style.display = 'none';
+        table.style.display = 'none';
+        empty.style.display = 'block';
+
+        empty.innerHTML = `
+          <div class="news-empty-icon">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
+          <h3>Não foi possível carregar os eventos</h3>
+          <p>
+            Verifique a tabela eventos, as políticas RLS e a conexão
+            com o Supabase.
+          </p>
+        `;
+
+        document.getElementById('event-summary-text').innerHTML =
+          '<strong>Erro</strong> ao carregar eventos.';
+
+        mostrarToast(
+          'Não foi possível carregar os eventos.',
+          'error'
+        );
+
+      } finally {
+
+        if (refreshButton) {
+          refreshButton.classList.remove('loading');
+        }
+
+      }
+    }
+
+
+    function filtrarEventos() {
+
+      const busca = (
+        document.getElementById('event-search')?.value || ''
+      ).trim().toLowerCase();
+
+      const status =
+        document.getElementById('event-status-filter')?.value || 'TODOS';
+
+      const filtrados = eventosCache.filter(evento => {
+
+        const texto = [
+          evento.titulo,
+          evento.local,
+          evento.autor,
+          evento.categoria
+        ].join(' ').toLowerCase();
+
+        const combinaBusca =
+          !busca || texto.includes(busca);
+
+        const combinaStatus =
+          status === 'TODOS' || evento.status === status;
+
+        return combinaBusca && combinaStatus;
+      });
+
+      renderizarEventos(filtrados);
+    }
+
+
+    function formatarDataEvento(data) {
+
+      if (!data) return 'Data não definida';
+
+      const partes = String(data).split('-');
+
+      if (partes.length !== 3) return String(data);
+
+      return `${partes[2]}/${partes[1]}/${partes[0]}`;
+    }
+
+
+    function formatarHoraEvento(hora) {
+
+      if (!hora) return '—';
+
+      return String(hora).slice(0, 5);
+    }
+
+
+    function renderizarEventos(eventos) {
+
+      const loading = document.getElementById('event-loading');
+      const empty = document.getElementById('event-empty');
+      const table = document.getElementById('event-table-wrapper');
+      const body = document.getElementById('event-table-body');
+      const summary = document.getElementById('event-summary-text');
+
+      if (!body) return;
+
+      loading.style.display = 'none';
+
+      summary.innerHTML = `
+        <strong>${eventos.length}</strong>
+        ${eventos.length === 1 ? 'evento encontrado' : 'eventos encontrados'}
+      `;
+
+      if (!eventos.length) {
+
+        body.innerHTML = '';
+        table.style.display = 'none';
+        empty.style.display = 'block';
+
+        return;
+      }
+
+      empty.style.display = 'none';
+      table.style.display = 'block';
+      body.innerHTML = '';
+
+      eventos.forEach(evento => {
+
+        const tr = document.createElement('tr');
+
+        const imagem = evento.imagem_url
+          ? `<img class="news-thumb"
+               src="${escapeHtml(evento.imagem_url)}"
+               alt=""
+               onerror="this.style.display='none'">`
+          : `<div class="news-thumb-placeholder">
+               <i class="fa-solid fa-calendar-check"></i>
+             </div>`;
+
+        const statusClasse =
+          evento.status === 'PUBLICADA'
+            ? 'publicada'
+            : 'rascunho';
+
+        const statusTexto =
+          evento.status === 'PUBLICADA'
+            ? 'Publicada'
+            : 'Rascunho';
+
+        tr.innerHTML = `
+          <td>
+            <div class="news-title-cell">
+              ${imagem}
+              <div>
+                <div class="news-title">
+                  ${escapeHtml(evento.titulo || 'Sem título')}
+                </div>
+                <div class="news-title-meta">
+                  ${escapeHtml(evento.categoria || 'Eventos')}
+                </div>
+              </div>
+            </div>
+          </td>
+
+          <td>
+            <div class="news-date">
+              ${escapeHtml(formatarDataEvento(evento.data_evento))}
+            </div>
+            <div class="news-title-meta">
+              ${escapeHtml(formatarHoraEvento(evento.hora_evento))}
+            </div>
+          </td>
+
+          <td>
+            <div class="news-author">
+              ${escapeHtml(evento.local || 'Não informado')}
+            </div>
+          </td>
+
+          <td>
+            <span class="news-status ${statusClasse}">
+              <i class="fa-solid fa-circle"></i>
+              ${statusTexto}
+            </span>
+          </td>
+
+          <td>
+            <span class="news-author">
+              ${escapeHtml(evento.autor || 'Redação Pixel')}
+            </span>
+          </td>
+
+          <td>
+            <div class="news-actions">
+
+              <button
+                class="news-action-button"
+                onclick="editarEvento('${escapeHtml(String(evento.id))}')"
+                title="Editar"
+              >
+                <i class="fa-solid fa-pen"></i>
+              </button>
+
+              ${
+                evento.status === 'PUBLICADA'
+                  ? `
+                    <button
+                      class="news-action-button"
+                      onclick="transformarEventoEmRascunho('${escapeHtml(String(evento.id))}')"
+                      title="Transformar em rascunho"
+                    >
+                      <i class="fa-solid fa-eye-slash"></i>
+                    </button>
+                  `
+                  : `
+                    <button
+                      class="news-action-button publish"
+                      onclick="publicarEvento('${escapeHtml(String(evento.id))}')"
+                      title="Publicar"
+                    >
+                      <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                  `
+              }
+
+              <button
+                class="news-action-button danger"
+                onclick="excluirEvento('${escapeHtml(String(evento.id))}')"
+                title="Excluir"
+              >
+                <i class="fa-solid fa-trash"></i>
+              </button>
+
+            </div>
+          </td>
+        `;
+
+        body.appendChild(tr);
+      });
+    }
+
+
+    function abrirNovoEvento() {
+
+      if (!usuarioTemPermissao('eventos')) {
+        mostrarToast(
+          'Seu cargo não possui permissão para criar eventos.',
+          'error'
+        );
+        return;
+      }
+
+      eventoModalAtual = null;
+
+      document.getElementById('event-modal-title').textContent =
+        'Novo evento';
+
+      document.getElementById('event-modal-subtitle').textContent =
+        'Crie um novo evento para o Pixelizados.';
+
+      document.getElementById('event-titulo').value = '';
+      document.getElementById('event-categoria').value = 'Eventos';
+      document.getElementById('event-status').value = 'RASCUNHO';
+      document.getElementById('event-data').value = '';
+      document.getElementById('event-hora').value = '';
+      document.getElementById('event-local').value = '';
+      document.getElementById('event-autor').value =
+        usuarioAtual?.habbo_nick || 'Redação Pixel';
+      document.getElementById('event-imagem-url').value = '';
+      document.getElementById('event-resumo').value = '';
+      document.getElementById('event-conteudo').value = '';
+
+      const preview =
+        document.getElementById('event-image-preview');
+
+      preview.src = '';
+      preview.classList.remove('visible');
+
+      document.getElementById('event-modal-overlay')
+        .classList.add('open');
+
+      setTimeout(() => {
+        document.getElementById('event-titulo').focus();
+      }, 100);
+    }
+
+
+    function editarEvento(id) {
+
+      if (!usuarioTemPermissao('eventos')) {
+        mostrarToast(
+          'Seu cargo não possui permissão para editar eventos.',
+          'error'
+        );
+        return;
+      }
+
+      const evento = eventosCache.find(
+        item => String(item.id) === String(id)
+      );
+
+      if (!evento) {
+        mostrarToast('Evento não encontrado.', 'error');
+        return;
+      }
+
+      eventoModalAtual = evento;
+
+      document.getElementById('event-modal-title').textContent =
+        'Editar evento';
+
+      document.getElementById('event-modal-subtitle').textContent =
+        'Altere as informações deste evento.';
+
+      document.getElementById('event-titulo').value =
+        evento.titulo || '';
+
+      document.getElementById('event-categoria').value =
+        evento.categoria || 'Eventos';
+
+      document.getElementById('event-status').value =
+        evento.status || 'RASCUNHO';
+
+      document.getElementById('event-data').value =
+        evento.data_evento || '';
+
+      document.getElementById('event-hora').value =
+        evento.hora_evento
+          ? String(evento.hora_evento).slice(0, 5)
+          : '';
+
+      document.getElementById('event-local').value =
+        evento.local || '';
+
+      document.getElementById('event-autor').value =
+        evento.autor || 'Redação Pixel';
+
+      document.getElementById('event-imagem-url').value =
+        evento.imagem_url || '';
+
+      document.getElementById('event-resumo').value =
+        evento.resumo || '';
+
+      document.getElementById('event-conteudo').value =
+        evento.conteudo || '';
+
+      atualizarPreviewImagemEvento();
+
+      document.getElementById('event-modal-overlay')
+        .classList.add('open');
+    }
+
+
+    function atualizarPreviewImagemEvento() {
+
+      const url = (
+        document.getElementById('event-imagem-url').value || ''
+      ).trim();
+
+      const preview =
+        document.getElementById('event-image-preview');
+
+      if (!url) {
+        preview.src = '';
+        preview.classList.remove('visible');
+        return;
+      }
+
+      preview.onload = () => {
+        preview.classList.add('visible');
+      };
+
+      preview.onerror = () => {
+        preview.classList.remove('visible');
+      };
+
+      preview.src = url;
+    }
+
+
+    async function salvarEvento() {
+
+      if (!usuarioTemPermissao('eventos')) {
+        mostrarToast(
+          'Seu cargo não possui permissão para salvar eventos.',
+          'error'
+        );
+        return;
+      }
+
+      const titulo =
+        document.getElementById('event-titulo').value.trim();
+
+      const categoria =
+        document.getElementById('event-categoria').value;
+
+      const status =
+        document.getElementById('event-status').value;
+
+      const dataEvento =
+        document.getElementById('event-data').value || null;
+
+      const horaEvento =
+        document.getElementById('event-hora').value || null;
+
+      const local =
+        document.getElementById('event-local').value.trim();
+
+      const autor =
+        document.getElementById('event-autor').value.trim() ||
+        'Redação Pixel';
+
+      const imagemUrl =
+        document.getElementById('event-imagem-url').value.trim();
+
+      const resumo =
+        document.getElementById('event-resumo').value.trim();
+
+      const conteudo =
+        document.getElementById('event-conteudo').value.trim();
+
+      if (!titulo) {
+        mostrarToast('Digite um título para o evento.', 'error');
+        document.getElementById('event-titulo').focus();
+        return;
+      }
+
+      if (!dataEvento) {
+        mostrarToast('Informe a data do evento.', 'error');
+        document.getElementById('event-data').focus();
+        return;
+      }
+
+      if (!conteudo) {
+        mostrarToast('Digite a descrição do evento.', 'error');
+        document.getElementById('event-conteudo').focus();
+        return;
+      }
+
+      const botao =
+        document.getElementById('event-save-button');
+
+      const textoOriginal =
+        botao.innerHTML;
+
+      botao.disabled = true;
+
+      botao.innerHTML =
+        '<i class="fa-solid fa-spinner fa-spin"></i> Salvando...';
+
+      try {
+
+        const dados = {
+
+          titulo,
+          categoria,
+          resumo: resumo || null,
+          conteudo,
+          imagem_url: imagemUrl || null,
+          data_evento: dataEvento,
+          hora_evento: horaEvento,
+          local: local || null,
+          autor,
+          status,
+
+          publicado_em:
+            status === 'PUBLICADA'
+              ? (
+                  eventoModalAtual?.publicado_em ||
+                  new Date().toISOString()
+                )
+              : null
+
+        };
+
+        let resultado;
+
+        if (eventoModalAtual) {
+
+          resultado = await supabaseClient
+            .from('eventos')
+            .update(dados)
+            .eq('id', eventoModalAtual.id);
+
+        } else {
+
+          resultado = await supabaseClient
+            .from('eventos')
+            .insert(dados);
+
+        }
+
+        if (resultado.error) throw resultado.error;
+
+        fecharEventoModal();
+
+        mostrarToast(
+          eventoModalAtual
+            ? 'Evento atualizado com sucesso.'
+            : 'Evento criado com sucesso.',
+          'success'
+        );
+
+        await carregarEventos(false);
+
+      } catch (error) {
+
+        console.error('Erro ao salvar evento:', error);
+
+        mostrarToast(
+          'Não foi possível salvar o evento. Verifique as políticas RLS.',
+          'error'
+        );
+
+      } finally {
+
+        botao.disabled = false;
+        botao.innerHTML = textoOriginal;
+
+      }
+    }
+
+
+    async function publicarEvento(id) {
+
+      if (!usuarioTemPermissao('eventos')) return;
+
+      const evento = eventosCache.find(
+        item => String(item.id) === String(id)
+      );
+
+      if (!evento) {
+        mostrarToast('Evento não encontrado.', 'error');
+        return;
+      }
+
+      if (!window.confirm(
+        `Deseja publicar o evento "${evento.titulo || 'Sem título'}"?`
+      )) {
+        return;
+      }
+
+      try {
+
+        const resultado = await supabaseClient
+          .from('eventos')
+          .update({
+            status: 'PUBLICADA',
+            publicado_em:
+              evento.publicado_em ||
+              new Date().toISOString()
+          })
+          .eq('id', evento.id);
+
+        if (resultado.error) throw resultado.error;
+
+        mostrarToast(
+          'Evento publicado com sucesso.',
+          'success'
+        );
+
+        await carregarEventos(false);
+
+      } catch (error) {
+
+        console.error('Erro ao publicar evento:', error);
+
+        mostrarToast(
+          'Não foi possível publicar o evento.',
+          'error'
+        );
+      }
+    }
+
+
+    async function transformarEventoEmRascunho(id) {
+
+      if (!usuarioTemPermissao('eventos')) return;
+
+      const evento = eventosCache.find(
+        item => String(item.id) === String(id)
+      );
+
+      if (!evento) {
+        mostrarToast('Evento não encontrado.', 'error');
+        return;
+      }
+
+      if (!window.confirm(
+        'Deseja transformar este evento em rascunho?'
+      )) {
+        return;
+      }
+
+      try {
+
+        const resultado = await supabaseClient
+          .from('eventos')
+          .update({
+            status: 'RASCUNHO',
+            publicado_em: null
+          })
+          .eq('id', evento.id);
+
+        if (resultado.error) throw resultado.error;
+
+        mostrarToast(
+          'Evento transformado em rascunho.',
+          'success'
+        );
+
+        await carregarEventos(false);
+
+      } catch (error) {
+
+        console.error(
+          'Erro ao transformar evento:',
+          error
+        );
+
+        mostrarToast(
+          'Não foi possível alterar o status do evento.',
+          'error'
+        );
+      }
+    }
+
+
+    async function excluirEvento(id) {
+
+      if (!usuarioTemPermissao('eventos')) return;
+
+      const evento = eventosCache.find(
+        item => String(item.id) === String(id)
+      );
+
+      if (!evento) {
+        mostrarToast('Evento não encontrado.', 'error');
+        return;
+      }
+
+      if (!window.confirm(
+        `Tem certeza que deseja excluir o evento "${evento.titulo || 'Sem título'}"?\n\nEsta ação não poderá ser desfeita.`
+      )) {
+        return;
+      }
+
+      try {
+
+        const resultado = await supabaseClient
+          .from('eventos')
+          .delete()
+          .eq('id', evento.id);
+
+        if (resultado.error) throw resultado.error;
+
+        mostrarToast(
+          'Evento excluído com sucesso.',
+          'success'
+        );
+
+        await carregarEventos(false);
+
+      } catch (error) {
+
+        console.error('Erro ao excluir evento:', error);
+
+        mostrarToast(
+          'Não foi possível excluir o evento.',
+          'error'
+        );
+      }
+    }
+
+
+    function fecharEventoModal() {
+
+      const overlay =
+        document.getElementById('event-modal-overlay');
+
+      if (overlay) {
+        overlay.classList.remove('open');
+      }
+
+      eventoModalAtual = null;
+    }
+
+
+    function fecharEventoAoClicarFora(event) {
+
+      if (event.target === event.currentTarget) {
+        fecharEventoModal();
+      }
     }
 
 
