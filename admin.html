@@ -1159,6 +1159,207 @@
 
 
     /* =========================================================
+       EQUIPE
+    ========================================================= */
+    let equipeCache = [];
+    let equipeModalAtual = null;
+
+    async function mostrarEquipe() {
+      if (!usuarioTemPermissao('equipe')) return;
+      document.querySelectorAll('.module-view').forEach(view => view.classList.remove('active'));
+      document.getElementById('equipe-view').classList.add('active');
+      document.getElementById('dashboard-footer').style.display = 'none';
+      document.getElementById('page-title').textContent = 'Equipe';
+      document.getElementById('page-description').textContent = 'Gerencie os membros oficiais da equipe Pixelizados.';
+      await carregarEquipe(true);
+    }
+
+    async function carregarEquipe(mostrarCarregamento = true) {
+      if (!usuarioTemPermissao('equipe')) return;
+      const loading = document.getElementById('team-loading');
+      const empty = document.getElementById('team-empty');
+      const wrapper = document.getElementById('team-table-wrapper');
+      const button = document.getElementById('refresh-equipe-button');
+      if (mostrarCarregamento) {
+        loading.style.display = 'block';
+        empty.style.display = 'none';
+        wrapper.style.display = 'none';
+      }
+      button?.classList.add('loading');
+      try {
+        const resultado = await supabaseClient
+          .from('equipe')
+          .select('*')
+          .order('ordem', { ascending: true })
+          .order('created_at', { ascending: true });
+        if (resultado.error) throw resultado.error;
+        equipeCache = resultado.data || [];
+        filtrarEquipe();
+      } catch (error) {
+        console.error('Erro ao carregar equipe:', error);
+        equipeCache = [];
+        loading.style.display = 'none';
+        wrapper.style.display = 'none';
+        empty.style.display = 'block';
+        empty.innerHTML = '<div class="team-empty-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><h3>Não foi possível carregar a equipe</h3><p>Verifique as permissões da tabela equipe no Supabase.</p>';
+        mostrarToast('Não foi possível carregar a equipe.', 'error');
+      } finally {
+        button?.classList.remove('loading');
+      }
+    }
+
+    function filtrarEquipe() {
+      const busca = (document.getElementById('team-search')?.value || '').trim().toLowerCase();
+      const status = document.getElementById('team-status-filter')?.value || 'TODOS';
+      const role = document.getElementById('team-role-filter')?.value || 'TODOS';
+      const filtrados = equipeCache.filter(item => {
+        const texto = [item.nick_usuario, item.cargo, item.discord_tag, item.descricao].join(' ').toLowerCase();
+        return (!busca || texto.includes(busca)) && (status === 'TODOS' || item.status === status) && (role === 'TODOS' || item.cargo === role);
+      });
+      renderizarEquipe(filtrados);
+    }
+
+    function renderizarEquipe(membros) {
+      const loading = document.getElementById('team-loading');
+      const empty = document.getElementById('team-empty');
+      const wrapper = document.getElementById('team-table-wrapper');
+      const body = document.getElementById('team-table-body');
+      loading.style.display = 'none';
+
+      document.getElementById('team-total').textContent = equipeCache.length;
+      document.getElementById('team-active').textContent = equipeCache.filter(item => item.status === 'ATIVO').length;
+      document.getElementById('team-visible').textContent = equipeCache.filter(item => item.visivel).length;
+
+      if (!membros.length) {
+        body.innerHTML = '';
+        wrapper.style.display = 'none';
+        empty.style.display = 'block';
+        return;
+      }
+
+      empty.style.display = 'none';
+      wrapper.style.display = 'block';
+      body.innerHTML = membros.map(item => {
+        const role = CARGOS[item.cargo] || { nome: item.cargo || 'Sem cargo', icone: 'assets/cargos/entusiasta.svg' };
+        const statusClass = item.status === 'ATIVO' ? 'active' : 'away';
+        const data = item.data_entrada ? new Date(item.data_entrada + 'T00:00:00').toLocaleDateString('pt-BR') : '—';
+        const avatar = item.avatar_url ? `<img class="team-avatar" src="${escapeHtml(item.avatar_url)}" alt="${escapeHtml(item.nick_usuario || 'Membro')}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">` : '';
+        const fallback = `<div class="team-avatar-fallback" ${item.avatar_url ? 'style="display:none;"' : ''}><i class="fa-solid fa-user"></i></div>`;
+        return `
+          <tr>
+            <td>
+              <div class="team-member-cell">
+                ${avatar}${fallback}
+                <div><div class="team-member-name">${escapeHtml(item.nick_usuario || 'Sem Nick')}</div><div class="team-member-discord">${escapeHtml(item.discord_tag || 'Discord não informado')}</div></div>
+              </div>
+            </td>
+            <td><span class="team-role-badge"><img src="${escapeHtml(role.icone)}" alt="" style="width:14px;height:14px;">${escapeHtml(role.nome)}</span></td>
+            <td><span class="team-status-badge ${statusClass}"><i class="fa-solid ${item.status === 'ATIVO' ? 'fa-circle-check' : 'fa-clock'}"></i>${item.status === 'ATIVO' ? 'Ativo' : 'Afastado'}</span></td>
+            <td>${escapeHtml(data)}</td>
+            <td>${escapeHtml(String(item.ordem ?? 0))}</td>
+            <td><span class="team-visible-badge ${item.visivel ? '' : 'off'}"><i class="fa-solid ${item.visivel ? 'fa-eye' : 'fa-eye-slash'}"></i>${item.visivel ? 'Visível' : 'Oculto'}</span></td>
+            <td><div class="team-actions"><button class="team-action-button" title="Editar" onclick="abrirEquipeModal('${String(item.id).replace(/'/g, "\\'")}')"><i class="fa-solid fa-pen"></i></button><button class="team-action-button danger" title="Remover" onclick="removerMembroEquipe('${String(item.id).replace(/'/g, "\\'")}')"><i class="fa-solid fa-trash"></i></button></div></td>
+          </tr>`;
+      }).join('');
+    }
+
+    function abrirEquipeModal(id = null) {
+      if (usuarioAtual?.role !== 'FUNDADOR' && usuarioAtual?.role !== 'ALTA_CUPULA') {
+        mostrarToast('Apenas Aclamado/Fundador e Alta Cúpula podem administrar a equipe.', 'error');
+        return;
+      }
+      equipeModalAtual = id ? equipeCache.find(item => String(item.id) === String(id)) : null;
+      document.getElementById('equipe-modal-title').textContent = equipeModalAtual ? 'Editar membro' : 'Adicionar membro';
+      document.getElementById('equipe-modal-subtitle').textContent = equipeModalAtual ? 'Atualize os dados do membro da equipe.' : 'Cadastre um membro oficial da equipe Pixelizados.';
+      document.getElementById('equipe-nick').value = equipeModalAtual?.nick_usuario || '';
+      document.getElementById('equipe-cargo').value = equipeModalAtual?.cargo || 'ENTUSIASTA';
+      document.getElementById('equipe-discord').value = equipeModalAtual?.discord_tag || '';
+      document.getElementById('equipe-data').value = equipeModalAtual?.data_entrada || '';
+      document.getElementById('equipe-avatar').value = equipeModalAtual?.avatar_url || '';
+      document.getElementById('equipe-status').value = equipeModalAtual?.status || 'ATIVO';
+      document.getElementById('equipe-ordem').value = equipeModalAtual?.ordem ?? 0;
+      document.getElementById('equipe-descricao').value = equipeModalAtual?.descricao || '';
+      document.getElementById('equipe-visivel').checked = equipeModalAtual?.visivel ?? true;
+      document.getElementById('equipe-modal-overlay').classList.add('open');
+    }
+
+    async function salvarMembroEquipe() {
+      if (usuarioAtual?.role !== 'FUNDADOR' && usuarioAtual?.role !== 'ALTA_CUPULA') {
+        mostrarToast('Você não possui permissão para administrar a equipe.', 'error');
+        return;
+      }
+      const nick = document.getElementById('equipe-nick').value.trim();
+      const cargo = document.getElementById('equipe-cargo').value;
+      if (!nick || !CARGOS[cargo]) {
+        mostrarToast('Informe o Nick do Usuário e um cargo válido.', 'error');
+        return;
+      }
+      const payload = {
+        nick_usuario: nick,
+        cargo,
+        discord_tag: document.getElementById('equipe-discord').value.trim() || null,
+        data_entrada: document.getElementById('equipe-data').value || null,
+        avatar_url: document.getElementById('equipe-avatar').value.trim() || null,
+        status: document.getElementById('equipe-status').value,
+        ordem: Math.max(0, parseInt(document.getElementById('equipe-ordem').value || '0', 10) || 0),
+        descricao: document.getElementById('equipe-descricao').value.trim() || null,
+        visivel: document.getElementById('equipe-visivel').checked,
+        atualizado_em: new Date().toISOString()
+      };
+      const button = document.getElementById('equipe-save-button');
+      const original = button.innerHTML;
+      button.disabled = true;
+      button.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Salvando...';
+      try {
+        let resultado;
+        if (equipeModalAtual) {
+          resultado = await supabaseClient.from('equipe').update(payload).eq('id', equipeModalAtual.id);
+        } else {
+          resultado = await supabaseClient.from('equipe').insert({ ...payload, criado_por_nick: usuarioAtual?.habbo_nick || 'Sistema', criado_por_auth_user_id: usuarioAtual?.auth_user_id || null });
+        }
+        if (resultado.error) throw resultado.error;
+        fecharEquipeModal();
+        mostrarToast(equipeModalAtual ? 'Membro atualizado com sucesso.' : 'Membro adicionado à equipe.', 'success');
+        await carregarEquipe(true);
+      } catch (error) {
+        console.error('Erro ao salvar membro da equipe:', error);
+        mostrarToast(error?.message || 'Não foi possível salvar o membro.', 'error');
+      } finally {
+        button.disabled = false;
+        button.innerHTML = original;
+      }
+    }
+
+    async function removerMembroEquipe(id) {
+      if (usuarioAtual?.role !== 'FUNDADOR' && usuarioAtual?.role !== 'ALTA_CUPULA') {
+        mostrarToast('Você não possui permissão para administrar a equipe.', 'error');
+        return;
+      }
+      const membro = equipeCache.find(item => String(item.id) === String(id));
+      if (!membro) return;
+      if (!window.confirm('Remover "' + (membro.nick_usuario || 'Sem Nick') + '" da equipe oficial?')) return;
+      try {
+        const resultado = await supabaseClient.from('equipe').delete().eq('id', id);
+        if (resultado.error) throw resultado.error;
+        mostrarToast('Membro removido da equipe.', 'success');
+        await carregarEquipe(true);
+      } catch (error) {
+        console.error('Erro ao remover membro da equipe:', error);
+        mostrarToast(error?.message || 'Não foi possível remover o membro.', 'error');
+      }
+    }
+
+    function fecharEquipeModal() {
+      document.getElementById('equipe-modal-overlay')?.classList.remove('open');
+      equipeModalAtual = null;
+    }
+
+    function fecharEquipeAoClicarFora(event) {
+      if (event.target.id === 'equipe-modal-overlay') fecharEquipeModal();
+    }
+
+
+    /* =========================================================
        CARGOS & PERMISSÕES
     ========================================================= */
 
@@ -4179,6 +4380,53 @@
       }
     }
 
+
+    /* =========================================================
+       EQUIPE
+    ========================================================= */
+    .team-toolbar { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+    .team-search { min-width:280px; flex:1; position:relative; }
+    .team-search i { position:absolute; left:14px; top:50%; transform:translateY(-50%); color:#8fa0ad; font-size:12px; }
+    .team-search input { width:100%; padding:12px 14px 12px 38px; border:1px solid #dce5ea; border-radius:12px; background:#fff; font:700 11px 'Manrope',sans-serif; color:#273640; outline:none; }
+    .team-search input:focus { border-color:var(--blue-dark); box-shadow:0 0 0 3px rgba(126,169,209,.12); }
+    .team-filter { min-width:160px; padding:12px 14px; border:1px solid #dce5ea; border-radius:12px; background:#fff; font:800 10px 'Manrope',sans-serif; color:#53636e; outline:none; }
+    .team-add-button { display:inline-flex; align-items:center; gap:8px; border:0; border-radius:12px; padding:12px 16px; background:#26343d; color:#fff; font:900 10px 'Manrope',sans-serif; cursor:pointer; box-shadow:0 7px 18px rgba(38,52,61,.12); }
+    .team-add-button:hover { transform:translateY(-1px); }
+    .team-summary { display:flex; gap:10px; flex-wrap:wrap; margin:14px 0; }
+    .team-summary-card { flex:1; min-width:150px; background:#fff; border:1px solid #e3eaee; border-radius:14px; padding:14px 16px; }
+    .team-summary-label { font:900 9px 'Manrope',sans-serif; text-transform:uppercase; letter-spacing:.08em; color:#8b9aa4; }
+    .team-summary-value { margin-top:4px; font:900 22px 'Manrope',sans-serif; color:#273640; }
+    .team-table-wrapper { overflow-x:auto; border:1px solid #e3eaee; border-radius:14px; background:#fff; }
+    .team-table { width:100%; border-collapse:collapse; min-width:900px; }
+    .team-table th { padding:12px 14px; background:#f7fafb; border-bottom:1px solid #e3eaee; text-align:left; font:900 9px 'Manrope',sans-serif; text-transform:uppercase; letter-spacing:.06em; color:#8796a0; }
+    .team-table td { padding:13px 14px; border-bottom:1px solid #edf1f3; font:700 10px 'Manrope',sans-serif; color:#4b5d68; vertical-align:middle; }
+    .team-table tr:last-child td { border-bottom:0; }
+    .team-member-cell { display:flex; align-items:center; gap:10px; min-width:190px; }
+    .team-avatar { width:40px; height:40px; border-radius:11px; object-fit:cover; background:#edf3f6; border:1px solid #e1e8ec; flex:0 0 auto; }
+    .team-avatar-fallback { width:40px; height:40px; border-radius:11px; background:#eaf2f7; color:#6f8797; display:flex; align-items:center; justify-content:center; flex:0 0 auto; }
+    .team-member-name { font-weight:900; color:#293943; }
+    .team-member-discord { margin-top:2px; color:#94a1aa; font-size:9px; }
+    .team-role-badge, .team-status-badge, .team-visible-badge { display:inline-flex; align-items:center; gap:5px; border-radius:999px; padding:6px 9px; font:900 8px 'Manrope',sans-serif; white-space:nowrap; }
+    .team-role-badge { background:#eef5fa; color:#52728a; }
+    .team-status-badge.active { background:#eaf7ef; color:#3e8a5d; }
+    .team-status-badge.away { background:#fff5e6; color:#a87526; }
+    .team-visible-badge { background:#edf7ff; color:#4c7fa2; }
+    .team-visible-badge.off { background:#f1f3f4; color:#8b969c; }
+    .team-action-button { border:1px solid #dfe7eb; background:#fff; color:#61737e; border-radius:9px; width:34px; height:34px; cursor:pointer; }
+    .team-action-button:hover { background:#f6fafc; color:#263d4b; }
+    .team-action-button.danger:hover { color:#b84b4b; background:#fff5f5; }
+    .team-actions { display:flex; justify-content:flex-end; gap:6px; }
+    .team-loading, .team-empty { padding:42px 20px; text-align:center; color:#8b9ca7; }
+    .team-loading i { font-size:20px; animation:spin .8s linear infinite; }
+    .team-empty-icon { width:52px; height:52px; border-radius:16px; background:#f1f6f9; margin:0 auto 12px; display:flex; align-items:center; justify-content:center; font-size:20px; color:#8ca0ad; }
+    .team-empty h3 { margin:0; font:900 14px 'Manrope',sans-serif; color:#455762; }
+    .team-empty p { margin:7px 0 0; font:700 10px 'Manrope',sans-serif; color:#95a2aa; }
+    .team-order-input { width:65px; padding:7px 8px; border:1px solid #dce5ea; border-radius:8px; font:800 10px 'Manrope',sans-serif; }
+    @media (max-width:850px) {
+      .team-search { min-width:100%; }
+      .team-filter, .team-add-button { width:100%; }
+    }
+
   </style>
 </head>
 
@@ -6286,12 +6534,193 @@
       </div>
 
 
+      <!-- =====================================================
+           EQUIPE
+      ====================================================== -->
+      <div id="equipe-view" class="module-view">
+
+        <div class="section-heading">
+          <div class="section-heading-left">
+            <div class="section-heading-icon">
+              <i class="fa-solid fa-user-group"></i>
+            </div>
+            <div>
+              <h2>Equipe</h2>
+              <p>Gerencie os membros oficiais da equipe Pixelizados e sua apresentação pública.</p>
+            </div>
+          </div>
+
+          <div class="team-toolbar">
+            <button class="refresh-button" id="refresh-equipe-button" onclick="carregarEquipe(true)" title="Atualizar">
+              <i class="fa-solid fa-rotate"></i>
+            </button>
+            <button class="team-add-button" onclick="abrirEquipeModal()">
+              <i class="fa-solid fa-plus"></i>
+              Adicionar membro
+            </button>
+          </div>
+        </div>
+
+        <div class="team-summary">
+          <div class="team-summary-card">
+            <div class="team-summary-label">Membros cadastrados</div>
+            <div class="team-summary-value" id="team-total">—</div>
+          </div>
+          <div class="team-summary-card">
+            <div class="team-summary-label">Ativos</div>
+            <div class="team-summary-value" id="team-active">—</div>
+          </div>
+          <div class="team-summary-card">
+            <div class="team-summary-label">Visíveis no site</div>
+            <div class="team-summary-value" id="team-visible">—</div>
+          </div>
+        </div>
+
+        <div class="roles-panel">
+          <div class="roles-panel-header">
+            <div>
+              <div class="roles-panel-title">Membros da equipe</div>
+              <div class="roles-panel-subtitle">Apenas Aclamado/Fundador e Alta Cúpula podem administrar esta lista.</div>
+            </div>
+            <div class="team-toolbar" style="flex:1; justify-content:flex-end;">
+              <div class="team-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input id="team-search" type="text" placeholder="Buscar por Nick do Usuário..." oninput="filtrarEquipe()">
+              </div>
+              <select id="team-status-filter" class="team-filter" onchange="filtrarEquipe()">
+                <option value="TODOS">Todos os status</option>
+                <option value="ATIVO">Ativos</option>
+                <option value="AFASTADO">Afastados</option>
+              </select>
+              <select id="team-role-filter" class="team-filter" onchange="filtrarEquipe()">
+                <option value="TODOS">Todos os cargos</option>
+                <option value="FUNDADOR">Aclamado/Fundador</option>
+                <option value="ALTA_CUPULA">Alta Cúpula</option>
+                <option value="CURADORIA">Curadoria</option>
+                <option value="VOZ_OFICIAL">Voz Oficial</option>
+                <option value="APOIADOR">Apoiador</option>
+                <option value="ENTUSIASTA">Entusiasta</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="team-loading" class="team-loading">
+            <i class="fa-solid fa-spinner fa-spin"></i>
+            <p>Carregando equipe...</p>
+          </div>
+
+          <div id="team-empty" class="team-empty" style="display:none;">
+            <div class="team-empty-icon"><i class="fa-solid fa-user-group"></i></div>
+            <h3>Nenhum membro encontrado</h3>
+            <p>Adicione o primeiro membro ou ajuste os filtros.</p>
+          </div>
+
+          <div id="team-table-wrapper" class="team-table-wrapper" style="display:none;">
+            <table class="team-table">
+              <thead>
+                <tr>
+                  <th>Membro</th>
+                  <th>Cargo</th>
+                  <th>Status</th>
+                  <th>Entrada</th>
+                  <th>Ordem</th>
+                  <th>Visibilidade</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="team-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <footer class="admin-footer">Pixelizados © 2026 · Equipe</footer>
+      </div>
+
+
     </main>
 
   </div>
 
 
   
+
+  <!-- =======================================================
+       MODAL DE EQUIPE
+  ======================================================== -->
+  <div id="equipe-modal-overlay" class="modal-overlay" onclick="fecharEquipeAoClicarFora(event)">
+    <div class="user-modal" role="dialog" aria-modal="true" aria-labelledby="equipe-modal-title">
+      <div class="modal-header">
+        <div class="modal-title-area">
+          <div class="modal-title-icon"><i class="fa-solid fa-user-group"></i></div>
+          <div>
+            <h3 id="equipe-modal-title" class="modal-title">Adicionar membro</h3>
+            <p id="equipe-modal-subtitle" class="modal-subtitle">Cadastre um membro oficial da equipe Pixelizados.</p>
+          </div>
+        </div>
+        <button class="modal-close" onclick="fecharEquipeModal()" title="Fechar"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Nick do Usuário *</label>
+            <input id="equipe-nick" class="form-input" type="text" maxlength="80" placeholder="Ex.: dielsss">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Cargo *</label>
+            <select id="equipe-cargo" class="form-select">
+              <option value="ALTA_CUPULA">Alta Cúpula</option>
+              <option value="CURADORIA">Curadoria</option>
+              <option value="VOZ_OFICIAL">Voz Oficial</option>
+              <option value="APOIADOR">Apoiador</option>
+              <option value="ENTUSIASTA">Entusiasta</option>
+              <option value="FUNDADOR">Aclamado/Fundador</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Discord</label>
+            <input id="equipe-discord" class="form-input" type="text" maxlength="120" placeholder="Ex.: usuario#0001">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Data de entrada</label>
+            <input id="equipe-data" class="form-input" type="date">
+          </div>
+          <div class="form-group full">
+            <label class="form-label">Avatar (URL)</label>
+            <input id="equipe-avatar" class="form-input" type="url" maxlength="1000" placeholder="https://...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Status</label>
+            <select id="equipe-status" class="form-select">
+              <option value="ATIVO">Ativo</option>
+              <option value="AFASTADO">Afastado</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Ordem de exibição</label>
+            <input id="equipe-ordem" class="form-input" type="number" min="0" step="1" value="0">
+          </div>
+          <div class="form-group full">
+            <label class="form-label">Descrição / apresentação</label>
+            <textarea id="equipe-descricao" class="form-textarea" maxlength="500" placeholder="Breve apresentação do membro na equipe."></textarea>
+          </div>
+          <div class="form-group full">
+            <label class="form-label" style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+              <input id="equipe-visivel" type="checkbox" checked style="width:16px;height:16px;">
+              Exibir este membro no site
+            </label>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button class="modal-button secondary" onclick="fecharEquipeModal()">Cancelar</button>
+          <button class="modal-button primary" id="equipe-save-button" onclick="salvarMembroEquipe()">
+            <i class="fa-solid fa-floppy-disk"></i> Salvar membro
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- =======================================================
        MODAL DE CARGO
@@ -9534,6 +9963,17 @@
       ) {
 
         mostrarCargos();
+
+        return;
+
+      }
+
+
+      if (
+        modulo === 'equipe'
+      ) {
+
+        mostrarEquipe();
 
         return;
 
