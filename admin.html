@@ -4226,7 +4226,24 @@
       .team-filter, .team-add-button { width:100%; }
     }
 
-  </style>
+  
+
+    /* =========================================================
+       EQUIPE — CAMPOS VINCULADOS AO USUÁRIO
+    ========================================================= */
+    #equipe-usuario-select {
+      font-weight: 800;
+    }
+
+    #equipe-nick[readonly],
+    #equipe-discord[readonly],
+    #equipe-cargo[readonly],
+    #equipe-avatar[readonly] {
+      background: #f7fafc;
+      color: #5f7180;
+      cursor: default;
+    }
+</style>
 </head>
 
 
@@ -6453,7 +6470,7 @@
           <div class="modal-title-icon"><i class="fa-solid fa-user-group"></i></div>
           <div>
             <h3 id="equipe-modal-title" class="modal-title">Adicionar membro</h3>
-            <p id="equipe-modal-subtitle" class="modal-subtitle">Cadastre um membro oficial da equipe Pixelizados.</p>
+            <p id="equipe-modal-subtitle" class="modal-subtitle">Selecione um usuário já cadastrado no Pixelizados.</p>
           </div>
         </div>
         <button class="modal-close" onclick="fecharEquipeModal()" title="Fechar"><i class="fa-solid fa-xmark"></i></button>
@@ -6461,33 +6478,45 @@
 
       <div class="modal-body">
         <div class="form-grid">
-          <div class="form-group">
-            <label class="form-label">Nick do Usuário *</label>
-            <input id="equipe-nick" class="form-input" type="text" maxlength="80" placeholder="Ex.: dielsss">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Cargo *</label>
-            <select id="equipe-cargo" class="form-select">
-              <option value="ALTA_CUPULA">Alta Cúpula</option>
-              <option value="CURADORIA">Curadoria</option>
-              <option value="VOZ_OFICIAL">Voz Oficial</option>
-              <option value="APOIADOR">Apoiador</option>
-              <option value="ENTUSIASTA">Entusiasta</option>
-              <option value="FUNDADOR">Aclamado/Fundador</option>
+          <div class="form-group full">
+            <label class="form-label">Usuário cadastrado *</label>
+            <select id="equipe-usuario-select" class="form-select" onchange="atualizarDadosUsuarioEquipe()">
+              <option value="">Selecione um usuário cadastrado...</option>
             </select>
+            <small style="display:block;margin-top:6px;color:#93a2ad;font-size:8px;line-height:1.5;">Somente usuários que ainda não estão na equipe aparecem nesta lista.</small>
           </div>
+
+          <div class="form-group">
+            <label class="form-label">Nick do Usuário</label>
+            <input id="equipe-nick" class="form-input" type="text" readonly placeholder="Preenchido automaticamente">
+          </div>
+
           <div class="form-group">
             <label class="form-label">Discord</label>
-            <input id="equipe-discord" class="form-input" type="text" maxlength="120" placeholder="Ex.: usuario#0001">
+            <input id="equipe-discord" class="form-input" type="text" readonly placeholder="Preenchido automaticamente">
           </div>
+
+          <div class="form-group full">
+            <label class="form-label">Cargo</label>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <img id="equipe-cargo-icon" src="" alt="" style="display:none;width:28px;height:28px;object-fit:contain;flex-shrink:0;">
+              <input id="equipe-cargo" class="form-input" type="text" readonly placeholder="Preenchido automaticamente" style="flex:1;">
+            </div>
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label">Avatar</label>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <img id="equipe-avatar-preview" src="" alt="Avatar" style="display:none;width:42px;height:42px;border-radius:9px;object-fit:cover;border:1px solid #dfe8ee;flex-shrink:0;">
+              <input id="equipe-avatar" class="form-input" type="text" readonly placeholder="URL do avatar do cadastro" style="flex:1;">
+            </div>
+          </div>
+
           <div class="form-group">
             <label class="form-label">Data de entrada</label>
             <input id="equipe-data" class="form-input" type="date">
           </div>
-          <div class="form-group full">
-            <label class="form-label">Avatar (URL)</label>
-            <input id="equipe-avatar" class="form-input" type="url" maxlength="1000" placeholder="https://...">
-          </div>
+
           <div class="form-group">
             <label class="form-label">Status</label>
             <select id="equipe-status" class="form-select">
@@ -6495,14 +6524,17 @@
               <option value="AFASTADO">Afastado</option>
             </select>
           </div>
+
           <div class="form-group">
             <label class="form-label">Ordem de exibição</label>
             <input id="equipe-ordem" class="form-input" type="number" min="0" step="1" value="0">
           </div>
+
           <div class="form-group full">
             <label class="form-label">Descrição / apresentação</label>
             <textarea id="equipe-descricao" class="form-textarea" maxlength="500" placeholder="Breve apresentação do membro na equipe."></textarea>
           </div>
+
           <div class="form-group full">
             <label class="form-label" style="display:flex;align-items:center;gap:8px;cursor:pointer;">
               <input id="equipe-visivel" type="checkbox" checked style="width:16px;height:16px;">
@@ -6513,9 +6545,7 @@
 
         <div class="modal-actions">
           <button class="modal-button secondary" onclick="fecharEquipeModal()">Cancelar</button>
-          <button class="modal-button primary" id="equipe-save-button" onclick="salvarMembroEquipe()">
-            <i class="fa-solid fa-floppy-disk"></i> Salvar membro
-          </button>
+          <button class="modal-button primary" id="equipe-save-button" onclick="salvarMembroEquipe()"><i class="fa-solid fa-floppy-disk"></i> Salvar membro</button>
         </div>
       </div>
     </div>
@@ -9202,7 +9232,92 @@
        EQUIPE
     ========================================================= */
     let equipeCache = [];
+    let equipeUsuariosCache = [];
     let equipeModalAtual = null;
+
+    function nomeCargoEquipe(role) {
+      return CARGOS[role]?.nome || role || 'Sem cargo';
+    }
+
+    async function carregarUsuariosParaEquipe(usuarioIdAtual = null) {
+      const select = document.getElementById('equipe-usuario-select');
+      if (!select) return;
+
+      select.innerHTML = '<option value="">Carregando usuários...</option>';
+      select.disabled = true;
+
+      try {
+        const resultado = await supabaseClient
+          .from('usuarios')
+          .select('id, habbo_nick, discord_tag, role, avatar_url, status')
+          .order('habbo_nick', { ascending: true });
+
+        if (resultado.error) throw resultado.error;
+
+        equipeUsuariosCache = resultado.data || [];
+
+        const usados = new Set(
+          equipeCache
+            .filter(item => String(item.id) !== String(equipeModalAtual?.id || ''))
+            .map(item => String(item.usuario_id || ''))
+            .filter(Boolean)
+        );
+
+        const disponiveis = equipeUsuariosCache.filter(user =>
+          !usados.has(String(user.id)) || String(user.id) === String(usuarioIdAtual || '')
+        );
+
+        select.innerHTML = '<option value="">Selecione um usuário cadastrado...</option>' +
+          disponiveis.map(user => `
+            <option value="${escapeHtml(user.id)}">
+              ${escapeHtml(user.habbo_nick || 'Sem Nick')}
+            </option>
+          `).join('');
+
+        select.disabled = false;
+
+        if (usuarioIdAtual) {
+          select.value = String(usuarioIdAtual);
+        }
+
+        atualizarDadosUsuarioEquipe();
+
+      } catch (error) {
+        console.error('Erro ao carregar usuários para a equipe:', error);
+        select.innerHTML = '<option value="">Não foi possível carregar os usuários</option>';
+        select.disabled = true;
+        mostrarToast('Não foi possível carregar os usuários cadastrados.', 'error');
+      }
+    }
+
+    function atualizarDadosUsuarioEquipe() {
+      const select = document.getElementById('equipe-usuario-select');
+      const userId = select?.value || '';
+      const usuario = equipeUsuariosCache.find(item => String(item.id) === String(userId));
+
+      document.getElementById('equipe-nick').value = usuario?.habbo_nick || '';
+      document.getElementById('equipe-discord').value = usuario?.discord_tag || '';
+      document.getElementById('equipe-cargo').value = usuario ? nomeCargoEquipe(usuario.role) : '';
+      document.getElementById('equipe-avatar').value = usuario?.avatar_url || '';
+
+      const roleIcon = document.getElementById('equipe-cargo-icon');
+      const roleImage = CARGOS[usuario?.role]?.icone || '';
+      if (roleIcon) {
+        roleIcon.src = roleImage;
+        roleIcon.style.display = roleImage ? 'block' : 'none';
+      }
+
+      const preview = document.getElementById('equipe-avatar-preview');
+      if (preview) {
+        if (usuario?.avatar_url) {
+          preview.src = usuario.avatar_url;
+          preview.style.display = 'block';
+        } else {
+          preview.removeAttribute('src');
+          preview.style.display = 'none';
+        }
+      }
+    }
 
     async function mostrarEquipe() {
       if (!usuarioTemPermissao('equipe')) return;
@@ -9220,28 +9335,44 @@
       const empty = document.getElementById('team-empty');
       const wrapper = document.getElementById('team-table-wrapper');
       const button = document.getElementById('refresh-equipe-button');
+
       if (mostrarCarregamento) {
         loading.style.display = 'block';
         empty.style.display = 'none';
         wrapper.style.display = 'none';
       }
       button?.classList.add('loading');
+
       try {
         const resultado = await supabaseClient
           .from('equipe')
-          .select('*')
+          .select(`*, usuarios:usuario_id(id, habbo_nick, discord_tag, role, avatar_url)`)
           .order('ordem', { ascending: true })
           .order('created_at', { ascending: true });
+
         if (resultado.error) throw resultado.error;
-        equipeCache = resultado.data || [];
+
+        equipeCache = (resultado.data || []).map(item => {
+          const usuario = item.usuarios || null;
+          return {
+            ...item,
+            _usuario: usuario,
+            nick_usuario: usuario?.habbo_nick || item.nick_usuario || '',
+            discord_tag: usuario?.discord_tag || item.discord_tag || '',
+            cargo: usuario?.role || item.cargo || '',
+            avatar_url: usuario?.avatar_url || item.avatar_url || ''
+          };
+        });
+
         filtrarEquipe();
+
       } catch (error) {
         console.error('Erro ao carregar equipe:', error);
         equipeCache = [];
         loading.style.display = 'none';
         wrapper.style.display = 'none';
         empty.style.display = 'block';
-        empty.innerHTML = '<div class="team-empty-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><h3>Não foi possível carregar a equipe</h3><p>Verifique as permissões da tabela equipe no Supabase.</p>';
+        empty.innerHTML = '<div class="team-empty-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><h3>Não foi possível carregar a equipe</h3><p>Verifique as permissões e a relação usuario_id da tabela equipe.</p>';
         mostrarToast('Não foi possível carregar a equipe.', 'error');
       } finally {
         button?.classList.remove('loading');
@@ -9254,7 +9385,9 @@
       const role = document.getElementById('team-role-filter')?.value || 'TODOS';
       const filtrados = equipeCache.filter(item => {
         const texto = [item.nick_usuario, item.cargo, item.discord_tag, item.descricao].join(' ').toLowerCase();
-        return (!busca || texto.includes(busca)) && (status === 'TODOS' || item.status === status) && (role === 'TODOS' || item.cargo === role);
+        return (!busca || texto.includes(busca)) &&
+          (status === 'TODOS' || item.status === status) &&
+          (role === 'TODOS' || item.cargo === role);
       });
       renderizarEquipe(filtrados);
     }
@@ -9285,6 +9418,7 @@
         const data = item.data_entrada ? new Date(item.data_entrada + 'T00:00:00').toLocaleDateString('pt-BR') : '—';
         const avatar = item.avatar_url ? `<img class="team-avatar" src="${escapeHtml(item.avatar_url)}" alt="${escapeHtml(item.nick_usuario || 'Membro')}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">` : '';
         const fallback = `<div class="team-avatar-fallback" ${item.avatar_url ? 'style="display:none;"' : ''}><i class="fa-solid fa-user"></i></div>`;
+        const editId = String(item.id).replace(/'/g, "\\'");
         return `
           <tr>
             <td>
@@ -9298,29 +9432,29 @@
             <td>${escapeHtml(data)}</td>
             <td>${escapeHtml(String(item.ordem ?? 0))}</td>
             <td><span class="team-visible-badge ${item.visivel ? '' : 'off'}"><i class="fa-solid ${item.visivel ? 'fa-eye' : 'fa-eye-slash'}"></i>${item.visivel ? 'Visível' : 'Oculto'}</span></td>
-            <td><div class="team-actions"><button class="team-action-button" title="Editar" onclick="abrirEquipeModal('${String(item.id).replace(/'/g, "\\'")}')"><i class="fa-solid fa-pen"></i></button><button class="team-action-button danger" title="Remover" onclick="removerMembroEquipe('${String(item.id).replace(/'/g, "\\'")}')"><i class="fa-solid fa-trash"></i></button></div></td>
+            <td><div class="team-actions"><button class="team-action-button" title="Editar" onclick="abrirEquipeModal('${editId}')"><i class="fa-solid fa-pen"></i></button><button class="team-action-button danger" title="Remover" onclick="removerMembroEquipe('${editId}')"><i class="fa-solid fa-trash"></i></button></div></td>
           </tr>`;
       }).join('');
     }
 
-    function abrirEquipeModal(id = null) {
+    async function abrirEquipeModal(id = null) {
       if (usuarioAtual?.role !== 'FUNDADOR' && usuarioAtual?.role !== 'ALTA_CUPULA') {
         mostrarToast('Apenas Aclamado/Fundador e Alta Cúpula podem administrar a equipe.', 'error');
         return;
       }
+
       equipeModalAtual = id ? equipeCache.find(item => String(item.id) === String(id)) : null;
       document.getElementById('equipe-modal-title').textContent = equipeModalAtual ? 'Editar membro' : 'Adicionar membro';
-      document.getElementById('equipe-modal-subtitle').textContent = equipeModalAtual ? 'Atualize os dados do membro da equipe.' : 'Cadastre um membro oficial da equipe Pixelizados.';
-      document.getElementById('equipe-nick').value = equipeModalAtual?.nick_usuario || '';
-      document.getElementById('equipe-cargo').value = equipeModalAtual?.cargo || 'ENTUSIASTA';
-      document.getElementById('equipe-discord').value = equipeModalAtual?.discord_tag || '';
+      document.getElementById('equipe-modal-subtitle').textContent = equipeModalAtual ? 'Os dados do usuário são puxados automaticamente do cadastro.' : 'Selecione um usuário já cadastrado no Pixelizados.';
+
       document.getElementById('equipe-data').value = equipeModalAtual?.data_entrada || '';
-      document.getElementById('equipe-avatar').value = equipeModalAtual?.avatar_url || '';
       document.getElementById('equipe-status').value = equipeModalAtual?.status || 'ATIVO';
       document.getElementById('equipe-ordem').value = equipeModalAtual?.ordem ?? 0;
       document.getElementById('equipe-descricao').value = equipeModalAtual?.descricao || '';
       document.getElementById('equipe-visivel').checked = equipeModalAtual?.visivel ?? true;
+
       document.getElementById('equipe-modal-overlay').classList.add('open');
+      await carregarUsuariosParaEquipe(equipeModalAtual?.usuario_id || null);
     }
 
     async function salvarMembroEquipe() {
@@ -9328,28 +9462,33 @@
         mostrarToast('Você não possui permissão para administrar a equipe.', 'error');
         return;
       }
-      const nick = document.getElementById('equipe-nick').value.trim();
-      const cargo = document.getElementById('equipe-cargo').value;
-      if (!nick || !CARGOS[cargo]) {
-        mostrarToast('Informe o Nick do Usuário e um cargo válido.', 'error');
+
+      const usuarioId = document.getElementById('equipe-usuario-select').value;
+      const usuario = equipeUsuariosCache.find(item => String(item.id) === String(usuarioId));
+      if (!usuario) {
+        mostrarToast('Selecione um usuário cadastrado.', 'error');
         return;
       }
+
       const payload = {
-        nick_usuario: nick,
-        cargo,
-        discord_tag: document.getElementById('equipe-discord').value.trim() || null,
+        usuario_id: usuario.id,
+        nick_usuario: usuario.habbo_nick || null,
+        cargo: usuario.role || null,
+        discord_tag: usuario.discord_tag || null,
+        avatar_url: usuario.avatar_url || null,
         data_entrada: document.getElementById('equipe-data').value || null,
-        avatar_url: document.getElementById('equipe-avatar').value.trim() || null,
         status: document.getElementById('equipe-status').value,
         ordem: Math.max(0, parseInt(document.getElementById('equipe-ordem').value || '0', 10) || 0),
         descricao: document.getElementById('equipe-descricao').value.trim() || null,
         visivel: document.getElementById('equipe-visivel').checked,
         atualizado_em: new Date().toISOString()
       };
+
       const button = document.getElementById('equipe-save-button');
       const original = button.innerHTML;
       button.disabled = true;
       button.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Salvando...';
+
       try {
         let resultado;
         if (equipeModalAtual) {
@@ -9357,13 +9496,17 @@
         } else {
           resultado = await supabaseClient.from('equipe').insert({ ...payload, criado_por_nick: usuarioAtual?.habbo_nick || 'Sistema', criado_por_auth_user_id: usuarioAtual?.auth_user_id || null });
         }
+
         if (resultado.error) throw resultado.error;
+
         fecharEquipeModal();
         mostrarToast(equipeModalAtual ? 'Membro atualizado com sucesso.' : 'Membro adicionado à equipe.', 'success');
         await carregarEquipe(true);
+
       } catch (error) {
         console.error('Erro ao salvar membro da equipe:', error);
-        mostrarToast(error?.message || 'Não foi possível salvar o membro.', 'error');
+        const mensagem = error?.code === '23505' ? 'Este usuário já está cadastrado na equipe.' : (error?.message || 'Não foi possível salvar o membro.');
+        mostrarToast(mensagem, 'error');
       } finally {
         button.disabled = false;
         button.innerHTML = original;
@@ -9397,8 +9540,6 @@
     function fecharEquipeAoClicarFora(event) {
       if (event.target.id === 'equipe-modal-overlay') fecharEquipeModal();
     }
-
-
 
     /* =========================================================
        CARGOS & PERMISSÕES
@@ -13684,6 +13825,8 @@
       ) {
 
         fecharPreviewNoticia();
+
+        fecharEquipeModal();
 
       }
 
