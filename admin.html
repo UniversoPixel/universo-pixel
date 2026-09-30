@@ -4220,7 +4220,6 @@
     .team-empty-icon { width:52px; height:52px; border-radius:16px; background:#f1f6f9; margin:0 auto 12px; display:flex; align-items:center; justify-content:center; font-size:20px; color:#8ca0ad; }
     .team-empty h3 { margin:0; font:900 14px 'Manrope',sans-serif; color:#455762; }
     .team-empty p { margin:7px 0 0; font:700 10px 'Manrope',sans-serif; color:#95a2aa; }
-    .team-order-input { width:65px; padding:7px 8px; border:1px solid #dce5ea; border-radius:8px; font:800 10px 'Manrope',sans-serif; }
     @media (max-width:850px) {
       .team-search { min-width:100%; }
       .team-filter, .team-add-button { width:100%; }
@@ -4238,11 +4237,6 @@
     #equipe-nick[readonly],
     #equipe-discord[readonly],
     #equipe-cargo[readonly],
-    #equipe-avatar[readonly] {
-      background: #f7fafc;
-      color: #5f7180;
-      cursor: default;
-    }
 </style>
 </head>
 
@@ -6439,7 +6433,6 @@
                   <th>Cargo</th>
                   <th>Status</th>
                   <th>Entrada</th>
-                  <th>Ordem</th>
                   <th>Visibilidade</th>
                   <th></th>
                 </tr>
@@ -6506,10 +6499,10 @@
 
           <div class="form-group full">
             <label class="form-label">Foto do perfil</label>
-            <div style="display:flex;align-items:center;gap:12px;">
-              <img id="equipe-avatar-preview" src="" alt="Foto do perfil" style="display:none;width:52px;height:52px;border-radius:12px;object-fit:cover;border:1px solid #dfe8ee;flex-shrink:0;">
-              <div style="font-size:9px;color:#93a2ad;line-height:1.5;">
-                A foto é obtida automaticamente do perfil do usuário. Para alterá-la, o usuário deve atualizar a própria foto no perfil.
+            <div style="display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid #dfe8ee;border-radius:10px;background:#f7fafc;">
+              <img id="equipe-avatar-preview" src="" alt="Foto do perfil" style="display:none;width:46px;height:46px;border-radius:10px;object-fit:cover;border:1px solid #dfe8ee;flex-shrink:0;">
+              <div style="font:700 10px 'Manrope',sans-serif;color:#7f909b;line-height:1.5;">
+                A foto é vinculada ao perfil do usuário e será atualizada automaticamente quando ele alterar seu avatar.
               </div>
             </div>
           </div>
@@ -6525,11 +6518,6 @@
               <option value="ATIVO">Ativo</option>
               <option value="AFASTADO">Afastado</option>
             </select>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">Ordem de exibição</label>
-            <input id="equipe-ordem" class="form-input" type="number" min="0" step="1" value="0">
           </div>
 
           <div class="form-group full">
@@ -7873,10 +7861,16 @@
       ).textContent = nome;
 
 
-      document.getElementById(
-        'profile-avatar'
-      ).src =
-        obterAvatarUsuario(usuarioAtual);
+      const profileAvatar =
+        document.getElementById('profile-avatar');
+
+      if (profileAvatar) {
+        profileAvatar.src =
+          usuarioAtual.avatar_url ||
+          ('https://api.dicebear.com/7.x/pixel-art/svg?seed='
+            + encodeURIComponent(nome)
+            + '&backgroundColor=38b6ff');
+      }
 
 
       const roleIcon =
@@ -9231,19 +9225,6 @@
     /* =========================================================
        EQUIPE
     ========================================================= */
-
-    function obterAvatarUsuario(usuario) {
-      if (usuario?.avatar_url) {
-        return usuario.avatar_url;
-      }
-
-      const nick = usuario?.habbo_nick || 'Pixelizado';
-
-      return 'https://api.dicebear.com/7.x/pixel-art/svg?seed='
-        + encodeURIComponent(nick)
-        + '&backgroundColor=38b6ff';
-    }
-
     let equipeCache = [];
     let equipeUsuariosCache = [];
     let equipeModalAtual = null;
@@ -9321,8 +9302,8 @@
 
       const preview = document.getElementById('equipe-avatar-preview');
       if (preview) {
-        if (usuario) {
-          preview.src = obterAvatarUsuario(usuario);
+        if (usuario?.avatar_url) {
+          preview.src = usuario.avatar_url;
           preview.style.display = 'block';
         } else {
           preview.removeAttribute('src');
@@ -9341,8 +9322,22 @@
       await carregarEquipe(true);
     }
 
+    const EQUIPE_CARGO_ORDEM = {
+      FUNDADOR: 1,
+      ALTA_CUPULA: 2,
+      CURADORIA: 3,
+      VOZ_OFICIAL: 4,
+      APOIADOR: 5,
+      ENTUSIASTA: 6
+    };
+
+    function obterOrdemCargoEquipe(cargo) {
+      return EQUIPE_CARGO_ORDEM[String(cargo || '').toUpperCase()] || 99;
+    }
+
     async function carregarEquipe(mostrarCarregamento = true) {
       if (!usuarioTemPermissao('equipe')) return;
+
       const loading = document.getElementById('team-loading');
       const empty = document.getElementById('team-empty');
       const wrapper = document.getElementById('team-table-wrapper');
@@ -9353,26 +9348,27 @@
         empty.style.display = 'none';
         wrapper.style.display = 'none';
       }
+
       button?.classList.add('loading');
 
       try {
         const resultado = await supabaseClient
           .from('equipe')
           .select(`*, usuarios:usuario_id(id, habbo_nick, discord_tag, role, avatar_url)`)
-          .order('ordem', { ascending: true })
           .order('created_at', { ascending: true });
 
         if (resultado.error) throw resultado.error;
 
         equipeCache = (resultado.data || []).map(item => {
           const usuario = item.usuarios || null;
+
           return {
             ...item,
             _usuario: usuario,
             nick_usuario: usuario?.habbo_nick || item.nick_usuario || '',
             discord_tag: usuario?.discord_tag || item.discord_tag || '',
             cargo: usuario?.role || item.cargo || '',
-            avatar_url: obterAvatarUsuario(usuario || item)
+            avatar_url: usuario?.avatar_url || item.avatar_url || ''
           };
         });
 
@@ -9384,7 +9380,7 @@
         loading.style.display = 'none';
         wrapper.style.display = 'none';
         empty.style.display = 'block';
-        empty.innerHTML = '<div class="team-empty-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><h3>Não foi possível carregar a equipe</h3><p>Verifique as permissões e a relação usuario_id da tabela equipe.</p>';
+        empty.innerHTML = '<div class="team-empty-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><h3>Não foi possível carregar a equipe</h3><p>Verifique as permissões e a relação usuario_id da tabela equipe no Supabase.</p>';
         mostrarToast('Não foi possível carregar a equipe.', 'error');
       } finally {
         button?.classList.remove('loading');
@@ -9395,12 +9391,42 @@
       const busca = (document.getElementById('team-search')?.value || '').trim().toLowerCase();
       const status = document.getElementById('team-status-filter')?.value || 'TODOS';
       const role = document.getElementById('team-role-filter')?.value || 'TODOS';
-      const filtrados = equipeCache.filter(item => {
-        const texto = [item.nick_usuario, item.cargo, item.discord_tag, item.descricao].join(' ').toLowerCase();
-        return (!busca || texto.includes(busca)) &&
-          (status === 'TODOS' || item.status === status) &&
-          (role === 'TODOS' || item.cargo === role);
-      });
+
+      const filtrados = equipeCache
+        .filter(item => {
+          const texto = [
+            item.nick_usuario,
+            item.cargo,
+            item.discord_tag,
+            item.descricao
+          ].join(' ').toLowerCase();
+
+          return (!busca || texto.includes(busca)) &&
+            (status === 'TODOS' || item.status === status) &&
+            (role === 'TODOS' || item.cargo === role);
+        })
+        .sort((a, b) => {
+          const ordemA = obterOrdemCargoEquipe(a.cargo);
+          const ordemB = obterOrdemCargoEquipe(b.cargo);
+
+          if (ordemA !== ordemB) {
+            return ordemA - ordemB;
+          }
+
+          const dataA = a.data_entrada ? new Date(a.data_entrada + 'T00:00:00').getTime() : Number.MAX_SAFE_INTEGER;
+          const dataB = b.data_entrada ? new Date(b.data_entrada + 'T00:00:00').getTime() : Number.MAX_SAFE_INTEGER;
+
+          if (dataA !== dataB) {
+            return dataA - dataB;
+          }
+
+          return String(a.nick_usuario || '').localeCompare(
+            String(b.nick_usuario || ''),
+            'pt-BR',
+            { sensitivity: 'base' }
+          );
+        });
+
       renderizarEquipe(filtrados);
     }
 
@@ -9409,6 +9435,7 @@
       const empty = document.getElementById('team-empty');
       const wrapper = document.getElementById('team-table-wrapper');
       const body = document.getElementById('team-table-body');
+
       loading.style.display = 'none';
 
       document.getElementById('team-total').textContent = equipeCache.length;
@@ -9424,27 +9451,65 @@
 
       empty.style.display = 'none';
       wrapper.style.display = 'block';
+
       body.innerHTML = membros.map(item => {
-        const role = CARGOS[item.cargo] || { nome: item.cargo || 'Sem cargo', icone: 'assets/cargos/entusiasta.svg' };
+        const role = CARGOS[item.cargo] || {
+          nome: item.cargo || 'Sem cargo',
+          icone: 'assets/cargos/entusiasta.svg'
+        };
+
         const statusClass = item.status === 'ATIVO' ? 'active' : 'away';
-        const data = item.data_entrada ? new Date(item.data_entrada + 'T00:00:00').toLocaleDateString('pt-BR') : '—';
-        const avatar = item.avatar_url ? `<img class="team-avatar" src="${escapeHtml(item.avatar_url)}" alt="${escapeHtml(item.nick_usuario || 'Membro')}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">` : '';
+        const data = item.data_entrada
+          ? new Date(item.data_entrada + 'T00:00:00').toLocaleDateString('pt-BR')
+          : '—';
+
+        const avatar = item.avatar_url
+          ? `<img class="team-avatar" src="${escapeHtml(item.avatar_url)}" alt="${escapeHtml(item.nick_usuario || 'Membro')}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">`
+          : '';
+
         const fallback = `<div class="team-avatar-fallback" ${item.avatar_url ? 'style="display:none;"' : ''}><i class="fa-solid fa-user"></i></div>`;
         const editId = String(item.id).replace(/'/g, "\\'");
+
         return `
           <tr>
             <td>
               <div class="team-member-cell">
                 ${avatar}${fallback}
-                <div><div class="team-member-name">${escapeHtml(item.nick_usuario || 'Sem Nick')}</div><div class="team-member-discord">${escapeHtml(item.discord_tag || 'Discord não informado')}</div></div>
+                <div>
+                  <div class="team-member-name">${escapeHtml(item.nick_usuario || 'Sem Nick')}</div>
+                  <div class="team-member-discord">${escapeHtml(item.discord_tag || 'Discord não informado')}</div>
+                </div>
               </div>
             </td>
-            <td><span class="team-role-badge"><img src="${escapeHtml(role.icone)}" alt="" style="width:14px;height:14px;">${escapeHtml(role.nome)}</span></td>
-            <td><span class="team-status-badge ${statusClass}"><i class="fa-solid ${item.status === 'ATIVO' ? 'fa-circle-check' : 'fa-clock'}"></i>${item.status === 'ATIVO' ? 'Ativo' : 'Afastado'}</span></td>
+            <td>
+              <span class="team-role-badge">
+                <img src="${escapeHtml(role.icone)}" alt="" style="width:14px;height:14px;">
+                ${escapeHtml(role.nome)}
+              </span>
+            </td>
+            <td>
+              <span class="team-status-badge ${statusClass}">
+                <i class="fa-solid ${item.status === 'ATIVO' ? 'fa-circle-check' : 'fa-clock'}"></i>
+                ${item.status === 'ATIVO' ? 'Ativo' : 'Afastado'}
+              </span>
+            </td>
             <td>${escapeHtml(data)}</td>
-            <td>${escapeHtml(String(item.ordem ?? 0))}</td>
-            <td><span class="team-visible-badge ${item.visivel ? '' : 'off'}"><i class="fa-solid ${item.visivel ? 'fa-eye' : 'fa-eye-slash'}"></i>${item.visivel ? 'Visível' : 'Oculto'}</span></td>
-            <td><div class="team-actions"><button class="team-action-button" title="Editar" onclick="abrirEquipeModal('${editId}')"><i class="fa-solid fa-pen"></i></button><button class="team-action-button danger" title="Remover" onclick="removerMembroEquipe('${editId}')"><i class="fa-solid fa-trash"></i></button></div></td>
+            <td>
+              <span class="team-visible-badge ${item.visivel ? '' : 'off'}">
+                <i class="fa-solid ${item.visivel ? 'fa-eye' : 'fa-eye-slash'}"></i>
+                ${item.visivel ? 'Visível' : 'Oculto'}
+              </span>
+            </td>
+            <td>
+              <div class="team-actions">
+                <button class="team-action-button" title="Editar" onclick="abrirEquipeModal('${editId}')">
+                  <i class="fa-solid fa-pen"></i>
+                </button>
+                <button class="team-action-button danger" title="Remover" onclick="removerMembroEquipe('${editId}')">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </td>
           </tr>`;
       }).join('');
     }
@@ -9461,7 +9526,6 @@
 
       document.getElementById('equipe-data').value = equipeModalAtual?.data_entrada || '';
       document.getElementById('equipe-status').value = equipeModalAtual?.status || 'ATIVO';
-      document.getElementById('equipe-ordem').value = equipeModalAtual?.ordem ?? 0;
       document.getElementById('equipe-descricao').value = equipeModalAtual?.descricao || '';
       document.getElementById('equipe-visivel').checked = equipeModalAtual?.visivel ?? true;
 
@@ -9489,7 +9553,7 @@
         discord_tag: usuario.discord_tag || null,
         data_entrada: document.getElementById('equipe-data').value || null,
         status: document.getElementById('equipe-status').value,
-        ordem: Math.max(0, parseInt(document.getElementById('equipe-ordem').value || '0', 10) || 0),
+        ordem: obterOrdemCargoEquipe(usuario.role),
         descricao: document.getElementById('equipe-descricao').value.trim() || null,
         visivel: document.getElementById('equipe-visivel').checked,
         atualizado_em: new Date().toISOString()
@@ -9778,7 +9842,11 @@
         const isFounder = role === 'FUNDADOR';
         const podeGerenciar = usuarioAtual?.role === 'FUNDADOR' && !isCurrent && !isFounder;
 
-        const avatar = obterAvatarUsuario(usuario);
+        const avatar = usuario.avatar_url || (
+          'https://api.dicebear.com/7.x/pixel-art/svg?seed=' +
+          encodeURIComponent(usuario.habbo_nick || 'Pixelizado') +
+          '&backgroundColor=38b6ff'
+        );
 
         const statusClass = status === 'APROVADO' ? 'aprovado' : (status === 'PENDENTE' ? 'pendente' : 'outro');
 
@@ -10618,7 +10686,9 @@
 
 
           const avatar =
-            obterAvatarUsuario(usuario);
+            'https://api.dicebear.com/7.x/pixel-art/svg?seed='
+            + encodeURIComponent(nick)
+            + '&backgroundColor=38b6ff';
 
 
           let statusClass =
@@ -10903,7 +10973,9 @@
       document.getElementById(
         'modal-user-avatar'
       ).src =
-        obterAvatarUsuario(usuario);
+        'https://api.dicebear.com/7.x/pixel-art/svg?seed='
+        + encodeURIComponent(nick)
+        + '&backgroundColor=38b6ff';
 
 
       document.getElementById(
