@@ -3320,7 +3320,358 @@
       justify-content: flex-end;
       margin-bottom: 18px;
     }
-</style>
+
+    /* =========================================================
+       MODERAÇÃO
+    ========================================================= */
+
+    .moderation-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .moderation-search {
+      position: relative;
+      flex: 1;
+      min-width: 230px;
+    }
+
+    .moderation-search i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9aabb8;
+      font-size: 11px;
+    }
+
+    .moderation-search input {
+      width: 100%;
+      height: 40px;
+      padding: 0 13px 0 34px;
+      border: 2px solid var(--border);
+      border-radius: 9px;
+      background: #fff;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      color: var(--text);
+      transition: .2s ease;
+    }
+
+    .moderation-search input:focus {
+      border-color: #8ec9e9;
+      box-shadow: 0 0 0 3px rgba(85,185,245,.10);
+    }
+
+    .moderation-filters {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .moderation-filter {
+      height: 40px;
+      padding: 0 11px;
+      border: 2px solid var(--border);
+      border-radius: 9px;
+      background: #fff;
+      color: #526779;
+      font-family: 'Manrope', sans-serif;
+      font-size: 9px;
+      font-weight: 800;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .moderation-filter:focus {
+      border-color: #8ec9e9;
+    }
+
+    .moderation-new-button {
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 0 13px;
+      border: 2px solid var(--blue-dark);
+      border-radius: 9px;
+      background: var(--blue-dark);
+      color: #fff;
+      font-family: 'Manrope', sans-serif;
+      font-size: 9px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: .18s ease;
+      white-space: nowrap;
+    }
+
+    .moderation-new-button:hover {
+      background: var(--blue-deep);
+      border-color: var(--blue-deep);
+    }
+
+    .moderation-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+      padding: 11px 13px;
+      background: #f7fbfe;
+      border: 2px solid #e0edf4;
+      border-radius: 9px;
+    }
+
+    .moderation-summary-text {
+      font-family: 'Manrope', sans-serif;
+      font-size: 9px;
+      font-weight: 800;
+      color: #75899a;
+    }
+
+    .moderation-summary-text strong {
+      color: #2d4558;
+    }
+
+    .moderation-table-card {
+      background: #fff;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .moderation-table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .moderation-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 980px;
+    }
+
+    .moderation-table th {
+      padding: 12px 13px;
+      text-align: left;
+      background: #f6fbfe;
+      border-bottom: 2px solid var(--border);
+      font-family: 'Manrope', sans-serif;
+      font-size: 8px;
+      font-weight: 900;
+      color: #91a1ad;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      white-space: nowrap;
+    }
+
+    .moderation-table td {
+      padding: 11px 13px;
+      border-bottom: 1px solid #edf3f7;
+      vertical-align: middle;
+      font-size: 9px;
+      color: #536979;
+    }
+
+    .moderation-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .moderation-table tbody tr {
+      transition: .15s ease;
+    }
+
+    .moderation-table tbody tr:hover {
+      background: #fbfdff;
+    }
+
+    .moderation-nick {
+      font-family: 'Manrope', sans-serif;
+      font-size: 10px;
+      font-weight: 900;
+      color: #30485a;
+      white-space: nowrap;
+    }
+
+    .moderation-discord,
+    .moderation-moderator {
+      font-family: 'Manrope', sans-serif;
+      font-size: 8px;
+      font-weight: 700;
+      color: #687d8c;
+      white-space: nowrap;
+    }
+
+    .moderation-reason {
+      max-width: 260px;
+      line-height: 1.45;
+      color: #536979;
+    }
+
+    .moderation-action-badge,
+    .moderation-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 8px;
+      border-radius: 6px;
+      font-family: 'Manrope', sans-serif;
+      font-size: 7px;
+      font-weight: 900;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .moderation-action-badge.advertencia {
+      background: #fff8d9;
+      border: 1px solid #f0d66b;
+      color: #977100;
+    }
+
+    .moderation-action-badge.silenciamento {
+      background: #f1f5f8;
+      border: 1px solid #dbe5eb;
+      color: #657988;
+    }
+
+    .moderation-action-badge.suspensao {
+      background: #fff1f2;
+      border: 1px solid #ffcdd1;
+      color: #d84b55;
+    }
+
+    .moderation-status-badge.ativa {
+      background: #fff1f2;
+      border: 1px solid #ffcdd1;
+      color: #d84b55;
+    }
+
+    .moderation-status-badge.encerrada {
+      background: #edfff1;
+      border: 1px solid #bce9c6;
+      color: #39964e;
+    }
+
+    .moderation-status-badge.cancelada {
+      background: #f1f5f8;
+      border: 1px solid #dbe5eb;
+      color: #718391;
+    }
+
+    .moderation-date {
+      font-family: 'Manrope', sans-serif;
+      font-size: 8px;
+      font-weight: 700;
+      color: #8d9eaa;
+      white-space: nowrap;
+    }
+
+    .moderation-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 5px;
+    }
+
+    .moderation-action-button {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      background: #fff;
+      color: #718695;
+      cursor: pointer;
+      transition: .18s ease;
+    }
+
+    .moderation-action-button:hover {
+      color: var(--blue-dark);
+      background: #f0faff;
+      border-color: #b8d9eb;
+    }
+
+    .moderation-action-button.danger:hover {
+      color: var(--red);
+      background: #fff3f4;
+      border-color: #ffcdd1;
+    }
+
+    .moderation-empty,
+    .moderation-loading {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .moderation-empty-icon {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+      background: #eaf7ff;
+      border: 2px solid #c6e5f6;
+      border-radius: 12px;
+      color: var(--blue-dark);
+      font-size: 18px;
+    }
+
+    .moderation-empty h3 {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 900;
+      color: #354d5f;
+    }
+
+    .moderation-empty p {
+      margin: 5px auto 0;
+      max-width: 400px;
+      font-size: 9px;
+      line-height: 1.6;
+      color: #91a1ad;
+    }
+
+    .moderation-loading i {
+      color: var(--blue-dark);
+      font-size: 20px;
+      animation: spin .8s linear infinite;
+    }
+
+    .moderation-loading p {
+      margin: 10px 0 0;
+      font-family: 'Manrope', sans-serif;
+      font-size: 9px;
+      font-weight: 800;
+      color: #8b9ca8;
+    }
+
+    @media (max-width: 850px) {
+      .moderation-toolbar {
+        align-items: stretch;
+      }
+
+      .moderation-search {
+        min-width: 100%;
+      }
+
+      .moderation-new-button {
+        width: 100%;
+      }
+    }
+
+  </style>
 </head>
 
 
@@ -5155,12 +5506,343 @@
 
       </div>
 
+
+      <!-- =====================================================
+           MODERAÇÃO
+      ====================================================== -->
+      <div id="moderacao-view" class="module-view">
+
+        <div class="section-heading">
+          <div class="section-heading-left">
+            <div class="section-heading-icon">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div>
+              <h2>Moderação</h2>
+              <p>Gerencie advertências, silenciamentos e suspensões da comunidade.</p>
+            </div>
+          </div>
+
+          <button
+            class="moderation-new-button"
+            onclick="abrirNovaModeracao()"
+          >
+            <i class="fa-solid fa-plus"></i>
+            Nova ação
+          </button>
+        </div>
+
+        <div class="moderation-toolbar">
+
+          <div class="moderation-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+              id="moderation-search"
+              type="text"
+              placeholder="Buscar por Nick do Usuário..."
+              oninput="filtrarModeracao()"
+            >
+          </div>
+
+          <div class="moderation-filters">
+
+            <select
+              id="moderation-type-filter"
+              class="moderation-filter"
+              onchange="filtrarModeracao()"
+            >
+              <option value="">Todas as ações</option>
+              <option value="ADVERTENCIA">Advertências</option>
+              <option value="SILENCIAMENTO">Silenciamentos</option>
+              <option value="SUSPENSAO">Suspensões</option>
+            </select>
+
+            <select
+              id="moderation-status-filter"
+              class="moderation-filter"
+              onchange="filtrarModeracao()"
+            >
+              <option value="">Todos os status</option>
+              <option value="ATIVA">Ativas</option>
+              <option value="ENCERRADA">Encerradas</option>
+              <option value="CANCELADA">Canceladas</option>
+            </select>
+
+            <button
+              class="refresh-button"
+              id="refresh-moderation-button"
+              onclick="carregarModeracao(true)"
+              title="Atualizar"
+            >
+              <i class="fa-solid fa-rotate"></i>
+            </button>
+
+          </div>
+
+        </div>
+
+        <div class="moderation-summary">
+          <div class="moderation-summary-text">
+            Registros encontrados:
+            <strong id="moderation-count">0</strong>
+          </div>
+
+          <div class="moderation-summary-text">
+            Ações ativas:
+            <strong id="moderation-active-count">0</strong>
+          </div>
+        </div>
+
+        <div class="moderation-table-card">
+
+          <div id="moderation-loading" class="moderation-loading">
+            <i class="fa-solid fa-spinner"></i>
+            <p>Carregando histórico de moderação...</p>
+          </div>
+
+          <div id="moderation-empty" class="moderation-empty" style="display:none;">
+            <div class="moderation-empty-icon">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+
+            <h3>Nenhuma ação encontrada</h3>
+
+            <p>
+              Ainda não existem registros de moderação
+              ou nenhum registro corresponde aos filtros selecionados.
+            </p>
+          </div>
+
+          <div
+            id="moderation-table-container"
+            class="moderation-table-wrapper"
+            style="display:none;"
+          >
+            <table class="moderation-table">
+              <thead>
+                <tr>
+                  <th>Nick do Usuário</th>
+                  <th>Ação</th>
+                  <th>Motivo</th>
+                  <th>Início</th>
+                  <th>Término</th>
+                  <th>Status</th>
+                  <th>Moderador</th>
+                  <th></th>
+                </tr>
+              </thead>
+
+              <tbody id="moderation-table-body"></tbody>
+            </table>
+          </div>
+
+        </div>
+
+        <footer class="admin-footer">
+          Pixelizados © 2026 · Moderação
+        </footer>
+
+      </div>
+
+
     </main>
 
   </div>
 
 
+  
   <!-- =======================================================
+       MODAL DE MODERAÇÃO
+  ======================================================== -->
+
+  <div
+    id="moderation-modal-overlay"
+    class="modal-overlay"
+    onclick="fecharModeracaoAoClicarFora(event)"
+  >
+
+    <div class="user-modal" role="dialog" aria-modal="true">
+
+      <div class="modal-header">
+
+        <div class="modal-title-area">
+
+          <div class="modal-title-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+
+          <div>
+            <h3 class="modal-title" id="moderation-modal-title">
+              Nova ação de moderação
+            </h3>
+
+            <p class="modal-subtitle">
+              Registre uma ação no histórico da comunidade.
+            </p>
+          </div>
+
+        </div>
+
+        <button
+          class="modal-close"
+          type="button"
+          onclick="fecharModeracaoModal()"
+          aria-label="Fechar"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+      </div>
+
+      <div class="modal-body">
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label class="form-label">
+              Nick do Usuário *
+            </label>
+
+            <input
+              id="moderation-nick"
+              class="form-input"
+              type="text"
+              maxlength="80"
+              placeholder="Ex.: Pixelizado"
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label class="form-label">
+              Discord
+            </label>
+
+            <input
+              id="moderation-discord"
+              class="form-input"
+              type="text"
+              maxlength="120"
+              placeholder="Ex.: usuario"
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label class="form-label">
+              Tipo da ação *
+            </label>
+
+            <select
+              id="moderation-type"
+              class="form-select"
+            >
+              <option value="ADVERTENCIA">Advertência</option>
+              <option value="SILENCIAMENTO">Silenciamento</option>
+              <option value="SUSPENSAO">Suspensão</option>
+            </select>
+
+          </div>
+
+          <div class="form-group">
+
+            <label class="form-label">
+              Término
+            </label>
+
+            <input
+              id="moderation-end"
+              class="form-input"
+              type="datetime-local"
+            >
+
+            <div class="form-hint">
+              Opcional. Deixe vazio para uma ação sem término definido.
+            </div>
+
+          </div>
+
+          <div class="form-group full">
+
+            <label class="form-label">
+              Motivo *
+            </label>
+
+            <textarea
+              id="moderation-reason"
+              class="form-textarea"
+              maxlength="1000"
+              placeholder="Descreva o motivo da ação..."
+              style="min-height:100px;"
+            ></textarea>
+
+          </div>
+
+          <div class="form-group full">
+
+            <label class="form-label">
+              Observações
+            </label>
+
+            <textarea
+              id="moderation-notes"
+              class="form-textarea"
+              maxlength="1500"
+              placeholder="Informações adicionais, se necessário..."
+              style="min-height:90px;"
+            ></textarea>
+
+          </div>
+
+          <div class="form-group full">
+
+            <label class="form-label">
+              Moderador responsável
+            </label>
+
+            <input
+              id="moderation-moderator"
+              class="form-input"
+              type="text"
+              readonly
+            >
+
+          </div>
+
+        </div>
+
+        <div class="modal-actions">
+
+          <button
+            class="modal-button"
+            type="button"
+            onclick="fecharModeracaoModal()"
+          >
+            Cancelar
+          </button>
+
+          <button
+            class="modal-button primary"
+            id="moderation-save-button"
+            type="button"
+            onclick="salvarModeracao()"
+          >
+            <i class="fa-solid fa-shield-halved"></i>
+            Registrar ação
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+<!-- =======================================================
        MODAL USUÁRIO
   ======================================================== -->
 
@@ -6737,6 +7419,833 @@
       }
     }
 
+
+    /* =========================================================
+       MODERAÇÃO
+    ========================================================= */
+
+    let moderacaoCache = [];
+    let moderacaoModalAtual = null;
+
+
+    function mostrarModeracao() {
+
+      document
+        .querySelectorAll('.module-view')
+        .forEach(view => {
+          view.classList.remove('active');
+        });
+
+      document
+        .getElementById('moderacao-view')
+        .classList.add('active');
+
+      document.getElementById(
+        'dashboard-footer'
+      ).style.display = 'none';
+
+      document.getElementById(
+        'page-title'
+      ).textContent = 'Moderação';
+
+      document.getElementById(
+        'page-description'
+      ).textContent =
+        'Gerencie advertências, silenciamentos e suspensões da comunidade.';
+
+      carregarModeracao(true);
+
+    }
+
+
+    async function carregarModeracao(
+      mostrarCarregamento = true
+    ) {
+
+      if (!usuarioTemPermissao('moderacao')) {
+        return;
+      }
+
+      const loading =
+        document.getElementById(
+          'moderation-loading'
+        );
+
+      const empty =
+        document.getElementById(
+          'moderation-empty'
+        );
+
+      const table =
+        document.getElementById(
+          'moderation-table-container'
+        );
+
+      const button =
+        document.getElementById(
+          'refresh-moderation-button'
+        );
+
+      if (mostrarCarregamento) {
+        loading.style.display = 'block';
+        empty.style.display = 'none';
+        table.style.display = 'none';
+
+        if (button) {
+          button.classList.add('loading');
+        }
+      }
+
+      try {
+
+        const {
+          data,
+          error
+        } = await supabaseClient
+          .from('moderacao')
+          .select('*')
+          .order(
+            'created_at',
+            {
+              ascending: false
+            }
+          );
+
+        if (error) {
+          throw error;
+        }
+
+        moderacaoCache =
+          Array.isArray(data)
+            ? data
+            : [];
+
+        filtrarModeracao();
+
+      } catch (error) {
+
+        console.error(
+          'Erro ao carregar moderação:',
+          error
+        );
+
+        moderacaoCache = [];
+
+        loading.style.display = 'none';
+        table.style.display = 'none';
+        empty.style.display = 'block';
+
+        const titulo =
+          empty.querySelector('h3');
+
+        const descricao =
+          empty.querySelector('p');
+
+        if (titulo) {
+          titulo.textContent =
+            'Não foi possível carregar';
+        }
+
+        if (descricao) {
+          descricao.textContent =
+            error.message ||
+            'O histórico de moderação não pôde ser carregado.';
+        }
+
+        mostrarToast(
+          'Erro ao carregar o histórico de moderação.',
+          'error'
+        );
+
+      } finally {
+
+        if (button) {
+          button.classList.remove('loading');
+        }
+
+      }
+
+    }
+
+
+    function filtrarModeracao() {
+
+      const busca =
+        (
+          document.getElementById(
+            'moderation-search'
+          )?.value || ''
+        )
+          .trim()
+          .toLowerCase();
+
+      const tipo =
+        document.getElementById(
+          'moderation-type-filter'
+        )?.value || '';
+
+      const status =
+        document.getElementById(
+          'moderation-status-filter'
+        )?.value || '';
+
+      const filtrados =
+        moderacaoCache.filter(
+          registro => {
+
+            const nick =
+              String(
+                registro.nick_usuario || ''
+              ).toLowerCase();
+
+            const discord =
+              String(
+                registro.discord_usuario || ''
+              ).toLowerCase();
+
+            const correspondeBusca =
+              !busca ||
+              nick.includes(busca) ||
+              discord.includes(busca);
+
+            const correspondeTipo =
+              !tipo ||
+              registro.tipo_acao === tipo;
+
+            const correspondeStatus =
+              !status ||
+              registro.status === status;
+
+            return (
+              correspondeBusca &&
+              correspondeTipo &&
+              correspondeStatus
+            );
+
+          }
+        );
+
+      renderizarModeracao(
+        filtrados
+      );
+
+    }
+
+
+    function renderizarModeracao(
+      registros
+    ) {
+
+      const loading =
+        document.getElementById(
+          'moderation-loading'
+        );
+
+      const empty =
+        document.getElementById(
+          'moderation-empty'
+        );
+
+      const table =
+        document.getElementById(
+          'moderation-table-container'
+        );
+
+      const body =
+        document.getElementById(
+          'moderation-table-body'
+        );
+
+      const count =
+        document.getElementById(
+          'moderation-count'
+        );
+
+      const activeCount =
+        document.getElementById(
+          'moderation-active-count'
+        );
+
+      if (!body) {
+        return;
+      }
+
+      loading.style.display = 'none';
+
+      const ativas =
+        moderacaoCache.filter(
+          item => item.status === 'ATIVA'
+        ).length;
+
+      count.textContent =
+        registros.length;
+
+      activeCount.textContent =
+        ativas;
+
+      if (!registros.length) {
+
+        table.style.display = 'none';
+        empty.style.display = 'block';
+        body.innerHTML = '';
+
+        return;
+
+      }
+
+      empty.style.display = 'none';
+      table.style.display = 'block';
+
+      body.innerHTML =
+        registros
+          .map(registro => {
+
+            const tipo =
+              String(
+                registro.tipo_acao || ''
+              );
+
+            const tipoLabel =
+              obterLabelTipoModeracao(
+                tipo
+              );
+
+            const tipoClasse =
+              tipo
+                .toLowerCase()
+                .replace(
+                  'ç',
+                  'c'
+                );
+
+            const status =
+              String(
+                registro.status || ''
+              );
+
+            const statusLabel =
+              obterLabelStatusModeracao(
+                status
+              );
+
+            const statusClasse =
+              status.toLowerCase();
+
+            const motivo =
+              escapeHtml(
+                registro.motivo || ''
+              );
+
+            const nick =
+              escapeHtml(
+                registro.nick_usuario || '—'
+              );
+
+            const discord =
+              escapeHtml(
+                registro.discord_usuario || '—'
+              );
+
+            const moderador =
+              escapeHtml(
+                registro.moderador_nick || '—'
+              );
+
+            const inicio =
+              formatarDataModeracao(
+                registro.inicio_em
+              );
+
+            const termino =
+              registro.termina_em
+                ? formatarDataModeracao(
+                    registro.termina_em
+                  )
+                : 'Sem término';
+
+            const acaoEncerrar =
+              status === 'ATIVA'
+                ? `
+                  <button
+                    class="moderation-action-button danger"
+                    title="Encerrar ação"
+                    onclick="encerrarModeracao('${registro.id}')"
+                  >
+                    <i class="fa-solid fa-lock-open"></i>
+                  </button>
+                `
+                : '';
+
+            return `
+              <tr>
+
+                <td>
+                  <div class="moderation-nick">
+                    ${nick}
+                  </div>
+                  <div class="moderation-discord">
+                    ${discord}
+                  </div>
+                </td>
+
+                <td>
+                  <span class="moderation-action-badge ${tipoClasse}">
+                    ${tipoLabel}
+                  </span>
+                </td>
+
+                <td>
+                  <div class="moderation-reason">
+                    ${motivo}
+                  </div>
+                </td>
+
+                <td>
+                  <span class="moderation-date">
+                    ${inicio}
+                  </span>
+                </td>
+
+                <td>
+                  <span class="moderation-date">
+                    ${termino}
+                  </span>
+                </td>
+
+                <td>
+                  <span class="moderation-status-badge ${statusClasse}">
+                    ${statusLabel}
+                  </span>
+                </td>
+
+                <td>
+                  <span class="moderation-moderator">
+                    ${moderador}
+                  </span>
+                </td>
+
+                <td>
+                  <div class="moderation-actions">
+                    ${acaoEncerrar}
+                  </div>
+                </td>
+
+              </tr>
+            `;
+
+          })
+          .join('');
+
+    }
+
+
+    function obterLabelTipoModeracao(
+      tipo
+    ) {
+
+      const labels = {
+        ADVERTENCIA: 'Advertência',
+        SILENCIAMENTO: 'Silenciamento',
+        SUSPENSAO: 'Suspensão'
+      };
+
+      return (
+        labels[tipo] ||
+        tipo ||
+        '—'
+      );
+
+    }
+
+
+    function obterLabelStatusModeracao(
+      status
+    ) {
+
+      const labels = {
+        ATIVA: 'Ativa',
+        ENCERRADA: 'Encerrada',
+        CANCELADA: 'Cancelada'
+      };
+
+      return (
+        labels[status] ||
+        status ||
+        '—'
+      );
+
+    }
+
+
+    function formatarDataModeracao(
+      dataString
+    ) {
+
+      if (!dataString) {
+        return '—';
+      }
+
+      const data =
+        new Date(dataString);
+
+      if (
+        Number.isNaN(
+          data.getTime()
+        )
+      ) {
+        return '—';
+      }
+
+      return data.toLocaleString(
+        'pt-BR',
+        {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        }
+      );
+
+    }
+
+
+    function abrirNovaModeracao() {
+
+      if (
+        !usuarioTemPermissao(
+          'moderacao'
+        )
+      ) {
+        mostrarToast(
+          'Seu cargo não possui permissão para moderar.',
+          'error'
+        );
+        return;
+      }
+
+      moderacaoModalAtual =
+        null;
+
+      document.getElementById(
+        'moderation-nick'
+      ).value = '';
+
+      document.getElementById(
+        'moderation-discord'
+      ).value = '';
+
+      document.getElementById(
+        'moderation-type'
+      ).value = 'ADVERTENCIA';
+
+      document.getElementById(
+        'moderation-end'
+      ).value = '';
+
+      document.getElementById(
+        'moderation-reason'
+      ).value = '';
+
+      document.getElementById(
+        'moderation-notes'
+      ).value = '';
+
+      document.getElementById(
+        'moderation-moderator'
+      ).value =
+        usuarioAtual?.habbo_nick ||
+        'Moderador';
+
+      document.getElementById(
+        'moderation-modal-title'
+      ).textContent =
+        'Nova ação de moderação';
+
+      document.getElementById(
+        'moderation-modal-overlay'
+      ).classList.add(
+        'open'
+      );
+
+      setTimeout(() => {
+        document.getElementById(
+          'moderation-nick'
+        )?.focus();
+      }, 50);
+
+    }
+
+
+    async function salvarModeracao() {
+
+      if (
+        !usuarioTemPermissao(
+          'moderacao'
+        )
+      ) {
+        mostrarToast(
+          'Seu cargo não possui permissão para moderar.',
+          'error'
+        );
+        return;
+      }
+
+      const nick =
+        document.getElementById(
+          'moderation-nick'
+        ).value.trim();
+
+      const discord =
+        document.getElementById(
+          'moderation-discord'
+        ).value.trim();
+
+      const tipo =
+        document.getElementById(
+          'moderation-type'
+        ).value;
+
+      const termino =
+        document.getElementById(
+          'moderation-end'
+        ).value;
+
+      const motivo =
+        document.getElementById(
+          'moderation-reason'
+        ).value.trim();
+
+      const observacoes =
+        document.getElementById(
+          'moderation-notes'
+        ).value.trim();
+
+      if (!nick) {
+        mostrarToast(
+          'Informe o Nick do Usuário.',
+          'error'
+        );
+        return;
+      }
+
+      if (!tipo) {
+        mostrarToast(
+          'Selecione o tipo da ação.',
+          'error'
+        );
+        return;
+      }
+
+      if (!motivo) {
+        mostrarToast(
+          'Informe o motivo da ação.',
+          'error'
+        );
+        return;
+      }
+
+      let terminaEm = null;
+
+      if (termino) {
+
+        const dataTermino =
+          new Date(termino);
+
+        if (
+          Number.isNaN(
+            dataTermino.getTime()
+          )
+        ) {
+          mostrarToast(
+            'A data de término informada é inválida.',
+            'error'
+          );
+          return;
+        }
+
+        terminaEm =
+          dataTermino.toISOString();
+
+      }
+
+      const botao =
+        document.getElementById(
+          'moderation-save-button'
+        );
+
+      botao.disabled = true;
+      botao.innerHTML =
+        '<i class="fa-solid fa-spinner fa-spin"></i> Salvando...';
+
+      try {
+
+        const {
+          error
+        } = await supabaseClient
+          .from('moderacao')
+          .insert({
+            nick_usuario: nick,
+            discord_usuario:
+              discord || null,
+            tipo_acao: tipo,
+            motivo: motivo,
+            inicio_em:
+              new Date().toISOString(),
+            termina_em:
+              terminaEm,
+            status: 'ATIVA',
+            moderador_nick:
+              usuarioAtual?.habbo_nick ||
+              'Moderador',
+            moderador_auth_user_id:
+              usuarioAtual?.auth_user_id ||
+              null,
+            observacoes:
+              observacoes || null
+          });
+
+        if (error) {
+          throw error;
+        }
+
+        fecharModeracaoModal();
+
+        mostrarToast(
+          'Ação de moderação registrada com sucesso.',
+          'success'
+        );
+
+        await carregarModeracao(true);
+
+      } catch (error) {
+
+        console.error(
+          'Erro ao registrar moderação:',
+          error
+        );
+
+        mostrarToast(
+          error.message ||
+          'Não foi possível registrar a ação.',
+          'error'
+        );
+
+      } finally {
+
+        botao.disabled = false;
+        botao.innerHTML =
+          '<i class="fa-solid fa-shield-halved"></i> Registrar ação';
+
+      }
+
+    }
+
+
+    async function encerrarModeracao(
+      id
+    ) {
+
+      if (!id) {
+        return;
+      }
+
+      if (
+        !usuarioTemPermissao(
+          'moderacao'
+        )
+      ) {
+        mostrarToast(
+          'Seu cargo não possui permissão para esta ação.',
+          'error'
+        );
+        return;
+      }
+
+      const confirmar =
+        window.confirm(
+          'Deseja encerrar esta ação de moderação?'
+        );
+
+      if (!confirmar) {
+        return;
+      }
+
+      try {
+
+        const {
+          error
+        } = await supabaseClient
+          .from('moderacao')
+          .update({
+            status: 'ENCERRADA',
+            termina_em:
+              new Date().toISOString()
+          })
+          .eq(
+            'id',
+            id
+          );
+
+        if (error) {
+          throw error;
+        }
+
+        mostrarToast(
+          'Ação de moderação encerrada.',
+          'success'
+        );
+
+        await carregarModeracao(
+          true
+        );
+
+      } catch (error) {
+
+        console.error(
+          'Erro ao encerrar moderação:',
+          error
+        );
+
+        mostrarToast(
+          error.message ||
+          'Não foi possível encerrar a ação.',
+          'error'
+        );
+
+      }
+
+    }
+
+
+    function fecharModeracaoModal() {
+
+      document.getElementById(
+        'moderation-modal-overlay'
+      ).classList.remove(
+        'open'
+      );
+
+      moderacaoModalAtual =
+        null;
+
+    }
+
+
+    function fecharModeracaoAoClicarFora(
+      event
+    ) {
+
+      if (
+        event.target.id ===
+        'moderation-modal-overlay'
+      ) {
+        fecharModeracaoModal();
+      }
+
+    }
+
+
     /* =========================================================
        ABRIR MÓDULO
     ========================================================= */
@@ -6823,6 +8332,17 @@
       ) {
 
         mostrarConteudoSite();
+
+        return;
+
+      }
+
+
+      if (
+        modulo === 'moderacao'
+      ) {
+
+        mostrarModeracao();
 
         return;
 
