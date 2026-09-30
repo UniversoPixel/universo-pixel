@@ -4578,6 +4578,103 @@
       </div>
 
 
+  <!-- ===================================================
+       EVENTOS
+  ==================================================== -->
+
+  <div id="eventos-view" class="module-view">
+
+    <div class="section-heading">
+      <div class="section-heading-left">
+        <div class="section-heading-icon">
+          <i class="fa-solid fa-calendar-check"></i>
+        </div>
+        <div>
+          <h2>Gerenciamento de eventos</h2>
+          <p>Crie, edite, publique e organize os eventos do Pixelizados.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="news-toolbar">
+
+      <div class="news-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input id="event-search" type="text"
+          placeholder="Buscar por título, local ou autor..."
+          oninput="filtrarEventos()" autocomplete="off">
+      </div>
+
+      <div class="news-filters">
+
+        <select id="event-status-filter" class="news-filter"
+          onchange="filtrarEventos()">
+          <option value="TODOS">Todos os status</option>
+          <option value="PUBLICADA">Publicados</option>
+          <option value="RASCUNHO">Rascunhos</option>
+        </select>
+
+        <button id="refresh-events-button" class="refresh-button"
+          onclick="carregarEventos(true)" title="Atualizar eventos">
+          <i class="fa-solid fa-rotate"></i>
+        </button>
+
+        <button class="news-new-button" onclick="abrirNovoEvento()">
+          <i class="fa-solid fa-plus"></i>
+          Novo evento
+        </button>
+
+      </div>
+    </div>
+
+    <div class="news-summary">
+      <div id="event-summary-text" class="news-summary-text">
+        Carregando eventos...
+      </div>
+    </div>
+
+    <div class="news-table-card">
+
+      <div id="event-loading" class="news-loading">
+        <i class="fa-solid fa-spinner"></i>
+        <p>Carregando eventos...</p>
+      </div>
+
+      <div id="event-empty" class="news-empty" style="display:none;">
+        <div class="news-empty-icon">
+          <i class="fa-solid fa-calendar-xmark"></i>
+        </div>
+        <h3>Nenhum evento encontrado</h3>
+        <p>Crie o primeiro evento ou altere os filtros selecionados.</p>
+      </div>
+
+      <div id="event-table-wrapper" class="news-table-wrapper"
+        style="display:none;">
+        <table class="news-table">
+          <thead>
+            <tr>
+              <th>Evento</th>
+              <th>Data</th>
+              <th>Local</th>
+              <th>Status</th>
+              <th>Autor</th>
+              <th style="text-align:right;">Ações</th>
+            </tr>
+          </thead>
+          <tbody id="event-table-body"></tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <footer class="admin-footer">
+      Pixelizados © 2026 · Gerenciamento de Eventos
+    </footer>
+
+  </div>
+
+
+
       <!-- ===================================================
            FOOTER DASHBOARD
       ==================================================== -->
@@ -4829,100 +4926,6 @@
 
 
 
-  <!-- ===================================================
-       EVENTOS
-  ==================================================== -->
-
-  <div id="eventos-view" class="module-view">
-
-    <div class="section-heading">
-      <div class="section-heading-left">
-        <div class="section-heading-icon">
-          <i class="fa-solid fa-calendar-check"></i>
-        </div>
-        <div>
-          <h2>Gerenciamento de eventos</h2>
-          <p>Crie, edite, publique e organize os eventos do Pixelizados.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="news-toolbar">
-
-      <div class="news-search">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input id="event-search" type="text"
-          placeholder="Buscar por título, local ou autor..."
-          oninput="filtrarEventos()" autocomplete="off">
-      </div>
-
-      <div class="news-filters">
-
-        <select id="event-status-filter" class="news-filter"
-          onchange="filtrarEventos()">
-          <option value="TODOS">Todos os status</option>
-          <option value="PUBLICADA">Publicados</option>
-          <option value="RASCUNHO">Rascunhos</option>
-        </select>
-
-        <button id="refresh-events-button" class="refresh-button"
-          onclick="carregarEventos(true)" title="Atualizar eventos">
-          <i class="fa-solid fa-rotate"></i>
-        </button>
-
-        <button class="news-new-button" onclick="abrirNovoEvento()">
-          <i class="fa-solid fa-plus"></i>
-          Novo evento
-        </button>
-
-      </div>
-    </div>
-
-    <div class="news-summary">
-      <div id="event-summary-text" class="news-summary-text">
-        Carregando eventos...
-      </div>
-    </div>
-
-    <div class="news-table-card">
-
-      <div id="event-loading" class="news-loading">
-        <i class="fa-solid fa-spinner"></i>
-        <p>Carregando eventos...</p>
-      </div>
-
-      <div id="event-empty" class="news-empty" style="display:none;">
-        <div class="news-empty-icon">
-          <i class="fa-solid fa-calendar-xmark"></i>
-        </div>
-        <h3>Nenhum evento encontrado</h3>
-        <p>Crie o primeiro evento ou altere os filtros selecionados.</p>
-      </div>
-
-      <div id="event-table-wrapper" class="news-table-wrapper"
-        style="display:none;">
-        <table class="news-table">
-          <thead>
-            <tr>
-              <th>Evento</th>
-              <th>Data</th>
-              <th>Local</th>
-              <th>Status</th>
-              <th>Autor</th>
-              <th style="text-align:right;">Ações</th>
-            </tr>
-          </thead>
-          <tbody id="event-table-body"></tbody>
-        </table>
-      </div>
-
-    </div>
-
-    <footer class="admin-footer">
-      Pixelizados © 2026 · Gerenciamento de Eventos
-    </footer>
-
-  </div>
 
 
 
