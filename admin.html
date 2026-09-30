@@ -1156,6 +1156,514 @@
     }
 
 
+
+
+    /* =========================================================
+       CARGOS & PERMISSÕES
+    ========================================================= */
+
+    .roles-overview {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .role-overview-card {
+      background: #fff;
+      border: 1px solid #e7edf2;
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: 0 4px 14px rgba(31, 58, 78, .04);
+    }
+
+    .role-overview-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .role-overview-icon {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9px;
+      background: #f5f9fc;
+      border: 1px solid #e3ebf1;
+      flex-shrink: 0;
+    }
+
+    .role-overview-icon img {
+      width: 27px;
+      height: 27px;
+      object-fit: contain;
+    }
+
+    .role-overview-name {
+      font-family: 'Manrope', sans-serif;
+      font-size: 11px;
+      font-weight: 900;
+      color: #2f4658;
+    }
+
+    .role-overview-code {
+      margin-top: 2px;
+      font-size: 7px;
+      font-weight: 800;
+      color: #9aaab6;
+      letter-spacing: .07em;
+    }
+
+    .role-overview-description {
+      min-height: 31px;
+      font-size: 8px;
+      line-height: 1.55;
+      color: #71818d;
+    }
+
+    .role-full-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 9px;
+      padding: 4px 7px;
+      border-radius: 5px;
+      background: #fff7dc;
+      border: 1px solid #f0d58a;
+      color: #8b6915;
+      font-size: 7px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .roles-panel {
+      background: #fff;
+      border: 1px solid #e5ecf1;
+      border-radius: 13px;
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+
+    .roles-panel-header {
+      padding: 15px 17px;
+      border-bottom: 1px solid #edf1f4;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .roles-panel-title {
+      font-family: 'Manrope', sans-serif;
+      font-size: 11px;
+      font-weight: 900;
+      color: #34495a;
+    }
+
+    .roles-panel-subtitle {
+      margin-top: 3px;
+      font-size: 8px;
+      color: #8796a1;
+    }
+
+    .roles-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .roles-search {
+      position: relative;
+      min-width: 240px;
+      flex: 1;
+    }
+
+    .roles-search i {
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9aabb7;
+      font-size: 10px;
+    }
+
+    .roles-search input,
+    .roles-filter {
+      width: 100%;
+      height: 35px;
+      border: 1px solid #dfe7ec;
+      border-radius: 8px;
+      background: #fbfdfe;
+      color: #405362;
+      font-family: 'Manrope', sans-serif;
+      font-size: 9px;
+      outline: none;
+    }
+
+    .roles-search input {
+      padding: 0 12px 0 31px;
+    }
+
+    .roles-search input:focus,
+    .roles-filter:focus {
+      border-color: #8dc9e8;
+      box-shadow: 0 0 0 3px rgba(56, 182, 255, .08);
+    }
+
+    .roles-filter {
+      width: 160px;
+      padding: 0 10px;
+    }
+
+    .roles-table-wrapper {
+      overflow-x: auto;
+    }
+
+    .roles-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+
+    .roles-table th {
+      padding: 11px 13px;
+      background: #f8fafb;
+      border-bottom: 1px solid #e8eef2;
+      text-align: left;
+      color: #8796a1;
+      font-size: 7px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .roles-table td {
+      padding: 12px 13px;
+      border-bottom: 1px solid #edf1f4;
+      color: #526572;
+      font-size: 8px;
+      vertical-align: middle;
+    }
+
+    .roles-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .role-user-cell {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .role-user-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: #eef7fc;
+      border: 1px solid #dcecf5;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .role-user-name {
+      font-weight: 900;
+      color: #34495a;
+      font-size: 9px;
+    }
+
+    .role-user-discord {
+      margin-top: 2px;
+      color: #9aa8b2;
+      font-size: 7px;
+    }
+
+    .role-code-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 7px;
+      border-radius: 6px;
+      background: #f5f9fc;
+      border: 1px solid #e1e9ef;
+      color: #4a5d6b;
+      font-size: 7px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .role-code-badge img {
+      width: 17px;
+      height: 17px;
+      object-fit: contain;
+    }
+
+    .role-status-badge {
+      display: inline-flex;
+      padding: 4px 7px;
+      border-radius: 5px;
+      font-size: 7px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .role-status-badge.aprovado {
+      background: #edfff1;
+      border: 1px solid #bce9c6;
+      color: #39964e;
+    }
+
+    .role-status-badge.pendente {
+      background: #fff8e6;
+      border: 1px solid #f1dfac;
+      color: #a07b1b;
+    }
+
+    .role-status-badge.outro {
+      background: #f3f6f8;
+      border: 1px solid #e0e7eb;
+      color: #71818d;
+    }
+
+    .role-manage-button {
+      border: 1px solid #dce7ed;
+      background: #fff;
+      color: #4d6879;
+      border-radius: 7px;
+      min-height: 30px;
+      padding: 0 9px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 7px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: .15s ease;
+    }
+
+    .role-manage-button:hover {
+      border-color: #a9d8ee;
+      color: #248bbd;
+      background: #f7fcff;
+    }
+
+    .role-manage-button:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+
+    .roles-empty,
+    .roles-loading {
+      padding: 45px 20px;
+      text-align: center;
+      color: #8b9aa5;
+    }
+
+    .roles-empty-icon,
+    .roles-loading i {
+      font-size: 24px;
+      color: #b7c7d1;
+      margin-bottom: 10px;
+    }
+
+    .roles-empty h3 {
+      margin: 0 0 5px;
+      font-family: 'Manrope', sans-serif;
+      font-size: 11px;
+      color: #506471;
+    }
+
+    .roles-empty p,
+    .roles-loading p {
+      margin: 0;
+      font-size: 8px;
+      line-height: 1.5;
+    }
+
+    .permissions-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .permission-role-card {
+      background: #fff;
+      border: 1px solid #e5ecf1;
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .permission-role-card.full-access {
+      border-color: #ecd88f;
+      background: linear-gradient(180deg, #fffdf5 0%, #fff 100%);
+    }
+
+    .permission-role-header {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding-bottom: 11px;
+      margin-bottom: 11px;
+      border-bottom: 1px solid #edf1f4;
+    }
+
+    .permission-role-header img {
+      width: 29px;
+      height: 29px;
+      object-fit: contain;
+    }
+
+    .permission-role-header strong {
+      display: block;
+      color: #34495a;
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .permission-role-header span {
+      display: block;
+      margin-top: 2px;
+      color: #9aa8b2;
+      font-size: 7px;
+    }
+
+    .permission-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 7px;
+    }
+
+    .permission-item {
+      min-height: 31px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 7px;
+      border-radius: 7px;
+      background: #f8fafb;
+      border: 1px solid #edf1f4;
+      color: #667783;
+      font-size: 7px;
+      font-weight: 800;
+    }
+
+    .permission-item i {
+      color: #46a66a;
+      font-size: 8px;
+    }
+
+    .permission-item.off {
+      opacity: .42;
+    }
+
+    .permission-item.off i {
+      color: #9eabb3;
+    }
+
+    .cargo-history-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .cargo-history-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 11px;
+      border: 1px solid #edf1f4;
+      border-radius: 8px;
+      background: #fbfdfe;
+    }
+
+    .cargo-history-main {
+      min-width: 0;
+    }
+
+    .cargo-history-title {
+      font-size: 8px;
+      color: #465b6a;
+      line-height: 1.45;
+    }
+
+    .cargo-history-title strong {
+      color: #2f4658;
+      font-weight: 900;
+    }
+
+    .cargo-history-meta {
+      margin-top: 3px;
+      color: #9aa8b2;
+      font-size: 7px;
+    }
+
+    .cargo-history-arrow {
+      color: #9aabb6;
+      font-size: 8px;
+    }
+
+    .cargo-history-role {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 900;
+      color: #4e6778;
+    }
+
+    .cargo-history-role img {
+      width: 15px;
+      height: 15px;
+      object-fit: contain;
+    }
+
+    .cargo-edit-note {
+      padding: 9px 10px;
+      border-radius: 8px;
+      background: #f7fbfd;
+      border: 1px solid #e1edf3;
+      color: #71818d;
+      font-size: 7px;
+      line-height: 1.5;
+    }
+
+    .cargo-edit-note strong {
+      color: #466174;
+    }
+
+    @media (max-width: 1050px) {
+      .roles-overview {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .roles-overview,
+      .permissions-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .roles-toolbar,
+      .roles-search,
+      .roles-filter {
+        width: 100%;
+      }
+
+      .roles-filter {
+        width: 100%;
+      }
+
+      .permission-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
     /* =========================================================
        VIEWS
     ========================================================= */
@@ -5645,12 +6153,221 @@
       </div>
 
 
+      <!-- =====================================================
+           CARGOS & PERMISSÕES
+      ====================================================== -->
+      <div id="cargos-view" class="module-view">
+
+        <div class="section-heading">
+          <div class="section-heading-left">
+            <div class="section-heading-icon">
+              <i class="fa-solid fa-crown"></i>
+            </div>
+            <div>
+              <h2>Cargos &amp; Permissões</h2>
+              <p>Gerencie a hierarquia administrativa e visualize as permissões de cada cargo.</p>
+            </div>
+          </div>
+
+          <button
+            class="refresh-button"
+            id="refresh-cargos-button"
+            onclick="carregarCargos(true)"
+            title="Atualizar"
+          >
+            <i class="fa-solid fa-rotate"></i>
+          </button>
+        </div>
+
+        <div class="roles-overview" id="roles-overview"></div>
+
+        <div class="roles-panel">
+          <div class="roles-panel-header">
+            <div>
+              <div class="roles-panel-title">Usuários &amp; cargos</div>
+              <div class="roles-panel-subtitle">Altere o cargo administrativo dos membros autorizados.</div>
+            </div>
+
+            <div class="roles-toolbar">
+              <div class="roles-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                  id="roles-search"
+                  type="text"
+                  placeholder="Buscar por Nick do Usuário..."
+                  oninput="filtrarCargosUsuarios()"
+                >
+              </div>
+
+              <select
+                id="roles-filter"
+                class="roles-filter"
+                onchange="filtrarCargosUsuarios()"
+              >
+                <option value="">Todos os cargos</option>
+                <option value="FUNDADOR">Aclamado/Fundador</option>
+                <option value="ALTA_CUPULA">Alta Cúpula</option>
+                <option value="CURADORIA">Curadoria</option>
+                <option value="VOZ_OFICIAL">Voz Oficial</option>
+                <option value="APOIADOR">Apoiador</option>
+                <option value="ENTUSIASTA">Entusiasta</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="cargos-loading" class="roles-loading">
+            <i class="fa-solid fa-spinner fa-spin"></i>
+            <p>Carregando usuários e cargos...</p>
+          </div>
+
+          <div id="cargos-empty" class="roles-empty" style="display:none;">
+            <div class="roles-empty-icon">
+              <i class="fa-solid fa-users-slash"></i>
+            </div>
+            <h3>Nenhum usuário encontrado</h3>
+            <p>Não há usuários correspondentes aos filtros selecionados.</p>
+          </div>
+
+          <div id="cargos-table-wrapper" class="roles-table-wrapper" style="display:none;">
+            <table class="roles-table">
+              <thead>
+                <tr>
+                  <th>Usuário</th>
+                  <th>Cargo atual</th>
+                  <th>Status</th>
+                  <th>Hierarquia</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="cargos-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="roles-panel">
+          <div class="roles-panel-header">
+            <div>
+              <div class="roles-panel-title">Permissões por cargo</div>
+              <div class="roles-panel-subtitle">Aclamado/Fundador possui acesso FULL ao painel.</div>
+            </div>
+          </div>
+
+          <div class="permissions-grid" id="permissions-grid" style="padding: 14px;"></div>
+        </div>
+
+        <div class="roles-panel">
+          <div class="roles-panel-header">
+            <div>
+              <div class="roles-panel-title">Histórico de alterações</div>
+              <div class="roles-panel-subtitle">Registro das mudanças de cargo realizadas pelo sistema.</div>
+            </div>
+          </div>
+
+          <div id="cargos-history-loading" class="roles-loading" style="display:none;">
+            <i class="fa-solid fa-spinner fa-spin"></i>
+            <p>Carregando histórico...</p>
+          </div>
+
+          <div id="cargos-history-empty" class="roles-empty" style="display:none;">
+            <div class="roles-empty-icon">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+            </div>
+            <h3>Nenhuma alteração registrada</h3>
+            <p>As próximas alterações de cargo aparecerão aqui.</p>
+          </div>
+
+          <div id="cargos-history-list" class="cargo-history-list" style="padding: 0 14px 14px;"></div>
+        </div>
+
+        <footer class="admin-footer">
+          Pixelizados © 2026 · Cargos &amp; Permissões
+        </footer>
+
+      </div>
+
+
     </main>
 
   </div>
 
 
   
+
+  <!-- =======================================================
+       MODAL DE CARGO
+  ======================================================== -->
+
+  <div
+    id="cargo-modal-overlay"
+    class="modal-overlay"
+    onclick="fecharCargoAoClicarFora(event)"
+  >
+    <div class="user-modal" role="dialog" aria-modal="true" aria-labelledby="cargo-modal-title">
+
+      <div class="modal-header">
+        <div class="modal-title-area">
+          <div class="modal-title-icon">
+            <i class="fa-solid fa-crown"></i>
+          </div>
+          <div>
+            <h3 id="cargo-modal-title" class="modal-title">Gerenciar cargo</h3>
+            <p id="cargo-modal-subtitle" class="modal-subtitle">Altere o cargo administrativo do usuário.</p>
+          </div>
+        </div>
+
+        <button class="modal-close" onclick="fecharCargoModal()" title="Fechar">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="cargo-edit-note" style="margin-bottom:14px;">
+          <strong>Regra de segurança:</strong> o Aclamado/Fundador possui acesso FULL. O cargo FUNDADOR não pode ser concedido por este painel e não pode ser alterado por outro cargo.
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Nick do Usuário</label>
+            <input id="cargo-usuario-nick" class="form-input" type="text" readonly>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Status</label>
+            <input id="cargo-usuario-status" class="form-input" type="text" readonly>
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label">Novo cargo</label>
+            <select id="cargo-novo-role" class="form-select">
+              <option value="ALTA_CUPULA">Alta Cúpula</option>
+              <option value="CURADORIA">Curadoria</option>
+              <option value="VOZ_OFICIAL">Voz Oficial</option>
+              <option value="APOIADOR">Apoiador</option>
+              <option value="ENTUSIASTA">Entusiasta</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label">Observações</label>
+            <textarea id="cargo-observacoes" class="form-textarea" maxlength="500" placeholder="Opcional. Ex.: Promoção para assumir funções de curadoria."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button class="modal-button secondary" onclick="fecharCargoModal()">
+            Cancelar
+          </button>
+          <button class="modal-button primary" id="cargo-save-button" onclick="salvarCargoUsuario()">
+            <i class="fa-solid fa-floppy-disk"></i>
+            Salvar cargo
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- =======================================================
        MODAL DE MODERAÇÃO
   ======================================================== -->
@@ -6992,6 +7709,7 @@
 
 
           const permitido =
+            usuarioAtual.role === 'FUNDADOR' ||
             cargosPermitidos.includes(
               usuarioAtual.role
             );
@@ -7021,6 +7739,10 @@
     function usuarioTemPermissao(
       permissao
     ) {
+
+      if (usuarioAtual?.role === 'FUNDADOR') {
+        return true;
+      }
 
       return (
         PERMISSOES[permissao] || []
@@ -8246,6 +8968,464 @@
     }
 
 
+
+
+    /* =========================================================
+       CARGOS & PERMISSÕES
+    ========================================================= */
+
+    let cargosUsuariosCache = [];
+    let cargoModalAtual = null;
+    let cargosHistoricoCache = [];
+
+    const CARGOS_HIERARQUIA = {
+      FUNDADOR: 100,
+      ALTA_CUPULA: 80,
+      CURADORIA: 60,
+      VOZ_OFICIAL: 50,
+      APOIADOR: 20,
+      ENTUSIASTA: 10
+    };
+
+    const CARGOS_DESCRICOES = {
+      FUNDADOR: 'Acesso administrativo FULL a todo o painel e a todos os módulos.',
+      ALTA_CUPULA: 'Administração ampla do conteúdo, eventos, usuários e equipe.',
+      CURADORIA: 'Gestão de usuários e moderação da comunidade.',
+      VOZ_OFICIAL: 'Publicações e comunicação oficial da comunidade.',
+      APOIADOR: 'Cargo de apoio à comunidade, sem acesso administrativo amplo.',
+      ENTUSIASTA: 'Cargo de participação e reconhecimento da comunidade.'
+    };
+
+    const PERMISSOES_LABELS = {
+      conteudo: 'Conteúdo do Site',
+      noticias: 'Notícias',
+      eventos: 'Eventos',
+      imagens: 'Biblioteca de Imagens',
+      usuarios: 'Usuários',
+      moderacao: 'Moderação',
+      cargos: 'Cargos & Permissões',
+      equipe: 'Equipe',
+      autodj: 'AutoDJ',
+      discord: 'Discord',
+      configuracoes: 'Configurações'
+    };
+
+    function obterNomeCargo(role) {
+      return CARGOS[role]?.nome || role || 'Sem cargo';
+    }
+
+    function obterNivelCargo(role) {
+      return CARGOS_HIERARQUIA[role] || 0;
+    }
+
+    function renderizarResumoCargos() {
+      const container = document.getElementById('roles-overview');
+      if (!container) return;
+
+      const ordem = [
+        'FUNDADOR',
+        'ALTA_CUPULA',
+        'CURADORIA',
+        'VOZ_OFICIAL',
+        'APOIADOR',
+        'ENTUSIASTA'
+      ];
+
+      container.innerHTML = ordem.map(role => `
+        <div class="role-overview-card ${role === 'FUNDADOR' ? 'full-access' : ''}">
+          <div class="role-overview-top">
+            <div class="role-overview-icon">
+              <img src="${escapeHtml(CARGOS[role].icone)}" alt="${escapeHtml(CARGOS[role].nome)}">
+            </div>
+            <div>
+              <div class="role-overview-name">${escapeHtml(CARGOS[role].nome)}</div>
+              <div class="role-overview-code">NÍVEL ${obterNivelCargo(role)}</div>
+            </div>
+          </div>
+          <div class="role-overview-description">${escapeHtml(CARGOS_DESCRICOES[role])}</div>
+          ${role === 'FUNDADOR' ? '<div class="role-full-badge"><i class="fa-solid fa-infinity"></i> Acesso FULL</div>' : ''}
+        </div>
+      `).join('');
+    }
+
+    function renderizarMatrizPermissoes() {
+      const container = document.getElementById('permissions-grid');
+      if (!container) return;
+
+      const ordem = [
+        'FUNDADOR',
+        'ALTA_CUPULA',
+        'CURADORIA',
+        'VOZ_OFICIAL',
+        'APOIADOR',
+        'ENTUSIASTA'
+      ];
+
+      const modulos = Object.keys(PERMISSOES_LABELS);
+
+      container.innerHTML = ordem.map(role => {
+        const full = role === 'FUNDADOR';
+
+        return `
+          <div class="permission-role-card ${full ? 'full-access' : ''}">
+            <div class="permission-role-header">
+              <img src="${escapeHtml(CARGOS[role].icone)}" alt="${escapeHtml(CARGOS[role].nome)}">
+              <div>
+                <strong>${escapeHtml(CARGOS[role].nome)}</strong>
+                <span>${full ? 'Acesso FULL' : 'Nível ' + obterNivelCargo(role)}</span>
+              </div>
+            </div>
+            <div class="permission-list">
+              ${modulos.map(modulo => {
+                const permitido = full || (PERMISSOES[modulo] || []).includes(role);
+                return `
+                  <div class="permission-item ${permitido ? '' : 'off'}">
+                    <i class="fa-solid ${permitido ? 'fa-circle-check' : 'fa-circle-minus'}"></i>
+                    <span>${escapeHtml(PERMISSOES_LABELS[modulo])}</span>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function mostrarCargos() {
+      if (!usuarioTemPermissao('cargos')) return;
+
+      document.querySelectorAll('.module-view').forEach(view => {
+        view.classList.remove('active');
+      });
+
+      document.getElementById('cargos-view').classList.add('active');
+      document.getElementById('dashboard-footer').style.display = 'none';
+      document.getElementById('page-title').textContent = 'Cargos & Permissões';
+      document.getElementById('page-description').textContent = 'Gerencie a hierarquia administrativa do Pixelizados.';
+
+      renderizarResumoCargos();
+      renderizarMatrizPermissoes();
+      await carregarCargos(true);
+      await carregarHistoricoCargos();
+    }
+
+    async function carregarCargos(mostrarCarregamento = true) {
+      if (!usuarioTemPermissao('cargos')) return;
+
+      const loading = document.getElementById('cargos-loading');
+      const empty = document.getElementById('cargos-empty');
+      const table = document.getElementById('cargos-table-wrapper');
+      const button = document.getElementById('refresh-cargos-button');
+
+      if (mostrarCarregamento) {
+        loading.style.display = 'block';
+        empty.style.display = 'none';
+        table.style.display = 'none';
+      }
+
+      if (button) button.classList.add('loading');
+
+      try {
+        const resultado = await supabaseClient
+          .from('usuarios')
+          .select('id, habbo_nick, discord_tag, status, role, avatar_url, auth_user_id')
+          .order('role', { ascending: true })
+          .order('habbo_nick', { ascending: true });
+
+        if (resultado.error) throw resultado.error;
+
+        cargosUsuariosCache = resultado.data || [];
+        filtrarCargosUsuarios();
+
+      } catch (error) {
+        console.error('Erro ao carregar cargos:', error);
+        cargosUsuariosCache = [];
+        loading.style.display = 'none';
+        table.style.display = 'none';
+        empty.style.display = 'block';
+        empty.innerHTML = `
+          <div class="roles-empty-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <h3>Não foi possível carregar os usuários</h3>
+          <p>Verifique a conexão com o Supabase e as permissões da tabela usuarios.</p>
+        `;
+        mostrarToast('Não foi possível carregar os cargos.', 'error');
+      } finally {
+        if (button) button.classList.remove('loading');
+      }
+    }
+
+    function filtrarCargosUsuarios() {
+      const termo = (document.getElementById('roles-search')?.value || '').trim().toLowerCase();
+      const roleFiltro = document.getElementById('roles-filter')?.value || '';
+
+      const filtrados = cargosUsuariosCache.filter(usuario => {
+        const nick = String(usuario.habbo_nick || '').toLowerCase();
+        const discord = String(usuario.discord_tag || '').toLowerCase();
+        const correspondeTexto = !termo || nick.includes(termo) || discord.includes(termo);
+        const correspondeRole = !roleFiltro || usuario.role === roleFiltro;
+        return correspondeTexto && correspondeRole;
+      });
+
+      renderizarTabelaCargos(filtrados);
+    }
+
+    function renderizarTabelaCargos(usuarios) {
+      const loading = document.getElementById('cargos-loading');
+      const empty = document.getElementById('cargos-empty');
+      const table = document.getElementById('cargos-table-wrapper');
+      const body = document.getElementById('cargos-table-body');
+
+      if (!body) return;
+
+      loading.style.display = 'none';
+
+      if (!usuarios.length) {
+        table.style.display = 'none';
+        empty.style.display = 'block';
+        return;
+      }
+
+      empty.style.display = 'none';
+      table.style.display = 'block';
+
+      body.innerHTML = usuarios.map(usuario => {
+        const role = usuario.role && CARGOS[usuario.role] ? usuario.role : 'ENTUSIASTA';
+        const cargo = CARGOS[role];
+        const status = String(usuario.status || '').toUpperCase();
+        const isCurrent = String(usuario.id) === String(usuarioAtual?.id);
+        const isFounder = role === 'FUNDADOR';
+        const podeGerenciar = usuarioAtual?.role === 'FUNDADOR' && !isCurrent && !isFounder;
+
+        const avatar = usuario.avatar_url || (
+          'https://api.dicebear.com/7.x/pixel-art/svg?seed=' +
+          encodeURIComponent(usuario.habbo_nick || 'Pixelizado') +
+          '&backgroundColor=38b6ff'
+        );
+
+        const statusClass = status === 'APROVADO' ? 'aprovado' : (status === 'PENDENTE' ? 'pendente' : 'outro');
+
+        return `
+          <tr>
+            <td>
+              <div class="role-user-cell">
+                <img class="role-user-avatar" src="${escapeHtml(avatar)}" alt="Avatar">
+                <div>
+                  <div class="role-user-name">${escapeHtml(usuario.habbo_nick || 'Sem Nick')}</div>
+                  <div class="role-user-discord">${escapeHtml(usuario.discord_tag || 'Sem Discord')}</div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <span class="role-code-badge">
+                <img src="${escapeHtml(cargo.icone)}" alt="${escapeHtml(cargo.nome)}">
+                ${escapeHtml(cargo.nome)}
+              </span>
+            </td>
+            <td>
+              <span class="role-status-badge ${statusClass}">${escapeHtml(status || '—')}</span>
+            </td>
+            <td>${obterNivelCargo(role)}</td>
+            <td style="text-align:right;">
+              ${isCurrent ? '<span class="cargo-edit-note" style="display:inline-block;">Sua conta</span>' : ''}
+              ${isFounder && !isCurrent ? '<span class="cargo-edit-note" style="display:inline-block;">Protegido</span>' : ''}
+              ${podeGerenciar ? `
+                <button class="role-manage-button" onclick="abrirCargoModal('${String(usuario.id).replace(/'/g, "\\'")}')">
+                  <i class="fa-solid fa-pen"></i>
+                  Gerenciar
+                </button>
+              ` : ''}
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function abrirCargoModal(id) {
+      if (usuarioAtual?.role !== 'FUNDADOR') {
+        mostrarToast('Apenas o Aclamado/Fundador pode alterar cargos.', 'error');
+        return;
+      }
+
+      const usuario = cargosUsuariosCache.find(item => String(item.id) === String(id));
+      if (!usuario) {
+        mostrarToast('Usuário não encontrado.', 'error');
+        return;
+      }
+
+      if (usuario.role === 'FUNDADOR') {
+        mostrarToast('O cargo Aclamado/Fundador está protegido.', 'error');
+        return;
+      }
+
+      if (String(usuario.id) === String(usuarioAtual?.id)) {
+        mostrarToast('Por segurança, você não pode alterar o próprio cargo.', 'error');
+        return;
+      }
+
+      cargoModalAtual = usuario;
+
+      document.getElementById('cargo-usuario-nick').value = usuario.habbo_nick || 'Sem Nick';
+      document.getElementById('cargo-usuario-status').value = usuario.status || '—';
+      document.getElementById('cargo-novo-role').value = usuario.role && usuario.role !== 'FUNDADOR' ? usuario.role : 'ENTUSIASTA';
+      document.getElementById('cargo-observacoes').value = '';
+      document.getElementById('cargo-modal-subtitle').textContent = 'Alterando o cargo de ' + (usuario.habbo_nick || 'Sem Nick') + '.';
+      document.getElementById('cargo-modal-overlay').classList.add('open');
+    }
+
+    async function salvarCargoUsuario() {
+      if (!cargoModalAtual) return;
+
+      if (usuarioAtual?.role !== 'FUNDADOR') {
+        mostrarToast('Apenas o Aclamado/Fundador pode alterar cargos.', 'error');
+        return;
+      }
+
+      const novoRole = document.getElementById('cargo-novo-role').value;
+      const observacoes = document.getElementById('cargo-observacoes').value.trim() || null;
+      const botao = document.getElementById('cargo-save-button');
+
+      if (!CARGOS[novoRole] || novoRole === 'FUNDADOR') {
+        mostrarToast('Cargo inválido.', 'error');
+        return;
+      }
+
+      if (cargoModalAtual.role === novoRole) {
+        mostrarToast('O usuário já possui este cargo.', 'info');
+        return;
+      }
+
+      const confirmacao = window.confirm(
+        'Confirma alterar o cargo de "' +
+        (cargoModalAtual.habbo_nick || 'Sem Nick') +
+        '" de ' +
+        obterNomeCargo(cargoModalAtual.role) +
+        ' para ' +
+        obterNomeCargo(novoRole) +
+        '?' 
+      );
+
+      if (!confirmacao) return;
+
+      const textoOriginal = botao.innerHTML;
+      botao.disabled = true;
+      botao.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Salvando...';
+
+      try {
+        const resultado = await supabaseClient.rpc('alterar_cargo_usuario', {
+          p_usuario_id: cargoModalAtual.id,
+          p_novo_role: novoRole,
+          p_observacoes: observacoes
+        });
+
+        if (resultado.error) throw resultado.error;
+
+        cargoModalAtual.role = novoRole;
+        fecharCargoModal();
+
+        mostrarToast('Cargo alterado com sucesso.', 'success');
+        await carregarCargos(false);
+        await carregarHistoricoCargos();
+
+      } catch (error) {
+        console.error('Erro ao alterar cargo:', error);
+        mostrarToast(error?.message || 'Não foi possível alterar o cargo.', 'error');
+      } finally {
+        botao.disabled = false;
+        botao.innerHTML = textoOriginal;
+      }
+    }
+
+    function fecharCargoModal() {
+      document.getElementById('cargo-modal-overlay')?.classList.remove('open');
+      cargoModalAtual = null;
+    }
+
+    function fecharCargoAoClicarFora(event) {
+      if (event.target.id === 'cargo-modal-overlay') {
+        fecharCargoModal();
+      }
+    }
+
+    async function carregarHistoricoCargos() {
+      if (!usuarioTemPermissao('cargos')) return;
+
+      const loading = document.getElementById('cargos-history-loading');
+      const empty = document.getElementById('cargos-history-empty');
+      const list = document.getElementById('cargos-history-list');
+
+      if (!list) return;
+
+      loading.style.display = 'block';
+      empty.style.display = 'none';
+      list.innerHTML = '';
+
+      try {
+        const resultado = await supabaseClient
+          .from('historico_cargos')
+          .select('id, created_at, nick_usuario, cargo_anterior, cargo_novo, alterado_por_nick, observacoes')
+          .order('created_at', { ascending: false })
+          .limit(20);
+
+        if (resultado.error) throw resultado.error;
+
+        cargosHistoricoCache = resultado.data || [];
+        loading.style.display = 'none';
+
+        if (!cargosHistoricoCache.length) {
+          empty.style.display = 'block';
+          return;
+        }
+
+        list.innerHTML = cargosHistoricoCache.map(item => {
+          const anterior = item.cargo_anterior && CARGOS[item.cargo_anterior]
+            ? item.cargo_anterior
+            : null;
+          const novo = item.cargo_novo && CARGOS[item.cargo_novo]
+            ? item.cargo_novo
+            : item.cargo_novo;
+
+          const data = item.created_at ? new Date(item.created_at).toLocaleString('pt-BR') : '—';
+          const observacao = item.observacoes ? ' · ' + item.observacoes : '';
+
+          return `
+            <div class="cargo-history-item">
+              <div class="cargo-history-main">
+                <div class="cargo-history-title">
+                  <strong>${escapeHtml(item.nick_usuario || 'Sem Nick')}</strong>
+                  alterado por
+                  <strong>${escapeHtml(item.alterado_por_nick || 'Sistema')}</strong>
+                  <span>:</span>
+                  ${anterior ? `
+                    <span class="cargo-history-role">
+                      <img src="${escapeHtml(CARGOS[anterior].icone)}" alt="">
+                      ${escapeHtml(obterNomeCargo(anterior))}
+                    </span>
+                  ` : '<strong>Sem cargo</strong>'}
+                  <span class="cargo-history-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                  <span class="cargo-history-role">
+                    <img src="${escapeHtml(CARGOS[novo]?.icone || 'assets/cargos/entusiasta.svg')}" alt="">
+                    ${escapeHtml(obterNomeCargo(novo))}
+                  </span>
+                </div>
+                <div class="cargo-history-meta">${escapeHtml(data)}${escapeHtml(observacao)}</div>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+      } catch (error) {
+        console.error('Erro ao carregar histórico de cargos:', error);
+        loading.style.display = 'none';
+        empty.style.display = 'block';
+        empty.innerHTML = `
+          <div class="roles-empty-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <h3>Não foi possível carregar o histórico</h3>
+          <p>Verifique a política de leitura da tabela historico_cargos.</p>
+        `;
+      }
+    }
+
+
     /* =========================================================
        ABRIR MÓDULO
     ========================================================= */
@@ -8343,6 +9523,17 @@
       ) {
 
         mostrarModeracao();
+
+        return;
+
+      }
+
+
+      if (
+        modulo === 'cargos'
+      ) {
+
+        mostrarCargos();
 
         return;
 
