@@ -4293,7 +4293,28 @@
     .autodj-empty p { margin:7px 0 0; font:700 10px 'Manrope',sans-serif; color:#95a2aa; }
     @media (max-width:850px) { .autodj-summary { grid-template-columns:1fr; } .autodj-form { grid-template-columns:1fr; } .autodj-form-group.full { grid-column:auto; } .autodj-form-actions { grid-column:auto; } }
 
-</style>
+
+    .autodj-radio-info { display:flex; gap:12px; align-items:flex-start; padding:14px 16px; margin-bottom:18px; border:1px solid #e4edf3; background:#f8fbfd; border-radius:14px; color:#667887; font-size:10px; line-height:1.6; }
+    .autodj-radio-info-icon { width:30px; height:30px; border-radius:10px; display:flex; align-items:center; justify-content:center; background:#e8f5fc; color:#2788ca; flex:0 0 auto; }
+    .autodj-radio-info strong, .autodj-radio-info span { display:block; }
+    .autodj-radio-info strong { color:#263947; margin-bottom:2px; font-size:11px; }
+    .autodj-field-help { display:block; margin-top:6px; color:#93a2ad; font-size:9px; line-height:1.5; }
+    .autodj-toggle-row { display:flex; align-items:center; justify-content:space-between; gap:18px; padding:14px 16px; border:1px solid #e4edf3; background:#fbfdfe; border-radius:14px; }
+    .autodj-toggle-row strong, .autodj-toggle-row span { display:block; }
+    .autodj-toggle-row strong { color:#263947; font-size:11px; margin-bottom:3px; }
+    .autodj-toggle-row span { color:#93a2ad; font-size:9px; }
+    .autodj-switch { position:relative; width:48px; height:26px; flex:0 0 auto; }
+    .autodj-switch input { opacity:0; width:0; height:0; }
+    .autodj-switch-slider { position:absolute; inset:0; cursor:pointer; background:#d7e1e8; border-radius:30px; transition:.2s; }
+    .autodj-switch-slider:before { content:""; position:absolute; width:20px; height:20px; left:3px; top:3px; background:#fff; border-radius:50%; box-shadow:0 1px 4px rgba(0,0,0,.18); transition:.2s; }
+    .autodj-switch input:checked + .autodj-switch-slider { background:#35a36b; }
+    .autodj-switch input:checked + .autodj-switch-slider:before { transform:translateX(22px); }
+    .autodj-guides { display:grid; gap:10px; }
+    .autodj-guides > div { display:flex; gap:10px; align-items:flex-start; padding:11px 12px; border-radius:12px; background:#f8fbfd; color:#71828e; font-size:10px; line-height:1.5; }
+    .autodj-guides i { color:#2788ca; width:16px; text-align:center; margin-top:2px; }
+    .autodj-guides strong { color:#394b58; }
+
+  </style>
 </head>
 
 
@@ -6512,55 +6533,90 @@
 
         <div class="section-heading">
           <div class="section-heading-left">
-            <div class="section-heading-icon"><i class="fa-solid fa-record-vinyl"></i></div>
+            <div class="section-heading-icon"><i class="fa-solid fa-radio"></i></div>
             <div>
               <h2>AutoDJ</h2>
-              <p>Gerencie as músicas que poderão ser reproduzidas automaticamente no Pixelizados.</p>
+              <p>Configure a rádio externa que será reproduzida pelo player público do Pixelizados.</p>
             </div>
           </div>
           <div class="autodj-toolbar">
             <button class="refresh-button" onclick="carregarAutodj(true)" title="Atualizar">
               <i class="fa-solid fa-rotate"></i>
             </button>
-            <button class="autodj-add-button" onclick="prepararNovaMusicaAutodj()">
-              <i class="fa-solid fa-plus"></i> Adicionar música
-            </button>
           </div>
         </div>
 
         <div class="autodj-summary">
-          <div class="autodj-summary-card"><div class="autodj-summary-label">Músicas cadastradas</div><div class="autodj-summary-value" id="autodj-total">—</div></div>
-          <div class="autodj-summary-card"><div class="autodj-summary-label">Ativas</div><div class="autodj-summary-value" id="autodj-active">—</div></div>
-          <div class="autodj-summary-card"><div class="autodj-summary-label">Inativas</div><div class="autodj-summary-value" id="autodj-inactive">—</div></div>
+          <div class="autodj-summary-card">
+            <div class="autodj-summary-label">Rádio configurada</div>
+            <div class="autodj-summary-value" id="autodj-radio-name">—</div>
+          </div>
+          <div class="autodj-summary-card">
+            <div class="autodj-summary-label">Status</div>
+            <div class="autodj-summary-value" id="autodj-radio-status">—</div>
+          </div>
+          <div class="autodj-summary-card">
+            <div class="autodj-summary-label">Streaming</div>
+            <div class="autodj-summary-value" id="autodj-stream-status">—</div>
+          </div>
         </div>
 
-        <div class="autodj-panel" id="autodj-form-panel" style="display:none;">
+        <div class="autodj-panel">
           <div class="autodj-panel-header">
             <div>
-              <div class="autodj-panel-title" id="autodj-form-title">Adicionar música</div>
-              <div class="autodj-panel-subtitle">Cadastre os dados da faixa. O áudio será carregado pelo link informado.</div>
+              <div class="autodj-panel-title">Configuração da Rádio</div>
+              <div class="autodj-panel-subtitle">Quando você tiver o endereço do streaming da rádio, basta inseri-lo aqui. Nenhuma música precisa ser hospedada no Pixelizados.</div>
             </div>
           </div>
+
+          <div class="autodj-radio-info">
+            <div class="autodj-radio-info-icon"><i class="fa-solid fa-circle-info"></i></div>
+            <div>
+              <strong>Como funciona?</strong>
+              <span>O Pixelizados usará o streaming de uma rádio externa. O campo abaixo deve receber o endereço direto da transmissão, e não o site da rádio ou um link do YouTube.</span>
+            </div>
+          </div>
+
           <div class="autodj-form">
             <div class="autodj-form-group">
-              <label class="autodj-form-label">Título *</label>
-              <input id="autodj-titulo" class="autodj-form-input" type="text" placeholder="Nome da música">
+              <label class="autodj-form-label">Nome da rádio *</label>
+              <input id="autodj-nome-radio" class="autodj-form-input" type="text" placeholder="Ex: Pixelizados FM">
             </div>
+
             <div class="autodj-form-group">
-              <label class="autodj-form-label">Artista</label>
-              <input id="autodj-artista" class="autodj-form-input" type="text" placeholder="Nome do artista">
+              <label class="autodj-form-label">Nome exibido no player</label>
+              <input id="autodj-texto-player" class="autodj-form-input" type="text" placeholder="Ex: AutoDJ Pixel">
             </div>
+
             <div class="autodj-form-group full">
-              <label class="autodj-form-label">URL do áudio *</label>
-              <input id="autodj-audio-url" class="autodj-form-input" type="url" placeholder="https://.../musica.mp3">
+              <label class="autodj-form-label">URL do streaming</label>
+              <input id="autodj-stream-url" class="autodj-form-input" type="url" placeholder="https://servidor-da-radio.com:8000/stream">
+              <small class="autodj-field-help">Deixe vazio enquanto você ainda não tiver o link da transmissão.</small>
             </div>
+
             <div class="autodj-form-group full">
-              <label class="autodj-form-label">URL da capa</label>
+              <label class="autodj-form-label">URL da capa/avatar</label>
               <input id="autodj-capa-url" class="autodj-form-input" type="url" placeholder="https://.../capa.jpg">
             </div>
+
+            <div class="autodj-toggle-row full">
+              <div>
+                <strong>Ativar rádio no player público</strong>
+                <span>Ative somente quando houver uma URL de streaming válida.</span>
+              </div>
+              <label class="autodj-switch">
+                <input id="autodj-ativo" type="checkbox">
+                <span class="autodj-switch-slider"></span>
+              </label>
+            </div>
+
             <div class="autodj-form-actions">
-              <button class="autodj-secondary-button" onclick="cancelarEdicaoAutodj()">Cancelar</button>
-              <button class="autodj-primary-button" id="autodj-save-button" onclick="salvarMusicaAutodj()">Salvar música</button>
+              <button class="autodj-secondary-button" onclick="testarStreamingAutodj()" id="autodj-test-button">
+                <i class="fa-solid fa-play"></i> Testar transmissão
+              </button>
+              <button class="autodj-primary-button" id="autodj-save-button" onclick="salvarConfigAutodj()">
+                <i class="fa-solid fa-floppy-disk"></i> Salvar configuração
+              </button>
             </div>
           </div>
         </div>
@@ -6568,21 +6624,14 @@
         <div class="autodj-panel">
           <div class="autodj-panel-header">
             <div>
-              <div class="autodj-panel-title">Playlist</div>
-              <div class="autodj-panel-subtitle">As músicas ativas ficarão disponíveis para o player público do AutoDJ.</div>
+              <div class="autodj-panel-title">Orientações</div>
+              <div class="autodj-panel-subtitle">Informações importantes para quando você contratar ou receber o streaming da rádio.</div>
             </div>
           </div>
-          <div id="autodj-loading" class="autodj-loading"><i class="fa-solid fa-spinner fa-spin"></i><p>Carregando playlist...</p></div>
-          <div id="autodj-empty" class="autodj-empty" style="display:none;">
-            <div class="autodj-empty-icon"><i class="fa-solid fa-record-vinyl"></i></div>
-            <h3>Nenhuma música cadastrada</h3>
-            <p>Adicione a primeira música para começar a montar a playlist do AutoDJ.</p>
-          </div>
-          <div id="autodj-table-wrap" class="autodj-table-wrap" style="display:none;">
-            <table class="autodj-table">
-              <thead><tr><th>Música</th><th>Áudio</th><th>Status</th><th>Cadastrada em</th><th></th></tr></thead>
-              <tbody id="autodj-table-body"></tbody>
-            </table>
+          <div class="autodj-guides">
+            <div><i class="fa-solid fa-link"></i><span><strong>URL correta:</strong> endereço direto do streaming fornecido pelo servidor da rádio.</span></div>
+            <div><i class="fa-solid fa-ban"></i><span><strong>Não usar:</strong> página inicial da rádio, link do YouTube ou página de uma música.</span></div>
+            <div><i class="fa-solid fa-globe"></i><span><strong>HTTPS:</strong> quando possível, prefira um streaming HTTPS para evitar bloqueios em páginas HTTPS.</span></div>
           </div>
         </div>
 
@@ -10144,8 +10193,8 @@
        AUTODJ
     ========================================================= */
 
-    let autodjCache = [];
-    let autodjEdicaoId = null;
+    let autodjConfigCache = null;
+    let autodjTesteAudio = null;
 
     function escaparHtmlAutodj(valor) {
       return String(valor ?? '')
@@ -10156,11 +10205,15 @@
         .replace(/'/g, '&#039;');
     }
 
-    function formatarDataAutodj(valor) {
-      if (!valor) return '—';
-      const data = new Date(valor);
-      if (Number.isNaN(data.getTime())) return '—';
-      return data.toLocaleDateString('pt-BR');
+    function atualizarResumoAutodj(config) {
+      const nome = document.getElementById('autodj-radio-name');
+      const status = document.getElementById('autodj-radio-status');
+      const stream = document.getElementById('autodj-stream-status');
+      if (!nome || !status || !stream) return;
+
+      nome.textContent = config?.nome_radio || 'Não configurada';
+      status.textContent = config?.ativo ? 'Ativo' : 'Inativo';
+      stream.textContent = config?.url_streaming ? 'Configurado' : 'Aguardando URL';
     }
 
     async function mostrarAutodj() {
@@ -10169,175 +10222,146 @@
       document.getElementById('autodj-view')?.classList.add('active');
       document.getElementById('dashboard-footer').style.display = 'none';
       document.getElementById('page-title').textContent = 'AutoDJ';
-      document.getElementById('page-description').textContent = 'Gerencie a playlist e as informações das músicas do AutoDJ.';
-      cancelarEdicaoAutodj();
+      document.getElementById('page-description').textContent = 'Configure a rádio externa utilizada pelo player público do Pixelizados.';
       await carregarAutodj(true);
     }
 
     async function carregarAutodj(mostrarCarregamento = false) {
       if (!usuarioTemPermissao('autodj')) return;
-      const loading = document.getElementById('autodj-loading');
-      const empty = document.getElementById('autodj-empty');
-      const table = document.getElementById('autodj-table-wrap');
+      const nome = document.getElementById('autodj-nome-radio');
+      const texto = document.getElementById('autodj-texto-player');
+      const stream = document.getElementById('autodj-stream-url');
+      const capa = document.getElementById('autodj-capa-url');
+      const ativo = document.getElementById('autodj-ativo');
       if (mostrarCarregamento) {
-        loading.style.display = 'block';
-        empty.style.display = 'none';
-        table.style.display = 'none';
+        document.getElementById('autodj-radio-name').textContent = '...';
+        document.getElementById('autodj-radio-status').textContent = '...';
+        document.getElementById('autodj-stream-status').textContent = '...';
       }
       try {
         const resultado = await supabaseClient
-          .from('autodj_musicas')
-          .select('id, created_at, titulo, artista, audio_url, capa_url, ordem, ativa')
-          .order('ordem', { ascending: true })
-          .order('created_at', { ascending: true });
+          .from('autodj_config')
+          .select('id, created_at, atualizado_em, nome_radio, url_streaming, capa_url, texto_player, ativo')
+          .order('atualizado_em', { ascending: false })
+          .limit(1);
         if (resultado.error) throw resultado.error;
-        autodjCache = resultado.data || [];
-        renderizarAutodj();
+        autodjConfigCache = resultado.data?.[0] || null;
+
+        nome.value = autodjConfigCache?.nome_radio || 'Pixelizados FM';
+        texto.value = autodjConfigCache?.texto_player || 'AutoDJ Pixel';
+        stream.value = autodjConfigCache?.url_streaming || '';
+        capa.value = autodjConfigCache?.capa_url || '';
+        ativo.checked = Boolean(autodjConfigCache?.ativo);
+        atualizarResumoAutodj(autodjConfigCache);
       } catch (error) {
-        console.error('Erro ao carregar AutoDJ:', error);
-        autodjCache = [];
-        loading.style.display = 'none';
-        table.style.display = 'none';
-        empty.style.display = 'block';
-        empty.innerHTML = '<div class="autodj-empty-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><h3>Não foi possível carregar o AutoDJ</h3><p>Verifique a conexão com o Supabase e as permissões da tabela autodj_musicas.</p>';
-        mostrarToast('Não foi possível carregar o AutoDJ.', 'error');
+        console.error('Erro ao carregar configuração do AutoDJ:', error);
+        atualizarResumoAutodj(null);
+        mostrarToast(error?.message || 'Não foi possível carregar a configuração do AutoDJ.', 'error');
       }
     }
 
-    function renderizarAutodj() {
-      const loading = document.getElementById('autodj-loading');
-      const empty = document.getElementById('autodj-empty');
-      const table = document.getElementById('autodj-table-wrap');
-      const body = document.getElementById('autodj-table-body');
-      const total = autodjCache.length;
-      const ativas = autodjCache.filter(item => item.ativa).length;
-      document.getElementById('autodj-total').textContent = total;
-      document.getElementById('autodj-active').textContent = ativas;
-      document.getElementById('autodj-inactive').textContent = total - ativas;
-      loading.style.display = 'none';
-      if (!total) {
-        table.style.display = 'none';
-        empty.style.display = 'block';
-        return;
-      }
-      empty.style.display = 'none';
-      table.style.display = 'block';
-      body.innerHTML = autodjCache.map(item => {
-        const capa = item.capa_url
-          ? '<img class="autodj-cover" src="' + escaparHtmlAutodj(item.capa_url) + '" alt="">'
-          : '<div class="autodj-cover-fallback"><i class="fa-solid fa-music"></i></div>';
-        const status = item.ativa
-          ? '<span class="autodj-status active"><i class="fa-solid fa-circle"></i> Ativa</span>'
-          : '<span class="autodj-status inactive"><i class="fa-solid fa-circle"></i> Inativa</span>';
-        return '<tr>' +
-          '<td><div class="autodj-song-cell">' + capa + '<div><div class="autodj-song-title">' + escaparHtmlAutodj(item.titulo) + '</div><div class="autodj-song-artist">' + escaparHtmlAutodj(item.artista || 'Artista não informado') + '</div></div></div></td>' +
-          '<td><a href="' + escaparHtmlAutodj(item.audio_url) + '" target="_blank" rel="noopener noreferrer" style="color:#2788ca;font-weight:900;text-decoration:none;"><i class="fa-solid fa-link"></i> Abrir áudio</a></td>' +
-          '<td>' + status + '</td>' +
-          '<td>' + formatarDataAutodj(item.created_at) + '</td>' +
-          '<td><div class="autodj-actions">' +
-            '<button class="autodj-action-button" onclick="editarMusicaAutodj(&#39;' + item.id + '&#39;)" title="Editar"><i class="fa-solid fa-pen"></i></button>' +
-            '<button class="autodj-action-button" onclick="alternarMusicaAutodj(&#39;' + item.id + '&#39;)" title="Ativar/desativar"><i class="fa-solid ' + (item.ativa ? 'fa-toggle-on' : 'fa-toggle-off') + '"></i></button>' +
-            '<button class="autodj-action-button danger" onclick="excluirMusicaAutodj(&#39;' + item.id + '&#39;)" title="Excluir"><i class="fa-solid fa-trash"></i></button>' +
-          '</div></td>' +
-        '</tr>';
-      }).join('');
-    }
-
-    function prepararNovaMusicaAutodj() {
-      autodjEdicaoId = null;
-      document.getElementById('autodj-form-title').textContent = 'Adicionar música';
-      document.getElementById('autodj-save-button').textContent = 'Salvar música';
-      document.getElementById('autodj-titulo').value = '';
-      document.getElementById('autodj-artista').value = '';
-      document.getElementById('autodj-audio-url').value = '';
-      document.getElementById('autodj-capa-url').value = '';
-      document.getElementById('autodj-form-panel').style.display = 'block';
-      document.getElementById('autodj-titulo').focus();
-    }
-
-    function editarMusicaAutodj(id) {
-      const item = autodjCache.find(musica => String(musica.id) === String(id));
-      if (!item) return;
-      autodjEdicaoId = item.id;
-      document.getElementById('autodj-form-title').textContent = 'Editar música';
-      document.getElementById('autodj-save-button').textContent = 'Salvar alterações';
-      document.getElementById('autodj-titulo').value = item.titulo || '';
-      document.getElementById('autodj-artista').value = item.artista || '';
-      document.getElementById('autodj-audio-url').value = item.audio_url || '';
-      document.getElementById('autodj-capa-url').value = item.capa_url || '';
-      document.getElementById('autodj-form-panel').style.display = 'block';
-      document.getElementById('autodj-titulo').focus();
-    }
-
-    function cancelarEdicaoAutodj() {
-      autodjEdicaoId = null;
-      const panel = document.getElementById('autodj-form-panel');
-      if (panel) panel.style.display = 'none';
-    }
-
-    async function salvarMusicaAutodj() {
+    async function salvarConfigAutodj() {
       if (!usuarioTemPermissao('autodj')) return;
-      const titulo = document.getElementById('autodj-titulo').value.trim();
-      const artista = document.getElementById('autodj-artista').value.trim();
-      const audio_url = document.getElementById('autodj-audio-url').value.trim();
-      const capa_url = document.getElementById('autodj-capa-url').value.trim();
-      if (!titulo || !audio_url) {
-        mostrarToast('Preencha o título e a URL do áudio.', 'error');
+      const nomeRadio = document.getElementById('autodj-nome-radio').value.trim();
+      const textoPlayer = document.getElementById('autodj-texto-player').value.trim();
+      const urlStreaming = document.getElementById('autodj-stream-url').value.trim();
+      const capaUrl = document.getElementById('autodj-capa-url').value.trim();
+      const ativo = document.getElementById('autodj-ativo').checked;
+      const button = document.getElementById('autodj-save-button');
+
+      if (!nomeRadio) {
+        mostrarToast('Informe o nome da rádio.', 'error');
         return;
       }
-      const button = document.getElementById('autodj-save-button');
+      if (ativo && !urlStreaming) {
+        mostrarToast('Para ativar a rádio, informe primeiro a URL do streaming.', 'error');
+        return;
+      }
+      if (urlStreaming) {
+        try { new URL(urlStreaming); } catch {
+          mostrarToast('A URL do streaming não é válida.', 'error');
+          return;
+        }
+      }
+      if (capaUrl) {
+        try { new URL(capaUrl); } catch {
+          mostrarToast('A URL da capa não é válida.', 'error');
+          return;
+        }
+      }
+
       const original = button.innerHTML;
       button.disabled = true;
       button.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Salvando...';
       try {
+        const dados = {
+          nome_radio: nomeRadio,
+          texto_player: textoPlayer || 'AutoDJ Pixel',
+          url_streaming: urlStreaming || null,
+          capa_url: capaUrl || null,
+          ativo,
+          atualizado_em: new Date().toISOString()
+        };
         let resultado;
-        if (autodjEdicaoId) {
-          resultado = await supabaseClient.from('autodj_musicas').update({ titulo, artista: artista || null, audio_url, capa_url: capa_url || null }).eq('id', autodjEdicaoId);
+        if (autodjConfigCache?.id) {
+          resultado = await supabaseClient.from('autodj_config').update(dados).eq('id', autodjConfigCache.id);
         } else {
-          const proximaOrdem = autodjCache.length ? Math.max(...autodjCache.map(item => Number(item.ordem) || 0)) + 1 : 1;
-          resultado = await supabaseClient.from('autodj_musicas').insert({ titulo, artista: artista || null, audio_url, capa_url: capa_url || null, ordem: proximaOrdem, ativa: true });
+          resultado = await supabaseClient.from('autodj_config').insert(dados);
         }
         if (resultado.error) throw resultado.error;
-        mostrarToast(autodjEdicaoId ? 'Música atualizada.' : 'Música adicionada à playlist.', 'success');
-        cancelarEdicaoAutodj();
-        await carregarAutodj(true);
+        mostrarToast('Configuração do AutoDJ salva com sucesso.', 'success');
+        await carregarAutodj(false);
       } catch (error) {
-        console.error('Erro ao salvar música do AutoDJ:', error);
-        mostrarToast(error?.message || 'Não foi possível salvar a música.', 'error');
+        console.error('Erro ao salvar configuração do AutoDJ:', error);
+        mostrarToast(error?.message || 'Não foi possível salvar a configuração.', 'error');
       } finally {
         button.disabled = false;
         button.innerHTML = original;
       }
     }
 
-    async function alternarMusicaAutodj(id) {
+    async function testarStreamingAutodj() {
       if (!usuarioTemPermissao('autodj')) return;
-      const item = autodjCache.find(musica => String(musica.id) === String(id));
-      if (!item) return;
-      try {
-        const resultado = await supabaseClient.from('autodj_musicas').update({ ativa: !item.ativa }).eq('id', id);
-        if (resultado.error) throw resultado.error;
-        mostrarToast(item.ativa ? 'Música desativada.' : 'Música ativada.', 'success');
-        await carregarAutodj(true);
-      } catch (error) {
-        console.error('Erro ao alterar status da música:', error);
-        mostrarToast(error?.message || 'Não foi possível alterar o status.', 'error');
+      const url = document.getElementById('autodj-stream-url').value.trim();
+      const button = document.getElementById('autodj-test-button');
+      if (!url) {
+        mostrarToast('Informe a URL do streaming antes de testar.', 'error');
+        return;
       }
-    }
-
-    async function excluirMusicaAutodj(id) {
-      if (!usuarioTemPermissao('autodj')) return;
-      const item = autodjCache.find(musica => String(musica.id) === String(id));
-      if (!item) return;
-      if (!window.confirm('Excluir a música "' + (item.titulo || 'Sem título') + '" da playlist?')) return;
+      try { new URL(url); } catch {
+        mostrarToast('A URL do streaming não é válida.', 'error');
+        return;
+      }
+      if (autodjTesteAudio) {
+        autodjTesteAudio.pause();
+        autodjTesteAudio.src = '';
+        autodjTesteAudio = null;
+      }
+      const original = button.innerHTML;
+      button.disabled = true;
+      button.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Testando...';
+      const audio = new Audio();
+      audio.preload = 'none';
+      audio.src = url;
+      autodjTesteAudio = audio;
+      const finalizar = () => {
+        button.disabled = false;
+        button.innerHTML = original;
+      };
+      audio.addEventListener('playing', () => {
+        mostrarToast('A transmissão respondeu e começou a tocar neste navegador.', 'success');
+        finalizar();
+      }, { once: true });
+      audio.addEventListener('error', () => {
+        mostrarToast('Não foi possível reproduzir este streaming no navegador. Verifique a URL e o formato fornecido pela rádio.', 'error');
+        finalizar();
+      }, { once: true });
       try {
-        const resultado = await supabaseClient.from('autodj_musicas').delete().eq('id', id);
-        if (resultado.error) throw resultado.error;
-        mostrarToast('Música excluída da playlist.', 'success');
-        await carregarAutodj(true);
+        await audio.play();
       } catch (error) {
-        console.error('Erro ao excluir música do AutoDJ:', error);
-        mostrarToast(error?.message || 'Não foi possível excluir a música.', 'error');
+        console.warn('Teste do streaming bloqueado ou indisponível:', error);
+        mostrarToast('O navegador não conseguiu iniciar o streaming. Confira a URL e tente novamente.', 'error');
+        finalizar();
       }
     }
 
