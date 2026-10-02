@@ -1,4 +1,27 @@
-<!DOCTYPE html> <html lang="pt-BR"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Portal | Pixelizados</title> <script src="https://cdn.tailwindcss.com"></script> <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" > <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet" > <style>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Portal | Pixelizados</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    rel="stylesheet"
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
 
     /* =========================================================
        IDENTIDADE PIXELIZADOS
@@ -1209,504 +1232,6 @@
 
 
     /* =========================================================
-       NEWS PORTAL — NOVA EXPERIÊNCIA EDITORIAL
-    ========================================================= */
-
-    .news-featured {
-      position: relative;
-      overflow: hidden;
-      min-height: 390px;
-      border: 2px solid #a9d5ed;
-      border-radius: 14px;
-      background: #dff3ff;
-      box-shadow: 0 8px 20px rgba(35,107,151,.10);
-      cursor: pointer;
-    }
-
-    .news-featured-image {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .45s ease, filter .45s ease;
-    }
-
-    .news-featured:hover .news-featured-image {
-      transform: scale(1.035);
-      filter: saturate(1.06);
-    }
-
-    .news-featured::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(17,65,94,.02) 10%, rgba(17,65,94,.18) 38%, rgba(12,45,66,.94) 100%);
-      pointer-events: none;
-    }
-
-    .news-featured-content {
-      position: relative;
-      z-index: 2;
-      min-height: 390px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 22px;
-      color: #fff;
-    }
-
-    .news-featured-top {
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      right: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .news-featured-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 9px;
-      border: 2px solid rgba(255,255,255,.78);
-      border-radius: 7px;
-      background: rgba(255,255,255,.88);
-      color: var(--blue-deep);
-      font-family: 'Manrope', sans-serif;
-      font-size: 8px;
-      font-weight: 900;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-      box-shadow: 0 3px 10px rgba(0,0,0,.10);
-    }
-
-    .news-featured-live {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 5px 8px;
-      border-radius: 6px;
-      background: rgba(20,55,76,.72);
-      border: 1px solid rgba(255,255,255,.25);
-      color: #fff;
-      font-family: 'Manrope', sans-serif;
-      font-size: 8px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      backdrop-filter: blur(4px);
-    }
-
-    .news-featured-live i {
-      color: var(--yellow);
-      font-size: 7px;
-    }
-
-    .news-featured-category {
-      margin-bottom: 8px;
-      color: #bfeaff;
-      font-family: 'Manrope', sans-serif;
-      font-size: 9px;
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .news-featured-title {
-      max-width: 760px;
-      margin: 0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(23px, 3vw, 34px);
-      line-height: 1.08;
-      font-weight: 900;
-      letter-spacing: -.025em;
-      text-shadow: 0 2px 10px rgba(0,0,0,.20);
-    }
-
-    .news-featured-summary {
-      max-width: 700px;
-      margin: 10px 0 0;
-      color: rgba(255,255,255,.84);
-      font-size: 11px;
-      line-height: 1.55;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .news-featured-meta {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 14px;
-      color: rgba(255,255,255,.76);
-      font-size: 9px;
-      font-weight: 700;
-    }
-
-    .news-featured-meta strong {
-      color: #fff;
-    }
-
-    .news-featured-action {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      width: fit-content;
-      margin-top: 15px;
-      padding: 9px 12px;
-      border: 2px solid rgba(255,255,255,.72);
-      border-radius: 7px;
-      background: rgba(255,255,255,.94);
-      color: var(--blue-deep);
-      font-family: 'Manrope', sans-serif;
-      font-size: 9px;
-      font-weight: 900;
-      text-transform: uppercase;
-      box-shadow: 0 3px 0 rgba(0,0,0,.10);
-      transition: .18s ease;
-    }
-
-    .news-featured:hover .news-featured-action {
-      transform: translateY(-1px);
-      background: #fff;
-    }
-
-    .news-latest-heading {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-top: 22px;
-      margin-bottom: 10px;
-    }
-
-    .news-latest-heading h3 {
-      margin: 0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 900;
-      color: #294256;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-    }
-
-    .news-latest-heading span {
-      color: #91a2b0;
-      font-size: 9px;
-      font-weight: 800;
-    }
-
-    .news-latest-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .news-mini-card {
-      overflow: hidden;
-      border: 2px solid var(--border);
-      border-radius: 10px;
-      background: #fff;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(35,107,151,.06);
-      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
-    }
-
-    .news-mini-card:hover {
-      transform: translateY(-3px);
-      border-color: #a8d6ef;
-      box-shadow: var(--shadow-hover);
-    }
-
-    .news-mini-image-wrap {
-      position: relative;
-      height: 126px;
-      overflow: hidden;
-      background: #dff3ff;
-    }
-
-    .news-mini-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .35s ease;
-    }
-
-    .news-mini-card:hover .news-mini-image {
-      transform: scale(1.05);
-    }
-
-    .news-mini-category {
-      position: absolute;
-      left: 8px;
-      bottom: 8px;
-      padding: 4px 6px;
-      border: 1px solid rgba(255,255,255,.72);
-      border-radius: 5px;
-      background: rgba(255,255,255,.90);
-      color: var(--blue-deep);
-      font-family: 'Manrope', sans-serif;
-      font-size: 7px;
-      font-weight: 900;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      box-shadow: 0 2px 6px rgba(0,0,0,.10);
-    }
-
-    .news-mini-body {
-      padding: 10px;
-    }
-
-    .news-mini-title {
-      margin: 0;
-      color: #2b4151;
-      font-family: 'Manrope', sans-serif;
-      font-size: 11px;
-      line-height: 1.35;
-      font-weight: 900;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .news-mini-meta {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 8px;
-      color: #99a9b5;
-      font-size: 8px;
-      font-weight: 700;
-    }
-
-    .news-mini-meta i {
-      color: var(--blue);
-    }
-
-    .news-loading-state,
-    .news-empty-state {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 250px;
-      flex-direction: column;
-      gap: 9px;
-      border: 2px dashed #b9d9eb;
-      border-radius: 12px;
-      background: #f7fcff;
-      color: #8da1b0;
-      text-align: center;
-    }
-
-    .news-loading-state i {
-      color: var(--blue-dark);
-      font-size: 22px;
-      animation: spin 1s linear infinite;
-    }
-
-    .news-empty-state i {
-      color: #a9c3d3;
-      font-size: 22px;
-    }
-
-    .news-loading-state strong,
-    .news-empty-state strong {
-      color: #60798b;
-      font-family: 'Manrope', sans-serif;
-      font-size: 10px;
-    }
-
-    .news-loading-state span,
-    .news-empty-state span {
-      max-width: 340px;
-      font-size: 9px;
-      line-height: 1.5;
-    }
-
-    /* Modal de leitura da notícia */
-    .news-reader-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 10002;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      background: rgba(19,55,77,.55);
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-    }
-
-    .news-reader-overlay.is-open {
-      display: flex;
-      animation: profileOverlayIn .18s ease;
-    }
-
-    .news-reader-modal {
-      width: min(100%, 820px);
-      max-height: calc(100vh - 36px);
-      overflow-y: auto;
-      background: #fff;
-      border: 2px solid var(--border);
-      border-radius: 16px;
-      box-shadow: 0 24px 65px rgba(23,108,168,.28);
-      position: relative;
-    }
-
-    .news-reader-cover {
-      position: relative;
-      height: 265px;
-      overflow: hidden;
-      background: #dff3ff;
-    }
-
-    .news-reader-cover img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .news-reader-cover::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(20,64,89,.02), rgba(20,64,89,.62));
-      pointer-events: none;
-    }
-
-    .news-reader-close {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      z-index: 3;
-      width: 34px;
-      height: 34px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid rgba(255,255,255,.75);
-      border-radius: 8px;
-      background: rgba(25,61,82,.68);
-      color: #fff;
-      cursor: pointer;
-      transition: .18s ease;
-    }
-
-    .news-reader-close:hover {
-      background: #fff;
-      color: var(--red);
-    }
-
-    .news-reader-content {
-      padding: 22px 24px 26px;
-    }
-
-    .news-reader-title {
-      margin: 7px 0 0;
-      color: #263d4e;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(22px, 3vw, 31px);
-      line-height: 1.12;
-      font-weight: 900;
-    }
-
-    .news-reader-meta {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
-      color: #879aa8;
-      font-size: 9px;
-      font-weight: 700;
-    }
-
-    .news-reader-body {
-      margin-top: 18px;
-      padding-top: 17px;
-      border-top: 2px solid #edf3f7;
-      color: #536b7c;
-      font-size: 12px;
-      line-height: 1.75;
-      white-space: pre-wrap;
-      word-break: break-word;
-    }
-
-    .news-reader-summary {
-      margin-top: 14px;
-      padding: 12px 14px;
-      border-left: 4px solid var(--blue);
-      border-radius: 6px;
-      background: #f2faff;
-      color: #557082;
-      font-size: 11px;
-      line-height: 1.55;
-      font-weight: 700;
-    }
-
-    @media (max-width: 760px) {
-      .news-latest-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .news-mini-image-wrap {
-        height: 160px;
-      }
-
-      .news-featured,
-      .news-featured-content {
-        min-height: 350px;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .news-featured-content {
-        padding: 16px;
-      }
-
-      .news-featured-top {
-        top: 12px;
-        left: 12px;
-        right: 12px;
-      }
-
-      .news-featured-title {
-        font-size: 22px;
-      }
-
-      .news-featured-summary {
-        font-size: 10px;
-      }
-
-      .news-reader-overlay {
-        padding: 10px;
-      }
-
-      .news-reader-modal {
-        max-height: calc(100vh - 20px);
-        border-radius: 14px;
-      }
-
-      .news-reader-cover {
-        height: 190px;
-      }
-
-      .news-reader-content {
-        padding: 18px;
-      }
-    }
-
-
-    /* =========================================================
        BOTÕES
     ========================================================= */
 
@@ -2390,7 +1915,1408 @@
 
     }
 
-  </style> </head> <body> <header class="top-header-bar px-4 sm:px-8 py-3"> <div class="max-w-7xl mx-auto flex items-center justify-between gap-4"> <a href="#" class="flex items-center flex-shrink-0" > <img id="portal-site-logo" src="pixelizados.png.png" alt="Pixelizados" class="h-10 sm:h-12 w-auto object-contain" > </a> <div class="profile-area"> <div class="pixel-wallet"> <div class="habbo-coin"> $ </div> <div class="flex flex-col"> <span class="pixel-wallet-label"> PIXELS </span> <span id="user-pixels" class="pixel-wallet-value" > 0 PX </span> </div> </div> <div class="profile-box"> <div onclick="abrirPerfilModal()" class="profile-avatar-frame" title="Abrir perfil" > <img id="user-avatar" class="profile-avatar" src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Pixelizado" alt="Avatar" > </div> <input type="file" id="avatar-file-input" accept="image/png,image/jpeg,image/webp" style="display:none;" onchange="processarArquivoAvatar(event)" > <div class="hidden sm:block"> <div id="user-nick" class="profile-name" onclick="abrirPerfilModal()" title="Abrir perfil" style="cursor:pointer;" > Pixelizado </div> <div class="online-status"> <span class="online-dot"></span> Online </div> </div> </div> <button id="btn-fundador" onclick="abrirPainelFundador()" class="logout-button" title="Painel Administrativo" style="display:none; color:#b98500; border-color:#ecd47b; background:#fff9df;" > <i class="fa-solid fa-crown"></i> </button> <button id="logout-button" onclick="fazerLogout()" class="logout-button" title="Sair" > <i class="fa-solid fa-power-off"></i> </button> </div> </div> </header> <nav class="classic-nav-bar"> <div class="max-w-7xl mx-auto flex overflow-x-auto" > <a href="#" class="nav-item active" > <i class="fa-solid fa-house"></i> <span>Home</span> </a> <a href="#" class="nav-item" > <i class="fa-solid fa-users"></i> <span>Comunidade</span> </a> <a href="#" class="nav-item" > <i class="fa-solid fa-user-shield"></i> <span>Equipe</span> </a> <a href="#" class="nav-item" > <i class="fa-solid fa-trophy"></i> <span>Ranking</span> </a> <a href="#" class="nav-item" > <i class="fa-solid fa-newspaper"></i> <span>Notícias</span> </a> <a href="#vagas-form" class="nav-item" > <i class="fa-solid fa-briefcase"></i> <span>Trabalhe Conosco</span> </a> <a id="portal-discord-link" href="#" class="nav-item" target="_blank" rel="noopener noreferrer" > <i class="fa-brands fa-discord"></i> <span>Discord</span> </a> </div> </nav> <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8"> <div class="grid grid-cols-1 lg:grid-cols-3 gap-7"> <div class="lg:col-span-2 space-y-7"> <section id="noticias" class="pixel-card pixel-card-hover p-5 sm:p-6"> <div class="card-header-title mb-5"> <div class="section-title"> <div class="section-icon" style="color:#2788ca;background:#e7f6ff;" > <i class="fa-solid fa-newspaper"></i> </div> <div> <h2 id="portal-noticias-titulo"> Central de Notícias </h2> <p id="portal-noticias-descricao"> As novidades, eventos e histórias da comunidade Pixelizada </p> </div> </div> <span class="pixel-tag pixel-tag-blue"> <i class="fa-solid fa-bolt"></i> Atualizado ao vivo </span> </div> <div id="portal-news-loading" class="news-loading-state"> <i class="fa-solid fa-spinner"></i> <strong>Carregando as notícias...</strong> <span>Buscando as últimas publicações da comunidade Pixelizados.</span> </div> <div id="portal-news-content" style="display:none;"> <article id="portal-featured-news" class="news-featured" onclick="abrirNoticiaPortal(noticiaPortalAtual)" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); abrirNoticiaPortal(noticiaPortalAtual); }" aria-label="Abrir notícia em destaque" > <img id="portal-news-image" class="news-featured-image" src="https://images.unsplash.com/photo-1550745165-9bc0b2527264?auto=format&fit=crop&w=1400&q=85" alt="Capa da notícia" > <div class="news-featured-content"> <div class="news-featured-top"> <span class="news-featured-badge"> <i class="fa-solid fa-star"></i> <span id="portal-news-category">Fã-Site</span> </span> <span class="news-featured-live"> <i class="fa-solid fa-circle"></i> Em destaque </span> </div> <div class="news-featured-category"> <i class="fa-solid fa-newspaper"></i> &nbsp;Notícia da comunidade </div> <h1 id="portal-news-title" class="news-featured-title"> Carregando notícia... </h1> <p id="portal-news-summary" class="news-featured-summary"> Carregando o conteúdo da notícia... </p> <div class="news-featured-meta"> <span> <strong id="portal-news-author">Redação Pixel</strong> </span> <span>•</span> <span id="portal-news-date">Recentemente</span> <span>•</span> <span id="portal-news-reading-time">1 min de leitura</span> </div> <span class="news-featured-action"> Ler notícia <i class="fa-solid fa-arrow-right"></i> </span> </div> </article> <div class="news-latest-heading"> <h3> <i class="fa-solid fa-layer-group"></i> &nbsp;Últimas notícias </h3> <span id="portal-news-count">Atualizações da comunidade</span> </div> <div id="portal-latest-news" class="news-latest-grid"></div> <div id="portal-news-empty-latest" class="news-empty-state" style="display:none;" > <i class="fa-regular fa-newspaper"></i> <strong>Ainda não há outras notícias publicadas.</strong> <span>Quando novas publicações forem ao ar, elas aparecerão aqui automaticamente.</span> </div> <div class="flex items-center justify-between mt-5 pt-4 border-t-2 border-slate-100"> <div class="flex gap-2"> <button id="like-button" onclick="event.stopPropagation(); toggleLike(this)" class="pixel-button" type="button" > <i class="fa-regular fa-heart"></i> <span class="like-count">0</span> </button> <button id="portal-news-comment-button" type="button" onclick="event.stopPropagation(); abrirNoticiaPortal(noticiaPortalAtual)" class="flex items-center gap-2 px-3 py-2 rounded-md border-2 border-slate-200 bg-white text-slate-500 text-[10px] font-bold hover:border-sky-300 hover:text-sky-600 transition" > <i class="fa-regular fa-comment"></i> <span id="portal-news-comment-count">0</span> </button> </div> <button onclick="event.stopPropagation(); compartilharNoticia()" type="button" class="flex items-center gap-2 px-3 py-2 rounded-md border-2 border-slate-200 bg-white text-slate-500 text-[10px] font-bold hover:border-sky-300 hover:text-sky-600 transition" > <i class="fa-solid fa-share-nodes"></i> <span class="hidden sm:inline">Compartilhar</span> </button> </div> </div> <div id="portal-news-error" class="news-empty-state" style="display:none;" > <i class="fa-solid fa-cloud-arrow-down"></i> <strong>Não foi possível carregar as notícias.</strong> <span>Verifique a conexão com o Supabase e tente novamente.</span> </div> </section> <section id="eventos" class="pixel-card pixel-card-hover p-5 sm:p-6"> <div class="card-header-title mb-5"> <div class="section-title"> <div class="section-icon" style="color:#4ca95f;background:#eaf9ed;" > <i class="fa-solid fa-calendar-check"></i> </div> <div> <h2 id="portal-eventos-titulo"> Atualizações & Eventos </h2> <p id="portal-eventos-descricao"> Eventos e atividades da comunidade Pixelizados </p> </div> </div> <span id="portal-events-count" class="pixel-tag" style="color:#4ca95f;background:#eaf9ed;border:1px solid #bfe7c7;" > Carregando </span> </div> <div id="portal-events-loading" class="news-loading-state"> <i class="fa-solid fa-spinner"></i> <strong>Carregando os eventos...</strong> <span>Buscando os próximos eventos da comunidade Pixelizados.</span> </div> <div id="portal-events-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4" style="display:none;"></div> <div id="portal-events-empty" class="news-empty-state" style="display:none;"> <i class="fa-regular fa-calendar-xmark"></i> <strong>Ainda não há eventos publicados.</strong> <span>Quando um novo evento for publicado, ele aparecerá aqui automaticamente.</span> </div> <div id="portal-events-error" class="news-empty-state" style="display:none;"> <i class="fa-solid fa-cloud-arrow-down"></i> <strong>Não foi possível carregar os eventos.</strong> <span>Verifique a conexão com o Supabase e tente novamente.</span> </div> </section> </section> </div> <aside class="space-y-5"> <div class="pixel-card p-3"> <form onsubmit="pesquisarPortal(event)" class="search-box" > <input id="portal-search" type="text" placeholder="Pesquisar notícias, tópicos..." > <button class="search-button" type="submit" aria-label="Pesquisar" > <i class="fa-solid fa-magnifying-glass"></i> </button> </form> </div> <section class="pixel-card pixel-card-hover p-5"> <div class="card-header-title mb-4"> <div class="section-title"> <div class="section-icon" style="color:#bd8c00;background:#fff8d9;" > <i class="fa-solid fa-trophy"></i> </div> <div> <h3> Hall da Fama </h3> <p> Usuários em destaque </p> </div> </div> </div> <div class="space-y-2.5"> <div class="ranking-user top-user"> <div class="pixel-medal"> <i class="fa-solid fa-crown"></i> </div> <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=KingPixel" class="ranking-avatar" alt="KingPixel" > <div class="flex-1 min-w-0"> <div class="font-subtitle text-xs font-extrabold text-slate-800 truncate" > KingPixel </div> <div class="text-[9px] text-amber-700 font-extrabold mt-0.5" > 1.420 PX </div> </div> </div> <div class="ranking-user"> <div class="w-[21px] text-center text-[10px] font-black text-slate-400" > 2 </div> <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=StarGirl" class="ranking-avatar" alt="StarGirl" > <div class="flex-1 min-w-0"> <div class="font-subtitle text-xs font-extrabold text-slate-700 truncate" > StarGirl </div> <div class="text-[9px] text-sky-600 font-extrabold mt-0.5" > 980 PX </div> </div> </div> <div class="ranking-user"> <div class="w-[21px] text-center text-[10px] font-black text-slate-400" > 3 </div> <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=NeoUser" class="ranking-avatar" alt="NeoUser" > <div class="flex-1 min-w-0"> <div class="font-subtitle text-xs font-extrabold text-slate-700 truncate" > NeoUser </div> <div class="text-[9px] text-sky-600 font-extrabold mt-0.5" > 850 PX </div> </div> </div> </div> </section> <section class="pixel-card pixel-card-hover p-5"> <div class="card-header-title mb-4"> <div class="section-title"> <div class="section-icon" style="color:#2788ca;background:#e7f6ff;" > <i class="fa-solid fa-handshake"></i> </div> <div> <h3> Parceiros </h3> <p> Nossos aliados </p> </div> </div> </div> <div class="grid grid-cols-2 gap-2.5"> <a href="#" class="partner-card" > <div class="partner-icon"> <i class="fa-solid fa-hotel"></i> </div> <div> <div class="font-subtitle text-[10px] font-extrabold text-slate-700"> Habbo Hotel </div> <div class="text-[8px] font-bold text-green-600"> ● Online </div> </div> </a> <a href="#" class="partner-card" > <div class="partner-icon"> <i class="fa-solid fa-radio"></i> </div> <div> <div class="font-subtitle text-[10px] font-extrabold text-slate-700"> Rádio Pixel </div> <div class="text-[8px] font-bold text-indigo-500"> ● No Ar </div> </div> </a> </div> </section> <section id="vagas-form" class="pixel-card pixel-card-hover p-5" > <div class="card-header-title mb-4"> <div class="section-title"> <div class="section-icon" style="color:#b98500;background:#fff8d9;" > <i class="fa-solid fa-briefcase"></i> </div> <div> <h3> Trabalhe Conosco </h3> <p> Faça parte da equipe Pixelizados </p> </div> </div> <span class="pixel-tag" style="color:#956f00;background:#fff7d1;border:1px solid #ecd47b;" > VAGAS </span> </div> <div class="vagas-intro"> Estamos procurando pessoas que queiram ajudar a construir a comunidade Pixelizados. Escolha uma função e conte um pouco sobre você. </div> <form id="vagas-formulario" class="vagas-form" onsubmit="enviarCandidatura(event)" > <div class="form-group"> <label for="vaga-cargo"> <i class="fa-solid fa-user-tag"></i> Cargo desejado </label> <select id="vaga-cargo" name="cargo" required > <option value="" selected disabled > Selecione uma função </option> <option value="redator"> Redator </option> <option value="moderador"> Moderador </option> <option value="locutor"> Locutor </option> <option value="apoiador"> Apoiador </option> </select> </div> <div class="form-group"> <label for="vaga-discord"> <i class="fa-brands fa-discord"></i> Discord </label> <input type="text" id="vaga-discord" name="discord" maxlength="100" placeholder="Ex.: pixelizado" required > </div> <div class="form-group"> <label for="vaga-idade"> <i class="fa-solid fa-cake-candles"></i> Idade </label> <input type="number" id="vaga-idade" name="idade" min="13" max="99" placeholder="Sua idade" required > </div> <div class="form-group"> <label for="vaga-experiencia"> <i class="fa-solid fa-pen"></i> Experiências </label> <textarea id="vaga-experiencia" name="experiencia" maxlength="1000" placeholder="Conte sobre suas experiências, habilidades, projetos ou trabalhos anteriores..." required ></textarea> <div class="form-helper"> Máximo de 1.000 caracteres </div> </div> <button id="vaga-submit" type="submit" class="vaga-submit" > <i class="fa-solid fa-paper-plane"></i> ENVIAR CANDIDATURA </button> </form> </section> </aside> </div> </main> <footer class="bg-habbo-yellow-footer-bar px-4 sm:px-8 py-2.5"> <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2" > <div class="autodj-box"> <img id="dj-avatar" class="autodj-avatar" src="https://api.dicebear.com/7.x/pixel-art/svg?seed=AutoDJ" alt="AutoDJ" > <div> <div class="flex items-center gap-2"> <span class="autodj-live"> <span class="pulse-dot"></span> NO AR </span> <span id="dj-name" class="font-subtitle text-[10px] font-black text-slate-800" > AutoDJ Pixel </span> </div> <div class="flex items-center gap-1.5 mt-1"> <i class="fa-solid fa-record-vinyl record-spin text-[10px] text-sky-500" ></i> <span id="track-name" class="autodj-track" > Universo Pixel - Tocando as melhores! </span> </div> </div> </div> <div class="bg-white border-2 border-[#dce9f0] rounded-lg px-3 py-2 flex items-center gap-2 shadow-sm" > <i class="fa-solid fa-volume-high text-amber-600 text-[11px]" ></i> <span class="font-subtitle text-[9px] font-extrabold text-slate-600" > Transmissão Automatizada 24h </span> </div> </div> </footer> <div id="profile-modal" class="profile-modal-overlay" aria-hidden="true" > <div class="profile-modal" role="dialog" aria-modal="true" aria-labelledby="profile-modal-title" onclick="event.stopPropagation()" > <div class="profile-modal-header"> <div> <p class="profile-modal-kicker"> Comunidade Pixelizados </p> <h2 id="profile-modal-title" class="profile-modal-title" > Perfil do Pixelizado </h2> <p class="profile-modal-subtitle"> Suas informações dentro da comunidade </p> </div> <button type="button" class="profile-modal-close" onclick="fecharPerfilModal()" aria-label="Fechar perfil" title="Fechar" > <i class="fa-solid fa-xmark"></i> </button> </div> <div class="profile-modal-body"> <div class="profile-modal-hero"> <div class="profile-modal-avatar-frame"> <img id="modal-profile-avatar" class="profile-modal-avatar" src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Pixelizado" alt="Avatar do Pixelizado" > </div> <div class="profile-modal-user-info"> <h3 id="modal-profile-nick" class="profile-modal-nick" > Pixelizado </h3> <div class="profile-modal-role"> <img id="modal-profile-role-icon" class="profile-modal-role-icon" src="" alt="" style="display:none;" > <span id="modal-profile-role"> Cargo não definido </span> </div> </div> </div> <button type="button" class="profile-avatar-change" onclick="abrirSeletorAvatarPerfil()" > <i class="fa-solid fa-camera"></i> Alterar avatar </button> <div class="profile-info-list"> <div class="profile-info-row"> <div class="profile-info-icon"> <i class="fa-solid fa-star"></i> </div> <div class="profile-info-content"> <span class="profile-info-label"> Pixels acumulados </span> <span id="modal-profile-points" class="profile-info-value px-value" > 0 PX </span> </div> </div> <div class="profile-info-row"> <div class="profile-info-icon"> <i class="fa-solid fa-calendar-days"></i> </div> <div class="profile-info-content"> <span class="profile-info-label"> Membro desde </span> <span id="modal-profile-member-since" class="profile-info-value" > Não informado </span> </div> </div> <div class="profile-info-row"> <div class="profile-info-icon"> <i class="fa-brands fa-discord"></i> </div> <div class="profile-info-content"> <span class="profile-info-label"> Discord </span> <span id="modal-profile-discord" class="profile-info-value" > Não informado </span> </div> </div> <div class="profile-info-row"> <div class="profile-info-icon"> <i class="fa-solid fa-shield-halved"></i> </div> <div class="profile-info-content"> <span class="profile-info-label"> Status da conta </span> <span id="modal-profile-status" class="profile-account-status is-default" > <span class="profile-status-dot"></span> <span> Não informado </span> </span> </div> </div> </div> <div class="profile-modal-future" data-profile-section="future" > <span> Perfil • PX • Ranking • Conquistas </span> <i class="fa-solid fa-chevron-right"></i> </div> </div> </div> </div> <script>
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =======================================================
+       HEADER
+  ======================================================== -->
+
+  <header class="top-header-bar px-4 sm:px-8 py-3">
+
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+
+
+      <!-- LOGO -->
+
+      <a
+        href="#"
+        class="flex items-center flex-shrink-0"
+      >
+
+        <img
+          src="pixelizados.png.png"
+          alt="Pixelizados"
+          class="h-10 sm:h-12 w-auto object-contain"
+        >
+
+      </a>
+
+
+      <!-- PERFIL -->
+
+      <div class="profile-area">
+
+
+        <!-- PX -->
+
+        <div class="pixel-wallet">
+
+          <div class="habbo-coin">
+            $
+          </div>
+
+          <div class="flex flex-col">
+
+            <span class="pixel-wallet-label">
+              PIXELS
+            </span>
+
+            <span
+              id="user-pixels"
+              class="pixel-wallet-value"
+            >
+              0 PX
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- USUÁRIO -->
+
+        <div class="profile-box">
+
+          <div
+            onclick="abrirPerfilModal()"
+            class="profile-avatar-frame"
+            title="Abrir perfil"
+          >
+
+            <img
+              id="user-avatar"
+              class="profile-avatar"
+              src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Pixelizado"
+              alt="Avatar"
+            >
+
+          </div>
+
+          <!-- Seletor de arquivo invisível -->
+          <input
+            type="file"
+            id="avatar-file-input"
+            accept="image/png,image/jpeg,image/webp"
+            style="display:none;"
+            onchange="processarArquivoAvatar(event)"
+          >
+
+
+          <div class="hidden sm:block">
+
+            <div
+              id="user-nick"
+              class="profile-name"
+              onclick="abrirPerfilModal()"
+              title="Abrir perfil"
+              style="cursor:pointer;"
+            >
+              Pixelizado
+            </div>
+
+            <div class="online-status">
+
+              <span class="online-dot"></span>
+
+              Online
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- PAINEL DO FUNDADOR -->
+
+        <button
+          id="btn-fundador"
+          onclick="abrirPainelFundador()"
+          class="logout-button"
+          title="Painel Administrativo"
+          style="display:none; color:#b98500; border-color:#ecd47b; background:#fff9df;"
+        >
+
+          <i class="fa-solid fa-crown"></i>
+
+        </button>
+
+
+        <!-- SAIR -->
+
+        <button
+          id="logout-button"
+          onclick="fazerLogout()"
+          class="logout-button"
+          title="Sair"
+        >
+
+          <i class="fa-solid fa-power-off"></i>
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =======================================================
+       NAVEGAÇÃO
+  ======================================================== -->
+
+  <nav class="classic-nav-bar">
+
+    <div
+      class="max-w-7xl mx-auto flex overflow-x-auto"
+    >
+
+      <a
+        href="#"
+        class="nav-item active"
+      >
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+
+
+      <a
+        href="#"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-users"></i>
+        <span>Comunidade</span>
+      </a>
+
+
+      <a
+        href="#"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-user-shield"></i>
+        <span>Equipe</span>
+      </a>
+
+
+      <a
+        href="#"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-trophy"></i>
+        <span>Ranking</span>
+      </a>
+
+
+      <a
+        href="#"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-newspaper"></i>
+        <span>Notícias</span>
+      </a>
+
+
+      <a
+        href="#vagas-form"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-briefcase"></i>
+        <span>Trabalhe Conosco</span>
+      </a>
+
+
+      <a
+        href="#"
+        class="nav-item"
+      >
+        <i class="fa-brands fa-discord"></i>
+        <span>Discord</span>
+      </a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- =======================================================
+       CONTEÚDO
+  ======================================================== -->
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-7">
+
+
+      <!-- ===================================================
+           ESQUERDA
+      ==================================================== -->
+
+      <div class="lg:col-span-2 space-y-7">
+
+
+        <!-- =================================================
+             NOTÍCIA
+        ================================================== -->
+
+        <section class="pixel-card pixel-card-hover p-5 sm:p-6">
+
+
+          <div class="card-header-title mb-5">
+
+            <div class="section-title">
+
+              <div
+                class="section-icon"
+                style="color:#2788ca;background:#e7f6ff;"
+              >
+                <i class="fa-solid fa-newspaper"></i>
+              </div>
+
+              <div>
+
+                <h2>
+                  Timeline de Notícias
+                </h2>
+
+                <p>
+                  Manchetes e artigos em destaque
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <span class="pixel-tag pixel-tag-blue">
+              <i class="fa-solid fa-star"></i>
+              Fã-Site
+            </span>
+
+          </div>
+
+
+          <article>
+
+
+            <div class="text-center max-w-3xl mx-auto mb-5">
+
+              <span class="pixel-tag pixel-tag-blue mb-3">
+                Fã-Site Oficial
+              </span>
+
+
+              <h1
+                class="font-title text-2xl sm:text-3xl font-black leading-tight text-slate-800 mt-2"
+              >
+                A Era dos Fã-Sites Oficiais: O Futuro da Comunidade Pixelizada
+              </h1>
+
+
+              <div
+                class="flex flex-wrap items-center justify-center gap-3 mt-3 text-[10px] text-slate-500 font-semibold"
+              >
+
+                <span class="flex items-center gap-1.5">
+
+                  <img
+                    src="https://api.dicebear.com/7.x/pixel-art/svg?seed=AdminPixel"
+                    class="w-5 h-5 rounded-md bg-slate-800"
+                    alt="Autor"
+                  >
+
+                  Redação Pixel
+
+                </span>
+
+                <span>•</span>
+
+                <span>
+                  Há 2 horas
+                </span>
+
+                <span>•</span>
+
+                <span>
+                  3 min de leitura
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="news-image-frame">
+
+              <img
+                class="news-image"
+                src="https://images.unsplash.com/photo-1550745165-9bc0b2527264?auto=format&fit=crop&w=1100&q=80"
+                alt="Capa da notícia"
+              >
+
+            </div>
+
+
+            <p
+              class="text-sm leading-relaxed text-slate-600 mt-5 px-1"
+            >
+              Confira as novidades exclusivas, eventos programados e melhorias da nossa plataforma para esta temporada. Junte-se aos membros da comunidade, acumule pixels virtuais no seu perfil e ajude a construir o melhor espaço de interação do hotel!
+            </p>
+
+
+            <div
+              class="flex items-center justify-between mt-5 pt-4 border-t-2 border-slate-100"
+            >
+
+              <div class="flex gap-2">
+
+                <button
+                  id="like-button"
+                  onclick="toggleLike(this)"
+                  class="pixel-button"
+                  type="button"
+                >
+
+                  <i class="fa-regular fa-heart"></i>
+
+                  <span class="like-count">
+                    124
+                  </span>
+
+                </button>
+
+
+                <button
+                  type="button"
+                  class="flex items-center gap-2 px-3 py-2 rounded-md border-2 border-slate-200 bg-white text-slate-500 text-[10px] font-bold hover:border-sky-300 hover:text-sky-600 transition"
+                >
+
+                  <i class="fa-regular fa-comment"></i>
+
+                  18
+
+                </button>
+
+              </div>
+
+
+              <button
+                onclick="compartilharNoticia()"
+                type="button"
+                class="flex items-center gap-2 px-3 py-2 rounded-md border-2 border-slate-200 bg-white text-slate-500 text-[10px] font-bold hover:border-sky-300 hover:text-sky-600 transition"
+              >
+
+                <i class="fa-solid fa-share-nodes"></i>
+
+                <span class="hidden sm:inline">
+                  Compartilhar
+                </span>
+
+              </button>
+
+            </div>
+
+          </article>
+
+        </section>
+
+
+        <!-- =================================================
+             EVENTOS
+        ================================================== -->
+
+        <section class="pixel-card pixel-card-hover p-5 sm:p-6">
+
+
+          <div class="card-header-title mb-5">
+
+            <div class="section-title">
+
+              <div
+                class="section-icon"
+                style="color:#4ca95f;background:#eaf9ed;"
+              >
+                <i class="fa-solid fa-calendar-check"></i>
+              </div>
+
+              <div>
+
+                <h2>
+                  Atualizações & Eventos
+                </h2>
+
+                <p>
+                  Sorteios ativos e agenda da rádio
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <a
+              href="#"
+              class="text-[10px] font-extrabold text-sky-600 hover:text-sky-800"
+            >
+              Ver todos →
+            </a>
+
+          </div>
+
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+
+            <div class="event-card">
+
+              <div class="flex justify-between items-center mb-3">
+
+                <span
+                  class="pixel-tag"
+                  style="color:#946b00;background:#fff6d3;border:1px solid #ecd37a;"
+                >
+                  <i class="fa-solid fa-gift"></i>
+                  Sorteio
+                </span>
+
+                <span class="text-[9px] font-bold text-slate-400">
+                  Faltam 2d
+                </span>
+
+              </div>
+
+
+              <h3
+                class="font-subtitle font-extrabold text-sm text-slate-800"
+              >
+                Passaporte VIP Semestral + 500 PX
+              </h3>
+
+
+              <p class="text-[10px] text-slate-500 mt-1 leading-relaxed">
+                Comente na timeline oficial e participe automaticamente do sorteio da comunidade.
+              </p>
+
+
+              <div class="mt-4">
+
+                <div
+                  class="flex justify-between text-[9px] font-bold text-slate-500 mb-1"
+                >
+
+                  <span>
+                    92 Participantes
+                  </span>
+
+                  <span>
+                    85%
+                  </span>
+
+                </div>
+
+
+                <div
+                  class="h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200"
+                >
+
+                  <div
+                    class="h-full bg-yellow-400 rounded-full"
+                    style="width:85%;"
+                  ></div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="event-card">
+
+              <div class="flex justify-between items-center mb-3">
+
+                <span class="pixel-tag pixel-tag-red">
+
+                  <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+
+                  AO VIVO
+
+                </span>
+
+                <span class="text-[9px] font-bold text-slate-400">
+                  20:00
+                </span>
+
+              </div>
+
+
+              <h3
+                class="font-subtitle font-extrabold text-sm text-slate-800"
+              >
+                Torneio de Quiz na Rádio Pixel
+              </h3>
+
+
+              <p class="text-[10px] text-slate-500 mt-1 leading-relaxed">
+                Sintonize com o locutor da noite e responda às perguntas no chat para faturar moedas.
+              </p>
+
+
+              <div
+                class="flex items-center justify-between mt-4 pt-3 border-t border-slate-200"
+              >
+
+                <div class="flex items-center gap-2">
+
+                  <img
+                    src="https://api.dicebear.com/7.x/pixel-art/svg?seed=DJRadio"
+                    class="w-6 h-6 rounded-md bg-slate-800"
+                    alt="DJ"
+                  >
+
+                  <span class="text-[9px] font-bold text-slate-600">
+                    DJ Pixel
+                  </span>
+
+                </div>
+
+
+                <span
+                  class="text-[9px] font-extrabold text-sky-600"
+                >
+                  Ouvir Rádio →
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+
+      <!-- ===================================================
+           DIREITA
+      ==================================================== -->
+
+      <aside class="space-y-5">
+
+
+        <div class="pixel-card p-3">
+
+          <form
+            onsubmit="pesquisarPortal(event)"
+            class="search-box"
+          >
+
+            <input
+              id="portal-search"
+              type="text"
+              placeholder="Pesquisar notícias, tópicos..."
+            >
+
+            <button
+              class="search-button"
+              type="submit"
+              aria-label="Pesquisar"
+            >
+
+              <i class="fa-solid fa-magnifying-glass"></i>
+
+            </button>
+
+          </form>
+
+        </div>
+
+
+        <section class="pixel-card pixel-card-hover p-5">
+
+          <div class="card-header-title mb-4">
+
+            <div class="section-title">
+
+              <div
+                class="section-icon"
+                style="color:#bd8c00;background:#fff8d9;"
+              >
+                <i class="fa-solid fa-trophy"></i>
+              </div>
+
+              <div>
+
+                <h3>
+                  Hall da Fama
+                </h3>
+
+                <p>
+                  Usuários em destaque
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="space-y-2.5">
+
+            <div class="ranking-user top-user">
+
+              <div class="pixel-medal">
+                <i class="fa-solid fa-crown"></i>
+              </div>
+
+
+              <img
+                src="https://api.dicebear.com/7.x/pixel-art/svg?seed=KingPixel"
+                class="ranking-avatar"
+                alt="KingPixel"
+              >
+
+
+              <div class="flex-1 min-w-0">
+
+                <div
+                  class="font-subtitle text-xs font-extrabold text-slate-800 truncate"
+                >
+                  KingPixel
+                </div>
+
+                <div
+                  class="text-[9px] text-amber-700 font-extrabold mt-0.5"
+                >
+                  1.420 PX
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="ranking-user">
+
+              <div
+                class="w-[21px] text-center text-[10px] font-black text-slate-400"
+              >
+                2
+              </div>
+
+
+              <img
+                src="https://api.dicebear.com/7.x/pixel-art/svg?seed=StarGirl"
+                class="ranking-avatar"
+                alt="StarGirl"
+              >
+
+
+              <div class="flex-1 min-w-0">
+
+                <div
+                  class="font-subtitle text-xs font-extrabold text-slate-700 truncate"
+                >
+                  StarGirl
+                </div>
+
+                <div
+                  class="text-[9px] text-sky-600 font-extrabold mt-0.5"
+                >
+                  980 PX
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="ranking-user">
+
+              <div
+                class="w-[21px] text-center text-[10px] font-black text-slate-400"
+              >
+                3
+              </div>
+
+
+              <img
+                src="https://api.dicebear.com/7.x/pixel-art/svg?seed=NeoUser"
+                class="ranking-avatar"
+                alt="NeoUser"
+              >
+
+
+              <div class="flex-1 min-w-0">
+
+                <div
+                  class="font-subtitle text-xs font-extrabold text-slate-700 truncate"
+                >
+                  NeoUser
+                </div>
+
+                <div
+                  class="text-[9px] text-sky-600 font-extrabold mt-0.5"
+                >
+                  850 PX
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <section class="pixel-card pixel-card-hover p-5">
+
+          <div class="card-header-title mb-4">
+
+            <div class="section-title">
+
+              <div
+                class="section-icon"
+                style="color:#2788ca;background:#e7f6ff;"
+              >
+                <i class="fa-solid fa-handshake"></i>
+              </div>
+
+              <div>
+
+                <h3>
+                  Parceiros
+                </h3>
+
+                <p>
+                  Nossos aliados
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="grid grid-cols-2 gap-2.5">
+
+            <a
+              href="#"
+              class="partner-card"
+            >
+
+              <div class="partner-icon">
+                <i class="fa-solid fa-hotel"></i>
+              </div>
+
+              <div>
+
+                <div class="font-subtitle text-[10px] font-extrabold text-slate-700">
+                  Habbo Hotel
+                </div>
+
+                <div class="text-[8px] font-bold text-green-600">
+                  ● Online
+                </div>
+
+              </div>
+
+            </a>
+
+
+            <a
+              href="#"
+              class="partner-card"
+            >
+
+              <div class="partner-icon">
+                <i class="fa-solid fa-radio"></i>
+              </div>
+
+              <div>
+
+                <div class="font-subtitle text-[10px] font-extrabold text-slate-700">
+                  Rádio Pixel
+                </div>
+
+                <div class="text-[8px] font-bold text-indigo-500">
+                  ● No Ar
+                </div>
+
+              </div>
+
+            </a>
+
+          </div>
+
+        </section>
+
+
+        <section
+          id="vagas-form"
+          class="pixel-card pixel-card-hover p-5"
+        >
+
+          <div class="card-header-title mb-4">
+
+            <div class="section-title">
+
+              <div
+                class="section-icon"
+                style="color:#b98500;background:#fff8d9;"
+              >
+                <i class="fa-solid fa-briefcase"></i>
+              </div>
+
+              <div>
+
+                <h3>
+                  Trabalhe Conosco
+                </h3>
+
+                <p>
+                  Faça parte da equipe Pixelizados
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <span
+              class="pixel-tag"
+              style="color:#956f00;background:#fff7d1;border:1px solid #ecd47b;"
+            >
+              VAGAS
+            </span>
+
+          </div>
+
+
+          <div class="vagas-intro">
+
+            Estamos procurando pessoas que queiram ajudar a construir a comunidade Pixelizados. Escolha uma função e conte um pouco sobre você.
+
+          </div>
+
+
+          <form
+            id="vagas-formulario"
+            class="vagas-form"
+            onsubmit="enviarCandidatura(event)"
+          >
+
+            <div class="form-group">
+
+              <label for="vaga-cargo">
+
+                <i class="fa-solid fa-user-tag"></i>
+
+                Cargo desejado
+
+              </label>
+
+
+              <select
+                id="vaga-cargo"
+                name="cargo"
+                required
+              >
+
+                <option
+                  value=""
+                  selected
+                  disabled
+                >
+                  Selecione uma função
+                </option>
+
+                <option value="redator">
+                  Redator
+                </option>
+
+                <option value="moderador">
+                  Moderador
+                </option>
+
+                <option value="locutor">
+                  Locutor
+                </option>
+
+                <option value="apoiador">
+                  Apoiador
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="vaga-discord">
+
+                <i class="fa-brands fa-discord"></i>
+
+                Discord
+
+              </label>
+
+
+              <input
+                type="text"
+                id="vaga-discord"
+                name="discord"
+                maxlength="100"
+                placeholder="Ex.: pixelizado"
+                required
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="vaga-idade">
+
+                <i class="fa-solid fa-cake-candles"></i>
+
+                Idade
+
+              </label>
+
+
+              <input
+                type="number"
+                id="vaga-idade"
+                name="idade"
+                min="13"
+                max="99"
+                placeholder="Sua idade"
+                required
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="vaga-experiencia">
+
+                <i class="fa-solid fa-pen"></i>
+
+                Experiências
+
+              </label>
+
+
+              <textarea
+                id="vaga-experiencia"
+                name="experiencia"
+                maxlength="1000"
+                placeholder="Conte sobre suas experiências, habilidades, projetos ou trabalhos anteriores..."
+                required
+              ></textarea>
+
+
+              <div class="form-helper">
+                Máximo de 1.000 caracteres
+              </div>
+
+            </div>
+
+
+            <button
+              id="vaga-submit"
+              type="submit"
+              class="vaga-submit"
+            >
+
+              <i class="fa-solid fa-paper-plane"></i>
+
+              ENVIAR CANDIDATURA
+
+            </button>
+
+          </form>
+
+        </section>
+
+      </aside>
+
+    </div>
+
+  </main>
+
+
+  <!-- =======================================================
+       AUTODJ
+  ======================================================== -->
+
+  <footer class="bg-habbo-yellow-footer-bar px-4 sm:px-8 py-2.5">
+
+    <div
+      class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2"
+    >
+
+      <div class="autodj-box">
+
+        <img
+          id="dj-avatar"
+          class="autodj-avatar"
+          src="https://api.dicebear.com/7.x/pixel-art/svg?seed=AutoDJ"
+          alt="AutoDJ"
+        >
+
+
+        <div>
+
+          <div class="flex items-center gap-2">
+
+            <span class="autodj-live">
+
+              <span class="pulse-dot"></span>
+
+              NO AR
+
+            </span>
+
+
+            <span
+              id="dj-name"
+              class="font-subtitle text-[10px] font-black text-slate-800"
+            >
+              AutoDJ Pixel
+            </span>
+
+          </div>
+
+
+          <div class="flex items-center gap-1.5 mt-1">
+
+            <i
+              class="fa-solid fa-record-vinyl record-spin text-[10px] text-sky-500"
+            ></i>
+
+            <span
+              id="track-name"
+              class="autodj-track"
+            >
+              Rádio desativada — aguardando transmissão
+            </span>
+
+            <button
+              id="autodj-play-button"
+              type="button"
+              aria-label="Iniciar transmissão"
+              title="Iniciar transmissão"
+              style="width:30px;height:30px;border-radius:999px;border:2px solid #dce9f0;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.08);flex-shrink:0;"
+            >
+              <i class="fa-solid fa-play" style="font-size:10px;color:#0284c7;"></i>
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="bg-white border-2 border-[#dce9f0] rounded-lg px-3 py-2 flex items-center gap-2 shadow-sm"
+      >
+
+        <i
+          class="fa-solid fa-volume-high text-amber-600 text-[11px]"
+        ></i>
+
+        <span
+          class="font-subtitle text-[9px] font-extrabold text-slate-600"
+        >
+          Transmissão Automatizada 24h
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =======================================================
+       MODAL DE PERFIL DO PIXELIZADO
+  ======================================================== -->
+
+  <div
+    id="profile-modal"
+    class="profile-modal-overlay"
+    aria-hidden="true"
+  >
+
+    <div
+      class="profile-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="profile-modal-title"
+      onclick="event.stopPropagation()"
+    >
+
+      <div class="profile-modal-header">
+
+        <div>
+
+          <p class="profile-modal-kicker">
+            Comunidade Pixelizados
+          </p>
+
+          <h2
+            id="profile-modal-title"
+            class="profile-modal-title"
+          >
+            Perfil do Pixelizado
+          </h2>
+
+          <p class="profile-modal-subtitle">
+            Suas informações dentro da comunidade
+          </p>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="profile-modal-close"
+          onclick="fecharPerfilModal()"
+          aria-label="Fechar perfil"
+          title="Fechar"
+        >
+
+          <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+      </div>
+
+
+      <div class="profile-modal-body">
+
+
+        <!-- AVATAR + NICK + CARGO -->
+
+        <div class="profile-modal-hero">
+
+          <div class="profile-modal-avatar-frame">
+
+            <img
+              id="modal-profile-avatar"
+              class="profile-modal-avatar"
+              src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Pixelizado"
+              alt="Avatar do Pixelizado"
+            >
+
+          </div>
+
+
+          <div class="profile-modal-user-info">
+
+            <h3
+              id="modal-profile-nick"
+              class="profile-modal-nick"
+            >
+              Pixelizado
+            </h3>
+
+
+            <div class="profile-modal-role">
+
+              <img
+                id="modal-profile-role-icon"
+                class="profile-modal-role-icon"
+                src=""
+                alt=""
+                style="display:none;"
+              >
+
+              <span id="modal-profile-role">
+                Cargo não definido
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- ALTERAR AVATAR -->
+
+        <button
+          type="button"
+          class="profile-avatar-change"
+          onclick="abrirSeletorAvatarPerfil()"
+        >
+
+          <i class="fa-solid fa-camera"></i>
+
+          Alterar avatar
+
+        </button>
+
+
+        <!-- INFORMAÇÕES -->
+
+        <div class="profile-info-list">
+
+
+          <!-- PX -->
+
+          <div class="profile-info-row">
+
+            <div class="profile-info-icon">
+              <i class="fa-solid fa-star"></i>
+            </div>
+
+            <div class="profile-info-content">
+
+              <span class="profile-info-label">
+                Pixels acumulados
+              </span>
+
+              <span
+                id="modal-profile-points"
+                class="profile-info-value px-value"
+              >
+                0 PX
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- MEMBRO DESDE -->
+
+          <div class="profile-info-row">
+
+            <div class="profile-info-icon">
+              <i class="fa-solid fa-calendar-days"></i>
+            </div>
+
+            <div class="profile-info-content">
+
+              <span class="profile-info-label">
+                Membro desde
+              </span>
+
+              <span
+                id="modal-profile-member-since"
+                class="profile-info-value"
+              >
+                Não informado
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- DISCORD -->
+
+          <div class="profile-info-row">
+
+            <div class="profile-info-icon">
+              <i class="fa-brands fa-discord"></i>
+            </div>
+
+            <div class="profile-info-content">
+
+              <span class="profile-info-label">
+                Discord
+              </span>
+
+              <span
+                id="modal-profile-discord"
+                class="profile-info-value"
+              >
+                Não informado
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- STATUS -->
+
+          <div class="profile-info-row">
+
+            <div class="profile-info-icon">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+
+            <div class="profile-info-content">
+
+              <span class="profile-info-label">
+                Status da conta
+              </span>
+
+              <span
+                id="modal-profile-status"
+                class="profile-account-status is-default"
+              >
+
+                <span class="profile-status-dot"></span>
+
+                <span>
+                  Não informado
+                </span>
+
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- ESTRUTURA PREPARADA PARA PRÓXIMAS ETAPAS -->
+
+        <div
+          class="profile-modal-future"
+          data-profile-section="future"
+        >
+
+          <span>
+            Perfil • PX • Ranking • Conquistas
+          </span>
+
+          <i class="fa-solid fa-chevron-right"></i>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =======================================================
+       PIXELIZADOS - ACESSO / PERFIL / INTERAÇÕES
+  ======================================================== -->
+
+  <script>
 
     /* =========================================================
        LEITURA SEGURA DO USUÁRIO
@@ -4163,600 +5089,10 @@
        COMPARTILHAR NOTÍCIA
     ========================================================= */
 
-    let noticiaPortalAtual = null;
-    let noticiasPortalCache = [];
-
-
-    /* =========================================================
-       NOTÍCIAS DO PORTAL — SUPABASE
-    ========================================================= */
-
-    function escaparHtml(valor) {
-      return String(valor ?? '')
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
-    }
-
-
-    function formatarDataNoticia(dataString) {
-      if (!dataString) return 'Recentemente';
-
-      const data = new Date(dataString);
-      if (Number.isNaN(data.getTime())) return 'Recentemente';
-
-      const agora = new Date();
-      const diferencaMs = Math.max(0, agora.getTime() - data.getTime());
-      const minutos = Math.floor(diferencaMs / 60000);
-      const horas = Math.floor(minutos / 60);
-      const dias = Math.floor(horas / 24);
-
-      if (minutos < 1) return 'Agora';
-      if (minutos < 60) return `Há ${minutos} min`;
-      if (horas < 24) return `Há ${horas} ${horas === 1 ? 'hora' : 'horas'}`;
-      if (dias < 7) return `Há ${dias} ${dias === 1 ? 'dia' : 'dias'}`;
-
-      return data.toLocaleDateString('pt-BR', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric'
-      });
-    }
-
-
-    function calcularTempoLeitura(conteudo) {
-      const palavras = String(conteudo || '')
-        .trim()
-        .split(/\s+/)
-        .filter(Boolean).length;
-
-      const minutos = Math.max(1, Math.ceil(palavras / 180));
-      return `${minutos} min de leitura`;
-    }
-
-
-    function imagemPadraoNoticia() {
-      return 'https://images.unsplash.com/photo-1550745165-9bc0b2527264?auto=format&fit=crop&w=1400&q=85';
-    }
-
-
-    function atualizarPortalComNoticia(noticias) {
-      if (!Array.isArray(noticias) || !noticias.length) {
-        return;
-      }
-
-      noticiaPortalAtual = noticias[0];
-      noticiasPortalCache = noticias;
-
-      const destaque = noticias[0];
-      const titulo = document.getElementById('portal-news-title');
-      const categoria = document.getElementById('portal-news-category');
-      const autor = document.getElementById('portal-news-author');
-      const data = document.getElementById('portal-news-date');
-      const leitura = document.getElementById('portal-news-reading-time');
-      const imagem = document.getElementById('portal-news-image');
-      const resumo = document.getElementById('portal-news-summary');
-      const comentarios = document.getElementById('portal-news-comment-count');
-
-      if (!titulo || !categoria || !autor || !data || !leitura || !imagem || !resumo) {
-        return;
-      }
-
-      titulo.textContent = destaque.titulo || 'Sem título';
-      categoria.textContent = destaque.categoria || 'Fã-Site';
-      autor.textContent = destaque.autor || 'Redação Pixel';
-      data.textContent = formatarDataNoticia(destaque.publicado_em || destaque.created_at);
-      leitura.textContent = calcularTempoLeitura(destaque.conteudo || destaque.resumo);
-      resumo.textContent = destaque.resumo || destaque.conteudo || 'Confira esta novidade da comunidade Pixelizados.';
-
-      imagem.src = destaque.imagem_url || imagemPadraoNoticia();
-      imagem.onerror = function() {
-        this.onerror = null;
-        this.src = imagemPadraoNoticia();
-      };
-
-      if (comentarios) {
-        comentarios.textContent = '0';
-      }
-
-      renderizarUltimasNoticias(noticias.slice(1));
-
-      const count = document.getElementById('portal-news-count');
-      if (count) {
-        count.textContent = `${noticias.length} ${noticias.length === 1 ? 'publicação disponível' : 'publicações disponíveis'}`;
-      }
-
-      const loading = document.getElementById('portal-news-loading');
-      const content = document.getElementById('portal-news-content');
-      const error = document.getElementById('portal-news-error');
-
-      if (loading) loading.style.display = 'none';
-      if (content) content.style.display = 'block';
-      if (error) error.style.display = 'none';
-    }
-
-
-    function renderizarUltimasNoticias(noticias) {
-      const container = document.getElementById('portal-latest-news');
-      const vazio = document.getElementById('portal-news-empty-latest');
-
-      if (!container || !vazio) return;
-
-      container.innerHTML = '';
-
-      if (!noticias.length) {
-        vazio.style.display = 'flex';
-        return;
-      }
-
-      vazio.style.display = 'none';
-
-      noticias.slice(0, 6).forEach(function(noticia, index) {
-        const card = document.createElement('article');
-        card.className = 'news-mini-card';
-        card.tabIndex = 0;
-        card.setAttribute('aria-label', `Abrir notícia: ${noticia.titulo || 'Notícia'}`);
-
-        const imagem = noticia.imagem_url || imagemPadraoNoticia();
-        const categoria = escaparHtml(noticia.categoria || 'Fã-Site');
-        const titulo = escaparHtml(noticia.titulo || 'Sem título');
-        const data = escaparHtml(formatarDataNoticia(noticia.publicado_em || noticia.created_at));
-        const autor = escaparHtml(noticia.autor || 'Redação Pixel');
-
-        card.innerHTML = `
-          <div class="news-mini-image-wrap">
-            <img
-              class="news-mini-image"
-              src="${escaparHtml(imagem)}"
-              alt=""
-              loading="lazy"
-            >
-            <span class="news-mini-category">
-              ${categoria}
-            </span>
-          </div>
-          <div class="news-mini-body">
-            <h4 class="news-mini-title">${titulo}</h4>
-            <div class="news-mini-meta">
-              <i class="fa-regular fa-clock"></i>
-              <span>${data}</span>
-              <span>•</span>
-              <span>${autor}</span>
-            </div>
-          </div>
-        `;
-
-        const img = card.querySelector('.news-mini-image');
-        if (img) {
-          img.onerror = function() {
-            this.onerror = null;
-            this.src = imagemPadraoNoticia();
-          };
-        }
-
-        card.addEventListener('click', function() {
-          abrirNoticiaPortal(noticia);
-        });
-
-        card.addEventListener('keydown', function(event) {
-          if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            abrirNoticiaPortal(noticia);
-          }
-        });
-
-        container.appendChild(card);
-      });
-    }
-
-
-    function abrirNoticiaPortal(noticia) {
-      if (!noticia) return;
-
-      noticiaPortalAtual = noticia;
-
-      const overlay = document.getElementById('news-reader-overlay');
-      const imagem = document.getElementById('news-reader-image');
-      const categoria = document.getElementById('news-reader-category');
-      const titulo = document.getElementById('news-reader-title');
-      const autor = document.getElementById('news-reader-author');
-      const data = document.getElementById('news-reader-date');
-      const leitura = document.getElementById('news-reader-reading-time');
-      const resumo = document.getElementById('news-reader-summary');
-      const corpo = document.getElementById('news-reader-body');
-
-      if (!overlay || !imagem || !categoria || !titulo || !autor || !data || !leitura || !resumo || !corpo) {
-        return;
-      }
-
-      imagem.src = noticia.imagem_url || imagemPadraoNoticia();
-      imagem.onerror = function() {
-        this.onerror = null;
-        this.src = imagemPadraoNoticia();
-      };
-      imagem.alt = noticia.titulo || 'Capa da notícia';
-      categoria.textContent = noticia.categoria || 'Fã-Site';
-      titulo.textContent = noticia.titulo || 'Sem título';
-      autor.textContent = noticia.autor || 'Redação Pixel';
-      data.textContent = formatarDataNoticia(noticia.publicado_em || noticia.created_at);
-      leitura.textContent = calcularTempoLeitura(noticia.conteudo || noticia.resumo);
-      resumo.textContent = noticia.resumo || '';
-      resumo.style.display = noticia.resumo ? 'block' : 'none';
-      corpo.textContent = noticia.conteudo || noticia.resumo || 'Esta notícia ainda não possui conteúdo disponível.';
-
-      overlay.classList.add('is-open');
-      document.body.classList.add('profile-modal-open');
-    }
-
-
-    function fecharNoticiaPortal() {
-      const overlay = document.getElementById('news-reader-overlay');
-      if (overlay) overlay.classList.remove('is-open');
-
-      const profile = document.getElementById('profile-modal');
-      if (!profile || !profile.classList.contains('is-open')) {
-        document.body.classList.remove('profile-modal-open');
-      }
-    }
-
-
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
-        fecharNoticiaPortal();
-      }
-    });
-
-
-    /* =========================================================
-       CONTEÚDO CONFIGURÁVEL DO SITE — SUPABASE
-    ========================================================= */
-
-    async function carregarConteudoSite() {
-
-      try {
-
-        if (typeof supabaseClient === 'undefined') return;
-
-        const { data, error } = await supabaseClient
-          .from('site_conteudo')
-          .select('chave, valor, tipo, grupo')
-          .order('grupo', { ascending: true })
-          .order('chave', { ascending: true });
-
-        if (error) throw error;
-
-        const conteudo = {};
-
-        (data || []).forEach(function(item) {
-          conteudo[item.chave] = item.valor ?? '';
-        });
-
-        const logo = document.getElementById('portal-site-logo');
-        if (logo && conteudo.logo_url) {
-          logo.src = conteudo.logo_url;
-          logo.onerror = function() {
-            this.onerror = null;
-            this.src = 'pixelizados.png.png';
-          };
-        }
-
-        const noticiasTitulo = document.getElementById('portal-noticias-titulo');
-        const noticiasDescricao = document.getElementById('portal-noticias-descricao');
-        if (noticiasTitulo && conteudo.noticias_titulo) {
-          noticiasTitulo.textContent = conteudo.noticias_titulo;
-        }
-        if (noticiasDescricao && conteudo.noticias_descricao) {
-          noticiasDescricao.textContent = conteudo.noticias_descricao;
-        }
-
-        const eventosTitulo = document.getElementById('portal-eventos-titulo');
-        const eventosDescricao = document.getElementById('portal-eventos-descricao');
-        if (eventosTitulo && conteudo.eventos_titulo) {
-          eventosTitulo.textContent = conteudo.eventos_titulo;
-        }
-        if (eventosDescricao && conteudo.eventos_descricao) {
-          eventosDescricao.textContent = conteudo.eventos_descricao;
-        }
-
-        const discordLink = document.getElementById('portal-discord-link');
-        if (discordLink && conteudo.discord_url) {
-          discordLink.href = conteudo.discord_url;
-        }
-
-      } catch (error) {
-
-        console.warn(
-          'Não foi possível carregar o conteúdo configurável do site:',
-          error
-        );
-
-      }
-    }
-
-
-    async function carregarNoticiaPublicada() {
-      try {
-        if (typeof supabaseClient === 'undefined') {
-          return;
-        }
-
-        const { data, error } = await supabaseClient
-          .from('noticias')
-          .select('id, created_at, titulo, categoria, resumo, conteudo, imagem_url, autor, status, publicado_em')
-          .eq('status', 'PUBLICADA')
-          .order('publicado_em', { ascending: false, nullsFirst: false })
-          .order('created_at', { ascending: false })
-          .limit(7);
-
-        if (error) {
-          throw error;
-        }
-
-        if (!data || !data.length) {
-          const loading = document.getElementById('portal-news-loading');
-          const errorBox = document.getElementById('portal-news-error');
-          if (loading) loading.style.display = 'none';
-          if (errorBox) errorBox.style.display = 'flex';
-          return;
-        }
-
-        atualizarPortalComNoticia(data);
-
-      } catch (error) {
-        console.warn('Erro ao carregar notícias do Portal:', error);
-
-        const loading = document.getElementById('portal-news-loading');
-        const errorBox = document.getElementById('portal-news-error');
-        if (loading) loading.style.display = 'none';
-        if (errorBox) errorBox.style.display = 'flex';
-      }
-    }
-
-
-
-    /* =========================================================
-       EVENTOS DO PORTAL — SUPABASE
-    ========================================================= */
-
-    function formatarDataEventoPortal(dataString) {
-
-      if (!dataString) return 'Data não definida';
-
-      const partes = String(dataString).split('-');
-
-      if (partes.length !== 3) return String(dataString);
-
-      const data = new Date(
-        Number(partes[0]),
-        Number(partes[1]) - 1,
-        Number(partes[2])
-      );
-
-      return data.toLocaleDateString('pt-BR', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric'
-      });
-    }
-
-
-    function formatarHoraEventoPortal(horaString) {
-
-      if (!horaString) return '';
-
-      return String(horaString).slice(0, 5);
-    }
-
-
-    function renderizarEventosPortal(eventos) {
-
-      const loading =
-        document.getElementById('portal-events-loading');
-
-      const grid =
-        document.getElementById('portal-events-grid');
-
-      const empty =
-        document.getElementById('portal-events-empty');
-
-      const error =
-        document.getElementById('portal-events-error');
-
-      const count =
-        document.getElementById('portal-events-count');
-
-      if (!grid || !loading || !empty || !error) return;
-
-      loading.style.display = 'none';
-      error.style.display = 'none';
-      grid.innerHTML = '';
-
-      if (!Array.isArray(eventos) || !eventos.length) {
-
-        grid.style.display = 'none';
-        empty.style.display = 'flex';
-
-        if (count) count.textContent = 'Nenhum evento';
-
-        return;
-      }
-
-      empty.style.display = 'none';
-      grid.style.display = 'grid';
-
-      if (count) {
-        count.textContent =
-          `${eventos.length} ${
-            eventos.length === 1
-              ? 'evento'
-              : 'eventos'
-          }`;
-      }
-
-      eventos.slice(0, 6).forEach(function(evento) {
-
-        const card =
-          document.createElement('article');
-
-        card.className = 'event-card';
-
-        const data =
-          formatarDataEventoPortal(evento.data_evento);
-
-        const hora =
-          formatarHoraEventoPortal(evento.hora_evento);
-
-        const categoria =
-          escaparHtml(evento.categoria || 'Evento');
-
-        const titulo =
-          escaparHtml(evento.titulo || 'Sem título');
-
-        const resumo =
-          escaparHtml(
-            evento.resumo ||
-            evento.conteudo ||
-            'Confira os detalhes deste evento da comunidade Pixelizados.'
-          );
-
-        const local =
-          escaparHtml(
-            evento.local ||
-            'Local não informado'
-          );
-
-        const autor =
-          escaparHtml(
-            evento.autor ||
-            'Redação Pixel'
-          );
-
-        card.innerHTML = `
-          <div class="flex justify-between items-center mb-3 gap-3">
-
-            <span
-              class="pixel-tag"
-              style="color:#4ca95f;background:#eaf9ed;border:1px solid #bfe7c7;"
-            >
-              <i class="fa-solid fa-calendar-check"></i>
-              ${categoria}
-            </span>
-
-            <span class="text-[9px] font-bold text-slate-400 whitespace-nowrap">
-              ${escaparHtml(data)}
-              ${hora ? ` • ${escaparHtml(hora)}` : ''}
-            </span>
-
-          </div>
-
-          ${
-            evento.imagem_url
-              ? `
-                <img
-                  src="${escaparHtml(evento.imagem_url)}"
-                  alt=""
-                  loading="lazy"
-                  style="width:100%;height:130px;object-fit:cover;border-radius:8px;border:1px solid #dcebf3;margin-bottom:12px;"
-                  onerror="this.style.display='none'"
-                >
-              `
-              : ''
-          }
-
-          <h3 class="font-subtitle font-extrabold text-sm text-slate-800">
-            ${titulo}
-          </h3>
-
-          <p class="text-[10px] text-slate-500 mt-1 leading-relaxed">
-            ${resumo}
-          </p>
-
-          <div class="flex items-center justify-between mt-4 pt-3 border-t border-slate-200 gap-3">
-
-            <span class="text-[9px] font-bold text-slate-500">
-              <i class="fa-solid fa-location-dot mr-1"></i>
-              ${local}
-            </span>
-
-            <span class="text-[9px] font-extrabold text-sky-600">
-              ${autor}
-            </span>
-
-          </div>
-        `;
-
-        grid.appendChild(card);
-      });
-    }
-
-
-    async function carregarEventosPublicados() {
-
-      try {
-
-        if (typeof supabaseClient === 'undefined') {
-          return;
-        }
-
-        const { data, error } =
-          await supabaseClient
-            .from('eventos')
-            .select(
-              'id, created_at, titulo, categoria, resumo, conteudo, imagem_url, data_evento, hora_evento, local, autor, status, publicado_em'
-            )
-            .eq('status', 'PUBLICADA')
-            .order('data_evento', {
-              ascending: true,
-              nullsFirst: false
-            })
-            .order('hora_evento', {
-              ascending: true,
-              nullsFirst: false
-            })
-            .order('publicado_em', {
-              ascending: false,
-              nullsFirst: false
-            })
-            .limit(6);
-
-        if (error) throw error;
-
-        renderizarEventosPortal(data || []);
-
-      } catch (error) {
-
-        console.warn(
-          'Erro ao carregar eventos do Portal:',
-          error
-        );
-
-        const loading =
-          document.getElementById('portal-events-loading');
-
-        const grid =
-          document.getElementById('portal-events-grid');
-
-        const empty =
-          document.getElementById('portal-events-empty');
-
-        const errorBox =
-          document.getElementById('portal-events-error');
-
-        if (loading) loading.style.display = 'none';
-        if (grid) grid.style.display = 'none';
-        if (empty) empty.style.display = 'none';
-        if (errorBox) errorBox.style.display = 'flex';
-      }
-    }
-
-
     async function compartilharNoticia() {
 
       const titulo =
-        noticiaPortalAtual?.titulo ||
-        'Notícia do Pixelizados';
+        'A Era dos Fã-Sites Oficiais: O Futuro da Comunidade Pixelizada';
 
       const url =
         window.location.href;
@@ -4965,13 +5301,22 @@
       }
     );
 
-  </script> <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script> <script>
+  </script>
+
+
+  <!-- =======================================================
+       SUPABASE / AVATAR / DADOS / LOGOUT
+  ======================================================== -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
 
     const SUPABASE_URL =
       'https://znvytrvdwejjlivzsjzy.supabase.co';
 
     const SUPABASE_KEY =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inpudnl0cnZkd2Vqamxpdnpzanp5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAzMDAxNzYsImV4cCI6MjEwNTg3NjE3Nn0.OrulHcmTpynMpE0nuLLxt8PUKCaixfcbh7t0MQOo9lo';
+      'sb_publishable_J60PuY390KR4sRTGe9tjNg_wllyvUAj';
 
 
     const supabaseClient =
@@ -5133,10 +5478,6 @@
 
         await carregarAvatarDoSupabase();
 
-        await carregarConteudoSite();
-        await carregarNoticiaPublicada();
-        await carregarEventosPublicados();
-
       }
     );
 
@@ -5237,4 +5578,131 @@
 
     }
 
-  </script> <div id="news-reader-overlay" class="news-reader-overlay" onclick="if(event.target === this) fecharNoticiaPortal()" > <article class="news-reader-modal" role="dialog" aria-modal="true" aria-labelledby="news-reader-title"> <div class="news-reader-cover"> <button type="button" class="news-reader-close" onclick="fecharNoticiaPortal()" aria-label="Fechar notícia" > <i class="fa-solid fa-xmark"></i> </button> <img id="news-reader-image" src="https://images.unsplash.com/photo-1550745165-9bc0b2527264?auto=format&fit=crop&w=1400&q=85" alt="Capa da notícia" > </div> <div class="news-reader-content"> <span id="news-reader-category" class="pixel-tag pixel-tag-blue">Fã-Site</span> <h2 id="news-reader-title" class="news-reader-title">Notícia</h2> <div class="news-reader-meta"> <span>Por <strong id="news-reader-author">Redação Pixel</strong></span> <span>•</span> <span id="news-reader-date">Recentemente</span> <span>•</span> <span id="news-reader-reading-time">1 min de leitura</span> </div> <div id="news-reader-summary" class="news-reader-summary" style="display:none;"></div> <div id="news-reader-body" class="news-reader-body"></div> </div> </article> </div> </body> </html>
+    /* =========================================================
+       AUTODJ — RÁDIO EXTERNA
+    ========================================================= */
+
+    const autodjAudio = document.createElement('audio');
+    autodjAudio.id = 'autodj-audio';
+    autodjAudio.preload = 'none';
+    autodjAudio.style.display = 'none';
+    document.body.appendChild(autodjAudio);
+
+    let autodjConfigAtual = null;
+
+    function atualizarVisualAutodj(config) {
+      const nome = document.getElementById('dj-name');
+      const faixa = document.getElementById('track-name');
+      const avatar = document.getElementById('dj-avatar');
+      const botao = document.getElementById('autodj-play-button');
+      const status = document.querySelector('.autodj-live');
+
+      if (!nome || !faixa || !avatar || !botao || !status) return;
+
+      const ativo = Boolean(config && config.ativo && config.url_streaming);
+      nome.textContent = config?.texto_player || 'AutoDJ Pixel';
+      avatar.src = config?.capa_url || 'https://api.dicebear.com/7.x/pixel-art/svg?seed=AutoDJ';
+      avatar.alt = config?.nome_radio || 'AutoDJ';
+
+      if (ativo) {
+        faixa.textContent = config.nome_radio || 'Rádio Pixelizados';
+        status.innerHTML = '<span class="pulse-dot"></span> NO AR';
+        botao.disabled = false;
+        botao.title = 'Ouvir transmissão';
+        botao.setAttribute('aria-label', 'Ouvir transmissão');
+      } else {
+        faixa.textContent = 'Rádio desativada — aguardando transmissão';
+        status.innerHTML = '<span class="pulse-dot"></span> OFFLINE';
+        botao.disabled = true;
+        botao.title = 'Transmissão indisponível';
+        botao.setAttribute('aria-label', 'Transmissão indisponível');
+        botao.innerHTML = '<i class="fa-solid fa-play" style="font-size:10px;color:#94a3b8;"></i>';
+      }
+    }
+
+    async function carregarConfiguracaoAutodj() {
+      try {
+        const { data, error } = await supabaseClient
+          .from('autodj_config')
+          .select('nome_radio, url_streaming, capa_url, texto_player, ativo')
+          .order('atualizado_em', { ascending: false })
+          .limit(1)
+          .maybeSingle();
+
+        if (error) throw error;
+
+        autodjConfigAtual = data || null;
+        atualizarVisualAutodj(autodjConfigAtual);
+      } catch (error) {
+        console.warn('Não foi possível carregar a configuração do AutoDJ:', error);
+        atualizarVisualAutodj(null);
+      }
+    }
+
+    async function alternarAutodj() {
+      const botao = document.getElementById('autodj-play-button');
+      if (!autodjConfigAtual?.ativo || !autodjConfigAtual?.url_streaming || !botao) return;
+
+      try {
+        if (!autodjAudio.src || autodjAudio.src !== autodjConfigAtual.url_streaming) {
+          autodjAudio.src = autodjConfigAtual.url_streaming;
+        }
+
+        if (autodjAudio.paused) {
+          botao.disabled = true;
+          botao.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="font-size:10px;color:#0284c7;"></i>';
+          await autodjAudio.play();
+          botao.innerHTML = '<i class="fa-solid fa-pause" style="font-size:10px;color:#0284c7;"></i>';
+          botao.title = 'Pausar transmissão';
+        } else {
+          autodjAudio.pause();
+          botao.innerHTML = '<i class="fa-solid fa-play" style="font-size:10px;color:#0284c7;"></i>';
+          botao.title = 'Ouvir transmissão';
+        }
+      } catch (error) {
+        console.error('Erro ao iniciar o streaming do AutoDJ:', error);
+        botao.innerHTML = '<i class="fa-solid fa-play" style="font-size:10px;color:#0284c7;"></i>';
+        mostrarErroAutodj('Não foi possível iniciar a transmissão. Verifique a URL do streaming.');
+      } finally {
+        botao.disabled = false;
+      }
+    }
+
+    function mostrarErroAutodj(mensagem) {
+      console.warn(mensagem);
+    }
+
+    autodjAudio.addEventListener('playing', function() {
+      const status = document.querySelector('.autodj-live');
+      if (status) status.innerHTML = '<span class="pulse-dot"></span> NO AR';
+    });
+
+    autodjAudio.addEventListener('pause', function() {
+      const botao = document.getElementById('autodj-play-button');
+      if (botao && autodjConfigAtual?.ativo) {
+        botao.innerHTML = '<i class="fa-solid fa-play" style="font-size:10px;color:#0284c7;"></i>';
+        botao.title = 'Ouvir transmissão';
+      }
+    });
+
+    autodjAudio.addEventListener('error', function() {
+      const botao = document.getElementById('autodj-play-button');
+      const status = document.querySelector('.autodj-live');
+      if (botao) {
+        botao.disabled = false;
+        botao.innerHTML = '<i class="fa-solid fa-play" style="font-size:10px;color:#0284c7;"></i>';
+      }
+      if (status) status.innerHTML = '<span class="pulse-dot"></span> SEM SINAL';
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const botao = document.getElementById('autodj-play-button');
+      if (botao) botao.addEventListener('click', alternarAutodj);
+      carregarConfiguracaoAutodj();
+    });
+
+  </script>
+
+
+</body>
+</html>
